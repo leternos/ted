@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CFOAB / TED — Buscador de Jurisprudência Ético-Disciplinar (1994–2026)</title>
+  <meta name="description" content="Buscador unificado e enriquecido de jurisprudências, ementas, súmulas, consultas e acórdãos de inteiro teor do Conselho Federal da OAB e 2ª Câmara (TED).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-crest" aria-hidden="true">OAB</div>
+        <div class="brand-titles">
+          <h1>Jurisprudência CFOAB &amp; Tribunal de Ética e Disciplina</h1>
+          <p class="brand-subtitle">Base Unificada 1994–2026 • 2ª Câmara, Turmas Recursais, Órgão Especial, Conselho Pleno e Súmulas</p>
+        </div>
+      </div>
+      <div class="header-stats" id="header-stats-container">
+        <div class="stat-chip">
+          <span class="stat-chip-value" id="stat-total-cfoab">—</span>
+          <span class="stat-chip-label">Julgados CFOAB</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip-value" id="stat-total-ted">—</span>
+          <span class="stat-chip-label">Ética / TED</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip-value" id="stat-total-pdfs">—</span>
+          <span class="stat-chip-label">Acórdãos PDF</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip-value" id="stat-total-orgaos">—</span>
+          <span class="stat-chip-label">Câmaras Mapeadas</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="search-section" aria-label="Pesquisa de Jurisprudência">
+    <div class="search-container">
+      <form id="search-form" class="search-bar-row">
+        <div class="search-input-wrap">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="search"
+            id="search-query-input"
+            class="search-input"
+            placeholder="Pesquise por tese jurídica, infração (ex: prestação de contas, prescrição intercorrente, locupletamento, art. 34 XXI)..."
+            autocomplete="off"
+          >
+          <button type="button" id="clear-query-btn" class="clear-search-btn" title="Limpar busca" hidden>&times;</button>
+        </div>
+        <button type="submit" id="submit-search-btn" class="btn-primary">
+          Pesquisar Acervo
+        </button>
+      </form>
+
+      <div class="search-controls-row">
+        <div class="mode-group">
+          <span class="control-label">Modo:</span>
+          <div class="segmented-control" role="group" aria-label="Modo de correspondência textual">
+            <button type="button" class="seg-btn active" data-mode="todos" id="mode-btn-todos">Todos os termos</button>
+            <button type="button" class="seg-btn" data-mode="frase" id="mode-btn-frase">Frase exata</button>
+            <button type="button" class="seg-btn" data-mode="qualquer" id="mode-btn-qualquer">Qualquer termo</button>
+          </div>
+        </div>
+
+        <div class="toggle-group">
+          <label class="pill-toggle" id="label-toggle-ted">
+            <input type="checkbox" id="toggle-apenas-ted">
+            <span>Apenas Ética e Disciplina (TED / 2ª Câmara)</span>
+          </label>
+          <label class="pill-toggle" id="label-toggle-inteiro-teor">
+            <input type="checkbox" id="toggle-apenas-inteiro-teor">
+            <span>Com Inteiro Teor Extraído (Relatório e Voto)</span>
+          </label>
+          <label class="pill-toggle checked" id="label-toggle-cfoab">
+            <input type="checkbox" id="toggle-apenas-cfoab" checked>
+            <span>Apenas Conselho Federal</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="quick-theses-row">
+        <span class="control-label">Teses Frequentes TED:</span>
+        <button type="button" class="thesis-chip" data-query="prescrição intercorrente três anos">Prescrição Intercorrente</button>
+        <button type="button" class="thesis-chip" data-query="prescrição quinquenal art. 43">Prescrição Quinquenal (Art. 43)</button>
+        <button type="button" class="thesis-chip" data-query="prestação de contas locupletamento">Prestação de Contas e Locupletamento</button>
+        <button type="button" class="thesis-chip" data-query="suspensão preventiva repercussão">Suspensão Preventiva (Art. 70 § 3º)</button>
+        <button type="button" class="thesis-chip" data-query="revisão processo disciplinar prova nova">Revisão Disciplinar (Art. 73 § 5º)</button>
+        <button type="button" class="thesis-chip" data-query="publicidade captação de clientela">Publicidade e Captação</button>
+        <button type="button" class="thesis-chip" data-query="inidoneidade moral inscrição">Inidoneidade Moral</button>
+        <button type="button" class="thesis-chip" data-query="dupla relatoria nulidade">Nulidade / Dupla Relatoria</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="workspace-grid">
+    <!-- Barra Lateral de Facetas e Filtros Estruturados -->
+    <aside class="filters-panel" aria-label="Filtros de Pesquisa">
+      <div class="filters-header">
+        <h2>Filtros Avançados</h2>
+        <button type="button" id="reset-all-filters-btn" class="btn-reset-filters">Limpar tudo</button>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-title" for="filter-contexto">Tipo de Documento</label>
+        <select id="filter-contexto" class="filter-select">
+          <option value="">Todos (Ementas, Consultas e Súmulas)</option>
+          <option value="EMENTA">Ementário / Acórdãos</option>
+          <option value="EMENTA_CONSULTA">Consultas ao Órgão Especial</option>
+          <option value="DECISAO_SUMULA">Súmulas Vinculantes CFOAB</option>
+        </select>
+      </div>
+
+      <div class="filter-section">
+        <span class="filter-title">Órgão Julgador (Enriquecido)</span>
+        <ul class="facet-list" id="facet-orgaos-list"></ul>
+      </div>
+
+      <div class="filter-section">
+        <span class="filter-title">Dispositivo Normativo (EAOAB / CED)</span>
+        <ul class="facet-list" id="facet-dispositivos-list"></ul>
+      </div>
+
+      <div class="filter-section">
+        <span class="filter-title">Sanção Disciplinar</span>
+        <ul class="facet-list" id="facet-sancoes-list"></ul>
+      </div>
+
+      <div class="filter-section">
+        <span class="filter-title">Resultado do Julgamento</span>
+        <ul class="facet-list" id="facet-resultados-list"></ul>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-title">Período (Ano)</label>
+        <div class="year-range-row">
+          <input type="number" id="filter-ano-inicio" class="filter-input" placeholder="De (ex: 1994)" min="1990" max="2030">
+          <input type="number" id="filter-ano-fim" class="filter-input" placeholder="Até (ex: 2026)" min="1990" max="2030">
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-title" for="filter-uf">Seccional de Origem (UF)</label>
+        <select id="filter-uf" class="filter-select">
+          <option value="">Todas as UFs</option>
+        </select>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-title" for="filter-relator">Conselheiro(a) Relator(a)</label>
+        <input type="text" id="filter-relator" class="filter-input" placeholder="Ex: Ulisses, Alberto, Cristiane...">
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-title" for="filter-processo">Nº do Processo ou Ementa</label>
+        <input type="text" id="filter-processo" class="filter-input" placeholder="Ex: 24.0000.2023 ou 005/2026/SCA">
+      </div>
+    </aside>
+
+    <!-- Coluna Principal de Resultados -->
+    <section class="results-column" aria-label="Resultados da Pesquisa">
+      <div class="results-toolbar">
+        <div class="results-summary" id="results-summary-text">
+          Carregando base de jurisprudências...
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <label for="sort-select" class="control-label">Ordenar por:</label>
+          <select id="sort-select" class="filter-select" style="width: auto;">
+            <option value="relevancia">Relevância (BM25 / Data)</option>
+            <option value="data_desc">Mais recentes primeiro</option>
+            <option value="data_asc">Mais antigos primeiro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="active-filters-bar" id="active-filters-bar" hidden></div>
+
+      <div class="results-list" id="results-list-container"></div>
+
+      <nav class="pagination-bar" id="pagination-bar" aria-label="Paginação de resultados"></nav>
+    </section>
+  </main>
+
+  <!-- Modal de Inteiro Teor (Relatório, Voto e Acórdão) -->
+  <div class="modal-backdrop" id="inteiro-teor-modal" hidden>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
+      <div class="modal-header">
+        <h3 id="modal-title-text">Inteiro Teor do Julgado</h3>
+        <button type="button" id="close-modal-btn" class="modal-close-btn" aria-label="Fechar modal">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body-content"></div>
+      <div class="modal-footer">
+        <div id="modal-footer-links" style="display: flex; gap: 0.6rem;"></div>
+        <button type="button" id="modal-copy-btn" class="btn-primary" style="padding: 0.5rem 1.1rem;">
+          Copiar Inteiro Teor
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-notification" id="toast-notification" hidden></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
