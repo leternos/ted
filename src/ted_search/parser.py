@@ -12,6 +12,7 @@ import re
 from typing import Any
 
 from ted_search.config import ESTADOS_NOME_PARA_UF, OAB_SECCIONAL_PREFIX_MAP
+from ted_search.ocr_cleaner import clean_ocr_text
 
 # Mapeamento canônico de siglas de Órgãos Julgadores do CFOAB
 ORGAO_SIGLA_PARA_NOME = {
@@ -94,14 +95,8 @@ RE_RELATOR_TEXT = re.compile(
 
 
 def clean_text(raw: str | None) -> str:
-    """Desescapa entidades HTML (&quot;, &amp;) e normaliza quebras de linha."""
-    if not raw:
-        return ""
-    txt = html.unescape(raw)
-    txt = txt.replace("\r\n", "\n").replace("\r", "\n")
-    # Remove múltiplos espaços preservando quebras de parágrafo
-    txt = re.sub(r"[ \t]+", " ", txt)
-    return txt.strip()
+    """Desescapa entidades HTML, higieniza ruídos de OCR e normaliza quebras de linha."""
+    return clean_ocr_text(raw, multiline=True)
 
 
 def normalize_numero_ementa(raw_num: str | None, text: str) -> str | None:

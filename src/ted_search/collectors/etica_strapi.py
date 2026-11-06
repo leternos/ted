@@ -14,7 +14,10 @@ import hashlib
 import io
 import json
 import re
+import shutil
 import sqlite3
+import subprocess
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -28,6 +31,7 @@ from ted_search.config import (
     RAW_DIR,
     create_async_http_client,
 )
+from ted_search.ocr_cleaner import is_gibberish_ocr_line
 from ted_search.parser import (
     clean_text,
     detect_orgao_julgador,
@@ -177,12 +181,47 @@ def normalize_etica_strapi_item(raw: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _ocr_pdf_page_tesseract(pdf_bytes: bytes, page_num: int) -> str | None:
+    """Executa OCR via pdftoppm + tesseract (por) em uma página específica quando a camada de texto do PDF está corrompida."""
+    if not (shutil.which("pdftoppm") and shutil.which("tesseract")):
+        return None
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            pdf_file = Path(tmp) / "doc.pdf"
+            pdf_file.write_bytes(pdf_bytes)
+            out_prefix = f"{tmp}/page"
+            subprocess.run(
+                ["pdftoppm", "-png", "-r", "150", "-f", str(page_num), "-l", str(page_num), str(pdf_file), out_prefix],
+                check=True,
+                capture_output=True,
+                timeout=20,
+            )
+            pngs = sorted(Path(tmp).glob("page-*.png"))
+            if not pngs:
+                return None
+            res = subprocess.run(
+                ["tesseract", str(pngs[0]), "stdout", "-l", "por", "--psm", "6"],
+                check=True,
+                capture_output=True,
+                text=True,
+                timeout=25,
+            )
+            return res.stdout if res.stdout.strip() else None
+    except Exception:
+        return None
+
+
 def extract_text_from_pdf_bytes(pdf_bytes: bytes) -> str:
-    """Extrai e limpa o texto de todas as páginas de um PDF em memória."""
+    """Extrai e limpa o texto de todas as páginas de um PDF em memória, com fallback de OCR quando a camada nativa está corrompida."""
     reader = PdfReader(io.BytesIO(pdf_bytes))
     pages_txt: list[str] = []
-    for page in reader.pages:
+    for idx, page in enumerate(reader.pages, start=1):
         t = page.extract_text() or ""
+        gib_lines = sum(1 for ln in t.splitlines() if is_gibberish_ocr_line(ln))
+        if (not t.strip() or gib_lines >= 3):
+            ocr_page = _ocr_pdf_page_tesseract(pdf_bytes, idx)
+            if ocr_page:
+                t = ocr_page
         if t.strip():
             pages_txt.append(t)
     full_txt = "\n\n".join(pages_txt)

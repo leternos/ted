@@ -84,3 +84,31 @@ def test_uf_prefix_detection():
     assert detect_uf_origem("24.0000.2023.000001-6", [], "") == "SC"
     assert detect_uf_origem("25.0000.2022.000907-6", [], "") == "SP"
     assert detect_uf_origem("07.0000.2016.018084-4", [], "") == "DF"
+
+
+def test_ocr_cleaner_repairs():
+    from ted_search.ocr_cleaner import clean_ocr_text
+
+    corrupted = (
+        '<p style="text-align:justify;"><i>doá Q 9Ídiío^adoíí do\n'
+        "Embora próprio e tempestivo o reeurso, na Segunda Câ- mara^, "
+        "verifieando- se ausêneia de pressupostos espeeífieos no proeesso ético- disciplinar "
+        "da Seeeional quanto à incompete^ncia territorial e ac¸a~o disciplinar no art.34, ineiso XX do EAOA8, "
+        "eireunstâneia que impõe o não eonheeimento do aeórdão.</i></p>"
+    )
+    cleaned = clean_ocr_text(corrupted)
+    assert "doá Q 9Ídiío" not in cleaned
+    assert "<p" not in cleaned and "<i>" not in cleaned
+    assert "recurso" in cleaned
+    assert "Segunda Câmara," in cleaned
+    assert "verificando-se" in cleaned
+    assert "ausência" in cleaned
+    assert "específicos" in cleaned
+    assert "processo ético-disciplinar" in cleaned
+    assert "Seccional" in cleaned
+    assert "incompetência" in cleaned
+    assert "ação" in cleaned
+    assert "art. 34, inciso XX do EAOAB" in cleaned
+    assert "circunstância" in cleaned
+    assert "não conhecimento do acórdão" in cleaned
+
