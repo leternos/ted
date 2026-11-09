@@ -8,6 +8,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
+# Utilitários de OCR em português para fallback de PDFs escaneados com camada corrompida
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends poppler-utils tesseract-ocr tesseract-ocr-por && \
+    rm -rf /var/lib/apt/lists/*
+
 # Instalar pacote e dependências de produção
 COPY pyproject.toml README.md ./
 COPY src/ ./src/

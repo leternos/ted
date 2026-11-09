@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "ted-oab",
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "ted-jurisprudencia",
+          "region": "us-central1"
+        }
+      }
+    ]
+  }
+}
