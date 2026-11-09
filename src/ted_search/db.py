@@ -167,13 +167,31 @@ def build_fts_query(raw_query: str, mode: str = "todos") -> str | None:
     return joiner.join(all_parts)
 
 
+def _apply_esfera_filter(where_clauses: list[str], esfera: str, apenas_cfoab: bool) -> None:
+    esf = (esfera or "").strip().upper()
+    if esf == "CFOAB":
+        where_clauses.append("(j.id_organizacao = 49 OR j.id_organizacao IS NULL)")
+    elif esf == "OABSP":
+        where_clauses.append("j.id_organizacao = 25")
+    elif esf == "OABSP_TURMAS":
+        where_clauses.append("j.id_organizacao = 25 AND (j.sigla_orgao LIKE 'OABSP-%TD%' OR j.sigla_orgao = 'OABSP-TED')")
+    elif esf == "OABSP_RECURSOS":
+        where_clauses.append("j.id_organizacao = 25 AND j.sigla_orgao LIKE 'OABSP-%CR%'")
+    elif esf == "TODAS":
+        pass
+    elif apenas_cfoab:
+        where_clauses.append("(j.id_organizacao = 49 OR j.id_organizacao IS NULL)")
+
+
 def search_julgados(
     conn: sqlite3.Connection,
     *,
     q: str = "",
     mode: str = "todos",
-    apenas_cfoab: bool = True,
+    esfera: str = "",
+    apenas_cfoab: bool = False,
     apenas_ted: bool = False,
+    apenas_com_acordao: bool = False,
     apenas_inteiro_teor: bool = False,
     contexto: str = "",
     orgao: str = "",
@@ -204,11 +222,15 @@ def search_julgados(
         where_clauses.append("julgados_fts MATCH ?")
         params.append(fts_expr)
 
-    if apenas_cfoab:
-        where_clauses.append("(j.id_organizacao = 49 OR j.id_organizacao IS NULL)")
+    _apply_esfera_filter(where_clauses, esfera, apenas_cfoab)
 
     if apenas_ted:
         where_clauses.append("j.is_ted_disciplinar = 1")
+
+    if apenas_com_acordao:
+        where_clauses.append(
+            "((j.descricao_acordao IS NOT NULL AND j.descricao_acordao != '') OR j.tem_inteiro_teor = 1)"
+        )
 
     if apenas_inteiro_teor:
         where_clauses.append("j.tem_inteiro_teor = 1")
@@ -300,6 +322,7 @@ def search_julgados(
             j.numero_processo,
             j.numero_ementa,
             j.ano_ementa,
+            j.id_organizacao,
             j.nome_organizacao,
             j.orgao_julgador_raw,
             j.orgao_julgador_norm,
@@ -332,6 +355,7 @@ def search_julgados(
         d["dispositivos"] = json.loads(d.pop("dispositivos_json") or "[]")
         d["is_ted_disciplinar"] = bool(d["is_ted_disciplinar"])
         d["tem_inteiro_teor"] = bool(d["tem_inteiro_teor"])
+        d["tem_acordao"] = bool((d.get("descricao_acordao") or "").strip() or d["tem_inteiro_teor"])
         items.append(d)
 
     return {
@@ -349,8 +373,10 @@ def get_facets(
     *,
     q: str = "",
     mode: str = "todos",
-    apenas_cfoab: bool = True,
+    esfera: str = "",
+    apenas_cfoab: bool = False,
     apenas_ted: bool = False,
+    apenas_com_acordao: bool = False,
     apenas_inteiro_teor: bool = False,
 ) -> dict[str, list[dict[str, Any]]]:
     """Retorna agregações dinâmicas para os filtros da barra lateral."""
@@ -365,16 +391,19 @@ def get_facets(
     else:
         from_sql = "FROM julgados j"
 
-    if apenas_cfoab:
-        where_clauses.append("(j.id_organizacao = 49 OR j.id_organizacao IS NULL)")
+    _apply_esfera_filter(where_clauses, esfera, apenas_cfoab)
     if apenas_ted:
         where_clauses.append("j.is_ted_disciplinar = 1")
+    if apenas_com_acordao:
+        where_clauses.append(
+            "((j.descricao_acordao IS NOT NULL AND j.descricao_acordao != '') OR j.tem_inteiro_teor = 1)"
+        )
     if apenas_inteiro_teor:
         where_clauses.append("j.tem_inteiro_teor = 1")
 
     where_sql = " AND ".join(where_clauses) if where_clauses else "1=1"
 
-    def _agg(col: str, limit: int = 30) -> list[dict[str, Any]]:
+    def _agg(col: str, limit: int = 40) -> list[dict[str, Any]]:
         sql = f"""
             SELECT {col} AS valor, COUNT(*) AS total
             {from_sql}
@@ -408,8 +437,8 @@ def get_facets(
     anos = [dict(r) for r in conn.execute(anos_sql, params).fetchall()]
 
     return {
-        "orgaos": _agg("j.orgao_julgador_norm", 20),
-        "siglas_orgao": _agg("j.sigla_orgao", 15),
+        "orgaos": _agg("j.orgao_julgador_norm", 45),
+        "siglas_orgao": _agg("j.sigla_orgao", 45),
         "dispositivos": dispositivos,
         "sancoes": _agg("j.sancao_identificada", 15),
         "resultados": _agg("j.resultado_julgamento", 15),
@@ -421,13 +450,25 @@ def get_facets(
 
 
 def get_global_stats(conn: sqlite3.Connection) -> dict[str, Any]:
-    """Retorna métricas consolidadas do acervo e do enriquecimento de dados."""
+    """Retorna métricas consolidadas do acervo (CFOAB + Seccional OAB/SP) e do enriquecimento."""
     total_geral = conn.execute("SELECT COUNT(*) FROM julgados").fetchone()[0]
     total_cfoab = conn.execute(
         "SELECT COUNT(*) FROM julgados WHERE id_organizacao = 49 OR id_organizacao IS NULL"
     ).fetchone()[0]
+    total_oabsp = conn.execute(
+        "SELECT COUNT(*) FROM julgados WHERE id_organizacao = 25"
+    ).fetchone()[0]
+    total_oabsp_turmas = conn.execute(
+        "SELECT COUNT(*) FROM julgados WHERE id_organizacao = 25 AND (sigla_orgao LIKE 'OABSP-%TD%' OR sigla_orgao = 'OABSP-TED')"
+    ).fetchone()[0]
+    total_oabsp_recursos = conn.execute(
+        "SELECT COUNT(*) FROM julgados WHERE id_organizacao = 25 AND sigla_orgao LIKE 'OABSP-%CR%'"
+    ).fetchone()[0]
     total_ted = conn.execute(
-        "SELECT COUNT(*) FROM julgados WHERE is_ted_disciplinar = 1 AND (id_organizacao = 49 OR id_organizacao IS NULL)"
+        "SELECT COUNT(*) FROM julgados WHERE is_ted_disciplinar = 1"
+    ).fetchone()[0]
+    total_com_acordao = conn.execute(
+        "SELECT COUNT(*) FROM julgados WHERE (descricao_acordao IS NOT NULL AND descricao_acordao != '') OR tem_inteiro_teor = 1"
     ).fetchone()[0]
     total_com_pdf = conn.execute(
         "SELECT COUNT(*) FROM julgados WHERE pdf_url IS NOT NULL AND pdf_url != ''"
@@ -461,10 +502,27 @@ def get_global_stats(conn: sqlite3.Connection) -> dict[str, Any]:
         ).fetchall()
     ]
 
+    por_orgao_oabsp = [
+        dict(r)
+        for r in conn.execute(
+            """
+            SELECT sigla_orgao, orgao_julgador_norm, COUNT(*) AS total
+            FROM julgados
+            WHERE id_organizacao = 25
+            GROUP BY sigla_orgao, orgao_julgador_norm
+            ORDER BY total DESC
+            """
+        ).fetchall()
+    ]
+
     return {
         "total_geral": total_geral,
         "total_cfoab": total_cfoab,
+        "total_oabsp": total_oabsp,
+        "total_oabsp_turmas": total_oabsp_turmas,
+        "total_oabsp_recursos": total_oabsp_recursos,
         "total_ted_disciplinar": total_ted,
+        "total_com_acordao": total_com_acordao,
         "total_com_pdf_url": total_com_pdf,
         "total_inteiro_teor_extraido": total_inteiro_teor_indexado,
         "total_orgao_especifico_identificado": total_orgao_especifico,
@@ -472,4 +530,5 @@ def get_global_stats(conn: sqlite3.Connection) -> dict[str, Any]:
         "total_com_resultado_extraido": total_com_resultado,
         "total_com_sancao_identificada": total_com_sancao,
         "por_orgao": por_orgao,
+        "por_orgao_oabsp": por_orgao_oabsp,
     }

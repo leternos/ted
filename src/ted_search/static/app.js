@@ -1,12 +1,14 @@
 /**
- * Frontend do Buscador de Jurisprudências do CFOAB / TED
+ * Frontend do Buscador de Jurisprudências do CFOAB & Piloto Seccional OAB/SP (TED)
  */
 
 const state = {
   q: "",
   mode: "todos",
-  apenas_cfoab: true,
+  esfera: "TODAS",
+  apenas_cfoab: false,
   apenas_ted: false,
+  apenas_com_acordao: true,
   apenas_inteiro_teor: false,
   contexto: "",
   orgao: "",
@@ -37,7 +39,6 @@ function escapeHtml(str) {
 
 function sanitizeHighlightedHtml(str) {
   if (!str) return "";
-  // Preserva apenas <mark> e </mark> gerados pelo SQLite FTS5
   const placeholderOpen = "___MARK_OPEN___";
   const placeholderClose = "___MARK_CLOSE___";
   const temp = String(str)
@@ -67,9 +68,9 @@ async function loadHeaderStats() {
     const resp = await fetch("/api/stats");
     const data = await resp.json();
     document.getElementById("stat-total-cfoab").textContent = formatNumber(data.total_cfoab);
-    document.getElementById("stat-total-ted").textContent = formatNumber(data.total_ted_disciplinar);
+    document.getElementById("stat-total-oabsp").textContent = formatNumber(data.total_oabsp);
+    document.getElementById("stat-total-acordaos").textContent = formatNumber(data.total_com_acordao);
     document.getElementById("stat-total-pdfs").textContent = formatNumber(data.total_com_pdf_url);
-    document.getElementById("stat-total-orgaos").textContent = formatNumber(data.total_orgao_especifico_identificado);
   } catch (err) {
     console.error("Erro ao carregar estatísticas:", err);
   }
@@ -79,8 +80,10 @@ function buildSearchParams() {
   const params = new URLSearchParams();
   if (state.q) params.set("q", state.q);
   params.set("mode", state.mode);
-  params.set("apenas_cfoab", String(state.apenas_cfoab));
+  params.set("esfera", state.esfera);
+  params.set("apenas_cfoab", String(state.esfera === "CFOAB"));
   params.set("apenas_ted", String(state.apenas_ted));
+  params.set("apenas_com_acordao", String(state.apenas_com_acordao));
   params.set("apenas_inteiro_teor", String(state.apenas_inteiro_teor));
   if (state.contexto) params.set("contexto", state.contexto);
   if (state.orgao) params.set("orgao", state.orgao);
@@ -103,8 +106,10 @@ async function fetchFacets() {
   const params = new URLSearchParams({
     q: state.q,
     mode: state.mode,
-    apenas_cfoab: String(state.apenas_cfoab),
+    esfera: state.esfera,
+    apenas_cfoab: String(state.esfera === "CFOAB"),
     apenas_ted: String(state.apenas_ted),
+    apenas_com_acordao: String(state.apenas_com_acordao),
     apenas_inteiro_teor: String(state.apenas_inteiro_teor),
   });
   try {
@@ -174,7 +179,7 @@ function renderActiveFilterTags() {
     ano_inicio: "Desde",
     ano_fim: "Até",
     numero_processo: "Processo",
-    numero_ementa: "Ementa",
+    numero_ementa: "Ementa/Acórdão",
   };
   Object.entries(labels).forEach(([key, label]) => {
     if (state[key]) {
@@ -212,8 +217,9 @@ function renderActiveFilterTags() {
 
 function buildCitationText(item) {
   const parts = [];
-  parts.push(`CFOAB - ${item.orgao_julgador_norm || "Conselho Federal"}`);
-  if (item.numero_ementa) parts.push(`Ementa n. ${item.numero_ementa}`);
+  const isSp = item.id_organizacao === 25 || (item.sigla_orgao || "").startsWith("OABSP");
+  parts.push(isSp ? `${item.orgao_julgador_norm || "OAB/SP"}` : `CFOAB - ${item.orgao_julgador_norm || "Conselho Federal"}`);
+  if (item.numero_ementa) parts.push(`Ementa/Acórdão n. ${item.numero_ementa}`);
   if (item.numero_processo) parts.push(`Proc. n. ${item.numero_processo}`);
   if (item.relator_principal) parts.push(`Rel. ${item.relator_principal}`);
   if (item.data_decisao) parts.push(`j. ${item.data_decisao}`);
@@ -241,7 +247,7 @@ async function executeSearch() {
       listEl.innerHTML = `
         <div class="julgado-card" style="text-align:center;padding:2.5rem;">
           <h3 style="margin-top:0;">Nenhum julgado encontrado com estes critérios</h3>
-          <p style="color:var(--text-secondary);">Experimente alternar o modo para "Qualquer termo" ou remover alguns filtros laterais.</p>
+          <p style="color:var(--text-secondary);">Experimente alternar o modo para "Qualquer termo", trocar a aba de Seccional ou remover alguns filtros laterais.</p>
         </div>
       `;
       document.getElementById("pagination-bar").innerHTML = "";
@@ -261,7 +267,7 @@ async function executeSearch() {
         const snippetInteiroTeor =
           item.tem_inteiro_teor && item.inteiro_teor_snippet
             ? `<div class="inteiro-teor-preview">
-                 <span class="inteiro-teor-preview-label">Trecho do Inteiro Teor (Relatório e Voto):</span>
+                 <span class="inteiro-teor-preview-label">Trecho do Inteiro Teor (Relatório, Voto e Acórdão):</span>
                  ${sanitizeHighlightedHtml(item.inteiro_teor_snippet)}
                </div>`
             : "";
@@ -273,11 +279,11 @@ async function executeSearch() {
             <div class="card-top-bar">
               <div class="badges-row">
                 <span class="badge badge-orgao">${escapeHtml(item.orgao_julgador_norm || "Conselho Federal")}</span>
-                ${item.numero_ementa ? `<span class="badge badge-ementa-num">Ementa ${escapeHtml(item.numero_ementa)}</span>` : ""}
+                ${item.numero_ementa ? `<span class="badge badge-ementa-num">Acórdão/Ementa ${escapeHtml(item.numero_ementa)}</span>` : ""}
                 ${item.uf_origem ? `<span class="badge badge-uf">OAB/${escapeHtml(item.uf_origem)}</span>` : ""}
                 ${item.sancao_identificada ? `<span class="badge badge-sancao">${escapeHtml(item.sancao_identificada)}</span>` : ""}
                 ${item.resultado_julgamento ? `<span class="badge badge-resultado">${escapeHtml(item.resultado_julgamento)}</span>` : ""}
-                ${hasFullTextOrPdf ? `<span class="badge badge-inteiro-teor">Inteiro Teor / PDF</span>` : ""}
+                ${hasFullTextOrPdf ? `<span class="badge badge-inteiro-teor">PDF Inteiro Teor</span>` : ""}
               </div>
               <div class="card-date-proc">
                 ${item.numero_processo ? `<span>Proc. ${escapeHtml(item.numero_processo)}</span>` : ""}
@@ -298,11 +304,11 @@ async function executeSearch() {
             <div class="card-actions">
               <div class="action-buttons-left">
                 <button type="button" class="btn-outline btn-open-detail ${hasFullTextOrPdf ? "btn-accent-green" : ""}" data-id="${escapeHtml(item.id)}">
-                  ${hasFullTextOrPdf ? "Ler Inteiro Teor (Relatório e Voto)" : "Ver Ficha Completa"}
+                  ${hasFullTextOrPdf ? "Ler Inteiro Teor & Visualizar PDF" : "Ver Ficha Completa"}
                 </button>
                 ${
                   item.pdf_url
-                    ? `<a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline">Abrir PDF Oficial</a>`
+                    ? `<a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline">Abrir PDF do Inteiro Teor</a>`
                     : ""
                 }
                 ${
@@ -387,18 +393,38 @@ async function openJulgadoModal(julgadoId) {
   const linksEl = document.getElementById("modal-footer-links");
 
   modal.hidden = false;
-  titleEl.textContent = "Carregando julgado e extraindo inteiro teor...";
-  bodyEl.innerHTML = `<p>Consultando base e processando documento PDF oficial...</p>`;
+  titleEl.textContent = "Carregando julgado e preparando PDF do Inteiro Teor...";
+  bodyEl.innerHTML = `<p>Consultando base e localizando documento PDF oficial...</p>`;
   linksEl.innerHTML = "";
 
   try {
     const resp = await fetch(`/api/julgado/${encodeURIComponent(julgadoId)}?auto_extract_pdf=true`);
     const item = await resp.json();
 
-    titleEl.textContent = `${item.orgao_julgador_norm || "CFOAB"} — ${item.numero_ementa ? "Ementa " + item.numero_ementa : item.numero_processo || item.id}`;
+    titleEl.textContent = `${item.orgao_julgador_norm || "OAB"} — ${item.numero_ementa ? "Acórdão/Ementa " + item.numero_ementa : item.numero_processo || item.id}`;
 
     const fullText = item.inteiro_teor_texto || "";
     currentModalText = fullText || buildCitationText(item);
+
+    const pdfEmbedHtml = item.pdf_url
+      ? `
+        <div style="margin-bottom:1.25rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem;">
+            <h4 style="font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem;color:var(--accent-primary);margin:0;">
+              Documento PDF Oficial do Inteiro Teor
+            </h4>
+            <a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline" style="padding:0.25rem 0.65rem;font-size:0.76rem;">
+              Abrir PDF em Nova Guia &nearr;
+            </a>
+          </div>
+          <iframe
+            src="${escapeHtml(item.pdf_url)}"
+            title="PDF Oficial do Inteiro Teor"
+            style="width:100%;height:420px;border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:#f4f4f6;"
+          ></iframe>
+        </div>
+      `
+      : "";
 
     bodyEl.innerHTML = `
       <div style="margin-bottom:1.25rem;font-family:var(--font-sans);font-size:0.88rem;color:var(--text-secondary);">
@@ -407,6 +433,7 @@ async function openJulgadoModal(julgadoId) {
         ${item.uf_origem ? `<div><strong>Seccional de Origem:</strong> OAB/${escapeHtml(item.uf_origem)}</div>` : ""}
         ${item.publicacao_str ? `<div><strong>Publicação:</strong> ${escapeHtml(item.publicacao_str)}</div>` : ""}
       </div>
+      ${pdfEmbedHtml}
       <h4 style="font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem;color:var(--text-muted);margin-bottom:0.4rem;">Ementa</h4>
       <div class="ementa-body" style="margin-bottom:1.25rem;">${escapeHtml(item.descricao_ementa)}</div>
       ${
@@ -416,15 +443,15 @@ async function openJulgadoModal(julgadoId) {
       }
       ${
         fullText
-          ? `<h4 style="font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem;color:var(--accent-green);margin-bottom:0.4rem;">Inteiro Teor Extraído do PDF (Relatório, Voto e Acórdão)</h4>
+          ? `<h4 style="font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem;color:var(--accent-green);margin-bottom:0.4rem;">Texto Integral Extraído (Ementa, Relatório, Voto e Acórdão)</h4>
              <div class="inteiro-teor-fulltext">${escapeHtml(fullText)}</div>`
-          : `<p style="font-family:var(--font-sans);font-size:0.86rem;color:var(--text-muted);">Este registro histórico possui apenas a Ementa e Acórdão publicados no Ementário Oficial.</p>`
+          : ""
       }
     `;
 
     const footerBtns = [];
     if (item.pdf_url) {
-      footerBtns.push(`<a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline">Baixar PDF Original</a>`);
+      footerBtns.push(`<a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline btn-accent-green">Baixar / Abrir PDF Oficial</a>`);
     }
     if (item.diario_url) {
       footerBtns.push(`<a href="${escapeHtml(item.diario_url)}" target="_blank" rel="noopener" class="btn-outline">Abrir no Diário Eletrônico (DEOAB)</a>`);
@@ -461,6 +488,19 @@ function setupEventListeners() {
     fetchFacets();
   });
 
+  // Seletor de Esfera / Seccional (TODAS, CFOAB, OABSP, OABSP_TURMAS, OABSP_RECURSOS)
+  document.querySelectorAll(".esfera-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".esfera-tab").forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      state.esfera = tab.getAttribute("data-esfera");
+      state.orgao = "";
+      state.page = 1;
+      executeSearch();
+      fetchFacets();
+    });
+  });
+
   // Seletor de modo (todos / frase / qualquer)
   document.querySelectorAll(".seg-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -477,6 +517,7 @@ function setupEventListeners() {
   const bindToggle = (inputId, labelId, stateKey) => {
     const inp = document.getElementById(inputId);
     const lbl = document.getElementById(labelId);
+    if (!inp || !lbl) return;
     inp.addEventListener("change", () => {
       state[stateKey] = inp.checked;
       lbl.classList.toggle("checked", inp.checked);
@@ -485,9 +526,9 @@ function setupEventListeners() {
       fetchFacets();
     });
   };
+  bindToggle("toggle-apenas-acordao", "label-toggle-acordao", "apenas_com_acordao");
   bindToggle("toggle-apenas-ted", "label-toggle-ted", "apenas_ted");
   bindToggle("toggle-apenas-inteiro-teor", "label-toggle-inteiro-teor", "apenas_inteiro_teor");
-  bindToggle("toggle-apenas-cfoab", "label-toggle-cfoab", "apenas_cfoab");
 
   // Atalhos de teses
   document.querySelectorAll(".thesis-chip").forEach((chip) => {
@@ -567,6 +608,7 @@ function setupEventListeners() {
     state.numero_processo = "";
     state.numero_ementa = "";
     state.apenas_ted = false;
+    state.apenas_com_acordao = true;
     state.apenas_inteiro_teor = false;
     state.page = 1;
 
@@ -578,6 +620,8 @@ function setupEventListeners() {
     document.getElementById("filter-ano-inicio").value = "";
     document.getElementById("filter-ano-fim").value = "";
     document.getElementById("filter-processo").value = "";
+    document.getElementById("toggle-apenas-acordao").checked = true;
+    document.getElementById("label-toggle-acordao").classList.add("checked");
     document.getElementById("toggle-apenas-ted").checked = false;
     document.getElementById("label-toggle-ted").classList.remove("checked");
     document.getElementById("toggle-apenas-inteiro-teor").checked = false;

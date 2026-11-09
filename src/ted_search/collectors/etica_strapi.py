@@ -259,7 +259,7 @@ async def sync_pdfs_inteiro_teor(
     sql = """
         SELECT id, pdf_url
         FROM julgados
-        WHERE pdf_url IS NOT NULL AND pdf_url != ''
+        WHERE pdf_url LIKE 'https://%'
           AND (tem_inteiro_teor = 0 OR inteiro_teor_texto IS NULL)
         ORDER BY ano_ementa DESC, id ASC
     """

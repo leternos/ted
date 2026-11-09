@@ -57,6 +57,8 @@ ETICA_STRAPI_PUBLIC_TOKEN = (
 
 # 3. Diário Eletrônico da OAB (DEOAB)
 DIARIO_MATERIA_URL = "https://diario.oab.org.br/pages/materia"
+DEOAB_API_BASE_URL = "https://diario.oab.org.br/api/v1"
+DEOAB_ASSETS_BASE_URL = "https://diario.oab.org.br/assets"
 
 # Mapeamento dos códigos numéricos de Seccionais da OAB no número do processo (XX.0000.AAAA.NNNNNN-D)
 OAB_SECCIONAL_PREFIX_MAP = {

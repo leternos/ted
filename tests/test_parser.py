@@ -84,3 +84,71 @@ def test_uf_prefix_detection():
     assert detect_uf_origem("24.0000.2023.000001-6", [], "") == "SC"
     assert detect_uf_origem("25.0000.2022.000907-6", [], "") == "SP"
     assert detect_uf_origem("07.0000.2016.018084-4", [], "") == "DF"
+
+
+def test_oabsp_turmas_and_camaras_detection():
+    from ted_search.collectors.deoab_sp import normalize_deoab_sp_item
+
+    # 1. Câmara Recursal da OAB/SP (2ª instância seccional)
+    sigla_cr, nome_cr = detect_orgao_julgador(
+        {"idOrganizacao": 25, "nomeOrganizacao": "Conselho Seccional - São Paulo", "nomeSetor": "Primeira Câmara Recursal"},
+        "ACÓRDÃO N. 25360",
+        "Vistos, relatados e discutidos estes autos, acordam os membros da Primeira Câmara Recursal do Conselho Seccional de São Paulo.",
+    )
+    assert sigla_cr == "OABSP-1CR"
+    assert nome_cr == "OAB/SP - 1ª Câmara Recursal"
+
+    # 2. Turma Disciplinar por extenso no corpo do acórdão (ex: Vigésima Terceira Turma Disciplinar)
+    sigla_td, nome_td = detect_orgao_julgador(
+        {"idOrganizacao": 25, "nomeOrganizacao": "Conselho Seccional - São Paulo", "nomeSetor": "Tribunal de Ética e Disciplina"},
+        "EMENTA: LOCUPLETAMENTO E AUSÊNCIA DE PRESTAÇÃO DE CONTAS.",
+        "Vistos, relatados e discutidos estes autos, a Vigésima Terceira Turma Disciplinar do Tribunal de Ética e Disciplina da OAB/SP decide julgar procedente a representação.",
+    )
+    assert sigla_td == "OABSP-23TD"
+    assert nome_td == "OAB/SP - 23ª Turma Disciplinar (TED)"
+
+    # 3. Turma Deontológica (TED-I)
+    sigla_deont, nome_deont = detect_orgao_julgador(
+        {"idOrganizacao": 25, "nomeOrganizacao": "Conselho Seccional - São Paulo", "nomeSetor": "Tribunal de Ética e Disciplina"},
+        "CONSULTA DEONTOLÓGICA. PUBLICIDADE PROFISSIONAL.",
+        "Acordam os membros da Primeira Turma Deontológica do Tribunal de Ética e Disciplina da OAB/SP.",
+    )
+    assert sigla_deont == "OABSP-TDEONT"
+    assert nome_deont == "OAB/SP - Turma Deontológica (TED-I)"
+
+    # 4. Normalização completa de publicação DEOAB OAB/SP
+    raw_deoab = {
+        "objeto": {
+            "id": 999888,
+            "edicao": 1839,
+            "titulo": "ACÓRDÃO Nº 14855 - 25.0886.2024.012477-3",
+            "dataPublicacao": "2026-04-06T00:00:00",
+            "organizacao": {"id": 25, "uf": "SP", "nome": "Conselho Seccional - São Paulo"},
+            "setorPublicacao": {"nomeAlternativo": "Tribunal de Ética e Disciplina"},
+            "tipoPublicacao": {"descricao": "Acórdão"},
+            "conteudoCodificado": (
+                "<p>Processo Disciplinar nº 25.0886.2024.012477-3</p>"
+                "<p>EMENTA: PRESTAÇÃO DE CONTAS. LOCUPLETAMENTO. INFRAÇÃO AO ART. 34, INCISOS XX E XXI DO EAOAB. "
+                "Representação julgada procedente para aplicar a pena de suspensão.</p>"
+                "<p>ACÓRDÃO N. 14855: Vistos, relatados e discutidos estes autos, a Décima Quarta Turma Disciplinar "
+                "do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, Seção de São Paulo, por unanimidade, "
+                "nos termos do voto do Relator, em julgar procedente a representação e aplicar a pena de suspensão.</p>"
+                "<p>GUSTAVO MOSSO PEREIRA</p><p>Relator</p>"
+            ),
+        }
+    }
+    norm = normalize_deoab_sp_item(raw_deoab)
+    assert norm is not None
+    assert norm["id"] == "DEOAB_SP:999888"
+    assert norm["id_organizacao"] == 25
+    assert norm["sigla_orgao"] == "OABSP-14TD"
+    assert norm["orgao_julgador_norm"] == "OAB/SP - 14ª Turma Disciplinar (TED)"
+    assert norm["numero_processo"] == "25.0886.2024.012477-3"
+    assert norm["numero_ementa"] == "AC-14855/OABSP-14TD"
+    assert norm["sancao_identificada"] == "Suspensão"
+    assert norm["resultado_julgamento"] == "Procedente"
+    assert norm["pdf_url"] == "/api/diario-pdf/999888"
+    assert norm["tem_inteiro_teor"] == 1
+    assert "EAOAB - Art. 34 inciso XX" in norm["dispositivos_texto"]
+    assert "EAOAB - Art. 34 inciso XXI" in norm["dispositivos_texto"]
+

@@ -145,6 +145,11 @@ html, body {
   color: rgba(255, 255, 255, 0.64);
 }
 
+.stat-chip-sp {
+  border-color: rgba(235, 180, 68, 0.45);
+  background: rgba(235, 180, 68, 0.12);
+}
+
 /* Barra de Busca Hero */
 .search-section {
   background: var(--bg-surface);
@@ -155,7 +160,49 @@ html, body {
 .search-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1.35rem 1.75rem 1.15rem;
+  padding: 1.15rem 1.75rem 1.15rem;
+}
+
+/* Abas de Esfera / Seccional (CFOAB e Piloto OAB/SP) */
+.esfera-tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.esfera-tab {
+  background: var(--bg-page);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.81rem;
+  font-weight: 600;
+  padding: 0.42rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.esfera-tab:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: #fff;
+}
+
+.esfera-tab.active {
+  background: var(--bg-navy);
+  color: #fff;
+  border-color: var(--bg-navy);
+  box-shadow: var(--shadow-xs);
+}
+
+.esfera-tab-sp.active {
+  background: var(--accent-red);
+  border-color: var(--accent-red);
+  color: #fff;
 }
 
 .search-bar-row {

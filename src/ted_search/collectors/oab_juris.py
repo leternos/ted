@@ -163,7 +163,7 @@ def normalize_oab_juris_item(raw: dict[str, Any], contexto: str) -> dict[str, An
     sancao = detect_sancao(combined_text)
     resultado = detect_resultado(ementa_clean, acordao_clean)
     partes = raw.get("partes") or []
-    uf_origem = detect_uf_origem(numero_processo, partes, combined_text)
+    uf_origem = "SP" if id_org == 25 else detect_uf_origem(numero_processo, partes, combined_text)
     relator_principal = extract_relator_fallback(raw.get("relatores"), combined_text)
 
     # Publicação no Diário Eletrônico (DEOAB) ou DOU legado
@@ -182,9 +182,8 @@ def normalize_oab_juris_item(raw: dict[str, Any], contexto: str) -> dict[str, An
     data_iso = (raw_date or "")[:10] if raw_date else None
     ano_ementa = _extract_year(data_iso, numero_ementa, numero_processo, pub_str)
 
-    # O portal jurisprudencia.oab.org.br expõe inteiro teor via DEOAB (diario_url),
-    # enquanto os PDFs diretos de Relatório e Voto vêm do Strapi Ética e Disciplina (pdf_url).
-    pdf_url = None
+    # Todos os acórdãos publicados no DEOAB possuem PDF individual oficial gerado via /api/v1/publicacao/{id}/publicado/path
+    pdf_url = f"/api/diario-pdf/{diario_id}" if diario_id else None
 
     is_ted = classify_is_ted_disciplinar(
         sigla_orgao=sigla_orgao,
@@ -202,6 +201,9 @@ def normalize_oab_juris_item(raw: dict[str, Any], contexto: str) -> dict[str, An
     hash_input = f"{contexto}|{numero_processo or ''}|{numero_ementa or ''}|{ementa_clean[:200]}"
     short_hash = hashlib.sha1(hash_input.encode("utf-8")).hexdigest()[:12]
     rec_id = f"{contexto}:{short_hash}"
+
+    has_full_sp = bool(id_org == 25 and diario_id and acordao_clean)
+    inteiro_teor_sp = f"{ementa_clean}\n\nACÓRDÃO\n{acordao_clean}" if has_full_sp else None
 
     return {
         "id": rec_id,
@@ -226,11 +228,11 @@ def normalize_oab_juris_item(raw: dict[str, Any], contexto: str) -> dict[str, An
         "resultado_julgamento": resultado,
         "descricao_ementa": ementa_clean,
         "descricao_acordao": acordao_clean,
-        "inteiro_teor_texto": None,
+        "inteiro_teor_texto": inteiro_teor_sp,
         "pdf_url": pdf_url,
         "diario_url": diario_url,
         "publicacao_str": pub_str,
         "data_decisao": data_iso,
         "is_ted_disciplinar": 1 if is_ted else 0,
-        "tem_inteiro_teor": 0,
+        "tem_inteiro_teor": 1 if has_full_sp else 0,
     }

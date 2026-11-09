@@ -122,6 +122,74 @@ def normalize_numero_ementa(raw_num: str | None, text: str) -> str | None:
     return candidate
 
 
+# Mapeamento de ordinais por extenso (1 a 27) para Turmas Disciplinares e Câmaras Recursais da OAB/SP
+_ORDINAIS_EXTENSO_SP: list[tuple[str, int]] = [
+    ("VIGÉSIMA SÉTIMA", 27), ("VIGESIMA SETIMA", 27),
+    ("VIGÉSIMA SEXTA", 26), ("VIGESIMA SEXTA", 26),
+    ("VIGÉSIMA QUINTA", 25), ("VIGESIMA QUINTA", 25),
+    ("VIGÉSIMA QUARTA", 24), ("VIGESIMA QUARTA", 24),
+    ("VIGÉSIMA TERCEIRA", 23), ("VIGESIMA TERCEIRA", 23),
+    ("VIGÉSIMA SEGUNDA", 22), ("VIGESIMA SEGUNDA", 22),
+    ("VIGÉSIMA PRIMEIRA", 21), ("VIGESIMA PRIMEIRA", 21),
+    ("VIGÉSIMA", 20), ("VIGESIMA", 20),
+    ("DÉCIMA NONA", 19), ("DECIMA NONA", 19),
+    ("DÉCIMA OITAVA", 18), ("DECIMA OITAVA", 18),
+    ("DÉCIMA SÉTIMA", 17), ("DECIMA SETIMA", 17),
+    ("DÉCIMA SEXTA", 16), ("DECIMA SEXTA", 16),
+    ("DÉCIMA QUINTA", 15), ("DECIMA QUINTA", 15),
+    ("DÉCIMA QUARTA", 14), ("DECIMA QUARTA", 14),
+    ("DÉCIMA TERCEIRA", 13), ("DECIMA TERCEIRA", 13),
+    ("DÉCIMA SEGUNDA", 12), ("DECIMA SEGUNDA", 12),
+    ("DÉCIMA PRIMEIRA", 11), ("DECIMA PRIMEIRA", 11),
+    ("DÉCIMA", 10), ("DECIMA", 10),
+    ("NONA", 9),
+    ("OITAVA", 8),
+    ("SÉTIMA", 7), ("SETIMA", 7),
+    ("SEXTA", 6),
+    ("QUINTA", 5),
+    ("QUARTA", 4),
+    ("TERCEIRA", 3),
+    ("SEGUNDA", 2),
+    ("PRIMEIRA", 1),
+]
+
+
+def _extract_ordinal_number(text_upper: str, target_word: str) -> int | None:
+    """Extrai o número ordinal (1 a 27) antes de 'TURMA' ou 'CÂMARA'."""
+    m_num = re.search(rf"\b(\d{{1,2}})[ªº°]?\s+{target_word}", text_upper)
+    if m_num:
+        val = int(m_num.group(1))
+        if 1 <= val <= 30:
+            return val
+    for word, num in _ORDINAIS_EXTENSO_SP:
+        if re.search(rf"\b{word}\s+{target_word}", text_upper):
+            return num
+    return None
+
+
+def detect_orgao_julgador_oabsp(nome_setor: str, titulo: str, text: str) -> tuple[str, str]:
+    """Classifica o Órgão Julgador específico dentro da Seccional OAB/SP (Turmas do TED vs Câmaras Recursais)."""
+    combined = f"{nome_setor} {titulo} {text}".upper()
+
+    # 1. Turma Deontológica (Consultas Éticas - TED I)
+    if "DEONTOLÓGICA" in combined or "DEONTOLOGICA" in combined or "ÉTICA PROFISSIONAL" in combined:
+        return "OABSP-TDEONT", "OAB/SP - Turma Deontológica (TED-I)"
+
+    # 2. Câmaras Recursais (2ª Instância Seccional OAB/SP - 1ª a 9ª Câmara Recursal)
+    if "CÂMARA RECURSAL" in combined or "CAMARA RECURSAL" in combined or "CÂMARAS RECURSAIS" in combined or "CAMARAS RECURSAIS" in combined:
+        num = _extract_ordinal_number(combined, r"C[ÂA]MARA\s+RECURSAL")
+        if num and 1 <= num <= 12:
+            return f"OABSP-{num}CR", f"OAB/SP - {num}ª Câmara Recursal"
+        return "OABSP-CR", "OAB/SP - Câmaras Recursais"
+
+    # 3. Turmas Disciplinares do TED (1ª Instância OAB/SP - 1ª a 27ª Turma Disciplinar)
+    num_td = _extract_ordinal_number(combined, r"TURMA(?:\s+DISCIPLINAR|\s+DO\s+TRIBUNAL)")
+    if num_td:
+        return f"OABSP-{num_td}TD", f"OAB/SP - {num_td}ª Turma Disciplinar (TED)"
+
+    return "OABSP-TED", "OAB/SP - Tribunal de Ética e Disciplina"
+
+
 def detect_orgao_julgador(
     orgao_obj: dict[str, Any] | None,
     numero_ementa: str | None,
@@ -129,8 +197,17 @@ def detect_orgao_julgador(
     camara_strapi: str | None = None,
 ) -> tuple[str, str]:
     """Retorna (sigla_orgao, orgao_julgador_norm) combinando metadados e análise textual."""
+    id_org = (orgao_obj or {}).get("idOrganizacao")
     nome_setor = clean_text((orgao_obj or {}).get("nomeSetor") or "")
     nome_org = clean_text((orgao_obj or {}).get("nomeOrganizacao") or "Conselho Federal")
+
+    # 0. Seccional OAB/SP (idOrganizacao = 25)
+    if id_org == 25 or "SÃO PAULO" in nome_org.upper() or "SAO PAULO" in nome_org.upper():
+        return detect_orgao_julgador_oabsp(nome_setor, numero_ementa or "", text)
+
+    # Demais Seccionais (ex: Sergipe idOrganizacao=26)
+    if id_org and id_org != 49:
+        return f"OAB-{id_org}", f"{nome_org} / {nome_setor}" if nome_setor else nome_org
 
     # 1. Verificar campo vindo do Strapi (Portal Ética e Disciplina)
     if camara_strapi:
@@ -254,16 +331,22 @@ def detect_sancao(text: str) -> str | None:
 
 def detect_resultado(text_ementa: str, text_acordao: str) -> str | None:
     """Identifica o resultado do julgamento a partir da parte final da ementa e do acórdão."""
-    tail = f"{text_ementa[-600:]}\n{text_acordao}".lower()
+    tail = f"{text_ementa[-700:]}\n{text_acordao}".lower()
 
     if re.search(r"prescri[çc][ãa]o\s+(?:intercorrente\s+|quinquenal\s+|da\s+pretens[ãa]o\s+punitiva\s+)?(?:que\s+se\s+declara|declarada|reconhecida|acolhida|pronunciada)", tail):
         return "Prescrição Reconhecida"
     if re.search(r"\b(?:parcial\s+provimento|provimento\s+parcial|parcialmente\s+provido|dar\s+parcial\s+provimento)\b", tail):
         return "Parcialmente Provido"
-    if re.search(r"\b(?:negar\s+provimento|nego\s+provimento|recurso\s+improvido|recurso\s+desprovido|improvimento|desprovimento|não\s+provido)\b", tail):
+    if re.search(r"\b(?:negar\s+provimento|nego\s+provimento|negar-lhe\s+provimento|nego-lhe\s+provimento|recurso\s+improvido|recurso\s+desprovido|improvimento|desprovimento|não\s+provido)\b", tail):
         return "Improvido"
-    if re.search(r"\b(?:dar\s+provimento|dou\s+provimento|recurso\s+provido|provimento\s+ao\s+recurso)\b", tail):
+    if re.search(r"\b(?:dar\s+provimento|dou\s+provimento|dar-lhe\s+provimento|recurso\s+provido|provimento\s+ao\s+recurso)\b", tail):
         return "Provido"
+    if re.search(r"\b(?:julgar\s+parcialmente\s+procedente|parcial\s+proced[êe]ncia)\b", tail):
+        return "Parcialmente Procedente"
+    if re.search(r"\b(?:julgar\s+improcedente|improced[êe]ncia\s+da\s+representa[çc][ãa]o|determinar\s+o\s+arquivamento|arquivamento\s+liminar|arquivamento\s+dos\s+autos)\b", tail):
+        return "Improcedente / Arquivado"
+    if re.search(r"\b(?:julgar\s+procedente|acolher\s+a\s+representa[çc][ãa]o|representa[çc][ãa]o\s+(?:disciplinar\s+)?(?:julgada\s+)?procedente)\b", tail):
+        return "Procedente"
     if re.search(r"\b(?:n[ãa]o\s+conhecid[oa]|n[ãa]o\s+conhecer|n[ãa]o\s+conhecimento)\b", tail):
         return "Não Conhecido"
     if re.search(r"\b(?:embargos\s+.*?\s+rejeitados|rejeitar\s+os\s+embargos)\b", tail):
@@ -297,12 +380,12 @@ def detect_uf_origem(numero_processo: str | None, partes: list[dict[str, Any]] |
     header = text[:800]
     m_cs = RE_CONSELHO_SECCIONAL_ESTADO.search(header)
     if m_cs:
-         candidate = m_cs.group(1).strip().upper()
-         if len(candidate) == 2 and candidate in OAB_SECCIONAL_PREFIX_MAP.values():
-             return candidate
-         for estado_nome, uf_code in ESTADOS_NOME_PARA_UF.items():
-             if estado_nome in candidate:
-                 return uf_code
+        candidate = m_cs.group(1).strip().upper()
+        if len(candidate) == 2 and candidate in OAB_SECCIONAL_PREFIX_MAP.values():
+            return candidate
+        for estado_nome, uf_code in ESTADOS_NOME_PARA_UF.items():
+            if estado_nome in candidate:
+                return uf_code
 
     m_uf = RE_OAB_UF_EXPLICIT.search(header)
     if m_uf:
@@ -331,16 +414,35 @@ def split_legacy_ementa_acordao(descricao_ementa: str, descricao_acordao: str) -
     return ementa, acordao, pub_extra
 
 
+RE_RELATOR_ASSINATURA_SP = re.compile(
+    r"(?:^|\n)\s*(?:\(aa\)\s*)?([A-ZÀ-Ÿa-zà-ÿ\s.'\-]{5,60}?)\s*[-–]\s*Relator(?:a)?\b",
+    re.IGNORECASE,
+)
+
+RE_RELATOR_INLINE_SP = re.compile(
+    r"\bRel\.\s*([A-ZÀ-Ÿa-zà-ÿ\s.'\-]{5,55}?)(?:[.\n]|Vistos|$)",
+    re.IGNORECASE,
+)
+
+
 def extract_relator_fallback(relatores_api: list[dict[str, Any]] | None, text: str) -> str | None:
-    """Obtém o nome do relator principal da API ou via Regex no texto legado."""
+    """Obtém o nome do relator principal da API ou via Regex no texto legado / assinatura OAB-SP."""
     if relatores_api:
         for r in relatores_api:
             nome = clean_text(r.get("nome") or "")
             if nome:
                 return nome.upper()
-    m = RE_RELATOR_TEXT.search(text[:800])
+    m = RE_RELATOR_TEXT.search(text[:1000])
     if m:
         return clean_text(m.group(1)).upper()
+    m_sp = RE_RELATOR_ASSINATURA_SP.search(text[-600:])
+    if m_sp:
+        cand = clean_text(m_sp.group(1)).upper()
+        if "PRESIDENTE" not in cand and len(cand) >= 5:
+            return cand
+    m_inl = RE_RELATOR_INLINE_SP.search(text)
+    if m_inl:
+        return clean_text(m_inl.group(1)).upper()
     return None
 
 
@@ -351,8 +453,8 @@ def classify_is_ted_disciplinar(
     sancao: str | None,
     text: str,
 ) -> bool:
-    """Determina se o julgado pertence à temática Ético-Disciplinar / TED do CFOAB."""
-    if sigla_orgao in {"SCA", "SCA-PTU", "SCA-STU", "SCA-TTU"}:
+    """Determina se o julgado pertence à temática Ético-Disciplinar / TED (CFOAB ou Seccional)."""
+    if sigla_orgao in {"SCA", "SCA-PTU", "SCA-STU", "SCA-TTU"} or sigla_orgao.startswith("OABSP-"):
         return True
     if tipo_ementa in {"PROCESSO_DISCIPLINAR", "INIDONEIDADE"}:
         return True
