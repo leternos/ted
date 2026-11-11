@@ -167,20 +167,51 @@ def build_fts_query(raw_query: str, mode: str = "todos") -> str | None:
     return joiner.join(all_parts)
 
 
-def _apply_esfera_filter(where_clauses: list[str], esfera: str, apenas_cfoab: bool) -> None:
+# Classificação genérica de instância a partir da sigla normalizada do órgão (vale para qualquer Seccional):
+#   - 1ª instância (TED): Turmas Disciplinares (…TD), Turma Deontológica (…TDEONT) e TED genérico (…-TED)
+#   - 2ª instância (Recursal): Câmaras Recursais / Conselho Seccional (…CR)
+SQL_IS_CFOAB = "(j.id_organizacao = 49 OR j.id_organizacao IS NULL)"
+SQL_IS_SECCIONAL = "(j.id_organizacao IS NOT NULL AND j.id_organizacao != 49)"
+SQL_INSTANCIA_TED = "(j.sigla_orgao GLOB '*TD' OR j.sigla_orgao GLOB '*-TDEONT' OR j.sigla_orgao GLOB '*-TED')"
+SQL_INSTANCIA_RECURSAL = "(j.sigla_orgao GLOB '*CR')"
+
+_LEGACY_ESFERA = {
+    "OABSP": ("SECCIONAIS", "SP", ""),
+    "OABSP_TURMAS": ("SECCIONAIS", "SP", "TED"),
+    "OABSP_RECURSOS": ("SECCIONAIS", "SP", "RECURSAL"),
+}
+
+
+def _apply_esfera_filter(
+    where_clauses: list[str],
+    params: list[Any],
+    esfera: str,
+    apenas_cfoab: bool,
+    seccional: str = "",
+    instancia: str = "",
+) -> None:
+    """Aplica o recorte de escopo: esfera (TODAS/CFOAB/SECCIONAIS), seccional (UF) e instância (TED/RECURSAL)."""
     esf = (esfera or "").strip().upper()
-    if esf == "CFOAB":
-        where_clauses.append("(j.id_organizacao = 49 OR j.id_organizacao IS NULL)")
-    elif esf == "OABSP":
-        where_clauses.append("j.id_organizacao = 25")
-    elif esf == "OABSP_TURMAS":
-        where_clauses.append("j.id_organizacao = 25 AND (j.sigla_orgao LIKE 'OABSP-%TD%' OR j.sigla_orgao = 'OABSP-TED')")
-    elif esf == "OABSP_RECURSOS":
-        where_clauses.append("j.id_organizacao = 25 AND j.sigla_orgao LIKE 'OABSP-%CR%'")
-    elif esf == "TODAS":
-        pass
-    elif apenas_cfoab:
-        where_clauses.append("(j.id_organizacao = 49 OR j.id_organizacao IS NULL)")
+    sec = (seccional or "").strip().upper()
+    inst = (instancia or "").strip().upper()
+    if esf in _LEGACY_ESFERA:
+        esf, sec_legacy, inst_legacy = _LEGACY_ESFERA[esf]
+        sec = sec or sec_legacy
+        inst = inst or inst_legacy
+
+    if esf == "CFOAB" or (not esf and apenas_cfoab and not sec):
+        where_clauses.append(SQL_IS_CFOAB)
+        return
+
+    if esf == "SECCIONAIS" or sec:
+        where_clauses.append(SQL_IS_SECCIONAL)
+        if sec:
+            where_clauses.append("j.uf_origem = ?")
+            params.append(sec)
+        if inst == "TED":
+            where_clauses.append(SQL_INSTANCIA_TED)
+        elif inst == "RECURSAL":
+            where_clauses.append(SQL_INSTANCIA_RECURSAL)
 
 
 def search_julgados(
@@ -189,6 +220,8 @@ def search_julgados(
     q: str = "",
     mode: str = "todos",
     esfera: str = "",
+    seccional: str = "",
+    instancia: str = "",
     apenas_cfoab: bool = False,
     apenas_ted: bool = False,
     apenas_com_acordao: bool = False,
@@ -222,7 +255,7 @@ def search_julgados(
         where_clauses.append("julgados_fts MATCH ?")
         params.append(fts_expr)
 
-    _apply_esfera_filter(where_clauses, esfera, apenas_cfoab)
+    _apply_esfera_filter(where_clauses, params, esfera, apenas_cfoab, seccional, instancia)
 
     if apenas_ted:
         where_clauses.append("j.is_ted_disciplinar = 1")
@@ -374,11 +407,13 @@ def get_facets(
     q: str = "",
     mode: str = "todos",
     esfera: str = "",
+    seccional: str = "",
+    instancia: str = "",
     apenas_cfoab: bool = False,
     apenas_ted: bool = False,
     apenas_com_acordao: bool = False,
     apenas_inteiro_teor: bool = False,
-) -> dict[str, list[dict[str, Any]]]:
+) -> dict[str, Any]:
     """Retorna agregações dinâmicas para os filtros da barra lateral."""
     fts_expr = build_fts_query(q, mode=mode)
     where_clauses: list[str] = []
@@ -391,7 +426,7 @@ def get_facets(
     else:
         from_sql = "FROM julgados j"
 
-    _apply_esfera_filter(where_clauses, esfera, apenas_cfoab)
+    _apply_esfera_filter(where_clauses, params, esfera, apenas_cfoab, seccional, instancia)
     if apenas_ted:
         where_clauses.append("j.is_ted_disciplinar = 1")
     if apenas_com_acordao:
@@ -436,7 +471,39 @@ def get_facets(
     """
     anos = [dict(r) for r in conn.execute(anos_sql, params).fetchall()]
 
+    # Contagem por instância (útil para o seletor 1ª instância / 2ª instância das Seccionais)
+    inst_sql = f"""
+        SELECT
+            SUM(CASE WHEN {SQL_IS_CFOAB} THEN 1 ELSE 0 END) AS cfoab,
+            SUM(CASE WHEN {SQL_IS_SECCIONAL} THEN 1 ELSE 0 END) AS seccionais,
+            SUM(CASE WHEN {SQL_IS_SECCIONAL} AND {SQL_INSTANCIA_TED} THEN 1 ELSE 0 END) AS ted,
+            SUM(CASE WHEN {SQL_IS_SECCIONAL} AND {SQL_INSTANCIA_RECURSAL} THEN 1 ELSE 0 END) AS recursal
+        {from_sql}
+        WHERE {where_sql}
+    """
+    inst_row = conn.execute(inst_sql, params).fetchone()
+    instancias = {k: int(inst_row[k] or 0) for k in ("cfoab", "seccionais", "ted", "recursal")}
+
+    # Seccionais julgadoras (registros decididos pelas próprias Seccionais) x UF de origem (recursos ao CFOAB)
+    sec_sql = f"""
+        SELECT j.uf_origem AS valor, COUNT(*) AS total
+        {from_sql}
+        WHERE {where_sql} AND {SQL_IS_SECCIONAL} AND j.uf_origem IS NOT NULL
+        GROUP BY j.uf_origem ORDER BY total DESC
+    """
+    seccionais = [dict(r) for r in conn.execute(sec_sql, params).fetchall()]
+    uf_rec_sql = f"""
+        SELECT j.uf_origem AS valor, COUNT(*) AS total
+        {from_sql}
+        WHERE {where_sql} AND {SQL_IS_CFOAB} AND j.uf_origem IS NOT NULL AND j.uf_origem != ''
+        GROUP BY j.uf_origem ORDER BY total DESC
+    """
+    ufs_origem_cfoab = [dict(r) for r in conn.execute(uf_rec_sql, params).fetchall()]
+
     return {
+        "instancias": instancias,
+        "seccionais": seccionais,
+        "ufs_origem_cfoab": ufs_origem_cfoab,
         "orgaos": _agg("j.orgao_julgador_norm", 45),
         "siglas_orgao": _agg("j.sigla_orgao", 45),
         "dispositivos": dispositivos,
@@ -515,9 +582,18 @@ def get_global_stats(conn: sqlite3.Connection) -> dict[str, Any]:
         ).fetchall()
     ]
 
+    seccionais_status = get_seccionais_status(conn)
+    ativas = [s for s in seccionais_status if s["total"] > 0]
+
     return {
         "total_geral": total_geral,
         "total_cfoab": total_cfoab,
+        "total_seccionais": sum(s["total"] for s in ativas),
+        "total_seccionais_ted": sum(s["ted"] for s in ativas),
+        "total_seccionais_recursal": sum(s["recursal"] for s in ativas),
+        "seccionais_ativas": len(ativas),
+        "seccionais_total": len(seccionais_status),
+        "seccionais": seccionais_status,
         "total_oabsp": total_oabsp,
         "total_oabsp_turmas": total_oabsp_turmas,
         "total_oabsp_recursos": total_oabsp_recursos,
@@ -532,3 +608,39 @@ def get_global_stats(conn: sqlite3.Connection) -> dict[str, Any]:
         "por_orgao": por_orgao,
         "por_orgao_oabsp": por_orgao_oabsp,
     }
+
+
+def get_seccionais_status(conn: sqlite3.Connection) -> list[dict[str, Any]]:
+    """Cobertura nacional: para cada uma das 27 Seccionais, total indexado e divisão 1ª instância (TED) / 2ª (Recursal)."""
+    from ted_search.config import SECCIONAIS
+
+    sql = f"""
+        SELECT j.uf_origem AS uf,
+               COUNT(*) AS total,
+               SUM(CASE WHEN {SQL_INSTANCIA_TED} THEN 1 ELSE 0 END) AS ted,
+               SUM(CASE WHEN {SQL_INSTANCIA_RECURSAL} THEN 1 ELSE 0 END) AS recursal,
+               SUM(CASE WHEN j.pdf_url IS NOT NULL AND j.pdf_url != '' THEN 1 ELSE 0 END) AS com_pdf,
+               MIN(j.ano_ementa) AS ano_min,
+               MAX(j.ano_ementa) AS ano_max
+        FROM julgados j
+        WHERE {SQL_IS_SECCIONAL} AND j.uf_origem IS NOT NULL
+        GROUP BY j.uf_origem
+    """
+    by_uf = {r["uf"]: dict(r) for r in conn.execute(sql).fetchall()}
+    out: list[dict[str, Any]] = []
+    for s in SECCIONAIS:
+        row = by_uf.get(s["uf"], {})
+        total = int(row.get("total") or 0)
+        out.append(
+            {
+                **s,
+                "total": total,
+                "ted": int(row.get("ted") or 0),
+                "recursal": int(row.get("recursal") or 0),
+                "com_pdf": int(row.get("com_pdf") or 0),
+                "ano_min": row.get("ano_min"),
+                "ano_max": row.get("ano_max"),
+                "status": "ativa" if total > 0 else "em_breve",
+            }
+        )
+    return out

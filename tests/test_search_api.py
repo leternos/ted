@@ -152,3 +152,138 @@ def test_sqlite_fts5_search_and_facets(tmp_path: Path):
         assert res_sp_rec["items"][0]["sigla_orgao"] == "OABSP-8CR"
         assert res_sp_rec["items"][0]["pdf_url"] == "/api/diario-pdf/1391378"
 
+        # 5. Escopo nacional generalizado: SECCIONAIS + UF + Instância
+        from ted_search.db import get_seccionais_status
+
+        # Busca por todas as Seccionais
+        res_secc = search_julgados(conn, esfera="SECCIONAIS")
+        assert res_secc["total"] == 2
+
+        # Busca por Seccional específica (SP)
+        res_sp_sec = search_julgados(conn, esfera="SECCIONAIS", seccional="SP")
+        assert res_sp_sec["total"] == 2
+
+        # Filtro de 1ª instância (TED / Turmas Disciplinares)
+        res_ted = search_julgados(conn, esfera="SECCIONAIS", seccional="SP", instancia="TED")
+        assert res_ted["total"] == 1
+        assert res_ted["items"][0]["sigla_orgao"] == "OABSP-4TD"
+
+        # Filtro de 2ª instância (Câmaras Recursais)
+        res_cr = search_julgados(conn, esfera="SECCIONAIS", seccional="SP", instancia="RECURSAL")
+        assert res_cr["total"] == 1
+        assert res_cr["items"][0]["sigla_orgao"] == "OABSP-8CR"
+
+        # Facetas nacionais e instâncias
+        facets_national = get_facets(conn, esfera="TODAS")
+        assert facets_national["instancias"]["cfoab"] == 2
+        assert facets_national["instancias"]["seccionais"] == 2
+        assert facets_national["instancias"]["ted"] == 1
+        assert facets_national["instancias"]["recursal"] == 1
+
+        # Status das 27 Seccionais
+        status_seccionais = get_seccionais_status(conn)
+        assert len(status_seccionais) == 27
+        sp_status = next(s for s in status_seccionais if s["uf"] == "SP")
+        assert sp_status["status"] == "ativa"
+        assert sp_status["total"] == 2
+        assert sp_status["ted"] == 1
+        assert sp_status["recursal"] == 1
+
+
+def test_fastapi_endpoints_national_scope(tmp_path: Path):
+    from starlette.testclient import TestClient
+    import ted_search.api as api_mod
+    import ted_search.config as cfg_mod
+    from ted_search.api import app
+    from ted_search.cli import _insert_record
+    from ted_search.collectors.deoab_sp import normalize_deoab_sp_item
+    from ted_search.collectors.oab_juris import normalize_oab_juris_item
+
+    test_db = tmp_path / "api_test.db"
+    init_db(test_db)
+
+    # Inserir 1 CFOAB e 1 Seccional SP
+    cfoab_rec = normalize_oab_juris_item(
+        {
+            "tipoEmenta": "PROCESSO_DISCIPLINAR",
+            "numeroProcesso": "24.0000.2023.000001-6",
+            "orgaoJulgador": {"idOrganizacao": 49, "nomeOrganizacao": "Conselho Federal"},
+            "numeroEmenta": "100/2026/SCA",
+            "descricaoEmenta": "EMENTA TESTE CFOAB.",
+            "dataDecisao": "2026-01-01T00:00:00.000Z",
+            "relatores": [],
+            "dispositivosNormativos": [],
+            "partes": [],
+        },
+        "EMENTA",
+    )
+    sp_rec = normalize_deoab_sp_item(
+        {
+            "objeto": {
+                "id": 888222,
+                "edicao": 1900,
+                "titulo": "ACÓRDÃO Nº 999 - 25.0886.2024.999999-0",
+                "dataDisponibilizacao": "10/04/2026 00:00",
+                "organizacao": {"id": 25, "uf": "SP", "nome": "Conselho Seccional - São Paulo"},
+                "setorPublicacao": {"nomeAlternativo": "Tribunal de Ética e Disciplina"},
+                "tipoPublicacao": {"descricao": "Acórdão"},
+                "conteudoCodificado": (
+                    "<p>EMENTA: PRESTAÇÃO DE CONTAS. ART. 34, XXI DO EAOAB. TESTE NACIONAL.</p>"
+                    "<p>ACÓRDÃO: Vistos, relatados e discutidos estes autos, a Primeira Turma Disciplinar "
+                    "do Tribunal de Ética e Disciplina da OAB/SP decide julgar procedente a representação.</p>"
+                ),
+            }
+        }
+    )
+
+    with get_connection(test_db) as conn:
+        with conn:
+            _insert_record(conn, cfoab_rec)
+            _insert_record(conn, sp_rec)
+            rebuild_fts(conn)
+
+    orig_cfg_db = cfg_mod.DB_PATH
+    orig_api_db = api_mod.DB_PATH
+    cfg_mod.DB_PATH = test_db
+    api_mod.DB_PATH = test_db
+    try:
+        client = TestClient(app)
+
+        # GET /api/stats
+        stats_resp = client.get("/api/stats")
+        assert stats_resp.status_code == 200
+        stats = stats_resp.json()
+        assert stats["total_geral"] == 2
+        assert stats["total_cfoab"] == 1
+        assert stats["total_seccionais"] == 1
+        assert stats["seccionais_ativas"] == 1
+
+        # GET /api/seccionais
+        secc_resp = client.get("/api/seccionais")
+        assert secc_resp.status_code == 200
+        seccionais = secc_resp.json()
+        assert len(seccionais) == 27
+        sp_item = next(s for s in seccionais if s["uf"] == "SP")
+        assert sp_item["status"] == "ativa"
+        assert sp_item["total"] == 1
+
+        # GET /api/search com escopo nacional
+        search_resp = client.get("/api/search?esfera=SECCIONAIS&seccional=SP&instancia=TED")
+        assert search_resp.status_code == 200
+        data = search_resp.json()
+        assert data["total"] == 1
+        assert data["items"][0]["sigla_orgao"] == "OABSP-1TD"
+
+        # GET /api/facets com instâncias
+        facets_resp = client.get("/api/facets?esfera=TODAS")
+        assert facets_resp.status_code == 200
+        facets_data = facets_resp.json()
+        assert facets_data["instancias"]["cfoab"] == 1
+        assert facets_data["instancias"]["seccionais"] == 1
+        assert facets_data["instancias"]["ted"] == 1
+    finally:
+        cfg_mod.DB_PATH = orig_cfg_db
+        api_mod.DB_PATH = orig_api_db
+
+
+

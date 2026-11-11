@@ -1,4 +1,4 @@
-"""Servidor FastAPI para o Buscador de Jurisprudências do CFOAB & Seccionais (Piloto OAB/SP)."""
+"""Servidor FastAPI para o Buscador Nacional de Jurisprudência Ético-Disciplinar da OAB (CFOAB + Seccionais)."""
 
 from __future__ import annotations
 
@@ -22,6 +22,7 @@ from ted_search.db import (
     get_connection,
     get_facets,
     get_global_stats,
+    get_seccionais_status,
     init_db,
     rebuild_fts,
     search_julgados,
@@ -30,9 +31,9 @@ from ted_search.db import (
 STATIC_DIR = Path(__file__).resolve().parent / "static"
 
 app = FastAPI(
-    title="CFOAB & OAB/SP — Buscador de Jurisprudência TED",
-    description="Buscador avançado de jurisprudências ético-disciplinares do CFOAB e Seccional OAB/SP (Turmas e Câmaras Recursais)",
-    version="0.2.0",
+    title="Jurisprudência Ético-Disciplinar da OAB — CFOAB e Seccionais",
+    description="Buscador nacional de jurisprudência ético-disciplinar: Conselho Federal e as 27 Seccionais (TED — 1ª instância e Câmaras Recursais — 2ª instância)",
+    version="0.3.0",
 )
 
 
@@ -47,11 +48,20 @@ def api_stats() -> dict[str, Any]:
         return get_global_stats(conn)
 
 
+@app.get("/api/seccionais")
+def api_seccionais() -> list[dict[str, Any]]:
+    """Cobertura nacional das 27 Seccionais (ativas / em breve) com contagem por instância."""
+    with get_connection(DB_PATH) as conn:
+        return get_seccionais_status(conn)
+
+
 @app.get("/api/facets")
 def api_facets(
     q: str = Query("", description="Termos de busca para filtrar facetas"),
     mode: str = Query("todos", description="Modo de busca: todos, qualquer, frase"),
-    esfera: str = Query("TODAS", description="TODAS, CFOAB, OABSP, OABSP_TURMAS, OABSP_RECURSOS"),
+    esfera: str = Query("TODAS", description="TODAS, CFOAB, SECCIONAIS (aliases legados: OABSP, OABSP_TURMAS, OABSP_RECURSOS)"),
+    seccional: str = Query("", description="UF da Seccional julgadora (ex: SP, SE, RJ)"),
+    instancia: str = Query("", description="Instância nas Seccionais: TED (1ª instância — Turmas) ou RECURSAL (2ª instância — Câmaras)"),
     apenas_cfoab: bool = Query(False, description="Apenas julgados do Conselho Federal"),
     apenas_ted: bool = Query(False, description="Apenas matéria ético-disciplinar / TED"),
     apenas_com_acordao: bool = Query(False, description="Priorizar decisões com Acórdão"),
@@ -63,6 +73,8 @@ def api_facets(
             q=q,
             mode=mode,
             esfera=esfera,
+            seccional=seccional,
+            instancia=instancia,
             apenas_cfoab=apenas_cfoab,
             apenas_ted=apenas_ted,
             apenas_com_acordao=apenas_com_acordao,
@@ -74,7 +86,9 @@ def api_facets(
 def api_search(
     q: str = Query("", description="Consulta textual livre"),
     mode: str = Query("todos", description="Modo: todos (AND), qualquer (OR), frase"),
-    esfera: str = Query("TODAS", description="TODAS, CFOAB, OABSP, OABSP_TURMAS, OABSP_RECURSOS"),
+    esfera: str = Query("TODAS", description="TODAS, CFOAB, SECCIONAIS (aliases legados: OABSP, OABSP_TURMAS, OABSP_RECURSOS)"),
+    seccional: str = Query("", description="UF da Seccional julgadora (ex: SP, SE, RJ)"),
+    instancia: str = Query("", description="Instância nas Seccionais: TED (1ª instância — Turmas) ou RECURSAL (2ª instância — Câmaras)"),
     apenas_cfoab: bool = Query(False, description="Filtrar apenas Conselho Federal da OAB"),
     apenas_ted: bool = Query(False, description="Filtrar apenas processos ético-disciplinares / TED"),
     apenas_com_acordao: bool = Query(False, description="Filtrar prioritariamente decisões com Acórdão"),
@@ -101,6 +115,8 @@ def api_search(
             q=q,
             mode=mode,
             esfera=esfera,
+            seccional=seccional,
+            instancia=instancia,
             apenas_cfoab=apenas_cfoab,
             apenas_ted=apenas_ted,
             apenas_com_acordao=apenas_com_acordao,

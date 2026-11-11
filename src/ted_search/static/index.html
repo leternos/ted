@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CFOAB &amp; Piloto OAB/SP — Buscador de Jurisprudência Ético-Disciplinar (TED)</title>
-  <meta name="description" content="Buscador unificado e enriquecido de jurisprudências, ementas, súmulas, consultas e acórdãos de inteiro teor do Conselho Federal da OAB e Seccional OAB/SP (Turmas Disciplinares e Câmaras Recursais).">
+  <title>Jurisprudência Ético-Disciplinar da OAB — Conselho Federal e Seccionais</title>
+  <meta name="description" content="Buscador nacional de jurisprudência ético-disciplinar da OAB: Conselho Federal e as 27 Seccionais (Tribunais de Ética e Disciplina e Câmaras Recursais), com acórdãos e PDF do inteiro teor.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,53 +13,78 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <div class="brand-group">
+      <a class="brand-group" href="?" aria-label="Início — todas as bases">
         <div class="brand-crest" aria-hidden="true">OAB</div>
         <div class="brand-titles">
-          <h1>Jurisprudência CFOAB &amp; Piloto Seccional OAB/SP (TED)</h1>
-          <p class="brand-subtitle">Base Unificada 1994–2026 • Conselho Federal (2ª Câmara / Pleno) + OAB/SP (1ª a 27ª Turmas do TED e 1ª a 9ª Câmaras Recursais)</p>
+          <h1>Jurisprudência Ético-Disciplinar da OAB</h1>
+          <p class="brand-subtitle">Conselho Federal e Seccionais • Tribunais de Ética e Disciplina e Câmaras Recursais</p>
         </div>
-      </div>
+      </a>
       <div class="header-stats" id="header-stats-container">
         <div class="stat-chip">
-          <span class="stat-chip-value" id="stat-total-cfoab">—</span>
-          <span class="stat-chip-label">Julgados CFOAB</span>
-        </div>
-        <div class="stat-chip stat-chip-sp">
-          <span class="stat-chip-value" id="stat-total-oabsp">—</span>
-          <span class="stat-chip-label">Piloto OAB/SP</span>
+          <span class="stat-chip-value" id="stat-total-geral">—</span>
+          <span class="stat-chip-label">Julgados indexados</span>
         </div>
         <div class="stat-chip">
-          <span class="stat-chip-value" id="stat-total-acordaos">—</span>
-          <span class="stat-chip-label">Com Acórdão</span>
+          <span class="stat-chip-value" id="stat-total-cfoab">—</span>
+          <span class="stat-chip-label">Conselho Federal</span>
+        </div>
+        <div class="stat-chip stat-chip-accent">
+          <span class="stat-chip-value" id="stat-total-seccionais">—</span>
+          <span class="stat-chip-label" id="stat-seccionais-label">Seccionais</span>
         </div>
         <div class="stat-chip">
           <span class="stat-chip-value" id="stat-total-pdfs">—</span>
-          <span class="stat-chip-label">PDF Inteiro Teor</span>
+          <span class="stat-chip-label">PDF inteiro teor</span>
         </div>
       </div>
     </div>
+
+    <!-- Menu principal: escopo nacional -->
+    <nav class="main-nav" aria-label="Navegação principal por esfera">
+      <div class="main-nav-inner">
+        <button type="button" class="nav-item active" data-esfera="TODAS" id="nav-todas">
+          Todas as bases <span class="nav-count" id="nav-count-todas"></span>
+        </button>
+        <button type="button" class="nav-item" data-esfera="CFOAB" id="nav-cfoab">
+          Conselho Federal <span class="nav-count" id="nav-count-cfoab"></span>
+        </button>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-item" data-esfera="SECCIONAIS" id="nav-seccionais" aria-haspopup="true" aria-expanded="false">
+            Seccionais <span class="nav-count" id="nav-count-seccionais"></span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="mega-menu" id="seccionais-mega-menu" hidden>
+            <div class="mega-menu-head">
+              <div>
+                <strong>Seccionais da OAB</strong>
+                <span class="mega-menu-sub" id="mega-menu-coverage">Cobertura nacional</span>
+              </div>
+              <button type="button" class="btn-outline btn-sm" id="mega-all-seccionais">Pesquisar em todas as Seccionais</button>
+            </div>
+            <div class="mega-menu-grid" id="mega-menu-grid"></div>
+            <div class="mega-menu-legend">
+              <span><i class="dot dot-on"></i> Base disponível</span>
+              <span><i class="dot dot-off"></i> Em implantação</span>
+            </div>
+          </div>
+        </div>
+        <span class="nav-spacer"></span>
+        <span class="nav-hint" id="nav-scope-hint"></span>
+      </div>
+    </nav>
   </header>
 
   <section class="search-section" aria-label="Pesquisa de Jurisprudência">
     <div class="search-container">
-      <!-- Seletor de Esfera / Seccional (CFOAB + Piloto OAB/SP) -->
-      <div class="esfera-tabs-row" role="tablist" aria-label="Recorte de Instância e Seccional">
-        <button type="button" class="esfera-tab active" data-esfera="TODAS" id="tab-esfera-todas">
-          Todas as Bases (CFOAB + OAB/SP)
-        </button>
-        <button type="button" class="esfera-tab" data-esfera="CFOAB" id="tab-esfera-cfoab">
-          Conselho Federal (CFOAB)
-        </button>
-        <button type="button" class="esfera-tab esfera-tab-sp" data-esfera="OABSP" id="tab-esfera-oabsp">
-          Piloto OAB/SP — Todas (Turmas + Recursos)
-        </button>
-        <button type="button" class="esfera-tab esfera-tab-sp" data-esfera="OABSP_TURMAS" id="tab-esfera-oabsp-turmas">
-          OAB/SP — Turmas do TED (1ª a 27ª TD e Deontológica)
-        </button>
-        <button type="button" class="esfera-tab esfera-tab-sp" data-esfera="OABSP_RECURSOS" id="tab-esfera-oabsp-recursos">
-          OAB/SP — Recursos (1ª a 9ª Câmara Recursal)
-        </button>
+      <!-- Escopo atual + instância -->
+      <div class="scope-row">
+        <div class="scope-breadcrumb" id="scope-breadcrumb" aria-live="polite"></div>
+        <div class="segmented-control instancia-control" id="instancia-control" role="group" aria-label="Instância" hidden>
+          <button type="button" class="seg-btn active" data-instancia="">Todas as instâncias <span class="seg-count" id="inst-count-all"></span></button>
+          <button type="button" class="seg-btn" data-instancia="TED">1ª instância · TED / Turmas <span class="seg-count" id="inst-count-ted"></span></button>
+          <button type="button" class="seg-btn" data-instancia="RECURSAL">2ª instância · Câmaras Recursais <span class="seg-count" id="inst-count-recursal"></span></button>
+        </div>
       </div>
 
       <form id="search-form" class="search-bar-row">
@@ -72,157 +97,155 @@
             type="search"
             id="search-query-input"
             class="search-input"
-            placeholder="Pesquise por tese jurídica, infração, turma ou câmara (ex: prestação de contas, prescrição intercorrente, locupletamento, art. 34 XXI)..."
+            placeholder="Pesquise por tese, infração, dispositivo ou órgão (ex.: prestação de contas, prescrição intercorrente, art. 34 XXI)…"
             autocomplete="off"
           >
           <button type="button" id="clear-query-btn" class="clear-search-btn" title="Limpar busca" hidden>&times;</button>
         </div>
-        <button type="submit" id="submit-search-btn" class="btn-primary">
-          Pesquisar Acervo
-        </button>
+        <button type="submit" id="submit-search-btn" class="btn-primary">Pesquisar</button>
       </form>
 
       <div class="search-controls-row">
         <div class="mode-group">
           <span class="control-label">Modo:</span>
           <div class="segmented-control" role="group" aria-label="Modo de correspondência textual">
-            <button type="button" class="seg-btn active" data-mode="todos" id="mode-btn-todos">Todos os termos</button>
-            <button type="button" class="seg-btn" data-mode="frase" id="mode-btn-frase">Frase exata</button>
-            <button type="button" class="seg-btn" data-mode="qualquer" id="mode-btn-qualquer">Qualquer termo</button>
+            <button type="button" class="seg-btn active" data-mode="todos">Todos os termos</button>
+            <button type="button" class="seg-btn" data-mode="frase">Frase exata</button>
+            <button type="button" class="seg-btn" data-mode="qualquer">Qualquer termo</button>
           </div>
         </div>
 
         <div class="toggle-group">
           <label class="pill-toggle checked" id="label-toggle-acordao">
             <input type="checkbox" id="toggle-apenas-acordao" checked>
-            <span>Priorizar Decisões com Acórdão</span>
-          </label>
-          <label class="pill-toggle" id="label-toggle-ted">
-            <input type="checkbox" id="toggle-apenas-ted">
-            <span>Apenas Ética e Disciplina (TED)</span>
+            <span>Somente decisões com acórdão</span>
           </label>
           <label class="pill-toggle" id="label-toggle-inteiro-teor">
             <input type="checkbox" id="toggle-apenas-inteiro-teor">
-            <span>Com Inteiro Teor / PDF</span>
+            <span>Com inteiro teor / PDF</span>
+          </label>
+          <label class="pill-toggle" id="label-toggle-ted">
+            <input type="checkbox" id="toggle-apenas-ted">
+            <span>Somente matéria disciplinar</span>
           </label>
         </div>
       </div>
 
       <div class="quick-theses-row">
-        <span class="control-label">Teses Frequentes TED:</span>
-        <button type="button" class="thesis-chip" data-query="prescrição intercorrente três anos">Prescrição Intercorrente</button>
-        <button type="button" class="thesis-chip" data-query="prescrição quinquenal art. 43">Prescrição Quinquenal (Art. 43)</button>
-        <button type="button" class="thesis-chip" data-query="prestação de contas locupletamento">Prestação de Contas e Locupletamento</button>
-        <button type="button" class="thesis-chip" data-query="suspensão preventiva repercussão">Suspensão Preventiva (Art. 70 § 3º)</button>
-        <button type="button" class="thesis-chip" data-query="revisão processo disciplinar prova nova">Revisão Disciplinar (Art. 73 § 5º)</button>
-        <button type="button" class="thesis-chip" data-query="publicidade captação de clientela">Publicidade e Captação</button>
-        <button type="button" class="thesis-chip" data-query="inidoneidade moral inscrição">Inidoneidade Moral</button>
-        <button type="button" class="thesis-chip" data-query="abandono da causa art. 34 XI">Abandono da Causa (Art. 34 XI)</button>
+        <span class="control-label">Teses frequentes:</span>
+        <button type="button" class="thesis-chip" data-query="prescrição intercorrente">Prescrição intercorrente</button>
+        <button type="button" class="thesis-chip" data-query="prescrição quinquenal art. 43">Prescrição quinquenal (art. 43)</button>
+        <button type="button" class="thesis-chip" data-query="prestação de contas locupletamento">Prestação de contas e locupletamento</button>
+        <button type="button" class="thesis-chip" data-query="abandono da causa">Abandono da causa</button>
+        <button type="button" class="thesis-chip" data-query="publicidade captação de clientela">Publicidade e captação</button>
+        <button type="button" class="thesis-chip" data-query="suspensão preventiva">Suspensão preventiva</button>
+        <button type="button" class="thesis-chip" data-query="revisão processo disciplinar">Revisão disciplinar</button>
+        <button type="button" class="thesis-chip" data-query="inidoneidade moral">Inidoneidade moral</button>
       </div>
     </div>
   </section>
 
   <main class="workspace-grid">
-    <!-- Barra Lateral de Facetas e Filtros Estruturados -->
     <aside class="filters-panel" aria-label="Filtros de Pesquisa">
       <div class="filters-header">
-        <h2>Filtros Avançados</h2>
+        <h2>Filtros</h2>
         <button type="button" id="reset-all-filters-btn" class="btn-reset-filters">Limpar tudo</button>
       </div>
 
+      <div class="filter-section" id="filter-section-seccional">
+        <label class="filter-title" for="filter-seccional">Seccional julgadora</label>
+        <select id="filter-seccional" class="filter-select">
+          <option value="">Todas as Seccionais</option>
+        </select>
+        <p class="filter-help">Decisões proferidas pelo TED e pelas Câmaras Recursais de cada Seccional.</p>
+      </div>
+
+      <div class="filter-section" id="filter-section-uf-origem">
+        <label class="filter-title" for="filter-uf">UF de origem do recurso</label>
+        <select id="filter-uf" class="filter-select">
+          <option value="">Todas as UFs</option>
+        </select>
+        <p class="filter-help">Seccional de onde veio o processo julgado pelo Conselho Federal.</p>
+      </div>
+
       <div class="filter-section">
-        <label class="filter-title" for="filter-contexto">Tipo de Documento</label>
+        <label class="filter-title" for="filter-contexto">Tipo de documento</label>
         <select id="filter-contexto" class="filter-select">
-          <option value="">Todos (Ementas, Consultas e Súmulas)</option>
-          <option value="EMENTA">Ementário / Acórdãos</option>
-          <option value="EMENTA_CONSULTA">Consultas ao Órgão Especial</option>
-          <option value="DECISAO_SUMULA">Súmulas Vinculantes CFOAB</option>
+          <option value="">Todos</option>
+          <option value="EMENTA">Ementas / Acórdãos</option>
+          <option value="EMENTA_CONSULTA">Consultas</option>
+          <option value="DECISAO_SUMULA">Súmulas</option>
         </select>
       </div>
 
       <div class="filter-section">
-        <span class="filter-title">Órgão Julgador (Enriquecido)</span>
+        <span class="filter-title">Órgão julgador</span>
         <ul class="facet-list" id="facet-orgaos-list"></ul>
       </div>
 
       <div class="filter-section">
-        <span class="filter-title">Dispositivo Normativo (EAOAB / CED)</span>
+        <span class="filter-title">Dispositivo (EAOAB / CED)</span>
         <ul class="facet-list" id="facet-dispositivos-list"></ul>
       </div>
 
       <div class="filter-section">
-        <span class="filter-title">Sanção Disciplinar</span>
+        <span class="filter-title">Sanção disciplinar</span>
         <ul class="facet-list" id="facet-sancoes-list"></ul>
       </div>
 
       <div class="filter-section">
-        <span class="filter-title">Resultado do Julgamento</span>
+        <span class="filter-title">Resultado do julgamento</span>
         <ul class="facet-list" id="facet-resultados-list"></ul>
       </div>
 
       <div class="filter-section">
-        <label class="filter-title">Período (Ano)</label>
+        <span class="filter-title">Período (ano)</span>
         <div class="year-range-row">
-          <input type="number" id="filter-ano-inicio" class="filter-input" placeholder="De (ex: 1994)" min="1990" max="2030">
-          <input type="number" id="filter-ano-fim" class="filter-input" placeholder="Até (ex: 2026)" min="1990" max="2030">
+          <input type="number" id="filter-ano-inicio" class="filter-input" placeholder="De" min="1990" max="2030" aria-label="Ano inicial">
+          <input type="number" id="filter-ano-fim" class="filter-input" placeholder="Até" min="1990" max="2030" aria-label="Ano final">
         </div>
       </div>
 
       <div class="filter-section">
-        <label class="filter-title" for="filter-uf">Seccional de Origem (UF)</label>
-        <select id="filter-uf" class="filter-select">
-          <option value="">Todas as UFs</option>
-        </select>
+        <label class="filter-title" for="filter-relator">Relator(a)</label>
+        <input type="text" id="filter-relator" class="filter-input" placeholder="Nome do relator">
       </div>
 
       <div class="filter-section">
-        <label class="filter-title" for="filter-relator">Conselheiro(a) Relator(a)</label>
-        <input type="text" id="filter-relator" class="filter-input" placeholder="Ex: Ulisses, Alberto, Cristiane...">
-      </div>
-
-      <div class="filter-section">
-        <label class="filter-title" for="filter-processo">Nº do Processo ou Ementa</label>
-        <input type="text" id="filter-processo" class="filter-input" placeholder="Ex: 24.0000.2023 ou 005/2026/SCA">
+        <label class="filter-title" for="filter-processo">Nº do processo, ementa ou acórdão</label>
+        <input type="text" id="filter-processo" class="filter-input" placeholder="Ex.: 25.0886.2024.012477-3 ou 005/2026/SCA">
       </div>
     </aside>
 
-    <!-- Coluna Principal de Resultados -->
     <section class="results-column" aria-label="Resultados da Pesquisa">
       <div class="results-toolbar">
-        <div class="results-summary" id="results-summary-text">
-          Carregando base de jurisprudências...
-        </div>
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <label for="sort-select" class="control-label">Ordenar por:</label>
-          <select id="sort-select" class="filter-select" style="width: auto;">
-            <option value="relevancia">Relevância (BM25 / Data)</option>
-            <option value="data_desc">Mais recentes primeiro</option>
-            <option value="data_asc">Mais antigos primeiro</option>
+        <div class="results-summary" id="results-summary-text">Carregando base de jurisprudência…</div>
+        <div class="sort-group">
+          <label for="sort-select" class="control-label">Ordenar:</label>
+          <select id="sort-select" class="filter-select">
+            <option value="relevancia">Relevância</option>
+            <option value="data_desc">Mais recentes</option>
+            <option value="data_asc">Mais antigos</option>
           </select>
         </div>
       </div>
 
       <div class="active-filters-bar" id="active-filters-bar" hidden></div>
-
       <div class="results-list" id="results-list-container"></div>
-
       <nav class="pagination-bar" id="pagination-bar" aria-label="Paginação de resultados"></nav>
     </section>
   </main>
 
-  <!-- Modal de Inteiro Teor (Relatório, Voto e Acórdão) -->
   <div class="modal-backdrop" id="inteiro-teor-modal" hidden>
     <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
       <div class="modal-header">
-        <h3 id="modal-title-text">Inteiro Teor do Julgado</h3>
-        <button type="button" id="close-modal-btn" class="modal-close-btn" aria-label="Fechar modal">&times;</button>
+        <h3 id="modal-title-text">Inteiro teor</h3>
+        <button type="button" id="close-modal-btn" class="modal-close-btn" aria-label="Fechar">&times;</button>
       </div>
       <div class="modal-body" id="modal-body-content"></div>
       <div class="modal-footer">
-        <div id="modal-footer-links" style="display: flex; gap: 0.6rem;"></div>
-        <button type="button" id="modal-copy-btn" class="btn-primary" style="padding: 0.5rem 1.1rem;">
-          Copiar Inteiro Teor
-        </button>
+        <div id="modal-footer-links" class="modal-footer-links"></div>
+        <button type="button" id="modal-copy-btn" class="btn-primary btn-compact">Copiar texto</button>
       </div>
     </div>
   </div>
