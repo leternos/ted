@@ -805,6 +805,54 @@ html, body {
   line-height: 1;
 }
 
+/* Banner de Sinônimos / Teses Disciplinares Correlatas */
+.thesaurus-banner {
+  margin-bottom: 1.1rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, rgba(19, 62, 114, 0.05), rgba(184, 51, 42, 0.05));
+  border: 1px solid rgba(19, 62, 114, 0.18);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.thesaurus-icon {
+  font-size: 1.1rem;
+}
+
+.thesaurus-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.thesaurus-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.thesaurus-chip {
+  background: #fff;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+  font-size: 0.76rem;
+  font-weight: 500;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.thesaurus-chip:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(19, 62, 114, 0.2);
+}
+
 /* Card de Julgado */
 .results-list {
   display: flex;

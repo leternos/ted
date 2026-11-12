@@ -214,6 +214,12 @@ def main() -> None:
 
     sub.add_parser("stats", help="Exibe estatísticas completas do banco de dados e enriquecimento")
 
+    p_sec = sub.add_parser("collect-seccionais", help="Coleta acórdãos e ementas do DEOAB de Seccionais estaduais")
+    p_sec.add_argument("--ufs", type=str, default="RS,PR,BA,MG,AC,SC,GO,PE", help="UFs a coletar separadas por vírgula (ou 'ALL')")
+    p_sec.add_argument("--years", type=str, default="2024,2025,2026", help="Anos a coletar separados por vírgula")
+    p_sec.add_argument("--pages", type=int, default=3, help="Páginas por ano/termo")
+    p_sec.add_argument("--concurrency", type=int, default=15, help="Concorrência assíncrona")
+
     args = parser.parse_args()
     if args.cmd == "backfill":
         pdf_lim = None if args.pdf_limit < 0 else args.pdf_limit
@@ -225,6 +231,36 @@ def main() -> None:
                 concurrency=args.concurrency,
             )
         )
+    elif args.cmd == "collect-seccionais":
+        from ted_search.collectors.deoab_nacional import fetch_seccional_sample, save_records_to_database
+        from ted_search.config import create_async_http_client, SECCIONAIS
+
+        init_db(DB_PATH)
+        target_ufs = [s["uf"] for s in SECCIONAIS] if args.ufs.upper() == "ALL" else [u.strip().upper() for u in args.ufs.split(",") if u.strip()]
+        target_years = [int(y.strip()) for y in args.years.split(",") if y.strip()]
+
+        async def _run_collect():
+            sem = asyncio.Semaphore(args.concurrency)
+            async with create_async_http_client(timeout=35.0) as client:
+                total_salvos = 0
+                for uf in target_ufs:
+                    print(f"[collect-seccionais] Coletando Seccional OAB/{uf}...")
+                    for yr in target_years:
+                        recs = await fetch_seccional_sample(
+                            client, uf, max_pages=args.pages, year=yr, concurrency=args.concurrency, sem=sem
+                        )
+                        if recs:
+                            salvos = save_records_to_database(recs, rebuild_fts_after=False)
+                            total_salvos += salvos
+                            print(f"  -> OAB/{uf} ({yr}): {salvos} acórdãos salvos.")
+                if total_salvos > 0:
+                    print("[collect-seccionais] Reconstruindo índice FTS5...")
+                    with get_connection(DB_PATH) as conn:
+                        with conn:
+                            rebuild_fts(conn)
+                print(f"[OK] Coleta Seccionais concluída! Total salvo no banco: {total_salvos} julgados.")
+
+        asyncio.run(_run_collect())
     elif args.cmd == "sync-pdfs":
         init_db(DB_PATH)
         with get_connection(DB_PATH) as conn:

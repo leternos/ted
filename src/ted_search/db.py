@@ -119,6 +119,98 @@ def rebuild_fts(conn: sqlite3.Connection) -> None:
     )
 
 
+DISCIPLINARY_THESAURUS: dict[str, list[str]] = {
+    "tergiversacao": [
+        "patrocínio simultâneo",
+        "patrocínio infiel",
+        "conflito de interesses",
+        "parte contrária",
+        "interesses opostos",
+        "art. 355",
+    ],
+    "patrocinio infiel": [
+        "tergiversação",
+        "patrocínio simultâneo",
+        "conflito de interesses",
+        "lide simulada",
+        "art. 355",
+    ],
+    "patrocinio simultaneo": [
+        "tergiversação",
+        "patrocínio infiel",
+        "conflito de interesses",
+        "interesses opostos",
+        "interesses conflitantes",
+    ],
+    "conflito de interesses": [
+        "patrocínio simultâneo",
+        "interesses opostos",
+        "advocacia contra ex-cliente",
+        "parte contrária",
+    ],
+    "locupletamento": [
+        "prestação de contas",
+        "apropriação indébita",
+        "art. 34 XXI",
+        "retenção de valores",
+    ],
+    "prestacao de contas": [
+        "locupletamento",
+        "art. 34 XXI",
+        "recusa de prestação de contas",
+        "apropriação indébita",
+    ],
+    "prescricao intercorrente": [
+        "art. 43 § 1º",
+        "paralisação por mais de três anos",
+        "prescrição trienal",
+    ],
+    "inidoneidade moral": [
+        "crime infamante",
+        "art. 34 XXVII",
+        "falta de idoneidade",
+        "conduta incompatível",
+    ],
+    "captacao de clientela": [
+        "angariação",
+        "mercantilização",
+        "publicidade imoderada",
+        "art. 34 IV",
+    ],
+    "retencao de autos": [
+        "art. 34 XXII",
+        "cobrança de autos",
+        "devolução de autos",
+    ],
+}
+
+
+def get_thesaurus_suggestions(raw_query: str) -> list[str]:
+    """Retorna termos e teses disciplinares correlatos com base na consulta do usuário."""
+    import unicodedata
+
+    def _norm(s: str) -> str:
+        s = unicodedata.normalize("NFD", s.lower())
+        return "".join(c for c in s if unicodedata.category(c) != "Mn").strip()
+
+    q_norm = _norm(raw_query or "")
+    if not q_norm or len(q_norm) < 3:
+        return []
+
+    suggestions: list[str] = []
+    seen = set()
+
+    for key, terms in DISCIPLINARY_THESAURUS.items():
+        if key in q_norm or q_norm in key or any(w in q_norm for w in key.split() if len(w) > 4):
+            for t in terms:
+                t_norm = _norm(t)
+                if t_norm not in seen and t_norm != q_norm:
+                    seen.add(t_norm)
+                    suggestions.append(t)
+
+    return suggestions[:6]
+
+
 def build_fts_query(raw_query: str, mode: str = "todos") -> str | None:
     """Converte uma consulta do usuário em expressão segura e rica para SQLite FTS5."""
     q = (raw_query or "").strip()
@@ -156,6 +248,11 @@ def build_fts_query(raw_query: str, mode: str = "todos") -> str | None:
             base_tok = re.sub(r"[^A-Za-zÀ-ÿ0-9]", "", t[:-1])
             if base_tok:
                 tokens.append(f"{base_tok}*")
+        elif len(raw_tokens) == 1 and len(t) >= 6 and not phrases:
+            # Termo único (ex: tergiversação): expande com radical para pegar inflexões
+            clean_t = re.sub(r"[^A-Za-zÀ-ÿ0-9]", "", t)
+            stem = clean_t[:-3] if clean_t.lower().endswith(("cao", "ção", "oes", "ões")) else (clean_t[:-2] if clean_t.lower().endswith(("do", "da", "so", "sa", "to", "ta")) else clean_t)
+            tokens.append(f'("{t}" OR {stem}*)')
         else:
             tokens.append(f'"{t}"')
 
@@ -165,6 +262,7 @@ def build_fts_query(raw_query: str, mode: str = "todos") -> str | None:
 
     joiner = " OR " if mode == "qualquer" else " AND "
     return joiner.join(all_parts)
+
 
 
 # Classificação genérica de instância a partir da sigla normalizada do órgão (vale para qualquer Seccional):
@@ -397,6 +495,7 @@ def search_julgados(
         "page_size": page_size,
         "total_pages": (total + page_size - 1) // page_size if total else 0,
         "query_fts": fts_expr,
+        "sinonimos_sugeridos": get_thesaurus_suggestions(q),
         "items": items,
     }
 

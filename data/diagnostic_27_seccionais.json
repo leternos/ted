@@ -1,0 +1,4633 @@
+[
+  {
+    "id_organizacao": 1,
+    "uf": "AC",
+    "nome": "Acre",
+    "regiao": "Norte",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 259,
+    "total_estimado_ementa": 246,
+    "total_estimado_ted": 456,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 15,
+        "ementa": 15,
+        "ted": 87
+      },
+      "2021": {
+        "acordao": 29,
+        "ementa": 30,
+        "ted": 138
+      },
+      "2022": {
+        "acordao": 2,
+        "ementa": 0,
+        "ted": 35
+      },
+      "2023": {
+        "acordao": 2,
+        "ementa": 1,
+        "ted": 13
+      },
+      "2024": {
+        "acordao": 59,
+        "ementa": 54,
+        "ted": 67
+      },
+      "2025": {
+        "acordao": 78,
+        "ementa": 77,
+        "ted": 60
+      },
+      "2026": {
+        "acordao": 74,
+        "ementa": 69,
+        "ted": 56
+      }
+    },
+    "setores_identificados": [
+      "Conselho Pleno",
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Notificação"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 689532,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PROCESSO N.º 01.0000.2017.000821-0",
+        "tamanho_texto": 1662,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Classe: Representação  Relator (a): Pierré Elie Kassab  Relator para o Acórdão: Pierré Elie Kassab  Representante: Keliane Manhuary Dócimo  Representado (a): G. G. H.  Órgão Julgador: Tribunal de Ética e Disciplina da OAB – Seccional Acre  EMENTA N.º"
+      },
+      {
+        "id": 689533,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PROCESSO N.º 01.0000.2017.001410-9",
+        "tamanho_texto": 1944,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Classe: Representação  Relator (a): Cil Farney Assis Rodrigues  Relator para o Acórdão: Cil Farney Assis Rodrigues  Representante: Maria José Pinto de Aragão  Representado (a): E. A. M. J.  Órgão Julgador: Tribunal de Ética e Disciplina da OAB – Secc"
+      },
+      {
+        "id": 689535,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PROCESSO N.º 01.0000.2017.001740-6",
+        "tamanho_texto": 2307,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Classe: Representação  Relator (a): Desireé Fernandes dos Passos Parada  Relator para o Acórdão: Desireé Fernandes dos Passos Parada  Representante: Ordem dos Advogados do Brasil, Seccional do Acre  Representado (a): J. O. S.  Órgão Julgador: Tribuna"
+      },
+      {
+        "id": 689537,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PROCESSO N.º 01.0000.2017.001740-6",
+        "tamanho_texto": 2307,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Classe: Representação  Relator (a): Desireé Fernandes dos Passos Parada  Relator para o Acórdão: Desireé Fernandes dos Passos Parada  Representante: Ordem dos Advogados do Brasil, Seccional do Acre  Representado (a): J. O. S.  Órgão Julgador: Tribuna"
+      },
+      {
+        "id": 689277,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE NOTIFICAÇÃO PARA APRESENTAÇÃO DE ALEGAÇÕES FINAIS",
+        "tamanho_texto": 3017,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Processo nº 01.0000.2017.001882-4  Representante: Simone Holanda Leite  Representado: E. da S. G. (OAB/AC 4.437)  Processo nº 01.0000.2017.001315-1  Representante: Domicia Nonato Gomes  Representado: E. da S. G. (OAB/AC 4.437)  Processo nº 01.0000.20"
+      },
+      {
+        "id": 875408,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Conselho Pleno",
+        "titulo": "CONSELHO PLENO OAB/AC",
+        "tamanho_texto": 1500,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO N.º 02/2025  PROCESSO N.º 01.0000.2019.000888-8  Classe: Representação  Relator (a): Paula Yara Braga De Carli  Representante: Yosmarina Culler Gonzales  Representado (a): E. A. M. J. (Evandro Araújo Melo Júnior - OAB/AC 4789) Órgão Julgador:"
+      },
+      {
+        "id": 875865,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Conselho Pleno",
+        "titulo": "CONSELHO PLENO OAB/AC",
+        "tamanho_texto": 889,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO N.º 01/2025  PROCESSO N.º 01.0000.2018.000921-8 – NOTIFICAÇÃO DE ACÓRDÃO  O Conselho Pleno da OAB/AC, torna público a decisão proferida nos autos do processo 01.0000.2018.000921-8. Recorrente: E. D. O. (OAB/AC 2683). EMENTA : Trata-se de proc"
+      },
+      {
+        "id": 875866,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Conselho Pleno",
+        "titulo": "CONSELHO PLENO OAB/AC",
+        "tamanho_texto": 894,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO N.º 03/2025  PROCESSO N.º 01.0000.2018.001125-9 – NOTIFICAÇÃO DE ACÓRDÃO  O Conselho Pleno da OAB/AC, torna público a decisão proferida nos autos do processo 01.0000.2018.001125-9. Recorrente: F. F. N. EMENTA : Trata-se de processo ético disc"
+      },
+      {
+        "id": 876859,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Conselho Pleno",
+        "titulo": "CONSELHO PLENO OAB/AC",
+        "tamanho_texto": 1520,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO N.º 04/2025  PROCESSO N.º 01.0000. 2017.001410-9  Classe: Representação  Relator (a): Roraima Moreira da Rocha Neto  Representante: Maria José Pinto de Aragão  Representado (a): E. A. M. J. (OAB/AC 4789)  Órgão Julgador: Conselho Seccional – "
+      }
+    ]
+  },
+  {
+    "id_organizacao": 2,
+    "uf": "AL",
+    "nome": "Alagoas",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "MÉDIA",
+    "total_estimado_acordao": 122,
+    "total_estimado_ementa": 118,
+    "total_estimado_ted": 284,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 13,
+        "ementa": 13,
+        "ted": 55
+      },
+      "2021": {
+        "acordao": 18,
+        "ementa": 18,
+        "ted": 54
+      },
+      "2022": {
+        "acordao": 16,
+        "ementa": 15,
+        "ted": 11
+      },
+      "2023": {
+        "acordao": 20,
+        "ementa": 21,
+        "ted": 22
+      },
+      "2024": {
+        "acordao": 19,
+        "ementa": 19,
+        "ted": 20
+      },
+      "2025": {
+        "acordao": 17,
+        "ementa": 17,
+        "ted": 52
+      },
+      "2026": {
+        "acordao": 19,
+        "ementa": 15,
+        "ted": 70
+      }
+    },
+    "setores_identificados": [
+      "3ª CÂMARA",
+      "Gabinete da Presidência",
+      "TRIBUNAL DE ÉTICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Retificação"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 689679,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Gabinete da Presidência",
+        "titulo": "ACORDÃO Nº 01/2024",
+        "tamanho_texto": 1683,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "EMENTA: “REPRESENTAÇÃO DISCIPLINAR. EMBARGOS DECLARATÓRIOS. RETIFICAÇÃO DE ACORDÃO. INCIDÊNCIA APENAS DO ART. 34, INCISO XXVIII, ART. 35, INCISO III E ART. 38, INCISO II, TODOS DO EAOAB. PRATICAR CRIME INFAMANTE. CONSTATAÇÃO. CONDUTA TÍPICA. INFRAÇÃO"
+      },
+      {
+        "id": 744433,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "3ª CÂMARA",
+        "titulo": "3ª CÂMARA DO CONSELHO SECCIONAL DA OAB/AL",
+        "tamanho_texto": 1418,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "INTIMAÇÃO DE ACÓRDÃO  A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolat"
+      },
+      {
+        "id": 744434,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "3ª CÂMARA",
+        "titulo": "3ª CÂMARA DO CONSELHO SECCIONAL DA OAB/AL",
+        "tamanho_texto": 1388,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "INTIMAÇÃO DE ACÓRDÃO  A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolat"
+      },
+      {
+        "id": 744435,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "3ª CÂMARA",
+        "titulo": "3ª CÂMARA DO CONSELHO SECCIONAL DA OAB/AL",
+        "tamanho_texto": 1377,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "INTIMAÇÃO DE ACÓRDÃO  A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolat"
+      },
+      {
+        "id": 684505,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Retificação",
+        "setor": "Gabinete da Presidência",
+        "titulo": "RESOLUÇÃO N° 013/2023",
+        "tamanho_texto": 8955,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Fixa o valor das contribuições obrigatórias para o ano de 2024 e dá outras providências.  CONSIDERANDO o contido no artigo 2º, VII, do Provimento 185/2018 do CFOAB qual impõe a necessidade de revisão anual das anuidades, mediante a aplicação do índic"
+      },
+      {
+        "id": 745540,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Gabinete da Presidência",
+        "titulo": "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "tamanho_texto": 1345,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "INTIMAÇÃO DE ACÓRDÃO  A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolat"
+      },
+      {
+        "id": 745932,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Gabinete da Presidência",
+        "titulo": "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "tamanho_texto": 1601,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "INTIMAÇÃO DE ACÓRDÃO  A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolat"
+      },
+      {
+        "id": 755180,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "tamanho_texto": 1355,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "INTIMAÇÃO DE ACÓRDÃO  A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolat"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 3,
+    "uf": "AP",
+    "nome": "Amapá",
+    "regiao": "Norte",
+    "viabilidade_imediata": "MÉDIA",
+    "total_estimado_acordao": 35,
+    "total_estimado_ementa": 10,
+    "total_estimado_ted": 84,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 5,
+        "ementa": 5,
+        "ted": 15
+      },
+      "2021": {
+        "acordao": 4,
+        "ementa": 3,
+        "ted": 10
+      },
+      "2022": {
+        "acordao": 0,
+        "ementa": 0,
+        "ted": 3
+      },
+      "2023": {
+        "acordao": 1,
+        "ementa": 1,
+        "ted": 18
+      },
+      "2024": {
+        "acordao": 0,
+        "ementa": 0,
+        "ted": 0
+      },
+      "2025": {
+        "acordao": 25,
+        "ementa": 1,
+        "ted": 38
+      },
+      "2026": {
+        "acordao": 0,
+        "ementa": 0,
+        "ted": 0
+      }
+    },
+    "setores_identificados": [
+      "PRESIDÊNCIA",
+      "SECRETARIA GERAL",
+      "TRIBUNAL DE ÉTICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Despacho",
+      "Edital",
+      "Notificação"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 905830,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Notificação",
+        "setor": "SECRETARIA GERAL",
+        "titulo": "Notificação Processo Nº 03.0000.2016.001935-5 – TED - OAB/AP.",
+        "tamanho_texto": 478,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Considerando o acórdão proferido no Processo Ético-Disciplinar nº. 03.0000.2016.001935-5 TED-OAB/AP, no qual M. L. J. M. (Advogado: Marlon Lima De Jesus Marciano – OAB/AP 3307), figura como. Representado e, tendo como Representante ANTONIO ANDREAZIO "
+      },
+      {
+        "id": 905834,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Notificação",
+        "setor": "SECRETARIA GERAL",
+        "titulo": "Notificação Processo Nº 03.0000.2016.002151-5 – TED - OAB/AP.",
+        "tamanho_texto": 480,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Considerando o acórdão proferido no Processo Ético-Disciplinar nº. 03.0000.2016.002151-5 TED-OAB/AP, no qual H. R. C. (Advogado: Huiltemar Rodrigues Da Costa – OAB/AP 2916), figura como Representado e, tendo como Representante 2ª VARA CÍVEL E DE FAZE"
+      },
+      {
+        "id": 905838,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Notificação",
+        "setor": "SECRETARIA GERAL",
+        "titulo": "Notificação Processo Nº 03.0000.2017.00163-0 – TED - OAB/AP.",
+        "tamanho_texto": 462,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Considerando o acórdão proferido no Processo Ético-Disciplinar nº. 03.0000.2017.00163-0 TED-OAB/AP, no qual L. C. A. B. SA (Advogada: Luana Cristina Alves Barros De Sá – OAB/SC 43077), figura como Representado e, tendo como Representante FERNANDO SAL"
+      },
+      {
+        "id": 905839,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Notificação",
+        "setor": "SECRETARIA GERAL",
+        "titulo": "Notificação Processo Nº Notificação por Edital 03.0000.2017.000642-6 – TED - OAB/AP.",
+        "tamanho_texto": 466,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Considerando o acórdão proferido no Processo Ético-Disciplinar nº. 03.0000.2017.000642-6 TED-OAB/AP, no qual A. P. C. A (Advogada: Alcioni Pires Da Costa Alves – OAB/AP 2044), figura como Representado e, tendo como Representante TRIBUNAL DE JUSTIÇA D"
+      },
+      {
+        "id": 978285,
+        "termo_busca": "EMENTA",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "PRESIDÊNCIA",
+        "titulo": "ACÓRDÃO DE JULGAMENTO",
+        "tamanho_texto": 2978,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "5ª SESSÃO ORDINÁRIA DO CONSELHO SECCIONAL DO AMAPÁ, OCORRIDA DE FORMA HÍBRIDA ÀS 19 HORAS DO DIA 21 DE AGOSTO DE 2025  PROCESSO Nº 0033/2024-GDT/OAB-AP  OBJETO: Representação contra decisão proferida pelo Conselho Seccional do Amapá na Sessão Ordinár"
+      },
+      {
+        "id": 681446,
+        "termo_busca": "ACORDAO",
+        "ano": 2023,
+        "tipo": "Despacho",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Despacho Processo Nº 3928/2023 – TED - OAB/AP.",
+        "tamanho_texto": 5661,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "DESPACHO:  Representante: Ordem dos Advogados do Brasil, Seccional do Amapá  Representados: J. D. N. S. (Advogado: JONAS DIEGO NASCIMENTO SOUSA - OAB/AP 2262-A) e D. C. A. (Advogado: DANIELA DO CARMO AMANAJÁS - OAB/AP 2009)  Relatora: TELMA LÚCIA MIR"
+      },
+      {
+        "id": 527544,
+        "termo_busca": "TED",
+        "ano": 2023,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Notificação Processo Nº 03.0000.2015.000168-6 – TED - OAB/AP.",
+        "tamanho_texto": 574,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Considerando o despacho exarado no Processo Ético-Disciplinar nº. 03.0000.2015.000168-6 TED-OAB/AP, no qual V. Q. S. F. (Advogado: Valdir Queiroz Dos Santos Filho– OAB/AP 1164), figura como Representado e, tendo como Representante TRIBUNAL DE JUSTIÇA"
+      },
+      {
+        "id": 527545,
+        "termo_busca": "TED",
+        "ano": 2023,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Notificação Processo Nº 03.0000.2016.001037-1 – TED - OAB/AP.",
+        "tamanho_texto": 701,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Considerando o despacho exarado no Processo Ético-Disciplinar nº. 03.0000.2019.000944-1 TED-OAB/AP, no qual J. F. B. M. (Advogado Joyson Felipe Barbosa Monteiro - OAB/AP 2447), figura como Representado e, tendo como Representante COMARCA DE MACAPÁ-EX"
+      },
+      {
+        "id": 527546,
+        "termo_busca": "TED",
+        "ano": 2023,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Notificação Processo Nº 03.0000.2017.001334-5 – TED - OAB/AP.",
+        "tamanho_texto": 548,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Considerando o despacho exarado no Processo Ético-Disciplinar nº. 03.0000.2017.001334-5 TED-OAB/AP, no qual Sra. Rebeka Lorena Sobrinho, figura como Representante e tendo como Representado P. C. B (Advogada: Patrícia da Costa Bezerra OAB/AP 978, comu"
+      },
+      {
+        "id": 527548,
+        "termo_busca": "TED",
+        "ano": 2023,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Notificação Processo Nº 03.0000.2019.000944-1 – TED - OAB/AP.",
+        "tamanho_texto": 690,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Considerando o despacho exarado no Processo Ético-Disciplinar nº. 03.0000.2019.000944-1 TED-OAB/AP, no qual S. R. V. A. (Advogado Sandro Rogerio Vianna Alfaia - OAB/AP 1173), figura como Representado e, tendo como Representante DILCINHA OLIVEIRA MAGN"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 4,
+    "uf": "AM",
+    "nome": "Amazonas",
+    "regiao": "Norte",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 3157,
+    "total_estimado_ementa": 3593,
+    "total_estimado_ted": 5374,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 361,
+        "ementa": 361,
+        "ted": 988
+      },
+      "2021": {
+        "acordao": 437,
+        "ementa": 397,
+        "ted": 1968
+      },
+      "2022": {
+        "acordao": 359,
+        "ementa": 358,
+        "ted": 225
+      },
+      "2023": {
+        "acordao": 363,
+        "ementa": 364,
+        "ted": 400
+      },
+      "2024": {
+        "acordao": 558,
+        "ementa": 537,
+        "ted": 684
+      },
+      "2025": {
+        "acordao": 710,
+        "ementa": 714,
+        "ted": 731
+      },
+      "2026": {
+        "acordao": 369,
+        "ementa": 862,
+        "ted": 378
+      }
+    },
+    "setores_identificados": [
+      "Sociedades",
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Portaria"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 684171,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Sociedades",
+        "titulo": "REGISTRO DE SOCIEDADE INDIVIDUAL",
+        "tamanho_texto": 948,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "CONSELHO SECCIONAL - AMAZONAS  SECRETARIA  Processo nº 246-I/2023  Feito: REGISTRO DE SOCIEDADE INDIVIDUAL  Interessad o( a ) : JOSÉ IRAN FABRICIO DE SOUSA, - “ JOSE IRAN FABRICIO SOCIEDADE INDIVIDUAL DE ADVOCACIA ”.  ACÓRDÃO  EMENTA: SOCIEDADE INDIV"
+      },
+      {
+        "id": 684222,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Sociedades",
+        "titulo": "REGISTRO DE SOCIEDADE INDIVIDUAL",
+        "tamanho_texto": 947,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "CONSELHO SECCIONAL - AMAZONAS  SECRETARIA  Processo nº 238-I/2023  Feito: REGISTRO DE SOCIEDADE INDIVIDUAL  Interessad o( a ): JOSÉ DE OLIVEIRA BARRONCAS , - “JOSE DE OLIVEIRA BARRONCAS SOCIEDADE INDIVIDUAL DE ADVOCACIA”.  ACÓRDÃO  EMENTA: SOCIEDADE "
+      },
+      {
+        "id": 684339,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Sociedades",
+        "titulo": "ALTERAÇÃO CONTRATUAL",
+        "tamanho_texto": 407,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Processo nº 027-I/2016  Feito: ALTERAÇÃO CONTRATUAL  Interessado(a): BRUNO SENA PEREIRA, - “ BRUNO SENA PEREIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA”  ACÓRDÃO  EMENTA: ALTERAÇÃO DE CONTRATO SOCIAL DE SOCIEDADE – EXIGÊNCIAS LEGAIS ATENDIDAS – DEFERIMENTO"
+      },
+      {
+        "id": 684340,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Sociedades",
+        "titulo": "REGISTRO DE SOCIEDADE INDIVIDUAL",
+        "tamanho_texto": 907,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "CONSELHO SECCIONAL - AMAZONAS  SECRETARIA  Processo nº 254-I/2023  Feito: REGISTRO DE SOCIEDADE INDIVIDUAL  Interessad o( a ) : CLEOCY LOBATO DOS SANTOS, - “ LOBATO SOCIEDADE INDIVIDUAL DE ADVOCACIA ” .  ACÓRDÃO  EMENTA: SOCIEDADE INDIVIDUAL DE ADVOC"
+      },
+      {
+        "id": 687011,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Portaria",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PORTARIA - OAB/AM-TED Nº 001/2024.",
+        "tamanho_texto": 1008,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "DISPÕE sobre a exoneração de Membro da Comissão de Admissibilidade e Conciliação Prévia do Tribunal de Ética e Disciplina da OAB-AM , para o triênio 2022/2024.  O PRESIDENTE DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO D"
+      },
+      {
+        "id": 687109,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Portaria",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PORTARIA - OAB/AM-TED Nº 002/2024.",
+        "tamanho_texto": 836,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "DISPÕE sobre a nomeação de cargo de Secretário(a)-Geral Adjunto(a) da Comissão de Admissibilidade e Conciliação Prévia do Tribunal de Ética e Disciplina da OAB-AM , para o triênio 2022/2024.  O PRESIDENTE DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DO"
+      },
+      {
+        "id": 687111,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Portaria",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PORTARIA - OAB/AM-TED Nº 003/2024.",
+        "tamanho_texto": 850,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "DISPÕE sobre a nomeações de Membros da Comissão de Admissibilidade e Conciliação Prévia do Tribunal de Ética e Disciplina da OAB-AM , para o triênio 2022/2024.  O PRESIDENTE DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO D"
+      },
+      {
+        "id": 690548,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Portaria",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PORTARIA - OAB/AM-TED Nº 004/2024.",
+        "tamanho_texto": 901,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "DISPÕE sobre a nomeações de Membros da Comissão de Fiscalização do Tribunal de Ética e Disciplina da OAB-AM , para o triênio 2022/2024.  O PRESIDENTE DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO DO AMAZONAS , no uso de s"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 5,
+    "uf": "BA",
+    "nome": "Bahia",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 1833,
+    "total_estimado_ementa": 1807,
+    "total_estimado_ted": 4074,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 5,
+        "ementa": 4,
+        "ted": 103
+      },
+      "2021": {
+        "acordao": 2,
+        "ementa": 1,
+        "ted": 248
+      },
+      "2022": {
+        "acordao": 0,
+        "ementa": 0,
+        "ted": 561
+      },
+      "2023": {
+        "acordao": 216,
+        "ementa": 216,
+        "ted": 598
+      },
+      "2024": {
+        "acordao": 460,
+        "ementa": 455,
+        "ted": 751
+      },
+      "2025": {
+        "acordao": 617,
+        "ementa": 611,
+        "ted": 927
+      },
+      "2026": {
+        "acordao": 533,
+        "ementa": 520,
+        "ted": 886
+      }
+    },
+    "setores_identificados": [
+      "TRIBUNAL DE ÉTICA E DISCIPLINA",
+      "ÓRGÃO ESPECIAL"
+    ],
+    "tipos_identificados": [
+      "Decisão",
+      "Editais"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 685309,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Decisão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL N° 001/2024",
+        "tamanho_texto": 2959,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "SÉTIMA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA  Processo de Revisão n° 00579/2023  Interessados: Requerente: B.M.S.(Advogada), Patrono: (OAB-BA 3877, Dr. Ademar Costa dos Santos) – Requerido: Ednaldo Santiago Santana – Patronas: (OAB-BA 37.956, Dra. Raf"
+      },
+      {
+        "id": 685308,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Decisão",
+        "setor": "ÓRGÃO ESPECIAL",
+        "titulo": "EDITAL DECISÃO n° 001/2024",
+        "tamanho_texto": 1350,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ÓRGÃO ESPECIAL  ACÓRDÃO  Processo n° 25.599/2009  Interessados: Recorrente: W.L.S.(Advogado), Patrono: (OAB-BA 8610, Dr. Pedro Reginaldo Tavares Guerra) – Recorrido: Wellington Moreira Pereira, Patrona: (OAB-BA 49.390, Dra. Thais Paiva Vila Nova) - R"
+      },
+      {
+        "id": 686177,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Decisão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL N° 001/2024",
+        "tamanho_texto": 2943,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "SÉTIMA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA  Processo de Revisão n° 00579/2023  Interessado(a) (s): B.M.S.(Advogada), Patrono(a)(s): (OAB-BA 3877, Dr. Ademar Costa dos Santos); Ednaldo Santiago Santana – Patrono(a)(s): (OAB-BA 37.956, Dra. Rafaela de"
+      },
+      {
+        "id": 686178,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Decisão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL N° 002/2024",
+        "tamanho_texto": 1360,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "DÉCIMA TERCEIRA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA  Processo n° 00106/2022  Interessado(a)(s): Telefônica Brasil S/A – VIVO, Patrono(a)(s): (OAB-BA 15.306, Dra. Gisele Cristina Brianti Provedel); M.O.P.S.R.(Advogado), Defensor(a)(s) Dativo(a)(s): ("
+      },
+      {
+        "id": 685310,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Editais",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL N° 001/2024 NOTIFICAÇÃO",
+        "tamanho_texto": 786,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "PROCESSO Nº 11777/2014  Representante: SELMA BEZERRA SILVA  Representado: M.B.O.(Advogado)  Defensor Dativo, (OAB/BA – 48.577, Dr. José Carlos Palmeira de Teive e Argolo)  Vistos, etc.  Pleiteia o Representado seja declarada nula a decisão condenatór"
+      },
+      {
+        "id": 859760,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Decisão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL DECISÃO n° 00056/2025",
+        "tamanho_texto": 10337,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "DÉCIMA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA  Processo n° 551/2019  Interessado(a)(s): Deyse Gisele Rodrigues de Oliveira Barbosa; M.A.F. (Defensor(a) Dativo(a): Dr. Pedro Guimarães Chagas, OAB/BA 78.386) – RELATOR: Dr. RUY NEPOMOCENO CORREIA. EMENTA "
+      },
+      {
+        "id": 859761,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Decisão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL DECISÃO n° 00057/2025",
+        "tamanho_texto": 5041,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "DÉCIMA TERCEIRA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA  Processo n° 1241 /2017  Interessado(a)(s): Terceira Turma Recursal - PROJUDI; R.L.C.P.F. (Patrona(a): Dra. Joelma de Oliveira Ferreira, OAB/BA 47.697) – RELATORA: Dra. CECÍLIA LOPO DE ARAÚJO. EMEN"
+      },
+      {
+        "id": 859762,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Decisão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL DECISÃO n° 00058/2025",
+        "tamanho_texto": 3601,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "SÉTIMA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA  Processo n° 54 3/2022  Interessado(a)(s): Hebert Luiz Ramos Costa; U.B.O. (Advogado(a)(s): Dr. Uelton Barros Oliveira, OAB/BA 51.701) – RELATORA: Dra. ADELMA VILELA DE ALMEIDA KERBER. EMENTA N. 1295/2024/7"
+      },
+      {
+        "id": 860051,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Decisão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL DECISÃO n° 00068/2025",
+        "tamanho_texto": 3755,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "DÉCIMA PRIMEIRA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA  Processo n° 767/2022  Interessado(a)(s): Luis Carlos Pina Oliveira; D.O.L.G.M (Defensor(a) Dativo(a): Dr. Pedro Guimarães Chagas, OAB/BA 78.386) – RELATOR: Dr. TIAGO JOSÉ CALDEIRA MARTINS. EMENTA "
+      }
+    ]
+  },
+  {
+    "id_organizacao": 6,
+    "uf": "CE",
+    "nome": "Ceará",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 394,
+    "total_estimado_ementa": 270,
+    "total_estimado_ted": 2608,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 8,
+        "ementa": 0,
+        "ted": 35
+      },
+      "2021": {
+        "acordao": 28,
+        "ementa": 0,
+        "ted": 85
+      },
+      "2022": {
+        "acordao": 10,
+        "ementa": 0,
+        "ted": 105
+      },
+      "2023": {
+        "acordao": 26,
+        "ementa": 10,
+        "ted": 371
+      },
+      "2024": {
+        "acordao": 25,
+        "ementa": 1,
+        "ted": 294
+      },
+      "2025": {
+        "acordao": 44,
+        "ementa": 29,
+        "ted": 467
+      },
+      "2026": {
+        "acordao": 253,
+        "ementa": 230,
+        "ted": 1251
+      }
+    },
+    "setores_identificados": [
+      "CONSELHO PLENO",
+      "TRIBUNAL DE ETICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Edital",
+      "Resolução"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 707592,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "DECISÃO DE JULGAMENTO DA 3ª TURMA DO TED",
+        "tamanho_texto": 5956,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "De ordem do Presidente da 3ª Turma do TED-OAB/CE, no uso de suas atribuições legais, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu §2º e art. 76 da lei nº 8.906/94, intima às partes dos processos abaixo elencados para"
+      },
+      {
+        "id": 709733,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Resolução",
+        "setor": "CONSELHO PLENO",
+        "titulo": "RESOLUÇÃO N. 07/2023",
+        "tamanho_texto": 73838,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Dispõe sobre o REGIMENTO INTERNO da Subseccional da Serra da Ibiapaba da Ordem dos Advogados do Brasil no Estado do Ceará.  O CONSELHO SECCIONAL DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO DO CEARÁ, no uso das atribuições legais e regimentais que lhe sã"
+      },
+      {
+        "id": 736274,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "DECISÃO DE JULGAMENTO DA 3ª TURMA DO TED",
+        "tamanho_texto": 1261,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "De ordem do Presidente da 3ª Turma do TED-OAB/CE, no uso de suas atribuições legais, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu §2º e art. 76 da lei nº 8.906/94, intima às partes dos processos abaixo elencados para"
+      },
+      {
+        "id": 736643,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "DECISÃO DE JULGAMENTO DA 1ª TURMA DO TED",
+        "tamanho_texto": 3873,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "De ordem do Presidente da 1ª Turma do TED-OAB/CE, no uso de suas atribuições legais, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu §2º e art. 76 da lei nº 8.906/94, intima às partes dos processos abaixo elencados para"
+      },
+      {
+        "id": 824003,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Resolução",
+        "setor": "CONSELHO PLENO",
+        "titulo": "RESOLUÇÃO Nº 10/2024",
+        "tamanho_texto": 10903,
+        "is_acordao": false,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Institui as Custas de Registro, de Administração e os Honorários da Câmara de Conciliação e Mediação da OAB/CE.  O CONSELHO DA ORDEM DOS ADVOGADOS DO BRASIL, SECÇÃO DO CEARÁ , em sua 7ª Sessão Ordinária, realizada em 26 de Setembro de 2024, no uso de"
+      },
+      {
+        "id": 751371,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "SESSÃO DE JULGAMENTO DO PLENO DO TED",
+        "tamanho_texto": 1434,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "O Presidente do TED/OAB-CE cientifica e notifica os advogados e demais abaixo relacionados, na forma do disposto no Art. 60, §§ 2º e 3º do CED/2015, que realizará Sessão Plenária Ordinária em ambiente híbrido (presencial – virtual - plataforma “ZOOM”"
+      },
+      {
+        "id": 697236,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "SESSÃO DE JULGAMENTO",
+        "tamanho_texto": 4765,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "SESSÃO DE JULGAMENTO DA 1ª TURMA DO TED/OAB-CE CONVOCAÇÃO/PAUTA DE JULGAMENTO DA 1ª (PRIMEIRA) turma do Tribunal de Ética e Disciplina da OAB-CE, reunir-se-á em Sessão Híbrida a ser realizada no dia 05/03/2024, às 14h, quando serão julgados os proces"
+      },
+      {
+        "id": 697373,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "CONVOCAÇÃO",
+        "tamanho_texto": 826,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "TEDOABCE notifica os interessados, Representado: J.H.S.A - (Procurador: JORGE HENRIQUE SOUSA ALVES- OAB/CE 43.478) e Representante: EDMILSON BESERRA SOBRINHO (Procurador: WESLLEN NOBRE CUNHA- OAB/CE 21.59) para comparecer na AUDIÊNCIA DE CONCILIAÇÃO "
+      },
+      {
+        "id": 697374,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "CONVOCAÇÃO",
+        "tamanho_texto": 916,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "TEDOABCE notifica os interessados, Representado: J.A.G.R, D.D.C.R, L.D.C.R - (Procuradores: JOSÉ AMSTERDAM GOMES RODRIGUES OAB/CE 4648, DIEGO DE CARVALHO RODRIGUES OAB/CE 19646, LORENA DE CARVALHO RODRIGUES OAB/CE 34.908) e Representante: WANDICK ALM"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 7,
+    "uf": "DF",
+    "nome": "Distrito Federal",
+    "regiao": "Centro-Oeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 4184,
+    "total_estimado_ementa": 116,
+    "total_estimado_ted": 44440,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 240,
+        "ementa": 1,
+        "ted": 3960
+      },
+      "2021": {
+        "acordao": 520,
+        "ementa": 0,
+        "ted": 3528
+      },
+      "2022": {
+        "acordao": 479,
+        "ementa": 0,
+        "ted": 4699
+      },
+      "2023": {
+        "acordao": 735,
+        "ementa": 2,
+        "ted": 10538
+      },
+      "2024": {
+        "acordao": 733,
+        "ementa": 0,
+        "ted": 9469
+      },
+      "2025": {
+        "acordao": 748,
+        "ementa": 64,
+        "ted": 6033
+      },
+      "2026": {
+        "acordao": 729,
+        "ementa": 49,
+        "ted": 6213
+      }
+    },
+    "setores_identificados": [
+      "NONA TURMA DA SECRETARIA DE JULGAMENTO",
+      "SECRETARIA DE EXECUÇÃO"
+    ],
+    "tipos_identificados": [
+      "Comunicado",
+      "Notificação"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": false,
+    "amostras": [
+      {
+        "id": 685494,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "NONA TURMA DA SECRETARIA DE JULGAMENTO",
+        "titulo": "RECURSO ÀS DECISÕES DA 9ª TURMA",
+        "tamanho_texto": 940,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "A Secretaria de Julgamento do Tribunal de Ético-Disciplinares, de ordem da Secretária-Geral e autorizado pelo Presidente do TED-OAB/DF, Antonio Alberto do Vale Cerqueira, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu "
+      },
+      {
+        "id": 685495,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "NONA TURMA DA SECRETARIA DE JULGAMENTO",
+        "titulo": "RECURSO ÀS DECISÕES DA 9ª TURMA",
+        "tamanho_texto": 955,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "A Secretaria de Julgamento do Tribunal de Ético-Disciplinares, de ordem da Secretária-Geral e autorizado pelo Presidente do TED-OAB/DF, Antonio Alberto do Vale Cerqueira, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu "
+      },
+      {
+        "id": 685496,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "NONA TURMA DA SECRETARIA DE JULGAMENTO",
+        "titulo": "RECURSO ÀS DECISÕES DA 9ª TURMA",
+        "tamanho_texto": 931,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "A Secretaria de Julgamento do Tribunal de Ético-Disciplinares, de ordem da Secretária-Geral e autorizado pelo Presidente do TED-OAB/DF, Antonio Alberto do Vale Cerqueira, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu "
+      },
+      {
+        "id": 685497,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "NONA TURMA DA SECRETARIA DE JULGAMENTO",
+        "titulo": "RECURSO ÀS DECISÕES DA 9ª TURMA",
+        "tamanho_texto": 946,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "A Secretaria de Julgamento do Tribunal de Ético-Disciplinares, de ordem da Secretária-Geral e autorizado pelo Presidente do TED-OAB/DF, Antonio Alberto do Vale Cerqueira, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu "
+      },
+      {
+        "id": 687170,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Comunicado",
+        "setor": "SECRETARIA DE EXECUÇÃO",
+        "titulo": "COMUNICADO DE SUSPENSÃO DE ADVOGADO(A)",
+        "tamanho_texto": 1265,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Processo: 07.0000.2020.004062-3 ; Representante: OAB/DF DE OFÍCIO. Representado(a): Renan Alexandre Moreira – OAB/DF 33.234; Francisco Airton Da Silva - OAB/DF 11.697, OAB/PB 31278/A. Proc.(a) Representado(a): Francisco Airton Da Silva - OAB/DF 11.69"
+      },
+      {
+        "id": 687171,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Comunicado",
+        "setor": "SECRETARIA DE EXECUÇÃO",
+        "titulo": "COMUNICADO DE SUSPENSÃO DE ADVOGADO(A)",
+        "tamanho_texto": 1129,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Processo: 07.0000.2020.013960-0 ; Representante: Josivan Da Silva Ferreira; Representado(a): Cássio Dutra Gehrke - OAB/DF 53661; Proc.(a) Representado(a): Cássio Dutra Gehrke - OAB/DF 53661; Prazo suspensão: 30 (trinta) dias; Início suspensão: 22/01/"
+      },
+      {
+        "id": 687172,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Comunicado",
+        "setor": "SECRETARIA DE EXECUÇÃO",
+        "titulo": "COMUNICADO DE SUSPENSÃO DE ADVOGADO(A)",
+        "tamanho_texto": 1118,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Processo: 07.0000.2020.016148-6; Representante: OAB/DF DE OFÍCIO ; Representado(a): Felipe Oliveira Da Silva Modtkowski – OAB/DF36114; Proc.(a) Representado(a): Felipe Oliveira Da Silva Modtkowski – OAB/DF36114; Prazo suspensão: 60(sessenta) dias; In"
+      },
+      {
+        "id": 687173,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Comunicado",
+        "setor": "SECRETARIA DE EXECUÇÃO",
+        "titulo": "COMUNICADO DE SUSPENSÃO DE ADVOGADO(A)",
+        "tamanho_texto": 1093,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Processo: 07.0000.2020.016849-3 ; Representante: Maria José Versiani Pitangui; Representado(a): Sandro Pereira Cardoso - OAB/DF 21634; Proc.(a) Representado(a ) Sandro Pereira Cardoso - OAB/DF 21634; Prazo suspensão: 30 (trinta) dias; Início suspensã"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 8,
+    "uf": "ES",
+    "nome": "Espírito Santo",
+    "regiao": "Sudeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 1818,
+    "total_estimado_ementa": 1781,
+    "total_estimado_ted": 16040,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 244,
+        "ementa": 239,
+        "ted": 3665
+      },
+      "2021": {
+        "acordao": 225,
+        "ementa": 206,
+        "ted": 1606
+      },
+      "2022": {
+        "acordao": 248,
+        "ementa": 232,
+        "ted": 2068
+      },
+      "2023": {
+        "acordao": 275,
+        "ementa": 269,
+        "ted": 1833
+      },
+      "2024": {
+        "acordao": 256,
+        "ementa": 258,
+        "ted": 1669
+      },
+      "2025": {
+        "acordao": 310,
+        "ementa": 308,
+        "ted": 2482
+      },
+      "2026": {
+        "acordao": 260,
+        "ementa": 269,
+        "ted": 2717
+      }
+    },
+    "setores_identificados": [
+      "Assessoria do Conselho",
+      "TRIBUNAL DE ÉTICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Notificação"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 684333,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Assessoria do Conselho",
+        "titulo": "TERCEIRA TURMA DA COMISSÃO DE SELEÇÃO E INSCRIÇÃO",
+        "tamanho_texto": 758,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO  PROC. Nº 385282023-0  Requerente: DENNYS LOPES ZIMMERMANN PINTA  Assunto: Pedido de Inscrição Definitiva  Relator (a): NERLITO SAMPAIO NEVES JUNIOR  EMENTA: PEDIDO DE INSCRIÇÃO DEFINITIVA.REQUERENTE EXERCE ATIVI-DADE INCOMPATÍVEL COM A ADVOC"
+      },
+      {
+        "id": 687047,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Assessoria do Conselho",
+        "titulo": "QUARTA TURMA DA COMISSÃO DE SELEÇÃO E INSCRIÇÃO",
+        "tamanho_texto": 831,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO  PROC. Nº 398552023-0  Requerente: BRUNA DE PAULA BABILONE  Assunto: Pedido de licenciamento de inscrição  Relator (a): FILIPE SELVATICI SANTOS  EMENTA: PEDIDO DE licenciamento de inscrição. NÃO EXERCÍCIO DA ADVOCACIA. NÃO ENQUADRAMENTO NAS H"
+      },
+      {
+        "id": 687048,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Assessoria do Conselho",
+        "titulo": "QUARTA TURMA DA COMISSÃO DE SELEÇÃO E INSCRIÇÃO",
+        "tamanho_texto": 830,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO  PROC. Nº 398282023-0  Requerente: LORENA BICALHO DA SILVA  Assunto: Pedido de licenciamento de inscrição  Relator (a): FILIPE SELVATICI SANTOS  EMENTA: PEDIDO DE licenciamento de inscrição. NÃO EXERCÍCIO DA ADVOCACIA. NÃO ENQUADRAMENTO NAS H"
+      },
+      {
+        "id": 687049,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Assessoria do Conselho",
+        "titulo": "QUARTA TURMA DA COMISSÃO DE SELEÇÃO E INSCRIÇÃO",
+        "tamanho_texto": 830,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO  PROC. Nº 389272023 -0  Requerente: ISABELY PIMENTEL CEOLIN  Assunto: Pedido de licenciamento de inscrição  Relator (a): FILIPE SELVATICI SANTOS  EMENTA: PEDIDO DE licenciamento de inscrição. NÃO EXERCÍCIO DA ADVOCACIA NÃO ENQUADRAMENTO NAS H"
+      },
+      {
+        "id": 688994,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Edital de Notificação Ciência de Despacho",
+        "tamanho_texto": 530,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "O Presidente do Tribunal de Ética e Disciplina da Ordem Advogados Brasil - Seção Espírito Santo, LUIZ HENRIQUE ABAURRE BASTOS DA SILVA, no uso de suas atribuições legais, notifica o (a) advogado (a) abaixo, no prazo de 15 (quinze) dias úteis, acerca "
+      },
+      {
+        "id": 688995,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Edital de Notificação Ciência de Despacho",
+        "tamanho_texto": 477,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "O Presidente do Tribunal de Ética e Disciplina da Ordem Advogados Brasil - Seção Espírito Santo, LUIZ HENRIQUE ABAURRE BASTOS DA SILVA, no uso de suas atribuições legais, notifica o (a) advogado (a) abaixo, no prazo de 15 (quinze) dias úteis, acerca "
+      },
+      {
+        "id": 688996,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Edital de Notificação Ciência de Despacho",
+        "tamanho_texto": 480,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "O Presidente do Tribunal de Ética e Disciplina da Ordem Advogados Brasil - Seção Espírito Santo, LUIZ HENRIQUE ABAURRE BASTOS DA SILVA, no uso de suas atribuições legais, notifica o (a) advogado (a) abaixo, no prazo de 15 (quinze) dias úteis, acerca "
+      },
+      {
+        "id": 688997,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "Edital de Notificação Ciência de Despacho",
+        "tamanho_texto": 477,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "O Presidente do Tribunal de Ética e Disciplina da Ordem Advogados Brasil - Seção Espírito Santo, LUIZ HENRIQUE ABAURRE BASTOS DA SILVA, no uso de suas atribuições legais, notifica o (a) advogado (a) abaixo, no prazo de 15 (quinze) dias úteis, acerca "
+      }
+    ]
+  },
+  {
+    "id_organizacao": 9,
+    "uf": "GO",
+    "nome": "Goiás",
+    "regiao": "Centro-Oeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 2486,
+    "total_estimado_ementa": 2366,
+    "total_estimado_ted": 5414,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 447,
+        "ementa": 406,
+        "ted": 757
+      },
+      "2021": {
+        "acordao": 602,
+        "ementa": 567,
+        "ted": 939
+      },
+      "2022": {
+        "acordao": 366,
+        "ementa": 345,
+        "ted": 794
+      },
+      "2023": {
+        "acordao": 382,
+        "ementa": 375,
+        "ted": 869
+      },
+      "2024": {
+        "acordao": 263,
+        "ementa": 251,
+        "ted": 704
+      },
+      "2025": {
+        "acordao": 207,
+        "ementa": 207,
+        "ted": 744
+      },
+      "2026": {
+        "acordao": 219,
+        "ementa": 215,
+        "ted": 607
+      }
+    },
+    "setores_identificados": [
+      "1ª Câmara",
+      "2ª Câmara",
+      "3ª Câmara",
+      "Conselho Pleno",
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Devolução de Documentos",
+      "Diligência"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 684939,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Conselho Pleno",
+        "titulo": "PROCESSO Nº 202005884 - NOTIFICAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 1506,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Conselho Pleno da OAB/GO torna pública a decisão proferida nos autos do processo nº 202005884. Repte.: Conselho Seccional – Goiás. Repdo.: A. V. M. (Procurador: Alexandre Valentino Malaspina - OAB/GO nº 26.306 e defensor(a) dativo(a) Fabiana Marçal"
+      },
+      {
+        "id": 686960,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 15863,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Tribunal de Ética e Disciplina da OAB-GO torna público que foi julgado o seguinte processo: 202204068. Repdos: I. A. S (Procurador: THIAGO HENRIQUE LELES LINHARES - OAB/GO Nº 45909) e E . M. M (Procurador: THIAGO HENRIQUE LELES LINHARES - OAB/GO Nº"
+      },
+      {
+        "id": 688186,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 3870,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Tribunal de Ética e Disciplina da OAB-GO torna público que foi julgado o seguinte processo: 202335223. Propositora: S. A. M (Procurador: SIMONI ALEXANDRA MULLER – OAB/GO N° 38095). Juiz(a) Relator(a): PAULO ROBERTO RESENDE NASCIMENTO. EMENTA: Consu"
+      },
+      {
+        "id": 688187,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 15821,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Tribunal de Ética e Disciplina da OAB-GO torna público que foi julgado o seguinte processo: 202211796. Repdo: I. C. M. F (Procuradores: IL CLEMENTINO MARQUES FILHO - OAB/GO Nº 22212). Juiz(a) Relator(a): DIOGO AUGUSTO MENDONÇA ROSA. EMENTA: REPRESE"
+      },
+      {
+        "id": 685173,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Devolução de Documentos",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "DEVOLUÇÃO DE DOCUMENTOS",
+        "tamanho_texto": 1614,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "A OAB/GO torna público que na Secretaria do Tribunal de Ética e Disciplina tramitou os processos ético-disciplinares a seguir relacionados, nos quais foram aplicadas aos representados a pena de suspensão do exercício profissional: processo n° 2022078"
+      },
+      {
+        "id": 685263,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Diligência",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO PARA DILIGÊNCIA",
+        "tamanho_texto": 1388,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A OAB/GO torna público que tramitam nesta Seccional os procedimentos administrativos: processo nº 202329204, Representado: P. H. C. G (Proc. PEDRO HENRIQUE CORRÊA GUIMARÃES - OAB/GO Nº 37629); processo nº 202328777, Representante: VANILDA SILVA DE ME"
+      },
+      {
+        "id": 685537,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Diligência",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO PARA DILIGÊNCIA",
+        "tamanho_texto": 1149,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A OAB/GO torna público que tramitam nesta Seccional os procedimentos administrativos: processo nº 202329497, Representado: J. E. M. S (Proc. JOSÉ EDUARDO MORAIS DA SILVA - OAB/GO Nº 28551); processo nº 202329715, Representado: W. A. O. J (Proc. WILSO"
+      },
+      {
+        "id": 862218,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "1ª Câmara",
+        "titulo": "PROCESSO Nº 202107894 - NOTIFICAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 2034,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A Primeira Câmara do Conselho Seccional da OAB/GO torna pública a decisão proferida nos autos do processo nº 202107894. Recte.: J. P. S. L. (Procuradores(as): Tiago Rosa de Oliveira – OAB/GO n° 31.032 e João Paulo da Silva Lopes – OAB/GO n° 41.080). "
+      },
+      {
+        "id": 862221,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "2ª Câmara",
+        "titulo": "PROCESSO Nº 202107142 - NOTIFICAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 1650,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A Segunda Câmara do Conselho Seccional da OAB/GO torna pública a decisão proferida nos autos do processo nº 202107142. Recte.: Murillo Melo Rosa. Recdo.: M. R. P. (Procurador(a): Mônica Ribeiro de Paiva – OAB/GO n° 21.896). EMENTA: Recurso ao Conselh"
+      },
+      {
+        "id": 865150,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "3ª Câmara",
+        "titulo": "PROCESSO Nº 202450348 - NOTIFICAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 1173,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A Terceira Câmara do Conselho Seccional da OAB/GO torna pública a decisão proferida nos autos do processo nº 202450348 . Reqte.: M. T. E. A. (Procurador(a): Marco Túlio Elias Alves – OAB/GO n° 25.629). EMENTA: Pedido de reabilitação de inscrição. Pen"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 10,
+    "uf": "MA",
+    "nome": "Maranhão",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 350,
+    "total_estimado_ementa": 329,
+    "total_estimado_ted": 805,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 38,
+        "ementa": 37,
+        "ted": 119
+      },
+      "2021": {
+        "acordao": 52,
+        "ementa": 52,
+        "ted": 288
+      },
+      "2022": {
+        "acordao": 41,
+        "ementa": 37,
+        "ted": 145
+      },
+      "2023": {
+        "acordao": 70,
+        "ementa": 67,
+        "ted": 58
+      },
+      "2024": {
+        "acordao": 64,
+        "ementa": 55,
+        "ted": 80
+      },
+      "2025": {
+        "acordao": 49,
+        "ementa": 48,
+        "ted": 48
+      },
+      "2026": {
+        "acordao": 36,
+        "ementa": 33,
+        "ted": 67
+      }
+    },
+    "setores_identificados": [
+      "Câmara Deliberativa",
+      "Secretaria Geral",
+      "TRIBUNAL DE ÉTICA DA OAB/MA",
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Edital",
+      "Edital de Notificação",
+      "Pauta de Julgamentos"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 686844,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "Câmara Deliberativa",
+        "titulo": "EDITAL",
+        "tamanho_texto": 437,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "O Secretário Geral da Ordem dos Advogados do Brasil- Seccional do Maranhão apresenta esta errata para correção da publicação do Acórdão nº 49/2023 do processo de nº 10.0000. 20 22.014136-3 publicado no dia 21 . 11.2023 , Ano V , Nº 1232 , página 35 ."
+      },
+      {
+        "id": 704175,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria Geral",
+        "titulo": "ACÓRDÃO 02/2024",
+        "tamanho_texto": 1023,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "PROCESSO N°: 10.0000.202 2.009092-5 — INSCRIÇÃO ORIGINÁRIA  RE QUERENTE : LUCAS BEZERRA SOUSA  RECURSO : INSCRIÇÃO ORIGINÁRIA  RELATORA: CONSELHEIRA ESTADUAL ANA CARINA SARAIVA CASTRO  EMENTA: PROCESSO DE INSCRIÇÃO ORIGINÁRIA. QUESTIONAMENTO ARTIGO 8"
+      },
+      {
+        "id": 704180,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria Geral",
+        "titulo": "ACÓRDÃO 03/2024 PROCESSO N.º 10.0000.2023.006302-7",
+        "tamanho_texto": 1112,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "PROCESSO N°: 10.0000.2023.006302-7 — INSCRIÇÃO ORIGINÁRIA  RECORRENTE: VALÉRIA CAROLINE SANTOS DOS SANTOS  RECORRIDO: COMISSÃO DE SELEÇÃO E INSCRIÇÃO — OAB/MA  RELATORA: CONSELHEIRA ESTADUAL LUCIANA SARNEY ALVES DE ARAÚJO COSTA  EMENTA: RECURSO CONTR"
+      },
+      {
+        "id": 704181,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria Geral",
+        "titulo": "ACÓRDÃO 04/2024",
+        "tamanho_texto": 968,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "PROCESSO N: 10.0000. 2023.006163-6  REQUERENTE: JOSE WERLEY TORRES DA SILVA OAB/MA 17.769  REQUERIDO: MILTON JOSÉ SOUSA SANTOS – PREFEITO MUNICIPAL DA CIDADE DE MORROS/MA  RECURSO: INSCRIÇÃO ORIGINÁRIA  EMENTA: PEDIDO DE DESAGRAVO — VIOLAÇÃO AS PRERR"
+      },
+      {
+        "id": 704182,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria Geral",
+        "titulo": "ACÓRDÃO 05/2024 PROCESSO N.º 10.0000.2023.005062-8",
+        "tamanho_texto": 1186,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "SOLICITANTE : RODRIGO CARVALHO DE MORAES OAB/MA 15.320  REQUERENTE: KARLOS ALBERTO RIBEIRO MOTA JUIZ TITULAR DA 1ª VARA DA COMARCA DE BREJO  RELATOR: CONSELHEIRO SECCIONAL CARLOS ALUÍSIO DE OLIVEIRA VIANA OAB/MA 9 . 555  EMENTA: PEDIDO DE DESAGRAVO —"
+      },
+      {
+        "id": 751051,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Pauta de Julgamentos",
+        "setor": "TRIBUNAL DE ÉTICA DA OAB/MA",
+        "titulo": "Pauta de Julgamento",
+        "tamanho_texto": 1335,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "EDITAL DE NOTIFICAÇÃO E PUBLICAÇÃO SESSAO ESPECIAL DE JULGAMENTO DO TED/OAB/MA.  O Presidente do Tribunal de Ética e Disciplina da OAB/MA, pelo presente edital, notifica as partes do processo abaixo, a comparecer à sessão especial, pautada para o dia"
+      },
+      {
+        "id": 691596,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Pauta de Julgamentos",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE JULGAMENTO",
+        "tamanho_texto": 2724,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "EDITAL DE NOTIFICAÇÃO E PUBLICAÇÃO DE PAUTA DE JULGAMENTO DO TED/OAB/MA.  O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil - Seccional do Maranhão, por força das disposições constitucionais e estatutárias, vem notificar"
+      },
+      {
+        "id": 708218,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Pauta de Julgamentos",
+        "setor": "TRIBUNAL DE ÉTICA DA OAB/MA",
+        "titulo": "EDITAL DE JULGAMENTO",
+        "tamanho_texto": 2165,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "EDITAL DE NOTIFICAÇÃO E PUBLICAÇÃO DE PAUTA DE JULGAMENTO DO TED/OAB/MA.  O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil - Seccional do Maranhão, por força das disposições constitucionais e estatutárias, vem notificar"
+      },
+      {
+        "id": 713990,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Notificação",
+        "setor": "TRIBUNAL DE ÉTICA DA OAB/MA",
+        "titulo": "EDITAL DE NOTIFICAÇÃO",
+        "tamanho_texto": 4944,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Notificação d e Audiência d e Conciliação  Notifica-se os advogados nos processos a seguir relacionados, a comparecerem na Audiência de Conciliação, designada pelo Presidente da Comissão de Mediação e Conciliação, Rodrigo Ribeiro Mendes França OAB/MA"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 11,
+    "uf": "MT",
+    "nome": "Mato Grosso",
+    "regiao": "Centro-Oeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 831,
+    "total_estimado_ementa": 824,
+    "total_estimado_ted": 1585,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 66,
+        "ementa": 68,
+        "ted": 213
+      },
+      "2021": {
+        "acordao": 141,
+        "ementa": 141,
+        "ted": 243
+      },
+      "2022": {
+        "acordao": 118,
+        "ementa": 116,
+        "ted": 144
+      },
+      "2023": {
+        "acordao": 109,
+        "ementa": 110,
+        "ted": 208
+      },
+      "2024": {
+        "acordao": 127,
+        "ementa": 130,
+        "ted": 282
+      },
+      "2025": {
+        "acordao": 140,
+        "ementa": 132,
+        "ted": 243
+      },
+      "2026": {
+        "acordao": 130,
+        "ementa": 127,
+        "ted": 252
+      }
+    },
+    "setores_identificados": [
+      "Conselho",
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Inclusão de Pauta",
+      "Intimação",
+      "Intimação da Decisão",
+      "Pauta de Julgamentos"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 690483,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Intimação da Decisão",
+        "setor": "Conselho",
+        "titulo": "1ª TURMA DO CONSELHO SECCIONAL - OAB-MT – INTIMAÇÃO DE DECISÃO – PROCESSO DISCIPLINAR - N. 0001251/2",
+        "tamanho_texto": 1364,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "1ª TURMA DO CONSELHO SEC C IONAL : Processo Disciplinar n. 0001251/2019 – Classe I – Recorrente: A.V.S.N. (Advogada: Dra. Aparecida Voine de Souza Neri – OAB/MT 8740/A). Recorrido: F.R. (Advogado Assistente: Dr. Mauricio Sales Ferreira de Moraes – OA"
+      },
+      {
+        "id": 690484,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Intimação da Decisão",
+        "setor": "Conselho",
+        "titulo": "1ª TURMA DO CONSELHO SECCIONAL - OAB-MT – INTIMAÇÃO DE DECISÃO – PROCESSO DISCIPLINAR - N. 11.0000.2",
+        "tamanho_texto": 927,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "1ª TURMA DO CONSELHO SEC C IONAL : Processo n. 11.0000.2022.000662-1 – Pedido de Providências – Requerente: J.D.S. (Advogado: Dr. Josias Doas da Silva – OAB/MT 26.023/O). Recorrido: J.M.B.N. Relatora: Dra. Laila E. de Oliveira Allemand. EMENTA : PRÁT"
+      },
+      {
+        "id": 690485,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Intimação da Decisão",
+        "setor": "Conselho",
+        "titulo": "2ª TURMA DO CONSELHO SECCIONAL - OAB-MT – INTIMAÇÃO DE DECISÃO – PROCESSO DISCIPLINAR - N. 001239/20",
+        "tamanho_texto": 1553,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "2 ª TURMA DO CONSELHO SEC C IONAL : Processo Disciplinar n. 0001239/2019 – Classe I - Recorrente: E.B.S. (Advogado: Dr. Edevânio Barbosa da Silva – OAB/MT 8860/O). Recorrido: N.C. (Procurador: Dr. Denner de Barros Mascarenhas Barbosa – OAB/MT 13.245/"
+      },
+      {
+        "id": 690526,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Intimação da Decisão",
+        "setor": "Conselho",
+        "titulo": "2ª TURMA DO CONSELHO SECCIONAL - OAB-MT – INTIMAÇÃO DE DECISÃO – PROCESSO DISCIPLINAR - N. 11.0000.2",
+        "tamanho_texto": 1913,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "2 ª TURMA DO CONSELHO SEC C IONAL : Processo Disciplinar n. 11.0000.2023.006866-1 - Recorrente: T.A.P.F.S. (Advogada: Dra. Telma Aparecida Palma Fernandes da Silva – OAB/MT 19.772/O – Procurador: Dr. Mário Olímpio Medeiros Neto – OAB/MT – 12.073/O). "
+      },
+      {
+        "id": 751342,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Inclusão de Pauta",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL Nº87/2024 – EDITAL DE INTIMAÇÃO DA 1ª SESSÃO ORDINÁRIA DA 5ª TURMA.",
+        "tamanho_texto": 2873,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Edital n.87/2024 -SG/TED– Ordem dos Advogados do Brasil Seccional Mato Grosso – 1° PAUTA DA QUINTA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução e Julgamento de Processos Ét"
+      },
+      {
+        "id": 689726,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Intimação",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL Nº171/2024 – INTIMAÇÃO PARA AUDIÊNCIA DE MEDIAÇÃO E CONCILIAÇÃO",
+        "tamanho_texto": 1084,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Edital n. 171 /24 -SG/TED– Ordem dos Advogados do Brasil Seccional Mato Grosso – PAUTA DE AUDIÊNCIA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares"
+      },
+      {
+        "id": 692163,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Pauta de Julgamentos",
+        "setor": "Conselho",
+        "titulo": "EDITAL Nº 03/24 - CONSELHO 2ª TURMA -OAB-MT – FEVEREIRO – Dia: 23.02.2024 – 14H.",
+        "tamanho_texto": 2405,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL nº 0 3 / 202 4 - CS / CF -OAB/MT-PAUTA DO CONSELHO SECIONAL: A presidente do Conselho Seccional da Ordem dos Advogados do Brasil Secção de Mato Grosso faz saber a todos quanto o presente edital, que no Auditório da sede da OAB/MT, situada na R"
+      },
+      {
+        "id": 864816,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Intimação da Decisão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL Nº 02/2025 – EDITAL DE INTIMAÇÃO DE DECISÃO",
+        "tamanho_texto": 8477,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "0 1 ) Processo disciplinar n. 11.0000.2023.007932-2 – REPRESENTANTE: L.G.P. REPRESENTADO: N.Z.P.F.B. PROCURADORA: Sandra Eliane John - OAB/MT 12756/O. RELATOR A : Claudia Sodré de Moraes. EMENTA: PROCESSO DISCIPLINAR – AUSÊNCIA DE INFRAÇÕES ÉTICAS – "
+      },
+      {
+        "id": 867595,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Intimação da Decisão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL Nº 03/2025 – EDITAL DE INTIMAÇÃO DE DECISÃO",
+        "tamanho_texto": 13624,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "0 1 ) Processo disciplinar n. 11.0000.2023.016716-7 – REPRESENTANTE: EX-OFFICIO. REPRESENTADO: Dionatan Gomes Duarte - OAB/PR 71613 e OAB/MT 33452/A – (Causa própria). RELATOR: Eduardo Augusto Bordoni Manzeppi. EMENTA: PROCESSO DISCIPLINAR – AUSÊNCIA"
+      },
+      {
+        "id": 868072,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Intimação da Decisão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL Nº 05/2025 – EDITAL DE INTIMAÇÃO DE DECISÃO",
+        "tamanho_texto": 4919,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "0 1 ) Processo disciplinar n. 11.0000.2023.016199-1 – REPRESENTANTE: D.A.A. REPRESENTADO: Guilherme Augusto Brescovici Milagres - OAB/MT 13047/O – (Causa própria). RELATOR: Jackson Mário De Souza. EMENTA: PRESTAÇÃO DE CONTAS EFETUADA. REPASSE DOS VAL"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 12,
+    "uf": "MS",
+    "nome": "Mato Grosso do Sul",
+    "regiao": "Centro-Oeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 3090,
+    "total_estimado_ementa": 3042,
+    "total_estimado_ted": 5379,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 12,
+        "ementa": 12,
+        "ted": 218
+      },
+      "2021": {
+        "acordao": 101,
+        "ementa": 98,
+        "ted": 456
+      },
+      "2022": {
+        "acordao": 465,
+        "ementa": 452,
+        "ted": 959
+      },
+      "2023": {
+        "acordao": 884,
+        "ementa": 864,
+        "ted": 1122
+      },
+      "2024": {
+        "acordao": 545,
+        "ementa": 540,
+        "ted": 1027
+      },
+      "2025": {
+        "acordao": 624,
+        "ementa": 619,
+        "ted": 935
+      },
+      "2026": {
+        "acordao": 459,
+        "ementa": 457,
+        "ted": 662
+      }
+    },
+    "setores_identificados": [
+      "Secretaria de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Notificação",
+      "Pauta de Julgamentos"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 686921,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO – Processo nº 22.070/2019 – Apenso nº 18984",
+        "tamanho_texto": 775,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "A ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE MATO GROSSO DO SUL, notifica o advogado Dr. Custódio Godoeng Costa, OAB/MS nº 6775, para conhecimento do despacho do Exmo Sr. Presidente desta Seccional, às f. 173, nos autos do processo nº 22.070/2019 – A"
+      },
+      {
+        "id": 689732,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO DE ACÓRDÃO - Proc. SED Nº 23329/2021",
+        "tamanho_texto": 1774,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, com fulcro no art. 69 caput e seu § 2º do EAOAB, notifica para apresentação de RECURSO do acórdão prolatado pelas Turmas do Tribunal de Ética e Disciplina, no prazo de quinze dias úteis, co"
+      },
+      {
+        "id": 689733,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO DE ACÓRDÃO - Proc. SED Nº 23713/2022",
+        "tamanho_texto": 1772,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, com fulcro no art. 69 caput e seu § 2º do EAOAB, notifica para apresentação de RECURSO do acórdão prolatado pelas Turmas do Tribunal de Ética e Disciplina, no prazo de quinze dias úteis, co"
+      },
+      {
+        "id": 689734,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO DE ACÓRDÃO - Proc. SED Nº 23666/2022",
+        "tamanho_texto": 1290,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, com fulcro no art. 69 caput e seu § 2º do EAOAB, notifica para apresentação de RECURSO do acórdão prolatado pelas Turmas do Tribunal de Ética e Disciplina, no prazo de quinze dias úteis, co"
+      },
+      {
+        "id": 689735,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO DE ACÓRDÃO - Proc. SED Nº 23648/2022",
+        "tamanho_texto": 2528,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, com fulcro no art. 69 caput e seu § 2º do EAOAB, notifica para apresentação de RECURSO do acórdão prolatado pelas Turmas do Tribunal de Ética e Disciplina, no prazo de quinze dias úteis, co"
+      },
+      {
+        "id": 686369,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "DILIGÊNCIA – PROCESSO SED N. 23593-2022",
+        "tamanho_texto": 446,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, notifica o (a) advogado (a) R.Q.R.C. (Adv.: Rafaela de Queiroz Rodrigues da Cunha – OAB/MS n. 14.217) do indeferimento do pedido de f. 179, bem como para que tome conhecimento do despacho d"
+      },
+      {
+        "id": 686370,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "DILIGÊNCIA – PROCESSO SED N. 23429-2021",
+        "tamanho_texto": 618,
+        "is_acordao": false,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, considerando a edição da Resolução n. 12/2021, que dispõe sobre a implementação do Termo de Ajustamento de Conduta no âmbito dos processos ético-disciplinares desta Seccional, notifica o (a"
+      },
+      {
+        "id": 689273,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Pauta de Julgamentos",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO/PAUTA DE JULGAMENTOS",
+        "tamanho_texto": 8112,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE MATO GROSSO DO SUL, considerando a edição da Resolução n° 13/2020 que trata da realização das Sessões Plenárias Remotas no âmbito desta Seccional, notific"
+      },
+      {
+        "id": 689657,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Secretaria de Ética e Disciplina",
+        "titulo": "DILIGÊNCIA – PROCESSO SED N. 23079-2021",
+        "tamanho_texto": 604,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, notifica o (a) advogado (a) M.E.N.M. (Adv.: Marcos Eli Nunes Martins – OAB/MS n. 14.090) – Defensor (a) Dativo (a) Dr. (a) Arlene Vicente Santos Paz de Menezes – OAB/MS n. 18.902, para indi"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 13,
+    "uf": "MG",
+    "nome": "Minas Gerais",
+    "regiao": "Sudeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 5170,
+    "total_estimado_ementa": 1614,
+    "total_estimado_ted": 17228,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 362,
+        "ementa": 120,
+        "ted": 1147
+      },
+      "2021": {
+        "acordao": 632,
+        "ementa": 261,
+        "ted": 2130
+      },
+      "2022": {
+        "acordao": 500,
+        "ementa": 203,
+        "ted": 2168
+      },
+      "2023": {
+        "acordao": 854,
+        "ementa": 232,
+        "ted": 3210
+      },
+      "2024": {
+        "acordao": 1140,
+        "ementa": 172,
+        "ted": 3193
+      },
+      "2025": {
+        "acordao": 732,
+        "ementa": 263,
+        "ted": 2678
+      },
+      "2026": {
+        "acordao": 950,
+        "ementa": 363,
+        "ted": 2702
+      }
+    },
+    "setores_identificados": [
+      "Conselho Pleno",
+      "TRIBUNAL DE ÉTICA E DISCIPLINAR",
+      "Tribunal de Ética e Disciplina",
+      "Órgão Especial"
+    ],
+    "tipos_identificados": [
+      "Despacho",
+      "Edital de Convocação",
+      "Embargos de Declaração",
+      "Intimação - Acórdão",
+      "Resultado de Julgamento"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 685223,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital de Convocação",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL NOTIFICA TRANSCRIÇÃO DESPACHO TED OAB/MG",
+        "tamanho_texto": 1212,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Proc. 144/2024: REQ: R.C.P.J. ( PROCURADOR: ROOSEVELT CALDAS PIMENTA JÚNIOR) OAB/MG Nº 119043; Para seu conhecimento, faz-se transcrever o despacho exarado nos autos supra citados. “ (…) Assim, ainda que em uma análise precária do pleito, nota-se que"
+      },
+      {
+        "id": 686894,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Resultado de Julgamento",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINAR",
+        "titulo": "RESULTADO DE JULGAMENTO",
+        "tamanho_texto": 1361,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 22/11/2023 DA 1ª TURMA REGIONAL, para conhecimento dos interessados:  Proc. Nº 3645/2021:  Rel.: Dr(a). DANIEL DE MOURA GOULART: RTE: A.F.S. OAB/MG Nº 159255; RDO: R.F.G.D.S. OAB/RJ Nº 167100; DEF: DO"
+      },
+      {
+        "id": 686895,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Resultado de Julgamento",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINAR",
+        "titulo": "RESULTADO DE JULGAMENTO",
+        "tamanho_texto": 1349,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 22/11/2023 DA 1ª TURMA REGIONAL, para conhecimento dos interessados:  Proc. Nº 3869/2021:  Rel.: Dr(a). DANIEL DE MOURA GOULART: RTE: OAB/MG DE OFÍCIO RDO: C.A.S. OAB/MG Nº 130050; DEF: DOUGLAS LUCAS "
+      },
+      {
+        "id": 686896,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Resultado de Julgamento",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINAR",
+        "titulo": "RESULTADO DE JULGAMENTO",
+        "tamanho_texto": 1422,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 22/11/2023 DA 1ª TURMA REGIONAL, para conhecimento dos interessados:  Proc. Nº 280/2022:  Rel.: Dr(a). DANIEL DE MOURA GOULART: RTE: G.E.G.S.A. - PRO: LUIS HENRIQUE GONCALVES OAB/MG Nº 175583; PRO: GU"
+      },
+      {
+        "id": 701589,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Despacho",
+        "setor": "Órgão Especial",
+        "titulo": "Processo nº. 2789/2023 (apenso P.D. nº 11.423/2011).",
+        "tamanho_texto": 7264,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Órgão Especial da Ordem dos Advogados do Brasil - Seção Minas Gerais, comunica do despacho exarado pelo Relator Dr. André Luiz Pereira Delfino. Processo nº. 2789/2023 (apenso P.D. nº 11.423/2011). Interessado: E. O. S. Adv.(s): Eduardo Oliveira da "
+      },
+      {
+        "id": 705506,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Embargos de Declaração",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL - TRANSCRIÇÃO DE DECISÃO PROFERIDA EM EMBARGOS DE DECLARAÇÃO.",
+        "tamanho_texto": 654,
+        "is_acordao": false,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Proc. Nº 2532/2019: Rel.: Dr(a).JULIANA NEVES PACHECO ANDRADE: RTE: C.G.D. - RDO: F.S.M.F. OAB/MG Nº 130549; PRO: ISADORA LOPEZ BARBOSA OAB/MG Nº 201136; (…) “Isso posto, acolho parcialmente os embargos de declaração e requeiro que seja sanado o erro"
+      },
+      {
+        "id": 709956,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Intimação - Acórdão",
+        "setor": "Conselho Pleno",
+        "titulo": "PROCESSO N. 2878/2019",
+        "tamanho_texto": 2095,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Conselho Pleno da Ordem dos Advogados do Brasil, Seção Minas Gerais, intima as partes Requerente e procurador do processo abaixo para apresentação do acórdão, no prazo de 15 (quinze) dias úteis. O acórdão estará disponível às partes na Secretaria d"
+      },
+      {
+        "id": 715920,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Intimação - Acórdão",
+        "setor": "Órgão Especial",
+        "titulo": "Processo nº. 2970/2014",
+        "tamanho_texto": 1758,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Órgão Especial da Ordem dos Advogados do Brasil, Seção Minas Gerais, intima as partes dos processos abaixo elencados para apresentação de Recurso ao acórdão da 2ª Turma, no prazo de 15 (quinze) dias úteis. Os acórdãos estarão disponíveis às partes "
+      }
+    ]
+  },
+  {
+    "id_organizacao": 14,
+    "uf": "PA",
+    "nome": "Pará",
+    "regiao": "Norte",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 785,
+    "total_estimado_ementa": 739,
+    "total_estimado_ted": 679,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 58,
+        "ementa": 55,
+        "ted": 46
+      },
+      "2021": {
+        "acordao": 97,
+        "ementa": 91,
+        "ted": 78
+      },
+      "2022": {
+        "acordao": 117,
+        "ementa": 111,
+        "ted": 47
+      },
+      "2023": {
+        "acordao": 106,
+        "ementa": 98,
+        "ted": 65
+      },
+      "2024": {
+        "acordao": 109,
+        "ementa": 98,
+        "ted": 77
+      },
+      "2025": {
+        "acordao": 145,
+        "ementa": 136,
+        "ted": 144
+      },
+      "2026": {
+        "acordao": 153,
+        "ementa": 150,
+        "ted": 222
+      }
+    },
+    "setores_identificados": [
+      "Conselho Seccional"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Republicação"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 685227,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Republicação",
+        "setor": "Conselho Seccional",
+        "titulo": "TURMA JULGADORA",
+        "tamanho_texto": 2749,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Acórdão nº 078/2023. PROCESSO ÉTICO DISCIPLINAR N.º 136/2020 Representante: SINTHOSP (Advogado: Marco Antonio da Silva Pereira, OAB/PA nº 18.392). Representado: M. A. R. B. (Advogados: Brunno Garcia de Castro – OAB/PA nº 8.291, Giovanni Watrin de Cas"
+      },
+      {
+        "id": 688045,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Conselho Seccional",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/PA",
+        "tamanho_texto": 18753,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Tribunal de Ética e Disciplina da OAB/PARÁ NOTIFICA as partes Representante (s)/Representado(s) e seus respectivos Patronos, da publicação dos acórdãos. Comunico que o prazo para interposição de recurso ao Conselho Seccional da OAB/PA será de 15 (q"
+      },
+      {
+        "id": 688047,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Conselho Seccional",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/PA",
+        "tamanho_texto": 10077,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Tribunal de Ética e Disciplina da OAB/PARÁ NOTIFICA as partes Representante (s)/Representado(s) e seus respectivos Patronos, da publicação dos acórdãos. Comunico que o prazo para interposição de recurso ao Conselho Seccional da OAB/PA será de 15 (q"
+      },
+      {
+        "id": 688048,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Conselho Seccional",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/PA",
+        "tamanho_texto": 8027,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Tribunal de Ética e Disciplina da OAB/PARÁ NOTIFICA as partes Representante (s)/Representado(s) e seus respectivos Patronos, da publicação dos acórdãos. Comunico que o prazo para interposição de recurso ao Conselho Seccional da OAB/PA será de 15 (q"
+      },
+      {
+        "id": 859213,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Conselho Seccional",
+        "titulo": "TURMA JULGADORA",
+        "tamanho_texto": 1061,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Acórdão nº 098/2024. Processo Ético Disciplinar n.º 098/2021 Representante: OAB/PA ATRAVÉS DA VARA ÚNICA DE LIMOEIRO DO AJURÚ Representado: F.W.C. (Advogada: FLÁVIA WANZELER CARVALHO, OAB/PA n.º 22. 446) Conselheira Relatora do Acordão: Celyce de Car"
+      },
+      {
+        "id": 860254,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Conselho Seccional",
+        "titulo": "TURMA JULGADORA",
+        "tamanho_texto": 1996,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Acórdão nº 099/2024. Processo Ético Disciplinar nº 201/2019. SGD nº 14.0000.2024.007258-1. REPRESENTANTE: DORA DOS SANTOS CHAVES. REPRESENTADO: Adv. EVANDRO SOUZA MUNIZ, OAB/PA 7.578. OBJETO: APROPRIAÇÃO INDÉBITA. RELATORA: MARISE PAES BARRETO MARQUE"
+      },
+      {
+        "id": 864261,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Conselho Seccional",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/PA",
+        "tamanho_texto": 9296,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Tribunal de Ética e Disciplina da OAB/PARÁ NOTIFICA as partes Representante (s)/Representado(s) e seus respectivos Patronos, da publicação dos acórdãos. Comunico que o prazo para interposição de recurso ao Conselho Seccional da OAB/PA será de 15 (q"
+      },
+      {
+        "id": 864262,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Conselho Seccional",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/PA",
+        "tamanho_texto": 8554,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "O Tribunal de Ética e Disciplina da OAB/PARÁ NOTIFICA as partes Representante (s)/Representado(s) e seus respectivos Patronos, da publicação dos acórdãos. Comunico que o prazo para interposição de recurso ao Conselho Seccional da OAB/PA será de 15 (q"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 15,
+    "uf": "PB",
+    "nome": "Paraíba",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 939,
+    "total_estimado_ementa": 869,
+    "total_estimado_ted": 1767,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 81,
+        "ementa": 73,
+        "ted": 117
+      },
+      "2021": {
+        "acordao": 133,
+        "ementa": 103,
+        "ted": 171
+      },
+      "2022": {
+        "acordao": 86,
+        "ementa": 89,
+        "ted": 188
+      },
+      "2023": {
+        "acordao": 149,
+        "ementa": 137,
+        "ted": 191
+      },
+      "2024": {
+        "acordao": 191,
+        "ementa": 166,
+        "ted": 285
+      },
+      "2025": {
+        "acordao": 164,
+        "ementa": 161,
+        "ted": 308
+      },
+      "2026": {
+        "acordao": 135,
+        "ementa": 140,
+        "ted": 507
+      }
+    },
+    "setores_identificados": [
+      "Primeira Câmara",
+      "Segunda Câmara",
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Edital",
+      "Pauta de Julgamentos"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 751021,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Primeira Câmara",
+        "titulo": "ACÓRDÃO N. 15.0000.2024.000698-0",
+        "tamanho_texto": 885,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A OAB/PB torna pública a decisão da Primeira Câmara no Processo nº 15.0000.2024.000698-0. Requerente: Bel.(a)LHAISY LOUANNY DE SOUSA DANTAS Relator: IGOR GADELHA ARRUDA. EMENTA: “PEDIDO DE INSCRIÇÃO PRINCIPAL NO QUADRO DE ADVOGADOS. BACHAREL EM DIREI"
+      },
+      {
+        "id": 751052,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Primeira Câmara",
+        "titulo": "ACÓRDÃO N. 15.0000.2024.000809-7",
+        "tamanho_texto": 860,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A OAB/PB torna pública a decisão da Primeira Câmara no Processo nº 15.0000.2024.000809-7. Requerente: Bel.(a)DANIELA FAUSTINO HERCULANO Relator: BISMARCK DE LIMA DANTAS. EMENTA: “PEDIDO DE INSCRIÇÃO PRINCIPAL NO QUADRO DE ADVOGADOS. BACHAREL EM DIREI"
+      },
+      {
+        "id": 693080,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Segunda Câmara",
+        "titulo": "ACÓRDÃO N. 15.0000.2017.012537-3",
+        "tamanho_texto": 994,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A OAB/PB notifica o Representado: H.H.M.M (Advogado da parte: Marcel Dimitrow Gracia Pereira OAB/PR 27.001); Representante: 1º Juizo Especial Misto de Mangabeira/PB; Relator: George Petrúcio Moreira Vieira; da decisão da Segunda Câmara no processo nº"
+      },
+      {
+        "id": 693081,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Segunda Câmara",
+        "titulo": "ACÓRDÃO N. 15.0000.2017.010480-7",
+        "tamanho_texto": 1025,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A OAB/PB notifica o embargante: T.N.A (Advogado da parte: Thacio Nascimento Araujo OAB/PB 20668); Relator: Olinda Sammara de Lima Aguiar; da decisão da Segunda Câmara no processo nº 15.0000.2017.010480-7. EMENTA: EMBARGOS DE DECLARAÇÃO. REPRESENTAÇÃO"
+      },
+      {
+        "id": 688751,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "TED - OAB/PB - 2024",
+        "tamanho_texto": 432,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Pelo presente edital, ficam os interessados abaixo relacionados notificados para que, querendo, no prazo de 15 (quinze) dias, a partir desta publicação, compareçam à Rua Rodrigues de Aquino, nº 344, Centro, João Pessoa/PB, para tratar de assunto de s"
+      },
+      {
+        "id": 689298,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL TED - OAB/PB - 2024",
+        "tamanho_texto": 391,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Pelo presente edital, ficam os advogados abaixo relacionados notificados para que, querendo, no prazo de 15 (quinze) dias, a partir desta publicação, compareçam à Rua Rodrigues de Aquino, nº 344, Centro, João Pessoa/PB, para tratar de assunto de seu "
+      },
+      {
+        "id": 689403,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Pauta de Julgamentos",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PAUTA DE JULGAMENTO N. 001/2024/TED/OAB/PB.",
+        "tamanho_texto": 4349,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A SEGUNDA TURMA DO TRIBUNAL DE ÉTICA DA OAB/PB, nos termos da Resolução n. 19/2020 (DEOAB de 23/04/2020, p.1), da Diretoria do Conselho Federal, que acrescentou o art. 97-A ao Regulamento Geral do Estatuto da Advocacia e da OAB (Lei n. 8.906/94), reu"
+      },
+      {
+        "id": 689405,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Pauta de Julgamentos",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "PAUTA DE JULGAMENTO N. 002/2024/TED/OAB/PB.",
+        "tamanho_texto": 5264,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A TERCEIRA TURMA DO TRIBUNAL DE ÉTICA DA OAB/PB, nos termos da Resolução n. 19/2020 (DEOAB de 23/04/2020, p.1), da Diretoria do Conselho Federal, que acrescentou o art. 97-A ao Regulamento Geral do Estatuto da Advocacia e da OAB (Lei n. 8.906/94), re"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 16,
+    "uf": "PR",
+    "nome": "Paraná",
+    "regiao": "Sul",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 11308,
+    "total_estimado_ementa": 6944,
+    "total_estimado_ted": 16056,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 1501,
+        "ementa": 1315,
+        "ted": 1563
+      },
+      "2021": {
+        "acordao": 1821,
+        "ementa": 1495,
+        "ted": 1682
+      },
+      "2022": {
+        "acordao": 1352,
+        "ementa": 1136,
+        "ted": 1090
+      },
+      "2023": {
+        "acordao": 1406,
+        "ementa": 328,
+        "ted": 6483
+      },
+      "2024": {
+        "acordao": 1837,
+        "ementa": 1035,
+        "ted": 2393
+      },
+      "2025": {
+        "acordao": 1768,
+        "ementa": 551,
+        "ted": 1428
+      },
+      "2026": {
+        "acordao": 1623,
+        "ementa": 1084,
+        "ted": 1417
+      }
+    },
+    "setores_identificados": [
+      "CÂMARA DE DISCIPLINA",
+      "TRIBUNAL DE ÉTICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Acórdão"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 687881,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "CÂMARA DE DISCIPLINA",
+        "titulo": "PROCESSO Nº 2.283/2023",
+        "tamanho_texto": 1381,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Recorrentes : J.P.B (PR/59880-JHONNY PETTERSONN BERLANDA) e H.G.B ( Procuradora: PR/74096-SARA BEATRIZ ARAÚJO WENTZ) Recorrido : MARIA HELENA BERLANDA, ANAIR ANTONIA BERLANDA MARCON e IRENE BERLANDA MARCHETTI. Número Acórdão : 164/2023. RECURSO. INDE"
+      },
+      {
+        "id": 687882,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "CÂMARA DE DISCIPLINA",
+        "titulo": "PROCESSO Nº 10.136/2022",
+        "tamanho_texto": 1946,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Recorrente : L.F.C.R ( Procuradora: PR/94901-RITA DE CASSIA MACIEL FRANCO) Recorrido : BANCO AGIBANK S/A ( Procurador : PR/27769-SIGISFREDO HOEPERS). Número Acórdão : 193/2023. RECURSO INOMINADO. INSURGÊNCIA QUE SE LIMITA A REITERAR OS ARGUMENTOS DA "
+      },
+      {
+        "id": 687883,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "CÂMARA DE DISCIPLINA",
+        "titulo": "PROCESSO Nº 2.283/2023",
+        "tamanho_texto": 1381,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Recorrentes : J.P.B (PR/59880-JHONNY PETTERSONN BERLANDA) e H.G.B ( Procuradora: PR/74096-SARA BEATRIZ ARAÚJO WENTZ) Recorrido : MARIA HELENA BERLANDA, ANAIR ANTONIA BERLANDA MARCON e IRENE BERLANDA MARCHETTI. Número Acórdão : 164/2023. RECURSO. INDE"
+      },
+      {
+        "id": 687884,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "CÂMARA DE DISCIPLINA",
+        "titulo": "PROCESSO Nº 10.136/2022",
+        "tamanho_texto": 1946,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Recorrente : L.F.C.R ( Procuradora: PR/94901-RITA DE CASSIA MACIEL FRANCO) Recorrido : BANCO AGIBANK S/A ( Procurador : PR/27769-SIGISFREDO HOEPERS). Número Acórdão : 193/2023. RECURSO INOMINADO. INSURGÊNCIA QUE SE LIMITA A REITERAR OS ARGUMENTOS DA "
+      },
+      {
+        "id": 687855,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "5ª TURMA - PROCESSO Nº 6154/2018",
+        "tamanho_texto": 2125,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: Sarah Benedicta Derbli Galdino de Souza, PR/50772- Margarete Terumi Seima de Freitas, PR/60221- Magale Francisco Luz Brongel. Representado: J.S.S. (Defensor Dativo: PR/31082- Ernani Kavalkievicz Junior). Número Acórdão: 856/2022. EMENT"
+      },
+      {
+        "id": 687856,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "5ª TURMA - PROCESSO Nº 6440/2021",
+        "tamanho_texto": 1041,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: Lauriane Cabral Braga. Representado: J.G.M.S., J.G.G.M.S.F. (Procuradora: PR/35609- Juliana Graciela Goes Militao da Silva Fabris). Número Acórdão: 813/2023. EMENTA: REPRESENTAÇÃO DISCIPLINAR - NÃO INTERPOSIÇÃO DA AÇÃO - DESCABIMENTO D"
+      },
+      {
+        "id": 687857,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "5ª TURMA - PROCESSO Nº 705/2020",
+        "tamanho_texto": 1241,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: Nilza Aparecida Meira dos Santos. Representado: O.R.F. (Defensor Dativo: PR/37887- Alexandre Rech). Número Acórdão: 737/2023. EMENTA: PROCESSO DISCIPLINAR - ALEGADA CONTRATAÇÃO DE ADVOGADO PARA DISTRIBUIÇÃO DE AÇÃO DE GUARDA. SUPOSTA F"
+      },
+      {
+        "id": 687858,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "5ª TURMA - PROCESSO Nº 6262/2018",
+        "tamanho_texto": 717,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: Loterias Monsenhor Ltda (Procurador: PR/52146- Rafael de Araújo Mazepa). Representado: A.R.P. (PR/14689- Alexandre Roberto Peixer). Número Acórdão: 743/2023. EMENTA: Embargos de Declaração. Manifesto inconformismo da parte quanto às ra"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 17,
+    "uf": "PE",
+    "nome": "Pernambuco",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 1646,
+    "total_estimado_ementa": 1204,
+    "total_estimado_ted": 4222,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 223,
+        "ementa": 35,
+        "ted": 63
+      },
+      "2021": {
+        "acordao": 295,
+        "ementa": 274,
+        "ted": 130
+      },
+      "2022": {
+        "acordao": 300,
+        "ementa": 238,
+        "ted": 400
+      },
+      "2023": {
+        "acordao": 234,
+        "ementa": 178,
+        "ted": 877
+      },
+      "2024": {
+        "acordao": 236,
+        "ementa": 205,
+        "ted": 1107
+      },
+      "2025": {
+        "acordao": 168,
+        "ementa": 126,
+        "ted": 635
+      },
+      "2026": {
+        "acordao": 190,
+        "ementa": 148,
+        "ted": 1010
+      }
+    },
+    "setores_identificados": [
+      "TRIBUNAL DE ETICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Audiência"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 684419,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO – PROCESSO nª 17.0000.2019.005251-0",
+        "tamanho_texto": 1416,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: JUÍZO 3ª VARA DE SUCESSÕES REGISTROS PÚBLICOS DA CAPITAL. Representado: FRANCINI POLITO - OAB/SP 307856. Conforme previsão contida no art. 137-D, § 4º do Regimento Interno do Tribunal de ética e Disciplina da OAB/PE, fica intimada a pa"
+      },
+      {
+        "id": 684420,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO – PROCESSO nª 17.0000.2021.015351-0",
+        "tamanho_texto": 1429,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: MARIA DAS GRAÇAS ALMEIDA DE ALBUQUERQUE. Representado: MARCÍLIO TAVARES DE ALBUQUERQUE - OAB/PE 06087. Conforme previsão no art. 137-D, § 4º do Regimento Interno do Tribunal de ética e Disciplina da OAB/PE, fica intimada a parte acima "
+      },
+      {
+        "id": 684421,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO – PROCESSO nª 17.0000.2019.018332-8",
+        "tamanho_texto": 1167,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: IRIS LEUCHTENBERG DE ANDRADE LIMA. Representado: BRUNA BARBOZA CORREIA DOS SANTOS - OAB/PE 36567. Conforme previsão no art. 137-D, § 4º do Regimento Interno do Tribunal de ética e Disciplina da OAB/PE, fica intimada a parte acima refer"
+      },
+      {
+        "id": 684422,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO – PROCESSO nª 17.0000.2020.006075-3",
+        "tamanho_texto": 1230,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: JUCÉLIA LIMA SANTOS. Representado: MARCOS VINICIUS BENEVIDES MUNIZ - OAB/BA 35723. Conforme previsão no art. 137-D, § 4º do Regimento Interno do Tribunal de ética e Disciplina da OAB/PE, fica intimada a parte acima referenciada, para q"
+      },
+      {
+        "id": 684332,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Audiência",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2021.016538-8",
+        "tamanho_texto": 1343,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Representante(s): PRIMEIRA VARA CRIMINAL DE JABOATÃO DOS GUARARAPES/ Representado(a/s): A.R.A. (Procurador(a): Amaro Rodrigues de Araújo-OAB/PE 36534). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da O"
+      },
+      {
+        "id": 685274,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Audiência",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2022.019285-6",
+        "tamanho_texto": 1307,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Representante(s): M.S.C.N./ Representado(a/s): M.A.M. (Procurador(a): MARTA DE ALBUQUERQUE MATHIAS - OAB/PE 39779). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas as partes acima "
+      },
+      {
+        "id": 685275,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Audiência",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2023.006209-6",
+        "tamanho_texto": 1487,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Representante(s): I.W.A.P.B. (Procurador(a): Amanda Barbalho Carneiro da Cunha - OAB/PE 40905 e Carolina da Fonte Araújo de Souza – OAB/PE 60458) / Representado(a/s): E.A.B. (Procurador(a): Elizabeth Gomes Ferreira de Andrade Guimarães - OAB/PE 53982"
+      },
+      {
+        "id": 865753,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO – Processo nª 17.0000.2019.018138-4",
+        "tamanho_texto": 1341,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: M.F.S. / Representado: R.B.F. (Procurador(a): RONALDO BARBOZA FRANÇA - OAB/PE 27986). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, fica intimada a parte acima referenciada, para "
+      },
+      {
+        "id": 865754,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO – Processo nª 17.0000.2021.018742-8",
+        "tamanho_texto": 1111,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: J.A.S.B. / Representado: J.R.S. (Procurador(a): JAMERSON RODRIGUES DA SILVA - OAB/PE 52849). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, fica intimada a parte acima referenciada"
+      },
+      {
+        "id": 865755,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO – Processo nª 17.0000.2021.026914-9",
+        "tamanho_texto": 1231,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Representante: M.J.C. / Representados: G.C.S. G.G.O.S. e V.J.S.L. (Procurador(a): GIVALDO CÂNDIDO DOS SANTOS - OAB/PE 09831, MIRELA MARIA DA SILVA SIQUEIRA OAB/PE 48626, GILLIAN GUSTAVO OLIVEIRA DOS SANTOS - OAB/PE 35540 e VITTOR JOSE DE SIQUEIRA LOP"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 18,
+    "uf": "PI",
+    "nome": "Piauí",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "MÉDIA",
+    "total_estimado_acordao": 178,
+    "total_estimado_ementa": 173,
+    "total_estimado_ted": 2184,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 16,
+        "ementa": 17,
+        "ted": 19
+      },
+      "2021": {
+        "acordao": 23,
+        "ementa": 22,
+        "ted": 11
+      },
+      "2022": {
+        "acordao": 23,
+        "ementa": 22,
+        "ted": 94
+      },
+      "2023": {
+        "acordao": 19,
+        "ementa": 18,
+        "ted": 122
+      },
+      "2024": {
+        "acordao": 39,
+        "ementa": 39,
+        "ted": 351
+      },
+      "2025": {
+        "acordao": 29,
+        "ementa": 26,
+        "ted": 395
+      },
+      "2026": {
+        "acordao": 29,
+        "ementa": 29,
+        "ted": 1192
+      }
+    },
+    "setores_identificados": [
+      "Secretaria do Conselho Pleno",
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Errata",
+      "Notificação"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 706302,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria do Conselho Pleno",
+        "titulo": "ACÓRDÃO",
+        "tamanho_texto": 1487,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Ementa - Processo nº 18.0000.2022.000977-1 – EMENTA: REPRESENTADA MANTEVE CONDUTA INCOMPATÍVEL COM A ADVOCACIA. ULTRAPASSOU OS LIMITES DELINEADOS NO CÓDIGO DE ÉTICA DA OAB. juízo de retratação, para acolher o recurso manejado pela Presidência do Trib"
+      },
+      {
+        "id": 716223,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria do Conselho Pleno",
+        "titulo": "ACÓRDÃO",
+        "tamanho_texto": 1252,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Assunto : Aprovação do projeto de Criação da Subseção de Simões – Piauí.  Processo n° 18.0000.2021.000008-0  Requerente : Advogada Andreya Lorena Santos Macêdo.  Interessado: Subseção de Simões.  Relator(a): Cons. Seccional Mauro Benício da Silva Jún"
+      },
+      {
+        "id": 717323,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria do Conselho Pleno",
+        "titulo": "ACÓRDÃO E EMENTA",
+        "tamanho_texto": 2003,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Processo nº : 18.0000.2024.001712-9  Interessados(as) :  Interessados : Conselho Seccional da OAB/Piauí. (Gestão 2022/2024. Presidente: Celso Barros Coelho Neto OAB/PI 2.688; Vice-Presidente: Daniela Carla Gomes Freitas OAB/PI 4877; Secretário-Geral:"
+      },
+      {
+        "id": 721120,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Errata",
+        "setor": "Secretaria do Conselho Pleno",
+        "titulo": "SECRETARIA DO CONSELHO PLENO",
+        "tamanho_texto": 2086,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ACÓRDÃO – [ERRATA]  PUBLICAÇÃO DE EMENTA E ACÓRDÃO  Processo nº : 18.0000.2023.0003970-1  Interessados(as) :  Interessados : Conselho Seccional da OAB/Piauí. (Gestão 2022/2024. Presidente: Celso Barros Coelho Neto OAB/PI 2.688; Vice-Presidente: Danie"
+      },
+      {
+        "id": 685262,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "tamanho_texto": 862,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "NOTIFICAÇÃO N° 01/2024 - TED  PROCESSO DISCIPLINAR Nº 018/2019 – TED  REPRESENTADO (A): B. R. R.  PATRONO: ADV. MARALINNY MONTEIRO AMORIM RODRIGUES (OAB/PI N° 11.910)  REPRESENTADO (A): A. D. M.  PATRONO: ADV. JOÃO PAULO LUSTOSA VELOSO (OAB/PI N° 7.0"
+      },
+      {
+        "id": 685668,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "tamanho_texto": 929,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "NOTIFICAÇÃO N° 02/2024 - TED  PROCESSO DISCIPLINAR Nº 068/2019 – TED  REPRESENTADO (A): J. R. A. L.  PATRONO: ADV. NICOLAS LUIS AMARAL KOPROVSKI (OAB/PI N° 16.100) E ADV. VALDEMA KOPROVSKI (OAB/PI N° 3.725-A)  REPRESENTADO (A): F. P. D. F.  PATRONO: "
+      },
+      {
+        "id": 687550,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "tamanho_texto": 1316,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "AUDIÊNCIA DE CONCILIAÇÃO  PROCESSO DISCIPLINAR Nº 027/2020 – TED  REPRESENTANTE: G. S. C.  PATRONO: ADV. GABRIEL SOARES CARDOSO (OAB/PI N° 968)  REPRESENTADO (A): M. A. L. C  PATRONO: ADV. MARCUS ANTÔNIO DE LIMA CARVALHO (OAB/PI N° 11.274)  RELATOR: "
+      },
+      {
+        "id": 687551,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "tamanho_texto": 1417,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "AUDIÊNCIA DE CONCILIAÇÃO  PROCESSO DISCIPLINAR Nº 044/2019 – TED  REPRESENTANTE: M.B.S.  PATRONO(A): ADV. MANOEL DE BARROS E SILVA (OAB/PI N° 1.575)  REPRESENTADO (A): L.E.N.S., F.L.F.L., e E.M.C.L.  PATRONO(A): ADV. FRANCISCO LUCAS FONTINELE LIMA (O"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 19,
+    "uf": "RJ",
+    "nome": "Rio de Janeiro",
+    "regiao": "Sudeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 386,
+    "total_estimado_ementa": 7448,
+    "total_estimado_ted": 1374,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 5,
+        "ementa": 489,
+        "ted": 56
+      },
+      "2021": {
+        "acordao": 18,
+        "ementa": 1020,
+        "ted": 167
+      },
+      "2022": {
+        "acordao": 19,
+        "ementa": 1437,
+        "ted": 217
+      },
+      "2023": {
+        "acordao": 34,
+        "ementa": 1391,
+        "ted": 280
+      },
+      "2024": {
+        "acordao": 19,
+        "ementa": 1356,
+        "ted": 254
+      },
+      "2025": {
+        "acordao": 50,
+        "ementa": 853,
+        "ted": 131
+      },
+      "2026": {
+        "acordao": 241,
+        "ementa": 902,
+        "ted": 269
+      }
+    },
+    "setores_identificados": [
+      "Secretaria dos Órgãos Julgadores da OAB"
+    ],
+    "tipos_identificados": [
+      "Acórdão"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 718630,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria dos Órgãos Julgadores da OAB",
+        "titulo": "PROCESSO:19.334/2016 – ORGÃO ESPECIAL - PUBLICAÇÃO",
+        "tamanho_texto": 1067,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Recorrente: P.D.S., OAB/RJ 75.045 (Procuradora adv. Fernanda Sayuri Machado Nakazawa Araujo, OAB/RJ 197.752; Recorrido: Arlete Jose de Araujo Santos. Ementa: 6/O.E./2024. OAB/RJ. ÓRGÃO ESPECIAL. RECURSO ORDINÁRIO CONTRA ACÓRDÃO CONDENATÓRIO UNÂNIME. "
+      },
+      {
+        "id": 729678,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria dos Órgãos Julgadores da OAB",
+        "titulo": "PROCESSO N. 27.788/2015 – CONSELHO PLENO.",
+        "tamanho_texto": 683,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Embargante: G.P. (Adv.: Gilberto Paulozzi, OAB/RJ 132453). Ementa 23/2024: “Embargos de declaração. Inexistência de vícios na decisão embargada que justifiquem sua complementação e/ou aclaramento. Ausência de omissão, contradição ou obscuridade. Pret"
+      },
+      {
+        "id": 732533,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria dos Órgãos Julgadores da OAB",
+        "titulo": "PROCESSO N. 10.093/2020 – PLENO DO TED.",
+        "tamanho_texto": 653,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Recorrente: S.S.V.; Procuradores: José Carlos Guimarães Pimenta, OAB/RJ 103160, Alan Pinto Januario, OAB/RJ 181885 e Hursula Souza Vaz, OAB/RJ 220771; Recorrida: J.M.C.S. (Jorgina Maria de Carvalho Santos). Ementa 4/2024: “PLENO DO TED. RECURSO ORDIN"
+      },
+      {
+        "id": 739392,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria dos Órgãos Julgadores da OAB",
+        "titulo": "PROCESSO: 7.078/2017 – ORGÃO ESPECIAL - PUBLICAÇÃO",
+        "tamanho_texto": 1500,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Requerente: M.A.A.C.S. (Maria Angelica Almeida da Cunha Sans); Requerido: J.T.M., OAB/RJ 184.908 (Procuradora adv. Valéria Silverio Vieira, OAB/RJ 189.923). Ementa: 38/O.E./2024. ÓRGÃO ESPECIAL DO CONSELHO SECCIONAL DA OAB/RJ. RECURSO ORDINÁRIO. LOCU"
+      },
+      {
+        "id": 685964,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria dos Órgãos Julgadores da OAB",
+        "titulo": "PROCESSO: 1.641/2020 – 1ª TURMA - PUBLICAÇÃO",
+        "tamanho_texto": 987,
+        "is_acordao": false,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Requerente: G.D.A. (Gelso Barroso Duarte); Requerido: A.R.A. (Ataide Rosa de Azeredo, OAB/RJ 119.942). Ementa: 66/1ª TURMA/2023. 1ª TURMA JULGADORA DO TRIBUNAL DE ÉTICA E DISCIPLINA. PROCESSO ÉTICO DISCIPLINAR, SUPOSTA DESÍDIA, VIOLAÇÃO DO ART. 34, X"
+      },
+      {
+        "id": 685965,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria dos Órgãos Julgadores da OAB",
+        "titulo": "PROCESSO: 12.781/2022 – 1ª TURMA - PUBLICAÇÃO",
+        "tamanho_texto": 542,
+        "is_acordao": false,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Requerente: JUIZ DA PRIMEIRA VARA DO TRABALHO DE VOLTA REDONDA; Requerido: L.A.P. (Adv. Luis Antonio de Paiva, OAB/RJ 71.036). Ementa: 70/1ª TURMA/2023. 1ª TURMA JULGADORA DO TRIBUNAL DE ÉTICA E DISCIPLINA. ART. 34, INCISO XXII DO EAOAB. RETENÇÃO DE "
+      },
+      {
+        "id": 685966,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria dos Órgãos Julgadores da OAB",
+        "titulo": "PROCESSO: 7.871/2022 – 1ª TURMA - PUBLICAÇÃO",
+        "tamanho_texto": 808,
+        "is_acordao": false,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Requerente: JUIZADO ESPECIAL CIVEL DE SÃO FRANCISCO DE ITABAPOANA; Requerido: A.N.T., OAB/RJ 178.576 (Procurador adv. Reynaldo Peixoto Soares, OAB/RJ 148.694). Def. dativo: Luiz Gustavo Pinto da Luz Alves de Faria, OAB/RJ 158.681. Ementa: 69/1ª TURMA"
+      },
+      {
+        "id": 685967,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Secretaria dos Órgãos Julgadores da OAB",
+        "titulo": "PROCESSO: 9.511/2019 – 1ª TURMA - PUBLICAÇÃO",
+        "tamanho_texto": 865,
+        "is_acordao": false,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Requerente: 126 DELEGACIA DE POLICIA - CABO FRIO; Requerido: F.C.R. (Adv. Fellipe Correa da Rocha, OAB/RJ 188.755). Ementa: 68/1ª TURMA/2023. 1ª TURMA JULGADORA DO TRIBUNAL DE ÉTICA E DISCIPLINA. ADVOGADO ACUSADO DE TER PRATICADO CRIME DE ESBULHO POS"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 20,
+    "uf": "RN",
+    "nome": "Rio Grande do Norte",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 1175,
+    "total_estimado_ementa": 1101,
+    "total_estimado_ted": 3289,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 42,
+        "ementa": 30,
+        "ted": 146
+      },
+      "2021": {
+        "acordao": 141,
+        "ementa": 132,
+        "ted": 636
+      },
+      "2022": {
+        "acordao": 275,
+        "ementa": 263,
+        "ted": 529
+      },
+      "2023": {
+        "acordao": 208,
+        "ementa": 197,
+        "ted": 787
+      },
+      "2024": {
+        "acordao": 205,
+        "ementa": 195,
+        "ted": 667
+      },
+      "2025": {
+        "acordao": 158,
+        "ementa": 147,
+        "ted": 256
+      },
+      "2026": {
+        "acordao": 146,
+        "ementa": 137,
+        "ted": 268
+      }
+    },
+    "setores_identificados": [
+      "CONSELHO SECCIONAL",
+      "TRIBUNAL DE ÉTICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Edital"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 685070,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "CONSELHO SECCIONAL",
+        "titulo": "ACÓRDÃO",
+        "tamanho_texto": 913,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Processo número 42612023-0. Assunto: Criação de Comissão de Investigação Defensiva. Interessado(a): Leandro Dantas de Queiroz - OAB/RN 10.757. Relator: Américo Bento de Oliveira Neto. Ementa: Proposta de Criação da Comissão Especial de Investigação D"
+      },
+      {
+        "id": 688361,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO",
+        "tamanho_texto": 1100,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "53302019-0 – Representante: C.V.F - Representado: O.M.B (Advogado: Onivaldo Mendoça Almeida – OAB/RN 2614D / Defensora Dativa: Sabrina Mirelly Almeida Alves – OAB/RN 13.977) - EMENTA: REPRESENTAÇÃO. PRÁTICA DE CONDUTA INCOMPATÍVEL COM A ADVOCACIA CON"
+      },
+      {
+        "id": 688362,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO",
+        "tamanho_texto": 1020,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "107122018-0 – Representante: J.P.L.F - Representado: K.A.R (Advogado: Kenia Alves Rosado OAB/RN 10194 / Defensora Dativa: Sabrina Mirelly Almeida Alves – OAB/RN 13.977); - EMENTA : ADVOCACIA. TRANSGRESSÃO ÉTICA. IMPROCEDÊNCIA. CARÊNCIA DE ELEMENTOS C"
+      },
+      {
+        "id": 688363,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "ACÓRDÃO",
+        "tamanho_texto": 1119,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "127992019-0 – Representante: J.S.L- Representado: J.B.F.N (Advogado: João Batista Fernandes Neto – OAB/RN 9226D / Defensora Dativa: Sabrina Mirelly Almeida Alves – OAB/RN 13.977) - EMENTA: A PREJUDICAR POR CULPA GRAVE INTERESSE CONFIADO. INFRAÇÃO PRE"
+      },
+      {
+        "id": 751374,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "EDITAL DE CHAMAMENTO",
+        "tamanho_texto": 545,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "NOTIFICAÇÃO  136432023-0 – Pelo presente edital, fica o advogado JOÃO ALFREDO SOARES DE MACEDO NETO – OAB/RN 4792, notificado a comparecer na sede da OAB/RN localizado na Rua Nossa Senhora de Candelária, 3382 – 1º andar – Candelária – Natal/RN, no pr"
+      },
+      {
+        "id": 751437,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "NOTIFICAÇÃO",
+        "tamanho_texto": 410,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "86342020-0 – Pelo presente edital, fica o advogado S.F.M (Advogado: Silvano Ferreira Melo – OAB/CE 38.303), notificado para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) apresentarem razões finais.  O não cumprimento da de"
+      },
+      {
+        "id": 751438,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "NOTIFICAÇÃO",
+        "tamanho_texto": 410,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "75002020-0 – Pelo presente edital, fica a advogada D.N.S (Advogada: Deise Neta dos Santos – OAB/RN 15.815), notificada para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) apresentarem razões finais.  O não cumprimento da de"
+      },
+      {
+        "id": 751439,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "NOTIFICAÇÃO",
+        "tamanho_texto": 407,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "131782022-0 – Pelo presente edital, fica o advogado H.G.C.S (Advogado: Homero Grec Cruz Sá – OAB/RN 6369), notificado para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) apresentar razões finais.  O não cumprimento da devid"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 21,
+    "uf": "RS",
+    "nome": "Rio Grande do Sul",
+    "regiao": "Sul",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 14203,
+    "total_estimado_ementa": 14057,
+    "total_estimado_ted": 64712,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 473,
+        "ementa": 452,
+        "ted": 8217
+      },
+      "2021": {
+        "acordao": 3032,
+        "ementa": 2996,
+        "ted": 10713
+      },
+      "2022": {
+        "acordao": 1360,
+        "ementa": 1347,
+        "ted": 8119
+      },
+      "2023": {
+        "acordao": 3678,
+        "ementa": 3658,
+        "ted": 11521
+      },
+      "2024": {
+        "acordao": 2116,
+        "ementa": 2091,
+        "ted": 8331
+      },
+      "2025": {
+        "acordao": 1663,
+        "ementa": 1648,
+        "ted": 8175
+      },
+      "2026": {
+        "acordao": 1881,
+        "ementa": 1865,
+        "ted": 9636
+      }
+    },
+    "setores_identificados": [
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Recurso",
+      "Sessão de Julgamento"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 688908,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Recurso",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 2012,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Processo n. 1100858.00020908/2020-20 – OAB EX OFFÍCIO da Seccional do Rio Grande do Sul x K.C.R.F. (Adv. KELLY CRISTINA RODRIGUES FONSECA - OAB/RS 56463), S.F.L. Adv. SINARA FARIAS LORENZ - OAB/RS 32490), L.L.C. (Procs. ALBERTO FERNANDO BECKER PINTO "
+      },
+      {
+        "id": 688909,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Recurso",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 1535,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Processo n. 1101020.00085689/2021-20 – OAB EX OFFÍCIO da Seccional do Rio Grande do Sul x R.R.B. (Def. Dat. ALESSANDRA RAMALHO - OAB/RS 114423). EMENTA TED Nº 2036/2023: APLICAÇÃO DA PENA DE EXCLUSÃO. EXISTÊNCIA DE MAIS DE TRÊS PENAS DE SUSPENSÃO TRA"
+      },
+      {
+        "id": 688910,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Recurso",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 1295,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Processo n. 1101020.00117154/2023-20 – A.F.M. (Adv. ALEF FELIPE MEIER - OAB/RS 109161) x TED - SECCIONAL DO RIO GRANDE DO SUL. EMENTA TED Nº 2189/2023: PEDIDO DE CONSULTA EM TESE. 1. Advogado pode concorrer à cargo público de procurador municipal. 2."
+      },
+      {
+        "id": 688911,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Recurso",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+        "tamanho_texto": 1737,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Processo n. 1101020.00103955/2023-20 – N.S.M. (Adv. NATÁLIA SILVEIRA MODEL - OAB/RS 102928) x TED - SECCIONAL DO RIO GRANDE DO SUL. EMENTA TED Nº 2196/2023: CONSULTA SOBRE PARTIÇÃO DE HONORÁRIOS CONTRATUAIS E SUCUMBENCIAIS DO ADVOGADO PARA COM SEUS C"
+      },
+      {
+        "id": 684351,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Sessão de Julgamento",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO PAUTA DE JULGAMENTO",
+        "tamanho_texto": 1998,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Notifica-se os interessados e advogados a seguir relacionados para tomarem conhecimento que em 6 de fevereiro de 2024 a partir das 13h30min, a 8ª Turma Julgadora do TED reunir-se-á em sessão ordinária de julgamento, em formato híbrido, podendo ser ac"
+      },
+      {
+        "id": 684352,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Sessão de Julgamento",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO PAUTA DE JULGAMENTO",
+        "tamanho_texto": 1950,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Notifica-se os interessados e advogados a seguir relacionados para tomarem conhecimento que em 6 de fevereiro de 2024 a partir das 13h30min, a 8ª Turma Julgadora do TED reunir-se-á em sessão ordinária de julgamento, em formato híbrido, podendo ser ac"
+      },
+      {
+        "id": 684353,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Sessão de Julgamento",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO PAUTA DE JULGAMENTO",
+        "tamanho_texto": 1897,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Notifica-se os interessados e advogados a seguir relacionados para tomarem conhecimento que em 6 de fevereiro de 2024 a partir das 13h30min, a 8ª Turma Julgadora do TED reunir-se-á em sessão ordinária de julgamento, em formato híbrido, podendo ser ac"
+      },
+      {
+        "id": 684354,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Sessão de Julgamento",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "NOTIFICAÇÃO PAUTA DE JULGAMENTO",
+        "tamanho_texto": 1897,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Notifica-se os interessados e advogados a seguir relacionados para tomarem conhecimento que em 6 de fevereiro de 2024 a partir das 13h30min, a 8ª Turma Julgadora do TED reunir-se-á em sessão ordinária de julgamento, em formato híbrido, podendo ser ac"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 22,
+    "uf": "RO",
+    "nome": "Rondônia",
+    "regiao": "Norte",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 717,
+    "total_estimado_ementa": 2937,
+    "total_estimado_ted": 4782,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 41,
+        "ementa": 49,
+        "ted": 88
+      },
+      "2021": {
+        "acordao": 47,
+        "ementa": 72,
+        "ted": 151
+      },
+      "2022": {
+        "acordao": 118,
+        "ementa": 120,
+        "ted": 409
+      },
+      "2023": {
+        "acordao": 90,
+        "ementa": 93,
+        "ted": 441
+      },
+      "2024": {
+        "acordao": 126,
+        "ementa": 125,
+        "ted": 688
+      },
+      "2025": {
+        "acordao": 177,
+        "ementa": 176,
+        "ted": 492
+      },
+      "2026": {
+        "acordao": 118,
+        "ementa": 2302,
+        "ted": 2513
+      }
+    },
+    "setores_identificados": [
+      "Presidência do Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Alegações Finais",
+      "Edital de Chamamento",
+      "Edital de Intimação"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 696720,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Presidência do Tribunal de Ética e Disciplina",
+        "titulo": "EMENTAS E ACÓRDÃOS – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+        "tamanho_texto": 2293,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DE RONDÔNIA  EMENTA E ACORDÃO Nº 001/2024 /TED/OAB/RO  6ª Turma – Julgamento realizado em 24/11/2023  O Tribunal de Ética e Disciplina da OAB/RO torna público que foi julgado a seguinte Processo: nº 22.0000.2"
+      },
+      {
+        "id": 697220,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Presidência do Tribunal de Ética e Disciplina",
+        "titulo": "EMENTAS E ACÓRDÃOS – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+        "tamanho_texto": 2948,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DE RONDÔNIA  EMENTA E ACORDÃO Nº 00 2 /2024 /TED/OAB/RO  5ª Turma – Julgamento realizado em 24/11/2023  O Tribunal de Ética e Disciplina da OAB/RO torna público que foi julgado a seguinte Processo: nº 22.0000"
+      },
+      {
+        "id": 697221,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Presidência do Tribunal de Ética e Disciplina",
+        "titulo": "EMENTAS E ACÓRDÃOS – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+        "tamanho_texto": 1199,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DE RONDÔNIA  EMENTA E ACORDÃO Nº 00 3 /2024 /TED/OAB/RO  4ª Turma – Julgamento realizado em 17/11/2023  O Tribunal de Ética e Disciplina da OAB/RO torna público que foi julgado a seguinte Processo: nº 22.0000"
+      },
+      {
+        "id": 700022,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Presidência do Tribunal de Ética e Disciplina",
+        "titulo": "EMENTAS E ACÓRDÃOS – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+        "tamanho_texto": 2385,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DE RONDÔNIA  EMENTA E ACORDÃO Nº 00 4 /2024 /TED/OAB/RO  Órgão Especial do Tribunal de Ética e Disciplina-Julgamento realizado em: 09/11/2023  O Órgão Especial do Tribunal de Ética e Disciplina da OAB/RO, na "
+      },
+      {
+        "id": 686149,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Intimação",
+        "setor": "Presidência do Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE PRODUÇÃO DE PROVAS –- TED.",
+        "tamanho_texto": 70,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA  PRODUÇÃO DE PROVAS"
+      },
+      {
+        "id": 683517,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Alegações Finais",
+        "setor": "Presidência do Tribunal de Ética e Disciplina",
+        "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA – ALEGAÇÕES FINAIS - TED.",
+        "tamanho_texto": 980,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "ORDEM DO ADVOGADOS DO BRASIL – SECCIONAL DE RONDÔNIA  EDITAL DE NOTIFICAÇÃO - ALEGAÇÕES FINAIS  Processo nº 22.0000.2022.005916-1 . Representado(a): J. S. R . Procurador(a): JUSSARA DOS SANTOS RAMOS - OAB/RO 6758 . De Ordem do relator(a) pelo present"
+      },
+      {
+        "id": 685473,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Chamamento",
+        "setor": "Presidência do Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE CHAMAMENTO –- TED.",
+        "tamanho_texto": 772,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA  EDITAL DE CHAMAMENTO  Pelo presente edital, nos termos do § 3º do artigo 137-D do Regulamento geral da OAB, ficam os(as) advogados(as) abaixo(s) relacionado(s) NOTIFICADOS(AS) a comparecerem nesta S"
+      },
+      {
+        "id": 686102,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Chamamento",
+        "setor": "Presidência do Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE CHAMAMENTO –- TED.",
+        "tamanho_texto": 857,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA  EDITAL DE CHAMAMENTO  Pelo presente edital, nos termos do § 3º do artigo 137-D do Regulamento geral da OAB, ficam os(as) advogados(as) abaixo(s) relacionado(s) NOTIFICADOS(AS) a comparecerem nesta S"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 23,
+    "uf": "RR",
+    "nome": "Roraima",
+    "regiao": "Norte",
+    "viabilidade_imediata": "MÉDIA",
+    "total_estimado_acordao": 29,
+    "total_estimado_ementa": 20,
+    "total_estimado_ted": 6,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 3,
+        "ementa": 2,
+        "ted": 0
+      },
+      "2021": {
+        "acordao": 2,
+        "ementa": 2,
+        "ted": 0
+      },
+      "2022": {
+        "acordao": 5,
+        "ementa": 2,
+        "ted": 2
+      },
+      "2023": {
+        "acordao": 3,
+        "ementa": 2,
+        "ted": 0
+      },
+      "2024": {
+        "acordao": 10,
+        "ementa": 8,
+        "ted": 1
+      },
+      "2025": {
+        "acordao": 4,
+        "ementa": 2,
+        "ted": 3
+      },
+      "2026": {
+        "acordao": 2,
+        "ementa": 2,
+        "ted": 0
+      }
+    },
+    "setores_identificados": [
+      "Gabinete da Presidência",
+      "Primeira Câmara Inscrição de Advogados"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Ata",
+      "Errata",
+      "Resolução"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 725590,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Resolução",
+        "setor": "Primeira Câmara Inscrição de Advogados",
+        "titulo": "TÍTULO I - DOS FINS E ORGANIZAÇÃO",
+        "tamanho_texto": 104380,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Art. 1º O Conselho Seccional de Roraima da Ordem dos Advogados do Brasil, com sede em Boa Vista, exerce as atribuições previstas no Estatuto da Advocacia e da OAB e no Regulamento Geral do Estatuto da Advocacia e da OAB e representa, em juízo e fora "
+      },
+      {
+        "id": 736351,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Primeira Câmara Inscrição de Advogados",
+        "titulo": "Processo Administrativo nº 23.0000.2022.000318-5/TES.",
+        "tamanho_texto": 1018,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Interessados: Ordem dos Advogados do Brasil – Conselho Federal  Ordem dos Advogados do Brasil – Seccional Roraima.  Assunto: Prestação de Contas de 2023.  Relator: Conselheiro Seccional Clayton Silva Albuquerque.  EMENTA: PRESTAÇÃO DE CONTAS 2023. DE"
+      },
+      {
+        "id": 737521,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Errata",
+        "setor": "Primeira Câmara Inscrição de Advogados",
+        "titulo": "E R R A T A",
+        "tamanho_texto": 297,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "A vista da publicação do Acórdão do Processo nº 23.0000.2024.000322-5 do dia 24 de Abril de 2024 na página 197, ano IV nº 1340, retifique-se a aludida publicação como sendo:  Onde se lê: “...Acórdão...”.  Lê-se: “...... ACÓRDÃO FALTANTE, NÃO ANEXADO."
+      },
+      {
+        "id": 737522,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Primeira Câmara Inscrição de Advogados",
+        "titulo": "E R R A T A",
+        "tamanho_texto": 297,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "A vista da publicação do Acórdão do Processo nº 23.0000.2024.000322-5 do dia 24 de Abril de 2024 na página 197, ano IV nº 1340, retifique-se a aludida publicação como sendo:  Onde se lê: “...Acórdão...”.  Lê-se: “...... ACÓRDÃO FALTANTE, NÃO ANEXADO."
+      },
+      {
+        "id": 736350,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Primeira Câmara Inscrição de Advogados",
+        "titulo": "Processo Administrativo nº 23.0000.2024.000322-5.",
+        "tamanho_texto": 6387,
+        "is_acordao": false,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Interessados: Ordem dos Advogados do Brasil – Seccional Roraima.  Caixa de Assistência dos Advogados de Roraima.  Assunto: Prestação de Contas de 2023.  Relator: Conselheiro Seccional Clayton Silva Albuquerque.  EMENTA: PRESTAÇÃO DE CONTAS 2023. DEVE"
+      },
+      {
+        "id": 737967,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Primeira Câmara Inscrição de Advogados",
+        "titulo": "Processo Administrativo nº 23.0000.2023.000322-5/TES.",
+        "tamanho_texto": 1130,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Interessados: Ordem dos Advogados do Brasil – Seccional Roraima.  Caixa de Assistência dos Advogados de Roraima.  Assunto: Prestação de Contas de 2023.  Relator: Clayton Silva Albuquerque – Conselheiro Seccional.  EMENTA: PRESTAÇÃO DE CONTAS 2023. DE"
+      },
+      {
+        "id": 723827,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Ata",
+        "setor": "Primeira Câmara Inscrição de Advogados",
+        "titulo": "ATA 001/2024 TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "tamanho_texto": 4745,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "ATA DA 1ª SESSÃO DE JULGAMENTO DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL - SECCIONAL RORAIMA, REALIZADA EM 22 DE FEVEREIRO DE 2024 .  Aos vinte e dois (22) dias do mês de fevereiro do ano de dois mil e vinte e quatro (2024), "
+      },
+      {
+        "id": 859459,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Resolução",
+        "setor": "Gabinete da Presidência",
+        "titulo": "RESOLUÇÃO N° 01/2025, de 02 de janeiro de 2025.",
+        "tamanho_texto": 10472,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "FIXA ANUIDADE PARA O EXERCÍCIO FINANCEIRO DO ANO DE 2025 E DÁ OUTRAS PROVIDÊNCIAS  O Conselho Seccional de Roraima da Ordem dos Advogados do Brasil, em Sessão Ordinária realizada no dia 05/12/2024, usando das atribuições que lhe são conferidas pelo a"
+      },
+      {
+        "id": 913368,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Gabinete da Presidência",
+        "titulo": "Processo Administrativo nº 23.0000.2025.000339-9.",
+        "tamanho_texto": 1019,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Interessados: Ordem dos Advogados do Brasil – Conselho Federal.  Ordem dos Advogados do Brasil – Seccional Roraima.  Assunto: Prestação de Contas de 2024.  Relator: Conselheiro Seccional Clayton Silva Albuquerque.  EMENTA: PRESTAÇÃO DE CONTAS 2024. D"
+      },
+      {
+        "id": 913369,
+        "termo_busca": "ACORDAO",
+        "ano": 2025,
+        "tipo": "Acórdão",
+        "setor": "Gabinete da Presidência",
+        "titulo": "Processo Administrativo nº 23.0000.2025.000343-7",
+        "tamanho_texto": 1129,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "Interessados: Ordem dos Advogados do Brasil – Seccional Roraima.  Caixa de Assistência dos Advogados de Roraima.  Assunto: Prestação de Contas de 2024.  Relator: Conselheiro Seccional Clayton Silva Albuquerque.  EMENTA: PRESTAÇÃO DE CONTAS 2024. DEVE"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 24,
+    "uf": "SC",
+    "nome": "Santa Catarina",
+    "regiao": "Sul",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 3514,
+    "total_estimado_ementa": 2947,
+    "total_estimado_ted": 6032,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 413,
+        "ementa": 312,
+        "ted": 41
+      },
+      "2021": {
+        "acordao": 529,
+        "ementa": 461,
+        "ted": 480
+      },
+      "2022": {
+        "acordao": 433,
+        "ementa": 351,
+        "ted": 916
+      },
+      "2023": {
+        "acordao": 556,
+        "ementa": 419,
+        "ted": 1295
+      },
+      "2024": {
+        "acordao": 465,
+        "ementa": 391,
+        "ted": 940
+      },
+      "2025": {
+        "acordao": 552,
+        "ementa": 471,
+        "ted": 1207
+      },
+      "2026": {
+        "acordao": 566,
+        "ementa": 542,
+        "ted": 1153
+      }
+    },
+    "setores_identificados": [
+      "Conselho Pleno",
+      "Diretoria",
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Manifestação",
+      "Manifestação para defesa",
+      "Razões Finais",
+      "Recurso"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 686260,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Recurso",
+        "setor": "Conselho Pleno",
+        "titulo": "RECURSO",
+        "tamanho_texto": 1621,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A Primeira Turma do Conselho da Ordem dos Advogados do Brasil - Seção de Santa Catarina notifica o(a) Advogado(a) Liamara de Farias OAB/SC 29317, procuradora de Silvia Nella Istre, para, querendo, no prazo de 15(quinze) dias úteis, contados a partir "
+      },
+      {
+        "id": 686845,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Recurso",
+        "setor": "Conselho Pleno",
+        "titulo": "RECURSO",
+        "tamanho_texto": 1797,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A Segunda Turma do Conselho da Ordem dos Advogados do Brasil - Seção de Santa Catarina notifica o(a) Advogado(a) A.J.Z. (Alberto José Zerbato OAB/SC 52603), defensor dativo André Felipe Carbonari OAB/SC 60214, para, querendo, no prazo de 15(quinze) d"
+      },
+      {
+        "id": 686846,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Recurso",
+        "setor": "Conselho Pleno",
+        "titulo": "RECURSO",
+        "tamanho_texto": 1816,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A Segunda Turma do Conselho da Ordem dos Advogados do Brasil - Seção de Santa Catarina notifica o(a) Advogado(a) Frederico Augusto Auad De Gomes OAB/GO 14680, Pedro Rafael De Moura Meireles OAB/GO 22459, procuradores de A.L.S.M. (Ana Lucia Silveira M"
+      },
+      {
+        "id": 686922,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Recurso",
+        "setor": "Conselho Pleno",
+        "titulo": "RECURSO",
+        "tamanho_texto": 1473,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "A Primeira Turma do Conselho da Ordem dos Advogados do Brasil - Seção de Santa Catarina notifica o(a) Advogado(a) Giancarlo Castelan (OAB/SC 7082), Paulo Cesar Schmitt (OAB/SC 25638) e Luiz Guilherme Zanella Castelan (OAB/SC 52382), procuradores de R"
+      },
+      {
+        "id": 688734,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Manifestação",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "MANIFESTAÇÃO",
+        "tamanho_texto": 4310,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A Ordem dos Advogados do Brasil Seccional de Santa Catarina notifica os advogados a seguir relacionados para que, no prazo de quinze dias úteis, prestem suas manifestações nos processos em referência: O pedido deve ser consultado pelo site da OAB/SC:"
+      },
+      {
+        "id": 689518,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Manifestação para defesa",
+        "setor": "Diretoria",
+        "titulo": "MANIFESTAÇÃO PARA DEFESA",
+        "tamanho_texto": 792,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A OAB/SC por sua Subseção de Itajaí notifica o advogado Gustavo Cabral OAB/SC 51019 para contatar a Sede da Subseção de Itajaí para tratar de assunto de seu interesse dos autos nº 1112 /2023 , conforme art. 59, § 3º e § 4º do CED. Os autos podem ser "
+      },
+      {
+        "id": 689542,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Manifestação para defesa",
+        "setor": "Diretoria",
+        "titulo": "MANIFESTAÇÃO PARA DEFESA",
+        "tamanho_texto": 792,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A OAB/SC por sua Subseção de Itajaí notifica o advogado Gustavo Cabral OAB/SC 51019 para contatar a Sede da Subseção de Itajaí para tratar de assunto de seu interesse dos autos nº 1112 /2023 , conforme art. 59, § 3º e § 4º do CED. Os autos podem ser "
+      },
+      {
+        "id": 689528,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Razões Finais",
+        "setor": "Diretoria",
+        "titulo": "RAZÕES FINAIS",
+        "tamanho_texto": 801,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "A OAB/SC por sua 23° Subseção de Jaraguá do Sul, notifica o Advogado M.C.S e L.M.A.L ( Por seus advogados Marciano Cruz da Silva OAB/SC 37.047 e Lucas Matheus de Arruda Leal OAB/SC 60.774) Par a cumprir o disposto no § 8º do Artigo 59 CED, autos 90/2"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 25,
+    "uf": "SP",
+    "nome": "São Paulo",
+    "regiao": "Sudeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 41298,
+    "total_estimado_ementa": 36282,
+    "total_estimado_ted": 236766,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 3571,
+        "ementa": 2613,
+        "ted": 19629
+      },
+      "2021": {
+        "acordao": 5172,
+        "ementa": 4136,
+        "ted": 19687
+      },
+      "2022": {
+        "acordao": 6113,
+        "ementa": 4905,
+        "ted": 26993
+      },
+      "2023": {
+        "acordao": 6871,
+        "ementa": 6546,
+        "ted": 40484
+      },
+      "2024": {
+        "acordao": 6893,
+        "ementa": 6407,
+        "ted": 54492
+      },
+      "2025": {
+        "acordao": 6822,
+        "ementa": 6093,
+        "ted": 49075
+      },
+      "2026": {
+        "acordao": 5856,
+        "ementa": 5582,
+        "ted": 26406
+      }
+    },
+    "setores_identificados": [
+      "Tribunal de Ética e Disciplina"
+    ],
+    "tipos_identificados": [
+      "Acórdão",
+      "Edital de Chamamento"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 687936,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "ACÓRDÃO Nº 2645 – VIGÉSIMA TERCEIRA TURMA DISCIPLINAR DO TED",
+        "tamanho_texto": 1351,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "EMENTA:  ADVOCACIA CRIMINAL. LEVAR OBJETO PARA INGRESSO EM PENITENCIÁRIA, SEM A DEVIDA VISTORIA. AUSÊNCIA DE PROVAS DE QUE A REPRESENTADA TINHA CIÊNCIA DE QUE HAVIA PLACAS DE CELULAR E CHIPS DE TELEFONIA NO INTERIOR DAS MULETAS, EIS QUE LOCALIZADO PO"
+      },
+      {
+        "id": 687937,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "ACÓRDÃO Nº 2646 – VIGÉSIMA TERCEIRA TURMA DISCIPLINAR DO TED",
+        "tamanho_texto": 644,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "EMENTA:  EXTINÇÃO DO PROCESSO. AÇÃO REPROPOSTA NA SEQUÊNCIA. DIREITO DO CLIENTE RECONHECIDO. PEDIDO RECONHECIDO PROCEDENTE EM GRAU DE RECURSO. IMPROCEDENCIA. ARQUIVAMENTO.  Vistos, relatados e discutidos estes autos de processo disciplinar nº 23R0001"
+      },
+      {
+        "id": 687938,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "ACÓRDÃO Nº 2647 – VIGÉSIMA TERCEIRA TURMA DISCIPLINAR DO TED",
+        "tamanho_texto": 2018,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "EMENTA:  Recebimento de honorários através de venda de imóvel - Cláusulas expressas no contrato de honorários autorizando a retenção dos honorários consubstanciados no valor da venda - Ausência de locupletamento (inciso XX, art. 34 EAOAB). Negativa d"
+      },
+      {
+        "id": 687939,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Acórdão",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "ACÓRDÃO Nº 2648 – VIGÉSIMA TERCEIRA TURMA DISCIPLINAR DO TED",
+        "tamanho_texto": 1166,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "EMENTA:  Contratação para ajuizamento de ação. Recebimento de valores. Ausência de comprovação de ajuizamento da demanda e prestação de contas dos valores recebidos. Conduta violadora do artigo 34, incisos IX, XI, XX e XXI, art. 34, do EAOAB. Infraçã"
+      },
+      {
+        "id": 685196,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Chamamento",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE CHAMAMENTO – VIGÉSIMA TERCEIRA TURMA DISCIPLINAR DO TED",
+        "tamanho_texto": 732,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "25.0886.2023.007988-0- Pelo presente edital, fica o advogado A.P.N. (AFONSO PACILÉO NETO- OAB/SP 239.824), notificado a manifestar-se em assunto de seu interesse, no prazo de 15 (quinze) dias, a partir desta publicação.  O protocolo deverá ser realiz"
+      },
+      {
+        "id": 685429,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Chamamento",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE CHAMAMENTO – VIGÉSIMA TERCEIRA TURMA DISCIPLINAR DO TED",
+        "tamanho_texto": 536,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "23R0005052019- Pelo presente edital, ficam a advogada I.X.S.A. - (IRACILDA XAVIER DA SILVA ALMEIDA - OAB/SP 275.877) e o patrono RILDO TEIXEIRA - OAB/SP 149.451, cientificados do arquivamento do processo de seus interesses. Ficará disponível o encami"
+      },
+      {
+        "id": 685430,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Chamamento",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE CHAMAMENTO – VIGÉSIMA TERCEIRA TURMA DISCIPLINAR DO TED",
+        "tamanho_texto": 486,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "23R0001642022- Pelo presente edital, fica a advogada F.I.S.S. - (FABRICIA IARA SILVA DOS SANTOS - OAB/SP 274.491), cientificada do arquivamento do processo de seu interesse. Ficará disponível o encaminhamento da íntegra dos autos administrativos às p"
+      },
+      {
+        "id": 685432,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Chamamento",
+        "setor": "Tribunal de Ética e Disciplina",
+        "titulo": "EDITAL DE CHAMAMENTO - SEGUNDA TURMA DISCIPLINAR DO TED",
+        "tamanho_texto": 1123,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "02R0001372020 - Pelo presente edital, ficam os patronos Alexandre Letizio Vieira - OAB/SP 74.304, Alfredo Henrique de Aguirre Rizzo - OAB/SP 142.344, Bruno de Brito Guerreiro - OAB/SP 411.742, Jose Alexandre Manzano Oliani - OAB/SP 151.581, Karina Ro"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 26,
+    "uf": "SE",
+    "nome": "Sergipe",
+    "regiao": "Nordeste",
+    "viabilidade_imediata": "ALTA",
+    "total_estimado_acordao": 1311,
+    "total_estimado_ementa": 1316,
+    "total_estimado_ted": 3065,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 117,
+        "ementa": 113,
+        "ted": 255
+      },
+      "2021": {
+        "acordao": 162,
+        "ementa": 163,
+        "ted": 325
+      },
+      "2022": {
+        "acordao": 131,
+        "ementa": 132,
+        "ted": 425
+      },
+      "2023": {
+        "acordao": 224,
+        "ementa": 224,
+        "ted": 443
+      },
+      "2024": {
+        "acordao": 255,
+        "ementa": 255,
+        "ted": 676
+      },
+      "2025": {
+        "acordao": 188,
+        "ementa": 188,
+        "ted": 493
+      },
+      "2026": {
+        "acordao": 234,
+        "ementa": 241,
+        "ted": 448
+      }
+    },
+    "setores_identificados": [
+      "Gabinete da Presidência",
+      "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+      "TRIBUNAL DE ÉTICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Ementa",
+      "Notificação",
+      "Pauta de Julgamentos"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 685643,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Ementa",
+        "setor": "Gabinete da Presidência",
+        "titulo": "PROCESSO: 26.0000.2023.001995-1",
+        "tamanho_texto": 657,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "PROCESSO : 26.0000.2023.001995-1 REQUERENTE: LETICIA ESTEVES DA COSTA MOTHÉ BARRETO. RELATOR : Conselheiro Gustavo Machado de Sales e Silva. EMENTA: CONVENÇÃO COLETIVA. DIREITO SINDICAL. IRREGULARIDADES FORMAIS E MATERIAIS. AÇÃO ANULATÓRIA. REPRESENT"
+      },
+      {
+        "id": 685644,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Ementa",
+        "setor": "Gabinete da Presidência",
+        "titulo": "PROCESSO: 26.0000.2023.006591-9",
+        "tamanho_texto": 868,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "PROCESSO : 26.0000.2023.006591-9 REQUERENTE: CHARLES ROBERT SOBRAL DONALD. RELATOR : Conselheiro Ricardo Almeida Alves Santos. EMENTA: PEDIDO DE DESAGRAVO PÚBLICO EM FAVOR DO ADVOGADO CHARLES ROBERT SOBRAL DONALD (OAB 5623/SE) EM FACE DO AUDITOR FISC"
+      },
+      {
+        "id": 685646,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Ementa",
+        "setor": "Gabinete da Presidência",
+        "titulo": "PROCESSO: 26.0000.2023.006906-0",
+        "tamanho_texto": 764,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "PROCESSO : 26.0000.2023.006906-0 REQUERENTE: DIRETORIA OAB/SE. RELATOR : Conselheira Marcela Pithon Brito dos Santos Carvalho. EMENTA: ANÁLISE DA CONSTITUCIONALIDADE DO PROJETO DE LEI (PL) Nº 075/2023, DE INICIATIVA DA CHEFE DO EXECUTIVO DO MUNICÍPIO"
+      },
+      {
+        "id": 685647,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Ementa",
+        "setor": "Gabinete da Presidência",
+        "titulo": "PROCESSO: 26.0000.2023.007204-1",
+        "tamanho_texto": 671,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "PROCESSO : 26.0000.2023.007204-1 REQUERENTE: DIRETORIA OAB/SE. RELATOR : Conselheiro Erick Furtado Nunes. EMENTA: PEDIDO DE DELIBERAÇÃO SOBRE POSSIBILIDADE DE AJUIZAMENTO DE AÇÃO CIVIL PÚBLICA PELA OAB/SE PARA GARANTIR O ACESSO DA ADVOCACIA AOS ESTAB"
+      },
+      {
+        "id": 684326,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "PROCESSO Nº 26.0000.2017.004896-1 | INCLUSÃO EM PAUTA DE JULGAMENTO",
+        "tamanho_texto": 1141,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Advogado (a)(s) interessado (a)(s) : MANOEL CAVALCANTE COSTA NETO OAB/SE 8236  Pelo presente, fica(m) notificado(a)(s) o(a)(s) advogado(a)(s) interessado(a)(s), no qual figura(m) como parte(s) e/ou procurador(a)(es)/defensor(a)(es) no processo acima "
+      },
+      {
+        "id": 687008,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "PROCESSO Nº 26.0000.2020.003416-1 | INCLUSÃO EM PAUTA DE JULGAMENTO",
+        "tamanho_texto": 1193,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Advogado (a)(s) interessado (a)(s) : ESDRA SILVA DOS SANTOS - OAB/SE 1045A, FERDINAND GEORGES DE BORBA E D'ALENÇON OAB/RS 100800.  Pelo presente, fica(m) notificado(a)(s) o(a)(s) advogado(a)(s) interessado(a)(s), no qual figura(m) como parte(s) e/ou "
+      },
+      {
+        "id": 687013,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Pauta de Julgamentos",
+        "setor": "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "SESSÃO ORDINÁRIA DA SEGUNDA TURMA – 20/02/2024",
+        "tamanho_texto": 1086,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Os membros integrantes da SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/SE, JADEMIR DE ANDRADE CAMARA DA FONSECA, HELENA MONTEIRO SANTOS BALDO, FRANCISCO TELES DE MENDONÇA NETO, MARCEL COSTA FORTES e JOSÉ DIAS JÚNIOR, reunir-se-ão em Sessão "
+      },
+      {
+        "id": 688774,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Notificação",
+        "setor": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+        "titulo": "PROCESSO 26.0000.2016.000831-3 - NOTIFICAÇÃO PARA CONTRARRAZÕES",
+        "tamanho_texto": 661,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Advogado (a)(s) Interessado(a)(s): PAULO JOSE SILVA SANTOS OAB/SE 9308, VERONICA ALVES DOS SANTOS OAB/SE 9307, ADALBERTO RODRIGUES DA SILVA OAB/SE 9574, JOSEVAN FRANQUETA DE JESUS JUNIOR OAB/SE 9799.  O acesso aos autos se dá através do site da OAB/S"
+      }
+    ]
+  },
+  {
+    "id_organizacao": 27,
+    "uf": "TO",
+    "nome": "Tocantins",
+    "regiao": "Norte",
+    "viabilidade_imediata": "MÉDIA",
+    "total_estimado_acordao": 131,
+    "total_estimado_ementa": 2,
+    "total_estimado_ted": 258,
+    "volume_por_ano": {
+      "2020": {
+        "acordao": 0,
+        "ementa": 0,
+        "ted": 10
+      },
+      "2021": {
+        "acordao": 0,
+        "ementa": 0,
+        "ted": 18
+      },
+      "2022": {
+        "acordao": 0,
+        "ementa": 0,
+        "ted": 9
+      },
+      "2023": {
+        "acordao": 0,
+        "ementa": 0,
+        "ted": 9
+      },
+      "2024": {
+        "acordao": 107,
+        "ementa": 1,
+        "ted": 61
+      },
+      "2025": {
+        "acordao": 1,
+        "ementa": 1,
+        "ted": 47
+      },
+      "2026": {
+        "acordao": 23,
+        "ementa": 0,
+        "ted": 104
+      }
+    },
+    "setores_identificados": [
+      "TRIBUNAL DE ETICA E DISCIPLINA"
+    ],
+    "tipos_identificados": [
+      "Edital de Notificação",
+      "Resolução"
+    ],
+    "publica_acordao_inteiro_teor": true,
+    "publica_ementa": true,
+    "amostras": [
+      {
+        "id": 701742,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital de Notificação",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "EDITAL RESULTADO DE JULGAMENTO.",
+        "tamanho_texto": 868,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 03/08/2020 JULGADORA DO TRIBUNAL DE ÉTICA DISCIPLINA, para conhecimento dos interessados:  Processo nº 1539/2014 : Rel.: Dr (a). Maurício Inovei da Rosa: RTE: Ex Ofício – RDO (S): I.S.D.R. / C.F.D.C. "
+      },
+      {
+        "id": 701861,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital de Notificação",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "EDITAL RESULTADO DE JULGAMENTO.",
+        "tamanho_texto": 1044,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 14 /0 5 /202 1 JULGADORA DO TRIBUNAL DE ÉTICA DISCIPLINA, para conhecimento dos interessados:  Processo nº 1834/2016 : Rel.: Dr (a). Adriano de Oliveira Rezende: RTE: K.R.C. Procurador (a) (s): Keilia"
+      },
+      {
+        "id": 704034,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital de Notificação",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "EDITAL RESULTADO DE JULGAMENTO.",
+        "tamanho_texto": 1586,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 20/08/2021 JULGADORA DO TRIBUNAL DE ÉTICA DISCIPLINA, para conhecimento dos interessados:  Processo nº 1881/2016 : Rel.: Dr (a).Adão Gomes Bastos: RTE: Ex Ofício – RDO (A)(S): D.M.F.D – Procurador (a)"
+      },
+      {
+        "id": 704064,
+        "termo_busca": "ACORDAO",
+        "ano": 2024,
+        "tipo": "Edital de Notificação",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "EDITAL RESULTADO DE JULGAMENTO.",
+        "tamanho_texto": 831,
+        "is_acordao": true,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 06/12/2019 JULGADORA DO TRIBUNAL DE ÉTICA DISCIPLINA, para conhecimento dos interessados:  Processo nº 2681/2017: Rel.: Dr (a).: Renato Carvalho de Ferraz – RTE(s): P.R.E - Procurador (a) (s): Paulo R"
+      },
+      {
+        "id": 708774,
+        "termo_busca": "EMENTA",
+        "ano": 2024,
+        "tipo": "Edital de Notificação",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "EDITAL RESULTADO DE JULGAMENTO.",
+        "tamanho_texto": 2388,
+        "is_acordao": true,
+        "is_ementa": true,
+        "is_notificacao_only": false,
+        "snippet": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO ESPECIAL DE SUSPENSÃO PREVENTIVA DO DIA 26/09/2023 DO TRIBUNAL DE ÉTICA DISCIPLINA DA OAB/TO, para conhecimento dos interessados:  1- Proc. Nº 4046/2023: Rel.: Dr (a). Maurício Ivonei da Rosa: RTE: OAB/TO DE"
+      },
+      {
+        "id": 688748,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Resolução",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "RESOLUÇÃO TED Nº. 02, DE 15 DE DEZEMBRO DE 2023.",
+        "tamanho_texto": 1389,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": false,
+        "snippet": "Dispõe sobre os processos com tramitação prioritária ou em regime de urgência.  A Diretoria do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil – Seccional do Estado do Tocantins, no uso das atribuições que lhe são conferidas pelo Regi"
+      },
+      {
+        "id": 688750,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Resolução",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "RESOLUÇÃO TED Nº. 03, DE 15 DE DEZEMBRO DE 2023.",
+        "tamanho_texto": 2559,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "Dispõe sobre os procedimentos a serem adotados para a realização de notificação das partes.  A Diretoria do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil – Seccional do Estado do Tocantins, no uso das atribuições que lhe são conferi"
+      },
+      {
+        "id": 704036,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Notificação",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "EDITAL DE NOTIFICAÇÃO PARA APRESENTAÇÃO DE RAZÕES FINAIS",
+        "tamanho_texto": 1979,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "NOTIFICAÇÃO  Ficam convocados as partes, a seguir relacionados, para apresentar razões finais, no prazo de 15 (quinze) dias úteis da publicação deste, referente ao processo:  Processo nº 3715/2020 – H.M.P. Procurador (a): Heleneida Maia Pinheiro - OA"
+      },
+      {
+        "id": 708315,
+        "termo_busca": "TED",
+        "ano": 2024,
+        "tipo": "Edital de Notificação",
+        "setor": "TRIBUNAL DE ETICA E DISCIPLINA",
+        "titulo": "EDITAL DE NOTIFICAÇÃO PARA APRESENTAÇÃO DE RAZÕES FINAIS",
+        "tamanho_texto": 723,
+        "is_acordao": false,
+        "is_ementa": false,
+        "is_notificacao_only": true,
+        "snippet": "NOTIFICAÇÃO  Ficam convocados as partes, a seguir relacionados, para apresentar razões finais, no prazo de 15 (quinze) dias úteis da publicação deste, referente ao processo:  Processo n° 3807/2021- M.E.D.J. Procurador(a): Maria Eunice de Jesus. CPF:0"
+      }
+    ]
+  }
+]

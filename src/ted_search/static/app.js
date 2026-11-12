@@ -681,6 +681,41 @@ function buildCitationText(item) {
   }`;
 }
 
+function renderThesaurusBanner(suggestions) {
+  const banner = document.getElementById("thesaurus-banner");
+  const wrap = document.getElementById("thesaurus-chips-wrap");
+  if (!banner || !wrap) return;
+
+  if (!suggestions || suggestions.length === 0) {
+    banner.hidden = true;
+    wrap.innerHTML = "";
+    return;
+  }
+
+  banner.hidden = false;
+  wrap.innerHTML = suggestions
+    .map(
+      (term) =>
+        `<button type="button" class="thesaurus-chip" data-term="${escapeHtml(term)}">${escapeHtml(term)}</button>`
+    )
+    .join("");
+
+  wrap.querySelectorAll(".thesaurus-chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const term = btn.getAttribute("data-term");
+      const qInput = document.getElementById("search-query-input");
+      if (qInput) qInput.value = term;
+      const clearBtn = document.getElementById("clear-query-btn");
+      if (clearBtn) clearBtn.hidden = false;
+      state.q = term;
+      state.page = 1;
+      syncStateToUrl();
+      executeSearch();
+      fetchFacets();
+    });
+  });
+}
+
 async function executeSearch() {
   const listEl = document.getElementById("results-list-container");
   const summaryEl = document.getElementById("results-summary-text");
@@ -692,6 +727,8 @@ async function executeSearch() {
   try {
     const resp = await fetch(`/api/search?${params.toString()}`);
     const data = await resp.json();
+
+    renderThesaurusBanner(data.sinonimos_sugeridos);
 
     // Contexto de escopo no resumo
     let escopoDesc = "em todo o acervo";
@@ -1236,6 +1273,7 @@ function setupEventListeners() {
       const lblInt = document.getElementById("label-toggle-inteiro-teor");
       if (lblInt) lblInt.classList.remove("checked");
 
+      renderThesaurusBanner([]);
       updateScopeUI();
       syncStateToUrl();
       executeSearch();

@@ -76,6 +76,14 @@ def test_sqlite_fts5_search_and_facets(tmp_path: Path):
         assert res["total"] == 1
         assert res["items"][0]["numero_ementa"] == "005/2026/SCA"
         assert "<mark>" in res["items"][0]["ementa_highlighted"]
+        assert any("art. 43" in s for s in res.get("sinonimos_sugeridos", []))
+
+        # 1.1 Teste do Thesaurus disciplinar para Tergiversação
+        from ted_search.db import get_thesaurus_suggestions
+        sugs_tergiversacao = get_thesaurus_suggestions("tergiversação")
+        assert "patrocínio simultâneo" in sugs_tergiversacao
+        assert "patrocínio infiel" in sugs_tergiversacao
+        assert "art. 355" in sugs_tergiversacao
 
         # 2. Busca filtrando por órgão normalizado do legado (1ª Turma da 2ª Câmara)
         res_ptu = search_julgados(conn, orgao="1ª Turma da 2ª Câmara")
