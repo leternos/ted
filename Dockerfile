@@ -4,6 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     TED_DATA_DIR=/app/data \
     TED_DB_PATH=/app/data/ted_jurisprudencia.db \
+    TED_ACCESS_PASSWORD=609099 \
     PORT=8080
 
 WORKDIR /app

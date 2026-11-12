@@ -257,12 +257,33 @@ def test_fastapi_endpoints_national_scope(tmp_path: Path):
     try:
         client = TestClient(app)
 
-        # GET /health
+        # GET /health (público)
         health_resp = client.get("/health")
         assert health_resp.status_code == 200
         assert health_resp.json() == {"status": "ok", "version": "0.3.0"}
 
-        # GET /api/stats
+        # Tentativa de acesso sem autenticação -> 401
+        unauth_resp = client.get("/api/stats")
+        assert unauth_resp.status_code == 401
+        assert "Acesso restrito" in unauth_resp.json()["detail"]
+
+        # Status de autenticação inicial -> authenticated: false
+        status_resp = client.get("/api/auth/status")
+        assert status_resp.status_code == 200
+        assert status_resp.json()["authenticated"] is False
+
+        # Tentativa de login com senha errada -> 401
+        bad_login = client.post("/api/auth/login", json={"password": "wrongpassword"})
+        assert bad_login.status_code == 401
+
+        # Login com a senha correta (609099) -> 200 e recebe cookie
+        login_resp = client.post("/api/auth/login", json={"password": "609099"})
+        assert login_resp.status_code == 200
+        assert login_resp.json()["authenticated"] is True
+        token = login_resp.json()["token"]
+        assert token
+
+        # GET /api/stats (agora autenticado via cookie de sessão)
         stats_resp = client.get("/api/stats")
         assert stats_resp.status_code == 200
         stats = stats_resp.json()
@@ -294,6 +315,15 @@ def test_fastapi_endpoints_national_scope(tmp_path: Path):
         assert facets_data["instancias"]["cfoab"] == 1
         assert facets_data["instancias"]["seccionais"] == 1
         assert facets_data["instancias"]["ted"] == 1
+
+        # POST /api/auth/logout -> encerra sessão
+        logout_resp = client.post("/api/auth/logout")
+        assert logout_resp.status_code == 200
+        assert logout_resp.json()["authenticated"] is False
+
+        # Nova requisição sem cookie -> 401
+        after_logout = client.get("/api/stats")
+        assert after_logout.status_code == 401
     finally:
         cfg_mod.DB_PATH = orig_cfg_db
         api_mod.DB_PATH = orig_api_db

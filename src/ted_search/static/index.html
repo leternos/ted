@@ -11,6 +11,39 @@
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
+  <!-- Modal / Tela de Bloqueio por Senha -->
+  <div id="auth-lock-overlay" class="auth-overlay" hidden>
+    <div class="auth-card">
+      <div class="auth-crest" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+      </div>
+      <h2>Acesso Restrito</h2>
+      <p class="auth-desc">Sistema de Jurisprudência Ético-Disciplinar da OAB (Conselho Federal e 27 Seccionais). Digite a senha para consultar os acórdãos e ementas.</p>
+      <form id="auth-form" class="auth-form" onsubmit="return false;">
+        <div class="auth-input-group">
+          <input type="password" id="auth-password-input" class="auth-input" placeholder="Digite a senha de acesso" autofocus required autocomplete="current-password">
+          <button type="button" id="auth-toggle-pwd" class="auth-toggle-btn" title="Mostrar/ocultar senha" aria-label="Mostrar/ocultar senha">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>
+        </div>
+        <div id="auth-error-msg" class="auth-error" hidden>Senha incorreta. Tente novamente.</div>
+        <button type="submit" id="auth-submit-btn" class="auth-btn">
+          <span>Desbloquear Acesso</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </form>
+      <div class="auth-footer">
+        <span>Ambiente Protegido • OAB Ética e Disciplina</span>
+      </div>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="header-inner">
       <a class="brand-group" href="?" aria-label="Início — todas as bases">
@@ -37,6 +70,10 @@
           <span class="stat-chip-value" id="stat-total-pdfs">—</span>
           <span class="stat-chip-label">PDF inteiro teor</span>
         </div>
+        <button type="button" class="stat-chip stat-chip-btn" id="btn-lock-session" title="Bloquear acesso e exigir senha">
+          <span class="stat-chip-icon">🔒</span>
+          <span class="stat-chip-label">Bloquear</span>
+        </button>
       </div>
     </div>
 

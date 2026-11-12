@@ -8,16 +8,25 @@ import json
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import FileResponse, RedirectResponse, Response
+from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 
 from ted_search.collectors.deoab_sp import html_to_paragraphs, resolve_deoab_pdf_url
 from ted_search.collectors.etica_strapi import (
     enrich_record_from_inteiro_teor,
     extract_text_from_pdf_bytes,
 )
-from ted_search.config import DB_PATH, DEOAB_API_BASE_URL, PDFS_DIR, create_async_http_client
+from ted_search.config import (
+    AUTH_SESSION_COOKIE,
+    AUTH_TOKEN,
+    DB_PATH,
+    DEOAB_API_BASE_URL,
+    PDFS_DIR,
+    TED_ACCESS_PASSWORD,
+    create_async_http_client,
+)
 from ted_search.db import (
     get_connection,
     get_facets,
@@ -31,6 +40,10 @@ from ted_search.db import (
 from contextlib import asynccontextmanager
 
 STATIC_DIR = Path(__file__).resolve().parent / "static"
+
+
+class LoginRequest(BaseModel):
+    password: str
 
 
 @asynccontextmanager
@@ -47,10 +60,85 @@ app = FastAPI(
 )
 
 
+@app.middleware("http")
+async def auth_middleware(request: Request, call_next):
+    """Bloqueia rotas de API sem a senha de acesso configurada."""
+    if not TED_ACCESS_PASSWORD:
+        return await call_next(request)
+
+    path = request.url.path
+    if (
+        path in ("/health", "/", "/favicon.ico")
+        or path.startswith("/static")
+        or path.startswith("/api/auth")
+    ):
+        return await call_next(request)
+
+    token_cookie = request.cookies.get(AUTH_SESSION_COOKIE)
+    token_header = request.headers.get("X-Auth-Token")
+    auth_header = request.headers.get("Authorization", "")
+    bearer_token = auth_header.replace("Bearer ", "").strip() if auth_header.startswith("Bearer ") else ""
+
+    if (
+        (token_cookie and token_cookie == AUTH_TOKEN)
+        or (token_header and token_header == AUTH_TOKEN)
+        or (bearer_token and bearer_token == AUTH_TOKEN)
+    ):
+        return await call_next(request)
+
+    return JSONResponse(
+        status_code=401,
+        content={"detail": "Acesso restrito. Digite a senha para continuar."},
+    )
+
+
 @app.get("/health")
 def healthcheck() -> dict[str, str]:
     """Endpoint de checagem de integridade (liveness/readiness probe para Cloud Run)."""
     return {"status": "ok", "version": "0.3.0"}
+
+
+@app.get("/api/auth/status")
+def auth_status(request: Request) -> dict[str, Any]:
+    """Retorna se a sessão atual está autenticada."""
+    if not TED_ACCESS_PASSWORD:
+        return {"authenticated": True, "required": False}
+
+    token_cookie = request.cookies.get(AUTH_SESSION_COOKIE)
+    token_header = request.headers.get("X-Auth-Token")
+    auth_header = request.headers.get("Authorization", "")
+    bearer_token = auth_header.replace("Bearer ", "").strip() if auth_header.startswith("Bearer ") else ""
+
+    is_auth = bool(
+        (token_cookie and token_cookie == AUTH_TOKEN)
+        or (token_header and token_header == AUTH_TOKEN)
+        or (bearer_token and bearer_token == AUTH_TOKEN)
+    )
+    return {"authenticated": is_auth, "required": True}
+
+
+@app.post("/api/auth/login")
+def auth_login(req: LoginRequest, response: Response) -> dict[str, Any]:
+    """Autentica o usuário com a senha do sistema."""
+    if not TED_ACCESS_PASSWORD or req.password.strip() == TED_ACCESS_PASSWORD:
+        response.set_cookie(
+            key=AUTH_SESSION_COOKIE,
+            value=AUTH_TOKEN,
+            max_age=30 * 24 * 3600,
+            httponly=False,
+            samesite="lax",
+            path="/",
+        )
+        return {"authenticated": True, "token": AUTH_TOKEN}
+    raise HTTPException(status_code=401, detail="Senha incorreta. Tente novamente.")
+
+
+@app.post("/api/auth/logout")
+def auth_logout(response: Response) -> dict[str, Any]:
+    """Encerra a sessão e apaga o cookie de autenticação."""
+    response.delete_cookie(key=AUTH_SESSION_COOKIE, path="/")
+    return {"authenticated": False}
+
 
 
 @app.get("/api/stats")

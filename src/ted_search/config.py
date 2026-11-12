@@ -1,5 +1,4 @@
-"""Configurações, endpoints das APIs oficiais da OAB e caminhos locais."""
-
+import hashlib
 import os
 import ssl
 from pathlib import Path
@@ -12,6 +11,15 @@ DATA_DIR = Path(os.environ.get("TED_DATA_DIR", str(PROJECT_ROOT / "data")))
 RAW_DIR = DATA_DIR / "raw"
 PDFS_DIR = DATA_DIR / "pdfs"
 DB_PATH = Path(os.environ.get("TED_DB_PATH", str(DATA_DIR / "ted_jurisprudencia.db")))
+
+# Autenticação e proteção por senha de acesso ao sistema
+TED_ACCESS_PASSWORD = os.environ.get("TED_ACCESS_PASSWORD", "609099")
+AUTH_SESSION_COOKIE = "ted_auth_session"
+AUTH_TOKEN = (
+    hashlib.sha256(f"ted_session_salt_{TED_ACCESS_PASSWORD}".encode()).hexdigest()
+    if TED_ACCESS_PASSWORD
+    else ""
+)
 
 
 def create_async_http_client(

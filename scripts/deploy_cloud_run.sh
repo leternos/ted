@@ -57,7 +57,7 @@ gcloud run deploy "${SERVICE_NAME}" \
     --max-instances 5 \
     --timeout 300 \
     --port 8080 \
-    --set-env-vars "TED_DATA_DIR=/app/data,TED_DB_PATH=/app/data/ted_jurisprudencia.db"
+    --set-env-vars "TED_DATA_DIR=/app/data,TED_DB_PATH=/app/data/ted_jurisprudencia.db,TED_ACCESS_PASSWORD=609099"
 
 # 6. Obter e exibir a URL pública do serviço
 SERVICE_URL=$(gcloud run services describe "${SERVICE_NAME}" --platform managed --region "${REGION}" --format="value(status.url)")

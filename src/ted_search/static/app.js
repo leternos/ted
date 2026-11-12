@@ -68,6 +68,125 @@ function showToast(msg) {
 }
 
 // =========================================================================
+// AUTENTICAÇÃO E TELA DE BLOQUEIO POR SENHA (609099)
+// =========================================================================
+
+let isAuthenticated = false;
+
+function showLockOverlay() {
+  const overlay = document.getElementById("auth-lock-overlay");
+  const pwdInput = document.getElementById("auth-password-input");
+  const errMsg = document.getElementById("auth-error-msg");
+  if (overlay) overlay.hidden = false;
+  if (errMsg) errMsg.hidden = true;
+  if (pwdInput) {
+    pwdInput.value = "";
+    setTimeout(() => pwdInput.focus(), 120);
+  }
+}
+
+function hideLockOverlay() {
+  const overlay = document.getElementById("auth-lock-overlay");
+  if (overlay) overlay.hidden = true;
+}
+
+async function apiFetch(url, options = {}) {
+  const resp = await fetch(url, options);
+  if (resp.status === 401) {
+    isAuthenticated = false;
+    showLockOverlay();
+    throw new Error("Acesso não autorizado. Informe a senha de acesso.");
+  }
+  return resp;
+}
+
+async function checkAuthStatus() {
+  try {
+    const resp = await fetch("/api/auth/status");
+    if (!resp.ok) {
+      showLockOverlay();
+      return false;
+    }
+    const data = await resp.json();
+    if (!data.required || data.authenticated) {
+      isAuthenticated = true;
+      hideLockOverlay();
+      return true;
+    } else {
+      isAuthenticated = false;
+      showLockOverlay();
+      return false;
+    }
+  } catch (err) {
+    console.warn("Erro ao checar status de autenticação:", err);
+    showLockOverlay();
+    return false;
+  }
+}
+
+async function handleAuthLogin(e) {
+  if (e) e.preventDefault();
+  const pwdInput = document.getElementById("auth-password-input");
+  const errMsg = document.getElementById("auth-error-msg");
+  const submitBtn = document.getElementById("auth-submit-btn");
+  const password = pwdInput ? pwdInput.value : "";
+
+  if (!password) {
+    if (errMsg) {
+      errMsg.textContent = "Por favor, digite a senha de acesso.";
+      errMsg.hidden = false;
+    }
+    return;
+  }
+
+  if (submitBtn) submitBtn.disabled = true;
+  if (errMsg) errMsg.hidden = true;
+
+  try {
+    const resp = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
+
+    if (resp.ok) {
+      isAuthenticated = true;
+      hideLockOverlay();
+      showToast("Acesso desbloqueado com sucesso!");
+      // Carrega os dados da aplicação
+      await Promise.all([loadHeaderStats(), loadSeccionais()]);
+      fetchFacets();
+      executeSearch();
+    } else {
+      if (errMsg) {
+        errMsg.textContent = "Senha incorreta. Tente novamente.";
+        errMsg.hidden = false;
+      }
+      if (pwdInput) {
+        pwdInput.select();
+        pwdInput.focus();
+      }
+    }
+  } catch (err) {
+    if (errMsg) {
+      errMsg.textContent = "Erro na comunicação com o servidor.";
+      errMsg.hidden = false;
+    }
+  } finally {
+    if (submitBtn) submitBtn.disabled = false;
+  }
+}
+
+async function handleAuthLogout() {
+  try {
+    await fetch("/api/auth/logout", { method: "POST" });
+  } catch (_) {}
+  isAuthenticated = false;
+  showLockOverlay();
+  showToast("Sessão bloqueada. Digite a senha para continuar.");
+}
+
+// =========================================================================
 // SINCRONIZAÇÃO DE URL (Permite links compartilháveis e navegação fluida)
 // =========================================================================
 
@@ -175,7 +294,7 @@ function restoreStateFromUrl() {
 
 async function loadHeaderStats() {
   try {
-    const resp = await fetch("/api/stats");
+    const resp = await apiFetch("/api/stats");
     const data = await resp.json();
 
     const elGeral = document.getElementById("stat-total-geral");
@@ -211,7 +330,7 @@ async function loadHeaderStats() {
 
 async function loadSeccionais() {
   try {
-    const resp = await fetch("/api/seccionais");
+    const resp = await apiFetch("/api/seccionais");
     seccionaisData = await resp.json();
     buildSeccionaisMegaMenu(seccionaisData);
     populateSeccionalFilterSelect(seccionaisData);
@@ -521,7 +640,7 @@ async function fetchFacets() {
   });
 
   try {
-    const resp = await fetch(`/api/facets?${params.toString()}`);
+    const resp = await apiFetch(`/api/facets?${params.toString()}`);
     const facets = await resp.json();
 
     renderFacetList("facet-orgaos-list", facets.orgaos, "orgao");
@@ -725,7 +844,7 @@ async function executeSearch() {
   const params = buildSearchParams();
 
   try {
-    const resp = await fetch(`/api/search?${params.toString()}`);
+    const resp = await apiFetch(`/api/search?${params.toString()}`);
     const data = await resp.json();
 
     renderThesaurusBanner(data.sinonimos_sugeridos);
@@ -919,7 +1038,7 @@ async function openJulgadoModal(julgadoId) {
   linksEl.innerHTML = "";
 
   try {
-    const resp = await fetch(`/api/julgado/${encodeURIComponent(julgadoId)}?auto_extract_pdf=true`);
+    const resp = await apiFetch(`/api/julgado/${encodeURIComponent(julgadoId)}?auto_extract_pdf=true`);
     const item = await resp.json();
 
     const isCfoab = !item.id_organizacao || item.id_organizacao === 49;
@@ -1303,6 +1422,25 @@ function setupEventListeners() {
       }
     });
   }
+
+  // 9. Autenticação e Bloqueio por Senha
+  const authForm = document.getElementById("auth-form");
+  if (authForm) {
+    authForm.addEventListener("submit", handleAuthLogin);
+  }
+  const authTogglePwd = document.getElementById("auth-toggle-pwd");
+  if (authTogglePwd) {
+    authTogglePwd.addEventListener("click", () => {
+      const inp = document.getElementById("auth-password-input");
+      if (inp) {
+        inp.type = inp.type === "password" ? "text" : "password";
+      }
+    });
+  }
+  const btnLockSession = document.getElementById("btn-lock-session");
+  if (btnLockSession) {
+    btnLockSession.addEventListener("click", handleAuthLogout);
+  }
 }
 
 // =========================================================================
@@ -1314,11 +1452,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupEventListeners();
   updateScopeUI();
 
-  await Promise.all([
-    loadHeaderStats(),
-    loadSeccionais(),
-  ]);
-
-  fetchFacets();
-  executeSearch();
+  const isAuth = await checkAuthStatus();
+  if (isAuth) {
+    await Promise.all([
+      loadHeaderStats(),
+      loadSeccionais(),
+    ]);
+    fetchFacets();
+    executeSearch();
+  }
 });
