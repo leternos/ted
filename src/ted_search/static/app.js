@@ -881,17 +881,18 @@ async function executeSearch() {
           .map((d) => `<span class="disp-tag" data-disp="${escapeHtml(d)}">${escapeHtml(d)}</span>`)
           .join("");
 
-        const acordaoHtml = item.descricao_acordao
-          ? `<div class="acordao-box"><strong>Acórdão:</strong> ${escapeHtml(item.descricao_acordao)}</div>`
-          : "";
+        let acordaoTexto = (item.descricao_acordao || "").trim();
+        let acordaoHtml = "";
+        if (acordaoTexto) {
+          if (/^ac[oó]rd[aã]o[:\s]/i.test(acordaoTexto)) {
+            acordaoHtml = `<div class="acordao-box">${sanitizeHighlightedHtml(acordaoTexto)}</div>`;
+          } else {
+            acordaoHtml = `<div class="acordao-box"><strong>Acórdão:</strong> ${sanitizeHighlightedHtml(acordaoTexto)}</div>`;
+          }
+        }
 
-        const snippetInteiroTeor =
-          item.tem_inteiro_teor && item.inteiro_teor_snippet
-            ? `<div class="inteiro-teor-preview">
-                 <span class="inteiro-teor-preview-label">Trecho do Inteiro Teor (Relatório, Voto e Acórdão):</span>
-                 ${sanitizeHighlightedHtml(item.inteiro_teor_snippet)}
-               </div>`
-            : "";
+        const ementaTexto = (item.ementa_highlighted || item.descricao_ementa || "").trim();
+        const ementaHtml = ementaTexto ? `<div class="ementa-body">${sanitizeHighlightedHtml(ementaTexto)}</div>` : "";
 
         const hasFullTextOrPdf = item.tem_inteiro_teor || item.pdf_url;
 
@@ -928,9 +929,8 @@ async function executeSearch() {
               ${item.publicacao_str ? `<span class="card-meta-item"><strong>Publicação:</strong> ${escapeHtml(item.publicacao_str)}</span>` : ""}
             </div>
 
-            <div class="ementa-body">${sanitizeHighlightedHtml(item.ementa_highlighted || item.descricao_ementa)}</div>
+            ${ementaHtml}
             ${acordaoHtml}
-            ${snippetInteiroTeor}
             ${dispositivosHtml ? `<div class="dispositivos-row">${dispositivosHtml}</div>` : ""}
 
             <div class="card-actions">

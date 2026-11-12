@@ -18,13 +18,40 @@ def generate():
     with get_connection(DB_PATH) as conn:
         stats = get_global_stats(conn)
         seccionais = get_seccionais_status(conn)
-        # Amostra representativa de CFOAB + Seccionais
-        rows = conn.execute("""
+
+        # Amostra garantida para CADA UMA das 27 Seccionais + CFOAB
+        sampled_items = []
+        seen_ids = set()
+
+        for s in seccionais:
+            uf_id = s["id_organizacao"]
+            s_rows = conn.execute("""
+                SELECT * FROM julgados
+                WHERE id_organizacao = ?
+                ORDER BY (CASE WHEN descricao_acordao IS NOT NULL AND descricao_acordao != '' THEN 1 ELSE 0 END) DESC,
+                         tem_inteiro_teor DESC,
+                         COALESCE(data_decisao, '') DESC
+                LIMIT 15
+            """, (uf_id,)).fetchall()
+            for r in s_rows:
+                rd = dict(r)
+                if rd["id"] not in seen_ids:
+                    seen_ids.add(rd["id"])
+                    sampled_items.append(rd)
+
+        cfoab_rows = conn.execute("""
             SELECT * FROM julgados
-            ORDER BY RANDOM()
-            LIMIT 400
+            WHERE id_organizacao = 49 OR id_organizacao IS NULL
+            ORDER BY COALESCE(data_decisao, '') DESC
+            LIMIT 150
         """).fetchall()
-        items = [dict(r) for r in rows]
+        for r in cfoab_rows:
+            rd = dict(r)
+            if rd["id"] not in seen_ids:
+                seen_ids.add(rd["id"])
+                sampled_items.append(rd)
+
+        items = sampled_items
 
     preview_data = {
         "stats": stats,

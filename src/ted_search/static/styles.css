@@ -961,42 +961,46 @@ html, body {
   font-weight: 600;
 }
 
-/* Texto da Ementa e Acórdão */
+/* Texto da Ementa e Acórdão — Formato Exato Padrão OAB Oficial */
 .ementa-body {
-  font-family: var(--font-serif);
-  font-size: 1.04rem;
-  line-height: 1.68;
-  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5715;
+  color: #262626;
   white-space: pre-line;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.95rem;
+  letter-spacing: -0.01em;
+  word-break: break-word;
 }
 
-.ementa-body mark, .inteiro-teor-preview mark {
-  background-color: var(--highlight-bg);
-  color: var(--highlight-text);
+.ementa-body mark {
+  background-color: #fffb8f;
+  color: #262626;
   padding: 0.05em 0.22em;
-  border-radius: 3px;
+  border-radius: 2px;
   font-weight: 600;
 }
 
 .acordao-box {
-  background: var(--bg-page);
-  border-left: 3px solid var(--accent-primary);
-  padding: 0.7rem 1rem;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 0.86rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.85rem;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-left: 3.5px solid var(--accent-primary);
+  padding: 0.8rem 1.1rem;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5715;
+  color: #595959;
+  margin-bottom: 0.95rem;
+  white-space: pre-line;
 }
 
-.inteiro-teor-preview {
-  background: hsl(152, 35%, 97%);
-  border: 1px solid hsl(152, 35%, 85%);
-  padding: 0.7rem 0.95rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.84rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.85rem;
+.acordao-box mark {
+  background-color: #fffb8f;
+  color: #262626;
+  padding: 0.05em 0.22em;
+  border-radius: 2px;
+  font-weight: 600;
 }
 
 .inteiro-teor-preview-label {
