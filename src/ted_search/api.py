@@ -28,18 +28,29 @@ from ted_search.db import (
     search_julgados,
 )
 
+from contextlib import asynccontextmanager
+
 STATIC_DIR = Path(__file__).resolve().parent / "static"
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db(DB_PATH)
+    yield
+
 
 app = FastAPI(
     title="Jurisprudência Ético-Disciplinar da OAB — CFOAB e Seccionais",
     description="Buscador nacional de jurisprudência ético-disciplinar: Conselho Federal e as 27 Seccionais (TED — 1ª instância e Câmaras Recursais — 2ª instância)",
     version="0.3.0",
+    lifespan=lifespan,
 )
 
 
-@app.on_event("startup")
-def on_startup() -> None:
-    init_db(DB_PATH)
+@app.get("/health")
+def healthcheck() -> dict[str, str]:
+    """Endpoint de checagem de integridade (liveness/readiness probe para Cloud Run)."""
+    return {"status": "ok", "version": "0.3.0"}
 
 
 @app.get("/api/stats")

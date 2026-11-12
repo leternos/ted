@@ -67,25 +67,28 @@ Acesse `http://localhost:8000` para utilizar a interface web ou `http://localhos
 
 ## 3. Publicação no Google Cloud Run
 
-O repositório já inclui o banco SQLite + FTS5 pré-indexado compactado em [`data/ted_jurisprudencia.db.gz`](file:///home/antigravity/leternos/ted/data/ted_jurisprudencia.db.gz) (`~38 MB`, com os `25.222` julgados e índice `BM25` prontos) e um [`Dockerfile`](file:///home/antigravity/leternos/ted/Dockerfile) otimizado que descompacta o banco no build da imagem (custo zero de banco externo e *cold start* instantâneo).
+O repositório já inclui o banco SQLite + FTS5 pré-indexado e compactado em [`data/ted_jurisprudencia.db.gz`](file:///home/antigravity/leternos/ted/data/ted_jurisprudencia.db.gz) com todas as **27 Seccionais do Brasil** e índice `BM25` prontos. O [`Dockerfile`](file:///home/antigravity/leternos/ted/Dockerfile) descompacta o banco durante o build da imagem, proporcionando *cold start* instantâneo sem necessidade de banco de dados externo ou custos adicionais.
 
-### Opção A — Deploy Contínuo pelo Console do Google Cloud (Sem CLI)
-1. Acesse o [Console do Google Cloud Run](https://console.cloud.google.com/run).
-2. Clique em **Create Service** (Criar serviço) → selecione **Continuously deploy from a repository** (Implantar continuamente de um repositório).
-3. Conecte sua conta GitHub e selecione o repositório `leternos/ted` (branch `main`, tipo de build **Dockerfile**).
-4. Em **Authentication**, selecione **Allow unauthenticated invocations** (Permitir invocações não autenticadas).
-5. Em **Container(s), Volumes, Networking, Security**, ajuste a memória para **1 GiB** e clique em **Create**.
-
-### Opção B — Deploy via 1 comando (`gcloud` / Cloud Shell)
-Abra o [Google Cloud Shell](https://shell.cloud.google.com/) ou seu terminal autenticado com `gcloud` e execute:
+### Opção A — Script Automatizado via Cloud Build (Recomendado)
+Não requer Docker instalado na máquina local. O build e push são realizados diretamente nos servidores do Google Cloud:
 
 ```bash
-git clone https://github.com/leternos/ted.git
-cd ted
-gcloud run deploy ted-jurisprudencia \
-  --source . \
-  --region southamerica-east1 \
-  --memory 1Gi \
-  --cpu 1 \
-  --allow-unauthenticated
+# Executável no Linux, Mac ou no Google Cloud Shell:
+./scripts/deploy_cloud_run.sh [SEU_GCP_PROJECT_ID] [REGIAO]
+
+# Exemplo:
+./scripts/deploy_cloud_run.sh dicionario-503613 us-central1
 ```
+
+O script habilita as APIs necessárias (`run.googleapis.com`, `cloudbuild.googleapis.com`), compila o contêiner via Cloud Build, realiza o deploy no Cloud Run com 1 GiB de memória, configura o healthcheck `/health` e imprime a URL pública gerada.
+
+### Opção B — Deploy via GitHub Actions (CI/CD)
+O repositório inclui a pipeline [`.github/workflows/deploy-cloud-run.yml`](file:///home/antigravity/leternos/ted/.github/workflows/deploy-cloud-run.yml).
+Basta configurar o secret `GCP_SA_KEY` nas configurações do GitHub (*Settings → Secrets and variables → Actions*) para disparar o deploy automaticamente ou sob demanda via *Run workflow*.
+
+### Opção C — Deploy pelo Console Web do Google Cloud
+1. Acesse o [Console do Google Cloud Run](https://console.cloud.google.com/run).
+2. Clique em **Create Service** (Criar serviço) → selecione **Continuously deploy from a repository**.
+3. Conecte sua conta GitHub e selecione o repositório `leternos/ted` (branch `main`, tipo de build **Dockerfile**).
+4. Em **Authentication**, selecione **Allow unauthenticated invocations**.
+5. Em **Container(s), Volumes, Networking, Security**, ajuste a memória para **1 GiB** e clique em **Create**.

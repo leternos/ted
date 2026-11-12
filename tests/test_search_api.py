@@ -257,6 +257,11 @@ def test_fastapi_endpoints_national_scope(tmp_path: Path):
     try:
         client = TestClient(app)
 
+        # GET /health
+        health_resp = client.get("/health")
+        assert health_resp.status_code == 200
+        assert health_resp.json() == {"status": "ok", "version": "0.3.0"}
+
         # GET /api/stats
         stats_resp = client.get("/api/stats")
         assert stats_resp.status_code == 200

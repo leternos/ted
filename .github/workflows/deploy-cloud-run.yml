@@ -1,0 +1,46 @@
+name: Deploy to Google Cloud Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_id:
+        description: 'Google Cloud Project ID'
+        required: true
+        default: 'dicionario-503613'
+      region:
+        description: 'Cloud Run Region'
+        required: true
+        default: 'us-central1'
+
+jobs:
+  deploy:
+    name: Build & Deploy to Cloud Run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Google Cloud Auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Build & Push Image via Cloud Build
+        run: |
+          gcloud builds submit --tag gcr.io/${{ github.event.inputs.project_id }}/ted-jurisprudencia:latest .
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy ted-jurisprudencia \
+            --image gcr.io/${{ github.event.inputs.project_id }}/ted-jurisprudencia:latest \
+            --region ${{ github.event.inputs.region }} \
+            --platform managed \
+            --allow-unauthenticated \
+            --memory 1Gi \
+            --cpu 1 \
+            --port 8080 \
+            --timeout 300
