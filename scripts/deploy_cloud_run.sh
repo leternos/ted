@@ -62,13 +62,35 @@ gcloud run deploy "${SERVICE_NAME}" \
 # 6. Obter e exibir a URL pública do serviço
 SERVICE_URL=$(gcloud run services describe "${SERVICE_NAME}" --platform managed --region "${REGION}" --format="value(status.url)")
 
-echo "=================================================================="
-echo "✅ Deploy concluído com sucesso!"
-echo "🌐 URL do Cloud Run: ${SERVICE_URL}"
-echo "🔍 Healthcheck:       ${SERVICE_URL}/health"
-echo "📊 Estatísticas:     ${SERVICE_URL}/api/stats"
-echo "🏛️ Seccionais:       ${SERVICE_URL}/api/seccionais"
+# 7. Fazer deploy no Firebase Hosting (roteando para o Cloud Run)
 echo ""
-echo "💡 Dica: Se quiser apontar o Firebase Hosting (site: ted-oab), execute:"
-echo "   firebase deploy --only hosting"
+echo "🔥 Fazendo deploy no Firebase Hosting (site: ted-oab)..."
+FIREBASE_CMD=""
+if command -v firebase &> /dev/null; then
+    FIREBASE_CMD="firebase"
+elif command -v npx &> /dev/null; then
+    FIREBASE_CMD="npx firebase-tools"
+fi
+
+if [ -n "${FIREBASE_CMD}" ]; then
+    echo "👉 Executando: ${FIREBASE_CMD} deploy --only hosting --project ${PROJECT_ID}"
+    if ${FIREBASE_CMD} deploy --only hosting --project "${PROJECT_ID}"; then
+        echo "✅ Firebase Hosting publicado com sucesso!"
+    else
+        echo "⚠️ Atenção: Se o Firebase solicitar login, execute antes: firebase login"
+    fi
+else
+    echo "ℹ️ Firebase CLI não detectado localmente. Para publicar no Firebase Hosting manualmente:"
+    echo "   npm install -g firebase-tools && firebase login"
+    echo "   firebase deploy --only hosting --project ${PROJECT_ID}"
+fi
+
+echo "=================================================================="
+echo "✅ Deploy concluído!"
+echo "🌐 URL Direta Cloud Run:       ${SERVICE_URL}"
+echo "🔥 URL Firebase Hosting:       https://ted-oab.web.app"
+echo "🔥 URL Alternativa Firebase:   https://ted-oab.firebaseapp.com"
+echo "🔍 Healthcheck:                ${SERVICE_URL}/health"
+echo "📊 Estatísticas:              ${SERVICE_URL}/api/stats"
+echo "🔐 Senha de Acesso:            609099"
 echo "=================================================================="
