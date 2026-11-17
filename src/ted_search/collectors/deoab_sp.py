@@ -1,9 +1,11 @@
-"""Coletor assíncrono para o Piloto da Seccional OAB/SP via API do Diário Eletrônico (DEOAB).
+"""Coletor assíncrono da Seccional OAB/SP via API do Diário Eletrônico (DEOAB).
 
-Coleta os Acórdãos das Turmas Disciplinares do TED (1ª a 27ª Turmas Disciplinares),
-da Turma Deontológica (TED-I) e das Câmaras Recursais (1ª a 9ª Câmaras Recursais)
-publicados pela Seccional São Paulo (idOrganizacao = 25) em diario.oab.org.br,
-priorizando decisões com Acórdão e vinculando o PDF oficial do Inteiro Teor.
+Coleta os Acórdãos das Turmas Disciplinares do TED e das Câmaras Recursais publicados pela
+Seccional São Paulo (idOrganizacao = 25) em diario.oab.org.br, com paginação completa por ano
+e vínculo ao PDF oficial do Inteiro Teor.
+
+As Consultas da 1ª Turma (Deontológica, TED-I) praticamente não aparecem no DEOAB: ficam no ementário
+do site da OAB/SP e não são cobertas por este coletor.
 """
 
 from __future__ import annotations
@@ -11,6 +13,7 @@ from __future__ import annotations
 import asyncio
 import json
 import re
+from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -168,88 +171,209 @@ async def resolve_deoab_pdf_url(materia_id: int | str) -> str | None:
     return None
 
 
+DEOAB_PAGE_SIZE = 10  # a API /diario/pesquisa devolve 10 itens por página, em ordem crescente de data
+DEOAB_SP_YEARS = list(range(2019, 2027))  # o DEOAB começa em 2019 para a OAB/SP
+# "ACORDAO" cobre todos os Acórdãos; "EMENTA" sozinho perde ~6% (acórdãos publicados sem a palavra "ementa")
+DEOAB_SP_SEARCH_TERMS = ("ACORDAO",)
+_DECISION_TYPES = {"ACÓRDÃO", "ACORDAO", "EMENTA"}
+_PUB_KEEP_KEYS = (
+    "id", "titulo", "dataPublicacao", "edicao", "pagina", "ano",
+    "tipoPublicacao", "setorPublicacao", "conteudoCodificado",
+)
+
+
+def _slim_publication(pub: dict[str, Any]) -> dict[str, Any]:
+    """Mantém só os campos usados por normalize_deoab_sp_item (reduz o cache bruto em disco)."""
+    slim = {k: pub.get(k) for k in _PUB_KEEP_KEYS if pub.get(k) is not None}
+    if not slim.get("conteudoCodificado") and pub.get("conteudo"):
+        slim["conteudo"] = pub["conteudo"]
+    return slim
+
+
+async def _get_json_with_retry(client: Any, url: str, params: dict[str, str] | None, sem: asyncio.Semaphore, attempts: int = 5) -> Any:
+    """GET com retentativas e backoff. Devolve None se todas as tentativas falharem (nunca engole em silêncio)."""
+    for attempt in range(attempts):
+        try:
+            async with sem:
+                resp = await client.get(url, params=params)
+            if resp.status_code == 200:
+                return resp.json()
+            if resp.status_code == 404:
+                return {}
+        except Exception:
+            pass
+        await asyncio.sleep(1.5 * (attempt + 1))
+    return None
+
+
+async def fetch_deoab_sp_year(
+    client: Any,
+    year: int,
+    sem: asyncio.Semaphore,
+    raw_dir: Path,
+    terms: tuple[str, ...] = DEOAB_SP_SEARCH_TERMS,
+    max_pages: int | None = None,
+) -> dict[str, Any]:
+    """Coleta TODOS os acórdãos da OAB/SP publicados no DEOAB em um ano (paginação completa, retomável).
+
+    O progresso fica em ``raw_dir/deoab_sp/{year}.index.json`` (ids por dia) e ``{year}.jsonl`` (uma linha
+    por publicação inspecionada); reexecutar retoma de onde parou. ``max_pages`` vira uma AMOSTRA:
+    só a 1ª página de ``max_pages`` dias igualmente espaçados no ano (uso em testes).
+    """
+    out_dir = raw_dir / "deoab_sp"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    jsonl = out_dir / f"{year}.jsonl"
+    inspected: set[int] = set()
+    if jsonl.exists():
+        with jsonl.open(encoding="utf-8") as fh:
+            for line in fh:
+                if line.strip():
+                    inspected.add(int(json.loads(line)["id"]))
+
+    # Busca por janelas de UM DIA: consultas de ano inteiro obrigam o DEOAB a contar milhares de
+    # resultados a cada página (20s+ por requisição sob concorrência); por dia respondem em ~1s.
+    search_url = f"{DEOAB_API_BASE_URL}/diario/pesquisa"
+    index_file = out_dir / f"{year}.index.json"
+    day_index: dict[str, list[int]] = json.loads(index_file.read_text(encoding="utf-8")) if index_file.exists() else {}
+    today = date.today()
+    first_day, last_day = date(year, 1, 1), min(date(year, 12, 31), today)
+    all_days = [first_day + timedelta(days=i) for i in range((last_day - first_day).days + 1)] if last_day >= first_day else []
+    if max_pages and len(all_days) > max_pages:
+        # Amostra: dias igualmente espaçados ao longo do ano (e só a 1ª página de cada um)
+        step = len(all_days) / max_pages
+        all_days = [all_days[int(i * step)] for i in range(max_pages)]
+    # Dias já indexados são reaproveitados, exceto os mais recentes (o Diário ainda pode receber edições)
+    todo_days = [d for d in all_days if d.isoformat() not in day_index or (today - d).days <= 3]
+    expected: dict[str, int] = {}
+    failed_pages: list[tuple[str, int]] = []
+
+    async def _day(d: date) -> None:
+        dstr = d.strftime("%d/%m/%Y")
+        ids: set[int] = set()
+        ok = True
+        for termo in terms:
+            params = {"inicio": dstr, "fim": dstr, "idOrganizacao": "25", "termo": termo}
+            first = await _get_json_with_retry(client, search_url, {**params, "pagina": "1"}, sem)
+            if first is None:
+                failed_pages.append((f"{d.isoformat()} {termo}", 1))
+                ok = False
+                continue
+            total = int(first.get("quantidade") or 0)
+            expected[termo] = expected.get(termo, 0) + total
+            ids.update(int(it["id"]) for it in (first.get("itens") or []) if it.get("id"))
+            n_pages = 1 if max_pages else -(-total // DEOAB_PAGE_SIZE)
+
+            async def _page(p: int, params: dict[str, str] = params, termo: str = termo) -> bool:
+                for _ in range(2):  # página dentro do intervalo esperado não pode vir vazia
+                    data = await _get_json_with_retry(client, search_url, {**params, "pagina": str(p)}, sem)
+                    itens = (data or {}).get("itens") or []
+                    if itens:
+                        ids.update(int(it["id"]) for it in itens if it.get("id"))
+                        return True
+                failed_pages.append((f"{d.isoformat()} {termo}", p))
+                return False
+
+            results = await asyncio.gather(*(_page(p) for p in range(2, n_pages + 1)))
+            ok = ok and all(results)
+        if ok:
+            day_index[d.isoformat()] = sorted(ids)
+
+    chunk = 31
+    for start in range(0, len(todo_days), chunk):
+        await asyncio.gather(*(_day(d) for d in todo_days[start : start + chunk]))
+        index_file.write_text(json.dumps(day_index), encoding="utf-8")
+        print(f"[deoab_sp] {year}: índice {min(start + chunk, len(todo_days))}/{len(todo_days)} dias...", flush=True)
+
+    wanted_days = {d.isoformat() for d in all_days}
+    candidate_ids: set[int] = {i for day, ids in day_index.items() if day in wanted_days for i in ids}
+
+    pending = sorted(candidate_ids - inspected)
+    failed_pubs: list[int] = []
+    lock = asyncio.Lock()
+    with jsonl.open("a", encoding="utf-8") as fh:
+
+        async def _pub(mid: int) -> None:
+            data = await _get_json_with_retry(client, f"{DEOAB_API_BASE_URL}/publicacao/{mid}/publicado", None, sem)
+            if not data:
+                failed_pubs.append(mid)
+                return
+            if isinstance(data.get("objeto"), dict):
+                data = data["objeto"]
+            tipo = ((data.get("tipoPublicacao") or {}).get("descricao") or "").strip()
+            if tipo.upper() in _DECISION_TYPES:
+                row = _slim_publication(data)
+                row["id"] = mid
+            else:
+                row = {"id": mid, "_skip": tipo or "?"}
+            async with lock:
+                fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+        batch = 400
+        for start in range(0, len(pending), batch):
+            await asyncio.gather(*(_pub(mid) for mid in pending[start : start + batch]))
+            fh.flush()
+            print(f"[deoab_sp] {year}: {min(start + batch, len(pending))}/{len(pending)} publicações inspecionadas...", flush=True)
+
+    summary = {
+        "year": year,
+        "esperado_por_termo": expected,
+        "candidatos": len(candidate_ids),
+        "novos_inspecionados": len(pending) - len(failed_pubs),
+        "paginas_com_falha": failed_pages,
+        "publicacoes_com_falha": failed_pubs,
+    }
+    (out_dir / f"{year}.summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    return summary
+
+
+def load_deoab_sp_raw(raw_dir: Path = RAW_DIR, years: list[int] | None = None) -> list[dict[str, Any]]:
+    """Lê os acórdãos já coletados em raw_dir/deoab_sp/*.jsonl (ignora publicações que não são decisão)."""
+    out_dir = raw_dir / "deoab_sp"
+    pubs: dict[int, dict[str, Any]] = {}
+    for year in years or DEOAB_SP_YEARS:
+        jsonl = out_dir / f"{year}.jsonl"
+        if not jsonl.exists():
+            continue
+        with jsonl.open(encoding="utf-8") as fh:
+            for line in fh:
+                if not line.strip():
+                    continue
+                row = json.loads(line)
+                if "_skip" not in row:
+                    pubs[int(row["id"])] = row
+    return sorted(pubs.values(), key=lambda x: x.get("id", 0), reverse=True)
+
+
 async def fetch_deoab_sp_pilot(
-    pages_per_year: int = 12,
+    pages_per_year: int | None = None,
     years: list[int] | None = None,
-    concurrency: int = 20,
+    concurrency: int = 12,
     use_cache: bool = True,
     raw_dir: Path = RAW_DIR,
 ) -> list[dict[str, Any]]:
-    """Coleta acórdãos das Turmas Disciplinares, Deontológicas e Câmaras Recursais da OAB/SP no DEOAB."""
-    raw_dir.mkdir(parents=True, exist_ok=True)
-    cache_file = raw_dir / "deoab_sp_acordaos.json"
-    if use_cache and cache_file.exists():
-        print(f"[cache] Carregando Acórdãos OAB/SP (DEOAB) de {cache_file}...")
-        return json.loads(cache_file.read_text(encoding="utf-8"))
+    """Coleta os acórdãos das Turmas Disciplinares e Câmaras Recursais da OAB/SP no DEOAB.
 
-    target_years = years or [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
-    candidate_ids: list[int] = []
-    seen_ids: set[int] = set()
-    sem = asyncio.Semaphore(concurrency)
-
-    async with create_async_http_client(timeout=25.0) as client:
-        # 1. Buscar páginas de resultados para termo=EMENTA em cada ano + termo=DEONTOLOGICA
-        search_tasks = []
+    Por padrão percorre TODAS as páginas de cada ano (2019 em diante). ``pages_per_year`` > 0 colhe só
+    uma amostra distribuída ao longo do ano (1ª página de N dias igualmente espaçados).
+    Com ``use_cache`` a coleta é retomável: publicações já inspecionadas não são baixadas de novo.
+    """
+    target_years = sorted(years or DEOAB_SP_YEARS)
+    if not use_cache:
         for yr in target_years:
-            for p in range(1, pages_per_year + 1):
-                search_tasks.append((yr, "EMENTA", p))
-        for p in range(1, 9):
-            search_tasks.append((0, "DEONTOLOGICA", p))
+            (raw_dir / "deoab_sp" / f"{yr}.jsonl").unlink(missing_ok=True)
+            (raw_dir / "deoab_sp" / f"{yr}.index.json").unlink(missing_ok=True)
 
-        async def _fetch_search_page(yr: int, termo: str, page: int) -> list[int]:
-            inicio = f"01/01/{yr}" if yr else "01/01/2019"
-            fim = f"31/12/{yr}" if yr else "31/12/2026"
-            params = {
-                "pagina": str(page),
-                "termo": termo,
-                "inicio": inicio,
-                "fim": fim,
-                "idOrganizacao": "25",
-            }
-            async with sem:
-                try:
-                    resp = await client.get(f"{DEOAB_API_BASE_URL}/diario/pesquisa", params=params)
-                    if resp.status_code == 200:
-                        itens = (resp.json() or {}).get("itens") or []
-                        return [int(it["id"]) for it in itens if it.get("id")]
-                except Exception:
-                    pass
-            return []
+    sem = asyncio.Semaphore(concurrency)
+    async with create_async_http_client(timeout=40.0) as client:
+        for yr in target_years:
+            summary = await fetch_deoab_sp_year(client, yr, sem, raw_dir, max_pages=pages_per_year or None)
+            print(
+                f"[deoab_sp] {yr}: {summary['candidatos']} candidatos "
+                f"(esperado {summary['esperado_por_termo']}), "
+                f"{len(summary['paginas_com_falha'])} páginas e {len(summary['publicacoes_com_falha'])} publicações com falha.",
+                flush=True,
+            )
 
-        print(f"[deoab_sp] Listando IDs de acórdãos OAB/SP ({len(search_tasks)} páginas de índice)...")
-        pages_results = await asyncio.gather(*(_fetch_search_page(y, t, p) for y, t, p in search_tasks))
-        for id_list in pages_results:
-            for mid in id_list:
-                if mid not in seen_ids:
-                    seen_ids.add(mid)
-                    candidate_ids.append(mid)
-
-        print(f"[deoab_sp] {len(candidate_ids)} publicações únicas localizadas. Baixando inteiro teor dos Acórdãos...")
-
-        raw_publications: list[dict[str, Any]] = []
-
-        async def _fetch_pub(mid: int) -> None:
-            async with sem:
-                for attempt in range(3):
-                    try:
-                        r = await client.get(f"{DEOAB_API_BASE_URL}/publicacao/{mid}/publicado")
-                        if r.status_code == 200:
-                            pub_data = r.json()
-                            tipo = ((pub_data.get("tipoPublicacao") or {}).get("descricao") or "").upper()
-                            if tipo in {"ACÓRDÃO", "ACORDAO", "EMENTA"}:
-                                raw_publications.append(pub_data)
-                        break
-                    except Exception:
-                        await asyncio.sleep(0.3 * (attempt + 1))
-
-        batch_size = 200
-        for start in range(0, len(candidate_ids), batch_size):
-            chunk = candidate_ids[start : start + batch_size]
-            await asyncio.gather(*(_fetch_pub(mid) for mid in chunk))
-            print(f"[deoab_sp] Progresso: {min(start + batch_size, len(candidate_ids))}/{len(candidate_ids)} inspecionados ({len(raw_publications)} acórdãos válidos)...")
-
-    # Ordenar por ID decrescente para determinismo
-    raw_publications.sort(key=lambda x: x.get("id", 0), reverse=True)
-    cache_file.write_text(json.dumps(raw_publications, ensure_ascii=False), encoding="utf-8")
-    print(f"[deoab_sp] Salvo em {cache_file} ({len(raw_publications)} acórdãos completos da OAB/SP).")
-    return raw_publications
+    pubs = load_deoab_sp_raw(raw_dir, target_years)
+    print(f"[deoab_sp] {len(pubs)} acórdãos da OAB/SP disponíveis em {raw_dir / 'deoab_sp'}.")
+    return pubs

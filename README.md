@@ -45,6 +45,12 @@ uv pip install --python .venv/bin/python -e ".[dev]"
 # Para baixar e indexar o restante dos 1.402 PDFs de inteiro teor:
 .venv/bin/ted-cli sync-pdfs --limit 0 --concurrency 12
 
+# Backfill completo só da OAB/SP no DEOAB (Turmas Disciplinares e Câmaras Recursais, 2019 em diante).
+# Retomável: o progresso fica em data/raw/deoab_sp/ e não toca CFOAB nem as outras Seccionais.
+.venv/bin/ted-cli backfill-sp --concurrency 10
+# Regravar o banco a partir do que já foi baixado, sem acessar a rede:
+.venv/bin/ted-cli backfill-sp --no-collect
+
 # Consultar estatísticas de enriquecimento do banco:
 .venv/bin/ted-cli stats
 ```
@@ -67,7 +73,7 @@ Acesse `http://localhost:8000` para utilizar a interface web ou `http://localhos
 
 ## 3. Publicação no Google Cloud Run
 
-O repositório já inclui o banco SQLite + FTS5 pré-indexado e compactado em [`data/ted_jurisprudencia.db.gz`](file:///home/antigravity/leternos/ted/data/ted_jurisprudencia.db.gz) com todas as **27 Seccionais do Brasil** e índice `BM25` prontos. O [`Dockerfile`](file:///home/antigravity/leternos/ted/Dockerfile) descompacta o banco durante o build da imagem, proporcionando *cold start* instantâneo sem necessidade de banco de dados externo ou custos adicionais.
+O repositório já inclui o banco SQLite + FTS5 pré-indexado e compactado em [`data/ted_jurisprudencia.db.xz`](data/ted_jurisprudencia.db.xz) com todas as **27 Seccionais do Brasil** e índice `BM25` prontos. O [`Dockerfile`](file:///home/antigravity/leternos/ted/Dockerfile) descompacta o banco durante o build da imagem, proporcionando *cold start* instantâneo sem necessidade de banco de dados externo ou custos adicionais.
 
 ### Opção A — Script Automatizado via Cloud Build (Recomendado)
 Não requer Docker instalado na máquina local. O build e push são realizados diretamente nos servidores do Google Cloud:

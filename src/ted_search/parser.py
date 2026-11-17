@@ -162,23 +162,70 @@ def _extract_ordinal_number(text_upper: str, target_word: str) -> int | None:
     return None
 
 
-def detect_orgao_julgador_oabsp(nome_setor: str, titulo: str, text: str) -> tuple[str, str]:
-    """Classifica o Órgão Julgador específico dentro da Seccional OAB/SP (Turmas do TED vs Câmaras Recursais)."""
-    combined = f"{nome_setor} {titulo} {text}".upper()
+# Nome próprio da 1ª Turma do TED/SP (consultiva). Só o NOME DO ÓRGÃO conta: adjetivos soltos
+# ("controle deontológico", "ética profissional") aparecem em qualquer acórdão disciplinar.
+_RE_TURMA_DEONT_SP = re.compile(
+    r"TURMA\s+(?:DE\s+[ÉE]TICA\s+PROFISSIONAL|DEONTOL[ÓO]GICA)|\bTED-I\b"
+)
+# Fórmula decisória em que a própria Turma Deontológica julga (e não é apenas citada como precedente).
+_RE_DECIDE_TURMA_DEONT_SP = re.compile(
+    r"(?:ACORDAM|DECIDEM|DECIDIU|RESOLVEM)\b[^.]{0,120}?"
+    r"TURMA\s+(?:DE\s+[ÉE]TICA\s+PROFISSIONAL|DEONTOL[ÓO]GICA)"
+)
+_RE_CAMARA_RECURSAL_SP = re.compile(r"C[ÂA]MARAS?\s+RECURSA(?:L|IS)")
+_RE_TURMA_DISC_SUFIXO = r"TURMA(?:\s+DISCIPLINAR|\s+DO\s+TRIBUNAL|\s+DO\s+TED)"
 
-    # 1. Turma Deontológica (Consultas Éticas - TED I)
-    if "DEONTOLÓGICA" in combined or "DEONTOLOGICA" in combined or "ÉTICA PROFISSIONAL" in combined:
-        return "OABSP-TDEONT", "OAB/SP - Turma Deontológica (TED-I)"
 
-    # 2. Câmaras Recursais (2ª Instância Seccional OAB/SP - 1ª a 9ª Câmara Recursal)
-    if "CÂMARA RECURSAL" in combined or "CAMARA RECURSAL" in combined or "CÂMARAS RECURSAIS" in combined or "CAMARAS RECURSAIS" in combined:
-        num = _extract_ordinal_number(combined, r"C[ÂA]MARA\s+RECURSAL")
+def _classify_oabsp_segment(segment_upper: str) -> tuple[str, str] | None:
+    """Classifica um trecho que NOMEIA o órgão (cabeçalho ou fórmula decisória). None se inconclusivo."""
+    if _RE_CAMARA_RECURSAL_SP.search(segment_upper):
+        num = _extract_ordinal_number(segment_upper, r"C[ÂA]MARA\s+RECURSAL")
         if num and 1 <= num <= 12:
             return f"OABSP-{num}CR", f"OAB/SP - {num}ª Câmara Recursal"
         return "OABSP-CR", "OAB/SP - Câmaras Recursais"
+    num_td = _extract_ordinal_number(segment_upper, _RE_TURMA_DISC_SUFIXO)
+    if num_td:
+        return f"OABSP-{num_td}TD", f"OAB/SP - {num_td}ª Turma Disciplinar (TED)"
+    if _RE_TURMA_DEONT_SP.search(segment_upper):
+        return "OABSP-TDEONT", "OAB/SP - Turma Deontológica (TED-I)"
+    return None
 
-    # 3. Turmas Disciplinares do TED (1ª Instância OAB/SP - 1ª a 27ª Turma Disciplinar)
-    num_td = _extract_ordinal_number(combined, r"TURMA(?:\s+DISCIPLINAR|\s+DO\s+TRIBUNAL)")
+
+def detect_orgao_julgador_oabsp(nome_setor: str, titulo: str, text: str) -> tuple[str, str]:
+    """Classifica o Órgão Julgador específico dentro da Seccional OAB/SP (Turmas do TED vs Câmaras Recursais).
+
+    Ordem de confiança: (1) cabeçalho estruturado (setor + título da publicação);
+    (2) fórmula decisória da Turma Deontológica; (3) texto completo.
+    A Turma Deontológica nunca é inferida de uma menção solta no corpo do acórdão.
+    """
+    header = f"{nome_setor} {titulo}".upper()
+    body = (text or "").upper()
+
+    # 1. Cabeçalho: quando o setor/título nomeia o órgão, ele prevalece sobre qualquer menção no texto
+    found = _classify_oabsp_segment(header)
+    if found and found[0] != "OABSP-CR":
+        return found
+    if found:
+        # Setor genérico "Câmaras Recursais": a instância é certa, o número vem do corpo do acórdão
+        num = _extract_ordinal_number(body, r"C[ÂA]MARA\s+RECURSAL")
+        if num and 1 <= num <= 12:
+            return f"OABSP-{num}CR", f"OAB/SP - {num}ª Câmara Recursal"
+        return found
+
+    if "CONSELHO PLENO" in header:
+        return "OABSP-PLENO", "OAB/SP - Conselho Pleno"
+
+    # 2. Turma Deontológica (Consultas Éticas - TED I): só quando ela mesma decide
+    if _RE_DECIDE_TURMA_DEONT_SP.search(body):
+        return "OABSP-TDEONT", "OAB/SP - Turma Deontológica (TED-I)"
+
+    # 3. Texto completo: Câmaras Recursais (2ª instância) e Turmas Disciplinares (1ª instância)
+    if _RE_CAMARA_RECURSAL_SP.search(body):
+        num = _extract_ordinal_number(body, r"C[ÂA]MARA\s+RECURSAL")
+        if num and 1 <= num <= 12:
+            return f"OABSP-{num}CR", f"OAB/SP - {num}ª Câmara Recursal"
+        return "OABSP-CR", "OAB/SP - Câmaras Recursais"
+    num_td = _extract_ordinal_number(body, _RE_TURMA_DISC_SUFIXO)
     if num_td:
         return f"OABSP-{num_td}TD", f"OAB/SP - {num_td}ª Turma Disciplinar (TED)"
 

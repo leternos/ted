@@ -40,7 +40,7 @@ jobs:
             --region ${{ github.event.inputs.region }} \
             --platform managed \
             --allow-unauthenticated \
-            --memory 1Gi \
+            --memory 2Gi \
             --cpu 1 \
             --port 8080 \
             --timeout 300 \
