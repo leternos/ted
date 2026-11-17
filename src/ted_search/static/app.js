@@ -71,7 +71,28 @@ function showToast(msg) {
 // AUTENTICAÇÃO E TELA DE BLOQUEIO POR SENHA (609099)
 // =========================================================================
 
+const AUTH_TOKEN_STORAGE_KEY = "ted_auth_token";
 let isAuthenticated = false;
+
+function getStoredAuthToken() {
+  try {
+    return localStorage.getItem(AUTH_TOKEN_STORAGE_KEY) || "";
+  } catch (_) {
+    return "";
+  }
+}
+
+function setStoredAuthToken(token) {
+  try {
+    if (token) localStorage.setItem(AUTH_TOKEN_STORAGE_KEY, token);
+    else localStorage.removeItem(AUTH_TOKEN_STORAGE_KEY);
+  } catch (_) {}
+}
+
+function withAuthHeaders(headers = {}) {
+  const token = getStoredAuthToken();
+  return token ? { ...headers, "X-Auth-Token": token } : { ...headers };
+}
 
 function showLockOverlay() {
   const overlay = document.getElementById("auth-lock-overlay");
@@ -91,9 +112,15 @@ function hideLockOverlay() {
 }
 
 async function apiFetch(url, options = {}) {
-  const resp = await fetch(url, options);
+  const mergedOptions = {
+    credentials: "same-origin",
+    ...options,
+    headers: withAuthHeaders(options.headers || {}),
+  };
+  const resp = await fetch(url, mergedOptions);
   if (resp.status === 401) {
     isAuthenticated = false;
+    setStoredAuthToken("");
     showLockOverlay();
     throw new Error("Acesso não autorizado. Informe a senha de acesso.");
   }
@@ -102,7 +129,10 @@ async function apiFetch(url, options = {}) {
 
 async function checkAuthStatus() {
   try {
-    const resp = await fetch("/api/auth/status");
+    const resp = await fetch("/api/auth/status", {
+      credentials: "same-origin",
+      headers: withAuthHeaders(),
+    });
     if (!resp.ok) {
       showLockOverlay();
       return false;
@@ -114,6 +144,7 @@ async function checkAuthStatus() {
       return true;
     } else {
       isAuthenticated = false;
+      setStoredAuthToken("");
       showLockOverlay();
       return false;
     }
@@ -145,11 +176,14 @@ async function handleAuthLogin(e) {
   try {
     const resp = await fetch("/api/auth/login", {
       method: "POST",
+      credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password }),
     });
 
     if (resp.ok) {
+      const loginData = await resp.json().catch(() => ({}));
+      if (loginData.token) setStoredAuthToken(loginData.token);
       isAuthenticated = true;
       hideLockOverlay();
       showToast("Acesso desbloqueado com sucesso!");
@@ -179,8 +213,13 @@ async function handleAuthLogin(e) {
 
 async function handleAuthLogout() {
   try {
-    await fetch("/api/auth/logout", { method: "POST" });
+    await fetch("/api/auth/logout", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: withAuthHeaders(),
+    });
   } catch (_) {}
+  setStoredAuthToken("");
   isAuthenticated = false;
   showLockOverlay();
   showToast("Sessão bloqueada. Digite a senha para continuar.");

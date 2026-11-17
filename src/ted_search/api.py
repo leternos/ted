@@ -19,6 +19,7 @@ from ted_search.collectors.etica_strapi import (
     extract_text_from_pdf_bytes,
 )
 from ted_search.config import (
+    AUTH_LEGACY_SESSION_COOKIE,
     AUTH_SESSION_COOKIE,
     AUTH_TOKEN,
     DB_PATH,
@@ -60,35 +61,57 @@ app = FastAPI(
 )
 
 
+def _is_request_authenticated(request: Request) -> bool:
+    """Valida a sessão via cookie __session (compatível com Firebase Hosting), cookie legado ou header."""
+    if not TED_ACCESS_PASSWORD:
+        return True
+
+    token_cookie = (
+        request.cookies.get(AUTH_SESSION_COOKIE)
+        or request.cookies.get(AUTH_LEGACY_SESSION_COOKIE)
+    )
+    token_header = request.headers.get("X-Auth-Token")
+    auth_header = request.headers.get("Authorization", "")
+    bearer_token = (
+        auth_header.replace("Bearer ", "").strip()
+        if auth_header.startswith("Bearer ")
+        else ""
+    )
+
+    return bool(
+        (token_cookie and token_cookie == AUTH_TOKEN)
+        or (token_header and token_header == AUTH_TOKEN)
+        or (bearer_token and bearer_token == AUTH_TOKEN)
+    )
+
+
 @app.middleware("http")
 async def auth_middleware(request: Request, call_next):
     """Bloqueia rotas de API sem a senha de acesso configurada."""
+    path = request.url.path
     if not TED_ACCESS_PASSWORD:
         return await call_next(request)
 
-    path = request.url.path
     if (
         path in ("/health", "/", "/favicon.ico")
         or path.startswith("/static")
         or path.startswith("/api/auth")
     ):
-        return await call_next(request)
+        response = await call_next(request)
+        if path.startswith("/api/auth"):
+            response.headers["Cache-Control"] = "private, no-store"
+        return response
 
-    token_cookie = request.cookies.get(AUTH_SESSION_COOKIE)
-    token_header = request.headers.get("X-Auth-Token")
-    auth_header = request.headers.get("Authorization", "")
-    bearer_token = auth_header.replace("Bearer ", "").strip() if auth_header.startswith("Bearer ") else ""
-
-    if (
-        (token_cookie and token_cookie == AUTH_TOKEN)
-        or (token_header and token_header == AUTH_TOKEN)
-        or (bearer_token and bearer_token == AUTH_TOKEN)
-    ):
-        return await call_next(request)
+    if _is_request_authenticated(request):
+        response = await call_next(request)
+        if path.startswith("/api/"):
+            response.headers["Cache-Control"] = "private, no-store"
+        return response
 
     return JSONResponse(
         status_code=401,
         content={"detail": "Acesso restrito. Digite a senha para continuar."},
+        headers={"Cache-Control": "private, no-store"},
     )
 
 
@@ -103,18 +126,7 @@ def auth_status(request: Request) -> dict[str, Any]:
     """Retorna se a sessão atual está autenticada."""
     if not TED_ACCESS_PASSWORD:
         return {"authenticated": True, "required": False}
-
-    token_cookie = request.cookies.get(AUTH_SESSION_COOKIE)
-    token_header = request.headers.get("X-Auth-Token")
-    auth_header = request.headers.get("Authorization", "")
-    bearer_token = auth_header.replace("Bearer ", "").strip() if auth_header.startswith("Bearer ") else ""
-
-    is_auth = bool(
-        (token_cookie and token_cookie == AUTH_TOKEN)
-        or (token_header and token_header == AUTH_TOKEN)
-        or (bearer_token and bearer_token == AUTH_TOKEN)
-    )
-    return {"authenticated": is_auth, "required": True}
+    return {"authenticated": _is_request_authenticated(request), "required": True}
 
 
 @app.post("/api/auth/login")
@@ -137,6 +149,7 @@ def auth_login(req: LoginRequest, response: Response) -> dict[str, Any]:
 def auth_logout(response: Response) -> dict[str, Any]:
     """Encerra a sessão e apaga o cookie de autenticação."""
     response.delete_cookie(key=AUTH_SESSION_COOKIE, path="/")
+    response.delete_cookie(key=AUTH_LEGACY_SESSION_COOKIE, path="/")
     return {"authenticated": False}
 
 

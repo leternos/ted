@@ -13,8 +13,10 @@ PDFS_DIR = DATA_DIR / "pdfs"
 DB_PATH = Path(os.environ.get("TED_DB_PATH", str(DATA_DIR / "ted_jurisprudencia.db")))
 
 # Autenticação e proteção por senha de acesso ao sistema
+# Firebase Hosting só encaminha ao Cloud Run o cookie reservado "__session"
 TED_ACCESS_PASSWORD = os.environ.get("TED_ACCESS_PASSWORD", "609099")
-AUTH_SESSION_COOKIE = "ted_auth_session"
+AUTH_SESSION_COOKIE = "__session"
+AUTH_LEGACY_SESSION_COOKIE = "ted_auth_session"
 AUTH_TOKEN = (
     hashlib.sha256(f"ted_session_salt_{TED_ACCESS_PASSWORD}".encode()).hexdigest()
     if TED_ACCESS_PASSWORD
