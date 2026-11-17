@@ -8,7 +8,9 @@ import json
 import time
 
 from ted_search.collectors.deoab_sp import (
+    DEOAB_SP_YEARS,
     fetch_deoab_sp_pilot,
+    load_deoab_sp_raw,
     normalize_deoab_sp_item,
 )
 from ted_search.collectors.etica_strapi import (
@@ -21,8 +23,9 @@ from ted_search.collectors.oab_juris import (
     fetch_context_all_pages,
     normalize_oab_juris_item,
 )
-from ted_search.config import DB_PATH, OAB_JURIS_CONTEXTS
+from ted_search.config import DB_PATH, OAB_JURIS_CONTEXTS, RAW_DIR
 from ted_search.db import get_connection, get_global_stats, init_db, rebuild_fts
+from ted_search.parser import detect_orgao_julgador_oabsp
 
 
 def _insert_record(conn, rec: dict) -> None:
@@ -59,7 +62,7 @@ def _insert_record(conn, rec: dict) -> None:
 async def run_backfill(
     use_cache: bool = True,
     sync_pdfs_limit: int | None = 150,
-    sp_pages_per_year: int = 12,
+    sp_pages_per_year: int | None = None,
     concurrency: int = 15,
 ) -> None:
     t0 = time.perf_counter()
@@ -76,7 +79,7 @@ async def run_backfill(
     # 3. Coletar Piloto Seccional OAB/SP (Turmas Disciplinares, Deontológica e Câmaras Recursais via DEOAB)
     deoab_sp_raw = await fetch_deoab_sp_pilot(
         pages_per_year=sp_pages_per_year,
-        concurrency=concurrency,
+        concurrency=min(concurrency, 14),
         use_cache=use_cache,
     )
 
@@ -188,6 +191,102 @@ async def run_backfill(
     print(json.dumps(stats, indent=2, ensure_ascii=False))
 
 
+async def run_backfill_sp(
+    years: list[int] | None = None,
+    pages_per_year: int | None = None,
+    concurrency: int = 12,
+    use_cache: bool = True,
+    collect: bool = True,
+) -> dict:
+    """Backfill completo e isolado da OAB/SP no DEOAB: só toca registros de São Paulo.
+
+    1. Coleta (ou relê do cache) todos os acórdãos de SP dos anos pedidos;
+    2. Substitui os registros DEOAB_SP desses anos pelos recém-normalizados;
+    3. Reclassifica o órgão julgador dos registros OAB_JURIS da Seccional SP com o parser atual;
+    4. Reconstrói o índice FTS5.
+    """
+    t0 = time.perf_counter()
+    target_years = sorted(years or DEOAB_SP_YEARS)
+    init_db(DB_PATH)
+
+    if collect:
+        pubs = await fetch_deoab_sp_pilot(
+            pages_per_year=pages_per_year, years=target_years, concurrency=concurrency, use_cache=use_cache
+        )
+    else:
+        pubs = load_deoab_sp_raw(RAW_DIR, target_years)
+    if not pubs:
+        raise SystemExit("[backfill-sp] Nenhum acórdão coletado; banco não foi alterado.")
+
+    recs = [r for r in (normalize_deoab_sp_item(p) for p in pubs) if r]
+    report = {"anos": target_years, "publicacoes_coletadas": len(pubs), "normalizadas": len(recs)}
+
+    with get_connection(DB_PATH) as conn:
+        with conn:
+            juris_by_diario = {
+                r["diario_url"]: r["id"]
+                for r in conn.execute(
+                    "SELECT id, diario_url FROM julgados WHERE fonte != 'DEOAB_SP' AND id_organizacao = 25 AND diario_url IS NOT NULL"
+                )
+            }
+            marks = ",".join("?" * len(target_years))
+            conn.execute(
+                f"DELETE FROM julgado_dispositivos WHERE julgado_id IN "
+                f"(SELECT id FROM julgados WHERE fonte = 'DEOAB_SP' AND ano_ementa IN ({marks}))",
+                target_years,
+            )
+            removed = conn.execute(
+                f"DELETE FROM julgados WHERE fonte = 'DEOAB_SP' AND ano_ementa IN ({marks})", target_years
+            ).rowcount
+
+            inserted = merged = 0
+            for rec in recs:
+                existing_id = juris_by_diario.get(rec["diario_url"])
+                if existing_id:
+                    # Mesma publicação já veio do OAB Jurisprudência: mantém o registro estruturado e garante o teor
+                    conn.execute(
+                        "UPDATE julgados SET inteiro_teor_texto = COALESCE(NULLIF(inteiro_teor_texto, ''), ?), "
+                        "tem_inteiro_teor = 1, pdf_url = COALESCE(pdf_url, ?) WHERE id = ?",
+                        (rec["inteiro_teor_texto"], rec["pdf_url"], existing_id),
+                    )
+                    merged += 1
+                else:
+                    _insert_record(conn, rec)
+                    inserted += 1
+
+            relabeled = 0
+            rows = conn.execute(
+                "SELECT id, orgao_julgador_raw, numero_ementa, descricao_ementa, descricao_acordao, sigla_orgao "
+                "FROM julgados WHERE fonte != 'DEOAB_SP' AND id_organizacao = 25"
+            ).fetchall()
+            for r in rows:
+                raw = r["orgao_julgador_raw"] or ""
+                setor = raw.split(" / ", 1)[1] if " / " in raw else ""
+                text = f"{r['descricao_ementa'] or ''}\n{r['descricao_acordao'] or ''}"
+                sigla, norm = detect_orgao_julgador_oabsp(setor, r["numero_ementa"] or "", text)
+                if sigla != r["sigla_orgao"]:
+                    conn.execute(
+                        "UPDATE julgados SET sigla_orgao = ?, orgao_julgador_norm = ? WHERE id = ?", (sigla, norm, r["id"])
+                    )
+                    relabeled += 1
+
+            print("[backfill-sp] Reconstruindo índice FTS5...")
+            rebuild_fts(conn)
+        conn.execute("VACUUM")
+
+    report.update(
+        {
+            "deoab_sp_removidos": removed,
+            "deoab_sp_inseridos": inserted,
+            "fundidos_com_oab_juris": merged,
+            "oab_juris_sp_reclassificados": relabeled,
+            "segundos": round(time.perf_counter() - t0, 1),
+        }
+    )
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return report
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="CLI do Buscador de Jurisprudências CFOAB & Seccionais (Piloto OAB/SP)")
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -203,14 +302,21 @@ def main() -> None:
     p_bf.add_argument(
         "--sp-pages-per-year",
         type=int,
-        default=12,
-        help="Páginas de busca por ano (2019-2026) no DEOAB para o Piloto OAB/SP",
+        default=0,
+        help="Amostra da OAB/SP no DEOAB: 1ª página de N dias espaçados por ano (0 = coleta completa)",
     )
     p_bf.add_argument("--concurrency", type=int, default=15, help="Concorrência nas requisições assíncronas")
 
     p_pdf = sub.add_parser("sync-pdfs", help="Baixa e extrai o texto integral dos PDFs de acórdãos")
     p_pdf.add_argument("--limit", type=int, default=0, help="Limite de PDFs (0 = todos os pendentes)")
     p_pdf.add_argument("--concurrency", type=int, default=12, help="Concorrência de download")
+
+    p_sp = sub.add_parser("backfill-sp", help="Backfill completo só da OAB/SP no DEOAB (retomável; não toca CFOAB nem outras Seccionais)")
+    p_sp.add_argument("--years", type=str, default="", help="Anos separados por vírgula (padrão: 2019 em diante)")
+    p_sp.add_argument("--pages-per-year", type=int, default=0, help="Amostra: 1ª página de N dias espaçados por ano (0 = coleta completa)")
+    p_sp.add_argument("--concurrency", type=int, default=12, help="Concorrência nas requisições ao DEOAB")
+    p_sp.add_argument("--no-cache", action="store_true", help="Descarta data/raw/deoab_sp/ e baixa tudo de novo")
+    p_sp.add_argument("--no-collect", action="store_true", help="Não acessa a rede: regrava o banco a partir de data/raw/deoab_sp/")
 
     sub.add_parser("stats", help="Exibe estatísticas completas do banco de dados e enriquecimento")
 
@@ -227,8 +333,18 @@ def main() -> None:
             run_backfill(
                 use_cache=not args.no_cache,
                 sync_pdfs_limit=pdf_lim,
-                sp_pages_per_year=args.sp_pages_per_year,
+                sp_pages_per_year=args.sp_pages_per_year or None,
                 concurrency=args.concurrency,
+            )
+        )
+    elif args.cmd == "backfill-sp":
+        asyncio.run(
+            run_backfill_sp(
+                years=[int(y) for y in args.years.split(",") if y.strip()] or None,
+                pages_per_year=args.pages_per_year or None,
+                concurrency=args.concurrency,
+                use_cache=not args.no_cache,
+                collect=not args.no_collect,
             )
         )
     elif args.cmd == "collect-seccionais":

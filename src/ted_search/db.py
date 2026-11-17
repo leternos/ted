@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import gzip
+import lzma
 import json
 import re
 import shutil
@@ -85,10 +86,14 @@ CREATE VIRTUAL TABLE IF NOT EXISTS julgados_fts USING fts5(
 
 def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    gz_path = db_path.with_name(f"{db_path.name}.gz")
-    if (not db_path.exists() or db_path.stat().st_size == 0) and gz_path.exists():
-        with gzip.open(gz_path, "rb") as f_in, open(db_path, "wb") as f_out:
-            shutil.copyfileobj(f_in, f_out)
+    if not db_path.exists() or db_path.stat().st_size == 0:
+        # Banco pré-indexado versionado no repositório: .xz (atual) ou .gz (legado)
+        for suffix, opener in ((".xz", lzma.open), (".gz", gzip.open)):
+            packed = db_path.with_name(f"{db_path.name}{suffix}")
+            if packed.exists():
+                with opener(packed, "rb") as f_in, open(db_path, "wb") as f_out:
+                    shutil.copyfileobj(f_in, f_out, length=1024 * 1024)
+                break
     conn = sqlite3.connect(str(db_path))
     conn.row_factory = sqlite3.Row
     return conn

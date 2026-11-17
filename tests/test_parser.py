@@ -180,3 +180,68 @@ def test_ocr_cleaner_repairs():
     assert "não conhecimento do acórdão" in cleaned
 
 
+
+
+def test_oabsp_deontologica_nao_e_inferida_de_mencao_solta():
+    """Regressão: acórdãos disciplinares citando 'deontológica' / 'ética profissional' não são consultas."""
+    from ted_search.collectors.deoab_sp import normalize_deoab_sp_item
+    from ted_search.parser import detect_orgao_julgador_oabsp
+
+    # Adjetivo solto no corpo de acórdão de Turma Disciplinar (cabeçalho nomeia o órgão)
+    sigla, _ = detect_orgao_julgador_oabsp(
+        "Tribunal de Ética e Disciplina",
+        "ACÓRDÃO Nº 11152 – SEGUNDA TURMA DISCIPLINAR DO TED",
+        "EMENTA: REPRESENTAÇÃO. NÃO SIGNIFICA IMUNIDADE AO CONTROLE DEONTOLÓGICO DO ÓRGÃO DE CLASSE.",
+    )
+    assert sigla == "OABSP-2TD"
+
+    # Turma Deontológica citada como precedente, julgamento pela 4ª Turma Disciplinar
+    sigla, _ = detect_orgao_julgador_oabsp(
+        "Tribunal de Ética e Disciplina",
+        "ACÓRDÃO No 9873 - QUARTA TURMA DISCIPLINAR DO TED",
+        "Conforme entendimento pacificado da C. Primeira Turma Deontológica deste Tribunal de Ética e Disciplina.",
+    )
+    assert sigla == "OABSP-4TD"
+
+    # Câmara Recursal (OAB Jurisprudência) com "ÉTICA PROFISSIONAL" na ementa
+    sigla, _ = detect_orgao_julgador(
+        {"idOrganizacao": 25, "nomeOrganizacao": "Conselho Seccional - São Paulo", "nomeSetor": "Terceira Câmara Recursal"},
+        None,
+        "ÉTICA PROFISSIONAL – ADVOGADO – PESSOA IDOSA E VULNERÁVEL – DESÍDIA NA CONDUÇÃO DO PROCESSO.",
+    )
+    assert sigla == "OABSP-3CR"
+
+    # Setor genérico "Câmaras Recursais": número vem do corpo, mesmo com "via deontológica" no texto
+    sigla, _ = detect_orgao_julgador_oabsp(
+        "Câmaras Recursais",
+        "CÂMARAS RECURSAIS – ACÓRDÃO",
+        "INCOMPETÊNCIA DA VIA DEONTOLÓGICA. Acordam os membros da Quarta Câmara Recursal, por unanimidade.",
+    )
+    assert sigla == "OABSP-4CR"
+
+    # Título "17ª Turma do TED Campinas" identifica a Turma Disciplinar
+    sigla, _ = detect_orgao_julgador_oabsp(
+        "Tribunal de Ética e Disciplina", "ACÓRDÃO Nº 2503 – 17ª Turma do TED Campinas", "EMENTA: REPRESENTAÇÃO."
+    )
+    assert sigla == "OABSP-17TD"
+
+    # Publicação disciplinar completa não pode virar EMENTA_CONSULTA
+    norm = normalize_deoab_sp_item(
+        {
+            "id": 1163741,
+            "titulo": "ACÓRDÃO Nº 11152 – SEGUNDA TURMA DISCIPLINAR DO TED",
+            "dataPublicacao": "2026-09-29T00:00:00",
+            "setorPublicacao": {"nomeAlternativo": "Tribunal de Ética e Disciplina"},
+            "tipoPublicacao": {"descricao": "Acórdão"},
+            "conteudoCodificado": (
+                "<p>EMENTA: REPRESENTAÇÃO ÉTICO-DISCIPLINAR. OFENSAS DIRIGIDAS A COLEGA. "
+                "IMUNIDADE QUE NÃO AFASTA O CONTROLE DEONTOLÓGICO DO ÓRGÃO DE CLASSE. ÉTICA PROFISSIONAL.</p>"
+                "<p>Vistos, relatados e discutidos estes autos, acordam os membros da Segunda Turma Disciplinar "
+                "do Tribunal de Ética e Disciplina, por unanimidade, em julgar procedente a representação.</p>"
+            ),
+        }
+    )
+    assert norm is not None
+    assert norm["sigla_orgao"] == "OABSP-2TD"
+    assert norm["contexto"] == "EMENTA"
+    assert norm["tipo_ementa"] == "PROCESSO_DISCIPLINAR"
