@@ -9,7 +9,7 @@ const state = {
   esfera: "TODAS", // "TODAS" | "CFOAB" | "SECCIONAIS"
   seccional: "", // UF (ex: "SP", "SE")
   instancia: "", // "" | "TED" | "RECURSAL"
-  apenas_com_acordao: true,
+  apenas_com_acordao: false,
   apenas_inteiro_teor: false,
   apenas_ted: false,
   contexto: "",
@@ -243,7 +243,6 @@ function syncStateToUrl() {
   setOrDel("esfera", state.esfera, "TODAS");
   setOrDel("seccional", state.seccional);
   setOrDel("instancia", state.instancia);
-  setOrDel("acordao", state.apenas_com_acordao ? "" : "0");
   setOrDel("inteiro", state.apenas_inteiro_teor ? "1" : "");
   setOrDel("ted", state.apenas_ted ? "1" : "");
   setOrDel("orgao", state.orgao);
@@ -268,7 +267,6 @@ function restoreStateFromUrl() {
   if (p.has("esfera")) state.esfera = p.get("esfera").toUpperCase();
   if (p.has("seccional")) state.seccional = p.get("seccional").toUpperCase();
   if (p.has("instancia")) state.instancia = p.get("instancia").toUpperCase();
-  if (p.has("acordao")) state.apenas_com_acordao = p.get("acordao") !== "0";
   if (p.has("inteiro")) state.apenas_inteiro_teor = p.get("inteiro") === "1";
   if (p.has("ted")) state.apenas_ted = p.get("ted") === "1";
   if (p.has("orgao")) state.orgao = p.get("orgao");
@@ -294,10 +292,6 @@ function restoreStateFromUrl() {
     const clearBtn = document.getElementById("clear-query-btn");
     if (clearBtn) clearBtn.hidden = false;
   }
-  const chkAcordao = document.getElementById("toggle-apenas-acordao");
-  if (chkAcordao) chkAcordao.checked = state.apenas_com_acordao;
-  const lblAcordao = document.getElementById("label-toggle-acordao");
-  if (lblAcordao) lblAcordao.classList.toggle("checked", state.apenas_com_acordao);
 
   const chkInteiro = document.getElementById("toggle-apenas-inteiro-teor");
   if (chkInteiro) chkInteiro.checked = state.apenas_inteiro_teor;
@@ -1277,7 +1271,6 @@ function setupEventListeners() {
       fetchFacets();
     });
   };
-  bindToggle("toggle-apenas-acordao", "label-toggle-acordao", "apenas_com_acordao");
   bindToggle("toggle-apenas-ted", "label-toggle-ted", "apenas_ted");
   bindToggle("toggle-apenas-inteiro-teor", "label-toggle-inteiro-teor", "apenas_inteiro_teor");
 
@@ -1398,7 +1391,7 @@ function setupEventListeners() {
       state.numero_processo = "";
       state.numero_ementa = "";
       state.apenas_ted = false;
-      state.apenas_com_acordao = true;
+      state.apenas_com_acordao = false;
       state.apenas_inteiro_teor = false;
       state.page = 1;
 
@@ -1415,11 +1408,6 @@ function setupEventListeners() {
       if (fAnoFim) fAnoFim.value = "";
       const fProc = document.getElementById("filter-processo");
       if (fProc) fProc.value = "";
-
-      const chkAc = document.getElementById("toggle-apenas-acordao");
-      if (chkAc) chkAc.checked = true;
-      const lblAc = document.getElementById("label-toggle-acordao");
-      if (lblAc) lblAc.classList.add("checked");
 
       const chkTed = document.getElementById("toggle-apenas-ted");
       if (chkTed) chkTed.checked = false;
