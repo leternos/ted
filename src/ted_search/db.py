@@ -94,7 +94,7 @@ def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
                 with opener(packed, "rb") as f_in, open(db_path, "wb") as f_out:
                     shutil.copyfileobj(f_in, f_out, length=1024 * 1024)
                 break
-    conn = sqlite3.connect(str(db_path))
+    conn = sqlite3.connect(str(db_path), timeout=120)  # agentes da varredura escrevem em paralelo
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -122,6 +122,8 @@ def rebuild_fts(conn: sqlite3.Connection) -> None:
         FROM julgados;
         """
     )
+    # Funde os segmentos e descarta as marcas de exclusão: sem isso o índice fica ~3x maior a cada reconstrução
+    conn.execute("INSERT INTO julgados_fts(julgados_fts) VALUES('optimize');")
 
 
 DISCIPLINARY_THESAURUS: dict[str, list[str]] = {

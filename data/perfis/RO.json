@@ -1,0 +1,356 @@
+{
+  "uf": "RO",
+  "id_organizacao": 22,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "ACORDAO",
+    "ACÓRDÃO",
+    "EMENTA",
+    "EMENTA E ACORDÃO"
+  ],
+  "validado": false,
+  "evidencia": {
+    "gerado_em": "2026-11-18T03:17:22Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-15",
+        "publicacoes": 35,
+        "baixadas": 35
+      },
+      {
+        "dia": "2019-02-18",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2020-10-16",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2022-09-05",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2023-04-24",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2024-07-08",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2025-02-26",
+        "publicacoes": 21,
+        "baixadas": 21
+      },
+      {
+        "dia": "2025-06-20",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2025-07-01",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2026-03-04",
+        "publicacoes": 11,
+        "baixadas": 11
+      }
+    ],
+    "decisoes_no_censo": 18,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 0.3889,
+      "JULGAMENTO": 0.9444,
+      "RECURSO": 0.2222
+    },
+    "tipos": {
+      "Portaria": {
+        "publicacoes": 62,
+        "parecem_decisao": 0,
+        "setores": {
+          "Presidência": 32,
+          "Diretoria": 30
+        },
+        "amostras": [
+          {
+            "id": 436,
+            "titulo": "PORTARIA DE NOMEAÇÃO – OAB SUBSEÇÃO CACOAL.",
+            "trecho": "Portaria OAB/PN Nº 01/2019 Cacoal, 09 de janeiro de 2019. Nomeia o Presidente da Comissão de Prerrogativas da Subseção de Cacoal. O presidente da Ordem dos Advogados do Brasil, Subseção de Cacoal – RO, no uso de suas atribuições legais e regimentais, RESOLVE: "
+          },
+          {
+            "id": 452,
+            "titulo": "PORTARIA DE NOMEAÇÃO – OAB SUBSEÇÃO CACOAL.",
+            "trecho": "Portaria OAB/PN Nº 02/2019 Cacoal, 09 de janeiro de 2019. Nomeia a Presidente da Comissão da Mulher Advogada da Subseção de Cacoal. O presidente da Ordem dos Advogados do Brasil, Subseção de Cacoal – RO, no uso de suas atribuições legais e regimentais, RESOLVE"
+          },
+          {
+            "id": 453,
+            "titulo": "PORTARIA DE NOMEAÇÃO – OAB SUBSEÇÃO CACOAL.",
+            "trecho": "Portaria OAB/PN Nº 03/2019 Cacoal, 09 de janeiro de 2019. Nomeia o Presidente da Comissão do Jovem Advogado da Subseção de Cacoal. O presidente da Ordem dos Advogados do Brasil, Subseção de Cacoal – RO, no uso de suas atribuições legais e regimentais, RESOLVE:"
+          }
+        ]
+      },
+      "Edital de Intimação": {
+        "publicacoes": 16,
+        "parecem_decisao": 0,
+        "setores": {
+          "Presidência do Tribunal de Ética e Disciplina": 14,
+          "Conselho Pleno": 2
+        },
+        "amostras": [
+          {
+            "id": 563847,
+            "titulo": "EDITAL DE INTIMAÇÃO/NOTIFICAÇÃO - AUDIÊNCIA DE INSTRUÇÃO.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA Processo nº: 22.0000.2019.010489-4 . Representado: C.J.S.D . Procurador(a): Cristian Jose De Sousa Delgado OAB/RO 4.600. De Ordem do relator(a) pelo presente Edital, NOTIFICAMOS o Senhor advogado, acima na qua"
+          },
+          {
+            "id": 563849,
+            "titulo": "EDITAL DE PRODUÇÃO DE PROVAS –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA PRODUÇÃO DE PROVAS"
+          },
+          {
+            "id": 564029,
+            "titulo": "EDITAL DE INTIMAÇÃO/NOTIFICAÇÃO - AUDIÊNCIA DE INSTRUÇÃO.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA Processo nº 22.0000.2019.003347-4. Representante/ Procurador: OSMIR JOSE LORENSSETTI OAB/RO 6646. Representado(a): J. S. S. F. Procurador(a): JECSAN SALATIEL SABAINI FERNANDES, 2505/RO. De Ordem do relator(a) "
+          }
+        ]
+      },
+      "Alegações Finais": {
+        "publicacoes": 10,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ètica e Disciplina": 6,
+          "Presidência do Tribunal de Ética e Disciplina": 4
+        },
+        "amostras": [
+          {
+            "id": 479888,
+            "titulo": "INTIMAÇÃO PARA ALEGAÇÕES FINAIS-TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA INTIMAÇÃO PARA ALEGAÇÕES FINAIS Processo nº 22.0000.2018.007396-8.Representado(a): J.J.I. Procurador(a): Juliano Junqueira Ignacio OAB/RO 3552 De Ordem do relator(a) pelo presente Edital, NOTIFICAMOS o(a) Senh"
+          },
+          {
+            "id": 479889,
+            "titulo": "INTIMAÇÃO PARA ALEGAÇÕES FINAIS-TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA INTIMAÇÃO PARA ALEGAÇÕES FINAIS Processo nº 22.0000.2017.003716-8. Representado(a): A.F.B.D.M.M. Procurador(a): Andreia Fernanda Barbosa De Mello Marques OAB/RO 3167. Representado(a): J.M.J. Procurador(a): Jur"
+          },
+          {
+            "id": 479897,
+            "titulo": "INTIMAÇÃO PARA ALEGAÇÕES FINAIS-TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA INTIMAÇÃO PARA ALEGAÇÕES FINAIS Processo nº 22.0000.2017.005674-6. Representado(a): F.K. Procurador(a): Flavio Kloos OAB/RO 4537. De Ordem do relator(a) pelo presente Edital, NOTIFICAMOS o(a) Senhor(a) advogad"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 8,
+        "parecem_decisao": 6,
+        "setores": {
+          "Tribunal de Ètica e Disciplina": 4,
+          "Conselho Pleno": 3,
+          "Presidência do Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 556,
+            "titulo": "EMENTA E ACÓRDÃO PROC. 22.0000.2017.005425-9 – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE RONDÔNIA TRIBUNAL DE ÉTICA E DISCIPLINA EMENTA E ACÓRDÃO Julgamento Realizado em: 23/11/2018 Processos nº 22.0000.2017.005425-9 (antigo 084/2015) Representante: Ex-officio Representado: C. F. R. D. – OAB/RO 1514 Relator: "
+          },
+          {
+            "id": 4223,
+            "titulo": "EMENTA E ACÓRDÃO – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE RONDÔNIA TRIBUNAL DE ÉTICA E DISCIPLINA EMENTA E ACÓRDÃO JULGAMENTOS DAS TURMAS 1ª TURMA Processo Nº 22.0000.2018.005268-0 Representante: Ex-officio nº 1634/2013 2º JIJ Representado: A. S. C. AOB/RO 2656 Relator: Mary Ter"
+          },
+          {
+            "id": 4224,
+            "titulo": "ERRATA- EMENTA PROC. 22.0000.2018.002735-0– TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA ERRATA – EMENTA Nº 01/2019 NO PROCESSO PUBLICADO NO DIÁRIO ELETRÔNICO DA OAB ANO I - EDIÇÃO Nº 28 PÁGINA 60 QUINTA-FEIRA, 07 DE FEVEREIRO DE 2019 NO RELATOR ONDE SE LÊ: Relator: Douglas Tadeu Chiqueti OAB/RO 3"
+          }
+        ]
+      },
+      "Edital de Chamamento": {
+        "publicacoes": 8,
+        "parecem_decisao": 0,
+        "setores": {
+          "Presidência do Tribunal de Ética e Disciplina": 6,
+          "Tribunal de Ètica e Disciplina": 2
+        },
+        "amostras": [
+          {
+            "id": 479900,
+            "titulo": "EDITAL DE DEFESA PRÉVIA –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA Edital de Chamamento Defesa Previa Pelo presente edital, nos termos do § 3º do artigo 137-D do Regulamento geral da OAB, ficam os(as) advogados(as) abaixo(s) relacionado(s) NOTIFICADOS(AS) a comparecerem nesta"
+          },
+          {
+            "id": 479904,
+            "titulo": "EDITAL DE DEFESA PRÉVIA –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA Edital de Chamamento Defesa Previa Pelo presente edital, nos termos do § 3º do artigo 137-D do Regulamento geral da OAB, ficam os(as) advogados(as) abaixo(s) relacionado(s) NOTIFICADOS(AS) a comparecerem nesta"
+          },
+          {
+            "id": 768943,
+            "titulo": "EDITAL DE CHAMAMENTO –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA EDITAL DE CHAMAMENTO Pelo presente edital, nos termos do § 3º do artigo 137-D do Regulamento geral da OAB, ficam os(as) advogados(as) abaixo(s) relacionado(s) NOTIFICADOS(AS) a comparecerem nesta Seccional na "
+          }
+        ]
+      },
+      "Ementa e Acordão": {
+        "publicacoes": 8,
+        "parecem_decisao": 8,
+        "setores": {
+          "Presidência do Tribunal de Ética e Disciplina": 8
+        },
+        "amostras": [
+          {
+            "id": 769517,
+            "titulo": "EMENTAS E ACÓRDÃOS – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DE RONDÔNIA EDITAL Nº 0 2 2 /2024 Órgão Especial – Julgamento realizado em 02/07/2024 O Tribunal de Ética e Disciplina da OAB/RO torna público que foi julgado a seguinte Processo: nº 22.0000.2023.002486-7. Representado"
+          },
+          {
+            "id": 933787,
+            "titulo": "ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DE RONDÔNIA",
+            "trecho": "EMENTA E ACÓRDÃO Nº 02 9 /2025/TED/OAB/RO 5 ª Turma do Tribunal de Ética e Disciplina da OAB/RO – Julgamento realizado em 30 /05/2025. O Tribunal de Ética e Disciplina da OAB/RO torna público que foi julgado o seguinte Processo: nº 22 .0000.2021.007015-0 . Rep"
+          },
+          {
+            "id": 933865,
+            "titulo": "ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DE RONDÔNIA",
+            "trecho": "EMENTA E ACÓRDÃO Nº 0 30 /2025/TED/OAB/RO 5 ª Turma do Tribunal de Ética e Disciplina da OAB/RO – Julgamento realizado em 30 /05/2025. O Tribunal de Ética e Disciplina da OAB/RO torna público que foi julgado o seguinte Processo: nº 22 . 0000.2019.013650-8 . Re"
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 6,
+        "parecem_decisao": 1,
+        "setores": {
+          "Tribunal de Ètica e Disciplina": 4,
+          "Conselho Pleno": 1,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 479797,
+            "titulo": "EDITAL LISTA SÊXTUPLA TRE/RO– SECRETARIA DO PLENO.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASI L SECCIONAL RONDÔNIA LISTA SÊXTUPLA DESTINADA AO PREENCHIMENTO DE VAGA DE MEMBRO TITULAR DO EGRÉGIO TRIBUNAL REGIONAL ELEITORAL DE RONDÔNIA. O Presidente da Ordem dos Advogados do Brasil - Seccional Rondônia, no uso de suas atribui"
+          },
+          {
+            "id": 479826,
+            "titulo": "EDITAL DE INSCRIÇÃO – OAB SUBSEÇÃO CACOAL.",
+            "trecho": "EDITAL PARA INSCRIÇÃO EM LISTA PÚBLICA – ADVOGADO DATIVO PARA ATUAR PERANTE O JUIZADO ESPECIAL CRIMINAL E TRIBUNAL REGIONAL ELEITORAL QUE ATENDAM EM REGIME DE PLANTÃO NA SEMANA DAS ELEIÇÕES Pelo presente EDITAL o Presidente da OAB Subseção de Cacoal informa qu"
+          },
+          {
+            "id": 479846,
+            "titulo": "EDITAL DE NOTIFICAÇÃO – PRODUÇÃO DE PROVAS -TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA EDITAL PRODUÇÃO DE PROVAS Processo n. 22.0000.2018.006439-3. Representado: J.R.D.S. Procurador: JAEDSON REZENDE DOS SANTOS 2.325 /RO. De Ordem do senhor(a) relator(a) pelo presente Edital, NOTIFICAMOS o(a) Sen"
+          }
+        ]
+      },
+      "Comunicado": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Seleção e habilitação": 3
+        },
+        "amostras": [
+          {
+            "id": 4123,
+            "titulo": "COMUNICADO DE INSCRIÇÃO – SETOR DE SELEÇÃO DE HABILITAÇÃO.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE RONDÔNIA COMUNICADO nº 00 4 /2019/SSH Edital de inscrição A Ordem dos Advogados do Brasil, em Rondônia comunica as autoridades em geral e a quem interessar, que foram inscritos ORIGINARIAMENTE nesta Seccional os advog"
+          },
+          {
+            "id": 4124,
+            "titulo": "COMUNICADO DE LICENCIAMENTO – SETOR DE SELEÇÃO DE HABILITAÇÃO.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE RONDÔNIA COMUNICADO nº 00 4 /2019/SSH Edital de licenciamento A Ordem dos Advogados do Brasil, em Rondônia, com base nos termos do Art. 12 da Lei 8.906/94 EAOAB, comunica aos interessados, as autoridades em geral e a "
+          },
+          {
+            "id": 4125,
+            "titulo": "COMUNICADO DE CANCELAMENTO – SETOR DE SELEÇÃO DE HABILITAÇÃO.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE RONDÔNIA COMUNICADO nº 00 4 /2019/SSH Edital de cancelamento A Ordem dos Advogados do Brasil, em Rondônia, com base nos termos do Art. 11 da Lei 8.906/94 EAOAB, comunica aos interessados, as autoridades em geral e a q"
+          }
+        ]
+      },
+      "Intimação Produção de Provas": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Presidência do Tribunal de Ética e Disciplina": 3
+        },
+        "amostras": [
+          {
+            "id": 768942,
+            "titulo": "EDITAL DE PRODUÇÃO DE PROVAS –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA PRODUÇÃO DE PROVAS"
+          },
+          {
+            "id": 769008,
+            "titulo": "EDITAL DE PRODUÇÃO DE PROVAS –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA PRODUÇÃO DE PROVAS"
+          },
+          {
+            "id": 877720,
+            "titulo": "EDITAL DE PRODUÇÃO DE PROVAS –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA PRODUÇÃO DE PROVAS"
+          }
+        ]
+      },
+      "Ementa": {
+        "publicacoes": 2,
+        "parecem_decisao": 2,
+        "setores": {
+          "Tribunal de Ètica e Disciplina": 2
+        },
+        "amostras": [
+          {
+            "id": 269866,
+            "titulo": "EMENTA – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+            "trecho": "TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA INTIMAÇÃO DE ACÓRDÃO Nº 007/2020//TED/OAB/RO 1ª TURMA - Realizado em: 28.09.2020 O Tribunal de Ética e Disciplina da OAB/RO torna público que foi julgado o seguinte processo: "
+          },
+          {
+            "id": 269867,
+            "titulo": "EMENTA – TRIBUNAL DE ÉTICA E DISCIPLINA-TED.",
+            "trecho": "TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA INTIMAÇÃO DE ACÓRDÃO Nº 008/2020//TED/OAB/RO 2ª TURMA Realizada em: 29.09.20 O Tribunal de Ética e Disciplina da OAB/RO torna público que foi julgado o seguinte processo:Proce"
+          }
+        ]
+      },
+      "Contrarrazões": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 2
+        },
+        "amostras": [
+          {
+            "id": 938663,
+            "titulo": "EDITAL DE MANIFESTAÇÃO CONTRARRAZÕES –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA Processo nº : 22.0000.20 17 .00 2502-1 . pelo presente Edital, NOTIFICAMOS o(a) Representa do : H.L.P. Procurador (a): Hermenegildo Lucas da Silva - OAB/RO 1497. Nos termos do artigo 139 do regulamento geral d"
+          },
+          {
+            "id": 938665,
+            "titulo": "EDITAL DE MANIFESTAÇÃO CONTRARRAZÕES –- TED.",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DE RONDÔNIA Processo nº : 22.0000.2022.002308-1 . pelo presente Edital, NOTIFICAMOS o(a) Representa do : F.G. G. A. Procurador (a): Felipe Goes Gomes Aguiar - OAB/RO 4494. Nos termos do artigo 139 do regulamento geral da "
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão Eleitoral": 1
+        },
+        "amostras": [
+          {
+            "id": 938687,
+            "titulo": "SEÇÃO RONDÔNIA – COMISSÃO ELEITORAL",
+            "trecho": "Processo: 22.0000.2024.00 8245-9 Representante: Eurico Soares Montenegro Neto OAB/RO 1742 Procuradores: Edirlei Barboza Pereira de Souza OAB/RO 1363, Gabriella Oliveira Corrêa e Sá Amorim OAB/RO 13342, Moacyr Rodrigues Pontes Netto OAB/RO 4149 e Jacson da Silv"
+          }
+        ]
+      }
+    }
+  }
+}

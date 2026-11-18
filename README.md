@@ -51,6 +51,11 @@ uv pip install --python .venv/bin/python -e ".[dev]"
 # Regravar o banco a partir do que já foi baixado, sem acessar a rede:
 .venv/bin/ted-cli backfill-sp --no-collect
 
+# Varredura completa de qualquer Seccional (perfil -> coleta -> carga -> auditoria); ver docs/VARREDURA.md
+.venv/bin/ted-cli sec-perfil --uf RS && .venv/bin/ted-cli sec-coletar --uf RS
+.venv/bin/ted-cli sec-carregar --uf RS && .venv/bin/ted-cli sec-auditar --uf RS
+.venv/bin/ted-cli cobertura          # livro-razão: situação das 27 Seccionais
+
 # Consultar estatísticas de enriquecimento do banco:
 .venv/bin/ted-cli stats
 ```
