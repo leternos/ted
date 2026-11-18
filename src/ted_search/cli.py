@@ -341,14 +341,14 @@ def main() -> None:
     p_cob.add_argument("--fts", action="store_true", help="Reconstrói o índice FTS5 e compacta o banco (VACUUM)")
     p_cob.add_argument("--json", action="store_true", help="Saída em JSON")
 
-    p_fontes = sub.add_parser("fontes", help="Bases próprias nos sites das Seccionais: registro (data/fontes/fontes.json) e situação")
+    p_fontes = sub.add_parser("fontes", help="Bases próprias nos sites das Seccionais: registro (data/fontes/<UF>.json) e situação")
     p_fontes.add_argument("--uf", type=str, default="", help="Filtra por UF")
     p_fontes.add_argument("--json", action="store_true", help="Saída em JSON")
     for nome, ajuda in (("site-coletar", "Coleta uma base de site com o adaptador em collectors/sites/ (retomável)"),
                         ("site-carregar", "Carrega no banco uma base de site já coletada e fecha a linha no livro-razão")):
         p_site = sub.add_parser(nome, help=ajuda)
         p_site.add_argument("--uf", required=True)
-        p_site.add_argument("--fonte", required=True, help="slug da base em data/fontes/fontes.json")
+        p_site.add_argument("--fonte", required=True, help="slug da base em data/fontes/<UF>.json")
         p_site.add_argument("--concurrency", type=int, default=6)
         p_site.add_argument("--no-fts", action="store_true")
 

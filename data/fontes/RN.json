@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "ementarios",
+    "url": "https://www.oabrn.org.br/2017/ementarios/",
+    "conteudo": "Acórdãos disciplinares",
+    "periodo": "2018-2021",
+    "volume": null,
+    "acesso": "HTML por ID",
+    "exclusiva": null,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "consultas-pdf",
+    "url": "https://www.oabrn.org.br/2017/arquivos/Consultas/",
+    "conteudo": "Consultas",
+    "periodo": "2018-2020",
+    "volume": null,
+    "acesso": "PDF",
+    "exclusiva": true,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  }
+]

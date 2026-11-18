@@ -74,13 +74,13 @@ A ordem vai da menor para a maior: os erros de processo aparecem onde refazer é
 
 ## Trilha dos sites
 
-O registro `data/fontes/fontes.json` lista as bases conhecidas (`ted-cli fontes`). Em nov/2026 eram 34 bases em 22 Seccionais;
+O registro `data/fontes/<UF>.json` lista as bases conhecidas (`ted-cli fontes`). Em nov/2026 eram 34 bases em 22 Seccionais;
 AL, AP, MG, PE e RR não mostraram base própria. Só as de SP, RJ, SC, GO e uma da BA foram abertas na pesquisa: as demais
 precisam ser confirmadas pelo `cartografo-fontes`.
 
 | Etapa | Agente | Comando | Portão de saída |
 |---|---|---|---|
-| A. Mapa | `cartografo-fontes` | edita `data/fontes/fontes.json` | base `verificada`, com endpoint, volume medido e se é exclusiva |
+| A. Mapa | `cartografo-fontes` | edita `data/fontes/<UF>.json` | base `verificada`, com endpoint, volume medido e se é exclusiva |
 | B. Coletor | `construtor-coletor-site` | `ted-cli site-coletar` e `site-carregar --uf UF --fonte slug` | linha `COMPLETO`: listados = total do site; banco + rejeitados = baixados |
 | C. Conferência | `auditor-seccional` | abre itens sorteados no site | texto, data e órgão iguais aos do banco |
 

@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "consultivo",
+    "url": "https://www.oab-ba.org.br/publicacoes/ementas-consultivo",
+    "conteudo": "Consultas do Órgão Consultivo de Ética Profissional do TED",
+    "periodo": "2007-2019+",
+    "volume": "dezenas",
+    "acesso": "HTML estático",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "orgao-especial",
+    "url": "https://www.oab-ba.org.br/publicacoes/ementas",
+    "conteudo": "Ementas do Órgão Especial (consultas)",
+    "periodo": "2016-2018",
+    "volume": null,
+    "acesso": "HTML estático",
+    "exclusiva": true,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "camaras",
+    "url": "https://www.oab-ba.org.br/publicacoes/ementas-camaras",
+    "conteudo": "Ementas das Câmaras",
+    "periodo": "n/d",
+    "volume": null,
+    "acesso": "HTML estático",
+    "exclusiva": null,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  }
+]

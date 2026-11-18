@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "ementarios-ted",
+    "url": "https://oabce.org.br/categoria/ementarios-ted/",
+    "conteudo": "Consultas e processos disciplinares",
+    "periodo": "2002-2015",
+    "volume": null,
+    "acesso": "posts WordPress",
+    "exclusiva": true,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "ementario-2021",
+    "url": "https://oabce.org.br/2021/12/tribunal-de-etica-e-disciplina-da-oab-ce-lanca-seu-ementario-de-jurisprudencia/",
+    "conteudo": "Ementário de Jurisprudência do TED (livro)",
+    "periodo": "2016-2021",
+    "volume": null,
+    "acesso": "PDF",
+    "exclusiva": null,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  }
+]

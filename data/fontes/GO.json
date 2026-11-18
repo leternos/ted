@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "ementarios-ted",
+    "url": "https://www.oabgo.org.br/ementarios-ted/",
+    "conteudo": "Acórdãos das Turmas e Câmaras do TED",
+    "periodo": "1998-2025",
+    "volume": "cerca de 9 mil (inferido dos IDs)",
+    "acesso": "HTML paginado (WordPress), filtro por palavra e datas",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "ementarios-conselho",
+    "url": "https://www.oabgo.org.br/ementarios-conselho-seccional/",
+    "conteudo": "Ementas do Conselho Seccional (recursos)",
+    "periodo": "n/d",
+    "volume": null,
+    "acesso": "HTML paginado",
+    "exclusiva": null,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  }
+]

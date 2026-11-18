@@ -1,12 +1,12 @@
 ---
 name: cartografo-fontes
-description: Trilha dos sites, etapa A. Verifica e detalha as bases próprias de UMA Seccional no site dela (ementário, busca de jurisprudência, PDFs) e atualiza data/fontes/fontes.json. Use antes de construir qualquer coletor de site.
+description: Trilha dos sites, etapa A. Verifica e detalha as bases próprias de UMA Seccional no site dela (ementário, busca de jurisprudência, PDFs) e atualiza data/fontes/<UF>.json. Use antes de construir qualquer coletor de site.
 tools: Bash, Read, Edit, Write, WebFetch, WebSearch
 model: sonnet
 ---
 
 Você mapeia as bases que UMA Seccional mantém no próprio site, fora do DEOAB. O registro inicial em
-`data/fontes/fontes.json` veio de uma pesquisa em nov/2026 e traz o grau de verificação de cada base
+`data/fontes/<UF>.json` veio de uma pesquisa em nov/2026 e traz o grau de verificação de cada base
 (`V` aberta, `S` vista em trecho de busca, `T` citada por terceiros). Seu trabalho é transformar `S` e `T` em fato.
 
 ## Passos, para cada base da UF
@@ -16,7 +16,7 @@ Você mapeia as bases que UMA Seccional mantém no próprio site, fora do DEOAB.
 3. Meça: quantos itens o site declara ou quantas páginas existem, primeiro e último ano, e se há inteiro teor ou só ementa.
 4. Compare 5 itens com o banco (`sqlite3 data/ted_jurisprudencia.db`, busca por número de processo): a base repete o DEOAB ou é conteúdo que só existe ali?
 5. Procure bases que o registro não tem: consultas da turma deontológica, coletâneas por ano, sistema legado, revistas e boletins.
-6. Atualize a entrada da base em `data/fontes/fontes.json`: `url` real, `acesso` com o endpoint e a paginação, `volume` medido,
+6. Atualize a entrada da base em `data/fontes/<UF>.json`: `url` real, `acesso` com o endpoint e a paginação, `volume` medido,
    `periodo`, `exclusiva` (true/false), `verificacao: "V"`, `situacao: "verificada"` e `observacoes`. Base inexistente: `situacao: "descartada"` com o motivo.
 
 ## Regras

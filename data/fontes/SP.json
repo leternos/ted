@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "ementario",
+    "url": "https://www.oabsp.org.br/tribunal-de-etica-e-disciplina/ementario",
+    "conteudo": "Consultas da 1ª Turma de Ética Profissional e decisões das Turmas Disciplinares",
+    "periodo": "n/d",
+    "volume": "milhares (inferido)",
+    "acesso": "busca por palavra-chave via AJAX",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "legado-etica",
+    "url": "https://www2.oabsp.org.br/asp/tribunal_etica/ted2.8.4.asp",
+    "conteudo": "Consultas da Turma de Ética Profissional (sistema legado)",
+    "periodo": "n/d",
+    "volume": null,
+    "acesso": "páginas ASP",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "legado-disciplinar",
+    "url": "https://www2.oabsp.org.br/asp/tribunal_etica/ementasTribunais.asp",
+    "conteudo": "Ementas das Turmas Disciplinares (sistema legado)",
+    "periodo": "n/d",
+    "volume": null,
+    "acesso": "páginas ASP",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "coletanea-ano",
+    "url": "https://www2.oabsp.org.br/asp/tribunal_etica/tedEmentasXAno.asp",
+    "conteudo": "Coletânea de Ementas por Ano",
+    "periodo": "1995-2018",
+    "volume": null,
+    "acesso": "páginas ASP",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "mapeada"
+  }
+]

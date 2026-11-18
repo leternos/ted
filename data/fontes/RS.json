@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "portal-jurisprudencia",
+    "url": "https://jurisprudencia.oabrs.org.br/",
+    "conteudo": "Ementas das Turmas Julgadoras do TED e do Órgão Especial",
+    "periodo": "2022+",
+    "volume": null,
+    "acesso": "portal de busca",
+    "exclusiva": null,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "ementarios-pdf",
+    "url": "https://www2.oabrs.org.br/legislacao/ementarios",
+    "conteudo": "EMENTÁRIO TED anual",
+    "periodo": "2013-2021",
+    "volume": null,
+    "acesso": "PDF anual em admsite.oabrs.org.br/arquivos/",
+    "exclusiva": true,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  }
+]

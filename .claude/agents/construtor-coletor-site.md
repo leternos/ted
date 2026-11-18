@@ -10,7 +10,7 @@ quatro funções (`esperado`, `listar`, `baixar`, `normalizar`) em `src/ted_sear
 O motor faz cache, carga e livro-razão; você só ensina a ler aquele site.
 
 ## Passos
-1. Leia a entrada da base em `data/fontes/fontes.json` (endpoint, paginação, volume) e `src/ted_search/fontes.py`.
+1. Leia a entrada da base em `data/fontes/<UF>.json` (endpoint, paginação, volume) e `src/ted_search/fontes.py`.
 2. Baixe 2 ou 3 páginas reais para `/tmp` e escreva o adaptador contra elas:
    - `esperado`: o total que o site declara (contador, última página x itens por página). `None` só se o site não disser.
    - `listar`: TODOS os itens, com `id` estável do próprio site. Percorra até a última página; não pare na primeira vazia sem conferir.

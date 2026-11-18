@@ -1,6 +1,6 @@
 """Fontes próprias das Seccionais (ementários e bases nos sites de cada OAB), fora do DEOAB.
 
-O registro em ``data/fontes/fontes.json`` lista, por UF, cada base conhecida. Cada base coletada tem um
+O registro em ``data/fontes/<UF>.json`` lista cada base conhecida daquela Seccional. Cada base coletada tem um
 adaptador em ``ted_search/collectors/sites/<uf>_<slug>.py`` com quatro funções:
 
     async def esperado(client, sem) -> int | None      # total que o próprio site declara (None se não declara)
@@ -26,17 +26,17 @@ from ted_search.db import get_connection, rebuild_fts
 from ted_search.parser import detect_resultado, detect_sancao, extract_dispositivos, extract_relator_fallback
 from ted_search.varredura import COBERTURA_SCHEMA, _agora
 
-FONTES_FILE = DATA_DIR / "fontes" / "fontes.json"
+FONTES_DIR = DATA_DIR / "fontes"  # um arquivo por UF, para agentes de Seccionais diferentes não colidirem
 SITUACOES = ("mapeada", "verificada", "adaptador", "coletada", "sem_base", "descartada")
 
 
 def carregar_fontes() -> dict[str, list[dict[str, Any]]]:
-    return json.loads(FONTES_FILE.read_text(encoding="utf-8")) if FONTES_FILE.exists() else {}
+    return {p.stem.upper(): json.loads(p.read_text(encoding="utf-8")) for p in sorted(FONTES_DIR.glob("*.json"))}
 
 
-def salvar_fontes(fontes: dict[str, list[dict[str, Any]]]) -> None:
-    FONTES_FILE.parent.mkdir(parents=True, exist_ok=True)
-    FONTES_FILE.write_text(json.dumps(fontes, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+def salvar_fontes_uf(uf: str, bases: list[dict[str, Any]]) -> None:
+    FONTES_DIR.mkdir(parents=True, exist_ok=True)
+    (FONTES_DIR / f"{uf.upper()}.json").write_text(json.dumps(bases, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def nome_fonte(uf: str, slug: str) -> str:
