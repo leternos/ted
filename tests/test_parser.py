@@ -390,3 +390,11 @@ def test_al_sem_turma_nomeada_fica_generico_e_comissao_eleitoral_fica_fora_da_bu
         _al_pub(6, "PROCESSO Nº 02.0000.2024.005055-7", "COMISSÃO ELEITORAL", eleitoral, tipo="Acórdão"), "AL", 2
     )
     assert rec_eleitoral is not None and rec_eleitoral["is_ted_disciplinar"] == 0
+
+
+def test_acordao_em_linha_unica_nao_e_apagado_como_ruido():
+    from ted_search.ocr_cleaner import is_gibberish_ocr_line
+
+    linha = "EMENTA: Representação. Advogado inscrito na OAB/MT sob n. 1/O c/c art. 34 do EAOAB. " * 6
+    assert not is_gibberish_ocr_line(linha)
+    assert is_gibberish_ocr_line("/a b/c /d x/y")

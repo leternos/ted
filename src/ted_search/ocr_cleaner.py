@@ -790,9 +790,13 @@ def is_gibberish_ocr_line(line: str) -> bool:
         )
     )
     alpha_words = re.findall(r"\b[A-Za-zÀ-ÿ]{4,}\b", s)
+    # Só linhas curtas podem ser ruído: um acórdão publicado numa linha só tem dezenas de "OAB/MT" e
+    # era apagado inteiro por estas duas regras (auditoria de MT, nov/2026: 53 decisões perdidas).
+    if len(s) > 240:
+        return False
     if weird_chars >= 3 and (weird_chars + slash_tokens * 2) > len(alpha_words):
         return True
-    if slash_tokens >= 3:
+    if slash_tokens >= 3 and slash_tokens * 3 >= len(alpha_words):
         return True
     if len(s) < 45 and (weird_chars >= 2 or re.match(r"^[(\W_0-9\-—%#\"']+$", s)):
         return True

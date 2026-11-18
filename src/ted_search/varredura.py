@@ -175,6 +175,10 @@ def _sem_acento(texto: str) -> str:
 TITULOS_DECISAO_PADRAO = ("ACORDAO", "EMENTA")
 # "Vistos, relatados e discutidos" e variantes ("Vistos e analisados os autos"), em texto sem acento
 RE_FORMULA_JULGAMENTO = re.compile(r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)")
+RE_FORMULA_COLEGIADA = re.compile(
+    r"ACORDA[MO]|UNANIMIDADE|UNANIME|POR\s+MAIORIA|EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
+    r"(?:NEG|D)(?:AR|OU|ARAM|ADO)\s+PROVIMENTO|DECIDIRAM|DECIDIU"
+)
 # Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
 RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
 # Publicação que abre anunciando o resultado de uma sessão de julgamento (TO, nov/2026)
@@ -199,7 +203,8 @@ def via_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> str | None:
     # (TO publica os resultados de sessão como "Edital de Notificação", sem ementa)
     tipo = _tipo(pub).upper()
     # Despacho é ato monocrático: a fórmula "Vistos e analisados" dentro dele não o torna decisão colegiada (AP, nov/2026)
-    if "DESPACHO" not in tipo and (
+    # Despacho individual não é decisão colegiada; edital de "processos julgados" sob o tipo Despacho é (MT 55580)
+    if ("DESPACHO" not in tipo or corpo.count("EMENTA") >= 2) and (
         ("EMENTA" in corpo and "ACORDAM" in corpo) or RE_FORMULA_JULGAMENTO.search(corpo) or RE_RESULTADO_SESSAO.search(corpo[:200])
     ):
         return "corpo"
@@ -574,6 +579,14 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
                 aceita = eh_materia_disciplinar(setor, pub.get("titulo") or "", texto) or (eh_eleitoral(setor, texto) and tem_resultado)
             if not aceita:
                 rejeitados.append({"id": pub["id"], "motivo": "tipo_amplo_sem_decisao", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
+                                   "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
+                continue
+        if uf != "SP":
+            # Título ou tipo de decisão sem nenhuma fórmula de julgamento no texto: pauta, intimação de prazo,
+            # despacho monocrático, lista de processos sem desfecho (auditoria de MT: 75 de 77 casos)
+            texto = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
+            if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(_sem_acento(texto)):
+                rejeitados.append({"id": pub["id"], "motivo": "sem_formula_de_julgamento", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
                                    "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
                 continue
         rec = (
