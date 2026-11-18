@@ -46,12 +46,75 @@ RE_EMENTA_NUM = re.compile(
     re.IGNORECASE,
 )
 RE_VISTOS_SPLIT = re.compile(
-    r"(?:^|\n)\s*(Vistos\s*,?\s*relatados\s+e\s+(?:discutidos|examinados).+)$",
+    r"(?:^|\n|AC[ÓO]RD[ÃA]O\s*:\s*)\s*(Vistos?\s*,?\s*relatados\s+e\s+(?:discutidos|examinados).+)$",
     re.IGNORECASE | re.DOTALL,
 )
 
 UF_TO_ORG = {s["uf"]: s for s in SECCIONAIS}
 ORG_TO_UF = {s["id_organizacao"]: s for s in SECCIONAIS}
+
+
+_ORDINAIS_NACIONAL = (
+    ("DÉCIMA PRIMEIRA", 11), ("DECIMA PRIMEIRA", 11), ("DÉCIMA SEGUNDA", 12), ("DECIMA SEGUNDA", 12),
+    ("DÉCIMA TERCEIRA", 13), ("DECIMA TERCEIRA", 13), ("PRIMEIRA", 1), ("SEGUNDA", 2), ("TERCEIRA", 3),
+    ("QUARTA", 4), ("QUINTA", 5), ("SEXTA", 6), ("SÉTIMA", 7), ("SETIMA", 7), ("OITAVA", 8), ("NONA", 9),
+    ("DÉCIMA", 10), ("DECIMA", 10),
+)
+_RE_ORGAO_NACIONAL = re.compile(
+    r"(?P<cam>C[ÂA]MARAS?\b)|(?P<oe>[ÓO]RG[ÃA]O\s+ESPECIAL)|(?P<pleno>\bPLENO\b)|(?P<turma>\bTURMAS?\b)"
+)
+
+
+def _ordinal_before(upper: str, pos: int) -> str:
+    """Número ordinal (dígitos ou por extenso) imediatamente antes de 'TURMA'/'CÂMARA' (posição pos)."""
+    prefix = upper[max(0, pos - 24):pos]
+    m = re.search(r"(?<!\d)(\d{1,2})\s*[ªaAº°]?\s*$", prefix)
+    if m:
+        return m.group(1)
+    for word, num in _ORDINAIS_NACIONAL:
+        if re.search(rf"\b{word}\s+$", prefix):
+            return str(num)
+    return ""
+
+
+def _classify_orgao_nacional(uf: str, segment: str) -> tuple[str, str] | None:
+    """Classifica um trecho que NOMEIA o órgão julgador (cabeçalho, fórmula decisória, intimação).
+
+    Devolve None quando o trecho não nomeia órgão. Vale a menção mais cedo no trecho.
+    """
+    upper = (segment or "").upper()
+    m = _RE_ORGAO_NACIONAL.search(upper)
+    if not m:
+        return None
+    if m.lastgroup == "cam":
+        num = _ordinal_before(upper, m.start())
+        suffix = f"-{num}CR" if num else "-CR"
+        return f"OAB{uf}{suffix}", f"Conselho Seccional - {uf}/{num + 'ª ' if num else ''}Câmara Recursal/Disciplinar"
+    if m.lastgroup == "oe":
+        return f"OAB{uf}-OE", f"Conselho Seccional - {uf}/Órgão Especial"
+    if m.lastgroup == "pleno":
+        return f"OAB{uf}-PLENO", f"Conselho Seccional - {uf}/Conselho Pleno"
+    num = _ordinal_before(upper, m.start())
+    if num:
+        return f"OAB{uf}-TED-T{num}", f"Tribunal de Ética e Disciplina da OAB/{uf}/{num}ª Turma Disciplinar"
+    return None
+
+
+# Fórmula decisória: só vale o órgão que ele mesmo julga ("acordam os membros da 3ª Câmara...").
+_RE_FORMULA_ACORDAM = re.compile(r"\bAC[ÓO]RDAM\b[^.;:]{0,160}", re.IGNORECASE)
+# Intimação de acórdão (DEOAB/AL): "intima ... RECURSO do acórdão prolatado pela 2ª Turma do TED".
+_RE_FORMULA_ACORDAM_LONGA = re.compile(r"\bAC[ÓO]RDAM\b[^\n]{0,500}", re.IGNORECASE)
+_RE_ACORDAO_PROLATADO = re.compile(r"\bAC[ÓO]RD[ÃA]OS?\s+PROLATAD[OA]S?\b[^.;:]{0,70}", re.IGNORECASE)
+
+
+def _orgao_do_corpo(uf: str, full_text: str) -> tuple[str, str] | None:
+    """Órgão nomeado pelo corpo: fórmula 'acordam os membros da ...' e, na falta dela, 'acórdão prolatado pela ...'."""
+    for rx in (_RE_FORMULA_ACORDAM, _RE_ACORDAO_PROLATADO):
+        for m in rx.finditer(full_text or ""):
+            found = _classify_orgao_nacional(uf, m.group(0))
+            if found:
+                return found
+    return None
 
 
 def detect_orgao_julgador_nacional(
@@ -60,78 +123,140 @@ def detect_orgao_julgador_nacional(
     titulo: str,
     full_text: str,
 ) -> tuple[str, str]:
-    """Determina a sigla padronizada e o nome normalizado do órgão julgador em qualquer Seccional."""
-    comb = f"{setor_nome} {titulo} {full_text[:400]}".upper()
+    """Determina a sigla padronizada e o nome normalizado do órgão julgador em qualquer Seccional.
 
-    # Mapeamento de ordinais por extenso
-    ordinais = {
-        "PRIMEIRA": "1", "SEGUNDA": "2", "TERCEIRA": "3", "QUARTA": "4", "QUINTA": "5",
-        "SEXTA": "6", "SÉTIMA": "7", "SETIMA": "7", "OITAVA": "8", "NONA": "9", "DÉCIMA": "10",
-        "DECIMA": "10", "DÉCIMA PRIMEIRA": "11", "DÉCIMA SEGUNDA": "12", "DÉCIMA TERCEIRA": "13",
+    Mesmo padrão de detect_orgao_julgador_oabsp: o cabeçalho (título, depois setor) manda; o corpo só
+    decide pela fórmula 'acordam os membros da ...' (ou 'acórdão prolatado pela ...' nas intimações).
+    Menções soltas no corpo (origem do recurso, precedentes, 'deontológico') nunca definem o órgão.
+    O setor fica depois do corpo porque, no DEOAB, vem às vezes preenchido errado (ex.: '1ª Câmara').
+    """
+    # 1. Título da publicação
+    found = _classify_orgao_nacional(uf, titulo)
+    if found:
+        return found
+    # 2. Fórmula decisória / intimação no corpo
+    found = _orgao_do_corpo(uf, full_text)
+    if found:
+        return found
+    # 3. Setor da publicação
+    found = _classify_orgao_nacional(uf, setor_nome)
+    if found:
+        return found
+
+    header = f"{setor_nome} {titulo}".upper()
+    # 4. Último recurso (cabeçalho e fórmula mudos): Turma do TED nomeada de forma unívoca no início do texto.
+    #    Câmara/Pleno/consulta NÃO entram aqui: aparecem no corpo como origem do recurso ou precedente.
+    turmas = {
+        c for c in (
+            _classify_orgao_nacional(uf, m.group(0))
+            for m in re.finditer(r"[^.\n]{0,24}\bTURMA\b[^.\n]{0,24}", (full_text or "")[:400], re.IGNORECASE)
+        ) if c and "-TED-T" in c[0]
     }
-
-    # Detectar Câmaras Recursais / Disciplinares
-    m_cam = re.search(r"(\d{1,2})[ªaª°]?\s*C[ÂA]MARA", comb)
-    cam_num = m_cam.group(1) if m_cam else ""
-    if not cam_num:
-        for ord_word, num_str in ordinais.items():
-            if f"{ord_word} CÂMARA" in comb or f"{ord_word} CAMARA" in comb:
-                cam_num = num_str
-                break
-    if "CÂMARA" in comb or "CAMARA" in comb:
-        num_suffix = f"-{cam_num}CR" if cam_num else "-CR"
-        return f"OAB{uf}{num_suffix}", f"Conselho Seccional - {uf}/{cam_num + 'ª ' if cam_num else ''}Câmara Recursal/Disciplinar"
-
-    # Detectar Órgão Especial
-    if "ÓRGÃO ESPECIAL" in comb or "ORGAO ESPECIAL" in comb:
-        return f"OAB{uf}-OE", f"Conselho Seccional - {uf}/Órgão Especial"
-
-    # Detectar Conselho Pleno
-    if "PLENO" in comb or "CONSELHO PLENO" in comb or "CONSELHO SECCIONAL" in comb:
+    if len(turmas) == 1:
+        return turmas.pop()
+    # Consulta: só o NOME do órgão consultivo no cabeçalho conta, nunca "consulta"/"deontol" soltos no corpo
+    if re.search(r"DEONTOL[ÓO]GIC|CONSULTIV|\bCONSULTAS?\b", header):
+        return f"OAB{uf}-TED-CONS", f"Tribunal de Ética e Disciplina da OAB/{uf}/Turma Deontológica e Consultiva"
+    if "CONSELHO SECCIONAL" in header:
         return f"OAB{uf}-PLENO", f"Conselho Seccional - {uf}/Conselho Pleno"
 
-    # Detectar Turmas do TED
-    m_turma = re.search(r"(\d{1,2})[ªaª°]?\s*TURMA", comb)
-    t_num = m_turma.group(1) if m_turma else ""
-    if not t_num:
-        for ord_word, num_str in ordinais.items():
-            if f"{ord_word} TURMA" in comb:
-                t_num = num_str
-                break
-    if t_num:
-        return f"OAB{uf}-TED-T{t_num}", f"Tribunal de Ética e Disciplina da OAB/{uf}/{t_num}ª Turma Disciplinar"
-
-    # Deontológico / Consultivo
-    if "DEONTOL" in comb or "CONSULTIV" in comb or "CONSULTA" in comb:
-        return f"OAB{uf}-TED-CONS", f"Tribunal de Ética e Disciplina da OAB/{uf}/Turma Deontológica e Consultiva"
-
-    # TED Geral
-    if "TRIBUNAL DE ÉTICA" in comb or "TRIBUNAL DE ETICA" in comb or "TED" in comb:
+    # TED genérico: o texto não nomeia a turma
+    if "TRIBUNAL DE ÉTICA" in header or "TRIBUNAL DE ETICA" in header or "TED" in header:
         return f"OAB{uf}-TED", f"Tribunal de Ética e Disciplina da OAB/{uf}"
-
-    # Fallback para o próprio setor
     norm_setor = setor_nome if setor_nome else "Tribunal de Ética e Disciplina"
     return f"OAB{uf}-TED", f"Conselho Seccional - {uf}/{norm_setor}"
+
+
+_RE_JULGAR_MERITO = re.compile(r"\bJULG[ÁA](?:-L[AO]|R(?:-SE|-L[AO])?)?\s+(IM)?PROCEDENTE\b", re.IGNORECASE)
+_RE_FORMULA_PRESCRICAO = re.compile(
+    r"\b(?:RECONHECER|RECONHECIMENTO|OCORR[ÊE]NCIA|DECLARAR|DECLARADA)\b[^.]{0,60}\bPRESCRI[ÇC][ÃA]O\b|"
+    r"\bEXTINTA\s+A\s+PUNIBILIDADE\b",
+    re.IGNORECASE,
+)
+
+
+def _resultado_pela_formula(full_text: str) -> str | None:
+    """Resultado lido só da fórmula 'acordam os membros ...', quando detect_resultado não achou nada.
+
+    Cobre redações frequentes nas intimações do DEOAB/AL: 'julgá-la IMPROCEDENTE', 'julgar procedente',
+    'reconhecer ... a prescrição', 'declarar extinta a punibilidade'.
+    """
+    m = _RE_FORMULA_ACORDAM_LONGA.search(full_text or "")
+    if not m:
+        return None
+    formula = m.group(0)
+    mj = _RE_JULGAR_MERITO.search(formula)
+    if mj:
+        return "Improcedente / Arquivado" if mj.group(1) else "Procedente"
+    if _RE_FORMULA_PRESCRICAO.search(formula):
+        return "Prescrição Reconhecida"
+    return None
+
+
+# Marcas de matéria ético-disciplinar (texto sem acento, em maiúsculas). Acórdãos do Conselho sobre inscrição,
+# sociedade de advogados, prestação de contas da Seccional ou eleições não têm nenhuma delas.
+RE_DISCIPLINAR = re.compile(
+    r"DISCIPLIN|REPRESENTAC|REPRESENTAD|INFRAC|ART(?:IGO)?S?\.?\s*34\b|CENSURA|TRIBUNAL\s+DE\s+ETICA|\bTED\b|CODIGO\s+DE\s+ETICA|"
+    r"\bETIC[AO]|LOCUPLET|INIDONE|EXCLUSAO\s+D[OA]S?\s+QUADROS|SUSPENSAO\s+(?:DO\s+EXERCICIO|PREVENTIVA)|CAPTACAO\s+DE\s+CLIENT|ANGARIA"
+)
+
+
+def _sem_acento_upper(texto: str) -> str:
+    import unicodedata
+
+    return "".join(c for c in unicodedata.normalize("NFD", texto.upper()) if unicodedata.category(c) != "Mn")
+
+
+def motivo_recusa(
+    pub: dict[str, Any],
+    confiar_no_tipo: bool = False,
+) -> str | None:
+    """Por que uma publicação NÃO vira registro (None = é aceita). Usado também para registrar os rejeitados."""
+    if "objeto" in pub and isinstance(pub["objeto"], dict):
+        pub = pub["objeto"]
+    if not pub.get("id"):
+        return "sem_id"
+    tipo_pub = clean_text((pub.get("tipoPublicacao") or {}).get("descricao") or "").upper()
+    valid_tipos = {"ACÓRDÃO", "ACORDAO", "EMENTA", "DECISÃO", "DECISAO", "RECURSO", "JULGAMENTO"}
+    # A varredura já decidiu, pelo perfil da Seccional, que a publicação é decisão: não refiltra pelo nome do tipo
+    if not confiar_no_tipo and tipo_pub not in valid_tipos and tipo_pub:
+        if any(w in tipo_pub for w in ["CONVOCAÇÃO", "PAUTA", "PORTARIA", "NOTIFICAÇÃO", "EDITAL"]):
+            return "tipo_nao_decisorio"
+    setor_nome = clean_text((pub.get("setorPublicacao") or {}).get("nomeAlternativo") or "")
+    titulo = clean_text(pub.get("titulo") or "")
+    full_text = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
+    if not full_text or len(full_text) < 60:
+        return "texto_vazio_ou_curto"
+    # Processo eleitoral/administrativo (registro de candidatura) não é decisão ético-disciplinar
+    if "COMISSÃO ELEITORAL" in setor_nome.upper() or re.search(
+        r"REGISTRO\s+DE\s+CANDIDATURA|ELEI[ÇC][ÕO]ES\s+OAB", full_text[:600].upper()
+    ):
+        return "eleitoral"
+    # Filtrar notificações administrativas puras ("notifica a comparecer")
+    txt_lower = full_text.lower()
+    has_juris_keywords = any(k in txt_lower for k in ["acordam", "acórdão", "ementa", "vistos", "censura", "suspensão", "exclusão", "representação", "infração", "ced", "eaoab"])
+    if not has_juris_keywords and "notifica" in txt_lower:
+        return "notificacao_sem_decisao"
+    return None
+
+
+def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool:
+    """Decisões do Conselho sobre inscrição, sociedades, contas ou eleições ficam no banco, mas fora da busca do TED."""
+    return bool(RE_DISCIPLINAR.search(_sem_acento_upper(f"{setor_nome} {titulo} {full_text}")))
 
 
 def normalize_deoab_item_nacional(
     pub: dict[str, Any],
     default_uf: str | None = None,
     default_org_id: int | None = None,
+    confiar_no_tipo: bool = False,
 ) -> dict[str, Any] | None:
-    """Normaliza uma publicação do DEOAB para o schema do banco julgados."""
+    """Normaliza uma publicação do DEOAB para o schema do banco julgados (None se recusada; ver motivo_recusa)."""
     if "objeto" in pub and isinstance(pub["objeto"], dict):
         pub = pub["objeto"]
-    pub_id = pub.get("id")
-    if not pub_id:
+    if motivo_recusa(pub, confiar_no_tipo=confiar_no_tipo):
         return None
-
-    tipo_pub = clean_text((pub.get("tipoPublicacao") or {}).get("descricao") or "").upper()
-    valid_tipos = {"ACÓRDÃO", "ACORDAO", "EMENTA", "DECISÃO", "DECISAO", "RECURSO", "JULGAMENTO"}
-    if tipo_pub not in valid_tipos and tipo_pub:
-        # Se for edital ou notificação pura sem conteúdo decisório, ignorar
-        if any(w in tipo_pub for w in ["CONVOCAÇÃO", "PAUTA", "PORTARIA", "NOTIFICAÇÃO", "EDITAL"]):
-            return None
+    pub_id = pub.get("id")
 
     setor_obj = pub.get("setorPublicacao") or {}
     setor_nome = clean_text(setor_obj.get("nomeAlternativo") or "")
@@ -144,14 +269,7 @@ def normalize_deoab_item_nacional(
 
     titulo = clean_text(pub.get("titulo") or "")
     full_text = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
-    if not full_text or len(full_text) < 60:
-        return None
-
-    # Filtrar notificações administrativas puras ("notifica a comparecer")
     txt_lower = full_text.lower()
-    has_juris_keywords = any(k in txt_lower for k in ["acordam", "acórdão", "ementa", "vistos", "censura", "suspensão", "exclusão", "representação", "infração", "ced", "eaoab"])
-    if not has_juris_keywords and "notifica" in txt_lower:
-        return None
 
     # Separar ementa e acórdão
     m_vistos = RE_VISTOS_SPLIT.search(full_text)
@@ -184,7 +302,7 @@ def normalize_deoab_item_nacional(
 
     dispositivos = extract_dispositivos(None, full_text)
     sancao = detect_sancao(full_text)
-    resultado = detect_resultado(ementa_text, acordao_text)
+    resultado = detect_resultado(ementa_text, acordao_text) or _resultado_pela_formula(full_text)
     relator = extract_relator_fallback(None, full_text)
 
     data_pub = (pub.get("dataPublicacao") or "")[:10] or None
@@ -194,7 +312,8 @@ def normalize_deoab_item_nacional(
     ano_romano = pub.get("ano") or ""
     pub_str = f"DEOAB/{uf}, Ano {ano_romano}, Ed. {edicao}, p. {pagina} ({data_pub})"
 
-    tipo_ementa = "CONSULTA" if "CONS" in sigla_orgao or "CONSULTA" in txt_lower[:300] else "PROCESSO_DISCIPLINAR"
+    # Consulta só quando o ÓRGÃO é consultivo (sigla -CONS); "consulta" solta no início do texto não basta
+    tipo_ementa = "CONSULTA" if sigla_orgao.endswith("-CONS") else "PROCESSO_DISCIPLINAR"
 
     return {
         "id": f"DEOAB_{uf}:{pub_id}",
@@ -224,7 +343,7 @@ def normalize_deoab_item_nacional(
         "diario_url": f"{DIARIO_MATERIA_URL}/{pub_id}",
         "publicacao_str": pub_str,
         "data_decisao": data_pub,
-        "is_ted_disciplinar": 1,
+        "is_ted_disciplinar": 1 if eh_materia_disciplinar(setor_nome, titulo, full_text) else 0,
         "tem_inteiro_teor": 1,
     }
 

@@ -1,0 +1,538 @@
+{
+  "uf": "CE",
+  "id_organizacao": 6,
+  "termos": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Decisão",
+    "Resultado de Julgamento",
+    "Intimação da Decisão",
+    "Retificação Acórdão",
+    "Edital de Retificação",
+    "Edital de Julgamento"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-18T14:36:31Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-17",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-02-08",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2019-03-15",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2019-11-29",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-03-25",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-05-14",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-07-14",
+        "publicacoes": 20,
+        "baixadas": 20
+      },
+      {
+        "dia": "2020-09-16",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-10-06",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2020-11-24",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-01-26",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-02-02",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-06-18",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-08-02",
+        "publicacoes": 34,
+        "baixadas": 34
+      },
+      {
+        "dia": "2021-09-10",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2021-10-13",
+        "publicacoes": 12,
+        "baixadas": 12
+      },
+      {
+        "dia": "2022-03-23",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2022-07-29",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-09-29",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2022-10-28",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-12-20",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-01-19",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-02-01",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-04-25",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2023-10-18",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2023-12-13",
+        "publicacoes": 36,
+        "baixadas": 36
+      },
+      {
+        "dia": "2024-01-09",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-02-07",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-03-20",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-06-17",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2024-07-31",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2024-12-26",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2025-02-06",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2025-05-23",
+        "publicacoes": 15,
+        "baixadas": 15
+      },
+      {
+        "dia": "2025-06-18",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2025-07-21",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2025-11-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-03-09",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2026-08-17",
+        "publicacoes": 26,
+        "baixadas": 26
+      },
+      {
+        "dia": "2026-11-10",
+        "publicacoes": 10,
+        "baixadas": 10
+      }
+    ],
+    "decisoes_no_censo": 0,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": null,
+      "EMENTA": null,
+      "DECISAO": null,
+      "JULGAMENTO": null,
+      "RECURSO": null
+    },
+    "tipos": {
+      "Portaria": {
+        "publicacoes": 106,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRESIDÊNCIA": 97,
+          "PROCESSO ADMINISTRATIVO": 8,
+          "TRIBUNAL DE ETICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 3291,
+            "titulo": "PORTARIA Nº 24/2019-PRES/OAB-CE.",
+            "trecho": "“Nomeação do 1º Vice-Presidente da Comissão de Acompanhamento Legislativo da Ordem dos Advogados do Brasil, Seção Ceará.” Considerando necessidade de indicação de advogado (a) para compor o quadro de membros das Comissões da OAB/CE; O Presidente da Ordem dos A"
+          },
+          {
+            "id": 3292,
+            "titulo": "PORTARIA Nº 25/2019-PRES/OAB-CE.",
+            "trecho": "“Nomeação do 2º Vice-Presidente da Comissão de Acompanhamento Legislativo da Ordem dos Advogados do Brasil, Seção Ceará.” Considerando necessidade de indicação de advogado (a) para compor o quadro de membros das Comissões da OAB/CE; O Presidente da Ordem dos A"
+          },
+          {
+            "id": 3293,
+            "titulo": "PORTARIA Nº 26/2019-PRES/OAB-CE.",
+            "trecho": "“Nomeação de Conselheiros(as) para representar a OAB Ceará, no Conselho Municipal de Defesa do Consumidor (CMDC).” Considerando a importância do Conselho Municipal de Defesa do Consumidor (CMDC) para a sociedade fortalezense; Considerando a necessidade da OAB/"
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 91,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA": 67,
+          "TRIBUNAL DE ETICA E DISCIPLINA": 21,
+          "PROCESSO ADMINISTRATIVO": 2,
+          "Procuradoria Jurídica": 1
+        },
+        "amostras": [
+          {
+            "id": 659,
+            "titulo": "EDITAL N. 02/2019.",
+            "trecho": "Nos termos do disposto na Lei 8.908/94 – Estatuto da Advocacia e da Ordem dos Advogados do Brasil, e nos termos do Regimento Interno da OAB/CE, torna-se público que requereram inscrição com endereço declarado nesta Seccional, os seguintes candidatos: 1- NO QUA"
+          },
+          {
+            "id": 24589,
+            "titulo": "EDITAL Nº 14/2019 – INS.",
+            "trecho": "Nos termos do disposto na Lei 8.908/94 – Estatuto da Advocacia e da Ordem dos Advogados do Brasil, e nos termos do Regimento Interno da OAB/CE, torna-se público que requereram inscrição com endereço declarado nesta Seccional, os seguintes candidatos: NO QUADRO"
+          },
+          {
+            "id": 194570,
+            "titulo": "SESSÃO DE JULGAMENTO DO PLENO DO TED",
+            "trecho": "O Presidente do TED/OAB-CE cientifica e notifica o advogado e demais abaixo relacionados (CED/2015, art. 60, §§ 2º e 3º) que a partir da sessão plenária ordinária do dia 17 /12/2019 , com início às 14h , serão julgados os seguintes processos: PAD nº 1537/2016 "
+          }
+        ]
+      },
+      "Inscrição": {
+        "publicacoes": 22,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA ADMINISTRATIVA": 22
+        },
+        "amostras": [
+          {
+            "id": 1138991,
+            "titulo": "EDITAL – INSCRIÇÃO SUPLEMENTAR",
+            "trecho": "Nos termos do disposto na Lei 8.908/94 – Estatuto da Advocacia e da Ordem dos Advogados do Brasil, e nos termos do Regimento Interno da OAB/CE, torna-se público que requereram inscrição com endereço declarado nesta Seccional, os seguintes candidatos: NO QUADRO"
+          },
+          {
+            "id": 1138992,
+            "titulo": "EDITAL – INSCRIÇÃO SUPLEMENTAR",
+            "trecho": "Nos termos do disposto na Lei 8.908/94 – Estatuto da Advocacia e da Ordem dos Advogados do Brasil, e nos termos do Regimento Interno da OAB/CE, torna-se público que requereram inscrição com endereço declarado nesta Seccional, os seguintes candidatos: NO QUADRO"
+          },
+          {
+            "id": 1138993,
+            "titulo": "EDITAL – INSCRIÇÃO SUPLEMENTAR",
+            "trecho": "Nos termos do disposto na Lei 8.908/94 – Estatuto da Advocacia e da Ordem dos Advogados do Brasil, e nos termos do Regimento Interno da OAB/CE, torna-se público que requereram inscrição com endereço declarado nesta Seccional, os seguintes candidatos: NO QUADRO"
+          }
+        ]
+      },
+      "Convocação - Pauta de Julgamentos": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 9,
+          "SEGUNDA CÂMARA": 1,
+          "ORGÃO ESPECIAL": 1,
+          "TERCEIRA CÂMARA": 1
+        },
+        "amostras": [
+          {
+            "id": 267580,
+            "titulo": "3ª SESSÃO ORDINÁRIA (2020)",
+            "trecho": "SESSÃO VIRTUAL ORDINÁRIA DE NOVEMB R O /2020. A SEGUNDA CÂMARA DE JULGAMENTO DO CONSELHO ESTADUAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO CEARÁ, nos termos da Resolução n. 19/2020 do CFOAB (DEOAB de 23/04/2020, p.1), que acrescentou dispositivos ao art. 97-A a"
+          },
+          {
+            "id": 349115,
+            "titulo": "1ª SESSÃO EXTRAORDINÁRIA (2021).",
+            "trecho": "O ÓRGÃO ESPECIAL DO CONSELHO ESTADUAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO CEARÁ, nos termos da Resolução n. 19/2020 (DEOAB de 23/04/2020, p.1), que acrescentou dispositivos ao art. 97-A ao Regulamento Geral do Estatuto da Advocacia e da OAB (Lei n. 8.906/9"
+          },
+          {
+            "id": 919677,
+            "titulo": "1ª SESSÃO EXTRAORDINÁRIA (2025).",
+            "trecho": "A TERCEIRA CÂMARA DE JULGAMENTO DO CONSELHO ESTADUAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO CEARÁ, reunir-se-á presencialmente na sala do Plenarinho, 1º andar do Edifício Prof. Luiz Cruz de Vasconcelos, sede da OAB/CE, situado na Av. Washington Soares, nº 800"
+          }
+        ]
+      },
+      "Cancelamento de Licenciamento": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA": 11,
+          "SECRETARIA ADMINISTRATIVA": 1
+        },
+        "amostras": [
+          {
+            "id": 951699,
+            "titulo": "EDITAL – RETIRADA DE LICENCIAMENTO",
+            "trecho": "Torno público que o(a) advogado(a) ADRIANA ISABELLE BARBOSA LIMA SÁ LEITÃO , OAB/CE N º 40987 obteve em 14/07/2025, a RETIRADA DE LICENCIAMENTO de sua inscrição neste Conselho, nos termos do disposto no inciso I do Art. 12 da Lei 8.906/94. Fortaleza, 17 de jul"
+          },
+          {
+            "id": 951701,
+            "titulo": "EDITAL – RETIRADA DE LICENCIAMENTO",
+            "trecho": "Torno público que o(a) advogado(a) DEBORA MARIA TEIXEIRA AUGUSTO LIMA , OAB/CE N º 24991 obteve em 14/07/2025, a RETIRADA DE LICENCIAMENTO de sua inscrição neste Conselho, nos termos do disposto no inciso I do Art. 12 da Lei 8.906/94. Fortaleza, 17 de julho de"
+          },
+          {
+            "id": 951702,
+            "titulo": "EDITAL – RETIRADA DE LICENCIAMENTO",
+            "trecho": "Torno público que o(a) advogado(a) VICTOR DO AMARAL CASTRO RODRIGUES , OAB/CE N º 39094 obteve em 11/07/2025, a RETIRADA DE LICENCIAMENTO de sua inscrição neste Conselho, nos termos do disposto no inciso I do Art. 12 da Lei 8.906/94. Fortaleza, 17 de julho de "
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 10,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA": 8,
+          "SECRETARIA ADMINISTRATIVA": 2
+        },
+        "amostras": [
+          {
+            "id": 952044,
+            "titulo": "EDITAL - INSCRIÇÃO DEFINITVA",
+            "trecho": "Nos termos do disposto na Lei 8.908/94 – Estatuto da Advocacia e da Ordem dos Advogados do Brasil, e nos termos do Regimento Interno da OAB/CE, torna-se público que requereram inscrição com endereço declarado nesta Seccional, os seguintes candidatos: NO QUADRO"
+          },
+          {
+            "id": 952045,
+            "titulo": "EDITAL – INSCRIÇÃO SUPLEMENTAR",
+            "trecho": "Nos termos do disposto na Lei 8.908/94 – Estatuto da Advocacia e da Ordem dos Advogados do Brasil, e nos termos do Regimento Interno da OAB/CE, torna-se público que requereram inscrição com endereço declarado nesta Seccional, os seguintes candidatos: NO QUADRO"
+          },
+          {
+            "id": 952046,
+            "titulo": "EDITAL – INSCRIÇÃO SUPLEMENTAR",
+            "trecho": "Nos termos do disposto na Lei 8.908/94 – Estatuto da Advocacia e da Ordem dos Advogados do Brasil, e nos termos do Regimento Interno da OAB/CE, torna-se público que requereram inscrição com endereço declarado nesta Seccional, os seguintes candidatos: NO QUADRO"
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 6,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 6
+        },
+        "amostras": [
+          {
+            "id": 1058203,
+            "titulo": "CONVOCAÇÃO",
+            "trecho": "TEDOABCE notifica os interessados, Representado (a): C.E.F.O. - (Procurador: CARLOS EDUARDO FALCAO DE OLIVEIRA - OAB/CE N° 06859) e Representante: ANA LUISA FALCÃO GADELHA para comparecerem na AUDIÊNCIA DE INSTRUÇÃO do processo disciplinar n° 417382021-0, a se"
+          },
+          {
+            "id": 1139880,
+            "titulo": "CONVOCAÇÃO",
+            "trecho": "TED-OAB/CE notifica os interessados, Representado(a)(s): L.G.B.P (Procurador(a): LUIZ GUILHERME BRASIL PONTES - OAB/CE N° 44.445), P.V.M (Procurador(a): PRISCILA VIANA MAGALHÃES - OAB/CE 36.833 e Representante IRANI RODRIGUES LINS, para comparecerem à AUDIÊNCI"
+          },
+          {
+            "id": 1139890,
+            "titulo": "CONVOCAÇÃO",
+            "trecho": "TED-OAB/CE notifica os interessados, Representado(a): D.R.D.L.S (Procurador(a): DAVID RAMON DE LIMA SOUZA - OAB/CE N° 44.969), R.G.J.D.C (Procurador(a): MAX DELANO DAMASCENO SOUZA - OAB/CE N° 21.772) e o Representante: LEVI AGUIAR PRADO, para comparecerem à AU"
+          }
+        ]
+      },
+      "Edital de Cancelamento": {
+        "publicacoes": 6,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA ADMINISTRATIVA": 6
+        },
+        "amostras": [
+          {
+            "id": 1139244,
+            "titulo": "EDITAL - CANCELAMENTO DE INSCRIÇÃO",
+            "trecho": "Edital de Cancelamento de 14 de agosto de 2026 NO QUADRO DE ADVOGADOS: JULIANA HOLANDA MATOS , OAB/CE n.° 18.242 obteve o cancelamento de sua inscrição neste Conselho . No prazo de 05(cinco) dias, a contar da publicação deste edital, poderão ser apresentadas i"
+          },
+          {
+            "id": 1139249,
+            "titulo": "EDITAL - CANCELAMENTO DE INSCRIÇÃO",
+            "trecho": "Edital de Cancelamento de 14 de agosto de 2026 NO QUADRO DE ADVOGADOS: FERNANDO AUGUSTO GOMES , OAB/CE n.° 51.240 obteve o cancelamento de sua inscrição neste Conselho . No prazo de 05(cinco) dias, a contar da publicação deste edital, poderão ser apresentadas "
+          },
+          {
+            "id": 1139664,
+            "titulo": "EDITAL - CANCELAMENTO DE INSCRIÇÃO",
+            "trecho": "Edital de Cancelamento de 14 de agosto de 2026 NO QUADRO DE ADVOGADOS: MARCELO QUEIROZ DO NASCIMENTO OAB/CE n.° 30.083 obteve o cancelamento de sua inscrição neste Conselho . No prazo de 05(cinco) dias, a contar da publicação deste edital, poderão ser apresent"
+          }
+        ]
+      },
+      "Notificação": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "CONSELHO PLENO": 3,
+          "TRIBUNAL DE ETICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 717282,
+            "titulo": "EDITAL NOTIFICA TRANSCRIÇÃO DESPACHO TED OAB/CE",
+            "trecho": "Processo. 457592022-0: Repte: Grupo de Valorização do Cariri – GRUNEC. Repdos: A.G.L.E e J.C.F.A.T (Procuradores Advogados Ana Gabriela Lima Esmeraldo OAB/CE 44173 eJosé Clelso Ferreira Araújo Torquato OAB/CE 43455); para seu conhecimento, faz-se transcrever o"
+          },
+          {
+            "id": 781787,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "O CONSELHO PLENO ESTADUAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO CEARÁ reunir-se-á em Sessão Plenária, no dia 2 2 (vinte e dois) de AGOSTO d e 202 4 (dois mil e vinte e quatro ) com início às 14h (quatorze horas) , ficando as partes, procuradores e interessad"
+          },
+          {
+            "id": 781788,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "O CONSELHO PLENO ESTADUAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO CEARÁ reunir-se-á em Sessão Plenária, no dia 22 (vinte e dois) de AGOSTO d e 202 4 (dois mil e vinte e quatro ) com início às 14h (quatorze horas) , ficando as partes, procuradores e interessado"
+          }
+        ]
+      },
+      "Audiência de Conciliação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 2
+        },
+        "amostras": [
+          {
+            "id": 1057571,
+            "titulo": "CONVOCAÇÃO",
+            "trecho": "TEDOABCE notifica os interessados, Representados(as): L.M.S. (Procuradora: LIGIA MARIA DE SOUSA - OAB/CE Nº 23.329) e N.E.M.D.X. (Procuradora: NATHÁLIA EDWIRGENS MARTINS DIAS XIMENES – OAB/CE N° 33.105) e Representante: MARIA JOSÉ PERUCCHI NOVAIS para comparec"
+          },
+          {
+            "id": 1057633,
+            "titulo": "CONVOCAÇÃO",
+            "trecho": "TEDOABCE notifica os interessados, Representado(a): A.V.F.S. (Procuradores: JULIETA BRENDA FERNANDES MORAO - OAB/CE Nº 54.215, JOSE BOAVENTURA FILHO –OAB/CE N° 11.867, FRANCISCO LUCIANO DA SILVA CHAVES – OAB/CE N° 51.557 e MARIA ELIZA FERNANDES DE LAVOR BOAVEN"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "CONSELHO PLENO": 1
+        },
+        "amostras": [
+          {
+            "id": 565199,
+            "titulo": "RESOLUÇÃO N. 03/2023",
+            "trecho": "Altera dispositivo do Regimento Interno do Conselho Seccional da Ordem dos Advogados do Brasil, Seção do Ceará. O Conselho Seccional da Ordem dos Advogados do Brasil, no Estado do Ceará, no uso de suas atribuições legais e regimentais, que lhe são conferidas p"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 951301,
+            "titulo": "ESCLARECIMENTOS",
+            "trecho": "A Secretaria do Tribunal de Ética e Disciplina, de ordem do Presidente do TED-OAB/CE, intima as partes abaixo transcritas para que, caso queiram, prestem esclarecimentos no prazo de quinze dias úteis. Os processos são virtuais e estão disponíveis para consulta"
+          }
+        ]
+      },
+      "Edital de Suspensão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1057965,
+            "titulo": "COMUNICADO DE APLICAÇÃO DE SUSPENSÃO CAUTELAR",
+            "trecho": "Processo n º : 1.0262/2026. Representado (a): DOUGLAS RABELO QUEIROZ OAB/CE Nº 37686 Prazo suspensão: 365 dias Início suspensão: 06/03/2026 Término suspensão: 06/03/2027 . Por determinação da Presidente da Ordem dos Advogados do Brasil – Seção do Ceará, e em r"
+          }
+        ]
+      },
+      "Termo de Ajuste de Conduta": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1058078,
+            "titulo": "TERMO DE AJUSTAMENTO DE CONDUTA",
+            "trecho": "A Secretaria do Tribunal de Ética e Disciplina, de ordem do Presidente da 1ª Turma do TED-OAB/CE, notifica os advogados representados no processo a seguir relacionado, em trâmite no Tribunal de Ética e Disciplina da Seccional do Ceará, para que, querendo, firm"
+          }
+        ]
+      }
+    }
+  },
+  "observacoes": "Censo (20 e 40 dias sorteados) trouxe 0 decisoes: so Portaria, Edital, Inscricao, Pauta etc.; nao serve de prova de recall, validado por varredura na API de busca do DEOAB (idOrganizacao=6) com ACORDAO/EMENTA, tipo via /publicacao/<id>/publicado. Linha do tempo: 2019 'Acordao' (15 de 22 hits ACORDAO; Pedido de Desagravo, com EMENTA); 2020-2024 praticamente sem decisao com ementa: os hits sao 'Edital' titulados 'DECISAO DE JULGAMENTO DA Nª TURMA/PLENO DO TED' que apenas intimam para recurso e listam PAD (sem ementa), mais pautas, resolucoes e notificacoes (excluidos de tipos_decisao; se quiser a lista de processos julgados, incluir 'Edital' e filtrar por titulo). 2025: 27 'Resultado de Julgamento' + 1 'Decisao' (Pleno) + 1 'Edital de Julgamento' com EMENTA (29 hits EMENTA, todos nesses tipos); alguns 'Intimacao da Decisao' sem ementa. 2026 (ate nov): ACORDAO 255 hits = 126 'Decisao', 102 'Intimacao da Decisao' (com ementa), 1 'Retificacao Acordao', 3 'Edital de Retificacao', 23 'Notificacao' (nao e decisao, so aviso de prazo); EMENTA 232 hits. Volume real: cerca de 30 em 2025 e 230-260 em 2026; a estimativa de 400-500 acordaos 2020-2026 so se sustenta com 2026 (volume concentrado em 2026, os anos 2020-2024 vem sem texto de decisao no DEOAB). Julgam as 1a, 2a e 3a Turmas do TED, Pleno do TED, e Conselho Pleno/2a e 3a Camaras do Conselho Seccional (recursos; notificacao de ciencia de acordao). Titulo padrao 'DECISAO DE JULGAMENTO DA Nª TURMA DO TED'. Sem indicio de fonte fora do DEOAB (nem ementario em site proprio, nem PDF); a lacuna 2020-2024 pode, porem, indicar que as decisoes desses anos estao fora do DEOAB: vale checar o site da OAB/CE. Termos ACORDAO e EMENTA cobrem 100% dos tipos de decisao observados em 2019, 2025 e 2026. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca). Editais 'DECISÃO DE JULGAMENTO DA TURMA' de 2020 a 2024 ficam de fora: só listam processos e intimam para recurso, sem ementa.",
+  "modo": "censo"
+}

@@ -1,0 +1,597 @@
+{
+  "uf": "MA",
+  "id_organizacao": 10,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Edital",
+    "Errata",
+    "Edital de Sessão Especial"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-18T14:27:00Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-08",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-02-25",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-03-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-11-27",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-02-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-03-19",
+        "publicacoes": 12,
+        "baixadas": 12
+      },
+      {
+        "dia": "2020-07-03",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-09-22",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2020-10-20",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2020-11-13",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-01-27",
+        "publicacoes": 12,
+        "baixadas": 12
+      },
+      {
+        "dia": "2021-02-12",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-06-23",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2021-08-04",
+        "publicacoes": 9,
+        "baixadas": 9
+      },
+      {
+        "dia": "2021-09-10",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2021-10-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-03-08",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2022-07-04",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-09-02",
+        "publicacoes": 51,
+        "baixadas": 51
+      },
+      {
+        "dia": "2022-10-27",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-12-09",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-01-19",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2023-02-20",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2023-04-26",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-10-24",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2023-12-08",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2024-01-11",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-02-20",
+        "publicacoes": 9,
+        "baixadas": 9
+      },
+      {
+        "dia": "2024-03-15",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2024-06-06",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2024-07-26",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2024-12-20",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2025-02-19",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-05-30",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2025-06-24",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-07-11",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-11-18",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2026-03-23",
+        "publicacoes": 12,
+        "baixadas": 12
+      },
+      {
+        "dia": "2026-08-14",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2026-11-13",
+        "publicacoes": 4,
+        "baixadas": 4
+      }
+    ],
+    "decisoes_no_censo": 16,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 0.9375,
+      "DECISAO": 0.375,
+      "JULGAMENTO": 0.25,
+      "RECURSO": 0.3125
+    },
+    "tipos": {
+      "Edital": {
+        "publicacoes": 59,
+        "parecem_decisao": 0,
+        "setores": {
+          "Câmara Deliberativa": 45,
+          "Secretaria Geral": 14
+        },
+        "amostras": [
+          {
+            "id": 294544,
+            "titulo": "EDITAL DE NOTIFICAÇÃO – ARQUIVAMENTO",
+            "trecho": "PROCESSO: 10.0000.2020.007392-0 ASSUNTO: PEDIDO DE PROVIDÊNCIAS REPRESENTAD A : GLAUCIA STELLA DE ARAÚJO MARTINS MELO (OAB/MA N. ° 13.103) Pelo presente, fica o (a) advogado (a) interessado (a) acima identificado (a), no qual figura como parte do processo acim"
+          },
+          {
+            "id": 294545,
+            "titulo": "EDITAL DE NOTIFICAÇÃO – ARQUIVAMENTO",
+            "trecho": "PROCESSO: 10.0000.2016.008933-5 ASSUNTO: REPRESENTAÇÃO COMUNICANTE: VALDIR LOPES MAGALHÃES PROCURADORA: BENEDITA PINHEIRO DE SOUSA, OAB/MA 7.211 REPRESENTADO: NILO PEREIRA REGO NETO OAB/MA N. ° 5.892 Pelo presente, fica o (a) advogado (a) interessado (a) acima"
+          },
+          {
+            "id": 294546,
+            "titulo": "EDITAL DE NOTIFICAÇÃO – ARQUIVAMENTO",
+            "trecho": "PROCESSO: 10.0000.2014.005549-8 ASSUNTO: REPRESENTAÇÃO DISCIPLINAR REPRESENTADA: GEANA RIBEIRO FERNANDES (OAB/MA N. ° 5.159) Pelo presente, fica o (a) advogado (a) interessado (a) acima identificado (a), no qual figura como parte do processo acima referenciado"
+          }
+        ]
+      },
+      "Edital de Arquivamento": {
+        "publicacoes": 55,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Geral": 54,
+          "TRIBUNAL DE ÉTICA DA OAB/MA": 1
+        },
+        "amostras": [
+          {
+            "id": 361206,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 10.0000. 20 21.000016-6 Representante: Subseção Estreito /MA Representado: Roberto Araújo de Oliveira (OAB/MA nº 7.495 ) O Presidente do Tribunal de Ética e Disciplina, Dr. Frederico Augusto Costa Lima , determina o arquivamento da Representação, Dia"
+          },
+          {
+            "id": 478777,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 10.0000.201 3 .000 069-0 Requerente: Antônio Carlos Coelho (OAB/ MA 4 380 ) . Requerido: O Presidente desta Seccional Thiago Roberto Morais Diaz , determina o arquivamento da Representação, diante do despacho da ilustre Coordenadora do Núcleo de Defe"
+          },
+          {
+            "id": 479134,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 10.0000.201 4.000816-7 Requerente: Ernesto Lopes Gomes (OAB/ MA 7107 ) . Requerido: O Presidente desta Seccional Thiago Roberto Morais Diaz , determina o arquivamento da Representação, diante do despacho da ilustre Coordenadora do Núcleo de Defesa da"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 31,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA DA OAB/MA": 18,
+          "Secretaria Geral": 5,
+          "Tribunal de Ética e Disciplina": 5,
+          "Câmara Deliberativa": 3
+        },
+        "amostras": [
+          {
+            "id": 193919,
+            "titulo": "EDITAL DE COMPARECIMENTO",
+            "trecho": "NOTIFICAÇÃO DE AUDIÊNCIA DE INSTRUÇÃO Conforme despacho do relator Dr. ARTUR GUEDES DA FONSECA MELLO notifica-se os advogados nos processos a seguir relacionados, a comparecerem na Audiência de instrução, designada, para o dia 19 de dezembro de 2019, na sede d"
+          },
+          {
+            "id": 233513,
+            "titulo": "EDITAL DE NOTIFICAÇÃO",
+            "trecho": "Notificação Processo Nº 10.0000.2018. 005197-0 – TED - OAB/MA. Classe: Representação Ético-Disciplinar Considerando o despacho do relator THALES DYEGO DE ANDRADE COELHO, exarado no Processo Ético-Disciplinar nº. 10.0000.2018.005197-0 - TED-OAB/MA, no qual figu"
+          },
+          {
+            "id": 243092,
+            "titulo": "EDITAL DE NOTIFICAÇÃO",
+            "trecho": "De ordem da Secretária Geral Drª . Ananda Teresa Farias de Sousa da Ordem dos Advogados do Brasil – Seccional do Maranhão notifica os(as) advogados(as), ALIM RACHID MALUF NETO OAB/MA 6768, ATILA BEDE NANTUA OAB/MA 12.760, CAMILA BARBOSA KZAM OAB/MA 11.994, FRA"
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 30,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Geral": 30
+        },
+        "amostras": [
+          {
+            "id": 233418,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 10.0000.2014.010502-6 Representante: Francisco Mendes de Sousa OAB/MA/5970 Representad o: E.C.V.F . OAB/MA/8877-A O Presidente do Tribunal de Ética e Disciplina, Dr. Frederico Augusto Costa Lima, determina o arquivamento da Representação, ao entendim"
+          },
+          {
+            "id": 233420,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 1 0.0000.201 6.001577-7 Representante: Juiz de Direito da 2ª Vara da Comarca de Codó -MA Representad o: F.R.P.R . OAB/MA/ 13281 . O Presidente do Tribunal de Ética e Disciplina, Dr. Frederico Augusto Costa Lima, determina o arquivamento da Representa"
+          },
+          {
+            "id": 233421,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 1 0.0000.201 6.005110-8 Representante: Juiz da 2ª Vara da Comarca de santa Inês - MA Representad o: R.W.S.R. OAB/MA/ 3629 . O Presidente do Tribunal de Ética e Disciplina, Dr. Frederico Augusto Costa Lima, determina o arquivamento da Representação, a"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 16,
+        "parecem_decisao": 9,
+        "setores": {
+          "Secretaria Geral": 12,
+          "TRIBUNAL DE ÉTICA DA OAB/MA": 3,
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 232,
+            "titulo": "ACORDAO/0019/2018 PROCESSO N. 10.0000.2015.001902-1",
+            "trecho": "REPRESENTANTE: JOSEFA DA PAZ SILVA LEITE REPRESENTADA: A. C. A. C. OAB/MA 8899. Processo Disciplinar. Retenção. Ausência de má-fé. Princípio de proporcionalidade. Suspensão. Sanção desproporcional 1. O art. 113 do Código Civil Brasileiro prescreve que “os negó"
+          },
+          {
+            "id": 6049,
+            "titulo": "ACORDAO/001/2019 PROCESSO N. 10.0000.2015.006291-8",
+            "trecho": "REPRESENTANTE: SUELY LOPES SILVA OAB/MA/3454 SOLICITAÇÃO DE APRECIAÇÃO Ementa: SOLICITAÇÃO DA CRIAÇÃO DA SEBSEÇÃO DA OAB/MA PARA COMARCA DE GRAJAÚ/MA. Pedido Acolhido. Preenchidos os requisitos do regimento interno, feito o estudo a viabilidade de sua implanta"
+          },
+          {
+            "id": 338031,
+            "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "ACÓRDÃO PUBLICAÇÃ O DE ACÓRDÃO O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil- Seccional Maranhão torna pública a decisão julgada no seguinte processo : Processo: 10.0000.2015.005836-6 COMUNICATE: JUIZ DO 7º JUIZADO ESPECIAL CI"
+          }
+        ]
+      },
+      "Edital de Licença de Inscriçao": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "Câmara Deliberativa": 12
+        },
+        "amostras": [
+          {
+            "id": 1018876,
+            "titulo": "EDITAL DE LICENÇA DE INSCRIÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão, torna público que o(a) advogado(a), LAISSA BARBOSA MARTINS , OAB/MA 18.134 , obteve em 10 de novembro de 2025, o Licenciamento de sua Inscrição neste Conselho, nos termos do disposto no inciso II e IV do Ar"
+          },
+          {
+            "id": 1018918,
+            "titulo": "EDITAL DE LICENÇA DE INSCRIÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão, torna público que o(a) advogado(a), BRENNA ROSE CAETANO SAMPAIO , OAB/MA 25.278 , obteve em 10 de novembro de 2025, o Licenciamento de sua Inscrição neste Conselho, nos termos do disposto no inciso I do Art"
+          },
+          {
+            "id": 1018934,
+            "titulo": "EDITAL DE LICENÇA DE INSCRIÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão, torna público que o(a) advogado(a), LAIS NASCIMENTO JANSEN , OAB/MA 26.995 , obteve em 10 de novembro de 2025, o Licenciamento de sua Inscrição neste Conselho, nos termos do disposto no inciso II do Art. 12"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 6,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA DA OAB/MA": 4,
+          "Secretaria Geral": 2
+        },
+        "amostras": [
+          {
+            "id": 243106,
+            "titulo": "EDITAL DE NOTIFICAÇÃO E PUBLICAÇÃO DE PAUTA DE JULGAMENTO DO TED OAB/MA",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil – Secci o nal do Maranhão , no uso de suas atribuições legais, estatutárias e regimentais, em especial, o artigo 49, inciso III do Regimento Interno do TED/MA (Resolução 016/2017),"
+          },
+          {
+            "id": 270502,
+            "titulo": "EDITAL DE JULGAMENTO",
+            "trecho": "EDITAL DE NOTIFICAÇÃO E PUBLICAÇÃO DE PAUTA DE JULGAMENTO DO TED/OAB/MA. O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil - Seccional do Maranhão, por força das disposições constitucionais e estatutárias, vem notificar as partes "
+          },
+          {
+            "id": 300470,
+            "titulo": "EDITAL DE JULGAMENTO",
+            "trecho": "EDITAL DE NOTIFICAÇÃO E PUBLICAÇÃO DE PAUTA DE JULGAMENTO DO TED/OAB/MA. O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil - Seccional do Maranhão, por força das disposições constitucionais e estatutárias, vem notificar as partes "
+          }
+        ]
+      },
+      "Cancelamento de Licenciamento": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "Câmara Deliberativa": 4
+        },
+        "amostras": [
+          {
+            "id": 1065502,
+            "titulo": "EDITAL DE CANCELAMENTO DE LICENÇA DE INSCRIÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão torna público que o(a) advogado(a) VANESSA CRISTINA RAMOS FONSECA DA SILVA BARBOSA , inscrito(a) sob o nº OAB/MA 12.866 , obteve em 09 de março de 2026.a reativação de sua inscrição, conforme registrado nos "
+          },
+          {
+            "id": 1065758,
+            "titulo": "EDITAL DE CANCELAMENTO DE LICENÇA DE INSCRIÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão torna público que o(a) advogado(a) MARCELO ALMEIDA MINA , inscrito(a) sob o nº OAB/MA 11 . 639 , obteve em 09 de março de 2026 a reativação de sua inscrição, conforme registrado nos assentamentos deste Conse"
+          },
+          {
+            "id": 1065822,
+            "titulo": "EDITAL DE CANCELAMENTO DE LICENÇA DE INSCRIÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão torna público que o(a) advogado(a) ALISSIANNY LOUISE MENDES BOUCINHAS , inscrito(a) sob o nº OAB/MA 23 . 992 , obteve em 07 de março de 2026 a reativação de sua inscrição, conforme registrado nos assentament"
+          }
+        ]
+      },
+      "Errata": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Geral": 3
+        },
+        "amostras": [
+          {
+            "id": 373397,
+            "titulo": "EDITAL",
+            "trecho": "A Secretária Geral Adjunta da Ordem dos Advogados do Brasil- Seccional do Maranhão apresenta esta errata para correção da publicação do Processo: 100.0000.2019.010304-8 publicado no dia 14 . 10. 2021 , Ano III , Nº 706 , página 49 , Onde se Lê: Representa do: "
+          },
+          {
+            "id": 409686,
+            "titulo": "ERRATA DE EDITAL DE ARQUIVAMENTO",
+            "trecho": "O Secretá rio Geral da Ordem dos Advogados do Brasil, Seccional do Maranhão , no uso de suas atribuições legais, e nos termos do Estatuto da Advocacia e da OAB; do Regulamento Geral, vem informar à público e tornar sem efeito a informação de arquivamento do pr"
+          },
+          {
+            "id": 409687,
+            "titulo": "ERRATA DE EDITAL DE ARQUIVAMENTO",
+            "trecho": "O Secretário Geral da Ordem dos Advogados do Brasil, Seccional do Maranhão , no uso de suas atribuições legais, e nos termos do Estatuto da Advocacia e da OAB; do Regulamento Geral, vem informar à público e tornar sem efeito a informação de arquivamento do pro"
+          }
+        ]
+      },
+      "Cancelamento de Inscrição": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Câmara Deliberativa": 3
+        },
+        "amostras": [
+          {
+            "id": 1019352,
+            "titulo": "EDITAL DE CANCELAMENTO DE INSCRIÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão, torna público que o(a) advogado(a), BLENDA DIAS DOS SANTOS , OAB/MA 2 8.318 , obteve em 10 de novembro de 2025, o Cancelamento de sua Inscrição neste Conselho, nos termos do disposto no inciso IV do Art. 11"
+          },
+          {
+            "id": 1065417,
+            "titulo": "EDITAL DE CANCELAMENTO DE INSCRIÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão, torna público que o(a) advogado(a), THALITA MARTILIANA DE SOUSA SIMAS , OAB/MA 14.463 , obteve em 09 de março de 2026, o Cancelamento de sua Inscrição neste Conselho, nos termos do disposto no inciso I e IV"
+          },
+          {
+            "id": 1065831,
+            "titulo": "EDITAL DE CANCELAMENTO DE INSCRIÇÃO SUPLEMENTAR",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional Maranhão, torna público que o(a) advogado(a), LARA BEATRIZ VIVEIROS RAMOS , OAB/MA 19.414-A , LEONARDO FELIPE MORAIS VALENCA , OAB/MA 14.619-A, NATHALIA PINHEIRO DE SOUSA , OAB/MA 28.966-A, obtiveram em 09 de março d"
+          }
+        ]
+      },
+      "Arquivamento": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA DA OAB/MA": 2
+        },
+        "amostras": [
+          {
+            "id": 1194068,
+            "titulo": "TRIBUNAL DE ETICA E DISCIPLINA/ NOTIFICAÇÃO",
+            "trecho": "ATENÇÃO! O link para você se cadastrar no peticionamento eletrônico para consulta aos processos, já está disponível no site da OAB/ Maranhão. https://peticionamento.oab.org.br/cadastrar 39- Proc. 10.0000.2024.002387-3 adv. vinculado: R.B.D.S. OAB/MA OAB/MA 130"
+          },
+          {
+            "id": 1194563,
+            "titulo": "TRIBUNAL DE ETICA E DISCIPLINA/ NOTIFICAÇÃO",
+            "trecho": "ATENÇÃO! O link para você se cadastrar no peticionamento eletrônico para consulta aos processos, já está disponível no site da OAB/ Maranhão. https://peticionamento.oab.org.br/cadastrar Proc. 10.0000.2018.000907-0 , adv. vinculado: D.G.C.L. OAB/MA 6487 procura"
+          }
+        ]
+      },
+      "Reabilitação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Geral": 1
+        },
+        "amostras": [
+          {
+            "id": 5032,
+            "titulo": "EDITAL",
+            "trecho": "A Secretária Geral da Ordem dos Advogados do Brasil – Seccional do Maranhão torna público que os advogados, ADRIANA CARLA RIBEIRO DO NASCIMENTO , OAB/MA/ 8757 , LUIS NIORD LOPES BULHÕES , OAB/MA/ 6040, ALEXANDRE QUARIGUASI DE ARAUJO, OAB/MA/ 6886 , KAIQUE FRIA"
+          }
+        ]
+      },
+      "Edital de Suspensão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Geral": 1
+        },
+        "amostras": [
+          {
+            "id": 211539,
+            "titulo": "EDITAL",
+            "trecho": "A Secretária Geral da Ordem dos Advogados do Brasil – Seccional do Maranhão torna público que o Egrégio Tribunal de Ética e Disciplina aplicou pena de suspensão de suas atividades advocatícias, a advogada , EXPEDITA SUANY LEITE SILVA CORREA, OAB/MA/9032, HAYEN"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA DA OAB/MA": 1
+        },
+        "amostras": [
+          {
+            "id": 263411,
+            "titulo": "RETIFICAÇÃO DE EDITAL DE JULGAMENTO",
+            "trecho": "EDITAL DE NOTIFICAÇÃO E PUBLICAÇÃO DE PAUTA DE JULGAMENTO DO TED/OAB/MA. O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil - Seccional do Maranhão, por força das disposições constitucionais e estatutárias, vem notificar as partes "
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA DA OAB/MA": 1
+        },
+        "amostras": [
+          {
+            "id": 1018927,
+            "titulo": "Notificação de Audiência de instrução",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional de Maranhão, notifica às partes abaixo para comparecer à Audiência de instrução designada para o dia 09/12/2025, a ser realizada forma virtual por meio da plataforma Zoom, observadas as disposições da Resolução de Dire"
+          }
+        ]
+      },
+      "Alegações Finais": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA DA OAB/MA": 1
+        },
+        "amostras": [
+          {
+            "id": 1138592,
+            "titulo": "EDITAL DE NOTIFICAÇÃO",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil – Seccional do Maranhão notifica, nos Processos Éticos Disciplinares abaixo mencionados, nos termos do art. 59, § 8º (CEDOAB), art. 137-D (Regulamento Geral), e do art. 69 § 2º do "
+          }
+        ]
+      },
+      "Convocação - Pauta de Julgamentos": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Geral": 1
+        },
+        "amostras": [
+          {
+            "id": 1138897,
+            "titulo": "PAUTA DE JULGAMENTOS",
+            "trecho": "CONVOCAÇÃO DE JULGAMENTO. O Conselho Seccional da OAB-MA irá se reunir em Sessão Ordinária , a ser realizada no plenário da sede da OABMA, em formato híbrid o , em 28 /0 8 /202 6 às 1 5 :00h , quando será julgado os autos de nº. 01- Processo nº: 10.0000.2026.0"
+          }
+        ]
+      },
+      "Audiência de Conciliação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1194157,
+            "titulo": "EDITAL DE NOTIFICAÇÃO",
+            "trecho": "Notificação de Audiência de Conciliação Notifica-se os advogados nos processos a seguir relacionados, a comparecerem na Audiência de Conciliação, designada, 23 de novembro de 2026, que ocorrerá na forma virtual por meio da plataforma Zoom, observadas as dispos"
+          }
+        ]
+      }
+    }
+  },
+  "observacoes": "Censo de 40 dias sorteados: 16 decisoes (abaixo de 30, validado com o que ha). Recall ACORDAO=1.0, EMENTA=0.94, nenhum acordao fora do termo ACORDAO no censo. Volume por busca ACORDAO/ano (idOrganizacao=10): 2020=38, 2021=52, 2022=41, 2023=70, 2024=64, 2025=49, 2026=36 (ate nov); ha publicacoes desde 2018/2019. Conferencia pela busca (termos ACORDAO/EMENTA): alem de tipo 'Acórdão', varios acordaos saem com tipoPublicacao 'Edital' (ex.: ACORDAO 030/2021, ACORDAO 002/2022) e 'Edital de Sessão Especial'; erratas de acordao saem como 'Errata'; por isso Edital, Errata e Edital de Sessão Especial entram em tipos_decisao (filtrar depois por conteudo). A busca por ACORDAO tambem traz decisoes do Conselho Seccional (inscricao originaria, recursos de inscricao, sessao do plenario), nao so disciplinares; filtrar depois. Tipo 'Despacho'/'Edital de Arquivamento' (~85 pubs, 'DESPACHO DE ARQUIVAMENTO' assinado pelo Presidente do TED, arquivamento liminar de representacao) NAO incluido: nao e merito colegiado; avaliar se interessa. Pauta, Edital de Notificacao, Licenca/Cancelamento de Inscricao, Audiencia, Alegacoes Finais, Reabilitacao nao sao decisao. Setores: Secretaria Geral, TRIBUNAL DE ÉTICA DA OAB/MA, Tribunal de Ética e Disciplina, Câmara Deliberativa. Titulos variam: 'ACORDAO/0019/2018 PROCESSO N.', 'ACÓRDÃO 04/2023', 'PUBLICAÇÃO ACORDÃO/DECISÃO' (lista de decisoes da sessao). Sem indicio de ementario em site proprio. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca).",
+  "modo": "censo"
+}

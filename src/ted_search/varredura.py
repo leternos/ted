@@ -18,6 +18,7 @@ import asyncio
 import calendar
 import json
 import random
+import unicodedata
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -25,6 +26,7 @@ from typing import Any
 
 from ted_search.collectors.deoab_nacional import (
     UF_TO_ORG,
+    motivo_recusa,
     normalize_deoab_item_nacional,
     save_records_to_database,
 )
@@ -43,6 +45,7 @@ ANO_INICIAL = 2019  # primeiro ano do DEOAB
 TERMOS_CANDIDATOS = ("ACORDAO", "EMENTA", "DECISAO", "JULGAMENTO", "RECURSO")
 TERMOS_PADRAO = ("ACORDAO", "EMENTA")  # sem perfil validado, usa-se a união (mais lenta, mais segura)
 TIPOS_DECISAO_PADRAO = ("ACÓRDÃO", "ACORDAO", "EMENTA")
+TERMO_CENSO = "TODAS"  # perfil com "modo": "censo": enumera todas as publicações da Seccional, sem termo de busca
 LIMITE_JANELA_MES = 300  # acima disso o mês é indexado dia a dia (consultas grandes são lentas no DEOAB)
 SEARCH_URL = f"{DEOAB_API_BASE_URL}/diario/pesquisa"
 
@@ -107,6 +110,11 @@ def carregar_perfil(uf: str) -> dict[str, Any]:
     return perfil
 
 
+def termos_de_coleta(perfil: dict[str, Any]) -> list[str]:
+    """No modo censo a coleta ignora os termos e enumera tudo; é o modo seguro para Seccionais pequenas."""
+    return [TERMO_CENSO] if perfil.get("modo") == "censo" else list(perfil["termos"])
+
+
 def _fmt(d: date) -> str:
     return d.strftime("%d/%m/%Y")
 
@@ -157,6 +165,32 @@ def _tipo(pub: dict[str, Any]) -> str:
     return ((pub.get("tipoPublicacao") or {}).get("descricao") or "").strip()
 
 
+def _sem_acento(texto: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFD", texto.upper()) if unicodedata.category(c) != "Mn")
+
+
+TITULOS_DECISAO_PADRAO = ("ACORDAO", "EMENTA")
+
+
+def eh_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> bool:
+    """Uma publicação é decisão pelo tipo, pelo título ou pelo corpo — nessa ordem.
+
+    O tipo sozinho não basta: há Seccionais que publicam "INTIMAÇÃO DE ACÓRDÃO" com ementa e acórdão
+    completos sob os tipos "Retificação" ou "Notificação" (medido em AL, nov/2026).
+    """
+    if pub.get("_skip"):  # formato antigo: descartada só pelo tipo, sem conteúdo guardado
+        return False
+    if _tipo(pub).upper() in perfil["tipos_decisao"]:
+        return True
+    titulo = _sem_acento(pub.get("titulo") or "")
+    if any(t in titulo for t in perfil.get("titulos_decisao", TITULOS_DECISAO_PADRAO)):
+        return True
+    corpo = _sem_acento(html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or ""))
+    # Fórmulas de julgamento colegiado: ementa + "acordam", ou "vistos, relatados e discutidos"
+    # (TO publica os resultados de sessão como "Edital de Notificação", sem ementa)
+    return ("EMENTA" in corpo and "ACORDAM" in corpo) or "VISTOS, RELATADOS E DISCUTIDOS" in corpo
+
+
 # ----------------------------------------------------------------------------- 1. perfil (censo)
 
 
@@ -172,7 +206,8 @@ def _parece_decisao(texto: str) -> bool:
 
 
 async def censo_do_dia(
-    client: Any, sem: asyncio.Semaphore, org_id: int, dia: date, termos: tuple[str, ...] = TERMOS_CANDIDATOS, limite: int = 600
+    client: Any, sem: asyncio.Semaphore, org_id: int, dia: date, termos: tuple[str, ...] = TERMOS_CANDIDATOS, limite: int = 600,
+    perfil: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Baixa TODAS as publicações da Seccional em um dia (sem termo) e mede o que cada termo encontra."""
     total, ids, ok = await _buscar_janela(client, sem, org_id, None, dia, dia)
@@ -199,6 +234,7 @@ async def censo_do_dia(
                 "titulo": (pub.get("titulo") or "").strip()[:140],
                 "trecho": " ".join(texto.split())[:260],
                 "parece_decisao": _parece_decisao(texto),
+                "eh_decisao": eh_decisao(pub, perfil) if perfil else None,
                 "termos": [t for t, s in por_termo.items() if pid in s],
             }
         )
@@ -314,18 +350,19 @@ async def _indexar_mes(
     ok = True
     modo = "mes"
     for termo in termos:
-        total, _, t_ok = await _buscar_janela(client, sem, org_id, termo, ini, fim, so_total=True)
+        busca = None if termo == TERMO_CENSO else termo  # modo censo: sem termo, todas as publicações
+        total, _, t_ok = await _buscar_janela(client, sem, org_id, busca, ini, fim, so_total=True)
         esperado[termo] = total
         ok = ok and t_ok
         if total == 0:
             indexados[termo] = 0
             continue
         if total <= LIMITE_JANELA_MES:
-            _, t_ids, t_ok = await _buscar_janela(client, sem, org_id, termo, ini, fim)
+            _, t_ids, t_ok = await _buscar_janela(client, sem, org_id, busca, ini, fim)
         else:
             modo = "dias"
             dias = [ini + timedelta(days=i) for i in range((fim - ini).days + 1)]
-            partes = await asyncio.gather(*(_buscar_janela(client, sem, org_id, termo, d, d) for d in dias))
+            partes = await asyncio.gather(*(_buscar_janela(client, sem, org_id, busca, d, d) for d in dias))
             t_ids = set().union(*(p[1] for p in partes))
             t_ok = all(p[2] for p in partes)
         indexados[termo] = len(t_ids)
@@ -345,7 +382,7 @@ async def coletar_ano(
     out.mkdir(parents=True, exist_ok=True)
     index_file, jsonl = out / f"{ano}.index.json", out / f"{ano}.jsonl"
     index: dict[str, Any] = json.loads(index_file.read_text(encoding="utf-8")) if index_file.exists() else {}
-    termos = list(perfil["termos"])
+    termos = termos_de_coleta(perfil)
     hoje = date.today()
 
     for mes in range(1, 13):
@@ -359,13 +396,17 @@ async def coletar_ano(
         index[chave] = await _indexar_mes(client, sem, org_id, ano, mes, termos)
         index_file.write_text(json.dumps(index), encoding="utf-8")
 
+    # Linhas do formato antigo ("_skip" sem conteúdo) são descartadas e baixadas de novo: sem o conteúdo
+    # não dá para reavaliar a publicação quando a regra de decisão ou o perfil mudam.
     inspecionados: set[int] = set()
     if jsonl.exists():
-        with jsonl.open(encoding="utf-8") as fh:
-            inspecionados = {int(json.loads(line)["id"]) for line in fh if line.strip()}
+        linhas = [json.loads(line) for line in jsonl.read_text(encoding="utf-8").splitlines() if line.strip()]
+        boas = [r for r in linhas if "_skip" not in r]
+        if len(boas) != len(linhas):
+            jsonl.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in boas), encoding="utf-8")
+        inspecionados = {int(r["id"]) for r in boas}
     candidatos = {i for m in index.values() for i in m["ids"]}
     pendentes = sorted(candidatos - inspecionados)
-    tipos_decisao = set(perfil["tipos_decisao"])
     falhas: list[int] = []
     lock = asyncio.Lock()
     with jsonl.open("a", encoding="utf-8") as fh:
@@ -375,18 +416,16 @@ async def coletar_ano(
             if not pub:
                 falhas.append(pid)
                 return
-            tipo = _tipo(pub)
-            if tipo.upper() in tipos_decisao:
-                row = _slim_publication(pub)
-                row["id"] = pid
-            else:
-                row = {"id": pid, "_skip": tipo or "?"}
+            row = _slim_publication(pub)  # guarda TODAS as inspecionadas; decisão ou não se decide na leitura
+            row["id"] = pid
             async with lock:
                 fh.write(json.dumps(row, ensure_ascii=False) + "\n")
 
         for start in range(0, len(pendentes), 400):
             await asyncio.gather(*(_um(pid) for pid in pendentes[start : start + 400]))
             fh.flush()
+            if len(pendentes) > 800:
+                print(f"[varredura] {uf} {ano}: {min(start + 400, len(pendentes))}/{len(pendentes)} publicações inspecionadas...", flush=True)
 
     resumo = resumir_ano(uf, ano, raw_dir)
     resumo["publicacoes_com_falha"] = falhas
@@ -420,6 +459,7 @@ def resumir_ano(uf: str, ano: int, raw_dir: Path = RAW_DIR) -> dict[str, Any]:
         falhas_previas = list(s.get("publicacoes_com_falha") or [])
     inspecionados = decisoes = 0
     descartados: Counter[str] = Counter()
+    perfil = carregar_perfil(uf)
     if jsonl.exists():
         with jsonl.open(encoding="utf-8") as fh:
             for line in fh:
@@ -427,10 +467,10 @@ def resumir_ano(uf: str, ano: int, raw_dir: Path = RAW_DIR) -> dict[str, Any]:
                     continue
                 row = json.loads(line)
                 inspecionados += 1
-                if "_skip" in row:
-                    descartados[row["_skip"]] += 1
-                else:
+                if eh_decisao(row, perfil):
                     decisoes += 1
+                else:
+                    descartados[row.get("_skip") or _tipo(row) or "?"] += 1
     return {
         "uf": uf.upper(),
         "ano": ano,
@@ -465,7 +505,9 @@ async def coletar_seccional(uf: str, anos: list[int] | None = None, concurrency:
 
 
 def ler_decisoes(uf: str, anos: list[int] | None = None, raw_dir: Path = RAW_DIR) -> list[dict[str, Any]]:
+    """Publicações coletadas que são decisão segundo o perfil ATUAL da Seccional."""
     out = raw_dir_uf(uf, raw_dir)
+    perfil = carregar_perfil(uf)
     pubs: dict[int, dict[str, Any]] = {}
     for ano in anos or anos_padrao():
         jsonl = out / f"{ano}.jsonl"
@@ -475,9 +517,18 @@ def ler_decisoes(uf: str, anos: list[int] | None = None, raw_dir: Path = RAW_DIR
             for line in fh:
                 if line.strip():
                     row = json.loads(line)
-                    if "_skip" not in row:
+                    if eh_decisao(row, perfil):
                         pubs[int(row["id"])] = row
     return list(pubs.values())
+
+
+def ids_inspecionados(uf: str, raw_dir: Path = RAW_DIR) -> set[int]:
+    """Ids de todas as publicações já baixadas e classificadas (decisão ou não) de uma Seccional."""
+    ids: set[int] = set()
+    for jsonl in raw_dir_uf(uf, raw_dir).glob("[0-9][0-9][0-9][0-9].jsonl"):
+        with jsonl.open(encoding="utf-8") as fh:
+            ids.update(int(json.loads(line)["id"]) for line in fh if line.strip())
+    return ids
 
 
 def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
@@ -486,7 +537,11 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
     org_id = _sec(uf)["id_organizacao"]
     recs, rejeitados = [], []
     for pub in pubs:
-        rec = normalize_deoab_sp_item(pub) if uf == "SP" else normalize_deoab_item_nacional(pub, default_uf=uf, default_org_id=org_id)
+        rec = (
+            normalize_deoab_sp_item(pub)
+            if uf == "SP"
+            else normalize_deoab_item_nacional(pub, default_uf=uf, default_org_id=org_id, confiar_no_tipo=True)
+        )
         if rec:
             if uf != "SP":
                 # Subseções e órgãos regionais publicam com outro idOrganizacao; a Seccional é a da busca
@@ -495,7 +550,10 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
         else:
             texto = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
             rejeitados.append(
-                {"id": pub["id"], "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140], "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]}
+                {
+                    "id": pub["id"], "motivo": "normalizador_sp" if uf == "SP" else motivo_recusa(pub, confiar_no_tipo=True),
+                    "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140], "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10],
+                }
             )
     return recs, rejeitados
 
@@ -514,7 +572,11 @@ def carregar_seccional(uf: str, anos: list[int] | None = None, rebuild: bool = T
     uf = uf.upper()
     fonte = _fonte(uf)
     anos = sorted(anos or anos_padrao())
-    recs, rejeitados = normalizar_decisoes(uf, ler_decisoes(uf, anos, raw_dir))
+    pubs = ler_decisoes(uf, anos, raw_dir)
+    recs, rejeitados = normalizar_decisoes(uf, pubs)
+    # Decisões brutas por ano: é contra elas que se mede se a coleta encolheu (o normalizador pode, legitimamente, recusar mais)
+    brutas = Counter(int((p.get("dataPublicacao") or "0000")[:4] or 0) for p in pubs)
+    inspecionados = ids_inspecionados(uf, raw_dir)
     out = raw_dir_uf(uf, raw_dir)
     out.mkdir(parents=True, exist_ok=True)
     (out / "rejeitados.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rejeitados), encoding="utf-8")
@@ -535,9 +597,16 @@ def carregar_seccional(uf: str, anos: list[int] | None = None, rebuild: bool = T
             for ano in anos:
                 novos = por_ano.get(ano, [])
                 havia = conn.execute("SELECT COUNT(*) FROM julgados WHERE fonte = ? AND ano_ementa = ?", (fonte, ano)).fetchone()[0]
-                if len(novos) < havia:
-                    # Coleta menor que o que já existe: não apaga nada e deixa o ano para investigação
-                    relatorio["anos_preservados"].append({"ano": ano, "havia": havia, "coletados": len(novos)})
+                # Só há perda se algum registro que já está no banco NÃO foi inspecionado nesta coleta.
+                # Registro inspecionado e agora classificado como não decisão (ou recusado) pode sair.
+                existentes = {
+                    int(r[0].rsplit(":", 1)[-1])
+                    for r in conn.execute("SELECT id FROM julgados WHERE fonte = ? AND ano_ementa = ?", (fonte, ano))
+                    if r[0].rsplit(":", 1)[-1].isdigit()
+                }
+                nao_vistos = sorted(existentes - inspecionados)
+                if nao_vistos:
+                    relatorio["anos_preservados"].append({"ano": ano, "havia": havia, "coletados": brutas.get(ano, 0), "ids_nao_inspecionados": nao_vistos[:50]})
                     continue
                 conn.execute(
                     "DELETE FROM julgado_dispositivos WHERE julgado_id IN (SELECT id FROM julgados WHERE fonte = ? AND ano_ementa = ?)", (fonte, ano)
@@ -674,7 +743,6 @@ async def auditar_seccional(uf: str, n_dias: int = 4, concurrency: int = 10, see
     uf = uf.upper()
     perfil = carregar_perfil(uf)
     org_id = perfil["id_organizacao"]
-    tipos_decisao = set(perfil["tipos_decisao"])
     coletadas: dict[str, set[int]] = {}
     for pub in ler_decisoes(uf, None, raw_dir):
         coletadas.setdefault((pub.get("dataPublicacao") or "")[:10], set()).add(int(pub["id"]))
@@ -691,7 +759,9 @@ async def auditar_seccional(uf: str, n_dias: int = 4, concurrency: int = 10, see
     async with create_async_http_client(timeout=40.0) as client:
         extras = await _dias_com_publicacao(client, sem, org_id, max(2, n_dias // 2), seed, anos=magros)
         dias = sorted(dias_set | {d.isoformat() for d in extras})
-        censos = [await censo_do_dia(client, sem, org_id, date.fromisoformat(d), termos=tuple(perfil["termos"]), limite=2000) for d in dias]
+        censos = [
+            await censo_do_dia(client, sem, org_id, date.fromisoformat(d), termos=tuple(perfil["termos"]), limite=2000, perfil=perfil) for d in dias
+        ]
 
     with get_connection(db_path) as conn:
         conn.executescript(COBERTURA_SCHEMA)
@@ -699,8 +769,8 @@ async def auditar_seccional(uf: str, n_dias: int = 4, concurrency: int = 10, see
         faltam_coleta = faltam_banco = 0
         tipos_fora: Counter[str] = Counter()
         for c in censos:
-            decisoes_censo = {it["id"] for it in c["itens"] if it["tipo"].upper() in tipos_decisao}
-            suspeitas = [it for it in c["itens"] if it["tipo"].upper() not in tipos_decisao and it["parece_decisao"]]
+            decisoes_censo = {it["id"] for it in c["itens"] if it["eh_decisao"]}
+            suspeitas = [it for it in c["itens"] if not it["eh_decisao"] and it["parece_decisao"]]
             tipos_fora.update(it["tipo"] for it in suspeitas)
             fora_coleta = sorted(decisoes_censo - coletadas.get(c["dia"], set()))
             no_banco = {

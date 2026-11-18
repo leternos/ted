@@ -65,10 +65,10 @@ def test_coleta_menor_que_o_banco_nao_apaga_nada(tmp_path):
     init_db(db)
     _escrever_bruto(raw, 2024, [_pub(301, "2024-03-05"), _pub(302, "2024-03-06")], skips=[])
     varredura.carregar_seccional("AC", anos=[2024], db_path=db, raw_dir=raw)
-    # Nova coleta, incompleta, com uma única decisão: o ano é preservado
+    # Nova coleta, incompleta, que nem chegou a inspecionar a publicação 302: o ano é preservado
     _escrever_bruto(raw, 2024, [_pub(301, "2024-03-05")], skips=[])
     rel = varredura.carregar_seccional("AC", anos=[2024], db_path=db, raw_dir=raw)
-    assert rel["anos_preservados"] == [{"ano": 2024, "havia": 2, "coletados": 1}]
+    assert rel["anos_preservados"] == [{"ano": 2024, "havia": 2, "coletados": 1, "ids_nao_inspecionados": [302]}]
     with get_connection(db) as conn:
         assert conn.execute("SELECT COUNT(*) FROM julgados WHERE fonte = 'DEOAB_AC'").fetchone()[0] == 2
 
@@ -78,7 +78,8 @@ def test_resumo_aceita_o_formato_antigo_da_coleta_de_sp(tmp_path):
     out.mkdir(parents=True)
     (out / "2023.index.json").write_text(json.dumps({"2023-02-01": [1, 2], "2023-02-02": [3]}), encoding="utf-8")
     (out / "2023.summary.json").write_text(json.dumps({"esperado_por_termo": {"ACORDAO": 3}, "paginas_com_falha": [], "publicacoes_com_falha": []}), encoding="utf-8")
-    (out / "2023.jsonl").write_text('{"id": 1}\n{"id": 2}\n{"id": 3, "_skip": "Edital"}\n', encoding="utf-8")
+    linhas = [json.dumps({"id": i, "tipoPublicacao": {"descricao": "Acórdão"}}) for i in (1, 2)] + ['{"id": 3, "_skip": "Edital"}']
+    (out / "2023.jsonl").write_text("\n".join(linhas) + "\n", encoding="utf-8")
     r = varredura.resumir_ano("SP", 2023, tmp_path)
     assert (r["candidatos"], r["inspecionados"], r["decisoes"], r["esperado_por_termo"]) == (3, 3, 2, {"ACORDAO": 3})
     assert r["janelas_parciais"] == []
@@ -127,3 +128,61 @@ def test_base_de_site_carrega_e_fecha_o_livro(tmp_path, monkeypatch):
     # Reexecutar não baixa de novo nem duplica
     resumo2 = asyncio.run(fontes.coletar_fonte("TO", "consultas", raw_dir=raw))
     assert resumo2["baixados"] == 3
+
+
+def test_recarga_remove_o_que_o_normalizador_passou_a_recusar(tmp_path):
+    """Mesma coleta, normalizador mais rigoroso: o registro recusado sai do banco e vai para os rejeitados."""
+    db, raw = tmp_path / "t.db", tmp_path / "raw"
+    init_db(db)
+    _escrever_bruto(raw, 2024, [_pub(401, "2024-03-05"), _pub(402, "2024-03-06")], skips=[])
+    varredura.carregar_seccional("AC", anos=[2024], db_path=db, raw_dir=raw)
+    # A segunda publicação passa a ser recusada (texto vazio), sem que a coleta tenha encolhido
+    _escrever_bruto(raw, 2024, [_pub(401, "2024-03-05"), _pub(402, "2024-03-06", "<p>x</p>")], skips=[])
+    rel = varredura.carregar_seccional("AC", anos=[2024], db_path=db, raw_dir=raw)
+    assert rel["anos_preservados"] == [] and rel["rejeitados"] == 1
+    with get_connection(db) as conn:
+        assert conn.execute("SELECT COUNT(*) FROM julgados WHERE fonte = 'DEOAB_AC'").fetchone()[0] == 1
+        assert conn.execute("SELECT status FROM cobertura_coleta WHERE uf = 'AC'").fetchone()[0] == "COMPLETO"
+
+
+def test_decisao_e_reconhecida_pelo_titulo_ou_pelo_corpo_mesmo_com_tipo_errado():
+    """AL publica "INTIMAÇÃO DE ACÓRDÃO" com ementa completa sob os tipos Retificação e Notificação."""
+    perfil = {"tipos_decisao": ["ACÓRDÃO", "EMENTA"]}
+    por_titulo = {"titulo": "INTIMAÇÃO DE ACÓRDÃO", "tipoPublicacao": {"descricao": "Retificação"}, "conteudoCodificado": "<p>Processo 964/2014.</p>"}
+    por_corpo = {"titulo": "PUBLICAÇÃO", "tipoPublicacao": {"descricao": "Notificação"},
+                 "conteudoCodificado": "<p>EMENTA: REPRESENTAÇÃO. PROCEDÊNCIA.</p><p>Acordam os membros da Sexta Turma do TED.</p>"}
+    portaria = {"titulo": "PORTARIA Nº 12", "tipoPublicacao": {"descricao": "Portaria"}, "conteudoCodificado": "<p>Nomeia comissão.</p>"}
+    antigo = {"id": 9, "_skip": "Edital"}
+    assert varredura.eh_decisao(por_titulo, perfil) and varredura.eh_decisao(por_corpo, perfil)
+    assert not varredura.eh_decisao(portaria, perfil) and not varredura.eh_decisao(antigo, perfil)
+
+
+def test_modo_censo_troca_os_termos_por_enumeracao_total():
+    assert varredura.termos_de_coleta({"termos": ["ACORDAO"], "modo": "censo"}) == [varredura.TERMO_CENSO]
+    assert varredura.termos_de_coleta({"termos": ["ACORDAO", "EMENTA"]}) == ["ACORDAO", "EMENTA"]
+
+
+def test_normalizador_confia_no_perfil_e_marca_o_que_nao_e_disciplinar():
+    from ted_search.collectors.deoab_nacional import motivo_recusa, normalize_deoab_item_nacional
+
+    # TO: resultado de julgamento publicado como "Edital de Notificação" — a varredura já o reconheceu como decisão
+    resultado = {
+        "id": 704064, "titulo": "EDITAL RESULTADO DE JULGAMENTO.", "dataPublicacao": "2024-02-21T00:00:00",
+        "tipoPublicacao": {"descricao": "Edital de Notificação"}, "setorPublicacao": {"nomeAlternativo": "Tribunal de Ética e Disciplina"},
+        "conteudoCodificado": "<p>Processo disciplinar 123/2021. Relator: Fulano. Acórdão: Vistos, relatados e discutidos os autos, "
+                              "os membros da Turma Julgadora votaram pela procedência da representação, com pena de censura.</p>",
+    }
+    assert normalize_deoab_item_nacional(resultado, default_uf="TO", default_org_id=27) is None  # filtro antigo, pelo nome do tipo
+    assert normalize_deoab_item_nacional(resultado, default_uf="TO", default_org_id=27, confiar_no_tipo=True) is not None
+
+    # AP: acórdão do Conselho sobre registro de sociedade de advogados não é matéria ético-disciplinar
+    sociedade = {
+        "id": 36166, "titulo": "SOCIEDADE DE ADVOGADOS", "dataPublicacao": "2019-03-01T00:00:00",
+        "tipoPublicacao": {"descricao": "Acórdão"}, "setorPublicacao": {"nomeAlternativo": "Secretaria Geral"},
+        "conteudoCodificado": "<p>EMENTA: Pedido de registro de sociedade individual de advocacia. Requisitos atendidos. Deferimento. "
+                              "Acordam os membros da Primeira Câmara, por unanimidade, em deferir o registro.</p>",
+    }
+    assert motivo_recusa(sociedade, confiar_no_tipo=True) is None
+    rec = normalize_deoab_item_nacional(sociedade, default_uf="AP", default_org_id=3, confiar_no_tipo=True)
+    assert rec["is_ted_disciplinar"] == 0  # fica no banco, fora da busca do TED
+    assert normalize_deoab_item_nacional(resultado, default_uf="TO", default_org_id=27, confiar_no_tipo=True)["is_ted_disciplinar"] == 1

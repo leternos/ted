@@ -1,0 +1,456 @@
+{
+  "uf": "RR",
+  "id_organizacao": 23,
+  "termos": [
+    "ACORDAO",
+    "EMENTA",
+    "ACÓRDÃO"
+  ],
+  "tipos_decisao": [
+    "Ementa e Acórdão",
+    "Acórdão",
+    "Ementa",
+    "Retificação Acórdão",
+    "Decisão",
+    "Extrato de Julgamento"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-18T14:14:54Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-16",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2019-02-07",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-03-20",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2019-11-27",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-03-23",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2020-05-04",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-07-10",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2020-09-03",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2020-10-27",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-11-26",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-01-22",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-02-01",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2021-06-16",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2021-08-20",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2021-09-15",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2021-10-26",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2022-03-07",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2022-07-25",
+        "publicacoes": 39,
+        "baixadas": 39
+      },
+      {
+        "dia": "2022-09-30",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2022-10-28",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2022-12-16",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2023-01-25",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2023-02-02",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2023-04-28",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-10-25",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2023-12-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-01-12",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-02-07",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-03-20",
+        "publicacoes": 154,
+        "baixadas": 154
+      },
+      {
+        "dia": "2024-06-05",
+        "publicacoes": 127,
+        "baixadas": 127
+      },
+      {
+        "dia": "2024-07-04",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2024-12-23",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-02-20",
+        "publicacoes": 33,
+        "baixadas": 33
+      },
+      {
+        "dia": "2025-05-12",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2025-06-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-07-01",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-11-14",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-03-23",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-08-13",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2026-11-04",
+        "publicacoes": 1,
+        "baixadas": 1
+      }
+    ],
+    "decisoes_no_censo": 0,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": null,
+      "EMENTA": null,
+      "DECISAO": null,
+      "JULGAMENTO": null,
+      "RECURSO": null
+    },
+    "tipos": {
+      "Portaria": {
+        "publicacoes": 365,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 331,
+          "COMISSÕES": 30,
+          "Primeira Câmara Inscrição de Advogados": 4
+        },
+        "amostras": [
+          {
+            "id": 25749,
+            "titulo": "PORTARIA N.º 40/2019",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional Roraima, no uso de suas atribuições legais e regimentais, R E S O L V E : Nomear o Advogado, Antônio Agamenon de Almeida OAB/RR nº 144-A, inscrito nesta Seccional, para compor, como membro, a Comissão d"
+          },
+          {
+            "id": 25750,
+            "titulo": "PORTARIA N.º 54/2019",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional Roraima, no uso de suas atribuições legais e regimentais, R E S O L V E : Nomear o Advogado, Juberli Gentil Peixoto OAB/RR nº 456, inscrito nesta Seccional, para compor, como membro, a Comissão de Práti"
+          },
+          {
+            "id": 25751,
+            "titulo": "PORTARIA N.º 56/2019",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional Roraima, no uso de suas atribuições legais e regimentais, R E S O L V E : Nomear o Advogado, Kairo Icaro Alves dos Santos OAB/RR nº 792 – Vice-Presidente, inscrito nesta Seccional, para compor a Comissã"
+          }
+        ]
+      },
+      "Editais": {
+        "publicacoes": 62,
+        "parecem_decisao": 0,
+        "setores": {
+          "Primeira Câmara Inscrição de Advogados": 61,
+          "Gabinete da Presidência": 1
+        },
+        "amostras": [
+          {
+            "id": 635,
+            "titulo": "E D I T A L 014",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional de Roraima faz público achar-se nesta Seccional, suficientemente instruído para oportuna deliberação do pedido de Inscrição Principal do Belº.: RAFEL CUNHA FREITAS , Lei 8.906/94. Sala da Secretaria da "
+          },
+          {
+            "id": 636,
+            "titulo": "E D I T A L 015",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional de Roraima faz público achar-se nesta Seccional, suficientemente instruído para oportuna deliberação do pedido de Inscrição Principal da Belª.: JADE MENEZES DE OLIVEIRA , Lei 8.906/94. Sala da Secretari"
+          },
+          {
+            "id": 637,
+            "titulo": "E D I T A L 016",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional de Roraima faz público achar-se nesta Seccional, suficientemente instruído para oportuna deliberação do pedido de Inscrição Principal da Belª.: THAYSA MYLENA FERNANDES CRUZ , Lei 8.906/94. Sala da Secre"
+          }
+        ]
+      },
+      "Errata": {
+        "publicacoes": 25,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÕES": 24,
+          "Gabinete da Presidência": 1
+        },
+        "amostras": [
+          {
+            "id": 520301,
+            "titulo": "E R R A T A",
+            "trecho": "A vista da publicação da Portaria nº 1061/2022 do dia 09 de novembro de 2022, retifique-se a aludida publicação como sendo: Onde se lê: “...Nomear o Advogado, ANTONIO ÂNGELO GOMES CHAVES OAB/RR n°2252, inscrito nesta Seccional, para compor como Secretário – Ge"
+          },
+          {
+            "id": 875279,
+            "titulo": "PORTARIA N.º 12/2025",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional Roraima, no uso de suas atribuições legais e regimentais, R E S O L V E : Nomear a Advogada, NATALIA LEITÃO COSTA, OAB/RR nº 1001, inscrita nesta Seccional, para compor de 1º de janeiro de 2025 a 30 de "
+          },
+          {
+            "id": 875280,
+            "titulo": "PORTARIA N.º 13/2025",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional Roraima, no uso de suas atribuições legais e regimentais, R E S O L V E : Nomear o Advogado, FRANCISCO DE ASSIS GUIMARAES ALMEIDA, OAB/RR nº 157-B, inscrito nesta Seccional, para compor de 1º de janeiro"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 13,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 11,
+          "CAIXA DE ASSISTÊNCIA DOS ADVOGADOS DE RORAIMA": 2
+        },
+        "amostras": [
+          {
+            "id": 236105,
+            "titulo": "RESOLUÇÃO nº. 006, DE 30 DE ABRIL DE 2020",
+            "trecho": "O PRESIDENTE DA CAIXA DE ASSISTÊNCIA DOS ADVOGADOS DE RORAIMA , no uso de suas atribuições legais e estatutárias, RESOLVE: Art. 1º. PRORROGAR a suspensão do atendimento externo até o dia 15 de maio de 2020, na sede da entidade. Art. 2º. Ficam mantidos todos os"
+          },
+          {
+            "id": 257259,
+            "titulo": "RESOLUÇÃO nº. 012, DE 31 DE AGOSTO DE 2020",
+            "trecho": "O PRESIDENTE DA CAIXA DE ASSISTÊNCIA DOS ADVOGADOS DE RORAIMA , no uso de suas atribuições legais e estatutárias, RESOLVE: Art. 1º. PRORROGAR a suspensão do atendimento externo até o dia 04 de setembro de 2020, na sede da entidade. Art. 2º. Fica suspenso até 3"
+          },
+          {
+            "id": 355189,
+            "titulo": "PORTARIA N.º 161/2021",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional Roraima, no uso de suas atribuições legais e regimentais, R E S O L V E : Nomear a Advogada, LILIAN FERNANDA MATTOS GRIMOUTH, OAB/RR nº 2217 inscrito nesta Seccional, para compor como membro, a Comissão"
+          }
+        ]
+      },
+      "Notificação": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 10,
+          "Primeira Câmara Inscrição de Advogados": 2
+        },
+        "amostras": [
+          {
+            "id": 501468,
+            "titulo": "EDITAL DE NOTIFICAÇÃO 031CONSELHO.",
+            "trecho": "O Conselheiro Relator do Conselho da Ordem dos Advogados do Brasil- Seccional Roraima, usando de suas atribuições e considerando que se encontre em local incerto e não sabido. RESOLVE: NOTIFICAR o (a) Senhor (a) DR. THIAGO GONÇALVES DE ARAÚJO inscrito na OAB/R"
+          },
+          {
+            "id": 501469,
+            "titulo": "EDITAL DE NOTIFICAÇÃO 032CONSELHO.",
+            "trecho": "O Conselheiro Relator do Conselho da Ordem dos Advogados do Brasil- Seccional Roraima, usando de suas atribuições e considerando que se encontre em local incerto e não sabido. RESOLVE: NOTIFICAR o (a) Senhor (a) DR. JAMES MARCOS GARCIA inscrito na OAB/RR n° 41"
+          },
+          {
+            "id": 501470,
+            "titulo": "EDITAL DE NOTIFICAÇÃO 033CONSELHO.",
+            "trecho": "O Conselheiro Relator do Conselho da Ordem dos Advogados do Brasil- Seccional Roraima, usando de suas atribuições e considerando que se encontre em local incerto e não sabido. RESOLVE: NOTIFICAR o (a) Senhor (a) DR. JORGE FRANCISCO MACHADO DE ALBUQUERQUE inscr"
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "Primeira Câmara Inscrição de Advogados": 7
+        },
+        "amostras": [
+          {
+            "id": 1017915,
+            "titulo": "E D I T A L 239",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional de Roraima faz público achar-se nesta Seccional, suficientemente instruído para oportuna deliberação do pedido Inscrição da Belª PAULA LUISE SCHIMITZ SILVA . Ordem dos Advogados do Brasil - Seccional Ro"
+          },
+          {
+            "id": 1065422,
+            "titulo": "E D I T A L 056",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional de Roraima faz público achar-se nesta Seccional, suficientemente instruído para oportuna deliberação do pedido de Inscrição Suplementar RAQUEL THAMIRES JORDÃO HEMERLY . Ordem dos Advogados do Brasil - S"
+          },
+          {
+            "id": 1138285,
+            "titulo": "E D I T A L 203",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil - Seccional de Roraima faz público achar-se nesta Seccional, suficientemente instruído para oportuna deliberação do pedido Inscrição da Belª ANDREZA DOS SANTOS ROTH . Ordem dos Advogados do Brasil - Seccional Rorai"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 194123,
+            "titulo": "SESSÃO ORDINÁRIA - DEZEMBRO/2019.",
+            "trecho": "TRIBUNAL DE ÉTICA E DISCIPLINA Dia 1 8 .12.201 9, quarta- feira - 18 horas: 1ª Sessão Ordinária do (a) Tribunal de Ética e Disciplina. __________________________________________________________________________ PAUTA I - verificação do quórum e abertura; II - l"
+          }
+        ]
+      },
+      "Recomendações TED": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 335771,
+            "titulo": "RECOMENDAÇÃO N.º 001/2021",
+            "trecho": "O TRIBUNAL DE ÉTICA E DISCIPLINA, JUNTAMENTE COM A COMISSÃO DE FISCALIZAÇÃO DA ATIVIDADE PR O FISSIONAL DA ADVOCACIA DA ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL DE RORAIMA, no uso de suas atribuições que lhe são conferidas, considerando veiculação de publicida"
+          }
+        ]
+      },
+      "Processo Eleições": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 1
+        },
+        "amostras": [
+          {
+            "id": 376721,
+            "titulo": "Processo: 01.985.2021-43",
+            "trecho": "Assunto: Impugnação de Comissão Eleitoral Requerente: Rodolpho Cesar Maia de Morais RELATÓRIO Rodolpho Cesar Maia de Morais, advogado regularmente inscrito na Ordem dos Advogados do Brasil/Seccional de Roraima, protocolou na sala da Comissão Eleitoral – no dia"
+          }
+        ]
+      },
+      "Ata": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 1
+        },
+        "amostras": [
+          {
+            "id": 858764,
+            "titulo": "ATA DE POSSE CONSELHO SECCIONAL TRIENIO 2025/2027",
+            "trecho": "ATA DA ASSEMBLÉIA DO CONSELHO SECCIONAL DA ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL DO ESTADO DE RORAIMA – PARA POSSE DA DIRETORIA, CONSELHO SECCIONAL, TITULARES E SUPLENTES, E CAIXA DE ASSISTÊNCIA, PARA O TRIÊNIO 2025/2027, REALIZADA NO DIA 20 DE DEZEMBRO DE "
+          }
+        ]
+      },
+      "Convocação - Pauta de Julgamentos": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1185616,
+            "titulo": "CONVOCAÇÃO/PAUTA DE JULGAMENTOS/NOTIFICAÇÃO",
+            "trecho": "O TRIBUNAL DE ÉTICA E DISCIPLINA DO Conselho Seccional - Roraima da Ordem Dos Advogados Do Brasil reunir-se-á em Sessão Extraordinária a ser realizada no dia vinte e sete de novembro de dois mil e vinte e seis , a partir das quinze horas , no Plenário da OAB/R"
+          }
+        ]
+      }
+    }
+  },
+  "observacoes": "Censo VAZIO: 0 decisões em --dias 20 e --dias 40 (40 dias amostrados, 2019-2026; ~490 publicações, todas Portaria, Editais, Errata, Resolução, Notificação, Edital de Inscrição, Pauta de Julgamentos, Recomendações TED, Ata, Processo Eleições). Nenhum tipo parece decisão; recall não mensurável (null). Validado com o que há, abaixo de 30 decisões. tipos_decisao e termos são preventivos (nomes padrão de outras Seccionais), não confirmados por amostra em RR; a estimativa prévia era de <200 acórdãos 2020-2026, então decisões existem mas não caíram nos dias amostrados (publicação concentrada em poucos dias, ex. 2024-03-20 com 154 publicações, 2022-07-25 com 39). TED publica pouco no DEOAB-RR: só Notificação (editais de notificação por conselheiro relator, 10 do setor TED), 1 Pauta de Julgamentos, 1 Convocação/Pauta, 1 Recomendação TED. Notificações/pautas excluídas por não serem decisão. Indício de fonte fora do DEOAB: acórdãos provavelmente publicados em outro lugar (site da Seccional/ementário/PDF); recomenda-se verificar antes de coletar. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca).",
+  "modo": "censo"
+}

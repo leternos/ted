@@ -1,0 +1,570 @@
+{
+  "uf": "MT",
+  "id_organizacao": 11,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Ementa",
+    "Intimação da Decisão"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-18T14:46:44Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-31",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2019-02-12",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-03-12",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2019-11-14",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-03-19",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2020-05-07",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-07-09",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-10-01",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-11-04",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-01-28",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2021-09-03",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-10-29",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2022-03-10",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2022-07-26",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-09-28",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-01-27",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2023-02-02",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-04-24",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2023-12-19",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-02-02",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-03-11",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-06-17",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-07-23",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-02-03",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-05-20",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2025-06-25",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-07-15",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2026-03-09",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2026-08-27",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2026-11-18",
+        "publicacoes": 102,
+        "baixadas": 102
+      }
+    ],
+    "decisoes_no_censo": 1,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 1.0,
+      "JULGAMENTO": 1.0,
+      "RECURSO": 0.0
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 100,
+        "parecem_decisao": 0,
+        "setores": {
+          "Presidência": 100
+        },
+        "amostras": [
+          {
+            "id": 1197581,
+            "titulo": "NOTIFICAÇÃO – GABINETE DO DIRETOR TESOUREIRO",
+            "trecho": "O Diretor-Tesoureiro, Max Magno Ferreira Mendes, amparado pela Resolução Nº 334 de 26 de junho de 2026, notifica a parte interessada abaixo para se regularizar sua inscrição suplementar no prazo de 15 dias. Disponibilizamos o endereço eletrônico https://rui.ad"
+          },
+          {
+            "id": 1197582,
+            "titulo": "NOTIFICAÇÃO – GABINETE DO DIRETOR TESOUREIRO",
+            "trecho": "O Diretor-Tesoureiro, Max Magno Ferreira Mendes, amparado pela Resolução Nº 334 de 26 de junho de 2026, notifica a parte interessada abaixo para se regularizar sua inscrição suplementar no prazo de 15 dias. Disponibilizamos o endereço eletrônico https://rui.ad"
+          },
+          {
+            "id": 1197583,
+            "titulo": "NOTIFICAÇÃO – GABINETE DO DIRETOR TESOUREIRO",
+            "trecho": "O Diretor-Tesoureiro, Max Magno Ferreira Mendes, amparado pela Resolução Nº 334 de 26 de junho de 2026, notifica a parte interessada abaixo para se regularizar sua inscrição suplementar no prazo de 15 dias. Disponibilizamos o endereço eletrônico https://rui.ad"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 26,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 16,
+          "Conselho": 10
+        },
+        "amostras": [
+          {
+            "id": 1624,
+            "titulo": "EDITAL n. 001/19 – CONSELHO/OAB/MT–PLENO–DIA:21.02.2019 -13h30min.",
+            "trecho": "EDITAL nº 001/19 - SG /TED -Tribunal de Ética e Disciplina - OAB/MT-PAUTA DO CONSELHO SECIONAL: O presidente do Conselho Seccional da Ordem dos Advogados do Brasil Secção de Mato Grosso faz saber a todos quanto o presente edital virem, na sede do Auditório da "
+          },
+          {
+            "id": 1625,
+            "titulo": "EDITAL n. 002/19 – CONSELHO/OAB/MT–1ªTURMA –DIA:22.02.2019 -14h.",
+            "trecho": "EDITAL nº 002/ 19-SG/TED -Tribunal de Ética e Disciplina-OAB/MT-PAUTA DO CONSELHO SECIONAL: O presidente do Conselho Seccional da Ordem dos Advogados do Brasil Secção de Mato Grosso faz saber a todos quanto o presente edital virem, na sede do Auditório da ESA/"
+          },
+          {
+            "id": 1626,
+            "titulo": "EDITAL n. 003/19 – CONSELHO/OAB/MT–2ªTURMA –DIA:22.02.2019 -14h.",
+            "trecho": ""
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 9,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 9
+        },
+        "amostras": [
+          {
+            "id": 488945,
+            "titulo": "EDITAL Nº 81/2022 – EDITAL DE INTIMAÇÃO DA 1ª SESSÃO EXTRAORDINÁRIA DA PRIMEIRA TURMA.",
+            "trecho": "Edital n. 81 /22 -SG/TED – Ordem dos Advogados do Brasil Seccional Mato Grosso – RETIFICAÇÃO - I PAUTA EXTRAORDINÁRIA DA PRIMEIRA TURMA DO TRIBU N AL DE ÉTICA E DISCIPLINA : Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de P"
+          },
+          {
+            "id": 530301,
+            "titulo": "EDITAL Nº 03/2023 – EDITAL DE INTIMAÇÃO PARA AUDIÊNCIA DE CONCILIAÇÃO",
+            "trecho": "EDITAL n. 03/23– SG/TED - Intimação de Audiência – Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no art.1º, incisos II do Provimento 83/1996 do Conselho Federal da OAB e art. 137"
+          },
+          {
+            "id": 564021,
+            "titulo": "EDITAL Nº26/2023 – INTIMAÇÃO PARA AUDIÊNCIA DE CONCILIAÇÃO/INSTRUÇÃO DA 4ª TURMA.",
+            "trecho": "Edital n. 26 /2 3 -SG/TED– Ordem dos Advogados do Brasil Seccional Mato Grosso – AUDIÊNCIA DA QUARTA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, c"
+          }
+        ]
+      },
+      "Intimação da Decisão": {
+        "publicacoes": 9,
+        "parecem_decisao": 4,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 4,
+          "Conselho": 3,
+          "Tribunal de Prerrogativas": 2
+        },
+        "amostras": [
+          {
+            "id": 683369,
+            "titulo": "1ª TURMA DO CONSELHO SECCIONAL - OAB-MT – INTIMAÇÃO DE DECISÃO – PROCESSO DISCIPLINAR - N. 00130/2020 – CLASSE I.",
+            "trecho": "1ª TURMA DO CONSELHO SEC C IONAL : Processo n. 00130/2020 – Processo Disciplinar. Recorrente: W.R.M. (Advogado: Dr. Wilson Roberto Maciel – OAB/MT 5.983/O). Recorrido/Comunicado: Ex-Offício/TED – Subseção de Sinop/MT. Relatora: Dra. Daniele Izaura da Silva Cav"
+          },
+          {
+            "id": 758430,
+            "titulo": "EDITAL Nº 99/2023 – EDITAL DE INTIMAÇÃO DE ARQUIVAMENTO.",
+            "trecho": ""
+          },
+          {
+            "id": 776581,
+            "titulo": "EDITAL Nº143/2024 – EDITAL DE INTIMAÇÃO DE DECISÃO",
+            "trecho": "01) Processo disciplinar n. 11.0000.2023.019234-3 – REPRESENTANTE: S.M.R. (Sonia Meyer Reis), A.M.M. (Angela Maria Meyer), C.M.M.A. (Clara Maria Meyer Araujo), P.F.R. (Paulo Fernando Reis). PROCURADORES: K.B.D.M. (Kalahan Barbosa De Morais - OAB/MT 26180/O), M"
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 4
+        },
+        "amostras": [
+          {
+            "id": 713744,
+            "titulo": "EDITAL Nº 23/2024 – INTIMAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO – OITIVA DE TESTEMUNHA",
+            "trecho": "Edital n. 23 /24 -SG/TED – Ordem dos Advogados do Brasil Seccional Mato Grosso – AUDIÊNCIA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no art"
+          },
+          {
+            "id": 1058040,
+            "titulo": "EDITAL Nº 33/2026– INTIMAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "Edital n. 33 / 2026 -SG/TED – Ordem dos Advogados do Brasil Seccional Mato Grosso – AUDIÊNCIA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no "
+          },
+          {
+            "id": 1058047,
+            "titulo": "EDITAL Nº 34/2026– INTIMAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "Edital n. 34 / 2026 -SG/TED – Ordem dos Advogados do Brasil Seccional Mato Grosso – AUDIÊNCIA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no "
+          }
+        ]
+      },
+      "Edital de Intimação": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 2,
+          "Tribunal de Prerrogativas": 1
+        },
+        "amostras": [
+          {
+            "id": 916900,
+            "titulo": "EDITAL Nº69/2025 – INTIMAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "Edital n. 69 /25 -SG/TED – Ordem dos Advogados do Brasil Seccional Mato Grosso – AUDIÊNCIA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no art"
+          },
+          {
+            "id": 916902,
+            "titulo": "EDITAL Nº70/2025 – INTIMAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "Edital n. 70 /25 -SG/TED – Ordem dos Advogados do Brasil Seccional Mato Grosso – AUDIÊNCIA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no art"
+          },
+          {
+            "id": 1198408,
+            "titulo": "EDITAL Nº 39/26 – TRIBUNAL DE DEFESA DAS PRERROGATIVAS/OAB/MT – SESSÃO ORDINÁRIA – 2ª TURMA – DEZEMBRO - Dia: 09.12.2026 – 08H.",
+            "trecho": "EDITAL nº 39 /2026 – 2 ª TURMA/TDP/OAB/MT - PAUTA DA 2 ª TURMA DO TRIBUNAL DE DEFESA DAS PRERROGATIVAS : O Presidente da 2ª Turma do Tribunal de Defesa das Prerrogativas da Ordem dos Advogados do Brasil Seccional de Mato Grosso faz saber a todos quantos o pres"
+          }
+        ]
+      },
+      "Republicação": {
+        "publicacoes": 2,
+        "parecem_decisao": 1,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1,
+          "Conselho": 1
+        },
+        "amostras": [
+          {
+            "id": 266342,
+            "titulo": "EDITAL Nº.0141/2020 – INTIMAÇÃO DE DECISÃO -PROCEDENTE.",
+            "trecho": "Edital n. 141 /20 - Tribunal de Ética e Disciplina-Seccional Mato Grosso - INTIMAÇÃO DE DECISÃO – Pelo presente edital, ficam intimadas as partes dos respectivos processos abaixo elencados, da decisão proferida, na Sessão Ordinária da 4 º Turma que ocorreu no "
+          },
+          {
+            "id": 359654,
+            "titulo": "EDITAL Nº 021/21 - CONSELHO 2ª TURMA -OAB-MT – SETEMBRO –Dia: 24.09.2021 - 08H.",
+            "trecho": ""
+          }
+        ]
+      },
+      "Relação das Chapas 2021": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho": 2
+        },
+        "amostras": [
+          {
+            "id": 378355,
+            "titulo": "– COMISSÃO ELEITORAL – 2021 – OAB-MT.",
+            "trecho": "A Comissão Eleitoral 2021 , no uso de suas atribuições, nos termos do artigo 8º do Provimento 146/2011 do CFOAB e art. 15 do Edital de Convocação 001/2021 de 24 de setembro de 2021 da OABMT, torna público o requerimento de registro das chapas abaixo elencadas,"
+          },
+          {
+            "id": 378384,
+            "titulo": "– COMISSÃO ELEITORAL – 2021 – OAB-MT.",
+            "trecho": "A Comissão Eleitoral 2021 , no uso de suas atribuições, nos termos do artigo 8º do Provimento 146/2011 do CFOAB e art. 15 do Edital de Convocação 001/2021 de 24 de setembro de 2021 da OABMT, torna público o requerimento de registro das chapas abaixo elencadas,"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 2
+        },
+        "amostras": [
+          {
+            "id": 462391,
+            "titulo": "EDITAL Nº 60/2022 – RETIFICAÇÃO DO EDITAL DE INTIMAÇÃO DE AUDIÊNCIA",
+            "trecho": "EDITAL n. 60 /22– SG/TED – Retificação do Edital N ° 57-22 Intimação de Audiência – Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no art.1º, incisos II do Provimento 83/1996 do C"
+          },
+          {
+            "id": 758874,
+            "titulo": "EDITAL Nº 100/2024 – EDITAL DE INTIMAÇÃO DE DECISÃO – (EDITAL DE RETIFICAÇÃO DO EDITAL N. 57/24)",
+            "trecho": "01) Processo disciplinar n. 11.0000.2023.017270-7 – REPRESENTADO: D.S.S.C. (Diego Da Silva Soares Cruz - OAB/MT 21519/O). PROCURADOR: F.G.B.D.D.A. (Ferdinand Georges De Borba E D'alençon OAB/RS 100800); RELATOR A : Renata Faria De Oliveira Vilela. DESPACHO: Au"
+          }
+        ]
+      },
+      "Contrarrazões": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho": 2
+        },
+        "amostras": [
+          {
+            "id": 865895,
+            "titulo": "1ª TURMA DO CONSELHO SECCIONAL - OAB-MT – CONTRARRAZÕES – PROCESSO - N. 11.0000.2023.016249-3 – PROCESSO DISCIPLINAR.",
+            "trecho": "1 ª TURMA DO CONSELHO SEC C IONAL : Processo Disciplinar n. 11.0000.2023.016249-3 – Classe I. Recorrente: D.J.L. – (Advogado: Dr. Deusaide de Jesus Leopoldino – OAB/MT 15.398/O). Recorrido: E.C.S. (Advogado Assistente: Dr. Maurício Sales Ferreira de Moraes – O"
+          },
+          {
+            "id": 916937,
+            "titulo": "CONSELHO - OAB-MT – CONTRARRAZÕES – PROCESSO DISCIPLINAR N. 11.0000.2023.001593-0.",
+            "trecho": "2ª TURMA DO CONSELHO SECCIONAL: Processo Disciplinar n. 11.0000.2023.001593-0 – Representação Disciplinar. Embargante: I.d.O.D. – (Procuradores: Dr. Jorge Henrique Godoy Franco – OAB/MT 6692/O e Dr. Antônio Cassiano de Souza – OAB/MT 21.684/O). Embargado: K.L."
+          }
+        ]
+      },
+      "Sessão de Julgamento": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 2
+        },
+        "amostras": [
+          {
+            "id": 1145716,
+            "titulo": "EDITAL Nº 149/2026 – EDITAL DE INTIMAÇÃO DA 3ª SESSÃO ORDINÁRIA DA 1ª TURMA.",
+            "trecho": "Edital n. 1 49 /202 6 -SG/TED– Ordem dos Advogados do Brasil Seccional Mato Grosso – 3 ° PAUTA DA PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Gestão e Julgamento de Processos Éticos "
+          },
+          {
+            "id": 1145718,
+            "titulo": "EDITAL Nº 147/2026 –DE INTIMAÇÃO DA 2ª SESSÃO ORDINÁRIA DA 4ª TURMA.",
+            "trecho": "Edital n. 147 /2026 -SG/TED– Ordem dos Advogados do Brasil Seccional Mato Grosso – 2ª PAUTA DA QUARTA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Gestão e Julgamento de Processos Éticos Disci"
+          }
+        ]
+      },
+      "Autos com vista": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 276336,
+            "titulo": "EDITAL n.153/2020 – Autos em Vista - Devolução/MT.",
+            "trecho": "01) Advogado: Dr. José Nascimento de Carvalho – OAB/MT 2320 /O NÚMERO DO PROCESSO CLASSE REPRESENTANTE REPRESENTADO CLASSE I N.M.C J.F.G ( Procurador:Dr. José Nascimento de Carvalho – OAB/MT 2320 /O) 02) Advogada : Dr a . Viviane de Oliveira Siqueira – OAB/MT "
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 359749,
+            "titulo": "EDITAL Nº. 111/2021 – INTIMAÇÃO DE DECISÃO.",
+            "trecho": ""
+          }
+        ]
+      },
+      "Instrução Normativa": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho": 1
+        },
+        "amostras": [
+          {
+            "id": 683444,
+            "titulo": "CONSELHO - OAB-MT – EDITAL 001/2023, DE 26 DE OUTUBRO DE 2023.",
+            "trecho": "INSTRUÇÃO NORMATIVA n°002/2023 “Dispõe sobre a sessão para formação da Lista Sêxtupla Constitucional para o preenchimento de vaga de Desembargador destinada à advocacia no Tribunal de Justiça do Estado de Mato Grosso. ” A DIRETORIA DA ORDEM DOS ADVOGADOS DO BR"
+          }
+        ]
+      },
+      "Intimação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 776043,
+            "titulo": "EDITAL Nº142/2024 – INTIMAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO (RETIFICAÇÃO DO EDITAL 140/2024 – HORÁRIO CORRETO– 10H30)",
+            "trecho": "Edital n. 142 / 20 24 -SG/TED – Ordem dos Advogados do Brasil Seccional Mato Grosso – AUDIÊNCIA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro n"
+          }
+        ]
+      },
+      "Inclusão de Pauta": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 917188,
+            "titulo": "EDITAL Nº 71/2025 – EDITAL DE INTIMAÇÃO DA 1ª SESSÃO ORDINÁRIA DA 10ª TURMA.",
+            "trecho": "Edital n. 71 /202 5 -SG/TED– Ordem dos Advogados do Brasil Seccional Mato Grosso – 1° PAUTA DA DECIMA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA: Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Gestão e Julgamento de Processos Éticos Disci"
+          }
+        ]
+      },
+      "Edital de Defesa Prévia": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 948031,
+            "titulo": "EDITAL Nº 121/2024 – EDITAL DE INTIMAÇÃO PARA APRESENTAR DEFESA PRÉVIA",
+            "trecho": "EDITAL n. 121 /2024– SG/TED - Intimação de Defesa Prévia – Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no art.1º, incisos II do Provimento 83/1996 do Conselho Federal da OAB e "
+          }
+        ]
+      },
+      "Edital de Convocação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho": 1
+        },
+        "amostras": [
+          {
+            "id": 948256,
+            "titulo": "CONSELHO - OAB-MT – EDITAL 001/2025, DE 15 DE JULHO DE 2025.",
+            "trecho": "EDITAL 001/2025, DE 15 DE JULHO DE 2025 EDITAL 001/2025 EDITAL DE FORMAÇÃO DA LISTA SÊXTUPLA PARA PREENCHIMENTO DE VAGA DE DESEMBARGADOR DESTINADA À ADVOCACIA NO TRIBUNAL DE JUSTIÇA DO ESTADO DE MATO GROSSO. A Ordem dos Advogados do Brasil – Seccional de Mato "
+          }
+        ]
+      },
+      "Intimação para Defesa Previa": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1057613,
+            "titulo": "EDITAL Nº 32/2026 – EDITAL DE INTIMAÇÃO PARA APRESENTAR DEFESA PRÉVIA",
+            "trecho": "EDITAL n. 32 /202 6 – SG/TED - Intimação de Defesa Prévia – Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no art.1º, incisos II do Provimento 83/1996 do Conselho Federal da OAB e"
+          }
+        ]
+      },
+      "Defesa Prévia": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1145895,
+            "titulo": "EDITAL Nº 152/2026 – EDITAL DE INTIMAÇÃO PARA APRESENTAR DEFESA PRÉVIA",
+            "trecho": "EDITAL n. 1 5 2 /202 6 – SG/TED - Intimação de Defesa Prévia – Pelo presente, por ordem do Presidente do TED - OAB/MT, a Secretaria de Instrução de Processos Éticos Disciplinares, com fulcro no art.1º, incisos II do Provimento 83/1996 do Conselho Federal da OA"
+          }
+        ]
+      },
+      "Pauta de Sessão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho": 1
+        },
+        "amostras": [
+          {
+            "id": 1198407,
+            "titulo": "EDITAL Nº 36/2026 - CONSELHO PLENO - OAB-MT – DEZEMBRO – Dia: 11/12/2026– 08 HORAS – VIRTUAL",
+            "trecho": "EDITAL nº 3 6 / 202 6 – CS/CF -OAB/MT-PAUTA DO CONSELHO SECCIONAL: A presidente do Conselho Seccional da Ordem dos Advogados do Brasil Secção de Mato Grosso faz saber a todos quanto o presente edital, que será realizada de forma VIRTUAL , a 11ª Sessão Ordinári"
+          }
+        ]
+      }
+    }
+  },
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA",
+    "INTIMACAO DE DECISAO"
+  ],
+  "modo": "censo",
+  "observacoes": "MT publica no DEOAB poucas decisões: o TED/MT e as Turmas do Conselho Seccional (setores Tribunal de Ética e Disciplina e Conselho) divulgam decisões como EDITAL DE INTIMAÇÃO DE DECISÃO, com EMENTA e ACÓRDÃO transcritos no corpo (ids 683369, 776581, 359749, 266342 confirmados). Volume baixíssimo e esparso (dezenas de dias com publicação desde 2019; censo de 30 dias-amostra achou só 1 decisão). Identificar por título INTIMAÇÃO DE DECISÃO e pelo corpo (EMENTA+ACORDAM / VISTOS, RELATADOS E DISCUTIDOS). Tipos \"Intimação da Decisão\" e \"Acórdão\" (este com título de intimação) têm decisões; \"Republicação\" e \"Retificação\" são mistos (266342 Republicação é decisão com título INTIMAÇÃO DE DECISÃO; 359654 é pauta) e ficam de fora por tipo, entrando só por título/corpo. Retificação 758874 (título INTIMAÇÃO DE DECISÃO) traz só despacho saneador, falso positivo tolerável. Ruído: Notificação (100 do dia 2026-11-18, Diretor-Tesoureiro, inscrição suplementar), Pauta de Julgamentos, Edital, Audiência de Instrução, Edital de Intimação, Sessão de Julgamento, Inclusão de Pauta, Pauta de Sessão, Defesa Prévia (e variantes), Contrarrazões (apenas intimação para contrarrazões), Autos com vista, Intimação, Instrução Normativa, Edital de Convocação, Relação das Chapas. Excluídos por não serem decisão colegiada: EDITAL DE INTIMAÇÃO DE ARQUIVAMENTO (despacho do presidente do TED, ex. 758430, tipo Intimação da Decisão, título sem INTIMAÇÃO DE DECISÃO). Datas futuras (dez/2026) aparecem em pautas. Sem indício de fonte fora do DEOAB nem de decisões só em PDF."
+}

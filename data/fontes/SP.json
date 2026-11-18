@@ -2,13 +2,14 @@
   {
     "slug": "ementario",
     "url": "https://www.oabsp.org.br/tribunal-de-etica-e-disciplina/ementario",
-    "conteudo": "Consultas da 1ª Turma de Ética Profissional e decisões das Turmas Disciplinares",
-    "periodo": "n/d",
-    "volume": "milhares (inferido)",
-    "acesso": "busca por palavra-chave via AJAX",
+    "conteudo": "Consultas da 1ª Turma de Ética Profissional (TED I, deontológica): ementa, relatório e parecer",
+    "periodo": "1994-2026",
+    "volume": "5.541 itens (medido em 18/11/2026; soma dos 33 anos = total que o backend declara)",
+    "acesso": "AJAX JSON. Listagem: POST https://www.oabsp.org.br/_ajax/ementario.php (form-urlencoded) com card='Turma de Ética Profissional'; action=card devolve os anos; action=ano&ano=AAAA devolve os 12 primeiros; action=load-more&ano=AAAA&keyword=&start=N (N=0,12,24...) devolve 12 por vez, btnMore=0 na última página e err=1 depois do fim. Resposta: {err,msg(HTML),btnMore,pagination,data}; cada item traz data-guid (id estável), data-slug e data-bracket=5; o total do ano está em data.origget.cachemode ('>220:220'). Detalhe: POST https://www.oabsp.org.br/_ajax/load-modal.php com bracket=5&slug=<data-slug> -> {title, html, post}. Link público do item: /tribunal-de-etica-e-disciplina/ementario#modal=<slug>%5b%21%5d5",
     "exclusiva": true,
     "verificacao": "V",
-    "situacao": "mapeada"
+    "situacao": "verificada",
+    "observacoes": "Inteiro teor: de 1999/2000 em diante o detalhe traz ementa + relatório + parecer; 1994-1998 é quase só ementa com a linha 'Proc. E-x.xxx - v.u. - Rel.'. Numeração E-x.xxx/AAAA até 2023; a partir de 2024 o título é 'NNNN-D/AAAA' e o texto traz 'Proc. 25.0886.AAAA.NNNNNN-D'. Itens por ano: 1994:110, 1995:92, 1996:128, 1997:172, 1998:147, 1999:230, 2000:237, 2001:257, 2002:171, 2003:180, 2004:225, 2005:169, 2006:127, 2007:152, 2008:157, 2009:121, 2010:128, 2011:120, 2012:121, 2013:125, 2014:125, 2015:124, 2016:170, 2017:228, 2018:187, 2019:180, 2020:139, 2021:314, 2022:112, 2023:178, 2024:261, 2025:220, 2026:134. Listar ano a ano: 'Todos os anos' (ano=9999) devolve 240 de uma vez, fora de ordem, e o load-more dele derrubou a conexão. O ano é uma etiqueta do site e nem sempre é o ano do processo (há '1454-8/2026' em 2024). Há números repetidos dentro do mesmo ano (ex.: E-3.397/2006 duas vezes): usar data-guid como id. O segundo card ('Primeira Turma Deontológica') devolve o mesmo conjunto. A opção 'Turmas disciplinares - Decisões' só abre o link do legado-disciplinar. Busca por palavra: action=search-keyword&ano=&keyword=. O endereço /jurisprudencia-ted-oabsp/ementario/{id} do levantamento anterior dá 404. Sem login nem captcha. Contém toda a coletanea-ano (ver lá) e substitui o legado-etica. Exclusiva: 5 números conferidos (E-2.276/00, E-3.964/2010, E-5.162/2018, E-5.828/2021, 25.0886.2025.013917-2) e 2 ementas por texto, nenhum no banco; o banco não tem nenhum processo 'E-' nem a 1ª Turma de SP."
   },
   {
     "slug": "legado-etica",
@@ -16,31 +17,34 @@
     "conteudo": "Consultas da Turma de Ética Profissional (sistema legado)",
     "periodo": "n/d",
     "volume": null,
-    "acesso": "páginas ASP",
-    "exclusiva": true,
+    "acesso": "não existe mais: HTTP 302 para https://www.oabsp.org.br/tribunal-de-etica-e-disciplina/ementario",
+    "exclusiva": false,
     "verificacao": "V",
-    "situacao": "mapeada"
+    "situacao": "descartada",
+    "observacoes": "Em 18/11/2026 a página só redireciona (302) para o ementário novo, que é a mesma base migrada (1994-2026). Nada a coletar aqui; ver 'ementario'. As páginas vizinhas ted2.8.5.asp (calendário de sessões do TED I, PDF) e ConsultaDeontologica/ (formulário para protocolar consulta) não são jurisprudência."
   },
   {
     "slug": "legado-disciplinar",
     "url": "https://www2.oabsp.org.br/asp/tribunal_etica/ementasTribunais.asp",
-    "conteudo": "Ementas das Turmas Disciplinares (sistema legado)",
-    "periodo": "n/d",
-    "volume": null,
-    "acesso": "páginas ASP",
+    "conteudo": "Acórdãos das Turmas Disciplinares do TED/SP (sistema legado): número do acórdão, ementa e texto do acórdão",
+    "periodo": "04/2010-11/2014",
+    "volume": "cerca de 5.300 acórdãos (idEmenta de 1 a 5342; 3.976 aparecem na busca por mês e 39 de 40 ids fora da busca, sorteados, têm texto)",
+    "acesso": "Páginas ASP, HTML em UTF-8. Detalhe (caminho recomendado, por enumeração): GET https://www2.oabsp.org.br/asp/tribunal_etica/textoEmentas.asp?idEmenta=N, N de 1 a 5342; id vazio devolve só a 'Nota da Corregedoria' (cerca de 1,2 KB). Listagem: POST ementasTribunais.asp com proc=1&anoreq=AAAA/M&texto1=&texto2= (50 meses, de 2010/4 a 2014/11), tudo numa página só, sem paginação, cada linha com data e idEmenta; anoreq=0 sem palavra não devolve nada",
     "exclusiva": true,
     "verificacao": "V",
-    "situacao": "mapeada"
+    "situacao": "verificada",
+    "observacoes": "A busca por mês é falha: os meses 10, 11 e 12 de todos os anos e 2014/6 devolvem zero, embora existam acórdãos dessas datas (ex.: ids 1791, 2283, 4669, 4947). Por isso a listagem dá 3.976 (2010:218, 2011:864, 2012:2.123, 2013:425, 2014:346) e a enumeração por id dá mais. Usar a listagem só para pegar a data dos que aparecem; nos demais a data vem do texto ('Sala das Sessões, 16 de setembro de 2014'). Não há inteiro teor do voto: só ementa + acórdão (processo, turma, resultado, sanção, relator e presidente). Processo no formato antigo (ex.: 15R0006612011). O site não declara total; o esperado é o maior id com texto. Exclusiva: é anterior ao DEOAB (o banco de SP começa em 01/02/2019); 3 itens conferidos por processo e por texto (ids 5024, 5025, 5023), nenhum no banco. Sem login nem captcha."
   },
   {
     "slug": "coletanea-ano",
     "url": "https://www2.oabsp.org.br/asp/tribunal_etica/tedEmentasXAno.asp",
-    "conteudo": "Coletânea de Ementas por Ano",
-    "periodo": "1995-2018",
-    "volume": null,
-    "acesso": "páginas ASP",
-    "exclusiva": true,
+    "conteudo": "Coletânea de Ementas por Ano da Turma de Ética Profissional (TED I): só ementas, agrupadas por sessão",
+    "periodo": "1994-2018",
+    "volume": "25 páginas, uma por ano; cerca de 4.000 ementas (contagem aproximada pelas linhas 'Proc. E-'; o ementário novo tem 4.003 no mesmo período)",
+    "acesso": "Páginas ASP, HTML em UTF-8. GET https://www2.oabsp.org.br/asp/tribunal_etica/pop_ementasano.asp?ano=AAAA (1994 a 2018): o ano inteiro numa página só (115 KB a 407 KB), sem paginação nem id por item; 1993 e 2019 vêm vazios",
+    "exclusiva": false,
     "verificacao": "V",
-    "situacao": "mapeada"
+    "situacao": "verificada",
+    "observacoes": "Subconjunto do 'ementario': mesmas consultas E-x.xxx, aqui só com a ementa e a linha do processo, lá com relatório e parecer. Conferido em 2008, 2009, 2010, 2017 e 2018: todos os números do próprio ano da coletânea estão no ementário novo (os que não bateram são precedentes citados dentro das ementas), e o ementário ainda tem itens que a coletânea não tem (ex.: E-3.834 a E-3.844 em 2009; E-5.061, E-5.083, E-5.163 e E-5.180 em 2018). Não está no banco, mas não precisa de coletor próprio: serve de conferência do ementário e traz o número e a data da sessão ('611ª SESSÃO DE 22 DE FEVEREIRO DE 2018'), dado que o ementário novo não mostra na lista. O registro anterior dizia 1995-2018; a página lista 1994. O link para ela está comentado no HTML de ementasTribunais.asp."
   }
 ]
