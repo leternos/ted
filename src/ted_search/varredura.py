@@ -27,6 +27,7 @@ from typing import Any
 
 from ted_search.collectors.deoab_nacional import (
     UF_TO_ORG,
+    eh_eleitoral,
     eh_materia_disciplinar,
     motivo_recusa,
     normalize_deoab_item_nacional,
@@ -174,6 +175,8 @@ def _sem_acento(texto: str) -> str:
 TITULOS_DECISAO_PADRAO = ("ACORDAO", "EMENTA")
 # "Vistos, relatados e discutidos" e variantes ("Vistos e analisados os autos"), em texto sem acento
 RE_FORMULA_JULGAMENTO = re.compile(r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)")
+# Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
+RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
 # Publicação que abre anunciando o resultado de uma sessão de julgamento (TO, nov/2026)
 RE_RESULTADO_SESSAO = re.compile(r"RESULTADO\s+D[EO]\s+JULGAMENTO")
 
@@ -561,7 +564,15 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
             # Tipo amplo (ex.: "Edital"): só entra se o conteúdo for de matéria ético-disciplinar
             texto = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
             setor = ((pub.get("setorPublicacao") or {}).get("nomeAlternativo") or "")
-            if not eh_materia_disciplinar(setor, pub.get("titulo") or "", texto):
+            # ...ou trouxer o resultado de um julgamento (atas de sessão e decisões eleitorais de RR, nov/2026)
+            plano = _sem_acento(texto)
+            tem_resultado = bool(RE_RESULTADO_NO_CORPO.search(plano))
+            if "ATA" in _sem_acento(_tipo(pub)).split():
+                # Ata só entra se for de sessão de julgamento (não de reunião de diretoria ou de conselho)
+                aceita = tem_resultado and bool(re.search(r"SESSAO\s+DE\s+JULGAMENTO|TRIBUNAL\s+DE\s+ETICA", plano[:400]))
+            else:
+                aceita = eh_materia_disciplinar(setor, pub.get("titulo") or "", texto) or (eh_eleitoral(setor, texto) and tem_resultado)
+            if not aceita:
                 rejeitados.append({"id": pub["id"], "motivo": "tipo_amplo_sem_decisao", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
                                    "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
                 continue

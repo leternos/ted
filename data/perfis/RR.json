@@ -12,7 +12,9 @@
     "Ementa",
     "Retificação Acórdão",
     "Decisão",
-    "Extrato de Julgamento"
+    "Extrato de Julgamento",
+    "Ata",
+    "Processo Eleições"
   ],
   "validado": true,
   "evidencia": {
@@ -451,6 +453,6 @@
       }
     }
   },
-  "observacoes": "Censo VAZIO: 0 decisões em --dias 20 e --dias 40 (40 dias amostrados, 2019-2026; ~490 publicações, todas Portaria, Editais, Errata, Resolução, Notificação, Edital de Inscrição, Pauta de Julgamentos, Recomendações TED, Ata, Processo Eleições). Nenhum tipo parece decisão; recall não mensurável (null). Validado com o que há, abaixo de 30 decisões. tipos_decisao e termos são preventivos (nomes padrão de outras Seccionais), não confirmados por amostra em RR; a estimativa prévia era de <200 acórdãos 2020-2026, então decisões existem mas não caíram nos dias amostrados (publicação concentrada em poucos dias, ex. 2024-03-20 com 154 publicações, 2022-07-25 com 39). TED publica pouco no DEOAB-RR: só Notificação (editais de notificação por conselheiro relator, 10 do setor TED), 1 Pauta de Julgamentos, 1 Convocação/Pauta, 1 Recomendação TED. Notificações/pautas excluídas por não serem decisão. Indício de fonte fora do DEOAB: acórdãos provavelmente publicados em outro lugar (site da Seccional/ementário/PDF); recomenda-se verificar antes de coletar. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca).",
+  "observacoes": "Censo VAZIO: 0 decisões em --dias 20 e --dias 40 (40 dias amostrados, 2019-2026; ~490 publicações, todas Portaria, Editais, Errata, Resolução, Notificação, Edital de Inscrição, Pauta de Julgamentos, Recomendações TED, Ata, Processo Eleições). Nenhum tipo parece decisão; recall não mensurável (null). Validado com o que há, abaixo de 30 decisões. tipos_decisao e termos são preventivos (nomes padrão de outras Seccionais), não confirmados por amostra em RR; a estimativa prévia era de <200 acórdãos 2020-2026, então decisões existem mas não caíram nos dias amostrados (publicação concentrada em poucos dias, ex. 2024-03-20 com 154 publicações, 2022-07-25 com 39). TED publica pouco no DEOAB-RR: só Notificação (editais de notificação por conselheiro relator, 10 do setor TED), 1 Pauta de Julgamentos, 1 Convocação/Pauta, 1 Recomendação TED. Notificações/pautas excluídas por não serem decisão. Indício de fonte fora do DEOAB: acórdãos provavelmente publicados em outro lugar (site da Seccional/ementário/PDF); recomenda-se verificar antes de coletar. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca). | Auditoria de 18/11/2026: incluídos os tipos amplos 'Ata' (ata de sessão do TED com resultados, id 723827) e 'Processo Eleições' (decisões da Comissão Eleitoral, não disciplinares); só entram se o texto trouxer resultado de julgamento. O TED de RR quase não publica resultados no Diário; a Portaria 01/2026/TED indica que os processos tramitam no sistema interno SGD.",
   "modo": "censo"
 }

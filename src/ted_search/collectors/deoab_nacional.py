@@ -226,8 +226,11 @@ def motivo_recusa(
     setor_nome = clean_text((pub.get("setorPublicacao") or {}).get("nomeAlternativo") or "")
     titulo = clean_text(pub.get("titulo") or "")
     full_text = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
-    if not full_text or len(full_text) < 60:
-        return "texto_vazio_ou_curto"
+    if not full_text or len(full_text) < 150:
+        return "texto_vazio_ou_curto"  # inclui erratas de uma linha ("acórdão faltante, não anexado")
+    eh_errata = "ERRAT" in _sem_acento_upper(f"{tipo_pub} {titulo}").replace(" ", "")
+    if len(full_text) < (1500 if eh_errata else 700) and re.search(r"RETIFIQUE-SE|ONDE\s+SE\s+LE", _sem_acento_upper(full_text)):
+        return "errata_sem_decisao"  # só aponta a correção de outra publicação (RR 737522)
     if confiar_no_tipo:
         return None  # a varredura já classificou a publicação como decisão pelo perfil da Seccional
     # Filtrar notificações administrativas puras ("notifica a comparecer")
@@ -241,13 +244,25 @@ def motivo_recusa(
 def eh_eleitoral(setor_nome: str, full_text: str) -> bool:
     """Decisões da Comissão Eleitoral e registros de candidatura: ficam no banco, sempre fora da busca do TED."""
     return "COMISSÃO ELEITORAL" in setor_nome.upper() or bool(
-        re.search(r"REGISTRO\s+DE\s+CANDIDATURA|ELEI[ÇC][ÕO]ES\s+OAB|COMISS[ÃA]O\s+ELEITORAL", full_text[:600].upper())
+        re.search(r"REGISTRO\s+DE\s+(?:CANDIDATURA|CHAPA)|\bCHAPA\b|ELEI[ÇC][ÕO]ES\s+OAB|ELEITORAL", full_text[:600].upper())
     )
+
+
+# Matéria administrativa do Conselho, reconhecida pelo assunto no título ou na abertura do texto (sem acento).
+# "Prestação de contas" só conta quando é a da instituição: a do advogado ao cliente é infração disciplinar.
+RE_ADMINISTRATIVO = re.compile(
+    r"PRESTACAO\s+DE\s+CONTAS\s+D[AO]S?\s+(?:CAIXA|CAA|CONSELHO|SECCIONAL|SUBSECAO|SUBSECOES|DIRETORIA|EXERCICIO|OAB)|"
+    r"PRESTACAO\s+DE\s+CONTAS\s+DE\s+\d{4}|CANCELAMENTO\s+DE\s+INSCRICAO|"
+    r"PEDIDO\s+DE\s+INSCRICAO|INSCRICAO\s+(?:ORIGINARIA|SUPLEMENTAR|PRINCIPAL|DEFINITIVA)|"
+    r"SOCIEDADE\s+(?:INDIVIDUAL\s+)?DE\s+ADVO|ATOS\s+SOCIETARIOS"
+)
 
 
 def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool:
     """Decisões do Conselho sobre inscrição, sociedades, contas ou eleições ficam no banco, mas fora da busca do TED."""
     if eh_eleitoral(setor_nome, full_text):
+        return False
+    if RE_ADMINISTRATIVO.search(_sem_acento_upper(f"{titulo} {full_text[:600]}")):
         return False
     return bool(RE_DISCIPLINAR.search(_sem_acento_upper(f"{setor_nome} {titulo} {full_text}")))
 
