@@ -293,14 +293,14 @@ def _nome(trecho: str) -> str | None:
     nome = _limpar_linha(trecho).strip(" -–—,.;:")
     for _ in range(3):
         nome = RE_TITULO_PESSOA.sub("", nome).strip(" -–—,.;:ªº")
-    nome = re.split(r"(?i)\s+[-–—]\s+|,|;|\s+com\s+|\s+e\s+(?:do|da)\s+|\s+ac(?:ompanhad|rescid)|\s+tendo\s+|\s+vencid|\s+que\s+|\(", nome)[0]
+    nome = re.split(r"(?i)\s+[-–—]\s+|,|;|\s+com\s+|\s+e\s+(?:do|da)\s+|\s+ac(?:ompanhad|rescid)|\s+tendo\s+|\s+vencid|\s+que\s+|\(|\s+contra\s+|\s*\be\s+(?:complementa|ementa|voto|pel[oa]|[oa]\s+julgador)|\s+aderiu|\s*-\s*rev|\s+\?", nome)[0]
     nome = _limpar_linha(nome).strip(" -–—,.;:")
     if len(nome) < 5 or len(nome) > 80 or not re.search(r"[A-Za-zÀ-ÿ]{2,}\s+[A-Za-zÀ-ÿ]{2,}", nome):
         return None
     return nome.upper()
 
 
-RE_REL = re.compile(r"(?i)\bRel(?:atora|ator|\.)?\s*ª?\.?\s*(?:designad[oa]\s*)?[:\-–—]?\s*(.+)")
+RE_REL = re.compile(r"(?i)\bRel(?:atora|ator|\.)?\s*ª?\.?\s*(?:designad[oa]\s*)?(?:com\s+voto\s+vencid[oa]\s*)?[:\-–—]?\s*(.+)")
 RE_REV = re.compile(r"(?i)\bRev(?:isora|isor|\.)?\s*ª?\.?\s*[:\-–—]?\s*(.+)")
 RE_CORTE_PAPEL = re.compile(r"(?i)\s*[-–—,;.]?\s*\b(?:Rev(?:isora|isor|\.)|Pres(?:idente|\.)|Rel(?:atora|ator|\.))")
 
@@ -316,7 +316,7 @@ def extrair_relator_revisor(linha: str) -> tuple[str | None, str | None]:
     return relator, revisor
 
 
-def estruturar(texto: str, titulo: str, descricao: str = "") -> dict[str, Any]:
+def estruturar(texto: str, titulo: str, descricao: str = "", ano: int | None = None) -> dict[str, Any]:
     """Separa o texto do detalhe em ementa, linha de votação, relatório e parecer, e tira número, data e nomes.
 
     ``descricao`` é o título da ementa na listagem; só é passado para os itens do editor novo (2024 em diante), em
@@ -337,13 +337,18 @@ def estruturar(texto: str, titulo: str, descricao: str = "") -> dict[str, Any]:
     digitos = re.sub(r"\D", "", numero.split("/")[0])
     candidatas = [i for i, ln in enumerate(linhas) if RE_PROC_LINHA.search(ln) and RE_VOTACAO.search(ln[RE_PROC_LINHA.search(ln).start():])]
     i_proc = None
+    pos_proc = 0      # onde, na linha, começa o 'Proc.' que vale
+    propria = False   # a linha de votação cita o número desta consulta?
     for i in candidatas:
-        trecho = linhas[i][RE_PROC_LINHA.search(linhas[i]).start():][:60]
-        if digitos and digitos in re.sub(r"\D", "", trecho):
-            i_proc = i
+        for m_p in RE_PROC_LINHA.finditer(linhas[i]):  # a linha pode citar um precedente antes ('Proc. E-2.443/01 ... Proc. E-2.845/03 ...')
+            if digitos and digitos in re.sub(r"\D", "", linhas[i][m_p.start():m_p.start() + 40]):
+                i_proc, pos_proc, propria = i, m_p.start(), True
+                break
+        if propria:
             break
     if i_proc is None and candidatas:
         i_proc = candidatas[0]
+        pos_proc = RE_PROC_LINHA.search(linhas[i_proc]).start()
 
     i_secao = next((i for i, ln in enumerate(linhas) if i > 0 and (RE_SECAO_RELATORIO.match(ln) or RE_SECAO_PARECER.match(ln))), None)
     if i_proc is not None and i_secao is not None and i_secao <= i_proc:
@@ -367,8 +372,7 @@ def estruturar(texto: str, titulo: str, descricao: str = "") -> dict[str, Any]:
     corpo = linhas[fim_ementa:]
     votacao = ""
     if i_proc is not None:
-        junto = " ".join(linhas[i_proc:fim_ementa])
-        votacao = junto[RE_PROC_LINHA.search(junto).start():]
+        votacao = " ".join(linhas[i_proc:fim_ementa])[pos_proc:]
 
     i_par = next((i for i, ln in enumerate(corpo) if RE_SECAO_PARECER.match(ln)), None)
     if i_par is None:
@@ -380,6 +384,11 @@ def estruturar(texto: str, titulo: str, descricao: str = "") -> dict[str, Any]:
 
     m_proc = RE_PROC_UNIFICADO.search(votacao) or RE_PROC_UNIFICADO.search(ementa)
     relator, revisor = extrair_relator_revisor(votacao) if votacao else (None, None)
+    data = extrair_data(votacao) if votacao else None
+    if votacao and not propria and data and ano and abs(int(data[:4]) - int(ano)) > 1:
+        # A ementa fecha com a linha de votação de OUTRA consulta, de anos antes (o site repete a ementa do precedente):
+        # nem a data nem o relator dessa linha são desta consulta.
+        data = relator = revisor = None
     return {
         "numero": numero,
         "numero_processo": m_proc.group(1) if m_proc else numero,
@@ -389,12 +398,13 @@ def estruturar(texto: str, titulo: str, descricao: str = "") -> dict[str, Any]:
         "parecer": parecer,
         "relator": relator,
         "revisor": revisor,
-        "data_julgamento": extrair_data(votacao) if votacao else None,
+        "data_julgamento": data,
+        "votacao_propria": propria,
     }
 
 
 RE_SESSAO = re.compile(r"(?i)^\W*(?:\d+\s*[ªa]\.?\s*)?SESS[ÃA]O\s+DE\s+(\d{1,2})\s*[º°]?\s+DE\s+(" + "|".join(MESES) + r")\s+DE\s+(\d{4})\W*$")
-RE_PROC_INICIO = re.compile(r"(?i)^\W*Proc(?:esso)?s?\.?\s*(?:n[º°o]?\.?\s*)?(?:E\s*[-–—.]?\s*)?(\d[\d.]*)")
+RE_PROC_INICIO = re.compile(r"(?i)^\W*Proc(?:esso)?s?\.?\s*(?:n[º°o]?\.?\s*)?(?:E\s*[-–—.]?\s*)?([\dlO][\dlO.]*)")
 
 
 def chave_numero(numero: str) -> str | None:
@@ -418,7 +428,7 @@ def datas_da_coletanea(texto: str) -> dict[str, list[str]]:
             continue
         m = RE_PROC_INICIO.match(linha)
         if m and sessao:
-            chave = re.sub(r"\D", "", m.group(1)).lstrip("0")
+            chave = re.sub(r"\D", "", m.group(1).replace("l", "1").replace("O", "0")).lstrip("0")
             if chave and sessao not in datas.setdefault(chave, []):
                 datas[chave].append(sessao)
     return datas
@@ -506,7 +516,7 @@ async def baixar(client: Any, sem: asyncio.Semaphore, item: dict[str, Any]) -> d
     titulo = _limpar_linha(corpo.get("title") or item.get("titulo") or "")
     ano = item.get("ano_etiqueta")
     descricao = item.get("descricao") or _limpar_linha(post.get("description") or "")
-    partes = estruturar(texto, titulo, descricao if _editor_novo(ano) else "")
+    partes = estruturar(texto, titulo, descricao if _editor_novo(ano) else "", ano)
     data_sessao = None
     chave = chave_numero(partes["numero"])
     if not partes["data_julgamento"] and chave and ano:
@@ -541,7 +551,7 @@ def normalizar(item: dict[str, Any]) -> dict[str, Any] | None:
         return None
     ano = item.get("ano_etiqueta")
     # refaz a partir do texto bruto: ajuste de regra não exige rebaixar
-    partes = estruturar(texto, item.get("titulo") or "", (item.get("descricao") or "") if _editor_novo(ano) else "")
+    partes = estruturar(texto, item.get("titulo") or "", (item.get("descricao") or "") if _editor_novo(ano) else "", ano)
     if len(partes["ementa"]) < 20:
         return None
     data = partes["data_julgamento"] or item.get("data_sessao_coletanea") or (f"{int(ano):04d}-01-01" if ano else None)
