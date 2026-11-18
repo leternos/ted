@@ -367,7 +367,7 @@ def test_nacional_consulta_so_pelo_nome_do_orgao_e_nao_por_mencao_no_inicio():
     assert detect_orgao_julgador_nacional("XX", "TRIBUNAL DE ÉTICA E DISCIPLINA", "ACÓRDÃO", "consulta deontológica sobre honorários")[0] == "OABXX-TED"
 
 
-def test_al_sem_turma_nomeada_fica_generico_e_comissao_eleitoral_e_descartada():
+def test_al_sem_turma_nomeada_fica_generico_e_comissao_eleitoral_fica_fora_da_busca_do_ted():
     from ted_search.collectors.deoab_nacional import normalize_deoab_item_nacional
 
     corpo = (
@@ -385,6 +385,8 @@ def test_al_sem_turma_nomeada_fica_generico_e_comissao_eleitoral_e_descartada():
         "REGISTRO DE CANDIDATURA DA CHAPA 01 (Seccional Maceió/AL)</p><p>EMENTA REQUERIMENTO DE REGISTRO DE "
         "CANDIDATURA. ELEIÇÕES OAB/AL 2024. PROCESSO ADMINISTRATIVO. DEFERIMENTO DO REGISTRO DA CHAPA 01.</p>"
     )
-    assert normalize_deoab_item_nacional(
+    # Política desde a auditoria do AP (18/11/2026): decisão eleitoral fica no banco, fora da busca do TED
+    rec_eleitoral = normalize_deoab_item_nacional(
         _al_pub(6, "PROCESSO Nº 02.0000.2024.005055-7", "COMISSÃO ELEITORAL", eleitoral, tipo="Acórdão"), "AL", 2
-    ) is None
+    )
+    assert rec_eleitoral is not None and rec_eleitoral["is_ted_disciplinar"] == 0

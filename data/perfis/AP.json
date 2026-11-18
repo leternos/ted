@@ -11,7 +11,8 @@
     "ACÓRDÃO",
     "EMENTA",
     "Decisão",
-    "Decisão Monocrática"
+    "Decisão Monocrática",
+    "Certidão de Julgamento"
   ],
   "validado": true,
   "evidencia": {
@@ -433,6 +434,6 @@
       }
     }
   },
-  "observacoes": "Seccional minúscula: 40 dias de censo (dias com publicação distribuídos de 2019 a 2026), 97 publicações, apenas 1 decisão (Acórdão, id 279256, Conselho Pleno, prestação de contas do exercício 2019, não disciplinar). Abaixo de 30 mesmo com 40 dias; validado com o que há. Praticamente todo o TED publicado é Notificação/Edital de processo ético-disciplinar (setor TRIBUNAL DE ÉTICA E DISCIPLINA, ~24 notificações), sem acórdão publicado no DEOAB. Tipos Decisão (2, Comissão Eleitoral, eleição 2021) e Decisão Monocrática (1, na verdade despacho da Secretaria Geral) mantidos por cautela, não são mérito disciplinar. Despacho, Inscrição, Edital, Publicação, Resolução, Ato Declaratório e Notificação não são decisão. Recall: ACORDAO 1.0, EMENTA 1.0, JULGAMENTO 1.0, DECISAO 0.0, RECURSO 0.0 (censo 1/1 coberto). Julgamentos disciplinares do AP provavelmente saem por fonte fora do DEOAB (não verificado). O único acórdão do censo é de gestão 2019/2021; nos demais dias amostrados não houve decisão. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca).",
+  "observacoes": "Seccional minúscula: 40 dias de censo (dias com publicação distribuídos de 2019 a 2026), 97 publicações, apenas 1 decisão (Acórdão, id 279256, Conselho Pleno, prestação de contas do exercício 2019, não disciplinar). Abaixo de 30 mesmo com 40 dias; validado com o que há. Praticamente todo o TED publicado é Notificação/Edital de processo ético-disciplinar (setor TRIBUNAL DE ÉTICA E DISCIPLINA, ~24 notificações), sem acórdão publicado no DEOAB. Tipos Decisão (2, Comissão Eleitoral, eleição 2021) e Decisão Monocrática (1, na verdade despacho da Secretaria Geral) mantidos por cautela, não são mérito disciplinar. Despacho, Inscrição, Edital, Publicação, Resolução, Ato Declaratório e Notificação não são decisão. Recall: ACORDAO 1.0, EMENTA 1.0, JULGAMENTO 1.0, DECISAO 0.0, RECURSO 0.0 (censo 1/1 coberto). Julgamentos disciplinares do AP provavelmente saem por fonte fora do DEOAB (não verificado). O único acórdão do censo é de gestão 2019/2021; nos demais dias amostrados não houve decisão. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca). | Auditoria de 18/11/2026: incluído o tipo 'Certidão de Julgamento' (decisões colegiadas do Conselho sobre sociedades e inscrição, não disciplinares).",
   "modo": "censo"
 }

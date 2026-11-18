@@ -195,9 +195,10 @@ def _resultado_pela_formula(full_text: str) -> str | None:
 
 # Marcas de matéria ético-disciplinar (texto sem acento, em maiúsculas). Acórdãos do Conselho sobre inscrição,
 # sociedade de advogados, prestação de contas da Seccional ou eleições não têm nenhuma delas.
+# "Representação" e "ética" sozinhas ficam de fora: aparecem em matéria institucional (auditoria do AP, nov/2026).
 RE_DISCIPLINAR = re.compile(
-    r"DISCIPLIN|REPRESENTAC|REPRESENTAD|INFRAC|ART(?:IGO)?S?\.?\s*34\b|CENSURA|TRIBUNAL\s+DE\s+ETICA|\bTED\b|CODIGO\s+DE\s+ETICA|"
-    r"\bETIC[AO]|LOCUPLET|INIDONE|EXCLUSAO\s+D[OA]S?\s+QUADROS|SUSPENSAO\s+(?:DO\s+EXERCICIO|PREVENTIVA)|CAPTACAO\s+DE\s+CLIENT|ANGARIA"
+    r"DISCIPLIN|INFRAC|ART(?:IGO)?S?\.?\s*34\b|CENSURA|TRIBUNAL\s+DE\s+ETICA|\bTED\b|CODIGO\s+DE\s+ETICA|"
+    r"LOCUPLET|INIDONE|EXCLUSAO\s+D[OA]S?\s+QUADROS|SUSPENSAO\s+(?:DO\s+EXERCICIO|PREVENTIVA)|CAPTACAO\s+DE\s+CLIENT|ANGARIA"
 )
 
 
@@ -227,11 +228,8 @@ def motivo_recusa(
     full_text = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
     if not full_text or len(full_text) < 60:
         return "texto_vazio_ou_curto"
-    # Processo eleitoral/administrativo (registro de candidatura) não é decisão ético-disciplinar
-    if "COMISSÃO ELEITORAL" in setor_nome.upper() or re.search(
-        r"REGISTRO\s+DE\s+CANDIDATURA|ELEI[ÇC][ÕO]ES\s+OAB", full_text[:600].upper()
-    ):
-        return "eleitoral"
+    if confiar_no_tipo:
+        return None  # a varredura já classificou a publicação como decisão pelo perfil da Seccional
     # Filtrar notificações administrativas puras ("notifica a comparecer")
     txt_lower = full_text.lower()
     has_juris_keywords = any(k in txt_lower for k in ["acordam", "acórdão", "ementa", "vistos", "censura", "suspensão", "exclusão", "representação", "infração", "ced", "eaoab"])
@@ -240,8 +238,17 @@ def motivo_recusa(
     return None
 
 
+def eh_eleitoral(setor_nome: str, full_text: str) -> bool:
+    """Decisões da Comissão Eleitoral e registros de candidatura: ficam no banco, sempre fora da busca do TED."""
+    return "COMISSÃO ELEITORAL" in setor_nome.upper() or bool(
+        re.search(r"REGISTRO\s+DE\s+CANDIDATURA|ELEI[ÇC][ÕO]ES\s+OAB|COMISS[ÃA]O\s+ELEITORAL", full_text[:600].upper())
+    )
+
+
 def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool:
     """Decisões do Conselho sobre inscrição, sociedades, contas ou eleições ficam no banco, mas fora da busca do TED."""
+    if eh_eleitoral(setor_nome, full_text):
+        return False
     return bool(RE_DISCIPLINAR.search(_sem_acento_upper(f"{setor_nome} {titulo} {full_text}")))
 
 

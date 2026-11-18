@@ -186,3 +186,108 @@ def test_sp_ementario_slug_que_abre_outro_item_e_refeito_pelo_guid():
     assert det["numero"] == "E-1.201" and "PATROCÍNIO SIMULTÂNEO" in det["ementa"]
     assert det["link_direto"] is False
     assert m.normalizar(det)["diario_url"] == m.URL_PAGINA  # a âncora abriria outro item: fica a página do ementário
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# SP / legado-disciplinar - acórdãos das Turmas Disciplinares do TED no sistema legado (2010-2014)
+# ----------------------------------------------------------------------------------------------------------------------
+
+def _html(nome: str) -> str:
+    return (FIXTURES / nome).read_text(encoding="utf-8")
+
+
+class _ClienteHtml:
+    """GET devolve o HTML dado (ou um por id); POST devolve a listagem dada."""
+
+    def __init__(self, paginas: dict[str, str] | str, lista: str = ""):
+        self._paginas, self._lista = paginas, lista
+        self.pedidos: list[tuple[str, dict]] = []
+
+    async def get(self, url, params=None, headers=None, **_k):
+        self.pedidos.append((url, dict(params or {})))
+        h = self._paginas if isinstance(self._paginas, str) else self._paginas[str((params or {})["idEmenta"])]
+        return type("R", (), {"content": h.encode("utf-8"), "raise_for_status": lambda self: None})()
+
+    async def post(self, url, data=None, headers=None, **_k):
+        self.pedidos.append((url, dict(data or {})))
+        return type("R", (), {"content": self._lista.encode("utf-8"), "raise_for_status": lambda self: None})()
+
+
+def test_sp_legado_disciplinar_detalhe_com_conteudo():
+    from ted_search.collectors.sites import sp_legado_disciplinar as m
+
+    cliente = _ClienteHtml(_html("sp_legado_disciplinar_id5024.html"))
+    item = asyncio.run(m.baixar(cliente, asyncio.Semaphore(1), {"id": 5024, "data_listagem": "2014-09-17"}))
+    assert item["vazio"] is False and item["numero_acordao"] == "996"
+    assert item["numero_processo"] == "15R0006612011" and item["turma"] == "Décima Quinta Turma Disciplinar"
+    assert item["data_texto"] == "2014-09-16" and item["relator"] == "DINO BOLDRINI NETO"
+    assert cliente.pedidos == [(m.URL_DETALHE, {"idEmenta": "5024"})]
+
+    rec = m.normalizar(item)
+    assert rec["id"] == "SITE_SP_LEGADO_DISCIPLINAR:5024" and rec["fonte"] == "SITE_SP_LEGADO_DISCIPLINAR"
+    assert rec["contexto"] == "EMENTA" and rec["tipo_ementa"] == "PROCESSO_DISCIPLINAR"
+    assert rec["data_decisao"] == "2014-09-16" and rec["ano_ementa"] == 2014  # a data do texto vence a da listagem
+    assert rec["sigla_orgao"] == "OABSP-15TD" and rec["orgao_julgador_norm"] == "OAB/SP - 15ª Turma Disciplinar (TED)"
+    assert rec["orgao_julgador_raw"] == "Décima Quinta Turma Disciplinar"
+    assert rec["numero_processo"] == "15R0006612011" and rec["numero_ementa"] == "996"
+    assert rec["relator_principal"] == "DINO BOLDRINI NETO"
+    assert rec["descricao_ementa"].startswith("ADVOGADA PRESA") and rec["descricao_acordao"].startswith("Vistos, relatados")
+    assert rec["diario_url"].endswith("textoEmentas.asp?idEmenta=5024")
+
+
+def test_sp_legado_disciplinar_turma_com_do_ted_e_data_da_listagem_quando_falta_no_texto():
+    from ted_search.collectors.sites import sp_legado_disciplinar as m
+
+    item = m.extrair(_html("sp_legado_disciplinar_id1.html"))
+    assert item["turma"] == "Segunda Turma Disciplinar do TED" and item["data_texto"] == "2012-03-28"
+    item.update(id=1, vazio=False, url="u", data_texto=None, data_listagem="2012-03-30")
+    rec = m.normalizar(item)
+    assert rec["sigla_orgao"] == "OABSP-2TD" and rec["data_decisao"] == "2012-03-30"
+    item.update(turma=None, turma_n=None)
+    rec = m.normalizar(item)
+    assert rec["sigla_orgao"] == "OABSP-TED" and rec["orgao_julgador_norm"] == "OAB/SP - Tribunal de Ética e Disciplina"
+
+
+def test_sp_legado_disciplinar_id_vazio_e_gravado_como_vazio_e_rejeitado_na_carga():
+    from ted_search.collectors.sites import sp_legado_disciplinar as m
+
+    cliente = _ClienteHtml(_html("sp_legado_disciplinar_id_vazio.html"))
+    item = asyncio.run(m.baixar(cliente, asyncio.Semaphore(1), {"id": 5400}))
+    assert item and item["vazio"] is True and "ementa" not in item
+    assert m.normalizar(item) is None
+    assert asyncio.run(m.esperado(cliente, asyncio.Semaphore(1))) is None
+
+
+def test_sp_legado_disciplinar_resposta_fora_do_padrao_nao_vira_vazio():
+    from ted_search.collectors.sites import sp_legado_disciplinar as m
+
+    assert m.pagina_valida(_html("sp_legado_disciplinar_id_vazio.html"))
+    assert not m.pagina_valida("<html><body>Server Error 500</body></html>")
+    assert not m.pagina_valida("<html><body><b>Nota da Corregedoria do TED:</b> cortada")  # sem </html>
+
+
+def test_sp_legado_disciplinar_listagem_mensal_traz_data_por_id():
+    from ted_search.collectors.sites import sp_legado_disciplinar as m
+
+    pares = m.RE_ITEM_LISTA.findall(_html("sp_legado_disciplinar_listagem_2012_3_trecho.html"))
+    assert pares[0] == ("31/03/2012", "712") and pares[1] == ("30/03/2012", "725") and len(pares) == 3
+
+
+def test_sp_legado_disciplinar_variantes_de_turma_relator_data_e_processo():
+    from ted_search.collectors.sites import sp_legado_disciplinar as m
+
+    def campos(abertura: str, fecho: str) -> dict:
+        return m.campos_do_acordao(f"Vistos, relatados e discutidos estes autos {abertura}\n{fecho}")
+
+    c = campos("do Processo Disciplinar 09r0002452011 (066/07), acordam os membros da NONA TURMA do TED, julgar.", "Sala das sessões, 30 de março de 2012. Rel. Dr. Taddeo Gallo Junior - Presidente de sala Dr. Fulano de Tal.")
+    assert (c["turma_n"], c["numero_processo"], c["data_texto"], c["relator"]) == (9, "09R0002452011", "2012-03-30", "TADDEO GALLO JUNIOR")
+    c = campos("do processo disciplinar no 496/12, na 39a Sessão de Julgamento, acordam os membros da 3a Seção da Décima Sétima Turma Disciplinar, por", "Sala das sessões, 21 de fevereiro 2014. Rel. e Presidente de sala: Dr. Francisco Luiz Maccire.")
+    assert (c["turma_n"], c["numero_processo"], c["data_texto"], c["relator"]) == (17, "496/12", "2014-02-21", "FRANCISCO LUIZ MACCIRE")
+    c = campos("de Processo Disciplinar no 197/2005, acordam os membros do Tribunal de Ética e Disciplina XI, por", "Sala das Sessões, 1o de março de 2011. Rel. (voto divergente) Dr. Rafael Cury Bicalho - Presidente Dr. X Y.")
+    assert (c["turma_n"], c["data_texto"], c["relator"]) == (11, "2011-03-01", "RAFAEL CURY BICALHO")
+    c = campos("de Pedido de Reabilitação no 4744/1999, acordam os membros da XXII Turma de Ética e Disciplina, por", "Sala das Sessões, 25 março de 2011. Rel. \"ad hoc\" Dr. Alfredo José Diani - Presidente Dr. J S.")
+    assert (c["turma_n"], c["numero_processo"], c["data_texto"], c["relator"]) == (22, "4744/1999", "2011-03-25", "ALFREDO JOSÉ DIANI")
+    c = campos("do Processo PD22R000011/2011–Lins-SP, acordam os membros da Vigésima Segunda Turma Disciplinar TED XXII da OAB, por", "Sala das sessões, 30 de março de 2012. Rev. Dr. Fulano Beltrano - Presidente Dr. A B.")
+    assert c["turma_n"] == 22 and c["numero_processo"] == "PD22R000011/2011" and c["relator"] is None  # só Revisor: sem relator
+    c = campos("do Processo X 1/2, os membros decidiram.", "Sala das sessões, 1 de abril de 2012.")
+    assert c["turma"] is None and c["turma_n"] is None  # sem turma nomeada: nada é inferido de palavra solta

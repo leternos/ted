@@ -186,3 +186,17 @@ def test_normalizador_confia_no_perfil_e_marca_o_que_nao_e_disciplinar():
     rec = normalize_deoab_item_nacional(sociedade, default_uf="AP", default_org_id=3, confiar_no_tipo=True)
     assert rec["is_ted_disciplinar"] == 0  # fica no banco, fora da busca do TED
     assert normalize_deoab_item_nacional(resultado, default_uf="TO", default_org_id=27, confiar_no_tipo=True)["is_ted_disciplinar"] == 1
+
+
+def test_resultado_de_sessao_e_formula_vistos_e_analisados_sao_decisao():
+    """Auditoria de TO: 15 resultados de julgamento ficaram fora por variação de título e de fórmula."""
+    perfil = {"tipos_decisao": ["ACÓRDÃO", "EMENTA"]}
+    tipo = {"descricao": "Edital de Notificação"}
+    analisados = {"titulo": "PROCESSO Nº 27.0000.2019.001795-0", "tipoPublicacao": tipo,
+                  "conteudoCodificado": "<p>Acórdão: Vistos e analisados os autos, o TED, por unanimidade, decide pelo reconhecimento da prescrição.</p>"}
+    resultado = {"titulo": "PROCESSO Nº 1676/2015", "tipoPublicacao": tipo,
+                 "conteudoCodificado": "<p>EDITAL - RESULTADO DE JULGAMENTO DA SESSÃO DO DIA 10.03.2023. Arquivamento aprovado por unanimidade.</p>"}
+    pauta = {"titulo": "EDITAL Nº 3/2022 - 2ª Sessão", "tipoPublicacao": tipo,
+             "conteudoCodificado": "<p>Ficam os interessados notificados da pauta da sessão ordinária do Tribunal de Ética e Disciplina.</p>"}
+    assert varredura.via_decisao(analisados, perfil) == "corpo" and varredura.via_decisao(resultado, perfil) == "corpo"
+    assert varredura.via_decisao(pauta, perfil) is None

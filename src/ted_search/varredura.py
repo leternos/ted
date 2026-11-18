@@ -18,6 +18,7 @@ import asyncio
 import calendar
 import json
 import random
+import re
 import unicodedata
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
@@ -26,6 +27,7 @@ from typing import Any
 
 from ted_search.collectors.deoab_nacional import (
     UF_TO_ORG,
+    eh_materia_disciplinar,
     motivo_recusa,
     normalize_deoab_item_nacional,
     save_records_to_database,
@@ -170,25 +172,42 @@ def _sem_acento(texto: str) -> str:
 
 
 TITULOS_DECISAO_PADRAO = ("ACORDAO", "EMENTA")
+# "Vistos, relatados e discutidos" e variantes ("Vistos e analisados os autos"), em texto sem acento
+RE_FORMULA_JULGAMENTO = re.compile(r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)")
+# Publicação que abre anunciando o resultado de uma sessão de julgamento (TO, nov/2026)
+RE_RESULTADO_SESSAO = re.compile(r"RESULTADO\s+D[EO]\s+JULGAMENTO")
 
 
-def eh_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> bool:
-    """Uma publicação é decisão pelo tipo, pelo título ou pelo corpo — nessa ordem.
+def via_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> str | None:
+    """Por qual via a publicação é decisão: "tipo", "tipo_amplo", "titulo", "corpo" — ou None se não é.
 
     O tipo sozinho não basta: há Seccionais que publicam "INTIMAÇÃO DE ACÓRDÃO" com ementa e acórdão
-    completos sob os tipos "Retificação" ou "Notificação" (medido em AL, nov/2026).
+    completos sob os tipos "Retificação" ou "Notificação" (medido em AL, nov/2026). E há tipos amplos
+    que o perfil inclui porque às vezes trazem decisão ("Edital" no MA): esses saem como "tipo_amplo"
+    e só viram registro se o conteúdo confirmar (ver normalizar_decisoes).
     """
     if pub.get("_skip"):  # formato antigo: descartada só pelo tipo, sem conteúdo guardado
-        return False
-    if _tipo(pub).upper() in perfil["tipos_decisao"]:
-        return True
+        return None
     titulo = _sem_acento(pub.get("titulo") or "")
     if any(t in titulo for t in perfil.get("titulos_decisao", TITULOS_DECISAO_PADRAO)):
-        return True
+        return "titulo"
     corpo = _sem_acento(html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or ""))
     # Fórmulas de julgamento colegiado: ementa + "acordam", ou "vistos, relatados e discutidos"
     # (TO publica os resultados de sessão como "Edital de Notificação", sem ementa)
-    return ("EMENTA" in corpo and "ACORDAM" in corpo) or "VISTOS, RELATADOS E DISCUTIDOS" in corpo
+    tipo = _tipo(pub).upper()
+    # Despacho é ato monocrático: a fórmula "Vistos e analisados" dentro dele não o torna decisão colegiada (AP, nov/2026)
+    if "DESPACHO" not in tipo and (
+        ("EMENTA" in corpo and "ACORDAM" in corpo) or RE_FORMULA_JULGAMENTO.search(corpo) or RE_RESULTADO_SESSAO.search(corpo[:200])
+    ):
+        return "corpo"
+    if tipo in perfil["tipos_decisao"]:
+        nuclear = any(k in _sem_acento(tipo) for k in ("ACORD", "EMENTA", "DECIS", "JULGAMENTO"))
+        return "tipo" if nuclear else "tipo_amplo"
+    return None
+
+
+def eh_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> bool:
+    return via_decisao(pub, perfil) is not None
 
 
 # ----------------------------------------------------------------------------- 1. perfil (censo)
@@ -536,7 +555,16 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
     uf = uf.upper()
     org_id = _sec(uf)["id_organizacao"]
     recs, rejeitados = [], []
+    perfil = carregar_perfil(uf)
     for pub in pubs:
+        if uf != "SP" and via_decisao(pub, perfil) == "tipo_amplo":
+            # Tipo amplo (ex.: "Edital"): só entra se o conteúdo for de matéria ético-disciplinar
+            texto = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
+            setor = ((pub.get("setorPublicacao") or {}).get("nomeAlternativo") or "")
+            if not eh_materia_disciplinar(setor, pub.get("titulo") or "", texto):
+                rejeitados.append({"id": pub["id"], "motivo": "tipo_amplo_sem_decisao", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
+                                   "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
+                continue
         rec = (
             normalize_deoab_sp_item(pub)
             if uf == "SP"
@@ -773,9 +801,13 @@ async def auditar_seccional(uf: str, n_dias: int = 4, concurrency: int = 10, see
             suspeitas = [it for it in c["itens"] if not it["eh_decisao"] and it["parece_decisao"]]
             tipos_fora.update(it["tipo"] for it in suspeitas)
             fora_coleta = sorted(decisoes_censo - coletadas.get(c["dia"], set()))
+            # Só fontes do Diário (ou fundidas com ele) têm diario_url terminada no id da matéria; bases de site, não
             no_banco = {
                 int(r[0].rsplit("/", 1)[-1])
-                for r in conn.execute("SELECT diario_url FROM julgados WHERE data_decisao = ? AND diario_url IS NOT NULL", (c["dia"],))
+                for r in conn.execute(
+                    "SELECT diario_url FROM julgados WHERE data_decisao = ? AND diario_url LIKE '%/materia/%' AND fonte NOT LIKE 'SITE_%'", (c["dia"],)
+                )
+                if r[0].rsplit("/", 1)[-1].isdigit()
             }
             rejeitados = set()
             rej_file = raw_dir_uf(uf, raw_dir) / "rejeitados.jsonl"
