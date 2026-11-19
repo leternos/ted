@@ -1,0 +1,370 @@
+{
+  "uf": "PE",
+  "id_organizacao": 17,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão"
+  ],
+  "validado": true,
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "observacoes": "PE: tipo Acórdão (50 no censo de 20 dias-amostra, 390 publicações; 47 parecem decisão) publicado pelo TED (45) e pela Segunda Câmara (5), título ACÓRDÃO - Processo n. 17.0000.xxxx. A amostra lida mostra que o texto é uma INTIMAÇÃO DO ACÓRDÃO (Conforme art. 137-D, §4º do Regulamento Geral, ficam intimadas as partes...), com partes e número de processo; o trecho amostrado não exibiu o dispositivo nem ementa, então o conteúdo decisório (resultado/ementa) deve ser conferido no corpo completo na fase de classificação (ids 359871, 359872, 359873). Fica incluído por precaução. Ruído (não decisão): Notificação (187, Tesouraria 130 e extinção/prescrição), Audiência de Instrução (62), Pauta/Sessão de Julgamento (47, também no formato intimação por processo), Razões Finais (20), Arquivamento (7, aviso de arquivamento), Edital, Edital de Notificação. Julgam o TED (turmas, ex. Nona Turma) e as Câmaras (Segunda Câmara). Publicações em todos os anos de 2019 a 2026. Indício de fonte fora do DEOAB: data/fontes/PE.json indica apenas página institucional e ementas soltas em notícias (sem_base).",
+  "modo": "censo",
+  "evidencia": {
+    "gerado_em": "2026-11-19T18:36:41Z",
+    "dias_censo": [
+      {
+        "dia": "2019-11-07",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-03-16",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2020-10-09",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2021-09-03",
+        "publicacoes": 30,
+        "baixadas": 30
+      },
+      {
+        "dia": "2021-10-01",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2022-03-25",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2022-07-25",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2022-09-23",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2023-01-27",
+        "publicacoes": 30,
+        "baixadas": 30
+      },
+      {
+        "dia": "2023-02-01",
+        "publicacoes": 42,
+        "baixadas": 42
+      },
+      {
+        "dia": "2023-04-13",
+        "publicacoes": 9,
+        "baixadas": 9
+      },
+      {
+        "dia": "2024-03-04",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2024-07-30",
+        "publicacoes": 15,
+        "baixadas": 15
+      },
+      {
+        "dia": "2025-02-12",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-05-23",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2025-06-27",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-07-30",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2026-03-30",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2026-08-13",
+        "publicacoes": 76,
+        "baixadas": 76
+      },
+      {
+        "dia": "2026-11-16",
+        "publicacoes": 80,
+        "baixadas": 80
+      }
+    ],
+    "decisoes_no_censo": 50,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 0.94,
+      "DECISAO": 1.0,
+      "JULGAMENTO": 0.3,
+      "RECURSO": 1.0
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 187,
+        "parecem_decisao": 0,
+        "setores": {
+          "TESOURARIA": 130,
+          "Assessoria Jurídica": 29,
+          "TRIBUNAL DE ETICA E DISCIPLINA": 24,
+          "Nona Turma do Tribunal de Ética e Disciplina": 3,
+          "Comissão de Admissibilidade": 1
+        },
+        "amostras": [
+          {
+            "id": 415987,
+            "titulo": "NOTIFICAÇÃO SEGUNDA CÂMARA- Processo nº 17.0000.2020.005721-7",
+            "trecho": "Representante: N.S.C. (Procurador (a): VANESSA TRAJANO CAMPELO DE SOUZA – OAB/PE 40.393)/ Representado: M.W.F.B. Em cumprimento ao despacho exarado pelo Presidente da Segunda Câmara da OAB/PE, venho por meio desta levar ao conhecimento de V.Sa. a extinção do p"
+          },
+          {
+            "id": 415989,
+            "titulo": "NOTIFICAÇÃO TRIBUNAL DE ÉTICA E DISCIPLINA - Processo nº 17.0000.2018.009023-1",
+            "trecho": "Representante: Procuradoria Geral Do Estado De Pernambuco (Procuradores: Raffaela Meirelles Souza - OAB/PE 26992 e Antiógenes Viana De Sena Júnior - OAB/PE 21211) / Representado: M.C.B.J. (Procurador: Marcelo Cordeiro de Barros Júnior- OAB/PE 25332). Notificam"
+          },
+          {
+            "id": 416004,
+            "titulo": "TAC - Processo nº 17.0000.2019.012205-7",
+            "trecho": "Representado: D.B.C.S. (Procurador: Diego Bruno Carneiro Mesquita – OAB/PE 27750, Thiago Santos de Araújo - OAB/PE 27057 e Bruno Gabriel Carneiro De Moraes – OAB/PE 46783). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advoc"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 50,
+        "parecem_decisao": 47,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 45,
+          "Segunda Câmara": 5
+        },
+        "amostras": [
+          {
+            "id": 359871,
+            "titulo": "ACÓRDÃO – Processo n. 17.0000.2018.005331-1",
+            "trecho": "Representante: D.P.C.A.S.P. / Representado: I.P.T.L.B. (Procuradora: Iranilda Pereira Tavares Leal de Brito – OAB/PE 23582-D). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas as partes acima"
+          },
+          {
+            "id": 359872,
+            "titulo": "ACÓRDÃO – Processo n. 17.0000.2018.005382-2",
+            "trecho": "Representante: Juízo da 9ª Vara do Trabalho do Recife-PE/ Representado: S.P.S.F. (Procurador: Samuel Péricles de Saraiva Sampaio Filho - OAB/PE 29.004-D). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, fic"
+          },
+          {
+            "id": 359873,
+            "titulo": "ACÓRDÃO – Processo n. 17.0000.2018.006213-2",
+            "trecho": "Representante: Juízo da 1ª Vara Cível da Comarca de Paulista-PE/ Representado: C.L.B. (Procuradora: Cecília Lopes Baptista – OAB/PE 27272-D). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas "
+          }
+        ]
+      },
+      "Audiência": {
+        "publicacoes": 47,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 47
+        },
+        "amostras": [
+          {
+            "id": 368770,
+            "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2019.008253-0",
+            "trecho": "Representante: C. E.P.A. / Representada: D.P.V.S. (Procuradora: Daniela Pereira Vasconcelos de Souza OAB/PE 27.742). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas as partes acima referenci"
+          },
+          {
+            "id": 368771,
+            "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2019.010661-6",
+            "trecho": "Representantes: A.P.A.Q. e Q.M.F./ Representado: R.A.F. (Procurador: Robson Alves Freitas OAB/PE 29.613). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas as partes acima referenciadas, a fim"
+          },
+          {
+            "id": 368772,
+            "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2019.011162-6",
+            "trecho": "Representante: Juízo da 1ª Vara do Tribunal do Juri da Comarca de Jaboatão dos Guararapes/PE./ Representado: A.F.D.F. (Procurador: Antonio Ferreira Duarte Filho OAB/PE 9.894). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Ad"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 46,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 46
+        },
+        "amostras": [
+          {
+            "id": 228831,
+            "titulo": "SESSÃO DE JULGAMENTO - Processo nº 17.0000.2018.011394-2",
+            "trecho": "Representante: P.R.A.J. (Procurador: Paulo Roberto Amado Júnior – OAB/SC 25777) / Representado: B.H.O.V., V.L.S.S. e V.O.V. (Procurador: Bruno Henrique de Oliveira Vanderlei – OAB/PE 21678). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do"
+          },
+          {
+            "id": 228832,
+            "titulo": "SESSÃO DE JULGAMENTO - Processo nº 17.0000.2018.011000-0",
+            "trecho": "Representante: Juízo da Vara do Trabalho – Vitória de Santo Antão/PE / Representado: R.P.L. (Procurador: Rivaldo Pereira Lima - OAB/PE 24786). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas"
+          },
+          {
+            "id": 228833,
+            "titulo": "SESSÃO DE JULGAMENTO - Processo nº 17.0000.2018.010989-3",
+            "trecho": "Representante: Juízo da 3ª Vara da Fazenda Pública - Recife/PE / Representados: R.D.S e S.C.S.S. (Procurador: Rodolfo Domingos de Souza – OAB/PE 13208 e Sineilton Câmara de Souza e Silva - OAB/PE 27457). Conforme previsão contida no Art. 137-D, § 4º do Regulam"
+          }
+        ]
+      },
+      "Razões Finais": {
+        "publicacoes": 20,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 20
+        },
+        "amostras": [
+          {
+            "id": 359863,
+            "titulo": "RAZÕES FINAIS - Processo nº 17.0000.2019.014078-5",
+            "trecho": "Representante: M.S.L. / Representado: B.J.C.F. (Procurador(a): Victor Hugo Jordim Senna - OAB/PE 41592) e G.M.G. (Procurador(a): Gustavo de Melo Galvão – OAB/PE 19924). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia"
+          },
+          {
+            "id": 359864,
+            "titulo": "RAZÕES FINAIS - Processo nº 17.0000.2019.003184-0",
+            "trecho": "Representante: 2ª Vara Criminal da Capital / Representado: H.G.N. e R.C.C.S. (Procurador(a): Helio Gadelha Nogueira - OAB/PE 15889 e Rodrigo Cesar Cahu da Silva - OAB/PE 22367). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da "
+          },
+          {
+            "id": 359865,
+            "titulo": "RAZÕES FINAIS - Processo nº 17.0000.2018.003977-0",
+            "trecho": "Representante: Juízo de Direito da 31ª Vara Cível da Capital / Representado: C.J.N.F. (Procurador(a): Clivio Jose Neto Filho - OAB/PE 12076). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas "
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 15,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 15
+        },
+        "amostras": [
+          {
+            "id": 1069206,
+            "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2021.009903-0",
+            "trecho": "Representante(s): EX OFFICIO/OABPE / Representado(s) A.G.F (Procurador (a): ALCÍ GALINDO FLORÊNCIO – OAB/PE 13.826) Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas as partes acima referencia"
+          },
+          {
+            "id": 1069211,
+            "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2021.012344-3",
+            "trecho": "Representante(s): EX OFFICIO/OABPE / Representado (a): D.S.V (Procurador (es): SIMONE COX DINIZ LINS – OAB/PE 21.593; FERNANDO DE SOUZA FALCÃO – OAB/PE 22.760 E DANIELA SIQUEIRA VALADARES – OAB/PE 21.290). Conforme previsão contida no Art. 137-D, § 4º do Regul"
+          },
+          {
+            "id": 1069223,
+            "titulo": "AUDIÊNCIA DE INSTRUÇÃO - Processo nº 17.0000.2020.011554-5",
+            "trecho": "Representante(s): EX OFFICIO/OABPE / Representado (a): A.C.R.C (Procurador (es): ANA CLARA RAMOS DE CARVALHO – OAB/PE 28.694). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da Advocacia e da OAB, ficam intimadas as partes acima"
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "Assessoria Jurídica": 10,
+          "TRIBUNAL DE ETICA E DISCIPLINA": 1,
+          "DIRETORIA": 1
+        },
+        "amostras": [
+          {
+            "id": 183805,
+            "titulo": "EDITAL Nº 001/2019 - OAB/PE",
+            "trecho": "Prazo de 15 (quinze) dias . O Presidente da Ordem dos Advogados do Brasil, Seccional de Pernambuco, em cumprimento as disposições contidas no artigo 137-D, § 5º, do Regulamento Geral do Estatuto da Advocacia e da OAB c/c o artigo 177, § 1º, do Regimento Intern"
+          },
+          {
+            "id": 359855,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seccional de Pernambuco, em cumprimento as disposições contidas no artigo 137-D, § 5º, do Regulamento Geral do Estatuto da Advocacia e da OAB c/c o artigo 177, § 1º, do Regimento Interno desta Casa e daquelas cont"
+          },
+          {
+            "id": 359856,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seccional de Pernambuco, em cumprimento as disposições contidas no artigo 137-D, § 5º, do Regulamento Geral do Estatuto da Advocacia e da OAB c/c o artigo 177, § 1º, do Regimento Interno desta Casa e daquelas cont"
+          }
+        ]
+      },
+      "Arquivamento": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 7
+        },
+        "amostras": [
+          {
+            "id": 1137920,
+            "titulo": "ARQUIVAMENTO - Processo nº 17.0000.2026.014207-0",
+            "trecho": "Representante: M.C.S.G (Procurador(a): FLAVIO MARCILIO SANTOS RAMOS OAB/PE 49974/ Representado: G.F.L (Procurador(a): GILBERTO FERNANDES DE LIMA - OAB/PE 40143). Cumpre-me levar ao conhecimento de V.Sa. o ARQUIVAMENTO do processo em referência, nos termos do a"
+          },
+          {
+            "id": 1137921,
+            "titulo": "ARQUIVAMENTO - Processo nº 25.0886.2025.005784-0",
+            "trecho": "Representante: R.R.S (Procurador(a): ROBSON RODRIGUES DA SILVA - OAB/SP 517303. Cumpre-me levar ao conhecimento de V.Sa. o ARQUIVAMENTO do processo em referência, nos termos do art. 58, § 3º, do Código de Ética e Disciplina da OAB. Informo que, havendo interes"
+          },
+          {
+            "id": 1137922,
+            "titulo": "ARQUIVAMENTO - Processo nº 17.0000.2025.026275-0",
+            "trecho": "Representante: Ex-officio / Representado: D.M.B (Procurador(a): DANIELE DE MELO BAISE - OAB/MT 11277/B). Cumpre-me levar ao conhecimento de V.Sa. o ARQUIVAMENTO do processo em referência, nos termos do art. 58, § 3º, do Código de Ética e Disciplina da OAB. Inf"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 5,
+        "parecem_decisao": 0,
+        "setores": {
+          "Representações": 5
+        },
+        "amostras": [
+          {
+            "id": 1137953,
+            "titulo": "NOTIFICAÇÃO - Processo nº 17.0000.2021.005259-5",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seccional de Pernambuco, em cumprimento às disposições contidas no artigo 137-D, § 3º, do Regulamento Geral do Estatuto da Advocacia e da OAB, vem por meio deste NOTIFICAR o Advogado abaixo nominado por meio de ed"
+          },
+          {
+            "id": 1137954,
+            "titulo": "NOTIFICAÇÃO - Processo nº 17.0000.2022.019002-6",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seccional de Pernambuco, em cumprimento às disposições contidas no artigo 137-D, § 3º, do Regulamento Geral do Estatuto da Advocacia e da OAB, vem por meio deste NOTIFICAR o Advogado abaixo nominado por meio de ed"
+          },
+          {
+            "id": 1137965,
+            "titulo": "NOTIFICAÇÃO - Processo nº 17.0000.2022.017738-7",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seccional de Pernambuco, em cumprimento às disposições contidas no artigo 137-D, § 3º, do Regulamento Geral do Estatuto da Advocacia e da OAB, vem por meio deste NOTIFICAR o Advogado abaixo nominado por meio de ed"
+          }
+        ]
+      },
+      "Sessão de Julgamento": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 957636,
+            "titulo": "SESSÃO DE JULGAMENTO ORDINÁRIA - Processo nº 17.0000.2021.009316-6",
+            "trecho": "Representante: E.J.B. / Representado: C.E.G.M. e R.C.C.C.B. (Procurador(a): Clovis Eduardo Gomes de Morais - OAB/PE 28220 e Rouse Cleide Cristina Correia Barbosa - OAB/PE 24667). Conforme previsão contida no Art. 137-D, § 4º do Regulamento Geral do Estatuto da"
+          }
+        ]
+      }
+    }
+  }
+}

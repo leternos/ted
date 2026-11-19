@@ -852,6 +852,84 @@ function diarioPdfButtonHtml(item) {
   return `<a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline">${rotulo}</a>`;
 }
 
+// Texto como publicado: o do Portal de Jurisprudência do CFOAB ou o da publicação da Seccional no Diário.
+// Os termos buscados são destacados aqui, sobre o texto original, sem alterá-lo.
+function semAcento(str) {
+  return String(str || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function destacarTermos(texto, consulta) {
+  const termos = (semAcento(consulta).toLowerCase().match(/[a-z0-9]{3,}/g) || []).filter(
+    (t) => !["and", "not", "que", "dos", "das", "por", "com", "para", "uma", "art"].includes(t)
+  );
+  if (!termos.length) return escapeHtml(texto);
+  const plano = semAcento(texto).toLowerCase(); // mesma quantidade de caracteres do original
+  if (plano.length !== texto.length) return escapeHtml(texto);
+  const re = new RegExp("(?<![a-z0-9])(?:" + termos.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")[a-z0-9]*", "g");
+  let saida = "";
+  let pos = 0;
+  let m;
+  while ((m = re.exec(plano)) !== null) {
+    saida += escapeHtml(texto.slice(pos, m.index)) + "<mark>" + escapeHtml(texto.slice(m.index, m.index + m[0].length)) + "</mark>";
+    pos = m.index + m[0].length;
+  }
+  return saida + escapeHtml(texto.slice(pos));
+}
+
+function textoPublicadoHtml(item) {
+  const texto = (item.texto_publicado || "").trim();
+  if (!texto) return "";
+  const cortado = (item.texto_publicado_chars || 0) > texto.length;
+  const LIMITE = 2200;
+  const corpo = destacarTermos(texto, state.q);
+  if (texto.length <= LIMITE && !cortado) return `<div class="ementa-body texto-publicado">${corpo}</div>`;
+  return `<div class="ementa-body texto-publicado texto-recolhido" data-recolhido="1">${corpo}</div>
+    <button type="button" class="btn-link btn-expandir-texto" data-id="${escapeHtml(item.id)}" data-cortado="${cortado ? "1" : ""}">Mostrar o texto inteiro</button>`;
+}
+
+function cfoabNoProcessoHtml(item) {
+  const lista = item.cfoab_no_processo || [];
+  if (!lista.length) return "";
+  const blocos = lista
+    .slice(0, 3)
+    .map(
+      (c) => `<div class="cfoab-bloco">
+        <div class="cfoab-bloco-cab">Conselho Federal${c.orgao ? " · " + escapeHtml(c.orgao) : ""}${
+        c.numero_ementa ? " · Ementa " + escapeHtml(c.numero_ementa) : ""
+      }${c.data_decisao ? " · " + escapeHtml(c.data_decisao) : ""}
+          <button type="button" class="btn-link btn-open-detail" data-id="${escapeHtml(c.id)}">abrir</button></div>
+        <div class="ementa-body texto-publicado">${destacarTermos((c.texto || "").trim(), state.q)}</div>
+      </div>`
+    )
+    .join("");
+  return `<div class="cfoab-no-processo"><div class="cfoab-titulo">Este processo no Conselho Federal (texto do portal do CFOAB)</div>${blocos}</div>`;
+}
+
+function referenciaDoJulgado(item) {
+  const parts = [];
+  const isCfoab = !item.id_organizacao || item.id_organizacao === 49;
+  const seccionalUf = item.uf_origem || (item.id_organizacao === 25 ? "SP" : "Seccional");
+  parts.push(isCfoab ? `CFOAB - ${item.orgao_julgador_norm || "Conselho Federal"}` : `OAB/${seccionalUf} - ${item.orgao_julgador_norm || "Tribunal de Ética e Disciplina"}`);
+  if (item.numero_processo) parts.push(`Proc. n. ${item.numero_processo}`);
+  if (item.data_decisao) parts.push(isCfoab ? `j. ${item.data_decisao}` : `DEOAB ${item.data_decisao}`);
+  return parts.join(", ");
+}
+
+// Citação copiada: o texto como publicado, inteiro e sem retoques, seguido da referência.
+async function citacaoComoPublicada(item) {
+  let texto = (item.texto_publicado || "").trim();
+  if (texto && (item.texto_publicado_chars || 0) > texto.length) {
+    try {
+      const completo = await apiFetch(`/api/julgado/${encodeURIComponent(item.id)}?auto_extract_pdf=false`);
+      texto = (completo.texto_publicado || texto).trim();
+    } catch (e) {
+      /* fica o trecho já carregado */
+    }
+  }
+  if (!texto) return buildCitationText(item);
+  return `${texto}\n\n(${referenciaDoJulgado(item)})`;
+}
+
 function buildCitationText(item) {
   const parts = [];
   const isCfoab = !item.id_organizacao || item.id_organizacao === 49;
@@ -966,7 +1044,14 @@ async function executeSearch() {
         }
 
         const ementaTexto = (item.ementa_highlighted || item.descricao_ementa || "").trim();
-        const ementaHtml = ementaTexto ? `<div class="ementa-body">${sanitizeHighlightedHtml(ementaTexto)}</div>` : "";
+        let ementaHtml = ementaTexto ? `<div class="ementa-body">${sanitizeHighlightedHtml(ementaTexto)}</div>` : "";
+        // Regra do cliente: a caixa mostra o texto como publicado (CFOAB ou Diário), não um recorte montado
+        const publicadoHtml = textoPublicadoHtml(item);
+        if (publicadoHtml) {
+          ementaHtml = publicadoHtml;
+          acordaoHtml = "";
+        }
+        ementaHtml += cfoabNoProcessoHtml(item);
 
 
         // Badges do card
@@ -1041,10 +1126,27 @@ async function executeSearch() {
       });
     });
 
+    listEl.querySelectorAll(".btn-expandir-texto").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const caixa = btn.previousElementSibling;
+        if (!caixa) return;
+        if (btn.getAttribute("data-cortado")) {
+          try {
+            const completo = await apiFetch(`/api/julgado/${encodeURIComponent(btn.getAttribute("data-id"))}?auto_extract_pdf=false`);
+            if (completo.texto_publicado) caixa.innerHTML = destacarTermos(completo.texto_publicado.trim(), state.q);
+          } catch (e) {
+            /* mantém o trecho já carregado */
+          }
+        }
+        caixa.classList.remove("texto-recolhido");
+        btn.remove();
+      });
+    });
+
     listEl.querySelectorAll(".btn-copy-citation").forEach((btn, idx) => {
       btn.addEventListener("click", () => {
         const item = data.items[idx];
-        navigator.clipboard.writeText(buildCitationText(item));
+        citacaoComoPublicada(item).then((t) => navigator.clipboard.writeText(t));
         showToast("Citação copiada para a área de transferência!");
       });
     });

@@ -30,6 +30,15 @@ from ted_search import fontes as fontes_site
 from ted_search import varredura
 
 
+def _recalcular_selos_se_preciso(sem_fts: bool) -> None:
+    """Carga sem reconstruir o índice: o selo de inteiro teor dos registros recém-gravados ainda precisa ser acertado."""
+    if sem_fts:
+        from ted_search.inteiro_teor import recalcular_selos
+
+        with get_connection(DB_PATH) as conn:
+            recalcular_selos(conn)
+
+
 def _insert_record(conn, rec: dict) -> None:
     conn.execute(
         """
@@ -402,6 +411,7 @@ def main() -> None:
                     varredura.sincronizar_cobertura("SP")
                 else:
                     print(json.dumps(varredura.carregar_seccional(uf, anos=anos, rebuild=not args.no_fts), ensure_ascii=False, indent=2))
+                    _recalcular_selos_se_preciso(args.no_fts)
             else:
                 aud = asyncio.run(varredura.auditar_seccional(uf, n_dias=args.dias, concurrency=args.concurrency, seed=args.seed))
                 print(json.dumps(aud, ensure_ascii=False, indent=2))
@@ -441,6 +451,7 @@ def main() -> None:
         print(json.dumps(asyncio.run(fontes_site.coletar_fonte(args.uf, args.fonte, concurrency=args.concurrency)), ensure_ascii=False, indent=2)[:3000])
     elif args.cmd == "site-carregar":
         print(json.dumps(fontes_site.carregar_fonte(args.uf, args.fonte, rebuild=not args.no_fts), ensure_ascii=False, indent=2))
+        _recalcular_selos_se_preciso(args.no_fts)
     elif args.cmd == "backfill-sp":
         asyncio.run(
             run_backfill_sp(
