@@ -34,7 +34,8 @@ from ted_search.parser import (
 
 RE_PROC_CNJ = re.compile(r"\b(\d{2}\.\d{4}\.(?:19|20)\d{2}\.\d{6}-\d)\b")
 RE_PROC_GENERIC = re.compile(
-    r"\b(?:Processo|Proc\.?|Autos)\s*(?:n[º°.]?\s*)?([0-9A-Z.\-/]{4,30})\b",
+    # o número começa por dígito: sem isso "Processo Administrativo" virava nº "Administrativo" e "Processos", "esso"
+    r"\b(?:Processo|Proc\.?|Autos)(?:\s+(?:[Ee]tico[-\s]?)?[A-Za-zÀ-ú]+){0,3}?\s*(?:n[º°.o]?\s*)?(\d[0-9A-Z.\-/]{3,29})\b",
     re.IGNORECASE,
 )
 RE_ACORDAO_NUM = re.compile(
@@ -316,7 +317,7 @@ def normalize_deoab_item_nacional(
         ementa_text = acordao_text
 
     # Extrair número do processo
-    m_proc = RE_PROC_CNJ.search(full_text)
+    m_proc = RE_PROC_CNJ.search(f"{titulo}\n{full_text}")  # em várias Seccionais o número só vem no título
     if not m_proc:
         m_proc = RE_PROC_GENERIC.search(f"{titulo}\n{full_text[:300]}")
     numero_processo = m_proc.group(1).strip() if m_proc else None
