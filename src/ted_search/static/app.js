@@ -811,6 +811,47 @@ function classifyInstancia(item) {
   return null;
 }
 
+// Inteiro teor de verdade = relatório + voto. O recorte do Diário não conta (ver ted_search/inteiro_teor.py).
+function inteiroTeorPdfs(item, relacao) {
+  return (item.inteiro_teor_pdfs || []).filter((p) => p.relacao === relacao && p.conteudo === "relatorio_e_voto");
+}
+
+function inteiroTeorBadgeHtml(item) {
+  if (item.tem_inteiro_teor) {
+    return `<span class="badge badge-inteiro-teor" title="Relatório, voto, ementa e acórdão">Inteiro Teor</span>`;
+  }
+  if (item.inteiro_teor_relacionado) {
+    return `<span class="badge badge-inteiro-teor-rel" title="Há inteiro teor de outra decisão deste mesmo processo">Inteiro teor no mesmo processo</span>`;
+  }
+  return "";
+}
+
+function inteiroTeorButtonsHtml(item) {
+  const proprios = (item.inteiro_teor_pdfs || []).filter((p) => p.relacao === "proprio");
+  const outros = inteiroTeorPdfs(item, "mesmo_processo");
+  const btn = (p, rotulo, verde) =>
+    `<a href="${escapeHtml(p.pdf_url)}" target="_blank" rel="noopener" class="btn-outline ${verde ? "btn-accent-green" : ""}" title="${escapeHtml(
+      p.titulo || ""
+    )}${p.paginas ? " — " + p.paginas + " p." : ""}">${escapeHtml(rotulo)}</a>`;
+  const partes = [];
+  proprios.forEach((p) => {
+    const nome = p.conteudo === "acordao" ? "Ver PDF do Acórdão" : proprios.length > 1 && p.conteudo === "relatorio_e_voto" && /voto/i.test(p.titulo || "") ? "Ver PDF do Relatório e Voto" : "Ver PDF do Inteiro Teor";
+    partes.push(btn(p, nome, true));
+  });
+  outros.slice(0, 3).forEach((p) => {
+    const quem = p.origem && p.origem.indexOf("CFOAB") >= 0 ? " (CFOAB)" : "";
+    partes.push(btn(p, `Inteiro teor: ${p.titulo || "outra decisão"}${quem}`, false));
+  });
+  return partes.join("");
+}
+
+function diarioPdfButtonHtml(item) {
+  if (!item.pdf_url) return "";
+  if ((item.inteiro_teor_pdfs || []).some((p) => p.pdf_url === item.pdf_url)) return "";
+  const rotulo = item.pdf_url.indexOf("/api/diario-pdf/") === 0 ? "Publicação no Diário (PDF)" : "Abrir PDF";
+  return `<a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline">${rotulo}</a>`;
+}
+
 function buildCitationText(item) {
   const parts = [];
   const isCfoab = !item.id_organizacao || item.id_organizacao === 49;
@@ -927,7 +968,6 @@ async function executeSearch() {
         const ementaTexto = (item.ementa_highlighted || item.descricao_ementa || "").trim();
         const ementaHtml = ementaTexto ? `<div class="ementa-body">${sanitizeHighlightedHtml(ementaTexto)}</div>` : "";
 
-        const hasFullTextOrPdf = item.tem_inteiro_teor || item.pdf_url;
 
         // Badges do card
         const scopeBadgeHtml = isCfoab
@@ -949,7 +989,7 @@ async function executeSearch() {
                 ${isCfoab && item.uf_origem ? `<span class="badge badge-uf" title="Origem do recurso">Recurso OAB/${escapeHtml(item.uf_origem)}</span>` : ""}
                 ${item.sancao_identificada ? `<span class="badge badge-sancao">${escapeHtml(item.sancao_identificada)}</span>` : ""}
                 ${item.resultado_julgamento ? `<span class="badge badge-resultado">${escapeHtml(item.resultado_julgamento)}</span>` : ""}
-                ${hasFullTextOrPdf ? `<span class="badge badge-inteiro-teor">PDF Inteiro Teor</span>` : ""}
+                ${inteiroTeorBadgeHtml(item)}
               </div>
               <div class="card-date-proc">
                 ${item.numero_processo ? `<span>Proc. ${escapeHtml(item.numero_processo)}</span>` : ""}
@@ -968,14 +1008,11 @@ async function executeSearch() {
 
             <div class="card-actions">
               <div class="action-buttons-left">
-                <button type="button" class="btn-outline btn-open-detail ${hasFullTextOrPdf ? "btn-accent-green" : ""}" data-id="${escapeHtml(item.id)}">
-                  ${hasFullTextOrPdf ? "Ler Inteiro Teor & Visualizar PDF" : "Ver Ficha Completa"}
+                ${inteiroTeorButtonsHtml(item)}
+                <button type="button" class="btn-outline btn-open-detail" data-id="${escapeHtml(item.id)}">
+                  Ver Ficha Completa
                 </button>
-                ${
-                  item.pdf_url
-                    ? `<a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline">Abrir PDF Oficial</a>`
-                    : ""
-                }
+                ${diarioPdfButtonHtml(item)}
                 ${
                   item.diario_url
                     ? `<a href="${escapeHtml(item.diario_url)}" target="_blank" rel="noopener" class="btn-outline">Matéria no DEOAB</a>`
@@ -1066,8 +1103,8 @@ async function openJulgadoModal(julgadoId) {
   const linksEl = document.getElementById("modal-footer-links");
 
   modal.hidden = false;
-  titleEl.textContent = "Carregando julgado e preparando PDF do Inteiro Teor...";
-  bodyEl.innerHTML = `<p style="padding:1rem;color:var(--text-secondary);">Consultando base e localizando documento PDF oficial...</p>`;
+  titleEl.textContent = "Carregando julgado...";
+  bodyEl.innerHTML = `<p style="padding:1rem;color:var(--text-secondary);">Consultando a base...</p>`;
   linksEl.innerHTML = "";
 
   try {
@@ -1085,20 +1122,26 @@ async function openJulgadoModal(julgadoId) {
     const fullText = item.inteiro_teor_texto || "";
     currentModalText = fullText || buildCitationText(item);
 
-    const pdfEmbedHtml = item.pdf_url
+    // Mostra o PDF de inteiro teor quando existe; senão, a página do Diário, com o nome certo
+    const pdfProprio = inteiroTeorPdfs(item, "proprio")[0];
+    const pdfMostrado = pdfProprio ? pdfProprio.pdf_url : item.pdf_url;
+    const pdfRotulo = pdfProprio
+      ? `PDF do Inteiro Teor${pdfProprio.paginas ? " (" + pdfProprio.paginas + " páginas)" : ""}`
+      : "Publicação no Diário Eletrônico (ementa e acórdão)";
+    const pdfEmbedHtml = pdfMostrado
       ? `
         <div style="margin-bottom:1.25rem;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem;">
             <h4 style="font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem;color:var(--accent-primary);margin:0;">
-              Documento PDF Oficial do Inteiro Teor
+              ${escapeHtml(pdfRotulo)}
             </h4>
-            <a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline" style="padding:0.25rem 0.65rem;font-size:0.76rem;">
+            <a href="${escapeHtml(pdfMostrado)}" target="_blank" rel="noopener" class="btn-outline" style="padding:0.25rem 0.65rem;font-size:0.76rem;">
               Abrir PDF em Nova Guia &nearr;
             </a>
           </div>
           <iframe
-            src="${escapeHtml(item.pdf_url)}"
-            title="PDF Oficial do Inteiro Teor"
+            src="${escapeHtml(pdfMostrado)}"
+            title="${escapeHtml(pdfRotulo)}"
             class="pdf-frame"
           ></iframe>
         </div>
@@ -1121,17 +1164,20 @@ async function openJulgadoModal(julgadoId) {
           : ""
       }
       ${
-        fullText
-          ? `<h4 style="font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem;color:var(--accent-green);margin-bottom:0.4rem;">Texto Integral Extraído (Ementa, Relatório, Voto e Acórdão)</h4>
+        fullText && !pdfProprio
+          ? `<h4 style="font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem;color:var(--accent-green);margin-bottom:0.4rem;">${
+              item.tem_inteiro_teor ? "Inteiro Teor (relatório e voto)" : "Texto da publicação"
+            }</h4>
              <div class="inteiro-teor-fulltext">${escapeHtml(fullText)}</div>`
           : ""
       }
     `;
 
     const footerBtns = [];
-    if (item.pdf_url) {
-      footerBtns.push(`<a href="${escapeHtml(item.pdf_url)}" target="_blank" rel="noopener" class="btn-outline btn-accent-green">Baixar / Abrir PDF Oficial</a>`);
-    }
+    const itBtns = inteiroTeorButtonsHtml(item);
+    if (itBtns) footerBtns.push(itBtns);
+    const diarioBtn = diarioPdfButtonHtml(item);
+    if (diarioBtn) footerBtns.push(diarioBtn);
     if (item.diario_url) {
       footerBtns.push(`<a href="${escapeHtml(item.diario_url)}" target="_blank" rel="noopener" class="btn-outline">Abrir no Diário Eletrônico (DEOAB)</a>`);
     }

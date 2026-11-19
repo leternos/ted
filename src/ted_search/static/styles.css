@@ -1411,3 +1411,10 @@ html, body {
 .stat-chip-btn .stat-chip-icon {
   font-size: 0.85rem;
 }
+
+/* Inteiro teor de outra decisão do mesmo processo (ex.: recurso no Conselho Federal) */
+.badge-inteiro-teor-rel {
+  background: transparent;
+  border: 1px dashed var(--accent-green, #1f8f5f);
+  color: var(--accent-green, #1f8f5f);
+}

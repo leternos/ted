@@ -349,6 +349,8 @@ async def api_get_julgado(
     rec["partes"] = json.loads(rec.pop("partes_json") or "[]")
     rec["is_ted_disciplinar"] = bool(rec["is_ted_disciplinar"])
     rec["tem_inteiro_teor"] = bool(rec["tem_inteiro_teor"])
+    rec["inteiro_teor_relacionado"] = bool(rec.get("inteiro_teor_relacionado"))
+    rec["inteiro_teor_pdfs"] = json.loads(rec.pop("inteiro_teor_pdfs_json", None) or "[]")
     rec["tem_acordao"] = bool((rec.get("descricao_acordao") or "").strip() or rec["tem_inteiro_teor"])
     return rec
 

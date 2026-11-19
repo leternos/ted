@@ -352,6 +352,12 @@ def main() -> None:
         p_site.add_argument("--concurrency", type=int, default=6)
         p_site.add_argument("--no-fts", action="store_true")
 
+    p_it = sub.add_parser(
+        "inteiro-teor",
+        help="Atualiza o catálogo de PDFs de inteiro teor (relatório + voto) e recalcula o selo de todos os julgados",
+    )
+    p_it.add_argument("--recoletar", action="store_true", help="Baixa de novo as listagens dos dois portais do Conselho Federal antes")
+
     sub.add_parser("stats", help="Exibe estatísticas completas do banco de dados e enriquecimento")
 
     p_sec = sub.add_parser("collect-seccionais", help="Coleta acórdãos e ementas do DEOAB de Seccionais estaduais")
@@ -476,6 +482,16 @@ def main() -> None:
                 with conn:
                     rebuild_fts(conn)
             print(f"Total de PDFs extraídos e indexados: {count}")
+    elif args.cmd == "inteiro-teor":
+        from ted_search import inteiro_teor
+
+        init_db(DB_PATH)
+        if args.recoletar:
+            asyncio.run(fetch_etica_strapi_all(use_cache=False))
+            asyncio.run(fetch_context_all_pages("EMENTA", page_size=1000, use_cache=False))
+            print("Listagens atualizadas. PDFs novos do portal: rode scripts/etica_pdfs_scan.py e scripts/etica_pdfs_ocr.py.")
+        with get_connection(DB_PATH) as conn:
+            print(json.dumps(inteiro_teor.aplicar(conn), indent=2, ensure_ascii=False))
     elif args.cmd == "stats":
         init_db(DB_PATH)
         with get_connection(DB_PATH) as conn:
