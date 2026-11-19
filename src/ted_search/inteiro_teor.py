@@ -60,10 +60,13 @@ def chave_ementa(numero: str | None, orgao: str | None = None) -> str | None:
     m = re.match(r"^0*(\d{1,4})/((?:19|20)\d{2})(?:[-/](.+))?$", s)
     if not m:
         return None
-    sufixo = f"{m.group(3) or ''} {orgao or ''}".upper()
-    orgao_n = next((k for k in ("PTU", "STU", "TTU") if k in sufixo), None) or ("SCA" if "SCA" in sufixo else None)
-    if not orgao_n:
-        orgao_n = (m.group(3) or "").replace("/", "-") or None
+    # O órgão vem do próprio número ("002/2018/SCA" é do pleno da Segunda Câmara, mesmo quando o processo
+    # correu numa Turma); o órgão do registro só serve quando o número não traz sufixo.
+    def _orgao(trecho: str) -> str | None:
+        trecho = trecho.upper()
+        return next((k for k in ("PTU", "STU", "TTU") if k in trecho), None) or ("SCA" if "SCA" in trecho else None)
+
+    orgao_n = _orgao(m.group(3) or "") or (m.group(3) or "").replace("/", "-") or _orgao(orgao or "")
     return f"{int(m.group(1))}/{m.group(2)}/{orgao_n}" if orgao_n else None
 
 

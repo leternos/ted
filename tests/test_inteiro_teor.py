@@ -70,3 +70,10 @@ def test_recalcular_e_idempotente():
     a = it.recalcular_selos(conn)
     b = it.recalcular_selos(conn)
     assert a == b
+
+
+def test_ementa_do_pleno_da_camara_nao_herda_a_turma_do_processo():
+    # "002/2018/SCA" foi julgada pelo pleno da Segunda Câmara num processo que corria na Segunda Turma
+    assert it.chave_ementa("002/2018/SCA", "SCA-STU") == "2/2018/SCA"
+    assert it.chave_ementa("Ementa 002/2018/SCA", "SCA") == "2/2018/SCA"
+    assert it.chave_ementa("118/2017", "SCA-STU") == "118/2017/STU"
