@@ -24,7 +24,7 @@ from ted_search.collectors.oab_juris import (
     normalize_oab_juris_item,
 )
 from ted_search.config import DB_PATH, OAB_JURIS_CONTEXTS, RAW_DIR
-from ted_search.db import get_connection, get_global_stats, init_db, rebuild_fts
+from ted_search.db import conferir_fts, get_connection, get_global_stats, init_db, rebuild_fts
 from ted_search.parser import detect_orgao_julgador_oabsp
 from ted_search import fontes as fontes_site
 from ted_search import varredura
@@ -275,6 +275,10 @@ async def run_backfill_sp(
             print("[backfill-sp] Reconstruindo índice FTS5...")
             rebuild_fts(conn)
         conn.execute("VACUUM")
+        try:
+            conferir_fts(conn)
+        except Exception:  # o VACUUM renumerou as linhas: refaz o índice
+            rebuild_fts(conn)
 
     report.update(
         {
@@ -412,6 +416,10 @@ def main() -> None:
                     rebuild_fts(conn)
                 # Sem VACUUM as páginas livres guardam o índice antigo e o banco compactado quase dobra de tamanho
                 conn.execute("VACUUM")
+                try:
+                    conferir_fts(conn)
+                except Exception:  # o VACUUM renumerou as linhas: refaz o índice
+                    rebuild_fts(conn)
         linhas = varredura.relatorio_cobertura()
         if args.json:
             print(json.dumps(linhas, ensure_ascii=False, indent=2))

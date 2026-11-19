@@ -71,6 +71,11 @@ CREATE TABLE IF NOT EXISTS julgado_dispositivos (
 
 CREATE INDEX IF NOT EXISTS idx_disp_nome ON julgado_dispositivos(dispositivo);
 
+"""
+
+# Índice de "conteúdo externo": o FTS5 guarda só o índice e lê o texto da própria tabela julgados.
+# Com a cópia interna do texto o banco tinha ~390 MB a mais e o .xz passava dos 100 MB do GitHub.
+FTS_SQL = """
 CREATE VIRTUAL TABLE IF NOT EXISTS julgados_fts USING fts5(
     id UNINDEXED,
     numero_processo,
@@ -81,9 +86,12 @@ CREATE VIRTUAL TABLE IF NOT EXISTS julgados_fts USING fts5(
     descricao_ementa,
     descricao_acordao,
     inteiro_teor_texto,
+    content='julgados',
+    content_rowid='rowid',
     tokenize='unicode61 remove_diacritics 2'
 );
 """
+SCHEMA_SQL += FTS_SQL
 
 
 def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
@@ -117,24 +125,20 @@ def rebuild_fts(conn: sqlite3.Connection) -> None:
     fabrica = conn.row_factory
     recalcular_selos(conn)
     conn.row_factory = fabrica
-    conn.execute("DELETE FROM julgados_fts;")
-    conn.execute(
-        """
-        INSERT INTO julgados_fts (
-            rowid, id, numero_processo, numero_ementa, orgao_julgador_norm,
-            relator_principal, dispositivos_texto, descricao_ementa,
-            descricao_acordao, inteiro_teor_texto
-        )
-        SELECT
-            rowid, id, COALESCE(numero_processo, ''), COALESCE(numero_ementa, ''),
-            COALESCE(orgao_julgador_norm, ''), COALESCE(relator_principal, ''),
-            COALESCE(dispositivos_texto, ''), COALESCE(descricao_ementa, ''),
-            COALESCE(descricao_acordao, ''), COALESCE(inteiro_teor_texto, '')
-        FROM julgados;
-        """
-    )
-    # Funde os segmentos e descarta as marcas de exclusão: sem isso o índice fica ~3x maior a cada reconstrução
+    # Recria a tabela: troca o formato antigo (com cópia do texto) e não deixa páginas do índice velho no arquivo
+    conn.execute("DROP TABLE IF EXISTS julgados_fts;")
+    conn.executescript(FTS_SQL)
+    conn.execute("INSERT INTO julgados_fts(julgados_fts) VALUES('rebuild');")
+    # Funde os segmentos num só: índice menor e busca mais rápida
     conn.execute("INSERT INTO julgados_fts(julgados_fts) VALUES('optimize');")
+
+
+def conferir_fts(conn: sqlite3.Connection) -> None:
+    """Confere o índice contra a tabela julgados (o índice aponta para as linhas pelo rowid). Levanta erro se divergir.
+
+    Chamar depois de VACUUM: se o SQLite renumerar as linhas, o índice tem de ser refeito.
+    """
+    conn.execute("INSERT INTO julgados_fts(julgados_fts, rank) VALUES('integrity-check', 1);")
 
 
 DISCIPLINARY_THESAURUS: dict[str, list[str]] = {
