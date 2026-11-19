@@ -320,6 +320,9 @@ def normalize_deoab_item_nacional(
     m_proc = RE_PROC_CNJ.search(f"{titulo}\n{full_text}")  # em várias Seccionais o número só vem no título
     if not m_proc:
         m_proc = RE_PROC_GENERIC.search(f"{titulo}\n{full_text[:300]}")
+    if not m_proc:
+        # RN abre o texto direto pelo número antigo, sem a palavra "Processo": "97592019-0 – Representante: ..."
+        m_proc = re.match(r"\W*(\d{6,10}-\d)\b", full_text) or re.match(r"\W*(\d{6,10}-\d)\b", titulo or "")
     numero_processo = m_proc.group(1).strip() if m_proc else None
 
     # Extrair número do acórdão / ementa

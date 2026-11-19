@@ -27,6 +27,7 @@ from typing import Any
 
 from ted_search.collectors.deoab_nacional import (
     UF_TO_ORG,
+    RE_ADMINISTRATIVO,
     eh_eleitoral,
     eh_materia_disciplinar,
     motivo_recusa,
@@ -175,9 +176,14 @@ def _sem_acento(texto: str) -> str:
 TITULOS_DECISAO_PADRAO = ("ACORDAO", "EMENTA")
 # "Vistos, relatados e discutidos" e variantes ("Vistos e analisados os autos"), em texto sem acento
 RE_FORMULA_JULGAMENTO = re.compile(r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)")
+# Publicação que anuncia a decisão de um órgão colegiado (câmara, turma, conselho, pleno)
+RE_DECISAO_DE_ORGAO = re.compile(
+    r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
+)
 RE_FORMULA_COLEGIADA = re.compile(
     r"ACORDA[MO]|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
-    r"(?:NEG|D)(?:AR|OU|ARAM|ADO)\s+PROVIMENTO|DECIDIRAM|DECIDIU|NAO\s+(?:RE)?CONHEC|TORNA\s+PUBLICO\s+AS\s+DECISOES"
+    r"(?:NEG|D)(?:AR|OU|ARAM|ADO)\s+PROVIMENTO|DECIDIRAM|DECIDIU|NAO\s+(?:RE)?CONHEC|TORNA\s+PUBLICO\s+AS\s+DECISOES|"
+    r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )
 # Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
 RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
@@ -208,6 +214,9 @@ def via_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> str | None:
     if ("DESPACHO" not in tipo or corpo.count("EMENTA") >= 2) and (
         (re.search(r"(?<![A-Z])EMENTA", corpo) and "ACORDAM" in corpo) or RE_FORMULA_JULGAMENTO.search(corpo) or RE_RESULTADO_SESSAO.search(corpo[:200])
     ):
+        return "corpo"
+    # "A OAB/PB torna pública a decisão da Primeira Câmara..." vale pelo que diz, seja qual for o tipo (auditoria de PB)
+    if RE_DECISAO_DE_ORGAO.search(corpo[:500]):
         return "corpo"
     if tipo in perfil["tipos_decisao"]:
         nuclear = any(k in _sem_acento(tipo) for k in ("ACORD", "EMENTA", "DECIS", "JULGAMENTO"))
@@ -616,7 +625,50 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
                     "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140], "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10],
                 }
             )
+    if uf != "SP":
+        recs, rejeitados = _tirar_republicacoes(recs, rejeitados)
+        _alinhar_marca_por_processo(recs)
     return recs, rejeitados
+
+
+def _chave_processo(rec: dict) -> str:
+    return re.sub(r"\D", "", rec.get("numero_processo") or "")
+
+
+def _tirar_republicacoes(recs: list[dict], rejeitados: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Mesmo processo e mesmo texto em duas publicações é republicação: fica a primeira, a outra é registrada.
+
+    Texto idêntico com nº de processo diferente NÃO é duplicata (PB publica decisões em série com corpo igual),
+    e registro sem nº de processo válido nunca é fundido.
+    """
+    vistos: dict[tuple[str, str], str] = {}
+    ficam = []
+    for rec in sorted(recs, key=lambda r: (r.get("data_decisao") or "", r["id"])):
+        proc = _chave_processo(rec)
+        texto = " ".join((rec.get("inteiro_teor_texto") or rec.get("descricao_ementa") or "").split())
+        chave = (proc, texto)
+        if len(proc) >= 8 and texto and chave in vistos:
+            rejeitados.append({"id": int(rec["id"].rsplit(":", 1)[-1]), "motivo": "republicacao_identica", "duplicata_de": vistos[chave],
+                               "titulo": (rec.get("numero_processo") or "")[:140], "chars": len(texto), "data": rec.get("data_decisao")})
+            continue
+        vistos.setdefault(chave, rec["id"])
+        ficam.append(rec)
+    return ficam, rejeitados
+
+
+def _alinhar_marca_por_processo(recs: list[dict]) -> None:
+    """Embargos e outras decisões sem marcador próprio herdam a marca disciplinar do mesmo processo.
+
+    Só sobe de 0 para 1, e só quando o registro não é de matéria administrativa ou eleitoral reconhecida.
+    """
+    disciplinares = {_chave_processo(r) for r in recs if r.get("is_ted_disciplinar") and len(_chave_processo(r)) >= 12}
+    for rec in recs:
+        if rec.get("is_ted_disciplinar") or _chave_processo(rec) not in disciplinares:
+            continue
+        texto = rec.get("inteiro_teor_texto") or rec.get("descricao_ementa") or ""
+        abertura = _sem_acento(texto[:600])
+        if not RE_ADMINISTRATIVO.search(abertura) and not eh_eleitoral(rec.get("orgao_julgador_raw") or "", texto):
+            rec["is_ted_disciplinar"] = 1
 
 
 def registrar_rejeitados(uf: str, raw_dir: Path = RAW_DIR) -> list[dict[str, Any]]:

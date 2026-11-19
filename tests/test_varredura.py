@@ -200,3 +200,40 @@ def test_resultado_de_sessao_e_formula_vistos_e_analisados_sao_decisao():
              "conteudoCodificado": "<p>Ficam os interessados notificados da pauta da sessão ordinária do Tribunal de Ética e Disciplina.</p>"}
     assert varredura.via_decisao(analisados, perfil) == "corpo" and varredura.via_decisao(resultado, perfil) == "corpo"
     assert varredura.via_decisao(pauta, perfil) is None
+
+
+def test_republicacao_identica_sai_mas_serie_de_processos_fica():
+    from ted_search.varredura import _tirar_republicacoes
+
+    base = {"inteiro_teor_texto": "EMENTA: x. Acordam os membros.", "data_decisao": "2024-01-10"}
+    recs = [
+        dict(base, id="DEOAB_PB:1", numero_processo="15.0000.2024.000001-1"),
+        dict(base, id="DEOAB_PB:2", numero_processo="15.0000.2024.000001-1", data_decisao="2024-02-01"),  # republicação
+        dict(base, id="DEOAB_PB:3", numero_processo="15.0000.2024.000002-2"),  # outro processo, mesmo corpo
+        dict(base, id="DEOAB_PB:4", numero_processo=None),  # sem número: nunca funde
+        dict(base, id="DEOAB_PB:5", numero_processo=None),
+    ]
+    ficam, rej = _tirar_republicacoes(recs, [])
+    assert sorted(r["id"] for r in ficam) == ["DEOAB_PB:1", "DEOAB_PB:3", "DEOAB_PB:4", "DEOAB_PB:5"]
+    assert rej == [{"id": 2, "motivo": "republicacao_identica", "duplicata_de": "DEOAB_PB:1",
+                    "titulo": "15.0000.2024.000001-1", "chars": 30, "data": "2024-02-01"}]
+
+
+def test_embargos_herdam_a_marca_disciplinar_do_processo():
+    from ted_search.varredura import _alinhar_marca_por_processo
+
+    recs = [
+        {"id": "a", "numero_processo": "15.0000.2020.000100-1", "is_ted_disciplinar": 1, "inteiro_teor_texto": "Representação. Censura."},
+        {"id": "b", "numero_processo": "15.0000.2020.000100-1", "is_ted_disciplinar": 0, "inteiro_teor_texto": "Embargos de declaração rejeitados."},
+        {"id": "c", "numero_processo": "15.0000.2020.000100-1", "is_ted_disciplinar": 0, "inteiro_teor_texto": "Pedido de inscrição suplementar. Deferido."},
+    ]
+    _alinhar_marca_por_processo(recs)
+    assert [r["is_ted_disciplinar"] for r in recs] == [1, 1, 0]
+
+
+def test_decisao_anunciada_por_camara_vale_seja_qual_for_o_tipo():
+    from ted_search.varredura import RE_DECISAO_DE_ORGAO, _sem_acento
+
+    assert RE_DECISAO_DE_ORGAO.search(_sem_acento("A OAB/PB torna pública a decisão da Primeira Câmara no Processo nº 15.0000.2024.000599-1."))
+    assert RE_DECISAO_DE_ORGAO.search(_sem_acento("torna pública, para os devidos fins, a decisão proferida pela 5ª Turma Julgadora deste Tribunal"))
+    assert not RE_DECISAO_DE_ORGAO.search(_sem_acento("torna pública a suspensão do advogado, por decisão transitada em julgado"))
