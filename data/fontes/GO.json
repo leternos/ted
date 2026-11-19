@@ -2,23 +2,27 @@
   {
     "slug": "ementarios-ted",
     "url": "https://www.oabgo.org.br/ementarios-ted/",
-    "conteudo": "Acórdãos das Turmas e Câmaras do TED",
-    "periodo": "1998-2025",
-    "volume": "cerca de 9 mil (inferido dos IDs)",
-    "acesso": "HTML paginado (WordPress), filtro por palavra e datas",
+    "conteudo": "Ementas e dispositivo de acórdãos das Turmas/Câmaras do TED-OAB/GO (CPT WordPress 'ementarios-ted'). Sem relatório/voto: só ementa + dispositivo do acórdão (600-1750 caracteres por item).",
+    "periodo": "sessões de 2003 (item ID 2: 05.02.2003) a out/2025 (ID 9142: publicação 23.10.2025). Não há evidência de 1998.",
+    "volume": "Lista: 679 páginas = 678*12+8 = 8144 itens (declarado pelo wp-pagenavi). Sitemap: 8141 URLs (2000x4 + 141 na 5a parte; 8141 únicas). Divergência de 3 a reconciliar no livro-razão (esperado=listados=baixados).",
+    "acesso": "HTML server-side, sem nonce/cookie. Lista: GET /ementarios-ted/page/N/ (N=1..679, 12 itens/página, última com 8; wp-pagenavi 'Página 1 de 679'), ordem por ID decrescente (não por data). Filtros GET: ?palavra=...(funciona; 'abandono' => 31 páginas), &data-inicial=/&data-final= (AAAA-MM-DD retornou 0 itens nos testes: não usar). Detalhe: /ementarios-ted/<ID>/ (ID numérico, 2..9142, com buracos que dão 404, ex.: 5500, 6000; 3 slugs não numéricos: 1-ggehgh..., 9000-gh, 9019-2); texto em div.post-body. Enumeração alternativa sem paginação: wp-sitemap-posts-ementarios-ted-{1..5}.xml (2000 URLs cada, a 5ª com 144). Não está no wp-json (CPT sem show_in_rest).",
     "exclusiva": true,
     "verificacao": "V",
-    "situacao": "mapeada"
+    "situacao": "verificada",
+    "inteiro_teor": "NAO. Só ementa + dispositivo ('ACÓRDÃO: Vistos... acordam... por unanimidade julgar improcedente...'); o voto é citado como 'parte integrante' mas não é publicado. Sem PDF anexo (0 links .pdf/.doc em 14 itens abertos).",
+    "observacoes": "Layout de campos varia por época (texto livre, sem campos estruturados): 2003-05 formato '1/2)EMENTA:... P.D. n.º 2.825/2000. V.U. Presidente da 2ª Turma... Relator... data'; 2013-2015 'Processo: 2010/04522 Presidente... Relator... Data da Sessão'; 2019+ 'Processo nº 2015/10952. Voto... Relator... Data da sessão'; 2025 'Processo nº : 202442442 Data da publicação: 23.10.2025 Juiz(a) Relator(a):'. Itens antigos (ID 2,8,1000) trazem o nº do P.D. no texto, não em campo. Itens abertos: IDs 2,8,1000,2500,3000,4085,5000,7000,7947,8300,8800,9000-gh,9142 (200) e 5500,6000 (404). Sobreposição com DEOAB: 0 de 36 nºs de processo (pág.1,2,10,25; sessões 2023-2025) achados em julgados (DEOAB_GO tem só 242 registros, 2021-2026, ~40/ano). robots.txt: só Disallow /wp-admin/; sitemap declarado; sem bloqueio por taxa em ~45 requisições com 1s de pausa. Ordem sugerida: coletar 1º (conteúdo exclusivo, mas só ementa)."
   },
   {
     "slug": "ementarios-conselho",
     "url": "https://www.oabgo.org.br/ementarios-conselho-seccional/",
-    "conteudo": "Ementas do Conselho Seccional (recursos)",
-    "periodo": "n/d",
-    "volume": null,
-    "acesso": "HTML paginado",
-    "exclusiva": null,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "conteudo": "Ementas/acórdãos de recursos e procedimentos do Conselho Seccional (Conselho Pleno) da OAB-GO; inclui matérias não disciplinares (inscrição, exame de ordem). Só ementa + dispositivo.",
+    "periodo": "amostra de 2009 a 2018 (decisões de 11/02/2015, 08/04/2015, 21/11/2018); extremos não medidos item a item.",
+    "volume": "185 itens (15*12+5 na paginação = 185 do sitemap: fecha).",
+    "acesso": "HTML server-side. Lista: /ementarios-conselho-seccional/page/N/ (N=1..16, 12 por página, última com 5; 'Página 1 de 16'). Detalhe: /ementarios-conselho-seccional/processo-no-<nº>/ (slug ex.: processo-no-201203913, processo-no-2013-6831). Sitemap: wp-sitemap-posts-ementarios-conselho-1.xml (185 URLs). Mesmos filtros GET do TED presumidos (não testados).",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "verificada",
+    "inteiro_teor": "NAO. Ementa + acórdão curto (~700-1800 caracteres), sem relatório/voto, sem PDF.",
+    "observacoes": "Itens com partes anonimizadas por iniciais (Recte/Recdo/Reqte), relator como 'Conselheiro ...', data da sessão no topo do corpo. Não é disciplinar do TED em geral (recursos ao Conselho). Sobreposição com DEOAB não testada nos nºs (formato 2013/6831 vs aaaa+seq); relevância menor. Ordem: coletar 2º (barato, 16 páginas)."
   }
 ]

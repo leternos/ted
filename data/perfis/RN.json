@@ -1,0 +1,376 @@
+{
+  "uf": "RN",
+  "id_organizacao": 20,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Ementa"
+  ],
+  "validado": true,
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "observacoes": "RN: acórdãos publicados no DEOAB são raros (7 publicações tipo Acórdão no censo de 20 dias-amostra, 2019-2026; 3 lidas confirmadas como decisão: ids 411886 proposta de subsecção, 539073 processo disciplinar ex officio, 539271 recurso de arquivamento com EMENTA), todos do setor CONSELHO SECCIONAL (o recurso das decisões do TED/turmas é julgado pelo Conselho Seccional). O TED (setor TRIBUNAL DE ÉTICA E DISCIPLINA, turmas inclusive a 6ª Turma em Mossoró) publica quase só intimações: Edital/Notificação de arquivamento (20), alegações finais (12), diligência, contrarrazões, autos digitalizados e Pauta de Julgamentos; NENHUMA decisão do TED com texto/ementa no Diário. Arquivamento notificado é mero aviso, não decisão publicada. Ruído: Edital (155, convocação de advogados), Portaria (74, presidência), Resolução, Edital de Inscrição. Anos com publicação em todos de 2019 a 2026, mas decisões esparsas. Resultados do TED provavelmente existem fora do Diário (não verificado); sem indício concreto de ementário em site nem PDFs.",
+  "modo": "censo",
+  "evidencia": {
+    "gerado_em": "2026-11-19T18:27:46Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-18",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2019-02-26",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2020-03-31",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-10-07",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-09-23",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2021-10-08",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2022-03-14",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2022-07-06",
+        "publicacoes": 33,
+        "baixadas": 33
+      },
+      {
+        "dia": "2022-09-27",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2023-01-24",
+        "publicacoes": 24,
+        "baixadas": 24
+      },
+      {
+        "dia": "2023-02-20",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2023-04-14",
+        "publicacoes": 32,
+        "baixadas": 32
+      },
+      {
+        "dia": "2024-03-22",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2024-07-22",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-02-10",
+        "publicacoes": 9,
+        "baixadas": 9
+      },
+      {
+        "dia": "2025-05-21",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2025-06-30",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-07-04",
+        "publicacoes": 30,
+        "baixadas": 30
+      },
+      {
+        "dia": "2026-03-18",
+        "publicacoes": 20,
+        "baixadas": 20
+      },
+      {
+        "dia": "2026-08-21",
+        "publicacoes": 18,
+        "baixadas": 18
+      }
+    ],
+    "decisoes_no_censo": 7,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 0.4286,
+      "DECISAO": 0.2857,
+      "JULGAMENTO": 0.2857,
+      "RECURSO": 0.7143
+    },
+    "tipos": {
+      "Edital": {
+        "publicacoes": 155,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 150,
+          "COMISSÃO DE SELEÇÃO E INSCRIÇÃO": 5
+        },
+        "amostras": [
+          {
+            "id": 267588,
+            "titulo": "EDITAL 0532020",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional do Rio Grande do Norte notifica os(as) Advogados(as) abaixo para comparecerem a sede da OAB/RN situada a Rua Barão de serra Branca S/N, Candelaria, Natal/Rn, a fim de tratarem de assuntos de seus interesses. A falta de"
+          },
+          {
+            "id": 267752,
+            "titulo": "EDITAL 0542020",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional do Rio Grande do Norte notifica os(as) Advogados(as) abaixo para comparecerem a sede da OAB/RN situada a Rua Barão de serra Branca S/N, Candelaria, Natal/Rn, a fim de tratarem de assuntos de seus interesses. A falta de"
+          },
+          {
+            "id": 365441,
+            "titulo": "EDITAL DE CHAMAMENTO",
+            "trecho": "NOTIFICAÇÃO 52022021-0 – Pelo presente edital, fica o advogado JEFFREY MACEDO GOMES – OAB/RN 8.518, notificado a comparecer na sede da OAB/RN localizada na Rua Barão de Serra Branca, s/n – 1º andar – Candelária – Natal/RN, no prazo de 15 (quinze) dias, a parti"
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 74,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRESIDENCIA": 72,
+          "SECRETARIA GERAL": 1,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 739,
+            "titulo": "PortariaNº007/2019-GP/OAB/RN.",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO DO RIO GRANDE DO NORTE, AD REFERENDUM , DO CONSELHO, no uso de suas atribuições legais e regulamentares, RESOLVE: Art. 1º - Designar os(as) advogados(as) abaixo relacionados(as) para compor a COMISSÃO DE E"
+          },
+          {
+            "id": 740,
+            "titulo": "Portaria Nº 008/2019-GP/OAB/RN.",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO DO RIO GRANDE DO NORTE, AD REFERENDUM , DO CONSELHO, no uso de suas atribuições legais e regulamentares, RESOLVE: Art. 1º - Designar os(as) advogados(as) abaixo relacionados(as) para compor a COMISSÃO DE S"
+          },
+          {
+            "id": 5365,
+            "titulo": "Portaria Nº 038/2019 - GP/OAB/RN.",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO DO RIO GRANDE DO NORTE, AD REFERENDUM , DO CONSELHO, no uso de suas atribuições legais e regulamentares, RESOLVE: Art. 1º - Exonerar os(as) advogados(as) abaixo relacionados(as) da COMISSÃO DE ESTÁGIO E EX"
+          }
+        ]
+      },
+      "Arquivamento": {
+        "publicacoes": 20,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 20
+        },
+        "amostras": [
+          {
+            "id": 1063819,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.000807-9 – Pelo presente edital, fica a parte D.I.P (Advogado: David Izac Pereira - OAB/RN 10861) notificado do arquivamento dos referidos autos. Caso tenha interesse em recorrer deverá fazê-lo no prazo regulamentar de quinze dias úteis (art. 69 c"
+          },
+          {
+            "id": 1063820,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.001326-2 – Pelo presente edital, ficam as partes L.F.C.L (Procurador: Jonas Antunes de Lima Neto - OAB/RN 8973) e R.A.S (Advogado: Rafael Araujo de Sousa - OAB/RN 7728) notificadas do arquivamento dos referidos autos. Caso tenha interesse em recor"
+          },
+          {
+            "id": 1063821,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.001731-4 – Pelo presente edital, ficam as partes F.L.S.J (Advogado: Felipe Lopes da Silveira Júnior - OAB/RN 10871) e F.M.S.J (Advogado: Francisco Manoel da Silva Júnior - OAB/RN 20132) notificadas do arquivamento dos referidos autos. Caso tenha i"
+          }
+        ]
+      },
+      "Alegações Finais": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 12
+        },
+        "amostras": [
+          {
+            "id": 1063828,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.000248-1 – Pelo presente edital, fica a parte U.M.P.S.J (Advogado: Ubiratan Maximo Pereira de Souza Junior - OAB/RN 1406-A) notificada para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) apresentar razões finais. O não c"
+          },
+          {
+            "id": 1063829,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.000576-0 – Pelo presente edital, fica a parte A.L.S (Advogado: Adaian Lima de Souza - OAB/RN 1359-A) notificada para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) apresentar razões finais. O não cumprimento da devida no"
+          },
+          {
+            "id": 1063830,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.000965-0 – Pelo presente edital, fica a parte B.F.L (Advogado: Bartolomeu Fagundes de Lima - OAB/RN 8767) notificada para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) apresentar razões finais. O não cumprimento da devi"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 10,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 5,
+          "SECRETARIA GERAL": 5
+        },
+        "amostras": [
+          {
+            "id": 365626,
+            "titulo": "PAUTA DE JULGAMENTO – 6ª TURMA",
+            "trecho": "Pelo presente edital ficam os advogados cientificados de que a 6ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA - SECCIONAL DO RIO GRANDE DO NORTE estabelecida em Mossoró - reunir-se-á em SESSÃO VIRTUAL QUE SE DARÁ EM AMBIENTE TELEPRESENCIAL PELA PLATAFORMA “ZOOM” ("
+          },
+          {
+            "id": 371338,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional do Rio Grande do Norte, reunir-se-á em Sessão Ordinária a ser realizada no dia 21 de outubro de 2021, às 17h30, por meio de videoconferência no aplicativo zoom, conforme disciplinado na Resolução n. 04/2020 do Consel"
+          },
+          {
+            "id": 454668,
+            "titulo": "PAUTA DE JULGAMENTO – 3ª TURMA",
+            "trecho": "Pelo presente edital ficam os advogados cientificados de que a 3ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA – SECCIONAL DO RIO GRANDE DO NORTE reunir-se-á em SESSÃO VIRTUAL QUE SE DARÁ EM AMBIENTE TELEPRESENCIAL PELA PLATAFORMA “ZOOM” (em conformidade com a Reso"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 7,
+        "parecem_decisao": 3,
+        "setores": {
+          "CONSELHO SECCIONAL": 7
+        },
+        "amostras": [
+          {
+            "id": 411886,
+            "titulo": "ACÓRDÃO",
+            "trecho": "Processo n. 18002022-0. Assunto: Proposta da Subsecção de Currais Novos. Interessado(a): Subsecção de Currais Novos – Presidente Thaiz Lenna Moura da Costa – OAB/RN 10.545. Relator(a): Claudia Marluce Nelson da Rocha Rosado. Acórdão – Processo pautado para ses"
+          },
+          {
+            "id": 539073,
+            "titulo": "ACÓRDÃO",
+            "trecho": "PROCESSO N. 109942016-0. ASSUNTO: PROCESSO DISCIPLINAR. REPRESENTANTE: OAB/RN (EX OFFICIO). COMUNICANTE: JUÍZO DE DIREITO DA 2ª VARA DE SUCESSÕES DA COMARCA DE NATAL. REPRESENTADO: C. E. N. G. – OAB/RN 8778. (ADVOGADO: CARLOS EDUARDO DO NASCIMENTO GOMES – OAB/"
+          },
+          {
+            "id": 539271,
+            "titulo": "ACÓRDÃO",
+            "trecho": "Processo n. 108772017-0 EMENTA: EMENTA: RECURSO DE ARQUIVAMENTO EM PROCESSO DISCIPLINAR AO CONSELHO SECCIONAL. INDEFERIMENTO DO RECURSO. Assunto: RECURSO DE ARQUIVAMENTO EM PROCESSO JUNTO AO TED Interessado: LUIZ CARLOS DE OLIVEIRA EUFRÁSIO Processo número: 10"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "CONSELHO SECCIONAL": 2
+        },
+        "amostras": [
+          {
+            "id": 744,
+            "titulo": "RESOLUÇÃO N. 01/2019.",
+            "trecho": "Altera dispositivos da Resolução de n. 10/2018 que fixa e disciplina a cobrança da anuidade, para o exercício de 2019, no âmbito da Ordem Dos Advogados do Brasil – Seccional do Rio Grande do Norte, e dá outras providências. O CONSELHO SECCIONAL DA ORDEM DOS AD"
+          },
+          {
+            "id": 525316,
+            "titulo": "RESOLUÇÃO N. 01/2023",
+            "trecho": "Altera o valor da URH para a cobrança de honorários advocatícios do Estado do Rio Grande do Norte para o exercício de 2023. A DIRETORIA DA ORDEM DOS ADVOGADOS DO BRASIL DO ESTADO DO RIO GRANDE DO NORTE, no uso das atribuições legais, ad referendum do Conselho "
+          }
+        ]
+      },
+      "Diligência": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 2
+        },
+        "amostras": [
+          {
+            "id": 1142893,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.008751-8 – Pelo presente edital, fica a parte W.W.J (Advogado: William Walter Santos Júnior - OAB/PE 29.043) notificado para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) cumprir a diligência solicitada pelo relator. O "
+          },
+          {
+            "id": 1142894,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.000357-5 – Pelo presente edital, fica a parte A.T.N (Advogado: Antônio Tomaz Neto - OAB/RN 3.063) notificado para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) cumprir a diligência solicitada pelo relator. O não cumprim"
+          }
+        ]
+      },
+      "Comunicado": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 370936,
+            "titulo": "AUTOS DIGITALIZADOS",
+            "trecho": "2582013-0 Pelo presente edital fica a parte E.R.A.S.J (Advogado: Edberto Rodrigo Afonso Smith Júnior – OAB/RN 3828) ciente de que os autos processuais foram convertidos do suporte físico para o eletrônico e inserido no sistema DATAGED. Natal/RN, 08 de Outubro "
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA GERAL": 1
+        },
+        "amostras": [
+          {
+            "id": 488321,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "Processo n. 6112022-0. Assunto: Violação de Prerrogativas. Reclamante: J.V.M. (Advogado: Jonásio Vieira de Medeiros – OAB/RN 12.549). Reclamado: J. B. A. (Advogados: Milley God Serrano Maia – OAB/RN 8.002 e OAB/PB 28.438-A; George Lucas Arruda Gomes – OAB/RN 9"
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÃO DE SELEÇÃO E INSCRIÇÃO": 1
+        },
+        "amostras": [
+          {
+            "id": 1063257,
+            "titulo": "EDITAL N. 08/2026 - CSI",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, secção do Rio Grande do Norte, torna público que as seguintes pessoas requereram inscrição nos quadros desta seccional: INSCRIÇÃO NO QUADRO COMO ADVOGADO: Agotinho Bernardo De Araujo Filho Alicia Oliveira Da Silva"
+          }
+        ]
+      },
+      "Contrarrazões": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1142891,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "20.0000.2024.000835-4 – Pelo presente edital, fica a advogada A.L.C.B (Advogada: Augusta Leonizia Costa Bezerril - OAB/RN 9816) notificada para no prazo regulamentar de quinze dias úteis (art. 69 caput e §2º do EAOAB) apresentar contrarrazões ao recurso interp"
+          }
+        ]
+      }
+    }
+  }
+}

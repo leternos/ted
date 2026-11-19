@@ -176,8 +176,8 @@ TITULOS_DECISAO_PADRAO = ("ACORDAO", "EMENTA")
 # "Vistos, relatados e discutidos" e variantes ("Vistos e analisados os autos"), em texto sem acento
 RE_FORMULA_JULGAMENTO = re.compile(r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)")
 RE_FORMULA_COLEGIADA = re.compile(
-    r"ACORDA[MO]|UNANIMIDADE|UNANIME|POR\s+MAIORIA|EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
-    r"(?:NEG|D)(?:AR|OU|ARAM|ADO)\s+PROVIMENTO|DECIDIRAM|DECIDIU"
+    r"ACORDA[MO]|UNANIMIDADE|UNANIME|POR\s+MAIORIA|(?<![A-Z])EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
+    r"(?:NEG|D)(?:AR|OU|ARAM|ADO)\s+PROVIMENTO|DECIDIRAM|DECIDIU|NAO\s+(?:RE)?CONHEC|TORNA\s+PUBLICO\s+AS\s+DECISOES"
 )
 # Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
 RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
@@ -196,7 +196,8 @@ def via_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> str | None:
     if pub.get("_skip"):  # formato antigo: descartada só pelo tipo, sem conteúdo guardado
         return None
     titulo = _sem_acento(pub.get("titulo") or "")
-    if any(t in titulo for t in perfil.get("titulos_decisao", TITULOS_DECISAO_PADRAO)):
+    # palavra, não pedaço de palavra: "EMENTA" está dentro de "SUPLEMENTAR" (auditoria de MA: 31 editais de inscrição)
+    if any(re.search(rf"(?<![A-Z]){re.escape(t)}", titulo) for t in perfil.get("titulos_decisao", TITULOS_DECISAO_PADRAO)):
         return "titulo"
     corpo = _sem_acento(html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or ""))
     # Fórmulas de julgamento colegiado: ementa + "acordam", ou "vistos, relatados e discutidos"
@@ -205,7 +206,7 @@ def via_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> str | None:
     # Despacho é ato monocrático: a fórmula "Vistos e analisados" dentro dele não o torna decisão colegiada (AP, nov/2026)
     # Despacho individual não é decisão colegiada; edital de "processos julgados" sob o tipo Despacho é (MT 55580)
     if ("DESPACHO" not in tipo or corpo.count("EMENTA") >= 2) and (
-        ("EMENTA" in corpo and "ACORDAM" in corpo) or RE_FORMULA_JULGAMENTO.search(corpo) or RE_RESULTADO_SESSAO.search(corpo[:200])
+        (re.search(r"(?<![A-Z])EMENTA", corpo) and "ACORDAM" in corpo) or RE_FORMULA_JULGAMENTO.search(corpo) or RE_RESULTADO_SESSAO.search(corpo[:200])
     ):
         return "corpo"
     if tipo in perfil["tipos_decisao"]:
@@ -576,7 +577,9 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
                 # Ata só entra se for de sessão de julgamento (não de reunião de diretoria ou de conselho)
                 aceita = tem_resultado and bool(re.search(r"SESSAO\s+DE\s+JULGAMENTO|TRIBUNAL\s+DE\s+ETICA", plano[:400]))
             else:
-                aceita = eh_materia_disciplinar(setor, pub.get("titulo") or "", texto) or (eh_eleitoral(setor, texto) and tem_resultado)
+                # acórdão de Câmara publicado sob tipo genérico entra mesmo sem ser disciplinar (MA 845489), com marca 0
+                colegiada = bool(re.search(r"ACORDAM|DECISAO\s+UNANIME", plano))
+                aceita = eh_materia_disciplinar(setor, pub.get("titulo") or "", texto) or (eh_eleitoral(setor, texto) and tem_resultado) or colegiada
             if not aceita:
                 rejeitados.append({"id": pub["id"], "motivo": "tipo_amplo_sem_decisao", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
                                    "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})

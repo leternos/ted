@@ -1,0 +1,418 @@
+{
+  "uf": "SE",
+  "id_organizacao": 26,
+  "termos": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Ementa",
+    "Retificação"
+  ],
+  "validado": true,
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "observacoes": "SE: decisões publicadas na íntegra (EMENTA Nº xxx/ano-CS, com acórdão) no DEOAB, tipo Acórdão, 25 no censo de 20 dias-amostra (195 publicações), todas lidas como decisão (ids 932337, 932338 etc.). Julgam a Primeira e a Segunda Turma do TED e o Conselho Seccional (recursos). ATENÇÃO: o título da publicação é o número do processo (PROCESSO Nº 26.0000...), sem a palavra ACÓRDÃO; a identificação é pelo tipo e pelo corpo (EMENTA). Retificação traz ementa republicada (233537, Retificação de acórdão de 18/03/2020) e é incluída; Resolução 422 (Conselho, plano da jovem advocacia) é administrativa, não disciplinar. Ruído: Notificação (103: prescrição, despacho, defesa prévia, razões finais), Edital, Edital de Inscrição, Edital de Citação (JF, execuções da OAB), Pauta de Julgamentos, Convocação de sessão, Despacho (notificação do despacho), Portaria. Há publicações desde 2019 em todos os anos. Sem indício de fonte fora do DEOAB.",
+  "modo": "censo",
+  "evidencia": {
+    "gerado_em": "2026-11-19T18:31:54Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-11",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-02-20",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-03-19",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2020-10-05",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-09-13",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2021-10-28",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2022-03-10",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2022-07-22",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2022-09-30",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-01-19",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2023-02-06",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2023-04-28",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2024-03-13",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-07-24",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-02-07",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2025-05-12",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2025-06-18",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2025-07-31",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2026-03-09",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2026-08-20",
+        "publicacoes": 5,
+        "baixadas": 5
+      }
+    ],
+    "decisoes_no_censo": 25,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 1.0,
+      "JULGAMENTO": 0.0,
+      "RECURSO": 1.0
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 103,
+        "parecem_decisao": 0,
+        "setores": {
+          "Cartório de Processos Disciplinares": 49,
+          "PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 27,
+          "Conselho Seccional": 13,
+          "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 10,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 4
+        },
+        "amostras": [
+          {
+            "id": 361571,
+            "titulo": "PROC. FÍSICO 98/2016 (ELETRÔNICO 26.0000.2016.003594-5) - NOTIFICAÇÃO DA PRESCRIÇÃO",
+            "trecho": "ADVOGADO(A) INTERESSADO(A ): ANDRE LUIZ DE ALMEIDA PAIXÃO - OAB/SE 200B Pelo presente, fica(m) o(s) advogado(s) interessado(s) acima identificado(s), no qual figura(m) como parte(s) e/ou procurador(es)/defensor(es) no processo acima referenciado, notificado(a)"
+          },
+          {
+            "id": 377222,
+            "titulo": "PROCESSO Nº 26.0000.2020.004979-8 – NOTIFICAÇÃO - INTERESSE NA REALIZAÇÃO DE AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "ADVOGADO(S) INTERESSADO(S): ADSON SANTOS SANTANA - OAB/BA 49097 JOSÉ AUGUSTO DO NASCIMENTO JUNIOR – OAB/SE 13.522 Pelo presente, fica(m) os(as) advogados(as) interessados(as) acima identificados(as), no qual figura(m) como partes e/ou procuradores(as)/defensor"
+          },
+          {
+            "id": 377223,
+            "titulo": "PROCESSO 26.0000.2017.006288-7 - NOTIFICAÇÃO PARA RAZÕES FINAIS",
+            "trecho": "ADVOGADO( A ) INTERESSADO( A ): ÁLVARO COELHO MAIA NETO - OAB/SE 5301 Pelo presente, fica NOTIFICADO(A) o(a) advogado(a) acima interessado(a), no qual figura como parte e/ou procurador(a)/defensor(a) nos autos do processo acima referenciado, para apresentar RA"
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 26,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Seccional": 12,
+          "Procedimento Prévio": 8,
+          "Cartório de Processos Disciplinares": 3,
+          "Ouvidoria": 2,
+          "PRESIDENCIA": 1
+        },
+        "amostras": [
+          {
+            "id": 233523,
+            "titulo": "EDITAL DE NOTIFICAÇÃO Nº 027/2020",
+            "trecho": "Pelo presente, em cumprimento à determinação do Presidente da Ordem dos Advogados do Brasil – Seccional Sergipe, por meio da Resolução 001/2020 de 16 de março de 2020, com base na necessidade de prevenção à contenção do Coronavírus (CODIV-19), diante da pandem"
+          },
+          {
+            "id": 233527,
+            "titulo": "EDITAL DE NOTIFICAÇÃO Nº 028/2020",
+            "trecho": "Pelo presente, em cumprimento à determinação do Presidente da Ordem dos Advogados do Brasil – Seccional Sergipe, por meio da Resolução 001/2020 de 16 de março de 2020, com base na necessidade de prevenção à contenção do Coronavírus (CODIV-19), diante da pandem"
+          },
+          {
+            "id": 233529,
+            "titulo": "EDITAL DE NOTIFICAÇÃO Nº 029/2020",
+            "trecho": "REF.: PROCESSO Nº 26.0000.2017.002517-9. INTERESSADO(S): Rafael Vasconcelos de Gois – OAB/SE 6036 e Kim Santana Noronha - OAB/SE nº 7774. Pelo presente, FICAM NOTIFICADOS os advogados interessados acima identificados, no qual figuram como partes e/ou procurado"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 25,
+        "parecem_decisao": 25,
+        "setores": {
+          "PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 9,
+          "Conselho Seccional": 8,
+          "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 8
+        },
+        "amostras": [
+          {
+            "id": 932337,
+            "titulo": "PROCESSO Nº 26.0000.2021.005017-8",
+            "trecho": "Advogado(a)(s) Interessado(a)(s): ANA EDITE MENEZES VASCONCELOS SILVA - OAB/SE 1851, JORGE EDUARDO SILVA SANTOS - OAB/SE 8418 EMENTA Nº 00 3 /202 5 -CS : RECURSO DISCIPLINAR. ADVOGADO. LOCUPLETAMENTO POR QUALQUER FORMA ÀS CUSTAS DE CLIENTE. AUSÊNCIA DE PRESTAÇ"
+          },
+          {
+            "id": 932338,
+            "titulo": "PROCESSO Nº 26.0000.2023.002929-0",
+            "trecho": "Advogado(a)(s) Interessado(a)(s): LISSA ANDRADE TAVARES LOBAO - OAB/SE 3529 EMENTA Nº 004 /2025-CS : Processo autônomo de exclusão. Regularidade na tramitação processual. Constatação de aplicação de pena de suspensão em número maior que 2 (dois). Pedidos de re"
+          },
+          {
+            "id": 932339,
+            "titulo": "PROCESSO Nº 26.0000.2021.005918-8",
+            "trecho": "Advogado(a)(s) Interessado(a)(s): KLEISY TATIANA CORREIA ALVES DIAS - OAB/SE 8281 RÔMULO JOSÉ LINS DE FIGUEIREDO - OAB/SE 15420 EMENTA Nº 005 /2025-CS : MANUTENÇÃO DA DECISÃO DO TED PELA PROCEDÊNCIA DA REPRESENTAÇÃO – ADVOGADA CONDENADA CRIMINALMENTE COM SENTE"
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 14,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA GERAL": 14
+        },
+        "amostras": [
+          {
+            "id": 361723,
+            "titulo": "EDITAL.",
+            "trecho": "De ordem do Sr. Presidente da OAB/SE, Inácio José Krauss de Menezes, faço público que o advogado LUIS FELIPE CUNHA, MARIA KLENA DE OLIVEIRA MELO e GABRIELLA ROLEMBERG ALVES requereram inscrição suplementar, juntando os documentos exigidos em Lei. Aracaju (SE),"
+          },
+          {
+            "id": 410917,
+            "titulo": "EDITAL.",
+            "trecho": "De ordem do Sr. Presidente da OAB/SE, Danniel Alves Costa , faço público que o os bacharéis, ANDREZZA REIS SANTOS DO LÍRIO , ANNA LIRYS SILVA DE SOUZA, BEATRIZ TAVARES GALRÃO DE ALMEIDA FRANCO, ISAIAS JOSE DA SILVA NETO, JAYNE SANTOS SILVA, LARISSA REGINA CARD"
+          },
+          {
+            "id": 461211,
+            "titulo": "EDITAL.",
+            "trecho": "De ordem do Sr. Presidente da OAB/SE, Danniel Alves Costa, faço público que a bacharela KARINA CAMPOS ROCHA CORREIA requereu Inscrição Definitiva Por Transferência, juntando os documentos exigidos em Lei. Aracaju (SE), 21 de julho de 2022. NILTON LACERDA DA SI"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 8,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 3,
+          "Conselho Seccional": 3,
+          "SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 2
+        },
+        "amostras": [
+          {
+            "id": 4425,
+            "titulo": "PAUTA DE JULGAMENTO DA 1ª TURMA – 20/03/2019",
+            "trecho": "FICAM NOTIFICADOS os Membros integrantes da 1ª Turma do Tribunal de Ética e Disciplina da OAB/SE, as partes interessadas e os seus respectivos Advogados/Defensores, para comparecerem à Sessão Ordinária, que será realizada no próximo d i a 20 de março de 201 9 "
+          },
+          {
+            "id": 4426,
+            "titulo": "PAUTA DE JULGAMENTO DA 2ª TURMA – 25/03/2019",
+            "trecho": "FICAM NOTIFICADOS os Membros integrantes da 2ª Turma do Tribunal de Ética e Disciplina da OAB/SE, as partes interessadas e os seus respectivos Advogados/Defensores, para comparecerem à Sessão Ordinária, que será realizada no próximo d i a 2 5 de março de 201 9"
+          },
+          {
+            "id": 233544,
+            "titulo": "SUSPENSÃO DOS JULGAMENTOS DA SESSÃO DO CONSELHO DO DIA 30/03/2020",
+            "trecho": "O CONSELHO SECCIONAL DE SERGIPE DA ORDEM DOS ADVOGADOS DO BRASIL, em conformidade com a Resolução nº 001/2020, disponibilizada no DEOAB do dia 17/03/2020 e com publicação dia 18/03/2020, com base na necessidade de prevenção para a contenção do Coronavírus (COD"
+          }
+        ]
+      },
+      "Edital de Citação": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "Procuradoria Juridica": 7
+        },
+        "amostras": [
+          {
+            "id": 233551,
+            "titulo": "PROCESSO Nº: 0803685-50.2019.4.05.8500.",
+            "trecho": "Poder Judiciário Justiça Federal de Primeira Instância da 5ª Região Seção Judiciária de Sergipe 2ª Vara Fórum Ministro Geraldo Barreto Sobral Av. Dr. Carlos Rodrigues da Cruz, 1500, Capucho, Aracaju/SE CEP 49081-015 Telefone: (79) 3216-2200 - www.jfse.jus.br -"
+          },
+          {
+            "id": 233552,
+            "titulo": "PROCESSO Nº: 0803686-35.2019.4.05.8500.",
+            "trecho": "PROCESSO Nº: 0803686-35.2019.4.05.8500 - EXECUÇÃO DE TÍTULO EXTRAJUDICIALEXEQUENTE: ORDEM DOS ADVOGADOS DO BRASIL SECCAO DO ESTADO DE SERGIPE-OAB/SE ADVOGADO: Evelyn Melo Nunes e outros EXECUTADO: BRIRNNA LUCI OLIVEIRA LIMA DO AMARAL 2ª VARA FEDERAL - SE (JUIZ"
+          },
+          {
+            "id": 233553,
+            "titulo": "PROCESSO Nº: 0805475-69.2019.4.05.8500.",
+            "trecho": "Poder Judiciário Justiça Federal de Primeira Instância da 5ª Região Seção Judiciária de Sergipe 2ª Vara Fórum Ministro Geraldo Barreto Sobral Av. Dr. Carlos Rodrigues da Cruz, 1500, Capucho, Aracaju/SE CEP 49081-015 Telefone: (79) 3216-2200 - www.jfse.jus.br -"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 3,
+        "parecem_decisao": 1,
+        "setores": {
+          "Conselho Seccional": 1,
+          "PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 1,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 233537,
+            "titulo": "PROCESSO Nº 1328/2014.",
+            "trecho": "Retificação referente ao acórdão disponibilizado para publicação no DEOAB do dia 18/03/2020. Advogados Interessados: LUCIANA GALVÃO VIEIRA DE SOUZA - OAB/SP Nº 157815. EMENTA Nº 001 /20 20 -CS : “PRESCRIÇÃO DA PRETENSÃO PUNITIVA”. Observada a notificação válid"
+          },
+          {
+            "id": 266819,
+            "titulo": "CERTIDÃO DE RETIFICAÇÃO",
+            "trecho": "Certifico, para os devidos fins, haja vista erro no número de processo publicado na Pauta de Julgamento do dia 14/10/2020, disponibilizado no Diário Eletrônico da OAB - DEOAB em 16/09/2020, pg. 96, com publicação em 17/09/2020, que fazemos a retificação da seg"
+          },
+          {
+            "id": 361913,
+            "titulo": "PROCESSO 26.0000.2019.008087-7 - AUDIÊNCIA DE INSTRUÇÃO (PRESENCIAL)",
+            "trecho": "Advogado(a)(s) Interessado(a)(s): GIBSON DE ALMEIDA PINHO NETO - OAB/SE 7249 e THIAGO AUGUSTO SOUZA SILVA - OAB/SE 3502. Pelo presente, FICA NOTIFICADO(A) O(A) ADVOGADO(A) INTERESSADO(A) ACIMA IDENTIFICADO(A), no qual figura como parte e/ou procurador(a) defen"
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 1,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 377624,
+            "titulo": "PROCESSO 26.0000.2019.005970-3 - NOTIFICAÇÃO DO DESPACHO",
+            "trecho": "Advogad os Interessad os : BRUNNO ALVES DE OLIVEIRA DORIA OAB/SE 11.691, NATASHA FRAZÃO MONTORIL OAB/PA 15.161. Pelo presente, ficam NOTIFICADOS os advogados acima interessados, no qual figuram como partes e/ou procuradores/defensores nos autos do processo aci"
+          },
+          {
+            "id": 377639,
+            "titulo": "PROCESSO 26.0000.2016.001555-5 - NOTIFICAÇÃO DO DESPACHO",
+            "trecho": "Advogad o Interessad o : IZABEL CRISTINA NASCIMENTO CARNEIRO - OAB/SE 4141. Pelo presente, fica NOTIFICADA a advogada acima interessada, no qual figuram como partes e/ou procuradores/defensores nos autos do processo acima referenciado, do despacho exarado nos "
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 2
+        },
+        "amostras": [
+          {
+            "id": 461552,
+            "titulo": "PORTARIA GP Nº 2155/2022.",
+            "trecho": "## Cria Comissão Mista Temporária. Formada entre a OAB/SE e a Academia Sergipana de Letrar Jurídicas. A DIRETORIA DO CONSELHO SECCIONAL DE SERGIPE, DA ORDEM DOS ADVOGADOS DO BRASIL , no uso das suas atribuições legais e estatutárias, em conjunto com a DIRETORI"
+          },
+          {
+            "id": 933137,
+            "titulo": "PORTARIA GP Nº 1353/2025.",
+            "trecho": "Comunica suspensão de expediente e dos prazos administrativos no âmbito da OAB/SE. O PRESIDENTE DO CONSELHO SECCIONAL DE SERGIPE, DA ORDEM DOS ADVOGADOS DO BRASIL – OAB/SE, no uso das suas atribuições legais e estatutárias, Considerando o teor do Ofício Circul"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Seccional": 2
+        },
+        "amostras": [
+          {
+            "id": 958373,
+            "titulo": "PROCESSO Nº 26.0000.2024.04449-5 | DEFESA PRÉVIA",
+            "trecho": "Advogado(a) Interessado(a): V.A.S. (Procurador(a): VIANEI ANTONIO SCHMITT - OAB/BA 46883 Pelo presente, fica notificado(a) o(a) advogado(a) acima citado(a), no qual figura como parte e/ou procurador(a)/defensor(a), para, no prazo de 15 (quinze) dias, contados "
+          },
+          {
+            "id": 1141680,
+            "titulo": "PROCESSO Nº: 26.0000.2026.003742-7",
+            "trecho": "Pelo presente, fica(m) notificado(a/s) o(a) advogado(a/s) acima citado(a/s), que figura(m) como parte(s) e/ou procurador(es/as) /defensor (es/as), para que, no prazo de 15 (quinze) dias, contados a partir do primeiro dia útil seguinte a publicação deste, se ma"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 1,
+        "parecem_decisao": 1,
+        "setores": {
+          "CONSELHO ESTADUAL DA JOVEM ADVOCACIA": 1
+        },
+        "amostras": [
+          {
+            "id": 422,
+            "titulo": "Processo administrativo nº 26.0000.2018.005976-0",
+            "trecho": "Requerente: CONSELHO ESTADUAL DA JOVEM ADVOCACIA Tratam os autos de pedido formulado pelo CONSELHO ESTADUAL DA JOVEM ADVOCACIA no sentido de trazer ao âmbito do Conselho Seccional a discussão e elaboração do Plano Estadual da Jovem Advocacia. Inicialmente, cum"
+          }
+        ]
+      },
+      "Edital de Retificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Cartório de Processos Disciplinares": 1
+        },
+        "amostras": [
+          {
+            "id": 957970,
+            "titulo": "PROCESSO 26.0000.2022.003901-7 | NOTIFICAÇÃO DE DESPACHO",
+            "trecho": "ADVOGADO (S) INTERESSADO (S) : ESTER MARIANE ELOY MACEDO - OAB/BA 65195 e YURI NASCIMENTO COSTA - OAB/SE 7741 Pelo presente, fica(m) NOTIFICADO(S) O(S) ADVOGADO(S) INTERESSADO(S) ACIMA IDENTIFICADO(S), no qual figura(m) como parte(s) e/ou procurador(es)/defens"
+          }
+        ]
+      },
+      "Convocação - Pauta de Julgamentos": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1058071,
+            "titulo": "SESSÃO ORDINÁRIA DA PRIMEIRA TURMA – 07/04/2026",
+            "trecho": "Os membros integrantes da PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/SE – Afonso Carvalho de Oliva, Benedito do Espirito Santo Neto, Glaucia Conceição Borges Santos Guerra, Marcelo Sampaio de Figueiredo e Rosane da Silva Ferreira – reunir-se-ão em"
+          }
+        ]
+      }
+    }
+  }
+}
