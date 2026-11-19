@@ -48,7 +48,8 @@ CREATE TABLE IF NOT EXISTS julgados (
     is_ted_disciplinar INTEGER DEFAULT 0,
     tem_inteiro_teor INTEGER DEFAULT 0,
     inteiro_teor_pdfs_json TEXT,
-    inteiro_teor_relacionado INTEGER DEFAULT 0
+    inteiro_teor_relacionado INTEGER DEFAULT 0,
+    texto_publicado TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_julgados_orgao ON julgados(orgao_julgador_norm);
@@ -115,6 +116,9 @@ def init_db(db_path: Path = DB_PATH) -> None:
         from ted_search.inteiro_teor import garantir_esquema
 
         garantir_esquema(conn)  # bancos criados antes das colunas de inteiro teor
+        from ted_search import citacao
+
+        citacao.garantir_esquema(conn)
 
 
 def rebuild_fts(conn: sqlite3.Connection) -> None:
@@ -140,6 +144,8 @@ def conferir_fts(conn: sqlite3.Connection) -> None:
     """
     conn.execute("INSERT INTO julgados_fts(julgados_fts, rank) VALUES('integrity-check', 1);")
 
+
+from ted_search.citacao import LIMITE_NA_LISTA, SQL_TEXTO_PUBLICADO, cfoab_no_processo  # noqa: E402
 
 DISCIPLINARY_THESAURUS: dict[str, list[str]] = {
     "tergiversacao": [
@@ -497,6 +503,8 @@ def search_julgados(
             j.tem_inteiro_teor,
             j.inteiro_teor_pdfs_json,
             j.inteiro_teor_relacionado,
+            substr({SQL_TEXTO_PUBLICADO}, 1, {LIMITE_NA_LISTA}) AS texto_publicado,
+            length({SQL_TEXTO_PUBLICADO}) AS texto_publicado_chars,
             {score_expr} AS bm25_score
         {from_sql}
         WHERE {where_sql}
@@ -514,6 +522,7 @@ def search_julgados(
         d["inteiro_teor_pdfs"] = json.loads(d.pop("inteiro_teor_pdfs_json") or "[]")
         d["tem_acordao"] = bool((d.get("descricao_acordao") or "").strip() or d["tem_inteiro_teor"])
         items.append(d)
+    cfoab_no_processo(conn, items)
 
     return {
         "total": total,

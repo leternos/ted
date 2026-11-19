@@ -265,8 +265,15 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
     """Decisões do Conselho sobre inscrição, sociedades, contas ou eleições ficam no banco, mas fora da busca do TED."""
     if eh_eleitoral(setor_nome, full_text):
         return False
-    if RE_ADMINISTRATIVO.search(_sem_acento_upper(f"{titulo} {full_text[:600]}")):
-        return False
+    abertura = _sem_acento_upper(f"{titulo} {full_text[:600]}")
+    adm = RE_ADMINISTRATIVO.search(abertura)
+    if adm:
+        # "inscrição suplementar" também é infração (atuar sem ela): num processo disciplinar, a matéria é disciplinar
+        # idem "inidoneidade moral" (art. 34, XXVII) e "cancelamento de inscrição" como pena (auditoria de PI)
+        achado = adm.group(0)
+        fraco = ("INSCRICAO" in achado and "LICENCA" not in achado) or (achado.endswith("IDONEIDADE MORAL") and "INCIDENTE" not in abertura)
+        if not (fraco and re.search(r"PROCESSO\s+(?:ETICO[-\s]*)?DISCIPLINAR|\bPAD\b|REPRESENTACAO|REPRESENTAD[OA]|INFRACAO", abertura)):
+            return False
     return bool(RE_DISCIPLINAR.search(_sem_acento_upper(f"{setor_nome} {titulo} {full_text}")))
 
 

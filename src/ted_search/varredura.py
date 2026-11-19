@@ -176,7 +176,7 @@ TITULOS_DECISAO_PADRAO = ("ACORDAO", "EMENTA")
 # "Vistos, relatados e discutidos" e variantes ("Vistos e analisados os autos"), em texto sem acento
 RE_FORMULA_JULGAMENTO = re.compile(r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)")
 RE_FORMULA_COLEGIADA = re.compile(
-    r"ACORDA[MO]|UNANIMIDADE|UNANIME|POR\s+MAIORIA|(?<![A-Z])EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
+    r"ACORDA[MO]|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
     r"(?:NEG|D)(?:AR|OU|ARAM|ADO)\s+PROVIMENTO|DECIDIRAM|DECIDIU|NAO\s+(?:RE)?CONHEC|TORNA\s+PUBLICO\s+AS\s+DECISOES"
 )
 # Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
@@ -588,7 +588,13 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
             # Título ou tipo de decisão sem nenhuma fórmula de julgamento no texto: pauta, intimação de prazo,
             # despacho monocrático, lista de processos sem desfecho (auditoria de MT: 75 de 77 casos)
             texto = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
-            if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(_sem_acento(texto)):
+            plano_t = _sem_acento(texto)
+            # despacho monocrático transcrito em edital, ainda que cite ementa alheia (auditoria de CE)
+            if "TRANSCREVER O DESPACHO" in plano_t[:600]:
+                rejeitados.append({"id": pub["id"], "motivo": "despacho_transcrito", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
+                                   "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
+                continue
+            if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(plano_t):
                 rejeitados.append({"id": pub["id"], "motivo": "sem_formula_de_julgamento", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
                                    "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
                 continue

@@ -499,7 +499,10 @@ def main() -> None:
             asyncio.run(fetch_context_all_pages("EMENTA", page_size=1000, use_cache=False))
             print("Listagens atualizadas. PDFs novos do portal: rode scripts/etica_pdfs_scan.py e scripts/etica_pdfs_ocr.py.")
         with get_connection(DB_PATH) as conn:
+            from ted_search import citacao
+
             print(json.dumps(inteiro_teor.aplicar(conn), indent=2, ensure_ascii=False))
+            print(json.dumps({"texto_do_conselho_federal": citacao.gravar_texto_cfoab(conn)}, indent=2, ensure_ascii=False))
     elif args.cmd == "stats":
         init_db(DB_PATH)
         with get_connection(DB_PATH) as conn:
