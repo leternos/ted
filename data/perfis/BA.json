@@ -1,0 +1,779 @@
+{
+  "uf": "BA",
+  "id_organizacao": 5,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Decisão",
+    "Editais",
+    "Retificação",
+    "Ato de Retificação",
+    "Aditamento"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-19T19:50:51Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-09",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2019-02-25",
+        "publicacoes": 15,
+        "baixadas": 15
+      },
+      {
+        "dia": "2019-03-14",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2019-11-25",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2020-03-06",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2020-05-29",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-07-02",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2020-10-06",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2020-11-19",
+        "publicacoes": 24,
+        "baixadas": 24
+      },
+      {
+        "dia": "2021-01-11",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2021-09-01",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2021-10-14",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-03-10",
+        "publicacoes": 45,
+        "baixadas": 45
+      },
+      {
+        "dia": "2022-07-07",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2022-09-12",
+        "publicacoes": 111,
+        "baixadas": 111
+      },
+      {
+        "dia": "2023-01-31",
+        "publicacoes": 9,
+        "baixadas": 9
+      },
+      {
+        "dia": "2023-02-28",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2023-04-18",
+        "publicacoes": 26,
+        "baixadas": 26
+      },
+      {
+        "dia": "2023-12-19",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2024-02-20",
+        "publicacoes": 18,
+        "baixadas": 18
+      },
+      {
+        "dia": "2024-03-07",
+        "publicacoes": 24,
+        "baixadas": 24
+      },
+      {
+        "dia": "2024-06-17",
+        "publicacoes": 29,
+        "baixadas": 29
+      },
+      {
+        "dia": "2024-07-26",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2025-02-07",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2025-05-20",
+        "publicacoes": 27,
+        "baixadas": 27
+      },
+      {
+        "dia": "2025-06-27",
+        "publicacoes": 31,
+        "baixadas": 31
+      },
+      {
+        "dia": "2025-07-14",
+        "publicacoes": 40,
+        "baixadas": 40
+      },
+      {
+        "dia": "2026-03-17",
+        "publicacoes": 38,
+        "baixadas": 38
+      },
+      {
+        "dia": "2026-08-19",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2026-11-18",
+        "publicacoes": 47,
+        "baixadas": 47
+      }
+    ],
+    "decisoes_no_censo": 40,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 0.9,
+      "JULGAMENTO": 0.425,
+      "RECURSO": 0.15
+    },
+    "tipos": {
+      "Portaria": {
+        "publicacoes": 241,
+        "parecem_decisao": 0,
+        "setores": {
+          "DIRETORIA": 158,
+          "GABINETE DA PRESIDÊNCIA": 38,
+          "Diretoria": 26,
+          "Subseção": 19
+        },
+        "amostras": [
+          {
+            "id": 340,
+            "titulo": "PORTARIA nº. 007/2019 – GP.",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Secção da Bahia, no uso de suas atribuições, e na forma do quanto dispõe o art. 65, inciso XX, do Regimento Interno da Seccional, resolve nomear para compor o GRUPO DE TRABALHO PARA ESTUDO E IMPLANTAÇÃO DO PROGRA"
+          },
+          {
+            "id": 341,
+            "titulo": "PORTARIA nº. 008/2019 – GP.",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Secção da Bahia, no uso de suas atribuições, e na forma do quanto dispõe o art. 65, inciso XX, do Regimento Interno da Seccional, resolve nomear para compor a COMISSÃO PROVISÓRIA PARA ESTUDO DA PROPOSTA DE ALTERA"
+          },
+          {
+            "id": 5115,
+            "titulo": "PORTARIA nº. 075/2019 – GP",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Secção da Bahia, no uso de suas atribuições, e na forma do quanto dispõe o art. 65, inciso XXV, do Regimento Interno da Seccional, resolve nomear como membros da COMISSÃO DE JUIZADOS ESPECIAIS os advogados Adrian"
+          }
+        ]
+      },
+      "Editais": {
+        "publicacoes": 176,
+        "parecem_decisao": 1,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 119,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 33,
+          "SECRETARIA DE INSCRIÇÕES": 11,
+          "CÂMARA JULGADORA": 5,
+          "Conselho Pleno": 3,
+          "ÓRGÃO ESPECIAL": 2
+        },
+        "amostras": [
+          {
+            "id": 24352,
+            "titulo": "EDITAL N° 005/19",
+            "trecho": "O SECRETARIO GERAL ADJUNTO DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DA BAHIA, no uso de suas atribuições, notifica, Sr. Moisés Rosemberg Caires Alves para, querendo, no prazo regimental de 15 (quinze) dias, contados da presente publicação, oferecer suas contrar"
+          },
+          {
+            "id": 192907,
+            "titulo": "EDITAL N° 063/2019 - Convocação Sessão de Julgamento",
+            "trecho": "A QUINTA TURMA da OAB-BA, reunir-se-á em Sessão Ordinária a ser realizada no dia 10 de dezembro de 2019 (terça-feira), às 09h , no edifício-sede da OAB/BA, situado na Rua Portão da Piedade n° 16, Barris, quando serão julgados os processos abaixo especificados,"
+          },
+          {
+            "id": 193068,
+            "titulo": "Edital n° 171/2019",
+            "trecho": "Notificação - Audiência A PRESIDENTE DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DA BAHIA, no uso de suas atribuições, notifica, F.M.M. (OAB/BA 47.719) e seu advogado Felipe Mendonça Montenegro na forma do art. 137-D § 4º do Regul"
+          }
+        ]
+      },
+      "Decisão": {
+        "publicacoes": 40,
+        "parecem_decisao": 38,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 36,
+          "CÂMARA JULGADORA": 2,
+          "ÓRGÃO ESPECIAL": 2
+        },
+        "amostras": [
+          {
+            "id": 703677,
+            "titulo": "EDITAL N° 008/2024",
+            "trecho": "DÉCIMA PRIMEIRA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA Processo n° 00857/2023 Interessado(a) (s): Zilma Bonoto, C.T.S.(Advogado((a)(s), Patrono:(a)(s): (OAB-BA 14.134, Dr. Cláudio Santos de Andrade) - RELATOR: Dr. VITOR DE AZEVEDO CARDOSO. EMENTA N. 39 6 /2024/ "
+          },
+          {
+            "id": 712178,
+            "titulo": "EDITAL N° 019/2024",
+            "trecho": "SEGUNDA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA Processo n° 728/2017 Interessado(a)(s): 5a Vara Cível e Comercial da Comarca de Salvador-BA; A.F.G.R.(Advogado(a)(s), Patrono(a)(s): (OAB-BA 49.782 Dr. Marco Freitas de Carvalho) - RELATORA: Dra. DENISE RIBEIRO SANT"
+          },
+          {
+            "id": 712179,
+            "titulo": "EDITAL N° 020/2024",
+            "trecho": "TERCEIRA TURMA TRIBUNAL DE ÉTICA E DISCIPLINA Processo n° 1658/2018 Interessado(a)(s): Ex ofício TED-OAB-BA, M.S.P.(Advogado(a)(s), Defensor(a)(s) Dativo(a)(s): (OAB-BA 56.959, Dra. Ana Maria Lima Peregrino de Carvalho) - RELATORA: Dra. MANUELA IGLESIAS DURR O"
+          }
+        ]
+      },
+      "Razões Finais": {
+        "publicacoes": 39,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 39
+        },
+        "amostras": [
+          {
+            "id": 683322,
+            "titulo": "Edital n° 01095/2023 – SUPED",
+            "trecho": "Fica notificada para o exercício do múnus de Defensora Dativa, a advogada abaixo nominada para se manifestar no prazo de 15 (quinze) dias, no quanto disposto no § 2º e 8º do art. 59 , do Código de Ética e Disciplina. A disponibilização do link para consulta ao"
+          },
+          {
+            "id": 683323,
+            "titulo": "Edital n° 01096/2023 – SUPED",
+            "trecho": "Ficam notificados os advogados abaixo nominados para se manifestarem no prazo de 15 (quinze) dias úteis, no quanto disposto no § 8º do art. 59 , do Código de Ética e Disciplina. A disponibilização do link para consulta ao processo se dará pelo correio eletrôni"
+          },
+          {
+            "id": 703044,
+            "titulo": "Edital n° 00095/2024 – SUPED",
+            "trecho": "Ficam notificados os advogados abaixo nominados para se manifestarem no prazo de 15 (quinze) dias úteis, no quanto disposto no § 8º do art. 59 , do Código de Ética e Disciplina. A disponibilização do link para consulta ao processo se dará pelo correio eletrôni"
+          }
+        ]
+      },
+      "Diligência": {
+        "publicacoes": 29,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÃO DE DIREITOS E PRERROGATIVAS": 21,
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 8
+        },
+        "amostras": [
+          {
+            "id": 702708,
+            "titulo": "Edital n° 00092/2024 – SUPED",
+            "trecho": "Ficam notificados(as) Marcio Higor Pereira da Silva, José Inácio dos Santos, Maria de Brotas Araujo Souza, Silas Morais Paixão, Jose Almeida Barbosa, Suely do Vale Sena Mascarenhas, Tamires Magalhães dos Santos, Gilca Rosa Campos Souza de Assunção, para tomare"
+          },
+          {
+            "id": 702709,
+            "titulo": "Edital n° 00093/2024 – SUPED",
+            "trecho": "Fica notificado(a) o(a) advogado(a) Samara Silva Pinto-(OAB/DF 49439), para tomar conhecimento no processo nº 01595/2023, em que, figura como representante, manifestando-se no prazo de 15 (quinze) dias, sob pena de arquivamento em atendimento ao quanto dispost"
+          },
+          {
+            "id": 711783,
+            "titulo": "Edital n° 00171/2024 – SUPED",
+            "trecho": "PROCESSO N. 00073/2022 Representante: AGROTUPÃ I AGRICULTURA & NEGÓCIOS LTDA Procurador(a): NILTON CESAR TOMASI Ficam notificados acima nominados para se manifestarem no prazo de 15 (quinze) dias úteis, no quanto disposto no § 5º do art. 59 , do Código de Étic"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 17,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 9,
+          "CÂMARA JULGADORA": 6,
+          "Conselho Pleno": 2
+        },
+        "amostras": [
+          {
+            "id": 24483,
+            "titulo": "Edital n° 008/2019",
+            "trecho": "Sessão Conselho Pleno Institucional O CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DA BAHIA, reunir-se-á em Sessão Institucional a ser realizada no dia 15.03.2019 (sexta-feira), às 11h no WISH HOTEL, situado na Avenida Sete de Setembro nº 1573 – Camp"
+          },
+          {
+            "id": 24499,
+            "titulo": "Edital n° 007/2019 - CPR",
+            "trecho": "Sessão Conselho Pleno A EGRÉGIA CÂMARA DE PRERROGATIVAS DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DA BAHIA, reunir-se-á em Sessão Ordinária a ser realizada no dia 14.03.2019 (quinta-feira), às 15:30h no WISH HOTEL, situado na Avenida Sete de Setembro nº 1573 – C"
+          },
+          {
+            "id": 281695,
+            "titulo": "Edital n° 033/2020 - Convocação Julgamento Virtual Terceira Turma",
+            "trecho": "A Presidente da Terceira Turma do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, Seccional Bahia, no uso de suas atribuições legais conferidas pelo Regimento Interno do TED/BA, c/c art. 1° da Resolução n° 001/2020-TED/OAB-BA, CONVOCA seus mem"
+          }
+        ]
+      },
+      "Notificação": {
+        "publicacoes": 17,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 17
+        },
+        "amostras": [
+          {
+            "id": 1198449,
+            "titulo": "EDITAL N° 184/2026-TAC",
+            "trecho": "PROCESSO N° 00216/2026 Interessado(as): C.L.A.: Advogado(a)(s): OAB-RN 16.465, Dra. Claryssa Lacerda de Araújo Considerando a hipótese de celebração de Termo de Ajustamento de Conduta (TAC), conforme dispõe o Provimento n° 200/2020-CFOAB, fica, V. Sa., na qual"
+          },
+          {
+            "id": 1198450,
+            "titulo": "EDITAL N° 185/2026-TAC",
+            "trecho": "PROCESSO N° 01092/2026 Interessado(as): A.J.B.M.: Advogado(a)(s): OAB-PE 20.298, Dr. Adriano Jorge Barbosa de Melo Considerando a hipótese de celebração de Termo de Ajustamento de Conduta (TAC), conforme dispõe o Provimento n° 200/2020-CFOAB, fica, V. Sa., na "
+          },
+          {
+            "id": 1198451,
+            "titulo": "EDITAL N° 186/2026-TAC",
+            "trecho": "PROCESSO N° 01113/2026 Interessado(as): A.C.C.S.: Advogado(a)(s): OAB-RJ 112.384, Dra. Alessandra Cristina Cavalcanti Sabino Considerando a hipótese de celebração de Termo de Ajustamento de Conduta (TAC), conforme dispõe o Provimento n° 200/2020-CFOAB, fica, V"
+          }
+        ]
+      },
+      "Arquivamento": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 12
+        },
+        "amostras": [
+          {
+            "id": 702705,
+            "titulo": "Edital n° 00091/2024 – SUPED",
+            "trecho": "Fica notificado Adailton dos Santos Barros, na qualidade de representante, e seu patrono(a) o(a) advogado(a) Dr. Cláudio Sergio Fonseca Moreira-(OAB/BA 65733), para tomar conhecimento do despacho exarado no processo nº 00460/2024. A disponibilização do link pa"
+          },
+          {
+            "id": 711706,
+            "titulo": "Edital n° 00188/2024 – SUPED",
+            "trecho": "PROCESSO N. 00925/2023 Representante: CARLOS ALBERTO SILVA Fica notificado o acima nominado para tomar conhecimento da decisão que determinou o arquivamento do processo em que figuram, respectivamente, como Representante, manifestando-se, querendo, no prazo de"
+          },
+          {
+            "id": 778807,
+            "titulo": "Edital n° 01144/2024 – SUPED",
+            "trecho": "PROCESSO Nº 00037/2023 Representado(a): A.L.P.T Patrono: Dr. ANDRE LUIZ PINTO TEIXEIRA - OAB/BA: (32834) Fica notificado(a) o(a) advogado(a) acima nominado(a) para tomar conhecimento da decisão que determinou o arquivamento do processo, manifestando-se, queren"
+          }
+        ]
+      },
+      "Defesa Prévia": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 12
+        },
+        "amostras": [
+          {
+            "id": 702913,
+            "titulo": "Edital n° 00090/2024 – SUPED",
+            "trecho": "PROCESSO Nº 00420/2024 Representado(a): K.O.B.B (OAB/BA: 10237) Patrono: KELSEN OLAV BATISTA BRUNO Fica notificado(a) o(a) advogado(a) acima nominado(a) para se manifestar no prazo de 15 (quinze) dias úteis, no quanto disposto nos §§ 1º, 3º e 4º do art. 59, do"
+          },
+          {
+            "id": 711748,
+            "titulo": "Edital n° 00190/2024 – SUPED",
+            "trecho": "Fica notificado para o exercício do múnus de Defensor Dativo, o advogado abaixo nominado para se manifestar no prazo de 15 (quinze) dias, no quanto disposto nos §§ 1º, 2º, 3º e 4º do art. 59 , do Código de Ética e Disciplina. A disponibilização do link para co"
+          },
+          {
+            "id": 712266,
+            "titulo": "Edital n° 00191/2024 – SUPED",
+            "trecho": "PROCESSO Nº 00102/2021 Representado(a): B.G.S (OAB/BA: 41174) Patrono(a): Dr. BRASILINO GOMES DE SALES Ficam notificados os Advogados acima nominados para se manifestarem no prazo de 15 (quinze) dias úteis, no quanto disposto nos §§ 1º, 3º e 4º do art. 59 , do"
+          }
+        ]
+      },
+      "Audiência": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 12
+        },
+        "amostras": [
+          {
+            "id": 758459,
+            "titulo": "Edital n° 00789/2024 – SUPED",
+            "trecho": "Notifica Joaquim Ribeiro Ruas Gaspar Júnior, representante, para comparecer à Audiência de Instrução, híbrida na Praça Dom Pedro II, s/nº (Fórum Ruy Barbosa, 1º andar, sala 103), Nazaré, e através da plataforma ZOOM MEETINGS, designada nos autos do processo nº"
+          },
+          {
+            "id": 758460,
+            "titulo": "Edital n° 00790/2024 – SUPED",
+            "trecho": "Notifica R.C.S.A, através de sua patrona a advogada Rita de Cássia da Silva Alves(OAB/BA 12111), para comparecer à Audiência de Instrução, híbrida na Praça Dom Pedro II, s/nº (Fórum Ruy Barbosa, 1º andar, sala 103), Nazaré, e através da plataforma ZOOM MEETING"
+          },
+          {
+            "id": 758461,
+            "titulo": "Edital n° 00791/2024 – SUPED",
+            "trecho": "Notifica G.C.B. através de seu defensor dativo o advogado Felipe Caires da Costa Pinto(OAB/BA 76086), para comparecer à Audiência de Instrução, híbrida na Praça Dom Pedro II, s/nº (Fórum Ruy Barbosa, 1º andar, sala 103), Nazaré, e através da plataforma ZOOM ME"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 11,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÃO DE DIREITOS E PRERROGATIVAS": 11
+        },
+        "amostras": [
+          {
+            "id": 1062792,
+            "titulo": "Edital n° 00397/2026 – CDP",
+            "trecho": "Processo nº 12029/2025 Requerente: J.G.S. Advogado(a): Dr. Josenildes Gomes da Silva – OAB/BA 47.541 Ficam notificados(as) os(as) advogados(as) acima nominados(as) para tomarem conhecimento do despacho exarado no referido processo e, querendo, manifestar-se, n"
+          },
+          {
+            "id": 1140856,
+            "titulo": "Edital n° 01700/2026 – CDP",
+            "trecho": "Processo nº 18492/2025 Requeridos: A.A.H.C; S.F.S; D.S.F; M.R.M; V.O.J; I.R.S; J.F.S.J; D.R.N.O; D.M.R.Q; C.C.A.C; I.A.L.T. Advogado(a): Dr. Alexandre Araújo Hardman Cortes – OAB/SE 8477 : Dra. Suziene Freitas dos Santos – OAB/SE 14.337 : Dr. David dos Santos "
+          },
+          {
+            "id": 1141381,
+            "titulo": "Edital n° 01714/2026 – CDP",
+            "trecho": "Processo nº 10810/2026 Requerente: M.C.S. Advogado(a): Dra. Mariana Carvalho Santos – OAB/BA 55.272 Fica notificado(a) o(a) advogado(a) acima nominado(a) para tomar conhecimento do despacho exarado no referido processo e, querendo, manifestar-se, no prazo de 1"
+          }
+        ]
+      },
+      "Provas": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 7
+        },
+        "amostras": [
+          {
+            "id": 778749,
+            "titulo": "Edital n° 01159/2024 – SUPED",
+            "trecho": "Ficam notificados Flaviana Barbosa de Santana e Rute Brito de Santana, para tomarem conhecimento nos processos nºs 00099/2024 e 01330/2024, em que, respectivamente, figuram como representantes, manifestando-se no prazo de 15 (quinze) dias úteis, sob pena de ar"
+          },
+          {
+            "id": 779136,
+            "titulo": "Edital n° 01165/2024 – SUPED",
+            "trecho": "PROCESSO Nº 00913/2023 Representado(a): J.C.S / Y.F.B Patrono(a): João de Castro Souza OAB/BA (52037) / Yasmim Freitas Brasil OAB/BA (60624) Representante: Diogleiry Cristiane Farias Gonzaga Ficam notificados(as) os(as) advogados(as) acima nominados(as) para s"
+          },
+          {
+            "id": 869710,
+            "titulo": "Edital n° 00193/2025 – SUPED",
+            "trecho": "Fica notificado(a) o(a) advogado abaixo nominado(a) para se manifestar no prazo de 15 (quinze) dias úteis, no quanto disposto nos §§ 4º, 5º e 6º do art. 59 , do Código de Ética e Disciplina. E se tem interesse na realização de audiência conciliatória. A dispon"
+          }
+        ]
+      },
+      "Manifestação de defesa": {
+        "publicacoes": 5,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 5
+        },
+        "amostras": [
+          {
+            "id": 702948,
+            "titulo": "Edital n° 00080/2024 – SUPED",
+            "trecho": "Ficam notificados Welisson Vaz da Silva, Marinalva Fragoso de Souza, Patricia Bispo Dos Santos, Agnaldo Rodrigues Gonçalves, Antonio José de Souza Alves, Marineide Jesus dos Santos, Agnaldo Moreira da Silva, Márcia Verena Castelo Branco Gaspar, Elizabeth Braz "
+          },
+          {
+            "id": 703538,
+            "titulo": "Edital n° 00100/2024 – SUPED",
+            "trecho": "Ficam notificados os representantes Fernanda Silva Arize Santos, Hebert Luiz Ramos Costa, para se manifestarem no prazo de 15 (quinze) dias nos processos nº 1335/2019, 00543/2022, em atendimento quanto disposto nos § 6º do art. 57 , do Regimento Interno do Tri"
+          },
+          {
+            "id": 779137,
+            "titulo": "Edital n° 01166/2024 – SUPED",
+            "trecho": "PROCESSO Nº 00249/2023 Representante: Paulo de Jesus Fica notificado(a) o(a) representante acima nominado(a) para tomar conhecimento do despacho exarado no processo, manifestando-se, querendo, no prazo de 15 (quinze) dias úteis, em atendimento ao quanto dispos"
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 5,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 4,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 1141406,
+            "titulo": "EDITAL N° 025/2026",
+            "trecho": "Processo Incidental n° 02121/2024 Interessado(a)(s): P.C.S.J.; Advogado(a)(s): OAB-BA 53880, Dr. Paulo César dos Santos Júnior; Defensora Dativa: Dra. Cynthia Vila Nova Nunes de Oliveira, OAB-BA 74.456 - RELATORA: CONSELHEIRA VIVIAN VASCONCELOS DOS REIS SANTOS"
+          },
+          {
+            "id": 1198344,
+            "titulo": "EDITAL N° 194/2026",
+            "trecho": "Processo nº 01379/2023 Interessado(a)(s): T.C.A.; Advogado(a)(s): Dra. Thalita Celestino Apolinário, OAB-BA 57.198 Vistos, etc. Trata-se de petição da Representada (fls. 102/107), instruída com cópia do Alvará Eletrônico (fls. 108) e com comprovante de transfe"
+          },
+          {
+            "id": 1198345,
+            "titulo": "EDITAL N° 195/2026",
+            "trecho": "Processo nº 00773/2022 Interessado(a)(s): J.A.S.S.; Advogado(a)(s): Dr. Jailson Antonio Silva Santos, OAB-BA 13.005 Vistos, etc. Trata-se de petições apresentadas na fase de execução da sanção disciplinar: (i) petição do Representado, protocolada em 16/11/2026"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 4,
+        "parecem_decisao": 1,
+        "setores": {
+          "DIRETORIA": 2,
+          "GABINETE DA PRESIDÊNCIA": 1,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 342,
+            "titulo": "RESOLUÇÃO Nº 02/2019 - DE.",
+            "trecho": "Dispõe sobre alteração do prazo de pagamento com desconto das anuidades referentes à Jovem Advocacia, no exercício de 2018. A DIRETORIA EXECUTIVA DA ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL DO ESTADO DA BAHIA, reunida em 07 de janeiro de 2019, consoante o disp"
+          },
+          {
+            "id": 292258,
+            "titulo": "RESOLUÇÃO nº. 003/2021 – DE",
+            "trecho": "Dispõe sobre alteração do prazo de pagamento com desconto das anuidades referentes à Jovem Advocacia, no exercício de 2019. A DIRETORIA EXECUTIVA DA ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL DO ESTADO DA BAHIA, reunida em 08 de janeiro de 2021, consoante o disp"
+          },
+          {
+            "id": 562347,
+            "titulo": "RESOLUÇÃO n. 004/2023 - CP",
+            "trecho": "Disciplina o funcionamento do Sistema Estadual de Fiscalização Profissional no âmbito da OAB/BA. A ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL BAHIA, no uso das atribuições que lhe são conferidas pelo art. 58, I, da Lei n. 8.906, de 4 de julho de 1994 - Estatuto "
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 4
+        },
+        "amostras": [
+          {
+            "id": 1141297,
+            "titulo": "Edital n° 01706/2026 – SUPED",
+            "trecho": "PROCESSO Nº 00357/2022 Representante: Sr. João Batista de Oliveira Representado(a): A.S.P Defensora Dativa: Dra. Catia Pereira Santos Guimarães Pereira – OAB/BA 78716 Ficam notificadas as partes citadas acima para comparecerem à audiência de instrução, de form"
+          },
+          {
+            "id": 1141298,
+            "titulo": "Edital n° 01707/2026 – SUPED",
+            "trecho": "PROCESSO Nº 00754/2024 Representante: Sra. Valdirene Reis de Souza Representado(a): M.S.C.L Patrona: Dra. Mirian Soraya Carneiro Lamberti – OAB/BA 28749 Ficam notificadas as partes citadas acima para comparecerem à audiência de instrução, de forma híbrida, pod"
+          },
+          {
+            "id": 1141299,
+            "titulo": "Edital n° 01708/2026 – SUPED",
+            "trecho": "PROCESSO Nº 00677/2025 Representante: Sra. Marilza Souza Arandiba Representado(a): L.S.C Patrona: Dra. Lucinea Souza Cerqueira – OAB/BA 27466 Ficam notificadas as partes citadas acima para comparecerem à audiência de instrução, de forma híbrida, podendo o comp"
+          }
+        ]
+      },
+      "Contrarrazões": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "CÂMARA JULGADORA": 3
+        },
+        "amostras": [
+          {
+            "id": 702916,
+            "titulo": "EDITAL N° 0094/2024",
+            "trecho": "NOTIFICAÇÃO – CONTRARRAZÕES A CONSELHEIRA MEMBRO DA COMISSÃO DE ADMISSIBILIDADE DO CONSELHO SECCIONAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DA BAHIA, no uso de suas atribuições, notifica Mirian Oliveira dos Santos, para, querendo, no prazo regimental de 15 ("
+          },
+          {
+            "id": 703206,
+            "titulo": "EDITAL N° 0099/2024",
+            "trecho": "NOTIFICAÇÃO – CONTRARRAZÕES A CONSELHEIRA MEMBRO DA COMISSÃO DE ADMISSIBILIDADE DO CONSELHO SECCIONAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DA BAHIA, no uso de suas atribuições, notifica Augusto Gonçalves Góes, para, querendo, no prazo regimental de 15 (quin"
+          },
+          {
+            "id": 703675,
+            "titulo": "EDITAL N° 0101/2024",
+            "trecho": "NOTIFICAÇÃO – CONTRARRAZÕES A CONSELHEIRA MEMBRO DA COMISSÃO DE ADMISSIBILIDADE DO CONSELHO SECCIONAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DA BAHIA, no uso de suas atribuições, notifica Rosângela Noronha Teixeira, para, querendo, no prazo regimental de 15 ("
+          }
+        ]
+      },
+      "Manifestação defesa e provas": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 3
+        },
+        "amostras": [
+          {
+            "id": 779138,
+            "titulo": "Edital n° 01164/2024 – SUPED",
+            "trecho": "PROCESSO Nº 00913/2023 Representante: Diogleiry Cristiane Farias Gonzaga OAB/BA (64371) Fica notificado(a) o(a) Advogada acima nominado(a) para se manifestar, querendo, no prazo de 15 (quinze) dias úteis, em atendimento ao quanto disposto nos § 6º do art. 57 ,"
+          },
+          {
+            "id": 869702,
+            "titulo": "Edital n° 00192/2025 – SUPED",
+            "trecho": "PROCESSO Nº 01642/2023 Representante: JOSY LUISA DOS SANTOS SOUZA GUIMARÃES (OAB/BA 53227) Fica notificado(a) o(a) representante acima nominado(a) para se manifestar, querendo, no prazo de 15 (quinze) dias úteis, em atendimento ao quanto disposto nos § 6º do a"
+          },
+          {
+            "id": 936512,
+            "titulo": "Edital n° 00755/2025 – SUPED",
+            "trecho": "PROCESSO Nº 00029/2024 Representante: LUIZ CLAUDIO DE OLIVEIRA BRAGA Fica notificado(a) o(a) representante acima nominado(a) para se manifestar, querendo, no prazo de 15 (quinze) dias úteis, em atendimento ao quanto disposto nos § 6º do art. 57 , do Regimento "
+          }
+        ]
+      },
+      "Produção de Provas": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 3
+        },
+        "amostras": [
+          {
+            "id": 947230,
+            "titulo": "Edital n° 00845/2025 – SUPED",
+            "trecho": "PROCESSO Nº 32/2020 Representante: COELBA - COMPANHIA DE ELETRICIDADE DO ESTADO DA BAHIA Patrono(a): DENNER DE BARROS E MASCARENHAS BARBOSA – OAB/BA 60908 Fica notificado(a) o(a) representante acima nominado(a) para tomar conhecimento do despacho exarado no pr"
+          },
+          {
+            "id": 947248,
+            "titulo": "Edital n° 00850/2025 – SUPED",
+            "trecho": "PROCESSO Nº 00459/2023 Representado(a): M. R. W Patrono(a): MÁRCIA REJANE WAGNER – OAB/BA 59571 Fica notificado(a) o(a) advogado(a) acima nominado(a) para se manifestar no prazo de 15 (quinze) dias úteis, no quanto disposto nos §§ 4º, 5º e 6º do art. 59 , do C"
+          },
+          {
+            "id": 947249,
+            "titulo": "Edital n° 00851/2025 – SUPED",
+            "trecho": "PROCESSO Nº 01166/2023 Representado(a): E. P. Q Defensor(a) Dativo(a): SANDRA HELENA DA SILVA ROCHA – OAB/BA 70449 Fica notificado(a) para o exercício do múnus de Defensor Dativo, o(a) advogado(a) acima nominado(a) para se manifestar no prazo de 15 (quinze) di"
+          }
+        ]
+      },
+      "Sessão de Julgamento": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 2
+        },
+        "amostras": [
+          {
+            "id": 947231,
+            "titulo": "EDITAL N° 058/2025 CONVOCAÇÃO E NOTIFICAÇÃO SESSÃO JULGAMENTO 10a TURMA – HÍBRIDA",
+            "trecho": "O PRESIDENTE da Décima Turma do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, Seccional Bahia, no uso de suas atribuições legais conferidas pelo Regimento Interno do TED/BA, c/c art. 1° da Resolução n° 001/2020-TED/OAB-BA, CONVOCA os seus Me"
+          },
+          {
+            "id": 1141398,
+            "titulo": "EDITAL N° 103/2026 - CONVOCAÇÃO E NOTIFICAÇÃO SESSÃO JULGAMENTO 13a TURMA – HÍBRIDA",
+            "trecho": "O PRESIDENTE da DÉCIMA TERCEIRA TURMA do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, Seccional Bahia, no uso de suas atribuições legais conferidas pelo Regimento Interno do TED/BA, c/c art. 1° da Resolução n° 001/2020-TED/OAB-BA, CONVOCA o"
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE INSCRIÇÕES": 2
+        },
+        "amostras": [
+          {
+            "id": 947246,
+            "titulo": "EDITAL Nº 42/2025-SI",
+            "trecho": "A SECRETARIA GERAL DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO DA BAHIA faz saber para os fins previstos no Estatuto da Advocacia (Lei nº 8.906 de 04 de julho de 1994) que requereram inscrição nos Quadros desta Seccional: A) Como ADVOGADOS (AS) (Inscrição Princip"
+          },
+          {
+            "id": 1198062,
+            "titulo": "EDITAL Nº 97/2026-SI",
+            "trecho": "A SECRETARIA GERAL DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO DA BAHIA faz saber para os fins previstos no Estatuto da Advocacia (Lei nº 8.906 de 04 de julho de 1994) que requereram inscrição nos Quadros desta Seccional: A) Como ADVOGADOS (AS) (Inscrição Princip"
+          }
+        ]
+      },
+      "Aditamento": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "ÓRGÃO ESPECIAL": 1,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1062824,
+            "titulo": "Edital nº 014/2026 - Convocação Sessão Órgão Especial – híbrida",
+            "trecho": "ADITAMENTO O PRESIDENTE do ÓRGÃO ESPECIAL DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DA BAHIA no uso de suas atribuições legais conferidas pelo Regimento Interno desta Seccional, c/c os arts. 1° e 2° da Resolução 016/2020-DE, CONVOCA os Conselheiros e Conselheira"
+          },
+          {
+            "id": 1141395,
+            "titulo": "EDITAL N° 090/2026 CONVOCAÇÃO E NOTIFICAÇÃO SESSÃO JULGAMENTO 12a TURMA – Híbrida",
+            "trecho": "O PRESIDENTE DA DÉCIMA SEGUNDA TURMA do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, Seccional Bahia, no uso de suas atribuições legais conferidas pelo Regimento Interno do TED/BA c/c art. 1° da Resolução n° 001/2020-TED/OAB-BA, CONVOCA os "
+          }
+        ]
+      },
+      "Intimação Produção de Provas": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE PROCESSOS ÉTICO DISCIPLINARES": 2
+        },
+        "amostras": [
+          {
+            "id": 1141244,
+            "titulo": "Edital n° 01703/2026 – SUPED",
+            "trecho": "PROCESSO Nº 01799/2026 Representante: Sr.(a) EDNA SANTOS DE BARROS Fica notificado(a) o(a) representante acima nominado(a) para tomar conhecimento no processo, manifestando-se no prazo de 15 (quinze) dias úteis, sob pena de arquivamento, em atendimento ao quan"
+          },
+          {
+            "id": 1197541,
+            "titulo": "Edital n° 02561/2026 – SUPED",
+            "trecho": "PROCESSO Nº 02441/2026 Representante: Sr.(a) Francisco de Assis Cândido da Silva Fica notificado(a) o(a) representante acima nominado(a) para tomar conhecimento no processo, manifestando-se no prazo de 15 (quinze) dias úteis, sob pena de arquivamento, em atend"
+          }
+        ]
+      },
+      "Instrução Normativa": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "GABINETE DA PRESIDÊNCIA": 1
+        },
+        "amostras": [
+          {
+            "id": 224913,
+            "titulo": "Instrução Normativa nº. 01/2020 – GP",
+            "trecho": "Estabelece a rotina das Secretarias do Conselho Seccional, Órgão Especial, Tribunal de Ética e Disciplina e Câmaras Julgadoras da OAB Seção Bahia, quanto à expedição das notificações nos processos autuados. O Presidente da Ordem dos Advogados do Brasil - Seção"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1198249,
+            "titulo": "EDITAL N° 193/2026 NOTIFICAÇÃO",
+            "trecho": "DÉCIMA TERCEIRA TURMA - TED-OAB-BA Processo n° 00043/2025 Interessados: M.T.F.; Advogado(a)(s): OAB-BA 15.127, Dr. Márcio Teixeira da Fonseca M.B.O.; Advogado(a)(s): OAB-BA 15.127; Defensor Dativo: Dr. Alexandre do Prado Ferreira de Oliveira, OAB-BA 83.680 REL"
+          }
+        ]
+      },
+      "Ato de Retificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1198448,
+            "titulo": "EDITAL N° 186/2026 – Retificação*",
+            "trecho": "O TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DO ESTADO DA BAHIA, torna público, para conhecimento das autoridades judiciárias e de terceiros, que os advogados RENATA CRISTINA BRANDÃO MARTINS COSTA (OAB-BA 72.946), VILMA FREITAS SANT"
+          }
+        ]
+      }
+    }
+  },
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA",
+    "EDITAL DECISAO"
+  ],
+  "observacoes": "BA: censo de 30 dias-amostra (2019-2026, 651 publicações) com 40 decisões; recall ACORDAO 100%, EMENTA 100%, DECISAO 90%, sem sobras. Todas as 40 estão no tipo 'Decisão' (36 setor TRIBUNAL DE ÉTICA E DISCIPLINA, 2 CÂMARA JULGADORA, 2 ÓRGÃO ESPECIAL), publicadas como 'EDITAL DECISÃO n° NNN/AAAA' (em 2024-03 ainda 'EDITAL N° 019/2024'), com cabeçalho do colegiado, processo, relator, EMENTA N. xxx/AAAA e texto do acórdão. Quem julga: TED/OAB-BA em 1ª a 13ª Turmas, Turma Especializada de Suspensão Preventiva (TESUP), Órgão Consultivo do TED (consultas, EMENTA .../OCEP); no Conselho Seccional, Câmaras Julgadoras (1ª a 3ª, recursos; EMENTA .../1a CJ) e Órgão Especial do Conselho Pleno (EMENTA .../OE); Conselho Pleno (exclusão). Volume alto: a numeração chega a Edital Decisão 257/2026 em agosto e 163/2025 em julho; lotes de 5 a 11 por dia de edição. Decisões no censo de 2024-03 a 2026-08; nenhuma decisão nos dias-amostra de 2019-2023 (no censo; vale conferir na coleta, pode ser lacuna de amostra ou de publicação como Decisão). Tipo 'Editais' (176; setor SPED/TED) mistura: Edital de Suspensão do Exercício da Advocacia (TED torna pública a sanção cumprindo decisão, não é acórdão), editais de notificação com DESPACHO do relator (não decisão), notificação de arquivamento: mantido como tipo amplo, só entra se o texto confirmar. Tipos 'Despacho' (EDITAL N° 194/2026 'Vistos, etc.', decisões monocráticas do relator) e 'Arquivamento' (SPED notifica arquivamento) não são decisão. Ruído: Portaria (241), Razões Finais, Diligência, Pauta de Julgamentos, Notificação, Defesa Prévia, Audiência, Provas, Resolução. Sem indício de ementário em site próprio nem de decisões só em PDF.",
+  "modo": "censo"
+}

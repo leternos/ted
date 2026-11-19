@@ -349,6 +349,13 @@ async def api_get_julgado(
     rec["partes"] = json.loads(rec.pop("partes_json") or "[]")
     rec["is_ted_disciplinar"] = bool(rec["is_ted_disciplinar"])
     rec["tem_inteiro_teor"] = bool(rec["tem_inteiro_teor"])
+    rec["inteiro_teor_relacionado"] = bool(rec.get("inteiro_teor_relacionado"))
+    if not rec.get("texto_publicado") and str(rec.get("fonte") or "").startswith("DEOAB_"):
+        rec["texto_publicado"] = rec.get("inteiro_teor_texto")  # Seccional: o texto da publicação no Diário
+    from ted_search.citacao import cfoab_no_processo
+
+    cfoab_no_processo(conn, [rec])
+    rec["inteiro_teor_pdfs"] = json.loads(rec.pop("inteiro_teor_pdfs_json", None) or "[]")
     rec["tem_acordao"] = bool((rec.get("descricao_acordao") or "").strip() or rec["tem_inteiro_teor"])
     return rec
 

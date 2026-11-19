@@ -1,0 +1,231 @@
+{
+  "uf": "SP",
+  "id_organizacao": 25,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "ACORDAO",
+    "ACÓRDÃO",
+    "EMENTA"
+  ],
+  "validado": false,
+  "evidencia": {
+    "gerado_em": "2026-11-18T03:23:39Z",
+    "dias_censo": [
+      {
+        "dia": "2024-07-03",
+        "publicacoes": 407,
+        "baixadas": 407
+      },
+      {
+        "dia": "2025-02-04",
+        "publicacoes": 651,
+        "baixadas": 600
+      },
+      {
+        "dia": "2025-06-30",
+        "publicacoes": 430,
+        "baixadas": 430
+      }
+    ],
+    "decisoes_no_censo": 363,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 0.6336,
+      "DECISAO": 0.1791,
+      "JULGAMENTO": 0.0496,
+      "RECURSO": 0.2782
+    },
+    "tipos": {
+      "Edital de Chamamento": {
+        "publicacoes": 1036,
+        "parecem_decisao": 5,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1036
+        },
+        "amostras": [
+          {
+            "id": 766708,
+            "titulo": "EDITAL DE CHAMAMENTO - VIGÉSIMA PRIMEIRA TURMA DISCIPLINAR DO TED OAB/SP.",
+            "trecho": "25.0886.2023.004180-6 - Pelo presente edital, fica o(a) advogado(a) R. S. N. F. (Rebeca Soccio Nogueira Fabris) – OAB/SP 331.130, cientificado de que A VIGÉSIMA PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO DE SÃO PA"
+          },
+          {
+            "id": 766709,
+            "titulo": "EDITAL DE CHAMAMENTO - VIGÉSIMA PRIMEIRA TURMA DISCIPLINAR DO TED OAB/SP.",
+            "trecho": "25.0886.2023.004180-6 - Pelo presente edital, fica o(a) advogado(a) R. K. K. G. (Rubens Kiko Klaus Gonzales) – OAB/SP 373.125, cientificado de que A VIGÉSIMA PRIMEIRA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO DE SÃO PAULO"
+          },
+          {
+            "id": 766710,
+            "titulo": "EDITAL DE CHAMAMENTO - VIGÉSIMA PRIMEIRA TURMA DISCIPLINAR DO TED OAB/SP.",
+            "trecho": "25.0886.2024.017868-6 – Pelo presente edital, fica o(a) advogado(a) F. B. L. (Fabiana Barbassa Luciano) - OAB/SP 320.144, notificado(a) a manifestar em assunto de seu interesse, no prazo de 15 (quinze) dias, a partir desta publicação. O protocolo deverá ser re"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 363,
+        "parecem_decisao": 332,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 253,
+          "Câmaras Recursais": 110
+        },
+        "amostras": [
+          {
+            "id": 766769,
+            "titulo": "Acórdão nº 322/2024 - 25ª Turma do TED – Fernandópolis",
+            "trecho": "PD 25.0886.2023.007208-6 EMENTA: REPRESENTAÇÃO ÉTICO-DISCIPLINAR - 63ª SUBSECÇÃO DA ORDEM DOS ADVOGADOS DO BRASIL JALES-SP, INFRAÇÃO AO ARTIGO 34, INCISO XI. DO ESTATUTO DA ADVOCACIA E ORDEM DOS ADVOGADOS DO BRASIL. RENÚNCIA NOS AUTOS DE PROCESSO JUDICAL SEM A"
+          },
+          {
+            "id": 766770,
+            "titulo": "Acórdão nº 323/2024 - 25ª Turma do TED – Fernandópolis",
+            "trecho": "PD 25.0886.2024.001074-3 EMENTA: REPRESENTAÇÃO POR OFÍCIO DE JUIZ DE DIREITO. CONFIGURADA INFRAÇÃO AO ART. 34, INCISO I, DO EAOAB. ADVOGADO QUE EXERCEU A PROFISSÃO QUANDO IMPEDIDO DE FAZÊ-LO. ELEMENTOS DE PROVA CARREADOS AOS AUTOS DO PROCESSO DISCIPLINAR QUE A"
+          },
+          {
+            "id": 766812,
+            "titulo": "ACÓRDÃO Nº 10299 – SEGUNDA TURMA DISCIPLINAR DO TED",
+            "trecho": "EMENTA: Representação Improcedente – Falta de Comprovação Não Comprovação de Culpa Grave – Absolvição do Representado - Arquivamento Vistos, relatados e discutidos estes autos de processo disciplinar nº 25.0886.2023.003138-3, acordam os membros da Segunda Turm"
+          }
+        ]
+      },
+      "Migração Processo Eletrônico": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "Câmaras Recursais": 12
+        },
+        "amostras": [
+          {
+            "id": 867889,
+            "titulo": "MIGRAÇÃO PROCESSO ELETRÔNICO - CÂMARAS RECURSAIS",
+            "trecho": "Recurso Processo 29723/24 – Origem: PD 07039R0000122019 – Pelo presente edital ficam os (as): Representado: Dr. Flávio Cesar da Cruz Rosa - OAB/SP 160.901. Entidade Recorrida: 1º Distrito Policial de Diadema/SP. Desse modo, fica V.Sa. cientificado(a) da conver"
+          },
+          {
+            "id": 867890,
+            "titulo": "MIGRAÇÃO PROCESSO ELETRÔNICO - CÂMARAS RECURSAIS",
+            "trecho": "Recurso Processo: CR: 29725/24 - Origem: PD 07R0000402020 – Pelo presente edital ficam os (as): Representante: Dr. Fábio Frederico de Freitas Tertuliano - OAB/SP 195.284. Representado: M.P.J. - OAB/SP 80.445 (Advs. Drs. Rafael Medeiros Coronati Rios - OAB/SP 2"
+          },
+          {
+            "id": 867891,
+            "titulo": "MIGRAÇÃO PROCESSO ELETRÔNICO - CÂMARAS RECURSAIS",
+            "trecho": "Recurso Processo: CR: 29726/24 – PD: 07R0000662019 – Pelo presente edital ficam os (as): Representante: Sr. Gefferson Alves Vidal. Representado: Dr. Alessandro Rodrigo Ferreira - OAB/SP 346.860. Desse modo, fica V.Sa. cientificado(a) da conversão do processo f"
+          }
+        ]
+      },
+      "Ata": {
+        "publicacoes": 11,
+        "parecem_decisao": 1,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 11
+        },
+        "amostras": [
+          {
+            "id": 766768,
+            "titulo": "Ata da Sessão de Julgamento- 25ª Turma do TED – Fernandópolis-SP",
+            "trecho": "ATA DA 56ª SESSÃO ORDINÁRIA DA VIGÉSIMA QUINTA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL – SECIONAL SÃO PAULO DATA: 28 de junho de 2024. LOCAL: Plataforma Zoom Meeting HORÁRIO: Oito horas e trinta minutos RELATORES PARTICIPANTES:"
+          },
+          {
+            "id": 867350,
+            "titulo": "Ata da 241ª Sessão Ordinária da Oitava Turma Disciplinar do Tribunal de Ética e Disciplina – Araraquara.",
+            "trecho": "DATA: 29 de novembro de 2024. LOCAL: Av. Bruno Ópice, 271 HORÁRIO: Nove horas Participantes Theodósio Moreira Pugliesi (aa) Alessandro A. F. de Mattos Antonio Carlos Venturin Antonio Sasso Garcia Filho Bento Ornelas Sobrinho Carlos Alberto Marini Daniel de Luc"
+          },
+          {
+            "id": 867409,
+            "titulo": "ATA DE JULGAMENTO - 5ª TURMA DISCIPLINAR DO TED",
+            "trecho": "166ª Sessão Ordinária da Quinta Turma Disciplinar do TED. DATA: 24 de junho de 2024. LOCAL: Ambiente Virtual. HORÁRIO: 09h00min. Participantes: Alexandre Vieira Gama Ana Alice de Siqueira Silva Antonio Miguel Aith Neto Bruno Angelo Vasconcelos e Souza Carlos A"
+          }
+        ]
+      },
+      "Edital de Suspensão": {
+        "publicacoes": 9,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 9
+        },
+        "amostras": [
+          {
+            "id": 937271,
+            "titulo": "EDITAL DE SUSPENSÃO – VIGÉSIMA TURMA DISCIPLINAR DO TED",
+            "trecho": "A Diretora Secretária-Geral torna público que no Processo Disciplinar no 25.0000.2022.000170-2 (20R0000532016) – 20a Turma, foi aplicada ao(a) advogado(a) Alexandra Silveira de Camargo, inscrito(a) nesta Seção, para a Comarca de Sorocaba, sob o no 225.564, a p"
+          },
+          {
+            "id": 937272,
+            "titulo": "EDITAL DE SUSPENSÃO – VIGÉSIMA TURMA DISCIPLINAR DO TED",
+            "trecho": "A Diretora Secretária-Geral torna público que no Processo Disciplinar no 25.0000.2022.000170-2 (20R0000532016) – 20a Turma, foi aplicada ao(a) advogado(a) Evaldo Renato de Oliveira, inscrito(a) nesta Seção, para a Comarca da Capital, sob o no 79.580, a pena de"
+          },
+          {
+            "id": 937273,
+            "titulo": "EDITAL DE SUSPENSÃO – VIGÉSIMA TURMA DISCIPLINAR DO TED",
+            "trecho": "A Diretora Secretária-Geral torna público que no Processo Disciplinar no 25.0000.2023.010449-7 (24R0002232018) – 20a Turma, foi aplicada ao(a) advogado(a) Reginaldo Sousa Ribeiro, inscrito(a) nesta Seção, para a Subseção de Santo Amaro, sob o no 271.280, a pen"
+          }
+        ]
+      },
+      "Certidão": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Secretaria-Geral": 3
+        },
+        "amostras": [
+          {
+            "id": 767212,
+            "titulo": "C E R T I D Ã O",
+            "trecho": "A Diretora Secretária-Geral da Ordem dos Advogados do Brasil, Seção de São Paulo, C E R T I F I C A, o licenciamento do i.Secretário-Geral Adjunto eleito da 61ª Subseção de Mogi Guaçu, Dr. Rodolfo de Oliveira, no período de 24/6 a 07/10/2024, para concorrer ao"
+          },
+          {
+            "id": 767213,
+            "titulo": "C E R T I D Ã O",
+            "trecho": "A Diretora Secretária-Geral da Ordem dos Advogados do Brasil, Seção de São Paulo, C E R T I F I C A, o licenciamento do i. Secretário-Geral eleito da 156ª Subseção de Guararapes, Dr. Rodrigo Folla Marchiolli, no período de 29/5 a 16/10/2024, para concorrer ao "
+          },
+          {
+            "id": 767214,
+            "titulo": "C E R T I D Ã O",
+            "trecho": "A Diretora Secretária-Geral da Ordem dos Advogados do Brasil, Seção de São Paulo, C E R T I F I C A, a renúncia da i.Secretária-Geral eleita da 156ª Subseção de Guararapes, Dra. Eveline Maricato Pina, datada de 07/4/2024. NADA MAIS. GABINETE DA SECRETARIA GERA"
+          }
+        ]
+      },
+      "Sessão de Julgamento": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Direitos e Prerrogativas": 1
+        },
+        "amostras": [
+          {
+            "id": 766706,
+            "titulo": "Sessão de Julgamento – Decisão – Conselho Regional de Prerrogativas da 7ª Região",
+            "trecho": "O Presidente do Conselho Regional de Prerrogativas – 7ª Região da OAB/SP, Dr. João Marcos Lance Boscolo, nos termos do artigo 97-A, do Regulamento Geral do Estatuto da Advocacia e da OAB (Lei nº 8.906/94), incluído pela Resolução nº 19/2020 (DEOAB de 23/04/202"
+          }
+        ]
+      },
+      "Decisão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Direitos e Prerrogativas": 1
+        },
+        "amostras": [
+          {
+            "id": 766707,
+            "titulo": "Decisão do Conselho Regional de Prerrogativas da 14ª Região",
+            "trecho": "O Presidente do Conselho Regional de Prerrogativas da 14ª Região, Dr. David Ferrari Junior, torna público, pelo presente edital, a decisão da 39ª Sessão de Julgamento do Conselho Regional de Prerrogativas, realizada no dia 01 de julho de 2024. R- 01/2018 Reque"
+          }
+        ]
+      },
+      "Edital de Descarte": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 867620,
+            "titulo": "Edital de Descarte – Décima Turma Disciplinar do TED",
+            "trecho": "Pelo presente Edital, obedecida a Resolução TED nº 7/2016, publicada no DOE de 14/03/2016, ficam as partes interessadas nos processos abaixo numerados que, dentro do prazo de 30(trinta) dias, contados desta data, os mesmos serão reciclados, assegurando às part"
+          }
+        ]
+      }
+    }
+  }
+}

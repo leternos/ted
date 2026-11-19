@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "busca-jurisprudencia",
+    "url": "https://ted.oabpr.org.br/",
+    "conteudo": "Acórdãos do TED e órgãos da Seccional",
+    "periodo": "acervo amplo",
+    "volume": "mais de 51 mil decisões (declarado; inclui outros órgãos)",
+    "acesso": "buscador de terceiro (Leany); endpoint não inspecionado",
+    "exclusiva": null,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "livro-consultas",
+    "url": "https://ted.oabpr.org.br/wp-content/uploads/2022/05/consultas-sobre-etica-disciplina-e-exercicio-da-advocacia.pdf",
+    "conteudo": "Consultas da Câmara Especial",
+    "periodo": "2019-2021",
+    "volume": null,
+    "acesso": "PDF (360 p.)",
+    "exclusiva": true,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "boletins",
+    "url": "https://ted.oabpr.org.br/",
+    "conteudo": "Boletins bimestrais de ementas (repetem o DEOAB por declaração própria)",
+    "periodo": "2025-2026",
+    "volume": null,
+    "acesso": "PDF",
+    "exclusiva": false,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  }
+]

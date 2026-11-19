@@ -1,0 +1,647 @@
+{
+  "uf": "GO",
+  "id_organizacao": 9,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Intimação de Acórdão",
+    "Notificação",
+    "Retificação"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-19T19:57:49Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-31",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2019-02-13",
+        "publicacoes": 80,
+        "baixadas": 80
+      },
+      {
+        "dia": "2019-03-14",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2019-11-18",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2020-03-26",
+        "publicacoes": 34,
+        "baixadas": 34
+      },
+      {
+        "dia": "2020-05-07",
+        "publicacoes": 64,
+        "baixadas": 64
+      },
+      {
+        "dia": "2020-07-07",
+        "publicacoes": 28,
+        "baixadas": 28
+      },
+      {
+        "dia": "2020-10-06",
+        "publicacoes": 9,
+        "baixadas": 9
+      },
+      {
+        "dia": "2020-11-03",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2021-01-15",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2021-09-13",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2021-10-08",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2022-03-04",
+        "publicacoes": 15,
+        "baixadas": 15
+      },
+      {
+        "dia": "2022-07-22",
+        "publicacoes": 53,
+        "baixadas": 53
+      },
+      {
+        "dia": "2022-09-26",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2023-01-26",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2023-02-01",
+        "publicacoes": 26,
+        "baixadas": 26
+      },
+      {
+        "dia": "2023-04-27",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2023-12-20",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2024-02-07",
+        "publicacoes": 68,
+        "baixadas": 68
+      },
+      {
+        "dia": "2024-03-28",
+        "publicacoes": 65,
+        "baixadas": 65
+      },
+      {
+        "dia": "2024-06-18",
+        "publicacoes": 15,
+        "baixadas": 15
+      },
+      {
+        "dia": "2024-07-05",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2025-02-10",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2025-05-23",
+        "publicacoes": 35,
+        "baixadas": 35
+      },
+      {
+        "dia": "2025-06-27",
+        "publicacoes": 34,
+        "baixadas": 34
+      },
+      {
+        "dia": "2025-07-28",
+        "publicacoes": 58,
+        "baixadas": 58
+      },
+      {
+        "dia": "2026-03-05",
+        "publicacoes": 103,
+        "baixadas": 103
+      },
+      {
+        "dia": "2026-08-28",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2026-11-17",
+        "publicacoes": 75,
+        "baixadas": 75
+      }
+    ],
+    "decisoes_no_censo": 81,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 0.8395,
+      "JULGAMENTO": 0.2716,
+      "RECURSO": 0.679
+    },
+    "tipos": {
+      "Despacho": {
+        "publicacoes": 511,
+        "parecem_decisao": 7,
+        "setores": {
+          "Sistema de Defesa das Prerrogativas": 480,
+          "Tribunal de Ética e Disciplina": 11,
+          "Conselho Pleno": 8,
+          "3ª Câmara": 5,
+          "1ª Câmara": 4,
+          "2ª Câmara": 3
+        },
+        "amostras": [
+          {
+            "id": 3692,
+            "titulo": "INTIMAÇÃO DE DESPACHO",
+            "trecho": "A OAB-GO torna público que tramitam nesta Seccional o processo nº 201704489, Representante: ROSA MOREIRA DAMASCENO, Representado: D. W. B (Proc: DENYS WELTON BRUNO - OAB/GO n° 30603) e H. W. B (Proc: HYRU WANDERSON BRUNO - OAB/GO n° 21217); oportunidade em que"
+          },
+          {
+            "id": 3698,
+            "titulo": "Processo nº 2016/08992",
+            "trecho": "Requerente: Conselho Federal da OAB. DESPACHO: Diante do relatório de diligência da Comissão de Direitos e Prerrogativas, determino o arquivamento destes autos. Oficie-se o interessado, para ciência. Cumpra-se. À Secretaria para providências. Goiânia, aos 05 d"
+          },
+          {
+            "id": 3699,
+            "titulo": "Processo nº 2016/08992",
+            "trecho": "Requerente: Conselho Federal da OAB. DESPACHO: Acolho o despacho do Presidente da Comissão de Direitos e Prerrogativas desta Casa, Dr. David Soares da Costa Júnior. Assim, determino a remessa dos presentes autos ao arquivo. Cientifique-se o requerente. Cumpra-"
+          }
+        ]
+      },
+      "Notificação": {
+        "publicacoes": 110,
+        "parecem_decisao": 1,
+        "setores": {
+          "Sistema de Defesa das Prerrogativas": 88,
+          "COMISSÃO DE SELEÇÃO E INSCRIÇÃO": 10,
+          "Tribunal de Ética e Disciplina": 6,
+          "COMISSÃO DAS SOCIEDADES DE ADVOGADOS": 3,
+          "ATENDIMENTO INTEGRADO": 2,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 24478,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "A OAB-GO comunica que, por meio de ofício recebido do Poder Judiciário do Estado de Goiás, foi verificado que os advogados a seguir relacionados atuaram em mais de 5 (cinco) processos neste Estado, a partir do exercício de 2016, sem inscrição suplementar nesta"
+          },
+          {
+            "id": 234515,
+            "titulo": "Processo nº 202002397",
+            "trecho": "Requerentes: R.R.P.B (Procurador: Rilker Rainer Pereira Botelho - OAB/GO nº 49.507); D.U.P.B (Procurador: Diego Uriell Pereira Botelho - OAB/GO nº 40547); L.P.F (Procuradora: Ludymilla de Paula Ferreira- OAB/GO nº 51967); H.L.B (Procurador: Hugo Línneker Perei"
+          },
+          {
+            "id": 234516,
+            "titulo": "Processo nº 202002599",
+            "trecho": "Requerente: R.G.O.C (Procurador: Renata Guilardi de Oliveira Castro, OAB/GO nº 18668). NOTIFICAÇÃO: A Ordem dos Advogados do Brasil – Seção Goiás notifica a Requerentes acima identificada, para que manifeste, caso queira, no prazo de 15 dias, se ainda há algum"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 80,
+        "parecem_decisao": 70,
+        "setores": {
+          "2ª Câmara": 28,
+          "Conselho Pleno": 18,
+          "3ª Câmara": 15,
+          "1ª Câmara": 13,
+          "Tribunal de Ética e Disciplina": 6
+        },
+        "amostras": [
+          {
+            "id": 3694,
+            "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+            "trecho": "Processo nº. 201700697 . Consulente: M.B.S. (Adv.: MARCOS BARBOSA DA SILVA – OAB/GO nº 22.859). Juiz Relator: Frederico Augusto Auad de Gomes. EMENTA: CONSULTA. CASO CONCRETO. INCOMPETÊNCIA DO TED. ART. 71,II DO CED. ACÓRDÃO: Acordam, os integrantes da Quarta "
+          },
+          {
+            "id": 189180,
+            "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+            "trecho": "O Tribunal de Ética e Disciplina da OAB-GO torna público que foi julgado o seguinte processo: 201508420. Repte: Núbia Ferreira Rodrigues Silva. Repdo(a): D. S. M. (Procurador(a): Diogo de Souza Moreira - OAB/GO 39.127). Juiz Relator: Athyla Serra da Silva Maia"
+          },
+          {
+            "id": 236559,
+            "titulo": "NOTIFICAÇÃO DE ACÓRDÃO.",
+            "trecho": "PROCESSO Nº 201408194 . Recorrente: J. M. V. (Procuradores: Alexandre Carlos Magno Mendes Pimentel – OAB/GO n° 27.743, Ricardo Di Manoel Caiado – OAB/GO n° 31.437, Luciana Silva Kawano – OAB/GO n° 27.858, Anna Luisa de Paula Marinho – OAB/GO n° 41.046, Giovann"
+          }
+        ]
+      },
+      "Diligência": {
+        "publicacoes": 68,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÃO DAS SOCIEDADES DE ADVOGADOS": 51,
+          "Tribunal de Ética e Disciplina": 13,
+          "Sistema de Defesa das Prerrogativas": 2,
+          "Conselho Pleno": 2
+        },
+        "amostras": [
+          {
+            "id": 3696,
+            "titulo": "Processo nº 2017/00512",
+            "trecho": "Requerente: Comissão de Direitos Humanos da OAB/GO. Interessada: Marjore Rodrigues Santos Franca, OAB/GO 44.258. NOTIFICAÇÃO: A Ordem dos Advogados do Brasil – Seção Goiás, por sua Comissão de Direitos e Prerrogativas, notifica a interessada acima identificada"
+          },
+          {
+            "id": 3697,
+            "titulo": "Processo nº 2017/11056",
+            "trecho": "Requerente: Faid Elias Sebba Sahium, OAB/GO 23.111. NOTIFICAÇÃO: A Ordem dos Advogados do Brasil – Seção Goiás, por sua Comissão de Direitos e Prerrogativas, notifica o requerente acima identificado para que manifeste junto aos autos nº 2017/11056, no prazo de"
+          },
+          {
+            "id": 24322,
+            "titulo": "PROCESSO Nº 20188647. NOTIFICAÇÃO DE DESPACHO. DILIGÊNCIA.",
+            "trecho": "DESPACHO DE 11 DE MARÇO DE 2019. Processo nº 201808647. Interessado: Ordem dos Advogados do Brasil – Seção de Rondônia (Adv.: - Presidente - Elton José Assis – OAB/RO nº 631). Reqda.: S. M. S. (Adv.: Grazielle Nunes Ribeiro – OAB/GO nº 51.003; Monara Costa Soa"
+          }
+        ]
+      },
+      "Contrarrazões": {
+        "publicacoes": 32,
+        "parecem_decisao": 0,
+        "setores": {
+          "3ª Câmara": 14,
+          "1ª Câmara": 12,
+          "2ª Câmara": 3,
+          "Conselho Pleno": 3
+        },
+        "amostras": [
+          {
+            "id": 236553,
+            "titulo": "NOTIFICAÇÃO PARA APRESENTAÇÃO DE CONTRARRAZÕES.",
+            "trecho": "A Ordem dos Advogados do Brasil - Seção de Goiás notifica o Sr. Ricardo Severino da Silva para, querendo, no prazo de 15 (quinze) dias úteis, contados a partir da publicação deste, apresentar contrarrazões ao recurso interposto no processo nº 201911339. Goiâni"
+          },
+          {
+            "id": 236554,
+            "titulo": "NOTIFICAÇÃO PARA APRESENTAÇÃO DE CONTRARRAZÕES.",
+            "trecho": "A Ordem dos Advogados do Brasil - Seção de Goiás notifica a Sra. Flávia Almeida Rodrigues Costa para, querendo, no prazo de 15 (quinze) dias úteis, contados a partir da publicação deste, apresentar contrarrazões ao recurso interposto no processo nº 201404134. "
+          },
+          {
+            "id": 236555,
+            "titulo": "NOTIFICAÇÃO PARA APRESENTAÇÃO DE CONTRARRAZÕES.",
+            "trecho": "A Ordem dos Advogados do Brasil - Seção de Goiás notifica L. F. M. K. J. ( Procurador: Luiz Fernandes Massashi Katsuyama Júnior – OAB/GO n° 35.005) para, querendo, no prazo de 15 (quinze) dias úteis, contados a partir da publicação deste, apresentar (em) contr"
+          }
+        ]
+      },
+      "Sessão de Julgamento": {
+        "publicacoes": 22,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 18,
+          "3ª Câmara": 2,
+          "1ª Câmara": 1,
+          "2ª Câmara": 1
+        },
+        "amostras": [
+          {
+            "id": 24502,
+            "titulo": "SESSÃO DE JULGAMENTO",
+            "trecho": "CONVOCAÇÃO/PAUTA DE JULGAMENTO . A 7ª (SÉTIMA) Turma do Tribunal de Ética e Disciplina da OAB-GO, reunir-se-á em Sessão Ordinária a ser realizada no dia 15.04.2019, às 19:00 horas, na Sala de Sessões do Tribunal de Ética e Disciplina, na Sede Administrativa de"
+          },
+          {
+            "id": 189186,
+            "titulo": "SESSÃO DE JULGAMENTO",
+            "trecho": "CONVOCAÇÃO/PAUTA DE JULGAMENTO. A 6ª (SEXTA) Turma do Tribunal de Ética e Disciplina da OAB-GO, reunir-se-á em Sessão Ordinária a ser realizada no dia 12.12.2019, às 19:00 horas, na Sala de Sessões do Tribunal de Ética e Disciplina, na Sede Administrativa dest"
+          },
+          {
+            "id": 236723,
+            "titulo": "SESSÃO DE JULGAMENTO",
+            "trecho": "CONVOCAÇÃO/PAUTA DE JULGAMENTO. A 6ª (SEXTA) Câmara do Tribunal de Ética e Disciplina da OAB-GO, reunir-se-á em Sessão Virtual a ser realizada no dia 09.06.2020, às 19:00 horas, quando serão julgados os processos abaixo especificados, incluídos em pauta, fican"
+          }
+        ]
+      },
+      "Defesa Prévia": {
+        "publicacoes": 19,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 18,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 1630,
+            "titulo": "INTIMAÇÃO PARA DEFESA PRÉVIA",
+            "trecho": "A OAB/GO, considerando que os interessados abaixo relacionados encontram-se em lugar incerto e não sabido, o que inviabiliza a comunicação pessoal, os NOTIFICA a comparecer, no prazo de 15 (quinze) dias , contados a partir do dia útil seguinte ao da publicação"
+          },
+          {
+            "id": 3695,
+            "titulo": "INTIMAÇÃO PARA DEFESA PRÉVIA",
+            "trecho": "A OAB/GO, considerando que os interessados abaixo relacionados encontram-se em lugar incerto e não sabido, o que inviabiliza a comunicação pessoal, os NOTIFICA a comparecer, no prazo de 15 (quinze) dias, contados a partir do dia útil seguinte ao da publicação "
+          },
+          {
+            "id": 24501,
+            "titulo": "INTIMAÇÃO PARA DEFESA PRÉVIA",
+            "trecho": "A OAB/GO , considerando que os interessados abaixo relacionados encontram-se em lugar incerto e não sabido, o que inviabiliza a comunicação pessoal, os NOTIFICA a comparecer, no prazo de 15 (quinze) dias , contados a partir do dia útil seguinte ao da publicaçã"
+          }
+        ]
+      },
+      "Razões Finais": {
+        "publicacoes": 19,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 16,
+          "Conselho Pleno": 3
+        },
+        "amostras": [
+          {
+            "id": 1631,
+            "titulo": "INTIMAÇÃO PARA RAZÕES FINAIS",
+            "trecho": "A OAB-GO torna público que tramitam nesta Seccional os seguintes processos nºs: processo nº 201509302, Representado: W. M. B (Proc: LUCIANO JAQUES RABELO - OAB/GO n° 11045) e J. N. A. F (Proc: JOÃO NEGRÃO DE ANDRADE FILHO - OAB/GO n° 17947); processo nº 201802"
+          },
+          {
+            "id": 3693,
+            "titulo": "INTIMAÇÃO PARA RAZÕES FINAIS",
+            "trecho": "A OAB-GO torna público que tramitam nesta Seccional os seguintes processos administrativos: processo nº 201308024, Representante: IZABEL DE ABREU LIMA; Representado: R. M. C (Proc: ROMULO MARTINS DE CASTRO - OAB/GO n° 24254); processo nº 201508265, Representad"
+          },
+          {
+            "id": 24343,
+            "titulo": "INTIMAÇÃO PARA RAZÕES FINAIS",
+            "trecho": "A OAB-GO torna público que tramitam nesta Seccional os seguintes processos nºs: processo nº 201608963, Representado: E. P. F (Proc: IZABELA FRANCES SOARES DE AZEVEDO CARDOSO - OAB/GO n° 37232); processo nº 201507140, Representante: VANDERLEI DE ANDRADE; Repres"
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 18,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 15,
+          "Conselho Pleno": 3
+        },
+        "amostras": [
+          {
+            "id": 1629,
+            "titulo": "INTIMAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "A OAB/GO notifica os Advogados N.R.M. J (Adv.: Newton Roberto De Melo Junior– OAB/GO nº 37.260), A.B.A.O (Adv.: Alexandre Bittencourt Amui De Oliveira– OAB/GO nº 28.867), A.B.A.O (Adv.: Alexandre Bittencourt Amui De Oliveira– OAB/GO nº 28.867) e suas testemunh"
+          },
+          {
+            "id": 3691,
+            "titulo": "INTIMAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "A OAB/GO notifica a Advogada C.C. D (Adv: Cristiane Da Costa Dias– OAB/GO nº 45.097) e suas testemunhas a comparecerem no dia 25/02/2019 às 11h00min na Sede Administrativa desta Seccional, localizada na Rua 1.121, nº. 200 Setor Marista, em Goiânia-GO, para tra"
+          },
+          {
+            "id": 189178,
+            "titulo": "AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "A OAB/GO notifica ao Advogado L.V (Adv.: Luciano Vieira– OAB/GO nº 22.545) e a Sra. Maria De Fatima Paula e suas testemunhas a comparecerem no dia 03/12/2019 às 13h00min na Sede Administrativa desta Seccional, localizada na Rua 1.121, nº. 200 Setor Marista, em"
+          }
+        ]
+      },
+      "Audiência de Conciliação": {
+        "publicacoes": 13,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 13
+        },
+        "amostras": [
+          {
+            "id": 361844,
+            "titulo": "AUDIÊNCIA DE CONCILIAÇÃO",
+            "trecho": "CONVOCAÇÃO. OABGO notifica os Advogados, J. S. S., C. F. A., F. C. C., R. P. S. G. e A. C. S. A. (Procuradores: Jales Soares da Silva – OAB/GO 42.492, Cristiano Francisco de Azevedo – OAB/GO 59.212, Felipe Cadete da Cunha – OAB/GO 61.512, Rodrigo Peres da Silv"
+          },
+          {
+            "id": 408881,
+            "titulo": "AUDIÊNCIA DE CONCILIAÇÃO",
+            "trecho": "CONVOCAÇÃO. OABGO notifica os Advogados, M. L. M. R., K. S. P. (Procuradores: Manoel Lisboa de Moraes Rocha – OAB/GO 52.069 e Kênia da Silva Pereira - OAB/GO 60.309) para comparecer na audiência de conciliação do procedimento administrativo nº 202202412, a ser"
+          },
+          {
+            "id": 461603,
+            "titulo": "AUDIÊNCIA DE CONCILIAÇÃO",
+            "trecho": "CONVOCAÇÃO. OABGO notifica os Advogados J. M. M., D. T. A. M. (Procuradores: Joao Miguel Marques – OAB/GO 52.396, Dhebora Thais Araujo Munis – OAB/MT 28.050/O) para comparecer na audiência de conciliação do procedimento administrativo nº 202207743 a ser realiz"
+          }
+        ]
+      },
+      "Devolução de Documentos": {
+        "publicacoes": 8,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 5,
+          "Conselho Pleno": 1,
+          "COMISSÃO DAS SOCIEDADES DE ADVOGADOS": 1,
+          "1ª Câmara": 1
+        },
+        "amostras": [
+          {
+            "id": 24482,
+            "titulo": "DEVOLUÇÃO DE DOCUMENTOS",
+            "trecho": "A OAB/GO torna público que na Secretaria do Tribunal de Ética e Disciplina tramitou os processos ético-disciplinares a seguir relacionados, nos quais foi aplicada aos representados a pena de suspensão do exercício profissional: processo n° 201105236, Represent"
+          },
+          {
+            "id": 24518,
+            "titulo": "NOTIFICAÇÃO DEVOLUÇÃO DE DOCUMENTOS PROFISSIONAIS.",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção Goiás, NOTIFICA os(as) Advogados(as): J. A. J. (Adv: Javier Alves Japiassu – OAB/GO nº 32.506); R. B. S. N. (Adv.: Roldão Barbosa da Silva Neto – OAB/GO nº 22.004) para comparecer(em), no prazo de 15 (quinze) dias , cont"
+          },
+          {
+            "id": 189179,
+            "titulo": "DEVOLUÇÃO DE DOCUMENTOS",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Goiás, após o devido processo legal, em cumprimento ao disposto no artigo 45, § 6º da Lei 8.906/94, torna pública a aplicação da PENA DE SUSPENSÃO POR INADIMPLÊNCIA aos Advogados identificados a seguir, por infração a"
+          }
+        ]
+      },
+      "Comunicado": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 4
+        },
+        "amostras": [
+          {
+            "id": 276046,
+            "titulo": "EDITAL DE CONVOCAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil, Seccional do Estado de Goiás, torna pública a abertura das inscrições para a eleição para provimento do cargo de Vice-Presidente da Subseção de Senador Canedo-GO, tendo em vista a vacância do referido cargo. Os interessados dev"
+          },
+          {
+            "id": 276047,
+            "titulo": "EDITAL DE CONVOCAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil, Seccional do Estado de Goiás, torna público que no dia 18 de novembro de 2020, às 14 horas , será realizada Sessão Ordinária Virtual do Conselho Pleno, na qual ocorrerá a eleição para Juízes do Tribunal de Ética e Disciplina da"
+          },
+          {
+            "id": 759405,
+            "titulo": "PROCESSO Nº 202444826 - CONVOCAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seccional de Goiás torna público que no dia 08 de julho de 202 4 , às 08h30 min., será realizada Sessão Ordinária do Conselho Pleno, na modalidade presencial, na qual ocorrerá a eleição para provimento de 0 2 ( duas ) vagas de"
+          }
+        ]
+      },
+      "Redesignação de Sessão": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "1ª Câmara": 1,
+          "2ª Câmara": 1,
+          "3ª Câmara": 1,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 955675,
+            "titulo": "NOTIFICAÇÃO DE CANCELAMENTO E NOVA DATA DE SESSÃO",
+            "trecho": "A Primeira Câmara da Ordem dos Advogados do Brasil, seccional de Goiás, informa que a sessão ordinária prevista para o dia 11/08/2025 foi cancelada , ficando assim, as partes abaixo notificadas para a sessão ordinária que realizar-se-á no dia 08/09 /2025 , às "
+          },
+          {
+            "id": 955691,
+            "titulo": "NOTIFICAÇÃO DE CANCELAMENTO E NOVA DATA DE SESSÃO",
+            "trecho": "A Segunda Câmara da Ordem dos Advogados do Brasil, seccional de Goiás, informa que a sessão ordinária prevista para o dia 11/08/2025 foi cancelada , ficando assim, as partes abaixo notificadas para a sessão ordinária que realizar-se-á no dia 08/09 /2025 , às 1"
+          },
+          {
+            "id": 955692,
+            "titulo": "NOTIFICAÇÃO DE CANCELAMENTO E NOVA DATA DE SESSÃO",
+            "trecho": "A Terceira Câmara da Ordem dos Advogados do Brasil, seccional de Goiás, informa que a sessão ordinária prevista para o dia 11/08/2025 foi cancelada , ficando assim, as partes abaixo notificadas para a sessão ordinária que realizar-se-á no dia 08/09 /2025 , às "
+          }
+        ]
+      },
+      "Intimação para Diligência": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "3ª Câmara": 2
+        },
+        "amostras": [
+          {
+            "id": 955389,
+            "titulo": "PROCESSO Nº 202539223 - DILIGÊNCIA",
+            "trecho": "A Ordem dos Advogados do Brasil, seccional de Goiás, torna público que tramita nesta Seccional o(s) seguinte(s) processo(s): 01. Processo nº 202539223. Reqte.: A. M. A. C. (Procurador(a): Antônio Marcos Alves da Costa – OAB/GO n° 30.078); oportunidade em que n"
+          },
+          {
+            "id": 955390,
+            "titulo": "PROCESSO Nº 202504847 - DILIGÊNCIA",
+            "trecho": "A Ordem dos Advogados do Brasil, seccional de Goiás, torna público que tramita nesta Seccional o(s) seguinte(s) processo(s): 01. Processo nº 20250484 7 . Reqte.: F. R. F. T. (Procurador(a): Felix Renan Ferreira Teles – OAB/GO n° 34.859); oportunidade em que no"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 234508,
+            "titulo": "RESOLUÇÃO Nº 07/2020.",
+            "trecho": "Altera a Resolução nº 04/2020, de 20 de março de 2020. A Diretoria da Ordem dos Advogados do Brasil – Seção Goiás (OAB-GO), no uso das suas atribuições legais e estatutárias, Considerando a evolução da pandemia do “coronavírus” (COVID-19), e as medidas já dete"
+          }
+        ]
+      },
+      "Audiência ITED": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 361846,
+            "titulo": "AUDIÊNCIA ITED",
+            "trecho": "CONVOCAÇÃO. A OAB/GO notifica o Advogado N.M.V.R. (Procurador: NATALIA MARIA VARGAS ROSA - OAB/GO nº 56.869) e R.R.A.F. (Procurador: REINALDO RODRIGUES DE ALVIM FILHO - OAB/DF nº 18.207/E) a participar, no dia 20/10/2021 às 15h30min de audiência referente ao p"
+          }
+        ]
+      },
+      "Calendário": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 408729,
+            "titulo": "– CALENDÁRIO – PLENÁRIO VIRTUAL",
+            "trecho": "A Ordem dos Advogados do Brasil, seccional de Goiás, torna público o calendário do Plenário Virtual de julgamento das 1ª, 2ª e 3ª Câmaras do Conselho Seccional, para o ano de 2022, conforme dispõe os §§ 1º e 2º do artigo 49 do Regimento Interno da OAB/GO. Abri"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 698031,
+            "titulo": "PROCESSO Nº 202104753 – SESSÃO DE JULGAMENTO - RETIFICAÇÃO",
+            "trecho": "O Conselho Pleno da Ordem dos Advogados do Brasil, seccional de Goiás, retifica o edital de notificação para sessão de julgamento, publicado no DEOAB, ANO VI Nº 1285, terça-feira, 6 de fevereiro de 2024, página 72, ONDE SE LÊ: “ (...) 02. Processo nº 202104753"
+          }
+        ]
+      },
+      "Arquivamento Liminar": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 955850,
+            "titulo": "INTIMAÇÃO DE DESPACHO",
+            "trecho": "A OAB/GO torna público que tramitam nesta Seccional os procedimentos administrativos: processo nº 202539393 - Representado: E. B. S. (Procurador: EDIVALDO BERNARDO DA SILVA - OAB/GO n° 44.862), E. B. S. (Procurador: ERIVALDO BERNARDO DA SILVA - OAB/GO n° 59.68"
+          }
+        ]
+      },
+      "Edital de Extravio": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÃO DE SELEÇÃO E INSCRIÇÃO": 1
+        },
+        "amostras": [
+          {
+            "id": 1056524,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "A OAB/GO torna publica o extravio do cartão e carteira de identidade profissional da Advogada ANA CLARA MALAGONI WIND inscrita na OABGO sob o nº 75707 . Goiânia, 04 de março de 2026, Rafael Lara Martins- Presidente da OAB/GO."
+          }
+        ]
+      },
+      "Intimação de Acórdão": {
+        "publicacoes": 1,
+        "parecem_decisao": 1,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1197326,
+            "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+            "trecho": "O Tribunal de Ética e Disciplina da OAB-GO torna público que foi julgado o seguinte processo: Processo nº 202337353 - Representado(a): L. P. N. (Procurador(a): LORENA PAIXÃO NASCIMENTO - OAB/GO nº 30.341), Defensor(a) Dativo(a) F. M. A. D. O. (Dr(a). Fabiana M"
+          }
+        ]
+      }
+    }
+  },
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "observacoes": "GO: censo de 30 dias-amostra (2019-2026, 917 publicações) com 81 decisões; recall ACORDAO 100%, EMENTA 100%, DECISAO 84%, sem sobras. Publicadas como 'NOTIFICAÇÃO DE ACÓRDÃO' / 'INTIMAÇÃO DE ACÓRDÃO' (tipo Acórdão: 80; tipo Intimação de Acórdão: 1), com Processo, partes, EMENTA e ACÓRDÃO ('torna pública a decisão proferida nos autos'). Quem julga: Conselho Seccional em 1ª, 2ª e 3ª Câmaras (recursos disciplinares, embargos declaratórios; 56 das 80) e Conselho Pleno (18: exclusão, recursos, inscrição), mais o Tribunal de Ética e Disciplina (6; consultas e processos julgados, 'O TED da OAB-GO torna público que foi julgado o seguinte processo'). Decisões em todos os anos 2019-2026 (ex.: 3694 em 2019-02, 236563 em 2020-05, 528634 em 2023-02, 955352 em 2025-07, 1197326 em 2026-11). Tipo Despacho (511, quase todos do Sistema de Defesa das Prerrogativas, despacho de arquivamento) não é decisão; porém 2 'NOTIFICAÇÃO DE DESPACHO' das Câmaras (236606, 243554) trazem relato/DECISÃO monocrática do relator, excluídas (despacho/decisão monocrática). Notificação (110) e Retificação (1) mantidos como tipos amplos, só entram se o texto confirmar. Ruído: Diligência (68, Comissão das Sociedades), Contrarrazões, Sessão de Julgamento (pauta), Defesa Prévia, Razões Finais, Audiências, Devolução de Documentos, Comunicado, Redesignação de Sessão, Resolução, Calendário, Arquivamento Liminar, Edital de Extravio. Sem indício de ementário em site próprio nem de decisões só em PDF.",
+  "modo": "censo"
+}

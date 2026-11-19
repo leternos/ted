@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "ted-ementarios",
+    "url": "https://www.oab-sc.org.br/ted-ementarios",
+    "conteudo": "Acórdãos das Turmas do TED, ementa integral",
+    "periodo": "até 2026",
+    "volume": "centenas por ano",
+    "acesso": "busca por ano e texto (app Next.js)",
+    "exclusiva": false,
+    "verificacao": "V",
+    "situacao": "mapeada"
+  },
+  {
+    "slug": "conselho-ementarios",
+    "url": "https://www.oab-sc.org.br/conselho-estadual-ementarios",
+    "conteudo": "Decisões recursais do Conselho Estadual",
+    "periodo": "n/d",
+    "volume": null,
+    "acesso": "app Next.js",
+    "exclusiva": null,
+    "verificacao": "S",
+    "situacao": "mapeada"
+  }
+]

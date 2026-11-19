@@ -1,0 +1,409 @@
+{
+  "uf": "TO",
+  "id_organizacao": 27,
+  "termos": [
+    "ACORDAO",
+    "DECISAO",
+    "ARQUIVAMENTO"
+  ],
+  "tipos_decisao": [
+    "ACORDAO",
+    "ACÓRDÃO",
+    "EMENTA"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-18T14:22:42Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-21",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-02-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-03-19",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2019-11-12",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2020-03-16",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-05-04",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-07-02",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-09-01",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-10-30",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-11-26",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-01-15",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-02-10",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-06-01",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-08-31",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-09-15",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-10-21",
+        "publicacoes": 12,
+        "baixadas": 12
+      },
+      {
+        "dia": "2022-03-15",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-07-07",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-09-29",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-10-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-12-16",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2023-01-17",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-02-16",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2023-04-04",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-10-19",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-12-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-01-16",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-02-21",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2024-03-04",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2024-06-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-07-01",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-12-20",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-02-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-05-16",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-06-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-07-02",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-11-17",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-03-18",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-08-05",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2026-11-10",
+        "publicacoes": 22,
+        "baixadas": 22
+      }
+    ],
+    "decisoes_no_censo": 0,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": null,
+      "EMENTA": null,
+      "DECISAO": null,
+      "JULGAMENTO": null,
+      "RECURSO": null
+    },
+    "tipos": {
+      "Edital de Notificação": {
+        "publicacoes": 45,
+        "parecem_decisao": 21,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 41,
+          "Conselho Pleno": 4
+        },
+        "amostras": [
+          {
+            "id": 753,
+            "titulo": "EDITAL DE NOTIFICAÇÃO.",
+            "trecho": "A Ordem dos Advogados do Brasil, Seccional do Tocantins, conforme faculta o § 2º do Art. 69 da Lei 8.906/94, NOTIFICA os Advogados com respectivo número de inscrição a comparecerem na Ordem dos Advogados do Brasil – Seccional Tocantins sediada em Palmas no pra"
+          },
+          {
+            "id": 275169,
+            "titulo": "ORDEM DOS ADVOGADOS DO BRASIL - SECCIONAL TOCANTINS",
+            "trecho": "A Ordem dos Advogados do Brasil, Seccional do Tocantins, conforme faculta o § 2º do Art. 69 da Lei 8.906/94, NOTIFICA os Advogados com respectivo número de inscrição a comparecerem na Ordem dos Advogados do Brasil – Seccional Tocantins sediada em Palmas no pra"
+          },
+          {
+            "id": 284927,
+            "titulo": "EDITAL DE NOTIFICAÇÃO",
+            "trecho": "EDITAL Nº 0 15 /20 20 - Tribunal de Ética e Disciplina - OAB/TO – 10ª Sessão do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, do Estado do Tocantins, a ser realizada no dia 18 de dezembro de 2020, em sua sede, Quadra 201 norte, conjunto 3, l"
+          }
+        ]
+      },
+      "Edital de inscrições": {
+        "publicacoes": 20,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÃO DE SELEÇÃO E INSCRIÇÃO": 19,
+          "ELEIÇÕES OAB/TO": 1
+        },
+        "amostras": [
+          {
+            "id": 4137,
+            "titulo": "EDITAL DE INSCRIÇÕES NOS QUADROS DA OAB/TO",
+            "trecho": "A Secretaria da Ordem dos Advogados do Brasil - Seccional Tocantins, na forma da Lei 8.906/94, torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que os nomes abaixo relacionados requereram Inscrição nos quadros da Ordem desta "
+          },
+          {
+            "id": 229455,
+            "titulo": "EDITAL DE INSCRIÇÕES NOS QUADROS DA OAB/TO.",
+            "trecho": "A Secretaria da Ordem dos Advogados do Brasil - Seccional Tocantins, na forma da Lei 8.906/94, torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que os nomes abaixo relacionados requereram Inscrição nos quadros da Ordem desta "
+          },
+          {
+            "id": 236074,
+            "titulo": "EDITAL DE INSCRIÇÕES NOS QUADROS DA OAB/TO.",
+            "trecho": "A Secretaria da Ordem dos Advogados do Brasil - Seccional Tocantins, na forma da Lei 8.906/94, torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que os nomes abaixo relacionados requereram Inscrição nos quadros da Ordem desta "
+          }
+        ]
+      },
+      "Eleições OAB/TO": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRESIDÊNCIA": 12
+        },
+        "amostras": [
+          {
+            "id": 374967,
+            "titulo": "CONSELHO DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DO TOCANTINS.",
+            "trecho": "EDITAL DECISÃO SOBRE PEDIDO DE REGISTRO Processo n.: 002/2021 Requerente: Chapa “OAB INDEPENDENTE” Subseção: Araguaína - TO Assunto: Pedido de Registro de Chapa – Eleições Triênio 2021/2024 Trata-se de pedido de registro de formulado pela Chapa requerente para"
+          },
+          {
+            "id": 374968,
+            "titulo": "CONSELHO DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DO TOCANTINS.",
+            "trecho": "EDITAL DECISÃO SOBRE PEDIDO DE REGISTRO Processo n.: 003/2021 Requerente: Chapa “OAB INDEPENDENTE” Subseção: Augustinópolis - TO Assunto: Pedido de Registro de Chapa – Eleições Triênio 2021/2024 Trata-se de pedido de registro de formulado pela Chapa requerente"
+          },
+          {
+            "id": 374969,
+            "titulo": "CONSELHO DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DO TOCANTINS.",
+            "trecho": "EDITAL DECISÃO SOBRE PEDIDO DE REGISTRO Processo n.: 004/2021 Requerente: Chapa “OAB INDEPENDENTE” Subseção: Colinas do Tocantins - TO Assunto: Pedido de Registro de Chapa – Eleições Triênio 2021/2024 Trata-se de pedido de registro de formulado pela Chapa requ"
+          }
+        ]
+      },
+      "Edital de Arquivamento": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 7
+        },
+        "amostras": [
+          {
+            "id": 1190773,
+            "titulo": "PROCESSO ELETRÔNICO Nº: 27.0000.2025.003897-4| ARQUIVAMENTO",
+            "trecho": "Cartório de Processos Disciplinares Notificação PROCESSO ELETRÔNICO Nº: 27.0000.2025.003897-4 | ARQUIVAMENTO ADVOGADO(S) INTERESSADO(S): G.H.F (PROCURADOR: GEORGE HIDASI FILHO OAB/GO 39612, OAB/MA 27619-A, OAB/DF 76965, OAB/SP 501844, OAB/AM A2220, OAB/MG 2287"
+          },
+          {
+            "id": 1190776,
+            "titulo": "PROCESSO ELETRÔNICO Nº: 27.0000.2025.003890-9| ARQUIVAMENTO",
+            "trecho": "Cartório de Processos Disciplinares Notificação PROCESSO ELETRÔNICO Nº: 27.0000.2025.003890-9 | ARQUIVAMENTO ADVOGADO(S) INTERESSADO(S): G.B.M.D.S. (PROCURADOR: G IOVANNA BARROSO MARTINS DA SILVA OAB/SP 478272, OAB/MA 25787-A, OAB/MG 222389, OAB/MT 34327/A, OA"
+          },
+          {
+            "id": 1190778,
+            "titulo": "PROCESSO ELETRÔNICO Nº: 27.0876.2022.000123-0| ARQUIVAMENTO",
+            "trecho": "Cartório de Processos Disciplinares Notificação PROCESSO ELETRÔNICO Nº: 27.0876.2022.000123-0 | ARQUIVAMENTO ADVOGADO(S) INTERESSADO(S): T.J.G.T (PROCURADOR: THOMAS JEFFERSON GONÇALVES TEIXEIRA OAB/TO 6492 / R.A.B (PROCURADOR: RAMON ALVES BATISTA OAB/TO 7346 e"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 4,
+        "parecem_decisao": 2,
+        "setores": {
+          "PRESIDÊNCIA": 3,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 25467,
+            "titulo": "RESOLUÇÃO nº. 003/2019 – CONSELHO PLENO OAB/TO",
+            "trecho": "Institui o Programa de Regularização Financeira da Ordem dos Advogados Brasil – Seccional Tocantins. O CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DO ESTADO DO TOCANTINS , reunido em sessão ordinária realizada em 08 de fevereiro de 2019, consoa"
+          },
+          {
+            "id": 184982,
+            "titulo": "RESOLUÇÃO Nº 07/2019",
+            "trecho": "Dispõe sobre receitas da OAB, aplicação da proporcionalidade e dá outras providências. Altera a Resolução nº 002/2019 da OAB/TO – Revoga os incisos IV, V e § 6ª e altera o inciso III e o § 4º e do Artigo 18. Aprovada em Sessão Ordinária do Conselho Seccional r"
+          },
+          {
+            "id": 184983,
+            "titulo": "RESOLUÇÃO nº. 008/2019 - CP",
+            "trecho": "Dispõe sobre regras e critérios ordinários para pagamento, pelos advogados inscritos, dos débitos de anuidades e penalidades pecuniárias existentes em face da Ordem dos Advogados do Brasil – Seccional do Tocantins, cuja cobrança se encontre em fase judicial ou"
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRESIDÊNCIA": 2
+        },
+        "amostras": [
+          {
+            "id": 184980,
+            "titulo": "PORTARIA Nº. 105/2019",
+            "trecho": "Cria a Comissão Especial de Análise Sobre a Viabilidade da Transbananal da Ordem dos Advogados do Brasil – Seccional do Tocantins e nomeia os membros. O Presidente do Conselho Seccional da Ordem dos Advogados do Tocantins, no uso de suas atribuições legais e r"
+          },
+          {
+            "id": 184981,
+            "titulo": "PORTARIA Nº. 106/2019",
+            "trecho": "Nomeia os membros da Comissão Especial de Estudos Permanentes Sobre o Compliance Ordem dos Advogados do Brasil – Seccional do Tocantins. O Presidente do Conselho Seccional da Ordem dos Advogados do Tocantins, no uso de suas atribuições legais e regulamentares,"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ETICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 25224,
+            "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "PAUTA DA 2 ª SESSÃO ORDINÁRIA DO TED EDITAL Nº 00 3 /19 - Tribunal de Ética e Disciplina - OAB/TO - 2ª Sessão do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, do Estado do Tocantins, a ser realizada no dia 05 de abril de 2019, em sua sede, Q"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 520097,
+            "titulo": "AVISO DE RETIFICAÇÃO DA PUBLICAÇÃO DA RESOLUÇÃO nº. 06/2022 - TABELA DE HONORÁRIOS",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL DO ESTADO DO TOCANTINS , no uso das atribuições que lhe são conferidas, torna público para conhecimento dos interessados, a RETIFICAÇÃO relacionada abaixo referente à publicação da Resolução nº. 06/2022 - Tabela De Ho"
+          }
+        ]
+      }
+    }
+  },
+  "observacoes": "Censo de 40 dias (rodadas de 20 e 40 dias; o censo automático achou 0 decisões porque procura tipo Acórdão/Ementa, que o TO não usa). Revisão manual das 92 publicações dos dias amostrados: 33 decisões (24 'EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO ... TURMA JULGADORA DO TED' com bloco 'Acórdão: Vistos, relatados e discutidos... votaram pela procedência/improcedência', 8 notificações de ARQUIVAMENTO do Cartório de Processos Disciplinares/TED, 1 edital de notificação de aplicação de penalidade). Total <40 só por poucos dias com publicação, mas passa de 30. No TO as decisões NÃO têm tipo próprio: saem como tipo 'Edital de Notificação' (misturadas a pautas, notificações de razões finais/contrarrazões/ciência, que NÃO são decisão e serão filtradas depois) e, em 2026, também como 'Edital de Arquivamento'. Não há ementa nem voto: só relator, partes (iniciais), nº do processo e dispositivo resumido em 1 linha (unanimidade, procedência etc.). Recall no censo (decisões=33): ACORDAO 0.73 (todos os 'Resultado de Julgamento'), ARQUIVAMENTO 0.24 (os 8 arquivamentos), DECISAO 0.76; união ACORDAO+DECISAO+ARQUIVAMENTO = 1.0 (penalidade só por DECISAO; arquivamentos só por ARQUIVAMENTO). EMENTA 0.0 (inútil no TO, retirado). JULGAMENTO/RECURSO/RESULTADO redundantes. Publicação irregular: dias com 1 publicação e grandes lotes (2024-02-21 e 2024-03-04 publicaram em atraso sessões de 2019-2023; 2026-11-10 publicou 22 itens). Diagnóstico anterior: acórdão 0 em 2020-2023, 107 em 2024, 1 em 2025, 23 em 2026; DEOAB quase vazio em 2020-2023 e 2025. Atenção a datas de sessão com erro de digitação (ex. 'sessão do dia 11.12.2026' publicada em 10/11/2026). Fonte fora do DEOAB: data/fontes/TO.json registra 'consultas-legado' (https://legado.oabto.org.br/pagina-ted-consultas), consultas do TED com ementa e inteiro teor, 2010-2017, tabela HTML, dezenas de registros, exclusiva, situacao mapeada. Como o DEOAB traz só o resultado resumido (sem ementa/voto), o inteiro teor dos acórdãos recentes provavelmente só está nos autos (processo eletrônico); não há indício de ementário recente em site próprio. | Maestro (18/11/2026): coleta em modo censo; decisões reconhecidas pelo título 'RESULTADO DO JULGAMENTO' e pela fórmula 'Vistos, relatados e discutidos', em vez do tipo inteiro 'Edital de Notificação'; arquivamentos monocráticos do Cartório ficam de fora. | Auditoria de 18/11/2026: 15 resultados de julgamento estavam fora (título 'RESULTADO DE JULGAMENTO' e fórmula 'Vistos e analisados'); regra e perfil corrigidos.",
+  "modo": "censo",
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA",
+    "RESULTADO DO JULGAMENTO",
+    "RESULTADO DE JULGAMENTO"
+  ]
+}

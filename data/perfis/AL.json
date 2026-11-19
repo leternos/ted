@@ -1,0 +1,463 @@
+{
+  "uf": "AL",
+  "id_organizacao": 2,
+  "termos": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Intimação de Acórdão",
+    "Ementa",
+    "Retificação Acórdão"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-18T14:13:31Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-14",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2019-02-28",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2019-03-04",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2019-11-28",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-03-17",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-05-07",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2020-07-24",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2020-09-25",
+        "publicacoes": 9,
+        "baixadas": 9
+      },
+      {
+        "dia": "2020-10-29",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-11-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-01-21",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-02-24",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-06-03",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2021-08-19",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-09-23",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-10-22",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-03-16",
+        "publicacoes": 30,
+        "baixadas": 30
+      },
+      {
+        "dia": "2022-07-12",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2022-09-14",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2022-10-24",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2022-12-15",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2023-01-09",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2023-02-13",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2023-04-25",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2023-10-25",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2023-12-13",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-01-04",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2024-02-07",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2024-03-04",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2024-06-24",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-07-02",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-12-11",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2025-02-11",
+        "publicacoes": 38,
+        "baixadas": 38
+      },
+      {
+        "dia": "2025-05-29",
+        "publicacoes": 67,
+        "baixadas": 67
+      },
+      {
+        "dia": "2025-06-13",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2025-07-02",
+        "publicacoes": 115,
+        "baixadas": 115
+      },
+      {
+        "dia": "2025-11-20",
+        "publicacoes": 131,
+        "baixadas": 131
+      },
+      {
+        "dia": "2026-03-20",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2026-08-18",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2026-11-12",
+        "publicacoes": 51,
+        "baixadas": 51
+      }
+    ],
+    "decisoes_no_censo": 7,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 0.5714,
+      "JULGAMENTO": 0.5714,
+      "RECURSO": 1.0
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 415,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tesouraria": 415
+        },
+        "amostras": [
+          {
+            "id": 853926,
+            "titulo": "NOTIFICAÇÃO – GABINETE DO DIRETOR TESOUREIRO",
+            "trecho": "Prezado(a). Dr(a). Senhor(a), advogado(a), A ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE ALAGOAS, neste ato representada por seu Diretor Tesoureiro, Victor Pontes de Maya Gomes, considerando suas finalidades institucionais, a teor do artigo 46, da Lei nº. 8.906"
+          },
+          {
+            "id": 853927,
+            "titulo": "NOTIFICAÇÃO – GABINETE DO DIRETOR TESOUREIRO",
+            "trecho": "Prezado(a). Dr(a). Senhor(a), advogado(a), A ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE ALAGOAS, neste ato representada por seu Diretor Tesoureiro, Victor Pontes de Maya Gomes, considerando suas finalidades institucionais, a teor do artigo 46, da Lei nº. 8.906"
+          },
+          {
+            "id": 853928,
+            "titulo": "NOTIFICAÇÃO – GABINETE DO DIRETOR TESOUREIRO",
+            "trecho": "Prezado(a). Dr(a). Senhor(a), advogado(a), A ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE ALAGOAS, neste ato representada por seu Diretor Tesoureiro, Victor Pontes de Maya Gomes, considerando suas finalidades institucionais, a teor do artigo 46, da Lei nº. 8.906"
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 222,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 168,
+          "Tesouraria": 33,
+          "Presidência": 19,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 552,
+            "titulo": "PORTARIA Nº 016/19 NOMEAÇÃO DA VICE-PRESIDENTE E MEMBROS DA COMISSÃO DE EXAME DE ORDEM DA OAB/AL",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Seccional de Alagoas , no uso de suas atribuições, RESOLVE nomear os Advogados, a seguir indicados, para comporem a Comissão de Exame de Ordem desta Seccional: Vice-Presidente: Thelma Vanessa Moreira Costa - OAB/"
+          },
+          {
+            "id": 553,
+            "titulo": "PORTARIA Nº017/19 NOMEAÇÃO DOS MEMBROS DA DIRETORIA E COORDENADORIAS DA ESCOLA SUPERIOR DE ADVOCACIA DA OAB/AL",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Seccional de Alagoas , no uso de suas atribuições, RESOLVE nomear os Advogados, a seguir indicados, para comporem a Escola Superior de Advocacia desta Seccional: Secretário-Geral: Ronald Pinheiro Rodrigues - OAB/"
+          },
+          {
+            "id": 554,
+            "titulo": "PORTARIA Nº 018/19 NOMEAÇÃO DOS MEMBROS DA COMISSÃO DE ENSINO JURÍDICO",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Seccional de Alagoas , no uso de suas atribuições, RESOLVE nomear os Advogados, a seguir indicados, para comporem a Comissão de Ensino Jurídico desta Seccional. Presidente: Manuela Gatto Santa Rita de Souza – OAB"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 6,
+        "parecem_decisao": 1,
+        "setores": {
+          "Gabinete da Presidência": 6
+        },
+        "amostras": [
+          {
+            "id": 264343,
+            "titulo": "PORTARIA Nº 152/20 EXONERAÇÃO DE MEMBROS DA 2ª CÂMARA DA OAB/AL",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Seccional de Alagoas, no uso de suas atribuições, RESOLVE exonerar a pedido, os Advogados Anne Caroline Fidelis de Lima - OAB/AL 9262 e Fernando Jorge Guerra Mota Filho - OAB/AL 7809, nomeados para compor a 2ª Câ"
+          },
+          {
+            "id": 412880,
+            "titulo": "PORTARIA Nº 161/22 NOMEAÇÃO DE MEMBROS DA COMISSÃO DE DEFESA DOS DIREITOS DAS PESSOAS COM DEFICIÊNCIA DA OAB/AL",
+            "trecho": "A Presidente em exercício e o Diretor de Comissões da Ordem dos Advogados do Brasil – Seccional de Alagoas, no uso de suas atribuições, RESOLVEM nomear os Advogados, a seguir indicados, para comporem a Comissão de Defesa dos Direitos das Pessoas com Deficiênci"
+          },
+          {
+            "id": 483087,
+            "titulo": "PORTARIA Nº 574/22 NOMEAÇÃO DO MEMBRO DA COMISSÃO DE DIREITO CONDOMINIAL DA OAB/AL",
+            "trecho": "O Presidente e o Diretor de Comissões da Ordem dos Advogados do Brasil – Seccional de Alagoas, no uso de suas atribuições, RESOLVEM nomear , o Advogado PAULO EDUARDO HIGASHI OAB/AL 18.957 para compor, na qualidade de membro a Comissão de Direito Condominial da"
+          }
+        ]
+      },
+      "Intimação de Acórdão": {
+        "publicacoes": 4,
+        "parecem_decisao": 4,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 4
+        },
+        "amostras": [
+          {
+            "id": 194489,
+            "titulo": "SETIMA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "ACÓRDÃO INTIMAÇÃO DE ACÓRDÃO A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO dos acórdãos prolata"
+          },
+          {
+            "id": 194490,
+            "titulo": "SETIMA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "ACÓRDÃO INTIMAÇÃO DE ACÓRDÃO A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO dos acórdãos prolata"
+          },
+          {
+            "id": 274543,
+            "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolatado pela 7ª Turma do Tribunal de"
+          }
+        ]
+      },
+      "Intimação para Defesa Previa": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 3
+        },
+        "amostras": [
+          {
+            "id": 236729,
+            "titulo": "INTIMAÇÃO PARA DEFESA PRÉVIA",
+            "trecho": "A OAB/AL torna público que tramita nesta Seccional o processo nº. 2863/16 de interesse: A. J. G. C. C. OAB/AL nº. 11.033, para tomar ciência do conteúdo do referido processo no prazo de 15 (quinze) dias úteis contados a partir da publicação deste edital para t"
+          },
+          {
+            "id": 236730,
+            "titulo": "INTIMAÇÃO PARA DEFESA PRÉVIA",
+            "trecho": "A OAB/AL torna público que tramita nesta Seccional o processo nº. 9859/16 de interesse: J. C. S. OAB/AL nº. 4.781, para tomar ciência do conteúdo do referido processo no prazo de 15 (quinze) dias úteis contados a partir da publicação deste edital para tratar a"
+          },
+          {
+            "id": 236731,
+            "titulo": "INTIMAÇÃO PARA DEFESA PRÉVIA",
+            "trecho": "A OAB/AL torna público que tramita nesta Seccional o processo nº. 10534/18 de interesse: M. T. A. OAB/AL nº. 4.018, para tomar ciência do conteúdo do referido processo no prazo de 15 (quinze) dias úteis contados a partir da publicação deste edital para tratar "
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 3,
+        "parecem_decisao": 3,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 3
+        },
+        "amostras": [
+          {
+            "id": 246816,
+            "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO dos acórdãos prolatados pela 6ª Turma do Tribunal"
+          },
+          {
+            "id": 939696,
+            "titulo": "PROCESSO N. PLENO DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "INTIMAÇÃO DE ACÓRDÃO A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolatado pelo Pl"
+          },
+          {
+            "id": 939858,
+            "titulo": "PROCESSO N. PLENO DO TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "INTIMAÇÃO DE ACÓRDÃO A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para apresentação de RECURSO do acórdão prolatado pelo Pl"
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 3
+        },
+        "amostras": [
+          {
+            "id": 375547,
+            "titulo": "EDITAL CE N.º 001 /2021",
+            "trecho": "A Comissão Eleitoral da Ordem dos Advogados do Brasil – Seccional de Alagoas, no uso das atribuições conferidas na Lei 8.906/94 (Estatuto da Advocacia e da OAB), no Regulamento Geral da EOAB, no Provimento n.º 146/2011 e no Edital n.º 02/2021 do Conselho Secci"
+          },
+          {
+            "id": 457254,
+            "titulo": "EDITAL N.º 07/2022",
+            "trecho": "Publicação da classificação final da consulta direta aos advogados e advogadas inscritos na OAB/AL para formação da lista sêxtupla Constitucional para o preenchimento de uma vaga de Desembargador do Tribunal de Justiça do Estado do Alagoas. A COMISSÃO ESPECIAL"
+          },
+          {
+            "id": 923042,
+            "titulo": "EDITAL Nº 001/2025",
+            "trecho": "CONFERÊNCIA INTERNACIONAL DE DIREITO E POLÍTICA – CONIDP Tema: Democracia, justiça e constitucionalismo na era digital A Ordem dos Advogados do Brasil – Seccional Alagoas, em parceria com o Governo do Estado de Alagoas e a Universidade Federal de Alagoas (por "
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 2,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 930802,
+            "titulo": "RESOLUÇÃO Nº 005/2025 – PRES-TED/OAB",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, no uso de suas atribuições legais e regimentais, com fulcro no Estatuto da Advocacia e da OAB (Lei nº 8.906/94), no Regulamento Geral, no Código de Ética e Disciplina, e demais no"
+          },
+          {
+            "id": 940077,
+            "titulo": "RESOLUÇÃO Nº 006/2025",
+            "trecho": "Dispõe sobre a Isenção da Taxa de Transferência de Subseção, nos casos de transferência do domicílio profissional de inscritos na Ordem dos Advogados do Brasil – Seccional Alagoas. O Conselho da Ordem dos Advogados do Brasil, Seccional de Alagoas, no uso de su"
+          },
+          {
+            "id": 1140712,
+            "titulo": "RESOLUÇÃO Nº 007/2026 – OAB/AL",
+            "trecho": "Institui o Protocolo Institucional de Acolhimento, Atendimento, Encaminhamento e Monitoramento de Advogadas Vítimas de Violência doméstica e familiar no âmbito da Ordem dos Advogados do Brasil – Seccional Alagoas, e dá outras providências. A DIRETORIA DA ORDEM"
+          }
+        ]
+      },
+      "Convocação/Julgamento": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 2
+        },
+        "amostras": [
+          {
+            "id": 766032,
+            "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "CONVOCAÇÃO A Ordem dos Advogados do Brasil, Seccional Alagoas, NOTIFICA o (a) advogado (a) W. N. S. – OAB/AL 11.095 para que compareça na Sessão do Tribunal Pleno designada para o dia 02 de Agosto de 2024 (sexta-feira) às 14h00min na Sala do Conselho da OAB/AL"
+          },
+          {
+            "id": 766034,
+            "titulo": "TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "CONVOCAÇÃO A Ordem dos Advogados do Brasil, Seccional Alagoas, NOTIFICA o (a) advogado (a) D. A. M. – OAB/AL 6.781 para que compareça na Sessão do Tribunal Pleno designada para o dia 02 de Agosto de 2024 (sexta-feira) às 14h00min na Sala do Conselho da OAB/AL,"
+          }
+        ]
+      },
+      "Edital de Convocação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 939831,
+            "titulo": "PROCESSO N. TRIBUNAL DE ÉTICA E DISCIPLINA",
+            "trecho": "CONVOCAÇÃO/AUDIÊNCIA DE INSTRUÇÃO PROCESSO Nº 02.0000.2024.006195-4 (nº antigo 3980/2019) Representante: JOB FONTES DE OLIVEIRA Adv. Constituído: FERNANDO ROCHA FONTES DE OLIVEIRA – OAB/SE 12.219 Representado (a): C. J. C. A. – OAB/AL 6744A Defensor Dativo: CA"
+          }
+        ]
+      }
+    }
+  },
+  "observacoes": "Censo com 40 dias amostrados: apenas 7 decisões (<30), validado assim mesmo; AL publica pouquíssimo no DEOAB. As únicas publicações decisórias são intimações de acórdão (art. 139 RGEOAB) das Turmas (6ª, 7ª) e do Pleno do TED, sem ementa nem voto no texto; tipos Acórdão e Intimação de Acórdão. Notificação (Tesouraria, anuidade), Portaria, Retificação (de portaria), Edital, Resolução, Convocação/Julgamento (pauta), Edital de Convocação e Intimação para Defesa Prévia (TED, fase instrutória) não são decisão. Recall: ACORDAO 1.0, EMENTA 1.0, RECURSO 1.0, DECISAO 0.57, JULGAMENTO 0.57. Publicações volumosas e esparsas por dia (2019 a 2026, com grandes lotes em 2022-03, 2025-07, 2025-11); anos com poucas decisões. Como o DEOAB traz só a intimação, o inteiro teor dos acórdãos provavelmente está fora do DEOAB (verificar site da OAB/AL ou ementário próprio). | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca).",
+  "modo": "censo"
+}

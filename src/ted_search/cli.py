@@ -24,8 +24,19 @@ from ted_search.collectors.oab_juris import (
     normalize_oab_juris_item,
 )
 from ted_search.config import DB_PATH, OAB_JURIS_CONTEXTS, RAW_DIR
-from ted_search.db import get_connection, get_global_stats, init_db, rebuild_fts
+from ted_search.db import conferir_fts, get_connection, get_global_stats, init_db, rebuild_fts
 from ted_search.parser import detect_orgao_julgador_oabsp
+from ted_search import fontes as fontes_site
+from ted_search import varredura
+
+
+def _recalcular_selos_se_preciso(sem_fts: bool) -> None:
+    """Carga sem reconstruir o índice: o selo de inteiro teor dos registros recém-gravados ainda precisa ser acertado."""
+    if sem_fts:
+        from ted_search.inteiro_teor import recalcular_selos
+
+        with get_connection(DB_PATH) as conn:
+            recalcular_selos(conn)
 
 
 def _insert_record(conn, rec: dict) -> None:
@@ -273,6 +284,10 @@ async def run_backfill_sp(
             print("[backfill-sp] Reconstruindo índice FTS5...")
             rebuild_fts(conn)
         conn.execute("VACUUM")
+        try:
+            conferir_fts(conn)
+        except Exception:  # o VACUUM renumerou as linhas: refaz o índice
+            rebuild_fts(conn)
 
     report.update(
         {
@@ -318,6 +333,44 @@ def main() -> None:
     p_sp.add_argument("--no-cache", action="store_true", help="Descarta data/raw/deoab_sp/ e baixa tudo de novo")
     p_sp.add_argument("--no-collect", action="store_true", help="Não acessa a rede: regrava o banco a partir de data/raw/deoab_sp/")
 
+    def _uf_parser(nome: str, ajuda: str) -> argparse.ArgumentParser:
+        sp_ = sub.add_parser(nome, help=ajuda)
+        sp_.add_argument("--uf", required=True, help="UF da Seccional (ex.: RS) ou lista separada por vírgula")
+        sp_.add_argument("--concurrency", type=int, default=10, help="Requisições simultâneas ao DEOAB (o servidor é um só: não some coletas em paralelo)")
+        return sp_
+
+    p_perfil = _uf_parser("sec-perfil", "Varredura 1/4: censo de dias-amostra -> proposta de perfil em data/perfis/UF.json")
+    p_perfil.add_argument("--dias", type=int, default=6, help="Dias-amostra do censo")
+    p_coletar = _uf_parser("sec-coletar", "Varredura 2/4: índice completo + inspeção das publicações (retomável)")
+    p_coletar.add_argument("--years", type=str, default="", help="Anos separados por vírgula (padrão: 2019 em diante)")
+    p_carregar = _uf_parser("sec-carregar", "Varredura 3/4: normaliza e grava no banco, atualizando o livro-razão")
+    p_carregar.add_argument("--years", type=str, default="", help="Anos separados por vírgula (padrão: todos os coletados)")
+    p_carregar.add_argument("--no-fts", action="store_true", help="Não reconstrói o FTS (use ao carregar várias UFs e rode 'cobertura --fts' no fim)")
+    p_auditar = _uf_parser("sec-auditar", "Varredura 4/4: censo independente de dias sorteados contra a coleta e o banco")
+    p_auditar.add_argument("--dias", type=int, default=4, help="Dias sorteados para o censo")
+    p_auditar.add_argument("--seed", type=int, default=None, help="Semente do sorteio (para repetir uma auditoria)")
+    p_cob = sub.add_parser("cobertura", help="Livro-razão da varredura: situação de cada Seccional")
+    p_cob.add_argument("--sync", type=str, default="", help="Recalcula o livro-razão dessas UFs a partir dos arquivos brutos e do banco")
+    p_cob.add_argument("--fts", action="store_true", help="Reconstrói o índice FTS5 e compacta o banco (VACUUM)")
+    p_cob.add_argument("--json", action="store_true", help="Saída em JSON")
+
+    p_fontes = sub.add_parser("fontes", help="Bases próprias nos sites das Seccionais: registro (data/fontes/<UF>.json) e situação")
+    p_fontes.add_argument("--uf", type=str, default="", help="Filtra por UF")
+    p_fontes.add_argument("--json", action="store_true", help="Saída em JSON")
+    for nome, ajuda in (("site-coletar", "Coleta uma base de site com o adaptador em collectors/sites/ (retomável)"),
+                        ("site-carregar", "Carrega no banco uma base de site já coletada e fecha a linha no livro-razão")):
+        p_site = sub.add_parser(nome, help=ajuda)
+        p_site.add_argument("--uf", required=True)
+        p_site.add_argument("--fonte", required=True, help="slug da base em data/fontes/<UF>.json")
+        p_site.add_argument("--concurrency", type=int, default=6)
+        p_site.add_argument("--no-fts", action="store_true")
+
+    p_it = sub.add_parser(
+        "inteiro-teor",
+        help="Atualiza o catálogo de PDFs de inteiro teor (relatório + voto) e recalcula o selo de todos os julgados",
+    )
+    p_it.add_argument("--recoletar", action="store_true", help="Baixa de novo as listagens dos dois portais do Conselho Federal antes")
+
     sub.add_parser("stats", help="Exibe estatísticas completas do banco de dados e enriquecimento")
 
     p_sec = sub.add_parser("collect-seccionais", help="Coleta acórdãos e ementas do DEOAB de Seccionais estaduais")
@@ -337,6 +390,68 @@ def main() -> None:
                 concurrency=args.concurrency,
             )
         )
+    elif args.cmd in ("sec-perfil", "sec-coletar", "sec-carregar", "sec-auditar"):
+        anos = [int(y) for y in getattr(args, "years", "").split(",") if y.strip()] or None
+        for uf in [u.strip().upper() for u in args.uf.split(",") if u.strip()]:
+            if args.cmd == "sec-perfil":
+                perfil = asyncio.run(varredura.perfilar_seccional(uf, n_dias=args.dias, concurrency=args.concurrency))
+                ev = perfil["evidencia"]
+                print(json.dumps({"uf": uf, "termos": perfil["termos"], "tipos_decisao": perfil["tipos_decisao"], "recall_por_termo": ev["recall_por_termo"],
+                                  "decisoes_no_censo": ev["decisoes_no_censo"], "sem_termo": len(ev["decisoes_que_nenhum_termo_encontra"]),
+                                  "tipos_vistos": {k: [v["publicacoes"], v["parecem_decisao"]] for k, v in ev["tipos"].items()}}, ensure_ascii=False, indent=2))
+            elif args.cmd == "sec-coletar":
+                if uf == "SP":
+                    asyncio.run(fetch_deoab_sp_pilot(years=anos, concurrency=args.concurrency))
+                else:
+                    asyncio.run(varredura.coletar_seccional(uf, anos=anos, concurrency=args.concurrency))
+            elif args.cmd == "sec-carregar":
+                if uf == "SP":
+                    asyncio.run(run_backfill_sp(years=anos, collect=False))
+                    varredura.registrar_rejeitados("SP")
+                    varredura.sincronizar_cobertura("SP")
+                else:
+                    print(json.dumps(varredura.carregar_seccional(uf, anos=anos, rebuild=not args.no_fts), ensure_ascii=False, indent=2))
+                    _recalcular_selos_se_preciso(args.no_fts)
+            else:
+                aud = asyncio.run(varredura.auditar_seccional(uf, n_dias=args.dias, concurrency=args.concurrency, seed=args.seed))
+                print(json.dumps(aud, ensure_ascii=False, indent=2))
+    elif args.cmd == "cobertura":
+        for uf in [u.strip().upper() for u in args.sync.split(",") if u.strip()]:
+            if uf == "SP":
+                varredura.registrar_rejeitados("SP")
+            varredura.sincronizar_cobertura(uf)
+        if args.fts:
+            with get_connection(DB_PATH) as conn:
+                with conn:
+                    rebuild_fts(conn)
+                # Sem VACUUM as páginas livres guardam o índice antigo e o banco compactado quase dobra de tamanho
+                conn.execute("VACUUM")
+                try:
+                    conferir_fts(conn)
+                except Exception:  # o VACUUM renumerou as linhas: refaz o índice
+                    rebuild_fts(conn)
+        linhas = varredura.relatorio_cobertura()
+        if args.json:
+            print(json.dumps(linhas, ensure_ascii=False, indent=2))
+        else:
+            print(f"{'UF':3} {'situação':17} {'perfil':7} {'anos':>4} {'ok':>3} {'parc':>4} {'decisões':>9} {'no banco':>9} {'auditada':>8} {'faltantes':>9}")
+            for l in linhas:
+                print(f"{l['uf']:3} {l['situacao']:17} {'sim' if l['perfil_validado'] else 'não':7} {l['anos_no_livro']:>4} {l['completos']:>3} {l['parciais']:>4} "
+                      f"{l['decisoes_coletadas']:>9} {l['no_banco']:>9} {'sim' if l['auditada'] else 'não':>8} {l['faltantes_na_auditoria']:>9}")
+    elif args.cmd == "fontes":
+        linhas = [l for l in fontes_site.relatorio_fontes() if not args.uf or l["uf"] == args.uf.upper()]
+        if args.json:
+            print(json.dumps(linhas, ensure_ascii=False, indent=2))
+        else:
+            print(f"{'UF':3} {'base':24} {'situação':11} {'excl.':5} {'livro':9} {'no banco':>8}  conteúdo / período")
+            for l in linhas:
+                excl = {True: "sim", False: "não"}.get(l["exclusiva"], "?")
+                print(f"{l['uf']:3} {l['slug'][:24]:24} {l['situacao']:11} {excl:5} {l['livro']:9} {l['no_banco']:>8}  {l['conteudo'][:70]} [{l['periodo']}]")
+    elif args.cmd == "site-coletar":
+        print(json.dumps(asyncio.run(fontes_site.coletar_fonte(args.uf, args.fonte, concurrency=args.concurrency)), ensure_ascii=False, indent=2)[:3000])
+    elif args.cmd == "site-carregar":
+        print(json.dumps(fontes_site.carregar_fonte(args.uf, args.fonte, rebuild=not args.no_fts), ensure_ascii=False, indent=2))
+        _recalcular_selos_se_preciso(args.no_fts)
     elif args.cmd == "backfill-sp":
         asyncio.run(
             run_backfill_sp(
@@ -386,6 +501,19 @@ def main() -> None:
                 with conn:
                     rebuild_fts(conn)
             print(f"Total de PDFs extraídos e indexados: {count}")
+    elif args.cmd == "inteiro-teor":
+        from ted_search import inteiro_teor
+
+        init_db(DB_PATH)
+        if args.recoletar:
+            asyncio.run(fetch_etica_strapi_all(use_cache=False))
+            asyncio.run(fetch_context_all_pages("EMENTA", page_size=1000, use_cache=False))
+            print("Listagens atualizadas. PDFs novos do portal: rode scripts/etica_pdfs_scan.py e scripts/etica_pdfs_ocr.py.")
+        with get_connection(DB_PATH) as conn:
+            from ted_search import citacao
+
+            print(json.dumps(inteiro_teor.aplicar(conn), indent=2, ensure_ascii=False))
+            print(json.dumps({"texto_do_conselho_federal": citacao.gravar_texto_cfoab(conn)}, indent=2, ensure_ascii=False))
     elif args.cmd == "stats":
         init_db(DB_PATH)
         with get_connection(DB_PATH) as conn:

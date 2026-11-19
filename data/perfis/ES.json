@@ -1,0 +1,464 @@
+{
+  "uf": "ES",
+  "id_organizacao": 8,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Ementa",
+    "Notificação",
+    "Retificação"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-19T19:44:01Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-23",
+        "publicacoes": 18,
+        "baixadas": 18
+      },
+      {
+        "dia": "2019-02-22",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2019-03-25",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2019-11-25",
+        "publicacoes": 15,
+        "baixadas": 15
+      },
+      {
+        "dia": "2020-03-17",
+        "publicacoes": 1615,
+        "baixadas": 600
+      },
+      {
+        "dia": "2020-05-15",
+        "publicacoes": 242,
+        "baixadas": 242
+      },
+      {
+        "dia": "2020-07-08",
+        "publicacoes": 60,
+        "baixadas": 60
+      },
+      {
+        "dia": "2020-10-27",
+        "publicacoes": 113,
+        "baixadas": 113
+      },
+      {
+        "dia": "2020-11-10",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2021-01-29",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2021-09-29",
+        "publicacoes": 65,
+        "baixadas": 65
+      },
+      {
+        "dia": "2021-10-04",
+        "publicacoes": 51,
+        "baixadas": 51
+      },
+      {
+        "dia": "2022-03-16",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2022-07-08",
+        "publicacoes": 102,
+        "baixadas": 102
+      },
+      {
+        "dia": "2022-09-05",
+        "publicacoes": 12,
+        "baixadas": 12
+      },
+      {
+        "dia": "2023-01-24",
+        "publicacoes": 32,
+        "baixadas": 32
+      },
+      {
+        "dia": "2023-02-27",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2023-04-19",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2023-12-06",
+        "publicacoes": 20,
+        "baixadas": 20
+      },
+      {
+        "dia": "2024-02-07",
+        "publicacoes": 38,
+        "baixadas": 38
+      },
+      {
+        "dia": "2024-03-08",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2024-06-05",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2024-07-29",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2025-02-10",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2025-05-21",
+        "publicacoes": 208,
+        "baixadas": 208
+      },
+      {
+        "dia": "2025-06-18",
+        "publicacoes": 77,
+        "baixadas": 77
+      },
+      {
+        "dia": "2025-07-10",
+        "publicacoes": 184,
+        "baixadas": 184
+      },
+      {
+        "dia": "2026-03-30",
+        "publicacoes": 34,
+        "baixadas": 34
+      },
+      {
+        "dia": "2026-08-11",
+        "publicacoes": 104,
+        "baixadas": 104
+      },
+      {
+        "dia": "2026-11-18",
+        "publicacoes": 21,
+        "baixadas": 21
+      }
+    ],
+    "decisoes_no_censo": 54,
+    "decisoes_que_nenhum_termo_encontra": [
+      456131,
+      456136,
+      456160
+    ],
+    "recall_por_termo": {
+      "ACORDAO": 0.9444,
+      "EMENTA": 0.9444,
+      "DECISAO": 0.2407,
+      "JULGAMENTO": 0.2222,
+      "RECURSO": 0.1852
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 1759,
+        "parecem_decisao": 2,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1547,
+          "TRIBUNAL DE ETICA E DISCIPLINA": 184,
+          "HABILITAÇÃO E INSCRIÇÃO": 22,
+          "Diretoria": 2,
+          "SEGUNDA CÂMARA JULGADORA": 1,
+          "Assessoria de Apoio às Comissões": 1
+        },
+        "amostras": [
+          {
+            "id": 192905,
+            "titulo": "Edital de Notificação",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da Ordem Advogados Brasil - Seção Espírito Santo, ALBERTO NEMER NETO, no uso de suas atribuições legais, torna sem efeito o acórdão publicado em 21 de novembro de 2019, no processo inframencionado. PROCESSO Nº 227"
+          },
+          {
+            "id": 192906,
+            "titulo": "Edital de Notificação",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da Ordem Advogados Brasil - Seção Espírito Santo, ALBERTO NEMER NETO, no uso de suas atribuições legais, torna sem efeito o acórdão publicado em 21 de novembro de 2019, no processo inframencionado. PROCESSO Nº 203"
+          },
+          {
+            "id": 192988,
+            "titulo": "Edital de Notificação Ciência de Despacho",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da Ordem Advogados Brasil - Seção Espírito Santo, ALBERTO NEMER NETO, no uso de suas atribuições legais, notifica o (a) advogado (a) abaixo, para no prazo de 15 (quinze) dias úteis apresentar, caso queira, Razões "
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 180,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 179,
+          "Assessoria do Conselho": 1
+        },
+        "amostras": [
+          {
+            "id": 272981,
+            "titulo": "ASSESSORIA DO CONSELHO",
+            "trecho": "EDITAL DE NOTIFICAÇÃO PROC. N°: 2313432016 O Conselho Seccional da Ordem Advogados Brasil - Seção Espírito Santo, notifica o (a) Requerido – P.M.P. (advogado Paulo Marques da Purificação - OAB/ES nº 25.002) , para que, no prazo de 15 (quinze) dias úteis, compa"
+          },
+          {
+            "id": 272982,
+            "titulo": "EDITAL DE DESIGNAÇÃO - PUBLICAÇÃO EM DIÁRIO ELETRÔNICO –DESIGNAÇÃO DE AUDIÊNCIA DE CONCILIAÇÃO",
+            "trecho": "PROCESSO Nº 226844-16 Representante (a): Lúcio Santos de Rezende –OAB/ES 8.230; Edson José da Silva Junior – OAB/ES 19.901 Representado(a): P. S. S; S.S.S. Advogado (a): Priscila Santos Silva – OAB/ES 24.063; Simony Santos Silva –OAB/ES 24.885; Leonardo de Jes"
+          },
+          {
+            "id": 272983,
+            "titulo": "Edital de Notificação",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da Ordem Advogados Brasil - Seção Espírito Santo (TED-OAB/ES), ALBERTO NEMER NETO, no uso de suas atribuições legais, notifica o(a) advogado(a) abaixo relacionado(a), para que, no prazo de 15 (quinze) dias úteis, "
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 133,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRESIDÊNCIA": 67,
+          "SUBSEÇÃO DE CARIACICA": 32,
+          "Diretoria": 13,
+          "SUBSEÇÃO DE GUARAPARI": 11,
+          "SUBSEÇÃO DE VILA VELHA": 7,
+          "SUBSEÇÃO DA SERRA": 2
+        },
+        "amostras": [
+          {
+            "id": 1040,
+            "titulo": "PORTARIA Nº 42 DE 18 DE JANEIRO DE 2019.",
+            "trecho": "Constitui a Comissão de Estudos Constitucionais. O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO DO ESPÍRITO SANTO, no uso das atribuições que lhe são conferidas pelo Regulamento Geral do Estatuto da Advocacia e da OAB. R E S O L V E: Art. 1º - Constitui"
+          },
+          {
+            "id": 1041,
+            "titulo": "PORTARIA Nº 43 DE 18 DE JANEIRO DE 2019.",
+            "trecho": "Nomeia membro para a Comissão da Mulher Advogada O COORDENADOR GERAL DE COMISSÕES DA ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO DO ESPÍRITO SANTO, no uso das atribuições que lhe são conferidas pela Resolução 01/2019, Art. 4º, inciso X, do Regimento Interno da OAB/E"
+          },
+          {
+            "id": 1042,
+            "titulo": "PORTARIA Nº 44 DE 18 DE JANEIRO DE 2019.",
+            "trecho": "Constitui a Comissão de Direito Previdenciário, designa Presidente, Vice-Presidente, Secretário Geral e membros. O COORDENADOR GERAL DE COMISSÕES DA ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO DO ESPÍRITO SANTO, no uso das atribuições que lhe são conferidas pela Res"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 51,
+        "parecem_decisao": 31,
+        "setores": {
+          "Assessoria do Conselho": 28,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 23
+        },
+        "amostras": [
+          {
+            "id": 192893,
+            "titulo": "SEGUNDA CÂMARA JULGADORA",
+            "trecho": "Processo nº: 175040-2012 Recorrente: Marisol Salles Barbosa Recorrido: G.B.S Defensor Dativo: Daniel Barcellos Meneguel – 28.855 E menta : RECURSO - infringência ao inciso IX do Estatuto e art. 44 do Código de Ética e Disciplina acarretam ao infrator a pena de"
+          },
+          {
+            "id": 192894,
+            "titulo": "SEGUNDA CÂMARA JULGADORA",
+            "trecho": "Processo nº: 216576-2015 Recorrente: Alexandre de Souza Recorrido: S.S Advogado: Marcelo Raposo Côgo – 11.665 Ementa: RECURSO - instauração de processo disciplinar – infração ética disciplinar - aplicação da pena de censura, ao representado, a teor do art. 35,"
+          },
+          {
+            "id": 192895,
+            "titulo": "SEGUNDA CÂMARA JULGADORA",
+            "trecho": "Processo nº: 192294-2013 Recorrente: Adriana Celli Silva Machado e D´Angelo Bruno Souza Machado Recorrido: P.L.S Advogado: Patrice Lumumba Sabino – 6752 Ementa: RECURSO - Representação. Suspensão. Procedência. Retenção por parte do representado de créditos do "
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 15,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 14,
+          "Assessoria do Conselho": 1
+        },
+        "amostras": [
+          {
+            "id": 228894,
+            "titulo": "EDITAL DO TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB ESPIRÍTO SANTO",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina do Espírito Santo, Dr. Alberto Nemer Neto, termos do art. 9° à 13° do RITED-OAB/ES, tem o presente o objetivo de dar ciência a todos os Membros Julgadores do TED-OAB/ES acerca dos candidatos para eleição ao Órgão "
+          },
+          {
+            "id": 243812,
+            "titulo": "Sessão",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina do Espírito Santo, Dr. Alberto Nemer Neto, termos do art. 10º do RITED-OAB/ES, nos uso de suas atribuições como Presidente do Órgão Especial do TED-OAB/ES, convoca os membros para a 1ª Sessão Ordinária, a ser real"
+          },
+          {
+            "id": 369215,
+            "titulo": "PAUTA SEGUNDA CÂMARA",
+            "trecho": "Sessão VIRTUAL Ordinária – OUTUBRO/2021 SEGUNDA CÂMARA Dia 19/10/2021 , terça-feira . - 10 Horas: Sessão Ordinária da Segunda Câmara. PAUTA I – verificação do quorum e abertura; II – leitura, discussão e aprovação da ata da sessão anterior; III – comunicações "
+          }
+        ]
+      },
+      "Edital de inscrições": {
+        "publicacoes": 11,
+        "parecem_decisao": 0,
+        "setores": {
+          "Assessoria do Conselho": 9,
+          "HABILITAÇÃO E INSCRIÇÃO": 2
+        },
+        "amostras": [
+          {
+            "id": 26746,
+            "titulo": "EDITAL DE INSCRIÇÃO Nº 21",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção do Estado do Espírito Santo, torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que os nomes abaixo relacionados requereram Inscrição nos quadros da Ordem desta Seccional. Qualquer impugna"
+          },
+          {
+            "id": 27272,
+            "titulo": "EDITAL DE INSCRIÇÃO Nº 22",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção do Estado do Espírito Santo, torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que os nomes abaixo relacionados requereram Inscrição nos quadros da Ordem desta Seccional. Qualquer impugna"
+          },
+          {
+            "id": 277675,
+            "titulo": "ASSESSORIA DO CONSELHO",
+            "trecho": "EDITAL DE INSCRIÇÕES Nº 212 A Ordem dos Advogados do Brasil, Seção do Estado do Espírito Santo, torna pública e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que os nomes abaixo relacionados requereram Inscrição nos quadros da Ordem desta"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "SUBSEÇÃO DE GUARAPARI": 3,
+          "PRESIDÊNCIA": 1
+        },
+        "amostras": [
+          {
+            "id": 192904,
+            "titulo": "RESOLUÇÃO Nº 18 DE 20 DE NOVEMBRO DE 2019.",
+            "trecho": "Alter a a data de repasse mensal às Subseções estabelecida pela Resolução nº 12 de 26 de agosto de 2019. A DIRETORIA DA ORDEM DOS ADVOGADOS DO BRASIL – SE CCIONAL DO ESPÍRITO SANTO , no uso das atribuições que lhe são conferidas pelo Regulamento Geral do Estat"
+          },
+          {
+            "id": 779791,
+            "titulo": "RESOLUÇÃO 003/2024",
+            "trecho": "A Presidente do Conselho da 4ª Subseção de Guarapari da OAB/ES, no uso de suas atribuições previstas no artigo 118, inciso VI, do Regimento Interno da Ordem dos Advogados do Brasil, Seção do Espírito Santo e no artigo 15, inciso XXI, do Regimento Interno desta"
+          },
+          {
+            "id": 779792,
+            "titulo": "RESOLUÇÃO 002/2024",
+            "trecho": "A Presidente do Conselho da 4ª Subseção de Guarapari da OAB/ES, no uso de suas atribuições previstas no artigo 118, inciso VI, do Regimento Interno da Ordem dos Advogados do Brasil, Seção do Espírito Santo e no artigo 15, inciso XXI, do Regimento Interno desta"
+          }
+        ]
+      },
+      "Ementa": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Assessoria do Conselho": 3
+        },
+        "amostras": [
+          {
+            "id": 1198181,
+            "titulo": "EMENTA",
+            "trecho": "Processo nº: 08.0000.2026.00 8476 - 4 Assunto: Revisão do orçamento da CAAES para o Exercício de 202 6 Interessada: Caixa de Assistência dos Advogados do Espírito Santo (CAAES) Relator: Conselheiro Ricardo Barros Brum Sessão Plenária: 13 de novembro de 2026 AD"
+          },
+          {
+            "id": 1198184,
+            "titulo": "EMENTA",
+            "trecho": "Processo nº: 08.0000.2026.0078 66 - 7 Assunto: Proposta orçamentária da OAB/ES para o Exercício de 202 7 Relator: Conselheiro Ricardo Barros Brum Sessão Plenária: 13 de novembro de 2026 ADMINISTRATIVO E FINANCEIRO. ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO DO ESPÍ"
+          },
+          {
+            "id": 1198189,
+            "titulo": "EMENTA",
+            "trecho": "Processo nº: 08.0000.2026.007865-9 Assunto: Revisão/Ajuste do Orçamento do Exercício de 2026 Relator: Conselheiro Ricardo Barros Brum Sessão Plenária: 13 de novembro de 2026 ADMINISTRATIVO E FINANCEIRO. ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO DO ESPÍRITO SANTO ("
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRESIDÊNCIA": 1,
+          "SUBSEÇÃO DE VILA VELHA": 1
+        },
+        "amostras": [
+          {
+            "id": 369225,
+            "titulo": "ATO DE RETIFICAÇÃO AO EDITAL DE CONVOCAÇÃO PARA AS ELEIÇÕES",
+            "trecho": "Ordem dos Advogados do Brasil - Seção do Espírito Santo, por sua Comissão Eleitoral, nos termos da Resolução nº 20 de 16 de setembro de 2021 e do Edital publicado no Diário Oficial eletrônico em 01 de outubro de 2021, vem, por seu Presidente, publicar o presen"
+          },
+          {
+            "id": 712743,
+            "titulo": "EDITAL DE NOTIFICAÇÃO",
+            "trecho": "De ordem do Presidente da 8ª Subseção - Vila Velha, Dr. José Antônio Neffa Junior, no uso de suas atribuições legais, notifica o(a) advogado(a) Dr. (a ) Leonardo da Rocha de Souza, inscrito(a) na OAB/ES sob o nº 14.589 , (87262019) para tomar ciência de assunt"
+          }
+        ]
+      },
+      "Redesignação de Sessão": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 2
+        },
+        "amostras": [
+          {
+            "id": 1136972,
+            "titulo": "REDESIGNAÇÃO DE AUDIÊNCIA DE INSTRUÇÃO – TED-OAB/ES",
+            "trecho": "Processo nº 239182025-0 Representante : Lucas Tiago da Silva Representado (a): A.D.R Advogado (a) : Angélica Damasceno Romeiro – OAB/ES 37329; Lidia Vieira Alcantara Dias – OAB/ES 36192. Relator (a): Fernando Coelho Madeira de Freitas Audiência designada para "
+          },
+          {
+            "id": 1136973,
+            "titulo": "REDESIGNAÇÃO DE AUDIÊNCIA DE INSTRUÇÃO – TED-OAB/ES",
+            "trecho": "Processo nº 263692025-0 Representante : Delio Gomes Pereira Advogado(a): Naydher Silva Berger – OAB/ES 23047 Representado (a): Z.A.R Advogado (a) : Zenildo de Abreu Reis – OAB/ES 32076; Jordana Nunes Morais – OAB/ES 23368 Relator (a): Fernando Coelho Madeira d"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 870264,
+            "titulo": "Edital de Notificação",
+            "trecho": "O Conselho da 1ª Subseção da Ordem Advogados Brasil - Seção Espírito Santo, notifica a advogada Alexsandra Victória Delboni - OAB/es Nº 25770 (processo nº 269672022-0), para que, no prazo de 15 (quinze) dias úteis, compareça à Sede da 1ª Subseção da Ordem dos "
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Assessoria do Conselho": 1
+        },
+        "amostras": [
+          {
+            "id": 1137061,
+            "titulo": "ASSESSORIA DO CONSELHO",
+            "trecho": "EDITAL DE INSCRIÇÕES Nº 70 2026 A Ordem dos Advogados do Brasil, Seção do Estado do Espírito Santo, torna pública e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que os nomes abaixo relacionados requereram Inscrição nos quadros da Ordem d"
+          }
+        ]
+      }
+    }
+  },
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "observacoes": "ES: censo de 30 dias-amostra (2019-2026, 3.177 publicações) com 54 decisões segundo os termos (51 tipo Acórdão, 3 tipo Ementa); leitura confirma ~48 decisões reais. Quem julga: TED/OAB-ES publica acórdãos com EMENTA numerada (ex.: 'EMENTA N.º 222 / 8ª TURMA JULGADORA/2026', 1ª a 9ª Turmas Julgadoras e Órgão Especial; lote de 13 acórdãos em 2026-08-11, 10 em 2020-10/11, 5 em 2023-12-06), setor TRIBUNAL DE ÉTICA E DISCIPLINA, título 'ACÓRDÃO'. Recursos disciplinares antigos (2019, 2020, 2022) saem pela SEGUNDA CÂMARA JULGADORA, setor Assessoria do Conselho. Também publicados no tipo Acórdão: Conselho Pleno e Comissões/Turmas de Seleção e Inscrição (pedidos de inscrição/licenciamento, desmembramento de subseção, inidoneidade moral, prerrogativas) - mérito não disciplinar, filtrar depois. Tipo Ementa (3, 2026-11-18, setor Assessoria do Conselho) é orçamento da CAAES/OAB-ES, administrativo, mantido por precaução. Notificação (1.759, setor TED) é quase só edital de defensor dativo/prazo, mas 479827-479829 (2022-09-05) são republicações de acórdãos da Segunda Câmara com EMENTA, por isso Notificação entra como tipo amplo; 192905/192906 'torna sem efeito o acórdão' não são decisão. Falsos positivos: ids 456131, 456136, 456160 (2022-07-08) vêm tipificados como Acórdão mas são Edital de Notificação de defensor dativo (os 3 'sem termo' do censo; recall 94,4% de ACORDAO e EMENTA e não precisam de termo novo). Ruído: Edital (180, notificações/audiência), Portaria (133), Pauta de Julgamentos/Sessão (15), Resolução, Edital de inscrições. Publicações de 2019 a 2026. Sem indício de ementário em site próprio nem de decisões só em PDF.",
+  "modo": "censo"
+}

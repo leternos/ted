@@ -1411,3 +1411,62 @@ html, body {
 .stat-chip-btn .stat-chip-icon {
   font-size: 0.85rem;
 }
+
+/* Inteiro teor de outra decisão do mesmo processo (ex.: recurso no Conselho Federal) */
+.badge-inteiro-teor-rel {
+  background: transparent;
+  border: 1px dashed var(--accent-green, #1f8f5f);
+  color: var(--accent-green, #1f8f5f);
+}
+
+/* Texto como publicado (CFOAB ou Diário) */
+.texto-recolhido {
+  max-height: 21em;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent);
+  margin-bottom: 0.3rem;
+}
+.btn-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--accent-blue, #1d4f91);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.btn-expandir-texto {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+}
+.cfoab-no-processo {
+  border-left: 3px solid #1d4f91;
+  background: #f5f8fc;
+  padding: 0.7rem 0.9rem;
+  margin: 0.2rem 0 0.95rem;
+  border-radius: 0 4px 4px 0;
+}
+.cfoab-titulo {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  color: #1d4f91;
+  margin-bottom: 0.5rem;
+}
+.cfoab-bloco + .cfoab-bloco {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed #c9d6e6;
+}
+.cfoab-bloco-cab {
+  font-size: 0.8rem;
+  color: #4a5568;
+  margin-bottom: 0.35rem;
+}
+.cfoab-no-processo .ementa-body {
+  margin-bottom: 0;
+}

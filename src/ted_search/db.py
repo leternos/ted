@@ -46,7 +46,10 @@ CREATE TABLE IF NOT EXISTS julgados (
     publicacao_str TEXT,
     data_decisao TEXT,
     is_ted_disciplinar INTEGER DEFAULT 0,
-    tem_inteiro_teor INTEGER DEFAULT 0
+    tem_inteiro_teor INTEGER DEFAULT 0,
+    inteiro_teor_pdfs_json TEXT,
+    inteiro_teor_relacionado INTEGER DEFAULT 0,
+    texto_publicado TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_julgados_orgao ON julgados(orgao_julgador_norm);
@@ -69,6 +72,11 @@ CREATE TABLE IF NOT EXISTS julgado_dispositivos (
 
 CREATE INDEX IF NOT EXISTS idx_disp_nome ON julgado_dispositivos(dispositivo);
 
+"""
+
+# Índice de "conteúdo externo": o FTS5 guarda só o índice e lê o texto da própria tabela julgados.
+# Com a cópia interna do texto o banco tinha ~390 MB a mais e o .xz passava dos 100 MB do GitHub.
+FTS_SQL = """
 CREATE VIRTUAL TABLE IF NOT EXISTS julgados_fts USING fts5(
     id UNINDEXED,
     numero_processo,
@@ -79,9 +87,12 @@ CREATE VIRTUAL TABLE IF NOT EXISTS julgados_fts USING fts5(
     descricao_ementa,
     descricao_acordao,
     inteiro_teor_texto,
+    content='julgados',
+    content_rowid='rowid',
     tokenize='unicode61 remove_diacritics 2'
 );
 """
+SCHEMA_SQL += FTS_SQL
 
 
 def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
@@ -94,7 +105,7 @@ def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
                 with opener(packed, "rb") as f_in, open(db_path, "wb") as f_out:
                     shutil.copyfileobj(f_in, f_out, length=1024 * 1024)
                 break
-    conn = sqlite3.connect(str(db_path))
+    conn = sqlite3.connect(str(db_path), timeout=120)  # agentes da varredura escrevem em paralelo
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -102,27 +113,39 @@ def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
 def init_db(db_path: Path = DB_PATH) -> None:
     with get_connection(db_path) as conn:
         conn.executescript(SCHEMA_SQL)
+        from ted_search.inteiro_teor import garantir_esquema
+
+        garantir_esquema(conn)  # bancos criados antes das colunas de inteiro teor
+        from ted_search import citacao
+
+        citacao.garantir_esquema(conn)
 
 
 def rebuild_fts(conn: sqlite3.Connection) -> None:
     """Reconstrói a tabela virtual FTS5 a partir da tabela principal julgados."""
-    conn.execute("DELETE FROM julgados_fts;")
-    conn.execute(
-        """
-        INSERT INTO julgados_fts (
-            rowid, id, numero_processo, numero_ementa, orgao_julgador_norm,
-            relator_principal, dispositivos_texto, descricao_ementa,
-            descricao_acordao, inteiro_teor_texto
-        )
-        SELECT
-            rowid, id, COALESCE(numero_processo, ''), COALESCE(numero_ementa, ''),
-            COALESCE(orgao_julgador_norm, ''), COALESCE(relator_principal, ''),
-            COALESCE(dispositivos_texto, ''), COALESCE(descricao_ementa, ''),
-            COALESCE(descricao_acordao, ''), COALESCE(inteiro_teor_texto, '')
-        FROM julgados;
-        """
-    )
+    # Antes de indexar, o selo de inteiro teor é recalculado pelo conteúdo (ver ted_search.inteiro_teor)
+    from ted_search.inteiro_teor import recalcular_selos
 
+    fabrica = conn.row_factory
+    recalcular_selos(conn)
+    conn.row_factory = fabrica
+    # Recria a tabela: troca o formato antigo (com cópia do texto) e não deixa páginas do índice velho no arquivo
+    conn.execute("DROP TABLE IF EXISTS julgados_fts;")
+    conn.executescript(FTS_SQL)
+    conn.execute("INSERT INTO julgados_fts(julgados_fts) VALUES('rebuild');")
+    # Funde os segmentos num só: índice menor e busca mais rápida
+    conn.execute("INSERT INTO julgados_fts(julgados_fts) VALUES('optimize');")
+
+
+def conferir_fts(conn: sqlite3.Connection) -> None:
+    """Confere o índice contra a tabela julgados (o índice aponta para as linhas pelo rowid). Levanta erro se divergir.
+
+    Chamar depois de VACUUM: se o SQLite renumerar as linhas, o índice tem de ser refeito.
+    """
+    conn.execute("INSERT INTO julgados_fts(julgados_fts, rank) VALUES('integrity-check', 1);")
+
+
+from ted_search.citacao import LIMITE_NA_LISTA, SQL_TEXTO_PUBLICADO, cfoab_no_processo  # noqa: E402
 
 DISCIPLINARY_THESAURUS: dict[str, list[str]] = {
     "tergiversacao": [
@@ -369,7 +392,7 @@ def search_julgados(
         )
 
     if apenas_inteiro_teor:
-        where_clauses.append("j.tem_inteiro_teor = 1")
+        where_clauses.append("j.tem_inteiro_teor = 1")  # filtro estrito: só inteiro teor do próprio julgado
 
     if contexto:
         where_clauses.append("j.contexto = ?")
@@ -478,6 +501,10 @@ def search_julgados(
             j.data_decisao,
             j.is_ted_disciplinar,
             j.tem_inteiro_teor,
+            j.inteiro_teor_pdfs_json,
+            j.inteiro_teor_relacionado,
+            substr({SQL_TEXTO_PUBLICADO}, 1, {LIMITE_NA_LISTA}) AS texto_publicado,
+            length({SQL_TEXTO_PUBLICADO}) AS texto_publicado_chars,
             {score_expr} AS bm25_score
         {from_sql}
         WHERE {where_sql}
@@ -491,8 +518,11 @@ def search_julgados(
         d["dispositivos"] = json.loads(d.pop("dispositivos_json") or "[]")
         d["is_ted_disciplinar"] = bool(d["is_ted_disciplinar"])
         d["tem_inteiro_teor"] = bool(d["tem_inteiro_teor"])
+        d["inteiro_teor_relacionado"] = bool(d["inteiro_teor_relacionado"])
+        d["inteiro_teor_pdfs"] = json.loads(d.pop("inteiro_teor_pdfs_json") or "[]")
         d["tem_acordao"] = bool((d.get("descricao_acordao") or "").strip() or d["tem_inteiro_teor"])
         items.append(d)
+    cfoab_no_processo(conn, items)
 
     return {
         "total": total,
@@ -538,7 +568,7 @@ def get_facets(
             "((j.descricao_acordao IS NOT NULL AND j.descricao_acordao != '') OR j.tem_inteiro_teor = 1)"
         )
     if apenas_inteiro_teor:
-        where_clauses.append("j.tem_inteiro_teor = 1")
+        where_clauses.append("j.tem_inteiro_teor = 1")  # filtro estrito: só inteiro teor do próprio julgado
 
     where_sql = " AND ".join(where_clauses) if where_clauses else "1=1"
 
@@ -642,7 +672,7 @@ def get_global_stats(conn: sqlite3.Connection) -> dict[str, Any]:
         "SELECT COUNT(*) FROM julgados WHERE (descricao_acordao IS NOT NULL AND descricao_acordao != '') OR tem_inteiro_teor = 1"
     ).fetchone()[0]
     total_com_pdf = conn.execute(
-        "SELECT COUNT(*) FROM julgados WHERE pdf_url IS NOT NULL AND pdf_url != ''"
+        "SELECT COUNT(*) FROM julgados WHERE tem_inteiro_teor = 1"  # mesmo número do filtro de inteiro teor
     ).fetchone()[0]
     total_inteiro_teor_indexado = conn.execute(
         "SELECT COUNT(*) FROM julgados WHERE tem_inteiro_teor = 1"

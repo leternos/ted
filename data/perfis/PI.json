@@ -1,0 +1,525 @@
+{
+  "uf": "PI",
+  "id_organizacao": 18,
+  "termos": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Decisão",
+    "ACORDAO",
+    "ACÓRDÃO",
+    "EMENTA"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-18T14:26:11Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-18",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2019-02-12",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2019-03-12",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-11-29",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-03-17",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-05-07",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-07-24",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-09-30",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2020-10-29",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-11-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-01-22",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2021-02-23",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-06-16",
+        "publicacoes": 30,
+        "baixadas": 30
+      },
+      {
+        "dia": "2021-08-24",
+        "publicacoes": 18,
+        "baixadas": 18
+      },
+      {
+        "dia": "2021-09-10",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-10-14",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2022-03-09",
+        "publicacoes": 191,
+        "baixadas": 191
+      },
+      {
+        "dia": "2022-07-22",
+        "publicacoes": 29,
+        "baixadas": 29
+      },
+      {
+        "dia": "2022-09-13",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2022-10-13",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2022-12-20",
+        "publicacoes": 26,
+        "baixadas": 26
+      },
+      {
+        "dia": "2023-01-31",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2023-02-08",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2023-04-13",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2023-10-31",
+        "publicacoes": 32,
+        "baixadas": 32
+      },
+      {
+        "dia": "2023-12-19",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-01-16",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2024-02-08",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2024-03-25",
+        "publicacoes": 22,
+        "baixadas": 22
+      },
+      {
+        "dia": "2024-06-19",
+        "publicacoes": 12,
+        "baixadas": 12
+      },
+      {
+        "dia": "2024-07-03",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2024-12-10",
+        "publicacoes": 29,
+        "baixadas": 29
+      },
+      {
+        "dia": "2025-02-14",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2025-05-08",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2025-06-18",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2025-07-07",
+        "publicacoes": 81,
+        "baixadas": 81
+      },
+      {
+        "dia": "2025-11-04",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-03-10",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2026-08-21",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2026-11-09",
+        "publicacoes": 44,
+        "baixadas": 44
+      }
+    ],
+    "decisoes_no_censo": 11,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 0.1818,
+      "JULGAMENTO": 0.0,
+      "RECURSO": 0.2727
+    },
+    "tipos": {
+      "Portaria": {
+        "publicacoes": 542,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria das Comissões": 488,
+          "Gabinete da Presidência": 51,
+          "Escola Superior de Advocacia": 2,
+          "Presidência": 1
+        },
+        "amostras": [
+          {
+            "id": 3653,
+            "titulo": "PORTARIA Nº 007/2019 - GP",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL, SECÇÃO PIAUÍ, no uso de suas atribuições legais e regimentais: CONSIDERANDO o disposto no artigo 37, do Regimento Interno da Seccional; RESOLVE Art. 1º NOMEAR o Advogado RODRIGO VIDAL OLIVEIRA (OAB/PI 8.451) para "
+          },
+          {
+            "id": 3655,
+            "titulo": "PORTARIA Nº 007/2019 - GP",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO PIAUÍ e a PRESIDENTE DA CAIXA DE ASSISTÊNCIA DOS ADVOGADOS DO PIAUÍ, no uso de suas atribuições legais, estatutárias e regimentais; CONSIDERANDO o art. 6º, §1º e § 2º do Regimento Interno da OAB/PI e o art"
+          },
+          {
+            "id": 232267,
+            "titulo": "Portaria nº 09/2020 - GP",
+            "trecho": "O PRESIDENTE E O SECRETÁRIO-GERAL DA ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO PIAUÍ, no uso de suas atribuições legais e regimentais; CONSIDERANDO a declaração de pandemia do coronavírus (COVID-19) pela Organização Mundial de Saúde (OMS); CONSIDERANDO o artigo 3"
+          }
+        ]
+      },
+      "Notificação": {
+        "publicacoes": 77,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tesouraria": 40,
+          "Tribunal de Ética e Disciplina": 31,
+          "Secretaria do Conselho Pleno": 6
+        },
+        "amostras": [
+          {
+            "id": 560082,
+            "titulo": "Processo nº 18.0000.2023.001034-8",
+            "trecho": "O CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DO PIAUÍ, reunir-se-á em Sessão Ordinária a ser realizada no dia 27.04.2023, a partir das 15h, no Plenário do Conselho Pleno Ministro Evandro Lins e Silva, na Sede desta Seccional, situada na Rua Gov."
+          },
+          {
+            "id": 560083,
+            "titulo": "Processo nº 18.0000.2018.000256-9",
+            "trecho": "O CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DO PIAUÍ, reunir-se-á em Sessão Ordinária a ser realizada no dia 27.04.2023, a partir das 15h, no Plenário do Conselho Pleno Ministro Evandro Lins e Silva, na Sede desta Seccional, situada na Rua Gov."
+          },
+          {
+            "id": 560084,
+            "titulo": "Processo nº 18.0000.2018.000280-1",
+            "trecho": "O CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DO PIAUÍ, reunir-se-á em Sessão Ordinária a ser realizada no dia 27.04.2023, a partir das 15h, no Plenário do Conselho Pleno Ministro Evandro Lins e Silva, na Sede desta Seccional, situada na Rua Gov."
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 27,
+        "parecem_decisao": 0,
+        "setores": {
+          "Segunda Câmara de Inscrição de Advogados": 27
+        },
+        "amostras": [
+          {
+            "id": 745,
+            "titulo": "Edital de Inscrição nº 006/2019.",
+            "trecho": "Considerando os requisitos exigidos pelo arts. 8º e 9º da Lei nº 8.906/94, torno público que qualquer interessado capaz no prazo de cinco dias úteis da publicação deste, poderá impugnar por escrito, fundamentando-se em descumprimento das condições legais, o(s)"
+          },
+          {
+            "id": 3615,
+            "titulo": "Edital de Inscrição nº 0017/2019.",
+            "trecho": "Considerando os requisitos exigidos pelo arts. 8º e 9º da Lei nº 8.906/94, torno público que qualquer interessado capaz no prazo de cinco dias úteis da publicação deste, poderá impugnar por escrito, fundamentando-se em descumprimento das condições legais, o(s)"
+          },
+          {
+            "id": 23955,
+            "titulo": "Edital de Inscrição nº 0025/2019.",
+            "trecho": "Considerando os requisitos exigidos pelo arts. 8º e 9º da Lei nº 8.906/94, torno público que qualquer interessado capaz no prazo de cinco dias úteis da publicação deste, poderá impugnar por escrito, fundamentando-se em descumprimento das condições legais, o(s)"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 11,
+        "parecem_decisao": 9,
+        "setores": {
+          "Secretaria do Conselho Pleno": 11
+        },
+        "amostras": [
+          {
+            "id": 266065,
+            "titulo": "Processo nº.18.0000.2020.000270-3",
+            "trecho": "Origem: Comissão de Defesa dos Direitos das Pessoas com Deficiência Assunto : Alteração no Regimento Interno da Seccional OAB/PI para garantia de participação na composição do quadro do Conselho Pleno e do Conselho Estadual do Jovem Advogado com fulcro no prov"
+          },
+          {
+            "id": 266066,
+            "titulo": "Processo nº. 18.0000.2019.001411-0",
+            "trecho": "Natureza: Requerimento Assunto: Requerimento de Inscrição nos quadros de advogados da OAB-PI Proponente: Jefferson Torquato Da Costa França Relator : Conselheiro Seccional Fernando Ferreira Correia Lima - OAB/PI. Ementa nº 1 2 /2020/CP/OAB/PI. RECURSO EM REQUE"
+          },
+          {
+            "id": 293778,
+            "titulo": "Processo nº 18.0000.2020.000337-8",
+            "trecho": "Assunto : Requerimento de criação da Comissão de Processo Civil R equer ente : Antônio Augusto Pires Brandão, OAB/PI nº 12.394 Relator a : Conselheira Seccional Maria Fernanda Brito do Amaral Ementa : Pro posta de CRIAÇÃO DA COMISSÃO DE PROCESSO CIVIL NO TRIÊN"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 10,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 10
+        },
+        "amostras": [
+          {
+            "id": 194888,
+            "titulo": "Edital de Notificação nº 178/19.",
+            "trecho": "Considerando os requisitos exigidos pelo art. 137-D, §§ 2º e 3º do Regulamento Geral da OAB, NOTIFICO o ADV. THIAGO HENRIQUE VIANA LIMA (OAB/PI Nº7558), para, no prazo 15 (quinze) dias úteis, comparecer na sede da Seccional da OAB/PI, situado na Rua Governador"
+          },
+          {
+            "id": 533309,
+            "titulo": "Edital de Notificação nº 001/2023.",
+            "trecho": "Considerando os requisitos exigidos pelo art. 137-D, §§ 2º e 3º do Regulamento Geral da OAB, NOTIFICO o ADV. ANTONIO LUCAS BALDOINO BARROS (OAB/PI Nº 2.097), para, no prazo de 15 (quinze) dias úteis, comparecer na sede da Seccional da OAB/PI, situada na Rua Go"
+          },
+          {
+            "id": 533310,
+            "titulo": "Edital de Notificação nº 002/2023.",
+            "trecho": "Considerando os requisitos exigidos pelo art. 137-D, §§ 2º e 3º do Regulamento Geral da OAB, NOTIFICO o ADV. EDER CLAUDINO GONCALVES (OAB/PI Nº 2.382), para, no prazo de 15 (quinze) dias úteis, comparecer na sede da Seccional da OAB/PI, situada na Rua Governad"
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 4,
+        "parecem_decisao": 1,
+        "setores": {
+          "Segunda Câmara de Inscrição de Advogados": 2,
+          "Comissão Eleitoral": 1,
+          "Gabinete da Presidência": 1
+        },
+        "amostras": [
+          {
+            "id": 520875,
+            "titulo": "EDITAL Nº 02/2022",
+            "trecho": "PROCEDIMENTO DE ELABORAÇÃO DA LISTA SÊXTUPLA DE ADVOGADOS A SER ENCAMINHADA AO TRIBUNAL DE JUSTIÇA DO ESTADO DO PIAUÍ- TJPI, PARA O PREENCHIMENTO DA VAGA DE DESEMBARGADOR DESTINADA À ADVOCACIA A COMISSÃO ELEITORAL DE CONDUÇÃO DO PROCESSO DE ELABORAÇÃO DA LISTA"
+          },
+          {
+            "id": 656000,
+            "titulo": "EDITAL Nº 003/2023 – ELEIÇÕES SUPLEMENTAR OAB/PI",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO PIAUÍ, por seu Presidente, nos termos dos arts. 63 a 67 da Lei nº 8.906/94, dos arts. 128 a 137-C do Regulamento Geral do Estatuto da Advocacia e da OAB e do Provimento nº 146/2011 do Conselho Federal da Ordem dos Advog"
+          },
+          {
+            "id": 720435,
+            "titulo": "Edital de Inscrição nº 027/2024.",
+            "trecho": "Considerando os requisitos exigidos pelos arts. 8º e 9º da Lei nº 8.906/94, torno público que qualquer interessado capaz no prazo de cinco dias úteis da publicação deste, poderá impugnar por escrito, fundamentando-se em descumprimento das condições ANA SOFHIA "
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria das Comissões": 2,
+          "Secretaria do Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 3664,
+            "titulo": "PAUTA DA SESSÃO EXTRAORDINÁRIA DO CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL PIAUÍ, DO DIA 14 DE FEVEREIRO DE 2019.",
+            "trecho": "O Presidente da OAB/PI, Celso Barros Coelho Neto, no uso de suas atribuições legais e regimentais RESOLVE: Convocar os Senhores Conselheiros Seccionais para a Sessão Extraordinária do Conselho Pleno da Ordem dos Advogados do Brasil, Seccional Piauí, que ocorre"
+          },
+          {
+            "id": 495014,
+            "titulo": "Portaria nº 1937/2022 – GP/DC",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL, SECÇÃO DO PIAUÍ, CONSIDERANDO o disposto no art. 20, VII, do Regimento Interno desta Seccional; RESOLVE: NOMEAR a Advogada AILANE RODRIGUES DE SOUSA CAVALCANTE, OAB/PI 21485, membro da Comissão de Direito das Famí"
+          },
+          {
+            "id": 521006,
+            "titulo": "Portaria nº 2263/2022 – GP/DC",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL, SECÇÃO DO PIAUÍ, CONSIDERANDO o disposto no art. 20, VII, do Regimento Interno desta Seccional; RESOLVE: NOMEAR a Advogada ZENILDA ROSA SILVA ANDRADE, OAB/PI 10322, membro da Comissão de Direito na Escola da Ordem"
+          }
+        ]
+      },
+      "Republicação": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria das Comissões": 2,
+          "Comissão Eleitoral": 1
+        },
+        "amostras": [
+          {
+            "id": 372749,
+            "titulo": "ERRATA DO EDITAL Nº 001/2021 – ELEIÇÕES DA OAB/PI",
+            "trecho": "A COMISSÃO ELEITORAL DA OAB/PI , no uso de suas atribuições legais e regimentais, em virtude da retificação da Resolução nº 04/2021 – OAB/PI, torna pública a ERRATA DO EDITAL Nº 001/2021 da Eleições da OAB/PI de 2021, conforme segue: Art. 1. No item 1 do Edita"
+          },
+          {
+            "id": 655757,
+            "titulo": "Portaria nº 675/2023 – GP/DC",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL, SECÇÃO DO PIAUÍ, CONSIDERANDO o disposto no art. 20, VII, do Regimento Interno desta Seccional; RESOLVE: NOMEAR a Advogada STEFONNY DE ANDRADE RUFINO, OAB/PI 21944, membro da Comissão do Jovem Advogado da Ordem do"
+          },
+          {
+            "id": 943661,
+            "titulo": "Portaria nº 842/2025 – GP/DC",
+            "trecho": "O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL, SECÇÃO DO PIAUÍ, CONSIDERANDO o disposto no art. 11, XI, do Regimento Interno desta Seccional; RESOLVE: NOMEAR o Advogado FRANCISCO MARLON ARAÚJO DE SOUSA, OAB/PI 20356, membro da Comissão de Direito na Escola da "
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 1,
+          "Secretaria do Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 266067,
+            "titulo": "RESOLUÇÃO Nº 02, DE 24 DE SETEMBRO DE 2020.",
+            "trecho": "Institui o Programa de Regularização Financeira da Ordem dos Advogados do Brasil - Seccional do Piauí. O CONSELHO DA ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DO PIAUÍ, no uso de suas atribuições que lhe são conferidas pelo Regulamento Geral do Estatuto da Adv"
+          },
+          {
+            "id": 655127,
+            "titulo": "RESOLUÇÃO nº 04/2023-CP",
+            "trecho": "Altera o Regimento Interno do Conselho Seccional da OAB/PI-2022, cria a Subseção de Piracuruca e dá outras providências. O CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO PIAUÍ , reunido em Sessão Ordinária no dia 22 de setembro de 2023, no uso das at"
+          }
+        ]
+      },
+      "Ata da Sessão Extraordinária": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria do Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 735,
+            "titulo": "REPUBLICAÇÃO POR INCORREÇÃO DA ATA DA SESSÃO EXTRAORDINÁRIA DO CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO DO PIAUÍ, REALIZADA ",
+            "trecho": "Aos vinte e nove de novembro de dois mil e dezoito, às dezenove horas, na sala do Conselho Seccional do Piauí, reuniu-se em Sessão Extraordinária o Conselho Pleno, nos termos do art. 83 do Regimento Interno da OAB/PI, com a presença do Presidente, FRANCISCO LU"
+          }
+        ]
+      },
+      "Ata da Sessão Ordinária": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria do Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 736,
+            "titulo": "REPUBLICAÇÃO POR INCORREÇÃO DA ATA DE POSSE DA DIRETORIA DA ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO DO PIAUI, DO CONSELHO PLENO E DA DIRETORI",
+            "trecho": "Ao primeiro dia do mês de janeiro do ano de dois mil e dezenove, às quinze horas, na sede da Ordem dos Advogados do Brasil, Secção do Piauí, reuniu-se os membros do Conselho Pleno, com as presenças do Presidente, FRANCISCO LUCAS COSTA VELOSO e da Secretária-Ge"
+          }
+        ]
+      },
+      "Decisão": {
+        "publicacoes": 1,
+        "parecem_decisao": 1,
+        "setores": {
+          "Secretaria do Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 246897,
+            "titulo": "Processo nº 18.0000.2020.000200-6",
+            "trecho": "Processo nº 18.0000.2020.000200-6. Requerente: Ouvidoria da OAB/PI. Requerido: Adv. F. D. R. EMENTA: PEDIDO DE PROVIDÊNCIAS DA OUVIDORIA DA OAB PIAUÍ. PROFISSIONAL QUE RESPONDE A INÚMERAS REPRESENTAÇÕES NA OUVIDORIA E NO TRIBUNAL DE ÉTICA E DISCIPLINA HÁ MAIS "
+          }
+        ]
+      },
+      "Errata": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 910685,
+            "titulo": "ERRATA DA NOTIFICAÇÃO PUBLICADA NO DIÁRIO ELETRÔNICO DA OAB ANO VII Nº 1592 DO DIA 25/04/2025 - TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/PI.",
+            "trecho": "A Secretaria do Tribunal de Ética e Disciplina da OAB/PI vem através deste informar que houve um erro de digitação na notificação, publicado no Diário Eletrônico da OAB Ano VII nº 1592, disponibilizado no dia 15/04/2025, na página 147. ONDE ESTÁ ESCRITO: TRIBU"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria do Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 932978,
+            "titulo": "RESOLUÇÃO Nº 11/2025 - CP",
+            "trecho": "Alterar a Resolução nº 01/2023 - Regimento Interno do Conselho Seccional d a Ordem d os Advogados do Brasil – Secção Piauí e dá outras providências. O CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL – SECÇÃO PIAUÍ , reunido em Sessão Ordinária no dia 24 de fev"
+          }
+        ]
+      }
+    }
+  },
+  "observacoes": "Censo de apenas 11 decisoes mesmo com --dias 40 (abaixo de 30; validado com o que ha). Seccional pequena; DEOAB PI tem volume dominado por Portaria (542) e Notificacao (77), nenhuma decisoria. Decisoes saem sob o tipo Acórdão (11, todas da Secretaria do Conselho Pleno, nao do TED; varias sao administrativas: criacao de comissoes, alteracao de regimento; ha recursos em requerimento de inscricao e questao de ordem publica) e Decisão (1, Conselho Pleno, pedido de providencias da Ouvidoria). Titulos vem como Ementa e Acórdão - Processo nº ... ou apenas Processo nº ...; as ementas aparecem de 2020 a 2021 nas amostras. TED so publica Notificacao, Edital de Notificacao e Errata (sem mérito); Pauta de Julgamentos, Edital, Resolucao, Ata e Retificacao nao sao decisao. Recall: ACORDAO 1.0, EMENTA 1.0, DECISAO 0.18, RECURSO 0.27, JULGAMENTO 0. Anos com publicacoes no censo: 2019-2026, com picos em 2022-03-09 (191 pub.) e 2025-07-07 (81). Sem indicio de fonte fora do DEOAB nas amostras; porem o baixo volume de decisoes do TED sugere checar site proprio (OAB-PI) ou ementario externo. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca).",
+  "modo": "censo"
+}

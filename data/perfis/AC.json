@@ -1,0 +1,228 @@
+{
+  "uf": "AC",
+  "id_organizacao": 1,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "ACORDAO",
+    "ACÓRDÃO",
+    "EMENTA",
+    "EMENTA E ACORDÃO",
+    "RETIFICAÇÃO ACÓRDÃO"
+  ],
+  "validado": false,
+  "evidencia": {
+    "gerado_em": "2026-11-18T03:14:52Z",
+    "dias_censo": [
+      {
+        "dia": "2020-07-21",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2020-10-05",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2024-02-27",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-07-31",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2025-02-21",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2025-05-27",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2025-06-30",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2026-03-12",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-08-25",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2026-11-17",
+        "publicacoes": 1,
+        "baixadas": 1
+      }
+    ],
+    "decisoes_no_censo": 22,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 0.9545,
+      "DECISAO": 0.1818,
+      "JULGAMENTO": 0.2727,
+      "RECURSO": 0.1818
+    },
+    "tipos": {
+      "Acórdão": {
+        "publicacoes": 19,
+        "parecem_decisao": 18,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 13,
+          "Secretaria": 4,
+          "Conselho Pleno": 2
+        },
+        "amostras": [
+          {
+            "id": 245640,
+            "titulo": "Processo nº 01.0000.2016.000219-3",
+            "trecho": "Classe: Representação Representante: 3ª Vara Criminal da Comarca de Rio Branco Representado: E. D. DE O. Relatora: Isabelly Araújo Catão Benvenutti Órgão Julgador: 3ª Turma do Tribunal de Ética e Disciplina da OAB – Seccional Acre EMENTA: INSTAURAÇÃO DE PROCES"
+          },
+          {
+            "id": 245641,
+            "titulo": "Processo nº 01.0000.2015.000756-1",
+            "trecho": "Classe: Representação Representante: Sonaira dos Santos Souza Representado: M.V de S.L. Relator: Bruno Lameira Itani Órgão Julgador: 1ª Turma do Tribunal de Ética e Disciplina da OAB – Seccional Acre EMENTA: INSTAURAÇÃO DE PROCESSO DISCIPLINAR – INFRAÇÃO ÉTICO"
+          },
+          {
+            "id": 245643,
+            "titulo": "Processo nº 01.0000.2015.001364-6",
+            "trecho": "Classe: Representação Representante: 3ª Vara Criminal da Comarca de Rio Branco Representado: O. DA R. M. J. Relatora: Isabelly Araújo Catão Benvenutti Órgão Julgador: 3ª Turma do Tribunal de Ética e Disciplina da OAB – Seccional Acre EMENTA: INSTAURAÇÃO DE PRO"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 8,
+        "parecem_decisao": 0,
+        "setores": {
+          "Presidência": 7,
+          "Caixa de Assistência": 1
+        },
+        "amostras": [
+          {
+            "id": 245837,
+            "titulo": "RESOLUÇÃO Nº 25/2020",
+            "trecho": "Cria no âmbito da Seccional do Acre, a Coordenadoria das Relações Brasil-China . O PRESIDENTE DA SECCIONAL DO ACRE DA ORDEM DOS ADVOGADOS DO BRASIL , no uso das atribuições legais e estatutárias que lhes são conferidas pela Lei nº 8.906/94 e pelo Regimento Int"
+          },
+          {
+            "id": 266937,
+            "titulo": "RESOLUÇÃO Nº 05, DE 01 DE OUTUBRO DE 2020",
+            "trecho": "Nomear a Advogada Daiana de Araújo Peres Delegada da Caixa de Assistência dos Advogados do Acre da cidade de Tarauacá, Acre. A CAIXA DE ASSISTÊNCIA DOS ADVOGADOS DO ACRE – CAA/AC, no uso das atribuições legais e estatutárias que lhes são conferidas pela Lei 8."
+          },
+          {
+            "id": 781631,
+            "titulo": "RESOLUÇÃO Nº 67/2024",
+            "trecho": "Nomeia o Presidente da Comissão de Exame de Ordem da OAB Acre. O PRESIDENTE DA SECCIONAL DO ACRE DA ORDEM DOS ADVOGADOS DO BRASIL , no uso das atribuições legais e estatutárias que lhes são conferidas pela Lei nº 8.906/94 e pelo artigo 69, § 1º do Regimento In"
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Geral": 2
+        },
+        "amostras": [
+          {
+            "id": 781773,
+            "titulo": "EDITAL DE INSCRIÇÃO",
+            "trecho": "Ordem dos Advogados do Brasil, Seccional Acre – OAB/AC Nos termos da legislação vigente, comunicamos a quem interessar possa que os abaixo relacionados apresentaram pedido de inscrição no Quadro de Advogados dessa Seccional. ADVOGADOS Daniel Barbosa Santos (Su"
+          },
+          {
+            "id": 876186,
+            "titulo": "EDITAL DE INSCRIÇÃO",
+            "trecho": "Ordem dos Advogados do Brasil, Seccional Acre – OAB/AC Nos termos da legislação vigente, comunicamos a quem interessar possa que os abaixo relacionados apresentaram pedido de inscrição no Quadro de Advogados dessa Seccional. ADVOGADOS Akemia Cristina Araújo da"
+          }
+        ]
+      },
+      "Ementa e Acordão": {
+        "publicacoes": 2,
+        "parecem_decisao": 1,
+        "setores": {
+          "Conselho Pleno": 2
+        },
+        "amostras": [
+          {
+            "id": 1144374,
+            "titulo": "PROCESSO N.º 01.0000.2025.003346-5/CP",
+            "trecho": "ORIGEM: Presidência da OAB/AC RECORRENTE: L. Z de O. ADVOGADA : Lillian Zucolote de Oliveira (OAB/PR 103.800) ASSUNTO: Recurso Administrativo - inscrição suplementar RELATORA: Conselheira Dra. Larissa Bezerra ASSUNTO: Recurso Administrativo EMENTA 15/2026: REC"
+          },
+          {
+            "id": 1144446,
+            "titulo": "PROCESSO N.º 01.0000.2025.005356-1/CP",
+            "trecho": "ORIGEM: Presidência da OAB/AC RECORR ENTE : G. dos S. P. – Genilson dos Santos Pereira ASSUNTO: Recurso para aferição de idoneidade moral RELATOR (A): Conselheira Larissa Bezerra EMENTA n.º 16/2026 : PEDIDO DE INSCRIÇÃO NOS QUADROS DA ORDEM DOS ADVOGADOS DO BR"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 921369,
+            "titulo": "CONVOCAÇÃO PARA JULGAMENTO EM AMBIENTE VIRTUAL/ELETÔNICO DA 2ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/AC",
+            "trecho": "O Presidente da 2ª (segunda) Turma do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, da seccional do Estado do Acre, no uso de suas atribuições legais conferidas pelo art. 20 do RITED/OAB-AC, convoca seus membros, as partes e seus procuradore"
+          }
+        ]
+      },
+      "Defesa Prévia": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1143855,
+            "titulo": "EDITAL DE NOTIFICAÇÃO PARA APRESENTAR DEFESA PRÉVIA",
+            "trecho": "Processo nº. 01.0000. 2021.004357-0 Representado(a): U. M. P. de S. J Advogado(a): Ubiratan máximo Pereira de Souza Júnior (OAB/MT 20.812/O) Processo nº. 01.0000. 2021.004305-0 Representado(a): A. F. de O Advogado(a): Angélica Feitoza de Oliveira (OAB/AC 5354)"
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Presidência": 1
+        },
+        "amostras": [
+          {
+            "id": 1144479,
+            "titulo": "PORTARIA Nº 05/2026 – OAB/AC",
+            "trecho": "Dispõe sobre a designação de colaboradora da OAB/AC para atuação no Balcão GOV O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL ACRE – OAB/AC, no uso de suas atribuições legais e regimentais, CONSIDERANDO o Termo de Cooperação firmado entre a OAB/AC e"
+          }
+        ]
+      },
+      "Retificação Acórdão": {
+        "publicacoes": 1,
+        "parecem_decisao": 1,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1197327,
+            "titulo": "RETIFICAÇÃO DE PUBLICAÇÃO – ACÓRDÃO",
+            "trecho": "O TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL – SECCIONAL DO ACRE, torna pública a presente RETIFICAÇÃO referente à publicação do Acórdão veiculado no Diário Eletrônico da OAB, Ano VIII, n.º 1944, de terça-feira, 15 de setembro de 2026, pág"
+          }
+        ]
+      }
+    }
+  },
+  "modo": "censo",
+  "observacoes": " | 19/11/2026: refeita em modo censo (a coleta por termos é anterior à regra atual); tipos ainda por validar por leitura."
+}

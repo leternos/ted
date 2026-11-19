@@ -245,3 +245,156 @@ def test_oabsp_deontologica_nao_e_inferida_de_mencao_solta():
     assert norm["sigla_orgao"] == "OABSP-2TD"
     assert norm["contexto"] == "EMENTA"
     assert norm["tipo_ementa"] == "PROCESSO_DISCIPLINAR"
+
+
+# --- Seccional AL (DEOAB nacional): "Intimação de Acórdão" com texto real ------------------------
+
+_AL_INTIM_PREFIXO = (
+    "<p>A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS, com fulcro no artigo 139 do Regulamento Geral "
+    "do EAOAB, c/c com art. 69 caput e seu § 2º e art. 73, § 1º da Lei nº 8.906/94, intima para "
+    "apresentação de RECURSO do acórdão prolatado pel{orgao_prolatou}, no prazo de quinze dias úteis, "
+    "contados a partir da publicação deste, no processo abaixo:</p>"
+)
+
+
+def _al_pub(pub_id, titulo, setor, corpo, tipo="Intimação de Acórdão"):
+    return {
+        "id": pub_id,
+        "titulo": titulo,
+        "dataPublicacao": "2025-05-30",
+        "edicao": 1,
+        "pagina": 1,
+        "ano": "VII",
+        "tipoPublicacao": {"descricao": tipo},
+        "setorPublicacao": {
+            "nomeAlternativo": setor,
+            "organizacao": {"id": 2, "nomeAlternativo": "Conselho Seccional - Alagoas"},
+        },
+        "conteudoCodificado": corpo,
+    }
+
+
+def test_al_intimacao_orgao_vem_da_formula_quando_titulo_e_generico():
+    from ted_search.collectors.deoab_nacional import normalize_deoab_item_nacional
+
+    corpo = (
+        _AL_INTIM_PREFIXO.format(orgao_prolatou="a 2ª Turma do Tribunal de Ética e Disciplina")
+        + "<p>Processo nº. 02.0000.2025.000319-7; Repte (s): Jose Marcos Raimundo Da Costa; Repdo (a): A. M. D. L. P. "
+        "– OAB/AL 9.597; Juiz Relator: Hugo Rafael Macias Gazzaneo; EMENTA: Representação. Advogada representada "
+        "que teria recebido valor previsto em contrato e não prestado serviço. Ausência de provas. Improcedência.</p>"
+        "<p>ACORDÃO: Vistos, relatados e discutidos os presentes autos, acordam os membros da 2ª Turma do Tribunal "
+        "de Ética e Disciplina do Conselho Seccional da Ordem dos Advogados do Brasil em Alagoas, à UNANIMIDADE de "
+        "votos, em conhecer da representação para, no mérito, por idêntica votação, julgá-la IMPROCEDENTE, nos "
+        "termos do voto do Relator.</p><p>Maceió/AL, 26 de maio de 2025.</p>"
+    )
+    norm = normalize_deoab_item_nacional(
+        _al_pub(1, "INTIMAÇÃO DE ACÓRDÃO", "TRIBUNAL DE ÉTICA E DISCIPLINA", corpo), "AL", 2
+    )
+    assert norm["sigla_orgao"] == "OABAL-TED-T2"
+    assert norm["contexto"] == "EMENTA"
+    # "julgá-la IMPROCEDENTE" aparece só na fórmula decisória
+    assert norm["resultado_julgamento"] == "Improcedente / Arquivado"
+    assert norm["descricao_acordao"].startswith("Vistos")
+
+
+def test_al_titulo_manda_sobre_o_corpo_e_pleno_nao_vira_camara_por_origem():
+    from ted_search.collectors.deoab_nacional import (
+        detect_orgao_julgador_nacional,
+        normalize_deoab_item_nacional,
+    )
+
+    # Título nomeia a 7ª Turma; a fórmula do corpo (erro de redação da Seccional) cita o Pleno: o cabeçalho manda.
+    texto_turma = (
+        "INTIMAÇÃO DE ACÓRDÃO A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE ALAGOAS intima para apresentação de RECURSO do "
+        "acórdão prolatado pela 7ª Turma do Tribunal de Ética e Disciplina. ACORDÃO: Vistos, relatados e discutidos "
+        "os presentes autos, acordam os membros do Pleno do Tribunal de Ética e Disciplina do Conselho Seccional"
+    )
+    assert detect_orgao_julgador_nacional(
+        "AL", "TRIBUNAL DE ÉTICA E DISCIPLINA", "SETIMA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA", texto_turma
+    )[0] == "OABAL-TED-T7"
+
+    # Acórdão do Conselho Pleno cuja ORIGEM é a Primeira Câmara: menção solta no corpo não define o órgão.
+    corpo = (
+        "<p><b>Processo n.º</b> 02.0000.2024.004354-2</p><p><b>Tipo:</b> Recurso em Pedido de Inscrição Originária</p>"
+        "<p><b>Origem:</b> Primeira Câmara da OAB/AL</p><p><b>Relator:</b> Conselheiro Thiago Mota de Moraes</p>"
+        "<p><b>EMENTA: </b>RECURSO EM PEDIDO DE INSCRIÇÃO ORIGINÁRIA. INDEFERIMENTO PELA PRIMEIRA CÂMARA. "
+        "EXERCÍCIO DO CARGO DE CONTROLADOR INTERNO MUNICIPAL. INCOMPATIBILIDADE COM O EXERCÍCIO DA ADVOCACIA. "
+        "RECURSO CONHECIDO E DESPROVIDO, À UNANIMIDADE.</p><p><b>DECISÃO: </b>O Conselho Pleno da Ordem dos Advogados "
+        "do Brasil – Seccional Alagoas, por unanimidade dos votos, conheceu do recurso e negou-lhe provimento, "
+        "mantendo a decisão da Primeira Câmara que indeferiu o pedido de inscrição originária.</p>"
+    )
+    norm = normalize_deoab_item_nacional(_al_pub(2, "ACORDÃO", "Conselho Pleno", corpo, tipo="Acórdão"), "AL", 2)
+    assert norm["sigla_orgao"] == "OABAL-PLENO"
+
+
+def test_al_setor_errado_perde_para_formula_do_corpo():
+    from ted_search.collectors.deoab_nacional import normalize_deoab_item_nacional
+
+    # Publicação com setor "1ª CÂMARA", mas intimação, ementa e fórmula são da 3ª Câmara.
+    corpo = (
+        _AL_INTIM_PREFIXO.format(orgao_prolatou="a 3ª Câmara desta Seccional")
+        + "<p>Processo nº. 1770/16 (número antigo 0792/11). Repte: Wladimir Vieira da Silva – OAB/AL 9203, Repdo(a): "
+        "F. P. C. C. Relatora: Manuela Gatto Santa Rita de Souza. EMENTA: representação. Alegação de ilações "
+        "injuriosas, calúnia e difamação. Improcedência. ACORDÃO: vistos, relatados e discutidos os presentes autos, "
+        "acordam os membros da 3ª Câmara do Conselho Seccional da Ordem dos Advogados do Brasil em Alagoas, à "
+        "unanimidade, em julgar improcedente a representação.</p><p>Presidente da 3ª Câmara da OAB/AL</p>"
+    )
+    norm = normalize_deoab_item_nacional(_al_pub(3, "INTIMAÇÃO DE ACÓRDÃO", "1ª CÂMARA", corpo), "AL", 2)
+    assert norm["sigla_orgao"] == "OABAL-3CR"
+
+
+def test_nacional_consulta_so_pelo_nome_do_orgao_e_nao_por_mencao_no_inicio():
+    from ted_search.collectors.deoab_nacional import (
+        detect_orgao_julgador_nacional,
+        normalize_deoab_item_nacional,
+    )
+
+    # Menção a "consulta"/"deontologia" no início do corpo não faz do acórdão disciplinar uma consulta.
+    corpo = (
+        "<p>EMENTA: Deontologia Jurídica. Abandono de Processo. Renúncia aos poderes outorgados sem comunicação ao "
+        "cliente. Consulta ao sistema de acompanhamento processual. Representação Ex Officio julgada procedente. "
+        "ACÓRDÃO: Vistos, relatados e discutidos os presentes autos, acordam os membros da 5ª Turma do Tribunal de "
+        "Ética e Disciplina do Conselho Seccional da Ordem dos Advogados do Brasil em Alagoas, por unanimidade, em "
+        "conhecer da representação para, no mérito, dar-lhe provimento, nos termos do voto do Relator.</p>"
+    )
+    norm = normalize_deoab_item_nacional(_al_pub(4, "QUINTA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA", "TRIBUNAL DE ÉTICA E DISCIPLINA", corpo, tipo="Acórdão"), "AL", 2)
+    assert norm["sigla_orgao"] == "OABAL-TED-T5"
+    assert norm["contexto"] == "EMENTA"
+    assert norm["tipo_ementa"] == "PROCESSO_DISCIPLINAR"
+
+    # Sem órgão nomeado no cabeçalho e sem fórmula: a consulta só vale se o cabeçalho disser.
+    assert detect_orgao_julgador_nacional("XX", "Turma Deontológica", "ACÓRDÃO", "texto")[0] == "OABXX-TED-CONS"
+    assert detect_orgao_julgador_nacional("XX", "TRIBUNAL DE ÉTICA E DISCIPLINA", "ACÓRDÃO", "consulta deontológica sobre honorários")[0] == "OABXX-TED"
+
+
+def test_al_sem_turma_nomeada_fica_generico_e_comissao_eleitoral_fica_fora_da_busca_do_ted():
+    from ted_search.collectors.deoab_nacional import normalize_deoab_item_nacional
+
+    corpo = (
+        "<p>EMENTA: “REPRESENTAÇÃO DISCIPLINAR. PRATICAR CRIME INFAMANTE. PENA DE EXCLUSÃO. Aplicabilidade da pena "
+        "sujeita ao crivo do Conselho Seccional”.</p><p>Vistos, relatados e discutidos os presentes autos do Processo "
+        "Ético Disciplinar nº 7862/2018, ACORDAM os Membros do Conselho da Ordem dos Advogados do Brasil Seccional de "
+        "Alagoas, por UNANIMIDADE dos votos, em julgar procedente a representação, aplicando a pena de EXCLUSÃO.</p>"
+    )
+    norm = normalize_deoab_item_nacional(_al_pub(5, "ACORDÃO Nº 01/2023", "Gabinete da Presidência", corpo, tipo="Acórdão"), "AL", 2)
+    assert norm["sigla_orgao"] == "OABAL-TED"
+    assert norm["sancao_identificada"] == "Exclusão"
+
+    eleitoral = (
+        "<p>REQUERENTE: CANDIDATO A PRESIDENTE: VAGNER PAES CAVALCANTI FILHO - OAB/AL 7163 E OUTROS ASSUNTO : "
+        "REGISTRO DE CANDIDATURA DA CHAPA 01 (Seccional Maceió/AL)</p><p>EMENTA REQUERIMENTO DE REGISTRO DE "
+        "CANDIDATURA. ELEIÇÕES OAB/AL 2024. PROCESSO ADMINISTRATIVO. DEFERIMENTO DO REGISTRO DA CHAPA 01.</p>"
+    )
+    # Política desde a auditoria do AP (18/11/2026): decisão eleitoral fica no banco, fora da busca do TED
+    rec_eleitoral = normalize_deoab_item_nacional(
+        _al_pub(6, "PROCESSO Nº 02.0000.2024.005055-7", "COMISSÃO ELEITORAL", eleitoral, tipo="Acórdão"), "AL", 2
+    )
+    assert rec_eleitoral is not None and rec_eleitoral["is_ted_disciplinar"] == 0
+
+
+def test_acordao_em_linha_unica_nao_e_apagado_como_ruido():
+    from ted_search.ocr_cleaner import is_gibberish_ocr_line
+
+    linha = "EMENTA: Representação. Advogado inscrito na OAB/MT sob n. 1/O c/c art. 34 do EAOAB. " * 6
+    assert not is_gibberish_ocr_line(linha)
+    assert is_gibberish_ocr_line("/a b/c /d x/y")

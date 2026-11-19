@@ -1,0 +1,439 @@
+{
+  "uf": "AP",
+  "id_organizacao": 3,
+  "termos": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "ACORDAO",
+    "ACÓRDÃO",
+    "EMENTA",
+    "Decisão",
+    "Decisão Monocrática",
+    "Certidão de Julgamento"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-18T14:13:56Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-24",
+        "publicacoes": 24,
+        "baixadas": 24
+      },
+      {
+        "dia": "2019-02-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-03-08",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2019-11-22",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-02-03",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-03-11",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-07-30",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-09-30",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-10-14",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-11-12",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-01-29",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-02-11",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-06-24",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2021-08-03",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-09-15",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-10-27",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2022-03-09",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2022-07-05",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2022-09-27",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2022-10-31",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2022-12-13",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-01-31",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2023-02-28",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-04-25",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2023-10-26",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2023-12-05",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2024-01-29",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-02-02",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2024-03-06",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-06-05",
+        "publicacoes": 4,
+        "baixadas": 4
+      },
+      {
+        "dia": "2024-07-30",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2024-12-20",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-02-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-05-15",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-06-27",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-07-29",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2025-11-12",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-03-17",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-08-21",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2026-11-16",
+        "publicacoes": 1,
+        "baixadas": 1
+      }
+    ],
+    "decisoes_no_censo": 1,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 0.0,
+      "JULGAMENTO": 1.0,
+      "RECURSO": 0.0
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 25,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 24,
+          "COMISSÃO ELEITORAL OAB AMAPÁ": 1
+        },
+        "amostras": [
+          {
+            "id": 1148,
+            "titulo": "Notificação Processo Nº 03.0000.2014.000442-0 – TED - OAB/AP.",
+            "trecho": "Considerando o despacho exarado no Processo Ético-Disciplinar nº. 03.0000.2014.000442-0 TED-OAB/AP, no qual Dr. FELIPE DAVID SIROTHEAU OAB/AP 1515, figura como Representado e, tendo como Representante Sra. MOISEUMA CUNHA E CUNHA, comunico-lhe que V.Sa. tem o p"
+          },
+          {
+            "id": 1149,
+            "titulo": "Notificação Processo Nº 03.0000.2014.000004-6 – TED - OAB/AP.",
+            "trecho": "Considerando o despacho exarado no Processo Ético-Disciplinar nº. 03.0000.2014.000004-6 TED-OAB/AP, no qual Dr. HELDER MAGALHÃES MARINHO OAB/AP 1361, figura como Representado e, tendo como Representante Sr. RAIMUNDO ULISSES NEGRÃO DOS SANTOS, comunico-lhe que "
+          },
+          {
+            "id": 1150,
+            "titulo": "Notificação Processo Nº 03.0000.2014.000373-2 – TED - OAB/AP.",
+            "trecho": "Considerando o despacho exarado no Processo Ético-Disciplinar nº. 03.0000.2014.000373-2 TED-OAB/AP, no qual o Dr. EDUARDO DOS SANTOS TAVARES OAB/AP 1543-A, figura como Representado e, tendo como Representante Sr. LUIZ HENRIQUE FREITAS DE CARVALHO, comunico-lhe"
+          }
+        ]
+      },
+      "Inscrição": {
+        "publicacoes": 25,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA GERAL": 25
+        },
+        "amostras": [
+          {
+            "id": 192650,
+            "titulo": "EDITAIS",
+            "trecho": "A SECRETÁRIA GERAL DA ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DO AMAPÁ faz saber para os fins previstos no Estatuto da Advocacia (Lei nº 8.906 de 04 de julho de 1994) que requereram inscrição nos Quadros desta Seccional: A) Como ADVOGADO (Inscrição Principal ):"
+          },
+          {
+            "id": 226963,
+            "titulo": "EDITAL",
+            "trecho": "A SECRETÁRIA GERAL DA ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DO AMAPÁ faz saber para os fins previstos no Estatuto da Advocacia (Lei nº 8.906 de 04 de julho de 1994) que requereram inscrição nos Quadros desta Seccional: A) Como ADVOGADO (Inscrição Principal ):"
+          },
+          {
+            "id": 294856,
+            "titulo": "EDITAL",
+            "trecho": "EDITAL DE INSCRIÇÃO Em obediência à Lei 8.906/94 - Estatuto da Ordem dos Advogados do Brasil, torno público que qualquer interessado capaz no prazo previsto de cinco dias úteis da publicação deste, poderá impugnar por inobservância das condições legais, os ped"
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 21,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA GERAL": 21
+        },
+        "amostras": [
+          {
+            "id": 410163,
+            "titulo": "DESPACHO",
+            "trecho": "Processo nº 17 57 /2022-PROT/OAB-AP Parte Interessada: JOSE PAIVA BARROS JUNIOR Assunto: INSCRIÇÃO PRINCIPAL DE ADVOGADO DESPACHO: Com os cordiais cumprimentos, buscando a boa e regular instrução processual, diligencio o referido processo e determino que sejam"
+          },
+          {
+            "id": 410178,
+            "titulo": "DESPACHO",
+            "trecho": "Processo nº 1 610 /2022-PROT/OAB-AP Parte Interessada: LAIRA TAMYLLIS DA SILVA DOS SANTOS Assunto: INSCRIÇÃO PRINCIPAL DE ADVOGADO DESPACHO: Com os cordiais cumprimentos, buscando a boa e regular instrução processual, diligencio o referido processo e determino"
+          },
+          {
+            "id": 454069,
+            "titulo": "DESPACHO",
+            "trecho": "Processo nº 2319 /202 2 -PROT/OAB-AP Parte Interessada: EVANDSON CLEBER PEREIRA MAFRA Assunto: REGISTRO DE SOCIEDADE INDIVIDUAL DE ADVOCACIA DESPACHO: Em atenta análise aos autos, em especial ao contrato social, constato que o valor do indicado é de apenas R$ "
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 16,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA GERAL": 8,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 8
+        },
+        "amostras": [
+          {
+            "id": 6367,
+            "titulo": "EDITAL DE INSCRIÇÃO",
+            "trecho": "De ordem do Sr. Presidente da OAB/AP , Auriney Uchôa de Brito, faço público que o advogado SAULO BEZERRA MACEDO requereu Inscrição Por Transferência e os advogados CLAUDIO SERGIO LOPES SEVERO e PEDRO DE MENEZES REIS requereram Inscrição Suplementar, juntando o"
+          },
+          {
+            "id": 6368,
+            "titulo": "EDITAL DE INSCRIÇÃO",
+            "trecho": "De ordem do Sr. Presidente da OAB/AP , Auriney Uchôa de Brito, faço público que os bacharéis NAIANA DE JESUS PIRES, JOSUÉ MONTEIRO COSTA, ANNE KELLY DE PAULA PONTES, ELIELSON LIMA CARDOSO, ELDONOR CUNHA ALVES JUNIOR, ANDRESSA ISABELLE BARRETO BLANDES, PETRÔNIO"
+          },
+          {
+            "id": 338588,
+            "titulo": "Notificação Processo Nº 03.0000.2016.000248-0 – TED - OAB/AP.",
+            "trecho": "Considerando o despacho exarado no Processo Ético-Disciplinar nº. 03.0000.2016.000248-0 TED-OAB/AP, no qual V. Q. S. F. (Valdir Queiroz Dos Santos Filho), figura como Representado e, tendo como Representante Jocilene de Souza Gomes, comunico-lhe que V.Sa. tem "
+          }
+        ]
+      },
+      "Publicação": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA GERAL": 3
+        },
+        "amostras": [
+          {
+            "id": 192592,
+            "titulo": "EDITAL",
+            "trecho": "A SECRETÁRIA GERAL DA ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DO AMAPÁ faz saber para os fins previstos no Estatuto da Advocacia (Lei nº 8.906 de 04 de julho de 1994) que os bacharéis JOSIANY GONÇALVES DE BARROS, ALESSANDRO SANTOS DOS SANTOS, KUPPER SOUZA VIANA"
+          },
+          {
+            "id": 209644,
+            "titulo": "RESTABELECIMENTO DE INSCRIÇÃO",
+            "trecho": "A SECRETÁRIA-GERAL DA ORDEM DOS ADVOGADOS DO BRASIL - SECÇÃO DO AMAPÁ faz saber para os fins previstos no Estatuto da Advocacia (Lei nº 8.906 de 04 de julho de 1994) que requereu nos Quadros desta Seccional: A) Como ADVOGADO (Inscrição Principal): Eloisy Crist"
+          },
+          {
+            "id": 265759,
+            "titulo": "EDITAL",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DO AMAPÁ, no uso de suas atribuições legais e regimentais, vem através desta, INTIMAR a advogada LUBNA FASSI FIHRI FAVACHO INSABATO a contar desta publicação, para que, no prazo de 5(cinco) dias úteis, dê cumprimento a"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 2,
+        "parecem_decisao": 1,
+        "setores": {
+          "TESOURARIA": 1,
+          "CONSELHO PLENO": 1
+        },
+        "amostras": [
+          {
+            "id": 2925,
+            "titulo": "RESOLUÇÃO Nº 001/2019 – CONS.OAB/AP.",
+            "trecho": "Altera os arts. 2º; 3º e 4º da Resolução nº 004/2018-CONS.OAB/AP. O CONSELHO DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DO AMAPÁ, no uso de suas atribuições conferidas pela Lei nº 8.906/94, em seu Art. 55, § 1º, Regulamento Geral do Estatuto da Advocacia confo"
+          },
+          {
+            "id": 269422,
+            "titulo": "RESOLUÇÃO nº 008/2020-OAB/AP",
+            "trecho": "Fixa o valor da anuidade, formas de pagamento, preços, taxas de serviços e emolumentos da Ordem dos Advogados do Brasil – Secção do Amapá, para o exercício financeiro de 2021. O CONSELHO PLENO DA ORDEM DOS ADVOGADOS DO BRASIL –SECCIONAL DO ESTADO DO AMAPÁ , re"
+          }
+        ]
+      },
+      "Decisão": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÃO ELEITORAL OAB AMAPÁ": 2
+        },
+        "amostras": [
+          {
+            "id": 377190,
+            "titulo": "DECISÃO",
+            "trecho": "A Chapa denominada “A FORÇA DA ADVOGADA NA PRESIDÊNCIA DA OAB-AP” protocolou, em 22 de outubro de 2021 (sexta-feira), documento denominado REPRESENTAÇÃO POR ABUSO DE PODER E CONDUTA VEDADA postulando o seguinte: “1 – Seja deferida liminar em tutela de urgência"
+          },
+          {
+            "id": 377191,
+            "titulo": "DECISÃO",
+            "trecho": "Vistos e analisados. Conforme ANÁLISE DE REGULARIDADE DA INSCRIÇÃO DE CHAPA, publicada no Diário Eletrônico da Ordem dos Advogados do Brasil em 25 de outubro de 2021 (segunda-feira), a qual tratou de verificar os critérios exigidos para a regular inscrição da "
+          }
+        ]
+      },
+      "Ato Declaratório": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TESOURARIA": 1
+        },
+        "amostras": [
+          {
+            "id": 248045,
+            "titulo": "ATO DECLARATÓRIO nº 020/2020",
+            "trecho": "Processo nº 03.0000.2020.000594-0 Assunto: ISENÇÃO DE ANUIDADE Interessado (a): VANESSA DE ALMEIDA SOEIRO ICHIHARA Trata-se de pedido de isenção de anuidade do exercício de 2020, protocolado em 23/07/2020, pela advogada VANESSA DE ALMEIDA SOEIRO ICHIHARA, insc"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 1,
+        "parecem_decisao": 1,
+        "setores": {
+          "CONSELHO PLENO": 1
+        },
+        "amostras": [
+          {
+            "id": 279256,
+            "titulo": "Prestação de contas nº 03.0000.2020.000824-0",
+            "trecho": "PRESTAÇÃO DE CONTAS DO CONSELHO SECCIONAL DA OAB/AP. EXERCÍCIO: 2019. INTERESSADOS: CONSELHO SECCIONAL DA OAB/AMAPÁ. (GESTÃO 2019/2021. PRESIDENTE: AURINEY UCHÔA DE BRITO OAB/AP 1348-A; VICE-PRESIDENTE: PATRÍCIA DE ALMEIDA BARBOSA AGUIAR OAB/AP 782; SECRETÁRIA"
+          }
+        ]
+      },
+      "Decisão Monocrática": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA GERAL": 1
+        },
+        "amostras": [
+          {
+            "id": 488322,
+            "titulo": "DESPACHO",
+            "trecho": "Processo nº 2 663 /202 2 -PROT/OAB-AP Parte Interessada: JAYNE PAVLAK DE CAMARGO Assunto: INSCRIÇÃO SUPLEMENTAR DESPACHO: Buscando a boa e regular instrução processual, diligencio o referido processo e determino que sejam juntadas as seguintes documentações, c"
+          }
+        ]
+      }
+    }
+  },
+  "observacoes": "Seccional minúscula: 40 dias de censo (dias com publicação distribuídos de 2019 a 2026), 97 publicações, apenas 1 decisão (Acórdão, id 279256, Conselho Pleno, prestação de contas do exercício 2019, não disciplinar). Abaixo de 30 mesmo com 40 dias; validado com o que há. Praticamente todo o TED publicado é Notificação/Edital de processo ético-disciplinar (setor TRIBUNAL DE ÉTICA E DISCIPLINA, ~24 notificações), sem acórdão publicado no DEOAB. Tipos Decisão (2, Comissão Eleitoral, eleição 2021) e Decisão Monocrática (1, na verdade despacho da Secretaria Geral) mantidos por cautela, não são mérito disciplinar. Despacho, Inscrição, Edital, Publicação, Resolução, Ato Declaratório e Notificação não são decisão. Recall: ACORDAO 1.0, EMENTA 1.0, JULGAMENTO 1.0, DECISAO 0.0, RECURSO 0.0 (censo 1/1 coberto). Julgamentos disciplinares do AP provavelmente saem por fonte fora do DEOAB (não verificado). O único acórdão do censo é de gestão 2019/2021; nos demais dias amostrados não houve decisão. | Maestro (18/11/2026): coleta em modo censo (todas as publicações, sem termo de busca). | Auditoria de 18/11/2026: incluído o tipo 'Certidão de Julgamento' (decisões colegiadas do Conselho sobre sociedades e inscrição, não disciplinares).",
+  "modo": "censo"
+}
