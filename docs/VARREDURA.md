@@ -100,6 +100,6 @@ Bases que se sobrepõem ao DEOAB entram com fonte própria; a fusão por número
 
 ## Depois de cada onda
 
-- O banco cresce. Em `.xz` ele está em 68 MB com SP; o limite do GitHub é 100 MB por arquivo. A partir da onda 2
+- O banco cresce. Com as ondas 1 e 2 (107 mil julgados) o `.xz` está em 90 MB, já com `xz -9e`; o limite do GitHub é 100 MB por arquivo. A onda 3 não cabe: antes dela o banco precisa ir para um bucket.
   ou 3 o banco deixa de caber no repositório e precisa ir para um bucket (o `integrador-banco` para e avisa).
 - Deploy continua manual.
