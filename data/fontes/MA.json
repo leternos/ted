@@ -1,6 +1,6 @@
 [
   {
-    "slug": "ementario",
+    "slug": "ementario-ted",
     "url": "https://www.oabma.org.br/ted/ementario",
     "conteudo": "Ementário do TED/OAB-MA: acórdãos (nº/ano, processo, relator, ementa e dispositivo 'Vistos, relatados... acordam...') em blocos <div class=\"ementa\"> numa página HTML estática (site PHP próprio).",
     "periodo": "2016 (acórdãos nº 01/2016 a 261/2016; datas de julgamento mar-set/2016)",
@@ -8,8 +8,8 @@
     "acesso": "GET https://www.oabma.org.br/ted/ementario (HTML, sem login nem captcha). Busca por palavra-chave: GET ?termo=<palavra>. Sem paginação, sem PDF, sem API. Um único GET traz tudo.",
     "exclusiva": true,
     "verificacao": "V",
-    "situacao": "verificada",
+    "situacao": "coletada",
     "inteiro_teor": "NAO. Só ementa + dispositivo (630 a 2329 caracteres cada); o texto remete a 'Relatório e Voto que integram o processo', que não são publicados.",
-    "observacoes": "Lidas 14 decisões reais. Campos: processo (formatos '10.0000.2014.004575-0' e '1136/2010'), Repte, Repdo (iniciais, como o site publica), acórdão nº/ano, relator, ementa, dispositivo, local e data no fim de alguns. Ex.: PROC. 10.0000.2014.004575-0, Acórdão 233/2016, relatora Cristiane Rose Soares Ribeiro, suspensão 30 dias por falta de pagamento (art. 37, I, §1º); Proc. 1136/2010, Acórdão 245/2016; Proc. 10.0000.2014.010086-3, Acórdão 252/2016, suspensão 60 dias + multa. SOBREPOSIÇÃO com DEOAB_MA (363 registros, 2019-01-08 a 2026-11-10): 0 de 8 processos conferidos (10.0000.2014.004575-0, 1136/2010, 2038/2010, 10.0000.2013.000213-0, 10.0000.2013.000359-0, 10.0000.2014.010086-3, 0966/2013, 0595/2011); o Diário no banco começa em 2019, logo o conteúdo é de período não coberto. Texto sem acentos em parte dos itens (como publicado). Sem restrição de coleta: robots.txt do host tem 'Allow: /' e 'Disallow: /noticias/'; nenhum termo de uso localizado. Prioridade média-baixa pelo volume (14), mas custo de 1 requisição; coletar 1x. Outras páginas do menu TED (sobre, composição, processo, sanções, regimento, relatórios, modelos, código) não trazem julgados; não há consultas, súmulas nem revista."
+    "observacoes": "Lidas 14 decisões reais. Campos: processo (formatos '10.0000.2014.004575-0' e '1136/2010'), Repte, Repdo (iniciais, como o site publica), acórdão nº/ano, relator, ementa, dispositivo, local e data no fim de alguns. Ex.: PROC. 10.0000.2014.004575-0, Acórdão 233/2016, relatora Cristiane Rose Soares Ribeiro, suspensão 30 dias por falta de pagamento (art. 37, I, §1º); Proc. 1136/2010, Acórdão 245/2016; Proc. 10.0000.2014.010086-3, Acórdão 252/2016, suspensão 60 dias + multa. SOBREPOSIÇÃO com DEOAB_MA (363 registros, 2019-01-08 a 2026-11-10): 0 de 8 processos conferidos (10.0000.2014.004575-0, 1136/2010, 2038/2010, 10.0000.2013.000213-0, 10.0000.2013.000359-0, 10.0000.2014.010086-3, 0966/2013, 0595/2011); o Diário no banco começa em 2019, logo o conteúdo é de período não coberto. Texto sem acentos em parte dos itens (como publicado). Sem restrição de coleta: robots.txt do host tem 'Allow: /' e 'Disallow: /noticias/'; nenhum termo de uso localizado. Prioridade média-baixa pelo volume (14), mas custo de 1 requisição; coletar 1x. Outras páginas do menu TED (sobre, composição, processo, sanções, regimento, relatórios, modelos, código) não trazem julgados; não há consultas, súmulas nem revista. | COLETADA em 2026-11-20 (SITE_MA_EMENTARIO_TED): 14 de 14 blocos, 14 no banco, 0 rejeitados; livro COMPLETO. Período real 2016-02-17 a 2016-09-14. Sem sobreposição com DEOAB_MA."
   }
 ]

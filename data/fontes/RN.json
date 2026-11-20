@@ -8,9 +8,21 @@
     "acesso": "Sem busca. Links diretos na página do TED, padrão https://www.oabrn.org.br/2017/arquivos/Consultas/CONSULTA-<nºconsulta>-<TITULO-EM-MAIUSCULAS>.pdf (nome com caixa irregular, ex. 'COMUNICAcaO'); copiar o href da página. A listagem do diretório devolve 403, então só dá para chegar pelos links da página. Sem login, sem captcha.",
     "exclusiva": true,
     "verificacao": "V",
-    "situacao": "verificada",
+    "situacao": "coletada",
     "inteiro_teor": "SIM. Cada PDF traz cabeçalho (nº consulta, consulente com OAB, relator), ACÓRDÃO/ementa, RELATÓRIO e VOTO completos. Consulente nomeado como publicado.",
-    "observacoes": "Lidos 6 de 9: 12268/2018 (servidor ITEP, não conhecida, rel. José Heldison Carvalho de Aquino), 2534/2020 (troca de comunicação entre advogados, não conhecida, rel. Pedro Avelino Neto), 13356/2018 (escritório em shopping center, conhecida), 13579/2019 (sociedade unipessoal, não conhecida), 3673/2019 (clientes sindicalizados, não conhecida), 4033/2019 (impulsionamento em mídias sociais, conhecida; vedado). SOBREPOSIÇÃO com DEOAB_RN (1120 registros, 2019-05-20 a 2026-11-11, nenhum tipo CONSULTA): 0 de 9 números de consulta no banco (a única coincidência textual, 40332019-0, é substring de 140332019-0, processo disciplinar diferente). Conteúdo exclusivo, mas só 9 documentos. robots.txt: 'User-agent: * Disallow:' (sem restrição). Sem termos de uso localizados. Prioridade: baixa (barata: 9 downloads, 1 min), coletar por último."
+    "observacoes": "Lidos 6 de 9: 12268/2018 (servidor ITEP, não conhecida, rel. José Heldison Carvalho de Aquino), 2534/2020 (troca de comunicação entre advogados, não conhecida, rel. Pedro Avelino Neto), 13356/2018 (escritório em shopping center, conhecida), 13579/2019 (sociedade unipessoal, não conhecida), 3673/2019 (clientes sindicalizados, não conhecida), 4033/2019 (impulsionamento em mídias sociais, conhecida; vedado). SOBREPOSIÇÃO com DEOAB_RN (1120 registros, 2019-05-20 a 2026-11-11, nenhum tipo CONSULTA): 0 de 9 números de consulta no banco (a única coincidência textual, 40332019-0, é substring de 140332019-0, processo disciplinar diferente). Conteúdo exclusivo, mas só 9 documentos. robots.txt: 'User-agent: * Disallow:' (sem restrição). Sem termos de uso localizados. Prioridade: baixa (barata: 9 downloads, 1 min), coletar por último. COLETADA: 9 de 9 PDFs, todos com camada de texto (sem OCR), 9 com relatório e voto (selo de inteiro teor). Texto integral do PDF em inteiro_teor_texto, consulente e relator nomeados como publicados. Sem CPF nos PDFs. Sobreposição com DEOAB_RN: nenhuma.",
+    "coleta": {
+      "fonte": "SITE_RN_CONSULTAS",
+      "adaptador": "collectors/sites/rn_consultas.py",
+      "na_fonte": 9,
+      "listados": 9,
+      "baixados": 9,
+      "no_banco": 9,
+      "rejeitados": 0,
+      "livro": "COMPLETO",
+      "periodo_real": "julgadas de 2020-07-24 a 2020-08-07",
+      "tem_inteiro_teor": 9
+    }
   },
   {
     "slug": "ementarios",
