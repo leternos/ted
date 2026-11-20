@@ -1,0 +1,886 @@
+{
+  "uf": "MG",
+  "id_organizacao": 13,
+  "termos": [
+    "ACORDAO",
+    "EMENTA",
+    "ACORDAOS"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Intimação - Acórdão",
+    "Resultado de Julgamento",
+    "Resultado de Julgamentos",
+    "Resultado de Embargos",
+    "Súmula",
+    "Intimação da Decisão",
+    "Intimação",
+    "Notificação"
+  ],
+  "validado": true,
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "modo": "censo",
+  "observacoes": "MG: censo de 30 dias-amostra (2019-2026; 800 publicações) com 62 decisões (>=30, não precisou de 50 dias). Recall: ACORDAO 95%, RECURSO 95%, DECISAO 56%, JULGAMENTO 34%, EMENTA 31%; a única sobra (188786, 'Intimação - Acórdão' de 2019 do Conselho Pleno) usa o plural 'acórdãos' e a busca da API não faz stemming: testado na API, ACORDAOS, ACORDAM, RELATADOS e UNANIMIDADE a encontram (ACORDAO não); por isso termos = ACORDAO + EMENTA + ACORDAOS (100%). Formas de publicar: (1) 'Intimação - Acórdão' (31; 28 parecem decisão) e, desde ~2024, 'Acórdão' (14, Conselho Pleno): o Órgão Especial/Conselho Pleno/Câmaras 'intima as partes para apresentação de recurso ao acórdão', e o MESMO registro traz o acórdão (ACÓRDÃO / EMENTA / 'Vistos, relatados e discutidos... acordam os membros'), logo é decisão (lido: 1063585 Conselho Pleno, ementa de exclusão; 188836 acórdão da 2ª Turma do Órgão Especial). (2) 'Resultado de Julgamento(s)' (19): 'EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA ... DA Nª TURMA' do TED/TEDs regionais, com a lista de Proc. Nº e, por processo, 'Acórdão: Vistos, relatados e discutidos... por maioria, julgaram'; alguns itens da lista são só 'baixado em diligência' (ruído dentro do registro). (3) 'Resultado de Embargos' (3): 'Transcrição de decisão proferida em embargos de declaração' (decisão de turma do TED). (4) 'Súmula' (1): 'Súmula de julgamento da sessão' da 1ª Turma Julgadora do TED (2019). Quem julga: TED em turmas (1ª a 5ª... e turmas regionais: Juiz de Fora, Triângulo Mineiro etc.) em 1ª instância disciplinar; recursos no Órgão Especial (1ª/2ª Turma) e Conselho Pleno; Primeira Câmara também aparece. Tipos amplos (Intimação, Notificação, Intimação da Decisão) mantidos por precaução, só valem se o texto confirmar. Não são decisão: Edital de Notificação (290, setor Subseções/Assessoria/TED), Edital de Convocação, Razões Finais, Alegações Finais, Arquivamento (46, Comissão de Admissibilidade e Instrução do TED; arquivamento de representação, olhar depois), Audiência, Despacho, Contrarrazões, Defesa Prévia, Pauta de Julgamentos, Retirado de Pauta, Autos com vista, Comunicado (encaminhamento ao CFOAB), Ata de Sorteio. Volume do Diário por ano (API, todas as publicações): 2019 22.609 (pico: carga retroativa); 2020 2.839; 2021 4.502; 2022 4.365; 2023 5.883; 2024 6.293; 2025 6.235; 2026 (até 10/11) 6.758; total cerca de 59,5 mil, coleta média. Estimativa de decisões: ~8% das publicações (62 de 800), ou seja ~500 por ano nos anos regulares, ~4,5 mil no total. Fonte fora do DEOAB: data/fontes/MG.json diz 'Sem base própria; PDFs em /DocInformes são ementas do CFOAB'; sem indício de ementário no site da Seccional nem de decisões só em PDF.",
+  "evidencia": {
+    "gerado_em": "2026-11-20T04:08:44Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-29",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-02-26",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2019-03-11",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2019-11-14",
+        "publicacoes": 55,
+        "baixadas": 55
+      },
+      {
+        "dia": "2020-03-13",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2020-05-11",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-07-08",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-10-05",
+        "publicacoes": 24,
+        "baixadas": 24
+      },
+      {
+        "dia": "2020-11-03",
+        "publicacoes": 5,
+        "baixadas": 5
+      },
+      {
+        "dia": "2021-01-22",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2021-09-15",
+        "publicacoes": 22,
+        "baixadas": 22
+      },
+      {
+        "dia": "2021-10-15",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2022-03-15",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2022-07-04",
+        "publicacoes": 21,
+        "baixadas": 21
+      },
+      {
+        "dia": "2022-09-26",
+        "publicacoes": 18,
+        "baixadas": 18
+      },
+      {
+        "dia": "2023-01-20",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2023-02-17",
+        "publicacoes": 38,
+        "baixadas": 38
+      },
+      {
+        "dia": "2023-04-20",
+        "publicacoes": 74,
+        "baixadas": 74
+      },
+      {
+        "dia": "2023-12-19",
+        "publicacoes": 18,
+        "baixadas": 18
+      },
+      {
+        "dia": "2024-02-08",
+        "publicacoes": 31,
+        "baixadas": 31
+      },
+      {
+        "dia": "2024-03-08",
+        "publicacoes": 20,
+        "baixadas": 20
+      },
+      {
+        "dia": "2024-06-14",
+        "publicacoes": 32,
+        "baixadas": 32
+      },
+      {
+        "dia": "2024-07-31",
+        "publicacoes": 33,
+        "baixadas": 33
+      },
+      {
+        "dia": "2025-02-03",
+        "publicacoes": 62,
+        "baixadas": 62
+      },
+      {
+        "dia": "2025-05-20",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2025-06-30",
+        "publicacoes": 60,
+        "baixadas": 60
+      },
+      {
+        "dia": "2025-07-16",
+        "publicacoes": 27,
+        "baixadas": 27
+      },
+      {
+        "dia": "2026-03-18",
+        "publicacoes": 71,
+        "baixadas": 71
+      },
+      {
+        "dia": "2026-08-07",
+        "publicacoes": 51,
+        "baixadas": 51
+      },
+      {
+        "dia": "2026-11-10",
+        "publicacoes": 73,
+        "baixadas": 73
+      }
+    ],
+    "decisoes_no_censo": 62,
+    "decisoes_que_nenhum_termo_encontra": [
+      188786
+    ],
+    "recall_por_termo": {
+      "ACORDAO": 0.9516,
+      "EMENTA": 0.3065,
+      "DECISAO": 0.5645,
+      "JULGAMENTO": 0.3387,
+      "RECURSO": 0.9516
+    },
+    "tipos": {
+      "Edital de Notificação": {
+        "publicacoes": 290,
+        "parecem_decisao": 0,
+        "setores": {
+          "Subseções": 132,
+          "Assessoria Jurídica": 81,
+          "Tribunal de Ética e Disciplina": 52,
+          "Comissão de Admissibilidade e Instrução do TED": 9,
+          "11ª Subseção da OAB/MG - Montes Claros/MG": 7,
+          "Comunicação": 7
+        },
+        "amostras": [
+          {
+            "id": 188804,
+            "titulo": "EDITAL NOTIFICA TRANSCRIÇÃO DESPACHO TED OAB/MG",
+            "trecho": "Proc. 3882/2019: RTE: R.E.F. OAB/MG Nº 170.892 - RDO: A.M.N. OAB/MG Nº 151821; Para seu conhecimento e pronunciamento no prazo de 15 (quinze) dias úteis, faz-se transcrever o despacho exarado nos autos supra citados. “(…) Assim, com base nestas razões, indefir"
+          },
+          {
+            "id": 188805,
+            "titulo": "EDITAL NOTIFICA TRANSCRIÇÃO DESPACHO TED OAB/MG",
+            "trecho": "Proc. 3047/2019: RTE: D.M.S.C. - RDO: P.F.V.A. OAB/MG Nº 57196; Para seu conhecimento e pronunciamento no prazo de 15 (quinze) dias úteis, faz-se transcrever o despacho exarado nos autos supra citados. “(…) Assim, com base nestas razões, indefiro liminarmente "
+          },
+          {
+            "id": 188806,
+            "titulo": "EDITAL NOTIFICA TRANSCRIÇÃO DESPACHO TED OAB/MG",
+            "trecho": "Proc. 3876/2019: RTE: OAB/MG DE OFÍCIO AUT: AUT DE OFÍCIO - RDO: R.A.M.D. OAB/MG Nº 83018; Para seu conhecimento e pronunciamento no prazo de 15 (quinze) dias úteis, faz-se transcrever o despacho exarado nos autos supra citados. “(…) Assim, com base nestas raz"
+          }
+        ]
+      },
+      "Edital de Convocação": {
+        "publicacoes": 173,
+        "parecem_decisao": 0,
+        "setores": {
+          "Subseções": 67,
+          "Comunicação": 48,
+          "Comissão de Admissibilidade e Instrução do TED": 43,
+          "Tribunal de Ética e Disciplina": 12,
+          "COMISSÃO DE SELEÇÃO E INSCRIÇÃO": 1,
+          "Órgão Especial": 1
+        },
+        "amostras": [
+          {
+            "id": 5346,
+            "titulo": "SUBSEÇÃO UBERLÂNDIA",
+            "trecho": "OAB/MG, em virtude de lei, faz saber que os Advogados Dr. Amando Teixeira Rabelo Junior - OAB/MG 144.226, Dra. Fabiana Pires Guimarães - OAB/MG 102.872, Dr. Wladimir Luiz de Carvalho - OAB/MG 109.614, Dr. João Oswaldo BadaryZinsly Rodrigues - OAB/SP 279.999, f"
+          },
+          {
+            "id": 5347,
+            "titulo": "SUBSEÇÃO IPATINGA",
+            "trecho": "A OAB/MG convoca o advogado Dr. EUGENER VERLI BARROS, OAB/MG 91.043, a entrar em contato com a 72ª Subseção da OAB/MG, situada na Rua Edgar Boy Rossi, nº. 180, CEP: 35160-015 , Ipatinga/MG, telefone 31 3822.2523, no prazo de 15 (quinze) dias, a contar desta pu"
+          },
+          {
+            "id": 18125,
+            "titulo": "SUBSEÇÃO UBERLÂNDIA",
+            "trecho": "EDITAL DE CONVOCAÇÃO OAB/MG, em virtude de lei, faz saber que os Advogados Dra. Marcela Cecília Siqueira Santos - OAB/MG 127.077, Dra. Helda Carvalho Rodrigues – OAB/MG 119.159, Dra. Ana Carolina Ferreira de Brito – OAB/MG 87.575, ficam notificados a comparece"
+          }
+        ]
+      },
+      "Razões Finais": {
+        "publicacoes": 65,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Admissibilidade e Instrução do TED": 53,
+          "Subseções": 9,
+          "Comunicação": 3
+        },
+        "amostras": [
+          {
+            "id": 453504,
+            "titulo": "SUBSEÇÃO DE CURVELO",
+            "trecho": "EDITAL DE NOTIFICAÇÃO – Razões finais Processo Disciplinar nº: 314/2022 Representante: C.M.T Representado: L.R.C OAB/MG:168428 Procurador: D.V.G OAB/MG 135443 Procurador: J.M.F.L OAB/MG 211.307 Pelo presente edital, fica o advogado L.R.C OAB/MG:168.428 e seus "
+          },
+          {
+            "id": 453893,
+            "titulo": "SUBSEÇÃO DE ITURAMA",
+            "trecho": "EDITAL DE CONVOCAÇÃO – RAZÕES FINAIS: Processo Disciplinar: 3450/2017 Representante: C.O.S OAB/MG nº: 142.338 Representado: A.F.D.U OAB/MG nº: 94.727 Pelo presente edital fica o representado A.F.D.U (OAB/MG nº: 94.727) notificado a apresentar suas razões finai"
+          },
+          {
+            "id": 538136,
+            "titulo": "Processo nº 1952/2019",
+            "trecho": "WSC x LRMP (Advogado: Luciano Ricardo de Magalhães Pereira – OAB/MG nº 56092), pelo presente edital, fica o advogado supra, notificado a apresentar, no prazo de 15 (quinze) dias úteis, a partir desta publicação, suas razões finais, sob pena de revelia e design"
+          }
+        ]
+      },
+      "Arquivamento": {
+        "publicacoes": 46,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Admissibilidade e Instrução do TED": 46
+        },
+        "amostras": [
+          {
+            "id": 563327,
+            "titulo": "Processo nº 3311/2019",
+            "trecho": "“De Oficio” - OAB/MG X PARG, AGB, pelo presente edital, informo-lhe que a representação epigrafada foi arquivada liminarmente, com determinação de seu arquivamento, nos termos do parecer exarado por esta presidência. Advogados(a): Dr. Paulo Antonio Rezende Gon"
+          },
+          {
+            "id": 563328,
+            "titulo": "Processo nº 695/2021",
+            "trecho": "OSS X PAD, pelo presente edital, informo-lhe que a representação epigrafada foi arquivada liminarmente, com determinação de seu arquivamento, nos termos do parecer exarado por esta presidência. Advogados(a): Dra. Pamela dos Anjos Damasceno – OAB/MG nº 145.324."
+          },
+          {
+            "id": 563329,
+            "titulo": "Processo nº 757/2022",
+            "trecho": "JOC X JSG, pelo presente edital, informo-lhe que a representação epigrafada foi arquivada liminarmente, com determinação de seu arquivamento, nos termos do parecer exarado por esta presidência. Advogados(a): Dr. Jackson da Silva Goncalves – OAB/MG nº 43.533. B"
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 36,
+        "parecem_decisao": 1,
+        "setores": {
+          "Comissão e Execução de Julgados": 18,
+          "TRIBUNAL DE ÉTICA E DISCIPLINAR": 6,
+          "Comunicação": 4,
+          "Comissão de Admissibilidade e Instrução do TED": 3,
+          "Órgão Especial": 1,
+          "TED - Turma Regional Sul de Minas - Poços de Caldas": 1
+        },
+        "amostras": [
+          {
+            "id": 362799,
+            "titulo": "DESPACHO",
+            "trecho": "O Órgão Especial da Ordem dos Advogados do Brasil - Seção Minas Gerais, comunica do despacho exarado pela Presidente do Órgão Especial no processo nº. 2132/2014 . Recorrente (s): P. R. V. M. (Adv.: Paulo Ricardo Vaz de Melo – OAB/MG 53.203). Recorrido (a): Sr."
+          },
+          {
+            "id": 523714,
+            "titulo": "EDITAL DE NOTIFICAÇÃO",
+            "trecho": "Processo Disciplinar: 3606/2021 Representante: Dra. F. M. F. – OAB/MG 111.684 Procurador da Representante: Dr. F. H. A. Z. – OAB/MG 144.574 Representado : Dr. J. M. N. F. – OAB/MG 149.324 Para seu conhecimento e pronunciamento no prazo de 15 dias uteis, faz se"
+          },
+          {
+            "id": 523715,
+            "titulo": "EDITAL DE NOTIFICAÇÃO",
+            "trecho": "Processo Disciplinar: 1300/2020 Representante: Dra. A. C. B. L. – OAB/MG 145.007 Representado : Dr. F. P. C. – OAB/MG 94.436 Para seu conhecimento e pronunciamento no prazo de 15 dias uteis, faz se transcrever o despacho exarado nos autos nº 1300/2020: “As par"
+          }
+        ]
+      },
+      "Audiência": {
+        "publicacoes": 33,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Admissibilidade e Instrução do TED": 22,
+          "Subseções": 8,
+          "Comunicação": 2,
+          "Comissão de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 453505,
+            "titulo": "SUBSEÇÃO DE CURVELO",
+            "trecho": "EDITAL DE CONVOCAÇÃO – AUDIÊNCIA Processo Disciplinar nº :309/2021 Representante: M.C.V.F.R.S OAB/MG 145.212 Procurador: A. R. S OAB/MG 99.404 Representados: L.J.S.P OAB/MG: 159341 G.P.F OAB/MG 138.728 G.P.F OAB/MG 180.719 Pelo presente edital, ficam os advoga"
+          },
+          {
+            "id": 453892,
+            "titulo": "EDITAL DE NOTIFICAÇÃO – AUDIÊNCIA",
+            "trecho": "Processo Disciplinar nº 5163/2018; Representante: V.L.G. Procuradores: Dr. Rodrigo Abreu Ferreira, OAB/MG 70.043, Dr. Marcelo Metzker Costa Vieira, OAB/MG 172.305, Dra. Luisa Carolina Vasconcelos Chagas Rocha, OAB/MG 167.273 e Dr. Alain Delon Pessoa da Silva, "
+          },
+          {
+            "id": 524331,
+            "titulo": "EDITAL DE CONVOCAÇÃO – AUDIÊNCIA",
+            "trecho": "Processo Disciplinar nº 2385/2020 ; Representante: MCQ, Representado(a): FFL.- (Advogado: Flávio Filizola Lima - OAB/MG nº 35879); Relator-Instrutor: Dr. José Henrique Cançado Gonçalves – OAB/MG nº 57680. A Comissão de Admissibilidade e Instrução do TED da Ord"
+          }
+        ]
+      },
+      "Intimação - Acórdão": {
+        "publicacoes": 31,
+        "parecem_decisao": 28,
+        "setores": {
+          "Órgão Especial": 21,
+          "Conselho Pleno": 6,
+          "Primeira Câmara": 4
+        },
+        "amostras": [
+          {
+            "id": 188786,
+            "titulo": "PROCESSO N° 1756/2010",
+            "trecho": "O Conselho Pleno da Ordem dos Advogados do Brasil, Seção Minas Gerais, intima as partes dos processos abaixo elencados para apresentação dos acórdãos, no prazo de 15 (quinze) dias úteis. Os acórdãos estarão disponíveis às partes na Secretaria, com endereço na "
+          },
+          {
+            "id": 188787,
+            "titulo": "PROCESSOS N° 9547/2016 E 2222/2018",
+            "trecho": "O Conselho Pleno da Ordem dos Advogados do Brasil, Seção Minas Gerais, intima as partes dos processos abaixo elencados para apresentação dos acórdãos, no prazo de 15 (quinze) dias úteis. Os acórdãos estarão disponíveis às partes na Secretaria, com endereço na "
+          },
+          {
+            "id": 188836,
+            "titulo": "RECURSO EM PROCESSO Nº. 3065/2013",
+            "trecho": "O Órgão Especial da Ordem dos Advogados do Brasil, Seção Minas Gerais, intima as partes dos processos abaixo elencados para apresentação de Recurso ao acórdão da 2ª Turma, no prazo de 15 (quinze) dias úteis. Os acórdãos estarão disponíveis às partes na Secreta"
+          }
+        ]
+      },
+      "Resultado de Julgamento": {
+        "publicacoes": 17,
+        "parecem_decisao": 17,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 16,
+          "TED - Turma Regional Triângulo Mineiro": 1
+        },
+        "amostras": [
+          {
+            "id": 266858,
+            "titulo": "SESSÃO DO DIA 27/08/2020 DA 5ª TURMA DO TED REGIONAL OAB/MG",
+            "trecho": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 27/08/2020 DA 5ª TURMA DO TED REGIONAL OAB/MG, para conhecimento dos interessados: Proc. Nº 1721/2018: Rel.: Dr(a).LIDIA MARIA ANDRADE E BRAGA: RTE: OAB/MG DE OFÍCIO RDO: O.S.C. OAB/MG Nº 37456; DEF: GERSON PEI"
+          },
+          {
+            "id": 362806,
+            "titulo": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 13/08/2021 DA 4ª Turma, para conhecimento dos interessados:",
+            "trecho": "Proc. Nº 1033/2017: Rel.: Dr(a).MARCELO VAZ BUENO: RTE: F.L.S.A. - RDO: T.S.R. OAB/MG Nº 137646; DEF: VICTOR HUGO MATOS CASADEI OAB/MG Nº 188661; Acórdão: Vistos, relatados e discutidos os presentes autos, por unanimidade julgaram improcedente a representação,"
+          },
+          {
+            "id": 362926,
+            "titulo": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 12/08/2021 DA 3ª Turma, para conhecimento dos interessados:",
+            "trecho": "Proc. Nº 10247/2017: Rel.: Dr(a).GABRIEL AFONSO CORDEIRO DE SANTANA: RTE: F.R.O. - PRO: JOAO FERREIRA DOS SANTOS OAB/MG Nº 150624; PRO: CELIO DE SOUZA RIBEIRO OAB/MG Nº 149249; RDO: P.A.D.S.V. OAB/MG Nº 127515; Acórdão: Vistos, relatados e discutidos os presen"
+          }
+        ]
+      },
+      "Alegações Finais": {
+        "publicacoes": 17,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Ética e Disciplina": 17
+        },
+        "amostras": [
+          {
+            "id": 1062993,
+            "titulo": "EDITAL CONVOCAÇÃO- RAZÕES FINAIS – CED 43ª SUBSEÇÃO DA OAB/MG- GOVERNADOR VALADARES/MG.",
+            "trecho": "PROCESSO DISCIPLINAR: 27/2025 REPRESENTANTE: DE Oficio REPRESENTADO: DR. H. A. DA S. T. Pelo presente edital, fica a parte representada DRA. E. C. C. DA R. – OAB/MG 64.599 por seu procurador DR. ASLEY CORREA COELHO DA ROCHA- OAB/MG: 135.703, devidamente notifi"
+          },
+          {
+            "id": 1062994,
+            "titulo": "EDITAL CONVOCAÇÃO- RAZÕES FINAIS – CED 43ª SUBSEÇÃO DA OAB/MG- GOVERNADOR VALADARES/MG.",
+            "trecho": "PROCESSO DISCIPLINAR: 29/2025 REPRESENTANTE: DE Oficio PROCURADOR: DR. ASLEY CORREA COELHO DA ROCHA- OAB/MG: 135.703 REPRESENTADA: DRA. E. C. C. DA R. – OAB/MG 64.599 Pelo presente edital, fica a parte representada DRA. E. C. C. DA R. – OAB/MG 64.599 por seu p"
+          },
+          {
+            "id": 1062995,
+            "titulo": "EDITAL CONVOCAÇÃO- RAZÕES FINAIS – CED 43ª SUBSEÇÃO DA OAB/MG- GOVERNADOR VALADARES/MG.",
+            "trecho": "PROCESSO DISCIPLINAR: 35/2025 REPRESENTANTE: R. DOS S. M. PROCURADOR:GUSTAVO TULLER DE OLIVEIRA FREITAS- OAB/PR 54.411 REPRESENTADA: DRA. B. P. DO C. F. R. – OAB/MG – OAB/MG 113.897 Pelo presente edital, fica a parte representada DRA. B. P. DO C. F. R. – OAB/M"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 14,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 12,
+          "TED - Turma Regional Triângulo Mineiro": 1,
+          "Órgão Especial": 1
+        },
+        "amostras": [
+          {
+            "id": 188853,
+            "titulo": "PAUTA SESSAO JULGAMENTO TED - TRIBUNAL DE ETICA E DISCIPLINA 2ª TURMA 09/12/2019 ÀS 10:00 HORAS.",
+            "trecho": "Rel.: Dr(a).LECIO GOULART DA COSTA: Proc. 3346/2012; RTE: N.T.; RDO: J.P.A.P.; RDO: J.E.R.P.; RDO: J.E.R.P.J.; PRO: ALFREDO SALVO MOREIRA RABELO; Proc. 2705/2014; RTE: OAB/MG; RDO: A.F.B.O.; PRO: EGMAR SOUSA FERRAZ; Proc. 61/2016; RTE: 0.; RTE: OAB/MG; RDO: V."
+          },
+          {
+            "id": 188854,
+            "titulo": "PAUTA SESSAO JULGAMENTO TED - TRIBUNAL DE ETICA E DISCIPLINA 2ª TURMA 09/12/2019 ÀS 13:30 HORAS.",
+            "trecho": "Rel.: Dr(a).PEDRO SOARES DE VASCONCELOS NETTO: Proc. 4154/2019; RTE: OAB/MG; RDO: E.R.; DEF: LUIZA HELENA LOPES IZIDORIO; Belo Horizonte, 14 de novembro de 2019. DECIO DE CARVALHO MITRE Presidente - TED - TRIBUNAL DE ETICA E DISCIPLINA"
+          },
+          {
+            "id": 188855,
+            "titulo": "PAUTA SESSAO JULGAMENTO TED - TRIBUNAL DE ETICA E DISCIPLINA 2ª TURMA 09/12/2019 ÀS 14:00 HORAS.",
+            "trecho": "Rel.: Dr(a).CRISTOVAM DIONISIO DE BARROS C. JUNIOR: Proc. 10536/2016; RTE: W.G.N.; RDO: G.P.C.; DEF: CRISTIANE DUARTE RAMALHO; Proc. 1451/2016; RTE: M.&.M.S.L.L.; RDO: M.C.R.E.; DEF: FELIPE DOS SANTOS CARVALHO; Proc. 1505/2016; RTE: 2.; RTE: D.P.4.D.P.C.T.M.-."
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 14,
+        "parecem_decisao": 13,
+        "setores": {
+          "Conselho Pleno": 14
+        },
+        "amostras": [
+          {
+            "id": 1063585,
+            "titulo": "PROCESSO N. 1234/2021",
+            "trecho": "O Conselho Pleno da Ordem dos Advogados do Brasil, Seção Minas Gerais, intima a(s) parte(s) do(s) processo(s) abaixo elencado(s) para ciência do Acórdão; caso queira, apresentar Recurso, deverá observar o prazo de 15 (quinze) dias úteis conforme legislação vig"
+          },
+          {
+            "id": 1063596,
+            "titulo": "PROCESSO N. 3738/2025",
+            "trecho": "O Conselho Pleno da Ordem dos Advogados do Brasil, Seção Minas Gerais, intima a(s) parte(s) do(s) processo(s) abaixo elencado(s) para ciência do Acórdão; caso queira, apresentar Recurso, deverá observar o prazo de 15 (quinze) dias úteis conforme legislação vig"
+          },
+          {
+            "id": 1063599,
+            "titulo": "PROCESSO N. 3718/2025",
+            "trecho": "O Conselho Pleno da Ordem dos Advogados do Brasil, Seção Minas Gerais, intima a(s) parte(s) do(s) processo(s) abaixo elencado(s) para ciência do Acórdão; caso queira, apresentar Recurso, deverá observar o prazo de 15 (quinze) dias úteis conforme legislação vig"
+          }
+        ]
+      },
+      "Defesa Prévia": {
+        "publicacoes": 8,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Ética e Disciplina": 3,
+          "Tribunal de Ética e Disciplina": 2,
+          "Subseções": 2,
+          "Comunicação": 1
+        },
+        "amostras": [
+          {
+            "id": 563286,
+            "titulo": "CONVOCAÇÃO DEFESA PRÉVIA TED OAB/MG",
+            "trecho": "Proc. 1111/2023: RTE: M.V.L. OAB/MG Nº 125246; RDO: R.M.X. OAB/MG Nº 99708; Pelo presente edital, ficam os advogados representados e seus procuradores suprarrelacionados notificados a apresentarem, no prazo de 15 (quinze) dias úteis, a partir desta publicação,"
+          },
+          {
+            "id": 563287,
+            "titulo": "CONVOCAÇÃO DEFESA PRÉVIA TED OAB/MG",
+            "trecho": "Proc. 1112/2023: RTE: M.V.L. OAB/MG Nº 125246; RDO: R.M.X. OAB/MG Nº 99708; Pelo presente edital, ficam os advogados representados e seus procuradores suprarrelacionados notificados a apresentarem, no prazo de 15 (quinze) dias úteis, a partir desta publicação,"
+          },
+          {
+            "id": 683186,
+            "titulo": "SUBSEÇÃO DE MURIAÉ",
+            "trecho": "EDITAL DE NOTIFICAÇÃO – DEFESA PRÉVIA Processo Disciplinar nº 041/2022 Representante: “De Ofício” MM Juiz de Direito da Vara Criminal da Comarca de Muriaé Representado: João Batista Andrade Costa - OAB/MG 65.153B Pelo presente edital, fica V. Sa. notificado a "
+          }
+        ]
+      },
+      "Contrarrazões": {
+        "publicacoes": 8,
+        "parecem_decisao": 0,
+        "setores": {
+          "Órgão Especial": 5,
+          "Diretoria": 3
+        },
+        "amostras": [
+          {
+            "id": 1063233,
+            "titulo": "EDITAL DE NOTIFICAÇÃO CONTRARRAZOAR DEFESA PRÉVIA",
+            "trecho": "PROCESSO DISCIPLINAR: 342/2026 Representante: DR. D.C.C. - OAB/MG 142.494 (PROCURADOR DR DALVAN CHARBAJE COLEN – OAB/MG 142.494); Representados: DR I C F S – OAB/MG 159.275 e DRA K C F – OAB/MG 107.546 (PROCURADORES DR IGOR CAIAFA FERREIRA SILVERIO – OAB/MG 15"
+          },
+          {
+            "id": 1063255,
+            "titulo": "EDITAL DE NOTIFICAÇÃO CONTRARRAZOAR DEFESA PRÉVIA",
+            "trecho": "PROCESSO DISCIPLINAR: 4168/2025 Representante: DR. G P S – OAB/MG 138327 (PROCURADOR DR GILBERTO PEREIRA DE SOUZA - OAB/MG 138.327); Representada: DRA B C O D - OAB/MG 111.410 (PROCURADORA DRA BRISATERRA CAMPOS DE OLIVEIRA DANTAS - OAB/MG 111.410). Pelo presen"
+          },
+          {
+            "id": 1063258,
+            "titulo": "EDITAL DE NOTIFICAÇÃO CONTRARRAZOAR DEFESA PRÉVIA",
+            "trecho": "PROCESSO DISCIPLINAR: 4633/2025 Representante: DR T J F – OAB /MG 193.988 (PROCURADOR DR THIAGO JAEDER FELIPE - OAB/MG 193.988); Representadas: DRA Y C S F C – OAB/MG 109289 e DRA N C S – OAB/MG 214938 (PROCURADORAS DRA YARA COSTA SILVA FERREIRA CAMPOS – OAB/M"
+          }
+        ]
+      },
+      "Comunicado": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "Órgão Especial": 5,
+          "Subseções": 1,
+          "Comunicação": 1
+        },
+        "amostras": [
+          {
+            "id": 275982,
+            "titulo": "REMESSA AO CONSELHO FEDERAL DA OAB",
+            "trecho": "O Órgão Especial da Ordem dos Advogados do Brasil – Seção Minas Gerais, comunica que o processos abaixo elencado foi encaminhado ao Conselho Federal da OAB para julgamento do Recurso interposto contra a decisão desta Seccional. Outrossim, esclareço-lhe que o a"
+          },
+          {
+            "id": 362802,
+            "titulo": "Comunicado",
+            "trecho": "O Órgão Especial da Ordem dos Advogados do Brasil – Seção Minas Gerais, comunica que o processo abaixo elencado foi encaminhado ao Conselho Federal da OAB para julgamento do Recurso interposto contra a decisão desta Seccional. Outrossim, esclareço-lhe que o ac"
+          },
+          {
+            "id": 362803,
+            "titulo": "Comunicado",
+            "trecho": "O Órgão Especial da Ordem dos Advogados do Brasil – Seção Minas Gerais, comunica que o processo abaixo elencado foi encaminhado ao Conselho Federal da OAB para julgamento do Recurso interposto contra a decisão desta Seccional. Outrossim, esclareço-lhe que o ac"
+          }
+        ]
+      },
+      "Retirado de Pauta": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 5,
+          "Conselho Pleno": 2
+        },
+        "amostras": [
+          {
+            "id": 487521,
+            "titulo": "EDITAL - PROCESSOS RETIRADOS DE PAUTA – 1ª TURMA - TED - TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/MG",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da OAB/MG comunica as partes e procuradores que foi retirado de pauta o processo abaixo relacionado, de seu interesse, por determinação de seu respectivo relator julgador. Na oportunidade, informa que todos serão "
+          },
+          {
+            "id": 487619,
+            "titulo": "EDITAL - PROCESSOS RETIRADOS DE PAUTA 5ª TURMA - TED - TRIBUNAL DE ETICA E DISCIPLINA DA OAB/MG",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da OAB/MG, comunica as partes e procuradores que foi retirado de pauta o processo abaixo relacionado, de seu interesse, por determinação de seu respectivo relator julgador. Na oportunidade, informa que todos serão"
+          },
+          {
+            "id": 563411,
+            "titulo": "EDITAL - PROCESSOS RETIRADOS DE PAUTA TED - TRIBUNAL DE ETICA E DISCIPLINA DA OAB/MG",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da OAB/MG, comunica as partes e procuradores que foram retirados de pauta os processos abaixo relacionados, de seu interesse, por determinação de seu respectivo relator julgador. Na oportunidade, informa que todos"
+          }
+        ]
+      },
+      "Autos com vista": {
+        "publicacoes": 5,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 3,
+          "Órgão Especial": 2
+        },
+        "amostras": [
+          {
+            "id": 228007,
+            "titulo": "CONTRARRAZÕES/MANIFESTAÇÃO",
+            "trecho": "A Segunda Turma do Órgão Especial da Ordem dos Advogados do Brasil – Seção Minas Gerais, informa que o processo abaixo elencado encontra-se com vista aos Recorridos/Interessados para, querendo, apresentarem contrarrazões ou manifestação, no prazo de 15 (quinze"
+          },
+          {
+            "id": 372770,
+            "titulo": "CONTRARRAZÕES/MANIFESTAÇÃO",
+            "trecho": "A Primeira Turma do Órgão Especial da Ordem dos Advogados do Brasil – Seção Minas Gerais, informa que o processo abaixo elencado encontra-se com vista aos Recorridos/Interessados para, querendo, apresentarem contrarrazões ou manifestação, no prazo de 15 (quinz"
+          },
+          {
+            "id": 758078,
+            "titulo": "EDITAL DE NOTIFICAÇÃO- DEFESA PRÉVIA",
+            "trecho": "Proc. 1473/2024: RTE: J.F.S. OAB/MG 68.959; RDO: L.P.S. OAB/MG 171.618 Pelo presente edital fica (m) o (s) advogado (s) representado (s) e seu (s) procurador (es) supra relacionados notificados a apresentarem, no prazo de 15 (quinze) dias úteis, a partir desta"
+          }
+        ]
+      },
+      "Intimação": {
+        "publicacoes": 5,
+        "parecem_decisao": 0,
+        "setores": {
+          "Subseções": 5
+        },
+        "amostras": [
+          {
+            "id": 699690,
+            "titulo": "SUBSEÇÃO DE UBÁ",
+            "trecho": "EDITAL DE INTIMAÇÃO PARA DEFESA PRÉVIA Conselho Subseccional da OAB de Ubá Processo Disciplinar nº 018/2022 – OAB-MG Representante OAB de Ofício Representado Dr. Michel Stefani – OAB-MG 130.276 Pelo presente edital, fica a parte Representada, acima mencionada,"
+          },
+          {
+            "id": 781507,
+            "titulo": "SUBSEÇÃO DE UBÁ",
+            "trecho": "EDITAL DE INTIMAÇÃO PARA DEFESA PRÉVIA Conselho Subseccional da OAB de Ubá Processo Disciplinar nº 004/2024 – OAB/MG Representante Lavínia da Silva Costa Representado Dr. Guilherme de Assis André – OAB/MG 201.522. Pelo presente edital, fica a parte Representad"
+          },
+          {
+            "id": 781526,
+            "titulo": "SUBSEÇÃO DE UBÁ",
+            "trecho": "EDITAL DE INTIMAÇÃO PARA DEFESA PRÉVIA Conselho Subseccional da OAB de Ubá Processo Disciplinar nº 005/2023 – OAB/MG Representante Lucibele Silva Gomes Representado Dr. Guilherme de Assis André – OAB/MG 201.522. Pelo presente edital, fica a parte Representada,"
+          }
+        ]
+      },
+      "Resultado de Embargos": {
+        "publicacoes": 3,
+        "parecem_decisao": 1,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 3
+        },
+        "amostras": [
+          {
+            "id": 683058,
+            "titulo": "EDITAL - TRANSCRIÇÃO DE DECISÃO PROFFERIDA EM EMBARGOS DE DECLARAÇÃO.",
+            "trecho": "Proc. Nº 2294/2021: Rel.: Dr(a).MARIA CLAUDIA CARNEIRO PEIXOTO GONÇALVES SANTOS: RTE: J.R.N. - RDO: L.M.E.(Procurador(a) LEANDRO MENDES EMYGDIO) OAB/MG Nº 109384; “Isto posto, recebo os embargos declaratórios, porém mantenho as razões do voto, por seus próprio"
+          },
+          {
+            "id": 683200,
+            "titulo": "EDITAL - TRANSCRIÇÃO DE DECISÃO PROFFERIDA EM EMBARGOS DE DECLARAÇÃO.",
+            "trecho": "Proc. Nº 2289/2021: Rel.: Dr(a).TATIANA POSSAS EMIDIO: RTE: D.O.-.J.V.F.S.J.J.F. - RDO: T.J.F.C. OAB/MG Nº 81486; DEF: JOSUE SANTANA MAIA/MG Nº 192335; “ Considerando que o representado apresentou embargos declaratórios em fls. 62/70, por consequência, rejeito"
+          },
+          {
+            "id": 1135319,
+            "titulo": "EDITAL – TRANSCRIÇÃO DE DECISÃO PROFERIDA EM EMBARGOS DE DECLARAÇÃO.",
+            "trecho": "Proc. Nº 829/2024: Rel.: Dr(a).RAYNE SAVAN BRITO: RTE: OAB/MG DE OFÍCIO RTE: AUT DE OFÍCIO – RDO: L.F.C.R. OAB/MG Nº 190952; PRO: RITA DE CASSIA MACIEL FRANCO OAB/PR Nº 94901; (…) “voto para CONHECER dos embargos de declaração opostos por Luiz Fernando Cardoso"
+          }
+        ]
+      },
+      "Notificação": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comunicação": 2,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 1063078,
+            "titulo": "Notificação Orientativa nº 18/2026 – Presidência",
+            "trecho": "Ao(À) Dr(a). Evelyn Monaly Miranda OAB/PR nº 129.028 Assunto: Orientação sobre inscrição suplementar – atuação no TRT de Patos de Minas Prezado(a) Colega, A OAB – Subseção de Patos de Minas/MG recebeu comunicação institucional noticiando a atuação de V. Sa. em"
+          },
+          {
+            "id": 1063079,
+            "titulo": "Notificação Orientativa nº 22/2026 – Presidência",
+            "trecho": "Ao(À) Dr(a). Caio Fernando Seckler de Oliveira OAB/RS nº 87.055 Assunto: Orientação sobre inscrição suplementar – atuação no TRT de Patos de Minas Prezado(a) Colega, A OAB – Subseção de Patos de Minas/MG recebeu comunicação institucional noticiando a atuação d"
+          },
+          {
+            "id": 1135957,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "Processo nº 3300/2023 Relator: Dr. Benedito Claudino Junior Requerente: N.G. Requeridos: M.V.C.R.; C.A.C.R.; e C.L.M. Procuradores: Marcus Vinicius de Castro Ribeiro – OAB/MG nº 110.317; Ciomara Aline de Castro Ribeiro – OAB/MG nº 73.704; e Claudia Leonina Mac"
+          }
+        ]
+      },
+      "Convocação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Subseções": 1,
+          "Comissão de Admissibilidade e Instrução do TED": 1
+        },
+        "amostras": [
+          {
+            "id": 1420,
+            "titulo": "SUBSEÇÃO UBERABA",
+            "trecho": "EDITAL DE CONVOCAÇÃO : OAB/MG, em virtude de lei, faz saber que o(a) Advogado(a) ANTÔNIO CARLOS CABRAL COELHO, OAB/MG. 135.097, fica notificado a comparecer na 14ª Subseção OAB/MG, localizada na Av. Maranhão, 1460 - Mercês – Uberaba/MG, no prazo de 15 (quinze)"
+          },
+          {
+            "id": 1135212,
+            "titulo": "EDITAL DE CONVOCAÇÃO",
+            "trecho": "Pelo presente edital, fica o(a) advogado(a) abaixo relacionado notificado(a) a comparecer à sede do Conselho Seccional da OAB/MG (Rua Albita, n.º 260, bairro Cruzeiro, Belo Horizonte), para tratar de assunto de seu interesse. Advogada: Procuradora Dra. Carine "
+          }
+        ]
+      },
+      "Resultado de Julgamentos": {
+        "publicacoes": 2,
+        "parecem_decisao": 2,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 2
+        },
+        "amostras": [
+          {
+            "id": 563281,
+            "titulo": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 04/04/2023, AS 09:30 HORAS, DA 2ª TURMA REGIONAL DO TRIBUNAL DE ÉTICA E DISCIPLINA - OAB/J",
+            "trecho": "Proc. Nº 2489/2018: Rel.: Dr(a).TATIANA POSSAS EMIDIO: RTE: A.E.O.R. OAB/MG Nº 127508; RDO: R.O.M. OAB/MG Nº 76147; Processo baixado em Diligência pela ilustre relatora. Proc. Nº 4147/2019: Rel.: Dr(a).SAVIO KNOP HENRIQUES: RTE: L.F. OAB/MG Nº 140902; RDO: A.P"
+          },
+          {
+            "id": 563285,
+            "titulo": "EDITAL - RESULTADO DO JULGAMENTO DA SESSÃO DO DIA 04/04/202, ÀS 13:30 HORAS, DA 2ª TURMA REGIONAL DO TRIBUNAL DE ÉTICA E DISCIPLINA - OAB/JU",
+            "trecho": "Proc. Nº 4841/2019: Rel.: Dr(a).SIMONE RODRIGUES DA COSTA: RTE: R.V.M. OAB/MG Nº 92234; RDO: L.C.B.S. OAB/MG Nº 75521; Acórdão: Vistos, relatados e discutidos os presentes autos, por maioria, julgaram procedente a presente representação, aplicando ao represent"
+          }
+        ]
+      },
+      "Processo": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comunicação": 2
+        },
+        "amostras": [
+          {
+            "id": 916971,
+            "titulo": "EDITAL DE CONVOCAÇÃO – RAZÕES FINAIS",
+            "trecho": "Processo Disciplinar n°: 046/2024 Representante: 4° VARA CIVEL DA COMARCA DE BETIM/MG Representada: DR. B.N.V-OAB/MG: 226.744 Pelo presente edital fica o Representado: DR.B.N.V -OAB/MG: 226.774, notificado que deverá apresentar suas razões finais no prazo de 1"
+          },
+          {
+            "id": 937406,
+            "titulo": "Representação Disciplinar: 1601/2024",
+            "trecho": "Representante: G.P.D - OAB/MG 162.049 Representados: R.D.B - OAB/MG 158.788 D.P.J - OAB/MG 185.973 D.P.O - OAB/MG 193.368 R.A.M.D - 193.417 Procurador (a): C.S.G OAB/MG 151.710 Pelo presente edital, fica o Representante G.P.D - OAB/MG 162.049 e os representado"
+          }
+        ]
+      },
+      "Processo Retirado de Pauta": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1,
+          "Comunicação": 1
+        },
+        "amostras": [
+          {
+            "id": 1063054,
+            "titulo": "EDITAL - PROCESSOS RETIRADOS DE PAUTA TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/MG",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da OAB/MG, comunica as partes e procuradores que foram retirados de pauta os processos abaixo relacionados, de seu interesse, por determinação de seus respectivos relatores julgadores. Na oportunidade, informa que"
+          },
+          {
+            "id": 1063073,
+            "titulo": "EDITAL - PROCESSO RETIRADO DE PAUTA – TURMA TED – UBERLANDIA - OAB/MG",
+            "trecho": "O Presidente do Tribunal de Ética e Disciplina da OAB/MG, comunica as partes e procuradores que foram retirados de pauta os processos abaixo relacionados, de seu interesse, por determinação de seus respectivos relatores julgadores. Na oportunidade, informa que"
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comunicação": 1,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 1063179,
+            "titulo": "PORTARIA n\" 002/2026",
+            "trecho": "Gestão Triênio 2025 - 2027 Considerando o chamado para ações que possam ampliar a igualdade de direitos, poder e oportunidade para todas as mulheres, onde nenhuma seja deixada para tras. O Presidente da 47\" Subseção da Ordem dos Advogados do Brasil, Seção de M"
+          },
+          {
+            "id": 1135420,
+            "titulo": "PORTARIA Nº 006/2026 | NOMEAÇÃO DE MEMBRO DA COMISSÃO DE DIREITO SISTÊMICO",
+            "trecho": "O Presidente da 8ª Subseção da Ordem dos Advogados do Brasil - Seção de Minas Gerais - OAB/MG, no uso de suas atribuições legais e regimentais, CONSIDERANDO a crescente aplicação da abordagem sistêmica no âmbito jurídico, especialmente como instrumento de comp"
+          }
+        ]
+      },
+      "Ata de Sorteio": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINAR": 2
+        },
+        "amostras": [
+          {
+            "id": 1190713,
+            "titulo": "EDITAL - ATA DA SESSÃO DE DISTRIBUIÇÃO DE PROCESSOS DA 1ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO M",
+            "trecho": "ATA DA SESSÃO DE DISTRIBUIÇÃO DE PROCESSOS DA 1ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DE MINAS GERAIS, REALIZADA AOS 09 DIAS DO MÊS DE NOVEMBRO DE DOIS MIL E VINTE E SEIS, NA SECRETARIA DO TED REGIONAL, LOTADO NA 13ª "
+          },
+          {
+            "id": 1190722,
+            "titulo": "EDITAL - ATA DA SESSÃO DE DISTRIBUIÇÃO DE PROCESSOS DA 2ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO M",
+            "trecho": "ATA DA SESSÃO DE DISTRIBUIÇÃO DE PROCESSOS DA 2ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DE MINAS GERAIS, REALIZADA AOS 09 DIAS DO MÊS DE NOVEMBRO DE DOIS MIL E VINTE E SEIS, NA SECRETARIA DO TED REGIONAL, LOTADO NA 13ª "
+          }
+        ]
+      },
+      "Súmula": {
+        "publicacoes": 1,
+        "parecem_decisao": 1,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 188857,
+            "titulo": "30 DE SETEMBRO DE 2019 - 1ª TURMA JULGADORA",
+            "trecho": "SÚMULA DE JULGAMENTO DA SESSÃO DO DIA 30 de setembro de 2019 1ª TURMA JULGADORA DO TRIBUNAL DE ÉTICA DISCIPLINA, para conhecimento dos interessados: Proc. Nº 749/2012: Rel.: Dr(a).FABIO ROCHA PEREIRA: RTE: OAB/MG DE OFÍCIO - RDO: A.C.T.P. OAB/ES Nº 14737; DEF:"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 243774,
+            "titulo": "RESOLUÇÃO Nº: 006/2020",
+            "trecho": "O PRESIDENTE DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO MINAS GERAIS, no uso de suas atribuições previstas nos artigos 20, inciso XXIII do Regimento Interno do Tribunal de Ética e Disciplina da OAB/MG: Considerando os termos da "
+          }
+        ]
+      },
+      "Edital de Impugnação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 948495,
+            "titulo": "EDITAL – DESPACHO SANEADOR",
+            "trecho": "PROCESSO DISCIPLINAR: 12/2024 REPRESENTANTE: D. S. B. DEFENSORA DATIVA: DRA. ANDRÉIA LUIZA MARTINS LOURES R. SILVA- OAB/MG 222.136 REPRESENTADO: DR. V. C. P. DO N. – OAB/MG 145.495 Pelo presente Edital, fica a parte representada DR. V. C. P. DO N. – OAB/MG 145"
+          }
+        ]
+      },
+      "Edital de Intimação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "11ª Subseção da OAB/MG - Montes Claros/MG": 1
+        },
+        "amostras": [
+          {
+            "id": 1063400,
+            "titulo": "Edital de Intimação – Juntar documentos",
+            "trecho": "Processo disciplinar nº 1414/2021 Rte.: Ex officio (OAB/MG); Aut.: Aut. de ofício; Rdo(a).: G. A. M., OAB/MG 127.597; L. S. A. F., OAB/MG 178.469; Pelo presente edital, ficam os advogados G. A. M., OAB/MG 127.597, e L. S. A. F., OAB/MG 178.469, intimados para "
+          }
+        ]
+      },
+      "Intimação da Decisão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "11ª Subseção da OAB/MG - Montes Claros/MG": 1
+        },
+        "amostras": [
+          {
+            "id": 1063419,
+            "titulo": "Edital de Notificação – Transcrição despacho TED OAB/MG",
+            "trecho": "Processo disciplinar nº 2629/2025 (antigo PD 1605/2024) Rte.: M. V. F. M.; Rdo(a).: G. A. M., OAB/MG 127.597. Para seu conhecimento e pronunciamento no prazo de 15 (quinze) dias úteis, faz-se transcrever o despacho exarado nos autos supracitados: “Homologo a d"
+          }
+        ]
+      },
+      "Pauta de Sessão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 1190724,
+            "titulo": "INCLUSÃO DE PAUTA",
+            "trecho": "O Conselho Pleno da OAB/MG reunir-se-á em Sessão Ordinária, a ser realizada no dia 04/12/2026, sexta-feira, a partir das 10:00 horas, na Sede Histórica da Ordem dos Advogados do Brasil - Seção Minas Gerais, localizada na Rua Albita, nº. 250, Bairro Cruzeiro – "
+          }
+        ]
+      }
+    }
+  }
+}

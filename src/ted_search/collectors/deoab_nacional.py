@@ -199,7 +199,9 @@ def _resultado_pela_formula(full_text: str) -> str | None:
 # "Representação" e "ética" sozinhas ficam de fora: aparecem em matéria institucional (auditoria do AP, nov/2026).
 RE_DISCIPLINAR = re.compile(
     r"DISCIPLIN|REABILITA|INFRAC|ART(?:IGO)?S?\.?\s*34\b|CENSURA|TRIBUNAL\s+DE\s+ETICA|\bTED\b|CODIGO\s+DE\s+ETICA|"
-    r"LOCUPLET|INIDONE|EXCLUSAO\s+D[OA]S?\s+QUADROS|SUSPENSAO\s+(?:DO\s+EXERCICIO|PREVENTIVA)|CAPTACAO\s+DE\s+CLIENT|ANGARIA"
+    r"LOCUPLET|INIDONE|EXCLUSAO\s+D[OA]S?\s+QUADROS|SUSPENSAO\s+(?:DO\s+EXERCICIO|PREVENTIVA)|CAPTACAO\s+DE\s+CLIENT|ANGARIA|"
+    # leitura de ES: decisões de Câmara e Pleno em processo ético que não usam a palavra "disciplinar"
+    r"REPRESENTAD[OA]|REPRESENTANTE|PROCESSO\s+ETICO|ARQUIVAMENTO\s+LIMINAR|EXCECAO\s+DE\s+SUSPEICAO|DOSIMETRIA|ABSOLVICAO|CONSULENTE"
 )
 
 
@@ -257,6 +259,10 @@ RE_ADMINISTRATIVO = re.compile(
     # auditorias de MT e PA: incidente de inidoneidade é de inscrição; anuidade, desagravo e normas são administrativos
     r"INCIDENTE\s+DE\s+(?:IN)?IDONEIDADE|(?:IN)?IDONEIDADE\s+MORAL|LICENCIAMENTO|LICENCA\s+D[AE]\s+INSCRICAO|ISENCAO\s+D[AE]\s+ANUIDADE|REMISSAO\s+D[AEO]S?\s+(?:DEBITO|ANUIDADE)|DESAGRAVO|PEDIDO\s+DE\s+PROVIDENCIAS|"
     r"TABELA\s+DE\s+HONORARIOS|MATERIA\s+DE\s+NATUREZA\s+ADMINISTRATIVA|"
+    # leituras de BA e ES
+    r"INCOMPATIBILIDADE\s+(?:COM|PREVISTA)|COMISSAO\s+DE\s+SELECAO|LISTA\s+SEXTUPLA|QUINTO\s+CONSTITUCIONAL|"
+    r"VIOLACAO\s+(?:A|DE|AOS?)\s+(?:DIREITOS\s+E\s+)?PRERROGATIVAS|PRESTACAO\s+DE\s+CONTAS\s*[-–]\s*CAIXA|"
+    r"PROCESSO\s+INCIDENTAL\s+DE\s+(?:IN)?IDONEIDADE|HOMOLOG\w+[^.]{0,40}REGIMENTO|DECLARA\w+[^.]{0,40}\bIDONE[OA]\b|INSCRICAO\s+DEFERIDA|"
     r"PEDIDO\s+DE\s+INSCRICAO|INSCRICAO\s+(?:ORIGINARIA|SUPLEMENTAR|PRINCIPAL|DEFINITIVA)|"
     r"SOCIEDADE\s+(?:INDIVIDUAL\s+)?DE\s+ADVO|ATOS\s+SOCIETARIOS"
 )
@@ -267,13 +273,23 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
     if eh_eleitoral(setor_nome, full_text):
         return False
     abertura = _sem_acento_upper(f"{titulo} {full_text[:600]}")
+    # reabilitação conta como disciplinar (decisão do cliente); a "reabilitação criminal" citada em incidente
+    # de inidoneidade é assunto de inscrição
+    if "REABILITA" in abertura and "IDONEIDADE" not in abertura:
+        return True
     adm = RE_ADMINISTRATIVO.search(abertura)
     if adm:
         # "inscrição suplementar" também é infração (atuar sem ela): num processo disciplinar, a matéria é disciplinar
         # idem "inidoneidade moral" (art. 34, XXVII) e "cancelamento de inscrição" como pena (auditoria de PI)
         achado = adm.group(0)
-        fraco = ("INSCRICAO" in achado and "LICENCA" not in achado) or (achado.endswith("IDONEIDADE MORAL") and "INCIDENTE" not in abertura)
-        if not (fraco and re.search(r"PROCESSO\s+(?:ETICO[-\s]*)?DISCIPLINAR|\bPAD\b|REPRESENTACAO|REPRESENTAD[OA]|INFRACAO", abertura)):
+        fraco = (
+            ("INSCRICAO" in achado and "LICENCA" not in achado and "DEFERIDA" not in achado)
+            or (achado.endswith("IDONEIDADE MORAL") and "INCIDENTE" not in abertura)
+            or achado.startswith("SOCIEDADE")  # consulta do TED sobre sociedade; publicidade de sociedade sem registro (ES)
+            or achado.startswith("INCOMPATIBILIDADE")  # consulta do TED sobre incompatibilidade (BA)
+        )
+        forte = r"PROCESSO\s+(?:ETICO[-\s]*)?DISCIPLINAR|PROCESSO\s+ETICO|\bPAD\b|REPRESENTACAO|REPRESENTAD[OA]|INFRACAO|CONSULTA|CONSULENTE|TURMA\s+JULGADORA"
+        if not (fraco and re.search(forte, abertura)):
             return False
     return bool(RE_DISCIPLINAR.search(_sem_acento_upper(f"{setor_nome} {titulo} {full_text}")))
 
