@@ -435,3 +435,162 @@ def test_go_conselho_inscricao_e_materia_administrativa_e_redator_nao_e_relator(
     r = rec("proesso-201507382", "proesso-no-201507382")  # título do site com erro de digitação ('Proesso')
     assert r["numero_processo"] == "201507382" and r["data_decisao"] == "2018-06-13"
     assert m.normalizar({"id": "x", "url": "u", "paragrafos": ["Processo nº 1"]}) is None
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# PR / jurisprudencia - buscador de jurisprudência da OAB/PR (API JSON, sem rede aqui)
+# ----------------------------------------------------------------------------------------------------------------------
+
+def _pr_itens() -> list[dict]:
+    return [{"id": str(i["ind"]), **i} for i in _fixture("pr_jurisprudencia_pagina_amostra.json")["data"]]
+
+
+def test_pr_advogado_igual_ao_relator_nao_e_parte():
+    from ted_search.collectors.sites import pr_jurisprudencia as m
+
+    it = {**next(i for i in _pr_itens() if i["id"] == "66526")}
+    it["advogado"] = {"nome": "LILIANE GRUHN"}  # o mesmo nome do relator do item
+    rec = m.normalizar(it)
+    assert rec["partes_json"] == "[]" and rec["relator_principal"] == "LILIANE GRUHN"
+    assert m._data("2041-10-13T03:00:00.000Z") is None  # data no futuro
+    assert m._data("2002-10-22T02:00:00.000Z") == "2002-10-22"
+
+
+def test_pr_registro_campos_e_orgao():
+    from ted_search.collectors.sites import pr_jurisprudencia as m
+
+    por_id = {i["id"]: m.normalizar(i) for i in _pr_itens()}
+    r = por_id["20400"]
+    assert r["id"] == "SITE_PR_JURISPRUDENCIA:20400" and r["fonte"] == "SITE_PR_JURISPRUDENCIA"
+    assert r["uf_origem"] == "PR" and r["id_organizacao"] == 16
+    assert r["data_decisao"] == "1995-08-07" and r["numero_processo"] == "6152/1993"
+    assert r["numero_ementa"] == "1" and r["ano_ementa"] == 1995
+    assert r["pdf_url"] is None and r["tem_inteiro_teor"] == 0
+    assert r["orgao_julgador_raw"] == "TRIBUNAL DE ÉTICA E DISCIPLINA" and r["is_ted_disciplinar"] == 1
+    assert r["inteiro_teor_texto"].startswith(r["descricao_ementa"])
+    t = por_id["66526"]
+    assert t["orgao_julgador_raw"].endswith("/ 12ª TURMA") and t["sigla_orgao"] == "OABPR-TED-T12"
+    assert t["relator_principal"] == "LILIANE GRUHN" and t["data_decisao"] == "2026-10-23"
+    assert t["inteiro_teor_texto"].split("\n\n")[-1].startswith("Vistos")  # ementa + linha em branco + dispositivo
+    assert por_id["16877"]["orgao_julgador_raw"] == "CONSELHO SECCIONAL"
+    assert por_id["20"] is None  # ementa vazia
+
+
+def test_pr_marca_disciplinar_por_orgao():
+    from ted_search.collectors.sites import pr_jurisprudencia as m
+
+    assert m._disciplinar("CÂMARA DE DISCIPLINA", "", "x") == 1
+    assert m._disciplinar("TRIBUNAL DE ÉTICA E DISCIPLINA (SPD)", "", "x") == 1
+    assert m._disciplinar("CÂMARA DE SELEÇÃO", "ABANDONO DE CAUSA", "representado processo disciplinar") == 0
+    assert m._disciplinar("CÂMARA DE DIREITOS E PRERROGATIVAS", "", "x") == 0
+
+
+def test_pr_sobreposicao_com_o_diario_so_na_janela_do_diario():
+    from ted_search.collectors.sites import pr_jurisprudencia as m
+
+    assert m.chave_digitos("4.724/2020") == m.chave_digitos("04724/2020") == "4724/2020"
+    diario = {"4724/2020"}
+    novo = {"numero_processo": "4724/2020", "data_decisao": "2025-02-03"}
+    antigo = {"numero_processo": "4724/2020", "data_decisao": "2005-02-03"}  # outro julgamento do mesmo processo
+    outro = {"numero_processo": "4725/2020", "data_decisao": "2025-02-03"}
+    assert m.sobrepoe(novo, diario) and not m.sobrepoe(antigo, diario) and not m.sobrepoe(outro, diario)
+    m.MOTIVOS.clear()
+    m._DIARIO = diario
+    try:
+        it = next(i for i in _pr_itens() if i["id"] == "66526")
+        it = {**it, "documentoProcesso": {"nrProcesso": 4724, "dtProcesso": "2020-07-02T03:00:00.000Z"}}
+        assert m.normalizar(it) is None and m.MOTIVOS["66526"] == "sobreposicao DEOAB_PR"
+    finally:
+        m._DIARIO = None
+        m.MOTIVOS.clear()
+
+
+class _RespostaPR:
+    def __init__(self, status: int, corpo: dict | None = None, headers: dict | None = None):
+        self.status_code, self._corpo, self.headers = status, corpo, headers or {}
+
+    def raise_for_status(self) -> None:
+        if self.status_code >= 400:
+            raise RuntimeError(self.status_code)
+
+    def json(self) -> dict:
+        if self._corpo is None:
+            raise ValueError("não é JSON")
+        return self._corpo
+
+
+class _ClientePR:
+    def __init__(self, respostas: list):
+        self.respostas, self.params = list(respostas), []
+
+    async def get(self, url, params=None, headers=None, **_k):
+        self.params.append(dict(params or {}))
+        assert "ted-pesquisa" in headers["User-Agent"]
+        return self.respostas.pop(0)
+
+
+def _ajusta_pr(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import pr_jurisprudencia as m
+
+    monkeypatch.setattr(m, "INTERVALO", 0.0)
+    monkeypatch.setattr(m, "ESPERAS", (0, 0))
+    monkeypatch.setattr(m, "_raw", lambda: tmp_path)
+    return m
+
+
+def test_pr_listar_pagina_cache_e_repete_em_429(monkeypatch, tmp_path):
+    m = _ajusta_pr(monkeypatch, tmp_path)
+    itens = _fixture("pr_jurisprudencia_pagina_amostra.json")["data"]
+    pag = lambda n: {"data": itens[:3] if n == 1 else itens[3:5], "pagination": {"page": n, "limit": 100, "total": 5, "totalPages": 2}}
+    cli = _ClientePR([_RespostaPR(429, headers={"retry-after": "0"}), _RespostaPR(200, pag(1)), _RespostaPR(503), _RespostaPR(200, pag(2))])
+    sem = asyncio.Semaphore(1)
+    lista = asyncio.run(m.listar(cli, sem))
+    assert [i["id"] for i in lista] == [str(i["ind"]) for i in itens[:5]]
+    assert [p["page"] for p in cli.params] == [1, 1, 2, 2]
+    # retomada: tudo no cache, nenhuma requisição nova
+    cli2 = _ClientePR([])
+    assert len(asyncio.run(m.listar(cli2, sem))) == 5 and cli2.params == []
+
+
+def test_pr_esperado_e_parada_limpa_em_403_ou_nao_json(monkeypatch, tmp_path):
+    import pytest
+
+    m = _ajusta_pr(monkeypatch, tmp_path)
+    sem = asyncio.Semaphore(1)
+    ok = _ClientePR([_RespostaPR(200, {"data": [], "pagination": {"total": 54135, "totalPages": 54135}})])
+    assert asyncio.run(m.esperado(ok, sem)) == 54135
+    with pytest.raises(m.ApiBloqueada):
+        asyncio.run(m.esperado(_ClientePR([_RespostaPR(403)]), sem))
+    with pytest.raises(m.ApiBloqueada):
+        asyncio.run(m.esperado(_ClientePR([_RespostaPR(200, None)]), sem))
+
+
+def test_pr_marca_orgaos_fora_do_nucleo_por_assunto():
+    from ted_search.collectors.sites import pr_jurisprudencia as m
+
+    assert m._marca("CONSELHO SECCIONAL", "ELEIÇÕES", "Eleições 2015. Processo disciplinar antecedente de censura.", "") == 0
+    assert m._marca("CÂMARA ESPECIAL", "PEDIDO DE REVISÃO DE PENA DISCIPLINAR", "Fica prejudicado.", "") == 1
+    assert m._marca("CÂMARA ESPECIAL", "EMBARGOS DE DECLARAÇÃO", "A análise do pedido de revisão de processo é restrita", "") == 1
+    assert m._marca("CONSELHO SECCIONAL", "EXCLUSÃO", "Inteligência do artigo 38, I, da Lei 8.906.", "") == 1
+    assert m._marca("CÂMARA DE SELEÇÃO", "EXCLUSÃO", "x", "") == 0
+
+
+def test_pr_texto_e_nomes_entram_como_publicados():
+    """Regra do projeto: o texto vai para o banco exatamente como a fonte publica; nenhum nome é abreviado."""
+    import json as _json
+
+    from ted_search.collectors.sites import pr_jurisprudencia as m
+
+    item = {
+        "id": 900001, "ementa": "REPRESENTAÇÃO. O advogado Fulano de Tal Souza reteve valores da cliente Maria Beltrana Lima.",
+        "titulo": "Vistos, relatados e discutidos, acordam os membros da Primeira Turma, por unanimidade.",
+        "assunto": "RETENÇÃO DE VALORES", "advogado": {"nome": "Fulano de Tal Souza"}, "relator": "Sicrano Relator Pereira",
+        "orgao": {"descricao": "TRIBUNAL DE ÉTICA E DISCIPLINA"}, "subOrgao": {"descricao": "PRIMEIRA TURMA"},
+        "dtJulgamento": "2010-05-10T00:00:00", "documentoProcesso": {"nrProcesso": 1234, "dtProcesso": "2009-03-01T00:00:00"},
+        "nrAcordao": 77, "anoAcordao": 2010,
+    }
+    rec = m.normalizar(item)
+    assert rec is not None
+    assert "Fulano de Tal Souza" in rec["inteiro_teor_texto"] and "Maria Beltrana Lima" in rec["inteiro_teor_texto"]
+    assert rec["texto_publicado"] == item["ementa"]
+    assert _json.loads(rec["partes_json"])[0]["nome"] == "Fulano de Tal Souza"

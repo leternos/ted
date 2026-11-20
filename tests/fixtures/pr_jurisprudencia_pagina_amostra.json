@@ -1,0 +1,287 @@
+{
+ "pagination": {
+  "page": 1,
+  "limit": 100,
+  "total": 54135,
+  "totalPages": 542,
+  "hasNext": true,
+  "hasPrev": false
+ },
+ "data": [
+  {
+   "ind": 20400,
+   "nrAcordao": 1,
+   "anoAcordao": 1995,
+   "nrDocumento": 102005486,
+   "assunto": "AUSÊNCIA DE PRESTAÇÃO DE CONTAS",
+   "titulo": "",
+   "ementa": "Dever do advogado em prestar contas para o cliente de valores recebidos de terceiro. Descumprimento desse dever legal. Infração disciplinar caracterizada, ex vi do artigo 34, inciso XXI, da Lei 8906/94.",
+   "cdOrgao": 54,
+   "processo": null,
+   "anoProcesso": null,
+   "relator": "",
+   "dtJulgamento": "1995-08-07T03:00:00.000Z",
+   "tpDecisao": "U",
+   "cdSubsecao": "",
+   "dtAlteracao": "2013-05-24T12:49:00.000Z",
+   "idUsuario": "marli",
+   "cdSuborgao": null,
+   "relatorAcordao": null,
+   "revisor": null,
+   "orgao": {
+    "cdOrgao": 54,
+    "descricao": "TRIBUNAL DE ÉTICA E DISCIPLINA"
+   },
+   "subOrgao": null,
+   "subSecao": null,
+   "presidente": null,
+   "advogado": {
+    "nic": 3625,
+    "nrInscricao": "03625",
+    "nome": "JOSE DA SILVA MENDES"
+   },
+   "documentoProcesso": {
+    "nrProcesso": 6152,
+    "dtProcesso": "1993-06-09T03:00:00.000Z"
+   }
+  },
+  {
+   "ind": 16875,
+   "nrAcordao": 863,
+   "anoAcordao": 2000,
+   "nrDocumento": 100655671,
+   "assunto": "AUSÊNCIA DE PRESTAÇÃO DE CONTAS",
+   "titulo": "PRESTAÇÃO DE CONTAS - RELAÇÃO ADVOGADO E CLIENTE - DEVER DE PRESTAÇÃO DE CONTAS QUE NÃO PODE SER ESCUSADO SOB ALEGAÇÃO DE COMPENSAÇÃO - REPRESENTAÇÃO JULGADA PROCEDENTE POR INFRAÇÃO AO ARTIGO 34, XXI, DA LEI 8.906/94",
+   "ementa": "O Advogado é obrigado a prestar contas dos valores recebidos do cliente ou em favor deste. A prestação de contas importa a comprovação das despesas efetivamente realizadas e a devolução do valor líquido não utilizado. O dever de prestação de contas não pode ser escusado sob alegação de compensação. Representação julgada procedente com infração ao artigo 34, XXI, da Lei 8.906/94, com aplicação da sanção prevista no artigo 37, I § 2º do mesmo diploma legal.",
+   "cdOrgao": 54,
+   "processo": null,
+   "anoProcesso": null,
+   "relator": "",
+   "dtJulgamento": "2000-08-28T03:00:00.000Z",
+   "tpDecisao": "U",
+   "cdSubsecao": "23",
+   "dtAlteracao": "2011-10-26T11:17:00.000Z",
+   "idUsuario": "talita",
+   "cdSuborgao": null,
+   "relatorAcordao": null,
+   "revisor": null,
+   "orgao": {
+    "cdOrgao": 54,
+    "descricao": "TRIBUNAL DE ÉTICA E DISCIPLINA"
+   },
+   "subOrgao": null,
+   "subSecao": {
+    "cdSubSecao": "23",
+    "nome": "SANTO ANTÔNIO DA PLATINA"
+   },
+   "presidente": null,
+   "advogado": {
+    "nic": 6881,
+    "nrInscricao": "06881",
+    "nome": "MARIA APARECIDA DE SOUZA LIMA"
+   },
+   "documentoProcesso": null
+  },
+  {
+   "ind": 16877,
+   "nrAcordao": 343,
+   "anoAcordao": 2001,
+   "nrDocumento": 100655671,
+   "assunto": "AUSÊNCIA DE PRESTAÇÃO DE CONTAS",
+   "titulo": "",
+   "ementa": "O ADVOGADO É OBRIGADO A PRESTAR CONTAS DOS VALORES RECEBIDOS DO CLIENTE OU EM FAVOR DESTE. A PRESTAÇÃO DE CONTAS IMPORTA NA COMPROVAÇÃO DAS DESPESAS EFETIVAMENTE REALIZADAS E A DEVOLUÇÃO DO VALOR LIQUIDO NÃO UTILIZADO. O DEVER DE PRESTAÇÃO DE CONTAS NÃO PODE SER ESCUSADO SOB A ALEGAÇÃO DE COMPENSAÇÃO. O CONSELHO FEDERAL DA OAB JÁ DECIDIU QUE: EVENTUAL CRÉDITO DO ADVOGADO DECORRENTE DE CONTRATO DE HONORÁRIOS NÃO DEVE NEM PODE SERVIR DE JUSTIFICATIVA PARA A PRESTAÇÃO DE CONTAS DEVIDAS (RECURSO 1.133/SC/91, REVISTA DA OAB, 56/257, JAN.ABRIL 1992)",
+   "cdOrgao": 2,
+   "processo": null,
+   "anoProcesso": null,
+   "relator": "",
+   "dtJulgamento": "2001-10-19T02:00:00.000Z",
+   "tpDecisao": "U",
+   "cdSubsecao": "23",
+   "dtAlteracao": "2011-10-26T11:30:00.000Z",
+   "idUsuario": "talita",
+   "cdSuborgao": null,
+   "relatorAcordao": null,
+   "revisor": null,
+   "orgao": {
+    "cdOrgao": 2,
+    "descricao": "CONSELHO SECCIONAL"
+   },
+   "subOrgao": null,
+   "subSecao": {
+    "cdSubSecao": "23",
+    "nome": "SANTO ANTÔNIO DA PLATINA"
+   },
+   "presidente": null,
+   "advogado": {
+    "nic": 5227,
+    "nrInscricao": "23244",
+    "nome": "ANA PAULA RIBEIRO"
+   },
+   "documentoProcesso": null
+  },
+  {
+   "ind": 360,
+   "nrAcordao": 291,
+   "anoAcordao": 2002,
+   "nrDocumento": 100416949,
+   "assunto": "IMPROCEDÊNCIA DA REPRESENTAÇÃO",
+   "titulo": "PROCESSO DISCIPLINAR. CONDUTA QUE NÃO CONFIGUROU TRANSGRESSÃO ÉTICO-DISCIPLINAR, TAMPOUCO CAUSOU PREJUÍZO AOS INTERESSADOS. AS QUESTÕES PESSOAIS ENTRE AS PARTES DEVEM SER LEVADAS AO JUDICIÁRIO. ARQUIVAMENTO QUE SE IMPÕE.",
+   "ementa": "Não tendo o Representado infringido qualquer dispositivo do Estatuto da Advocacia tampouco do Código de Ética e Disciplina da OAB, inviável o prosseguimento do processo disciplinar, a teor do art. 51, parágrafo 2º do CED e art. 113, caput do Regimento Interno do Conselho Seccional da OAB.\r\n O representado Antonio Carlos Pereira nao infringiu a lei.",
+   "cdOrgao": 45,
+   "processo": null,
+   "anoProcesso": null,
+   "relator": null,
+   "dtJulgamento": "2002-05-24T03:00:00.000Z",
+   "tpDecisao": null,
+   "cdSubsecao": null,
+   "dtAlteracao": "2004-10-19T14:32:00.000Z",
+   "idUsuario": "cristianef",
+   "cdSuborgao": null,
+   "relatorAcordao": null,
+   "revisor": null,
+   "orgao": {
+    "cdOrgao": 45,
+    "descricao": "CÂMARA DE DISCIPLINA"
+   },
+   "subOrgao": null,
+   "subSecao": null,
+   "presidente": null,
+   "advogado": {
+    "nic": 19751,
+    "nrInscricao": "19751",
+    "nome": "ANTONIO CARLOS PEREIRA"
+   },
+   "documentoProcesso": {
+    "nrProcesso": 180,
+    "dtProcesso": "2000-08-01T03:00:00.000Z"
+   }
+  },
+  {
+   "ind": 20,
+   "nrAcordao": 20,
+   "anoAcordao": 2003,
+   "nrDocumento": 102122652,
+   "assunto": "RETENÇÃO ABUSIVA DE AUTOS",
+   "titulo": "COMETE INFRAÇÃO ÉTICA, ADVOGADO QUE RETEM AUTOS POR 24 ANOS, DEVOLVENDO-OS, MEDIANTE COBRANÇA, SEM QUE TENHA TOMADO QUALQUER MEDIDA OU PROVIDENCIA, NECESSARIAS AOS PERFEITO ANDAMENTO DO FEITO.  NÃO OCORRE PRESCRIÇÃO, POSTO QUE A RETENÇÃO CONFIGURA INFRAÇÃO CONTINUADA",
+   "ementa": "",
+   "cdOrgao": 45,
+   "processo": "49",
+   "anoProcesso": null,
+   "relator": null,
+   "dtJulgamento": "2003-10-31T02:00:00.000Z",
+   "tpDecisao": null,
+   "cdSubsecao": null,
+   "dtAlteracao": "2004-08-20T12:32:00.000Z",
+   "idUsuario": "juliana",
+   "cdSuborgao": null,
+   "relatorAcordao": null,
+   "revisor": null,
+   "orgao": {
+    "cdOrgao": 45,
+    "descricao": "CÂMARA DE DISCIPLINA"
+   },
+   "subOrgao": null,
+   "subSecao": null,
+   "presidente": null,
+   "advogado": {
+    "nic": 7694,
+    "nrInscricao": "07694",
+    "nome": "CARLOS EDUARDO NUNES"
+   },
+   "documentoProcesso": {
+    "nrProcesso": 1530,
+    "dtProcesso": "2000-10-25T02:00:00.000Z"
+   }
+  },
+  {
+   "ind": 66526,
+   "nrAcordao": 720,
+   "anoAcordao": 2026,
+   "nrDocumento": 123516342,
+   "assunto": "ABANDONO DE CAUSA",
+   "titulo": "\r\nVistos, relatados e examinados estes autos de Representação Acordam os membros da 12ª Turma do Tribunal de Ética e Disciplina da OAB/PR, por unanimidade de votos, em julgar IMPROCEDENTE a Representação, nos termos do relatório e voto da Relatoria, que passam a fazer parte integrante do presente acórdão, inclusive para efeito de sua fundamentação.  Representado: ANA PAULA RIBEIRO. Representado: JOAO PEDRO ALVES.",
+   "ementa": "\r\nProcesso ético-disciplinar contra João Pedro Alves, advogado.\r\nDIREITO ADMINISTRATIVO SANCIONADOR. PROCESSO ÉTICO-DISCIPLINAR.\r\nADVOCACIA. ABANDONO DE CAUSA. ART. 34, XI, DA LEI Nº 8.906/1994. AUSÊNCIA DE\r\nALEGAÇÕES FINAIS EM AÇÃO PENAL. ATUAÇÃO PROFISSIONAL DOCUMENTADA.\r\nINSUFICIÊNCIA DE PROVA DA RUPTURA CONSCIENTE, PERMANENTE E DEFINITIVA DO\r\nPATROCÍNIO. REPRESENTAÇÃO IMPROCEDENTE.\r\nI. Caso em exame\r\n1. Representação ético-disciplinar instaurada a partir de comunicação judicial sobre\r\na ausência de apresentação de alegações finais em ação penal, apesar de\r\nsucessivas intimações. Durante a mesma fase processual, a advogada\r\nrepresentada formulou requerimentos de acesso a outro procedimento, que\r\nconsiderava relevante para a defesa de seus constituintes, e apresentou medidas\r\nde impugnação contra o indeferimento judicial. Imputação de abandono de causa,\r\nprevista no art. 34, XI, da Lei nº 8.906/1994, em conjunto com o art. 15 do Código\r\nde Ética e Disciplina da OAB.\r\nII. Questões em discussão\r\n2. Há três questões em discussão: (i) saber se a ausência de prévia oportunidade de\r\njustificação perante o juízo comunicante e a documentação parcial da ação penal\r\nacarretam nulidade do procedimento disciplinar; (ii) definir se a falta de\r\napresentação de alegações finais, mesmo após reiteradas intimações, caracteriza\r\nabandono de causa quando documentada a prática de outros atos profissionais\r\nrelacionados à defesa; e (iii) verificar se o conjunto probatório demonstra, com a\r\nsegurança exigida no processo administrativo sancionador, os elementos\r\nconstitutivos da infração disciplinar imputada.\r\nIII. Razões de decidir\r\n3. A comunicação judicial constitui notícia de possível infração disciplinar, cuja\r\napuração compete à OAB. Assegurados o contraditório e a ampla defesa no\r\nprocedimento disciplinar, e ausente demonstração de prejuízo processual\r\nconcreto, não se configuram as nulidades suscitadas.\r\n4. O abandono de causa, previsto no art. 34, XI, do Estatuto da Advocacia, exige\r\ndemonstração da vontade consciente e deliberada de deixar de assistir o constituinte, com características de permanência e definitividade, não se\r\nconfundindo, necessariamente, com o descumprimento de determinação judicial\r\nou a omissão na prática de determinado ato processual.\r\n5. Embora comprovada a ausência de apresentação das alegações finais, mesmo\r\napós sucessivas intimações, os requerimentos e recursos apresentados pela\r\nadvogada durante a mesma fase processual constituem atos profissionais\r\nrelacionados à estratégia defensiva. A análise conjunta dessas circunstâncias não\r\npermite concluir, com a segurança necessária, pela ruptura consciente,\r\npermanente e definitiva do patrocínio.\r\n6. A ausência de documentação sobre o prosseguimento da ação penal impede a\r\nformação de juízo seguro quanto ao efetivo abandono da causa. No processo\r\nadministrativo sancionador, não se admite presunção de culpa nem inversão do\r\nônus da prova, impondo-se a aplicação do princípio in dubio pro reo diante da\r\ninsuficiência de elementos probatórios para caracterização da infração disciplinar.\r\nIV. Dispositivo e tese\r\n7. Preliminares de nulidade rejeitadas. Representação ético-disciplinar julgada\r\nimprocedente, por unanimidade, com absolvição da representada quanto à\r\nimputação prevista no art. 34, XI, da Lei nº 8.906/1994, em conjunto com o art. 15\r\ndo Código de Ética e Disciplina da OAB, por insuficiência de prova da configuração\r\ndo abandono de causa.\r\nTese de julgamento: \"1. A ausência de apresentação de peça processual, ainda que\r\nessencial e após reiteradas intimações, não caracteriza automaticamente abandono de\r\ncausa, sendo necessária a demonstração dos elementos constitutivos da infração prevista\r\nno art. 34, XI, da Lei nº 8.906/1994. 2. A configuração do abandono de causa exige prova\r\nsuficiente da vontade consciente, deliberada, permanente e definitiva de deixar de assistir\r\no constituinte, considerada a atuação profissional em seu conjunto. 3. A insuficiência\r\nprobatória quanto aos elementos da infração disciplinar impõe a improcedência da\r\nrepresentação, em observância ao princípio in dubio pro reo.\"\r\nDispositivos relevantes citados: Lei nº 8.906/1994 (Estatuto da Advocacia e da OAB),\r\narts. 34, XI, e 43; Código de Ética e Disciplina da OAB, art. 15.\r\nJurisprudência relevante citada:\r\n• Conselho Federal da OAB, Segunda Câmara, Terceira Turma, Recurso nº\r\n49.0000.2020.007258-3/SCA-TTU, Ementa nº 057/2021/SCA-TTU, Rel. Cons.\r\nFederal Guilherme Octávio Batochio (SP), Relatora ad hoc Graciele Pinheiro Lins\r\nLima, DEOAB de 30/06/2021, p. 28.\r\n• Conselho Federal da OAB, Segunda Câmara, Primeira Turma, Recurso nº\r\n49.0000.2021.006931-1/SCA-PTU, Ementa nº 094/2023/SCA-PTU, Rel. Cons.\r\nFederal Márcio Brotto de Barros (ES), j. 31/07/2023, DEOAB de 08/08/2023, p. 4.\r\n• Conselho Federal da OAB, Segunda Câmara, Primeira Turma, Recurso nº\r\n25.0000.2024.038016-3/SCA-PTU, Ementa nº 226/2025/SCA-PTU, Rel. Cons. Federal Mara Regina Goulart (MS), Relator ad hoc Daniel Castro Gomes da Costa,\r\nj. 14/11/2025, DEOAB de 16/12/2025, p. 18.",
+   "cdOrgao": 68,
+   "processo": null,
+   "anoProcesso": null,
+   "relator": "LILIANE GRUHN",
+   "dtJulgamento": "2026-10-23T03:00:00.000Z",
+   "tpDecisao": "U",
+   "cdSubsecao": "13",
+   "dtAlteracao": "2026-11-18T16:47:00.000Z",
+   "idUsuario": "daianacarmo",
+   "cdSuborgao": 303,
+   "relatorAcordao": null,
+   "revisor": null,
+   "orgao": {
+    "cdOrgao": 68,
+    "descricao": "TRIBUNAL DE ÉTICA E DISCIPLINA (SPD)"
+   },
+   "subOrgao": {
+    "cdSubOrgao": 303,
+    "descricao": "12ª TURMA"
+   },
+   "subSecao": {
+    "cdSubSecao": "13",
+    "nome": "PATO BRANCO"
+   },
+   "presidente": {
+    "nome": "EDUARDO MUNERETO"
+   },
+   "advogado": {
+    "nic": 20217,
+    "nrInscricao": "20217",
+    "nome": "JOAO PEDRO ALVES"
+   },
+   "documentoProcesso": {
+    "nrProcesso": 7815,
+    "dtProcesso": "2024-08-02T03:00:00.000Z"
+   }
+  },
+  {
+   "ind": 66532,
+   "nrAcordao": 725,
+   "anoAcordao": 2026,
+   "nrDocumento": 115241478,
+   "assunto": "ABANDONO DE CAUSA",
+   "titulo": "\r\nVistos, relatados e examinados estes autos de Representação Acordam os membros da 6ª Turma do Tribunal de Ética e Disciplina da OAB/PR, por unanimidade de votos, em julgar PRESCRITA a Representação, nos termos do relatório e voto da Relatoria, que passam a fazer parte integrante do presente acórdão, inclusive para efeito de sua fundamentação. ",
+   "ementa": "\r\nREPRESENTAÇÃO ÉTICO-DISCIPLINAR. ADVOGADOS. RENÚNCIA AO\r\nMANDATO. AUSÊNCIA DE COMPROVAÇÃO DA CIÊNCIA PESSOAL DO CONSTITUINTE\r\nNOS AUTOS. PRESCRIÇÃO DA PRETENSÃO PUNITIVA. OCORRÊNCIA. DECURSO DO\r\nPRAZO QUINQUENAL ENTRE AS CAUSAS INTERRUPTIVAS E O JULGAMENTO.\r\nEXTINÇÃO DA PUNIBILIDADE. MÉRITO SUBSIDIÁRIO. DISTRATO VERBAL.\r\nAUSÊNCIA DE PREJUÍZO PROCESSUAL OU ABANDONO DA CAUSA. POSTERIOR\r\nCONSTITUIÇÃO DE NOVO PATRONO. INSUFICÊNCIA DE PROVAS PARA\r\nCONDENAÇÃO. IMPROCEDÊNCIA SUBSIDIÁRIA. 1. A pretensão punitiva das infrações\r\ndisciplinares prescreve em cinco anos, contados da constatação oficial do fato, aplicando-se os\r\nefeitos interruptivos previstos no art. 43, § 2º, do EAOAB e a orientação da Súmula nº\r\n01/2011/COP do CFOAB. Ultrapassado o interregno quinquenal entre os marcos válidos e a sessão\r\nde julgamento, impõe-se o reconhecimento da prescrição. 2. Em caráter subsidiário, a falta de\r\njuntada aos autos do comprovante de notificação da renúncia ao cliente, embora constitua\r\nimperfeição procedimental e exija cautela do profissional (art. 6º do Regulamento Geral), não\r\ntipifica, por si só, abandono de causa (art. 34, XI, do EAOAB) ou prejuízo por culpa grave (art.\r\n34, IX, do EAOAB) quando demonstrado o encerramento consensual da relação, a ausência de\r\ndano concreto e a posterior constituição de novo patrono. 3. Prescrição reconhecida, com\r\ndeterminação de arquivamento. Exame de mérito julgado subsidiariamente improcedente por\r\ninsuficiência de provas.\r\n1. Caso em Exame\r\nRepresentação ético-disciplinar instaurada ex officio a partir de ofício expedido pelo Juízo da Vara\r\nCível da Comarca de Campina Grande do Sul – PR, em razão de os advogados Representados\r\nterem protocolado renúncia de mandato nos autos de Ação de Cobrança em janeiro de 2013,\r\nsem comprovar nos autos a ciência pessoal do constituinte (art. 112 do CPC / art. 6º do\r\nRegulamento Geral da OAB). Sobrevieram o falecimento do cliente e a instrução processual com\r\noitiva da viúva e de informante, além do reconhecimento do transcurso do lapso prescricional.\r\n2. Questões em Discussão\r\n&#61623; Q1: Ocorrência ou não da prescrição da pretensão punitiva disciplinar (prazo quinquenal\r\ndo art. 43 do EAOAB).\r\n&#61623; Q2: Caracterização de infração disciplinar por abandono de causa ou prejuízo por culpa\r\ngrave decorrente de renúncia sem comprovação formal da notificação do cliente nos\r\nautos judiciais.\r\n3. Razão de Decidir (Fundamentos)\r\nPrescrição da Pretensão Punitiva: Considerados os marcos interruptivos iniciais (primeiras\r\nnotificações válidas em 2021), o prazo prescricional quinquenal escoou-se antes da data\r\ndesignada para o julgamento colegiado em outubro de 2026, impondo-se o reconhecimento da\r\nprescrição. Mérito (Análise Subsidiária): Em âmbito disciplinar, a condenação exige prova robusta e\r\nsegura da materialidade e do prejuízo efetivo. A ausência de comprovação documental prévia da\r\nrenúncia decorreu de distrato verbal informal, mas a instrução evidenciou que o constituinte\r\nposteriormente constituiu novo patrono e que não houve prejuízo processual, perda de prazo,\r\npreclusão ou dano concreto suportado pelo cliente. A falta de juntada do aviso de recebimento\r\ngera dúvida e motivou a representação judicial, mas, sem prova de prejuízo ou abandono\r\ninjustificado, não autoriza juízo condenatório.\r\n4. Dispositivo\r\nPor unanimidade/voto da relatora, conheceu-se da preliminar para reconhecer a prescrição\r\nda pretensão punitiva em relação a ambos os Representados, determinando-se o\r\narquivamento do processo, com exame subsidiário pela improcedência da Representação por\r\ninsuficiência de provas.\r\n5. Tese de Julgamento\r\n\"A ausência de comprovação formal da notificação de renúncia ao mandato nos autos judiciais,\r\nembora caracterize imperfeição procedimental e gere dever de cautela ao advogado, não\r\nconfigura, por si só, infração disciplinar de abandono de causa ou prejuízo por culpa grave se\r\ndemonstrado o encerramento consensual da relação ou a ausência de prejuízo processual\r\nconcreto ao constituinte, incidindo, ademais, a prescrição quinquenal da pretensão punitiva\r\nquando transcorrido o prazo legal entre os marcos interruptivos e a data do julgamento.\"\r\n6. Dispositivos Legais Citados:\r\n&#61623; Lei nº 8.906/1994 (Estatuto da Advocacia e da OAB - EAOAB): art. 5º, § 3º; art. 34, incisos\r\nIX e XI; art. 43, caput e § 2º, incisos I e II.\r\n&#61623; Regulamento Geral do EAOAB: art. 6º.\r\n&#61623; Código de Processo Civil (CPC): art. 112.\r\n&#61623; Conselho Federal da OAB: Súmula nº 01/2011/COP. ",
+   "cdOrgao": 68,
+   "processo": null,
+   "anoProcesso": null,
+   "relator": "LUDMILA ALBUQUERQUE KNOP HAUER",
+   "dtJulgamento": "2026-10-20T03:00:00.000Z",
+   "tpDecisao": "U",
+   "cdSubsecao": "01",
+   "dtAlteracao": "2026-11-18T17:36:00.000Z",
+   "idUsuario": "daianacarmo",
+   "cdSuborgao": 60,
+   "relatorAcordao": null,
+   "revisor": null,
+   "orgao": {
+    "cdOrgao": 68,
+    "descricao": "TRIBUNAL DE ÉTICA E DISCIPLINA (SPD)"
+   },
+   "subOrgao": {
+    "cdSubOrgao": 60,
+    "descricao": "06ª TURMA"
+   },
+   "subSecao": {
+    "cdSubSecao": "01",
+    "nome": "CURITIBA (SECCIONAL)"
+   },
+   "presidente": {
+    "nome": "ELIANE DA COSTA MACHADO ZENAMON"
+   },
+   "advogado": {
+    "nic": 44031,
+    "nrInscricao": "42168",
+    "nome": "LUCIA HELENA COSTA"
+   },
+   "documentoProcesso": {
+    "nrProcesso": 3780,
+    "dtProcesso": "2021-04-20T03:00:00.000Z"
+   }
+  }
+ ]
+}
