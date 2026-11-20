@@ -238,6 +238,18 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
         if re.search(r"^\W*O\s+ORGAO\s+ESPECIAL\s.{0,120}?(?:REUNIR-SE-A\s+EM\s+SESSAO|RETIRADO\s+DE\s+PAUTA)", plano[:200], re.S) \
                 or re.search(r"^\W*FICAM?\s+NOTIFICADOS?\s+(?:PARA|ACERCA)|^\W*NOTIFICA-SE\s+(?:OS\s+)?(?:ADVOGADOS|INTERESSADOS)", plano[:60]):
             return "sem_formula_de_julgamento"
+    # leituras de confirmação (20/11/2026): lista de processos declarados prescritos e convocação de turma (BA),
+    # convocação para sessão (MS), aviso só do resultado (ES) e carta ao advogado (MS) não são julgados
+    if re.search(r"FICAM\s+NOTIFICAD\S+.{0,400}?DECLARADAS\s+PRESCRITAS", plano[:900], re.S) \
+            or re.search(r"\bCONVOCA\s+OS\s+SEUS\s+MEMBROS", abertura) \
+            or re.search(r"NOTIFICA\s+AS\s+PARTES.{0,200}?PARA\s+COMPARECEREM\s+A\s+SESSAO", abertura, re.S) \
+            or (re.search(r"NOTIFICA\s+O\s*\(A\)\s*ADVOGADO.{0,60}?DO\s+RESULTADO\s+DO\s+JULGAMENTO\s+DE\s+FLS", abertura, re.S)
+                and not re.search(r"(?<![A-Z])EMENTA|ACORDAM", plano)) \
+            or re.match(r"\W*ILMO\.?\s+SR", plano):
+        return "sem_formula_de_julgamento"
+    # errata "onde se lê / leia-se" de um trecho do acórdão, sem a ementa (ES)
+    if re.match(r"\W*ERRATA\b", plano) and "ONDE SE LE" in plano[:400] and not re.search(r"(?<![A-Z])EMENTA", plano):
+        return "ato_normativo_ou_comunicado"
     # certidão do Conselho Pleno: é a ata em extrato, sem voto (política: ata de Pleno fica fora; segunda leitura de PI)
     if re.search(r"CERTIFICA,?\s+QUE\s+NA\s+SESSAO", abertura):
         return "ata_em_extrato"

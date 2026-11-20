@@ -290,7 +290,7 @@ RE_ADMINISTRATIVO = re.compile(
     r"REFORMULACAO\s+DO\s+ORCAMENTO|PROGRAMA\s+DE\s+REGULARIZACAO|PROPOSTA\s+DE\s+RESOLUCAO|ALTERACAO\s+DA\s+RESOLUCAO|"
     r"PROPOSTA\s+PARA\s+INCLUSAO|EXIGENCIA\s+DE\s+EMISSAO|ALTERACAO\s+DE\s+NOMENCLATURA|PEDIDO\s+DE\s+JUBILAMENTO)|"
     # leituras de confirmação de RJ e MG
-    r"PROCESSO\s+INCIDENTAL\s+(?:INSTAURADO\s+)?PARA\s+APURA\w+\s+A\s+(?:IN)?IDONEIDADE|APURA\w+\s+(?:DA\s+|DE\s+)?(?:IN)?IDONEIDADE|ANISTIA\s+DE\s+(?:ANUIDADE|DEBITO)S?|CONCESSAO\s+DE\s+ISENCAO|PEDIDO\s+DE\s+CANCELAMENTO\s+D[AE]\s+INSCRICAO|"
+    r"PROCESSO\s+INCIDENTAL\s+(?:INSTAURADO\s+)?PARA\s+APURA\w+\s+A\s+(?:IN)?IDONEIDADE|APURA\w+\s+(?:DA\s+|DE\s+)?(?:IN)?IDONEIDADE|ANISTIA\s+D[EOA]S?\s+(?:ANUIDADE|DEBITO)S?|CONCESSAO\s+DE\s+ISENCAO|PEDIDO\s+DE\s+CANCELAMENTO\s+D[AE]\s+INSCRICAO|"
     # leituras de AM e SC
     r"RECURSO\.\s*INSCRICAO\s+NOS\s+QUADROS|ANOTACAO\s+DE\s+(?:IMPEDIMENTO|INCOMPATIBILIDADE)|BAIXA\s+DE\s+ANOTACAO|"
     r"PEDIDO\s+DE\s+(?:BAIXA|ANOTACAO|EXCLUSAO\s+DE\s+SOCIO)|ALTERACAO\s+ORCAMENTARIA|VAGA\s+DE\s+CONSELHEIR|ASSUNTO\s*:\s*SOCIEDADE|"
@@ -341,6 +341,31 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
     if re.search(r"DA\W{0,2}SE\s+CIENCIA", inicio[:400]) and "ORGAO ESPECIAL" in inicio[:600] and re.search(
         r"(?:REQUERENTE|EMBARGANTE|EXCIPIENTE|RECORRENTE)[^:]{0,15}:\s*(?:ADVS?\.?\s*|SOC\.?\s*)?(?:[A-Z]\.\s*){2,}", inicio[:900]
     ):
+        return True
+    # --- leituras de confirmação de PR, BA, ES e MS (20/11/2026) ---
+    # Câmara de Prerrogativas (BA) e matéria administrativa anunciada no cabeçalho (ES, PR): nunca disciplinar
+    if "CAMARA DE PRERROGATIVAS" in inicio[:300] or re.search(r"/CPRR\b", inicio):
+        return False
+    if re.search(
+        r"ASSUNTO\W{0,20}(?:EDICAO\s+DE\s+SUMULA|AJUSTE\s+ORCAMENTARIO|ISENCAO\s+DE\s+TAXA)"
+        r"|MATERIA\s*:\s*(?:PRESTACAO\s+DE\s+CONTAS|BALANC|PROPOSTA\s+ORCAMENTARIA)|\bSUMULA\s+N\S{0,2}\s*\d+\s*/\s*\d{4}\s*/\s*TED",
+        inicio[:500],
+    ):
+        return False
+    # averiguação de idoneidade para o pedido de inscrição (PR): assunto de inscrição, ainda que venha como "representação"
+    if re.search(r"AVERIGUACAO\s+DE\s+(?:IN)?IDONEIDADE", inicio) and re.search(r"PEDIDO\s+DE\s+INSCRICAO|ART\.?\s*8", inicio) \
+            and not re.search(r"EXCLUSAO|ART\.?\s*34", inicio):
+        return False
+    # acórdão que abre com a turma do TED (BA) ou com Representante/Representado (PR, ES): processo disciplinar
+    if re.match(r"\W*(?:\w+\s+){1,3}TURMA\s+(?:DO\s+)?TRIBUNAL\s+DE\s+ETICA\s+E\s+DISCIPLINA\b", inicio):
+        return True
+    if re.search(r"RE\s?PRESENTANTE\s*(?:\(S\))?\s*:", inicio[:200]) and re.search(r"RE\s?PRESENT\s?AD[OA]", inicio[:500]):
+        return True
+    if re.match(r"\W*REEXAME\s+OBRIGATORIO\W+PROCESSO\s+DE\s+EXCLUSAO", inicio):
+        return True
+    if re.search(r"ACORDAO\s+PROLATADO\s+PEL[OA]S?\s+TURMAS?\s+DO\s+TRIBUNAL\s+DE\s+ETICA", inicio[:400]):
+        return True  # MS: intimação do acórdão das Turmas do TED
+    if re.search(r"PEDIDO\s+DE\s+REABILITACAO\s+PARA\s+O\s+EXERCICIO|REABILITACAO\W{1,3}PREVISAO\s+LEGAL\s+ARTIGO\s+41", inicio):
         return True
     if RE_TURMA_DO_TED.search(inicio) and not re.search(
         r"INCIDENTE\s+DE\s+(?:VERIFICACAO\s+DE\s+)?(?:IN)?IDONEIDADE|PEDIDO\s+DE\s+ASSISTENCIA|DESAGRAVO", inicio
