@@ -211,10 +211,13 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
         return "comunicado_de_sancao"
     if RE_ATO_NORMATIVO.search(_sem_acento(pub.get("titulo") or "") + " " + plano[:60]) or "TORNA SEM EFEITO O ACORDAO" in plano[:400]:
         return "ato_normativo_ou_comunicado"
+    # decisão do presidente do TED que recusa a consulta, ainda que transcreva ementas alheias (segunda leitura de PE)
+    if re.search(r"DECISAO\s*:\s*\(\.\.\.\)\s*TRATA-SE\s+DE\s+CONSULTA", plano[:900]):
+        return "ato_monocratico"
     if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(plano):
         return "sem_formula_de_julgamento"
     # despacho ou decisão monocrática: abre como tal e não traz nenhuma marca de colegiado
-    if re.search(r"\bDESPACHO\b|DECISAO\s+MONOCRATICA|VISTOS,?\s+ETC", plano[:300]) and not RE_COLEGIADO_FORTE.search(plano) \
+    if re.search(r"\bDESPACHO\b|DECISAO\s+MONOCRATICA|VISTOS,?\s+ETC|DECISAO\s*:\s*\(\.\.\.\)", plano[:300]) and not RE_COLEGIADO_FORTE.search(plano) \
             and len(re.findall(r"(?<![A-Z])EMENTA", plano)) < 2:
         return "ato_monocratico"
     # decisão de um só membro da Comissão Eleitoral: fora, como qualquer decisão monocrática (BA, ES, RR)
@@ -703,7 +706,7 @@ def _alinhar_marca_por_processo(recs: list[dict]) -> None:
 
     Só sobe de 0 para 1, e só quando o registro não é de matéria administrativa ou eleitoral reconhecida.
     """
-    disciplinares = {_chave_processo(r) for r in recs if r.get("is_ted_disciplinar") and len(_chave_processo(r)) >= 12}
+    disciplinares = {_chave_processo(r) for r in recs if r.get("is_ted_disciplinar") and len(_chave_processo(r)) >= 9}
     for rec in recs:
         if rec.get("is_ted_disciplinar") or _chave_processo(rec) not in disciplinares:
             continue

@@ -5,7 +5,9 @@
     "ACORDAO"
   ],
   "tipos_decisao": [
-    "Acórdão"
+    "Acórdão",
+    "Certidão de Julgamento",
+    "Embargos de Declaração"
   ],
   "validado": true,
   "titulos_decisao": [

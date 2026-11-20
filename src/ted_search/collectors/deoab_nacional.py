@@ -201,7 +201,10 @@ RE_DISCIPLINAR = re.compile(
     r"DISCIPLIN|REABILITA|INFRAC|ART(?:IGO)?S?\.?\s*34\b|CENSURA|TRIBUNAL\s+DE\s+ETICA|\bTED\b|CODIGO\s+DE\s+ETICA|"
     r"LOCUPLET|INIDONE|EXCLUSAO\s+D[OA]S?\s+QUADROS|SUSPENSAO\s+(?:DO\s+EXERCICIO|PREVENTIVA)|CAPTACAO\s+DE\s+CLIENT|ANGARIA|"
     # leitura de ES: decisões de Câmara e Pleno em processo ético que não usam a palavra "disciplinar"
-    r"REPRESENTAD[OA]|REPRESENTANTE|PROCESSO\s+ETICO|ARQUIVAMENTO\s+LIMINAR|EXCECAO\s+DE\s+SUSPEICAO|DOSIMETRIA|ABSOLVICAO|CONSULENTE"
+    r"REPRESENTAD[OA]|REPRESENTANTE|PROCESSO\s+ETICO|ARQUIVAMENTO\s+LIMINAR|EXCECAO\s+DE\s+SUSPEICAO|DOSIMETRIA|ABSOLVICAO|CONSULENTE|"
+    # segunda leitura de GO
+    r"LOCUPLETAMENTO|(?:AUSENCIA|FALTA|RECUSA)\s+DE\s+PRESTACAO\s+DE\s+CONTAS|(?:IM)?PROCEDENCIA\s+DA\s+REPRESENTACAO|"
+    r"REPRESENTACAO\s+JULGADA|PROCESSO\s+DE\s+EXCLUSAO|EMENTA\s*:?\s*PEDIDO\s+(?:DE\s+)?REVISAO"
 )
 
 
@@ -264,8 +267,17 @@ RE_ADMINISTRATIVO = re.compile(
     r"VIOLACAO\s+(?:A|DE|AOS?)\s+(?:DIREITOS\s+E\s+)?PRERROGATIVAS|PRESTACAO\s+DE\s+CONTAS\s*[-–]\s*CAIXA|"
     r"PROCESSO\s+INCIDENTAL\s+DE\s+(?:IN)?IDONEIDADE|HOMOLOG\w+[^.]{0,40}REGIMENTO|DECLARA\w+[^.]{0,40}\bIDONE[OA]\b|INSCRICAO\s+DEFERIDA|"
     r"PEDIDO\s+DE\s+INSCRICAO|INSCRICAO\s+(?:ORIGINARIA|SUPLEMENTAR|PRINCIPAL|DEFINITIVA)|"
-    r"SOCIEDADE\s+(?:INDIVIDUAL\s+)?DE\s+ADVO|ATOS\s+SOCIETARIOS"
+    r"SOCIEDADE\s+(?:INDIVIDUAL\s+)?DE\s+ADVO|ATOS\s+SOCIETARIOS|"
+    # segundas leituras de GO, MA e PE
+    r"CRIACAO\s+D[AE]\s+SUBSECAO|(?:ALTERACAO|ADEQUACAO)\s+DO\s+REGIMENTO|SOLICITACAO\s+DE\s+PROVIDENCIAS|"
+    r"SUSCITACAO\s+DE\s+INIDONEIDADE|RESTAURACAO\s+D[AE]\s+INSCRICAO|INDEFERIMENTO\s+D[AEO]\s+(?:PEDIDO\s+DE\s+)?INSCRICAO|"
+    r"EMENTA\s*:?\s*(?:DIREITO\s+E\s+)?PRERROGATIVAS"
 )
+
+# Abertura em que o próprio TED anuncia o julgamento (GO): disciplinar, ainda que cite sociedade ou inscrição suplementar
+RE_TED_JULGOU = re.compile(r"TRIBUNAL\s+DE\s+ETICA\s+E\s+DISCIPLINA[^.]{0,60}TORNA\s+PUBLICO\s+QUE\s+FOI\s+JULGAD")
+# Prescrição da pretensão punitiva (art. 43 do Estatuto), em recurso que não usa a palavra "disciplinar" (PE)
+RE_PRESCRICAO_DISCIPLINAR = re.compile(r"PRESCRI[^.]{0,300}ART(?:IGO)?\.?\s*43\b|ART(?:IGO)?\.?\s*43\b[^.]{0,300}PRESCRI")
 
 
 def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool:
@@ -276,6 +288,8 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
     # reabilitação conta como disciplinar (decisão do cliente); a "reabilitação criminal" citada em incidente
     # de inidoneidade é assunto de inscrição
     if "REABILITA" in abertura and "IDONEIDADE" not in abertura:
+        return True
+    if RE_TED_JULGOU.search(abertura):
         return True
     adm = RE_ADMINISTRATIVO.search(abertura)
     if adm:
@@ -288,10 +302,15 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
             or achado.startswith("SOCIEDADE")  # consulta do TED sobre sociedade; publicidade de sociedade sem registro (ES)
             or achado.startswith("INCOMPATIBILIDADE")  # consulta do TED sobre incompatibilidade (BA)
         )
-        forte = r"PROCESSO\s+(?:ETICO[-\s]*)?DISCIPLINAR|PROCESSO\s+ETICO|\bPAD\b|REPRESENTACAO|REPRESENTAD[OA]|INFRACAO|CONSULTA|CONSULENTE|TURMA\s+JULGADORA"
+        forte = r"PROCESSO\s+(?:ETICO[-\s]*)?DISCIPLINAR|PROCESSO\s+ETICO|\bPAD\b|REPRESENTACAO(?!\s+CRIMINAL)|REPRESENTAD[OA]|INFRACAO|CONSULTA|CONSULENTE|TURMA\s+JULGADORA"
+        # pedido de inscrição (originária, definitiva, indeferida, restaurada): "representação criminal" na ementa e
+        # o rótulo "processo disciplinar" no título não bastam; só parte representada, consulta ou turma do TED (MA, MT, PE)
+        if "INSCRICAO" in achado and not re.search(r"SUPLEMENTAR|PRINCIPAL|CANCELAMENTO", achado):
+            forte = r"REPRESENTAD[OA]|CONSULTA|CONSULENTE|TURMA\s+JULGADORA|PROCESSO\s+ETICO"
         if not (fraco and re.search(forte, abertura)):
             return False
-    return bool(RE_DISCIPLINAR.search(_sem_acento_upper(f"{setor_nome} {titulo} {full_text}")))
+    plano = _sem_acento_upper(f"{setor_nome} {titulo} {full_text}")
+    return bool(RE_DISCIPLINAR.search(plano) or RE_PRESCRICAO_DISCIPLINAR.search(plano))
 
 
 def normalize_deoab_item_nacional(
