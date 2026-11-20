@@ -5,9 +5,11 @@
     "conteudo": "Ementários do TED 2003/2012, 2019/2023 e 2024",
     "periodo": "2003-2024",
     "volume": null,
-    "acesso": "PDF",
+    "acesso": "NAO ACESSADO. Todo o host oabms.org.br (incl. /robots.txt e www.) responde HTTP 403 com desafio gerenciado do Cloudflare ('Just a moment...', exige JavaScript e Turnstile) a cliente automatizado em 2026-11-20. Equivale a captcha: nao contornado. ted.oabms.org.br nao resolve (HTTP 000). Mecanismo real (PDF por ano) segue nao confirmado.",
     "exclusiva": null,
     "verificacao": "S",
-    "situacao": "mapeada"
+    "situacao": "bloqueada",
+    "inteiro_teor": "desconhecido",
+    "observacoes": "Verificacao 2026-11-20: 0 decisoes lidas; nao ha base para marcar 'verificada'. robots.txt ilegivel (mesmo desafio). Busca web nao achou outra base do TED/MS (ementario, consultas, revista). Sobreposicao com DEOAB_MS (3117 registros no banco) nao testada. Proximo passo: pedir a Seccional os PDFs/liberacao, ou checar manualmente por navegador humano; ementarios em PDF costumam ser so ementas."
   }
 ]
