@@ -60,3 +60,24 @@ def test_get_connection_recompoe_o_banco(tmp_path, monkeypatch):
     db.unlink()
     with get_connection(db) as conn:
         assert conn.execute("SELECT COUNT(*) FROM julgados").fetchone()[0] == 50
+
+
+def test_servico_abre_o_banco_sem_escrita(tmp_path, monkeypatch):
+    """No Cloud Run o banco vai na imagem: abrir para escrita copiaria o arquivo inteiro para a memória."""
+    import sqlite3
+
+    import pytest
+
+    from ted_search import db
+
+    caminho = tmp_path / "b.db"
+    with sqlite3.connect(caminho) as c:
+        c.execute("create table t (x)")
+        c.execute("insert into t values (1)")
+    monkeypatch.setenv("TED_DB_READONLY", "1")
+    db.init_db(caminho)  # não toca no arquivo
+    conn = db.get_connection(caminho)
+    assert conn.execute("select x from t").fetchone()[0] == 1
+    with pytest.raises(sqlite3.OperationalError):
+        conn.execute("insert into t values (2)")
+    assert sorted(p.name for p in tmp_path.iterdir()) == ["b.db"]  # nem -wal nem -journal

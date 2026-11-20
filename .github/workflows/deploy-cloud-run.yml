@@ -44,7 +44,7 @@ jobs:
             --cpu 1 \
             --port 8080 \
             --timeout 300 \
-            --set-env-vars "TED_DATA_DIR=/app/data,TED_DB_PATH=/app/data/ted_jurisprudencia.db,TED_ACCESS_PASSWORD=609099"
+            --set-env-vars "TED_DATA_DIR=/app/data,TED_DB_PATH=/app/data/ted_jurisprudencia.db,TED_DB_READONLY=1,TED_ACCESS_PASSWORD=609099"
 
       - name: Deploy to Firebase Hosting
         run: |
