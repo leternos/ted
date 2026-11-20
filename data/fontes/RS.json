@@ -1,24 +1,41 @@
 [
   {
     "slug": "portal-jurisprudencia",
-    "url": "https://jurisprudencia.oabrs.org.br/",
-    "conteudo": "Ementas das Turmas Julgadoras do TED e do Órgão Especial",
-    "periodo": "2022+",
+    "url": "https://jurisprudencia.oabrs.org.br/jurisprudencia-ementa/ted",
+    "conteudo": "Portal de consulta de ementas (PHP, feito pela TI OAB/RS). Três órgãos por URL: /jurisprudencia-ementa/ted (Tribunal de Ética), /orgao-especial, /segunda-camara. Só ementas por declaração do portal ('Consulta de Ementas'); inteiro teor não observado.",
+    "periodo": "não medido (registro antigo: 2022+); intervalo escolhido pelo usuário em dataInicio/dataFim",
     "volume": null,
-    "acesso": "portal de busca",
+    "acesso": "Formulário POST /jurisprudencia-ementa/consultarEmenta com campos chave (texto; aspas duplas = frase exata), dataInicio, dataFim (type=date) e token g-recaptcha (reCAPTCHA v2 checkbox, sitekey no HTML da página). Resultado em HTML (carregado por POST /cadastro via jQuery, main.js). Sem API JSON pública vista. EXIGE CAPTCHA: não testado além do GET do formulário; não contornado.",
     "exclusiva": null,
     "verificacao": "S",
-    "situacao": "mapeada"
+    "situacao": "bloqueada_captcha",
+    "restricoes": "reCAPTCHA obrigatório no formulário; host atrás de WAF Imperva/Incapsula (GET com User-Agent de navegador genérico devolveu corpo vazio na página inicial; com UA descritivo os GET de formulário/JS/robots passaram, sem tentar burlar). robots.txt do host: 200 com corpo vazio (sem Disallow). Termos de uso não localizados; só a política de privacidade (PO-PI-02-POLITICA-PRIVACIDADE-WEB.pdf).",
+    "observacoes": "Formulário lido (GET /jurisprudencia-ementa/ted, 7 KB, 200). Nenhuma decisão obtida por este caminho: não marcar verificada. Decisão da coleta: o recaptcha impede coleta automatizada; só coletar se a Seccional liberar acesso (pedido institucional) ou por consulta manual pontual. Cobertura provável (2022+) coincide em boa parte com o DEOAB_RS, mas isso não foi medido porque não há como ler resultados."
   },
   {
     "slug": "ementarios-pdf",
     "url": "https://www2.oabrs.org.br/legislacao/ementarios",
-    "conteudo": "EMENTÁRIO TED anual",
-    "periodo": "2013-2021",
+    "conteudo": "Ementários das Câmaras Recursais do Conselho Seccional (Primeira, Segunda e Terceira Câmara; turmas 1ª-5ª TSC) em PDF e HTML, mantidos na aba Legislação > Ementários do site (Nuxt/Vue). NÃO são do TED de 1ª instância: o item 'Jurisprudência TED' é só um PDF de 1 página que aponta para o portal acima. Os 'ementários TED anuais 2013-2021' do registro antigo não existem na API.",
+    "periodo": "Segunda Câmara: ementários 2020, 2021, 2022, 2025 (2023 e 2024 não publicados na lista); Primeira Câmara Recursal: 2020 a 2024 (PDF 2020, 2021, 2022, 2023, 2024; texto HTML 2023 e 2024); Terceira Câmara: 1 ementa avulsa (proc. 81.542/1997, sessão 07.04.2005). Sessões medidas: 2020-2025 (o PDF 2022 da Segunda Câmara traz datas dentro do ano, 2015 a 2022 só por citação).",
+    "volume": "PDFs medidos (pdftotext): 2ª Câm. 2020 = 13 p., ~74 ementas; 2021 = 42 p., ~255; 2022 = 48 p., ~267; 2025 = 129 p., 765 ementas numeradas 01/2025 a 770/2025 (702 com número de processo extraído; turmas: SC 8, 1ªTSC 134, 2ªTSC 126, 3ªTSC 165, 4ªTSC 142, 5ªTSC 186). 1ª Câm. Recursal: 2020 = 2 p., ~10; 2021 = 13 p., ~81; 2022 = 11 p., ~71; 2023 = 13 p., ~76 (+ lista HTML); 2024 = 9 p., ~42. Total estimado: ~1.700 ementas.",
+    "acesso": "API JSON pública sem login, captcha nem cookie: GET https://api-lumen.oabrs.org.br/legislacao/ementarios (77 KB; base lida no Nuxt: VUE_APP_API_URL). Resposta {data:{camara:[{id,titulo,texto(HTML),ativo,ordem,tipo,arquivos:[{id,item_id,legenda,arquivo,arquivo_salvo}]}], '':[...], ted:[{id,titulo,arquivo_salvo}]}}. PDF em GET https://admsite.oabrs.org.br/arquivos/<arquivo_salvo> (application/pdf, 200, 0,1-1,3 MB). Sem paginação: um GET + 1 GET por PDF (13 arquivos). O campo 'texto' traz ementas em HTML (Primeira Câmara 2024: 26,6 KB; item 4 'PRIMEIRA CÂMARA' 2023: 46,3 KB).",
+    "exclusiva": false,
+    "verificacao": "V",
+    "situacao": "verificada",
+    "inteiro_teor": "NAO. Só ementas (texto da ementa + nº do processo + data da sessão + relator + por unanimidade/maioria). Sem relatório e voto.",
+    "campos": "numero da ementa (nn/aaaa), órgão (SC, 1ªTSC...5ªTSC, PCR, SCR), ementa, processo (formato SEI 1101020.00009697/2020-20 ou legado 21.0000.2019.030863-1 ou 184.562/2005), data da sessão, relator, votação. Sem partes nem nº de PDF por decisão.",
+    "observacoes": "Verificada por leitura de decisões reais do PDF https://admsite.oabrs.org.br/arquivos/502_2_69bb091ce5751.pdf (Segunda Câmara, EMENTÁRIO/2025), p.ex. Ementa 01/2025 SC, proc. 1101020.00009697/2020-20, sessão 27/03/2025, relator Aristides de Pietro Neto (unanimidade); 03/2025 SC, proc. 21.0000.2020.003605-4, sessão 27/03/2025, relatora Silvia Odete Medeiros Biasi (maioria); 04/2025 1ªTSC, proc. 1100938.00019212/2020-20, sessão 24/04/2025; 05/2025 1ªTSC, proc. 1101020.00011901/2020-20; 06/2025 1ªTSC (art. 14 CED, censura); e ementas de 2021 (SCR, proc. 1100851.00017469/2020-20, sessão 24/02/2021) e 2020 (PCR, proc. 21.0000.2019.017984-4, sessão 12/03/2020). SOBREPOSIÇÃO COM DEOAB_RS (18.500 registros, 2019-03-19 a 2026-11-17): amostra aleatória de 20 processos do PDF 2025, 17 estão no banco (os 3 ausentes têm número malformado no PDF, p.ex. 110102000006249/2020-20 sem pontuação); ex. 1100948.00009342/2021-20 = DEOAB_RS:613765 (2023-08-03, TED) e outro registro 2023; 21.0000.2020.003605-4 = DEOAB_RS:550910 e DEOAB_RS:821906 (2024-10-09, Segunda Câmara). Atenção: o DEOAB publica o processo em várias fases (TED 1ª instância, depois Câmara); o ementário traz a ementa da fase recursal julgada em 2025, que no Diário aparece meses depois (ex. sessão 08/05/2025, proc. 1101020.00020664/2021-20 = DEOAB_RS:949800, 2025-07-17, Segunda Câmara). Logo o conteúdo é majoritariamente repetição do Diário; o ganho é o texto limpo da ementa, nº de ementa, relator e votação estruturados, e ementas de 2020-2022 (PDFs) que o banco pode não ter com órgão/relator (no banco relator_principal e numero_processo vêm nulos em parte dos registros). Restrições: robots.txt de www2.oabrs.org.br e www.oabrs.org.br = 'User-agent: *  Disallow:' (nada vedado); api-lumen.oabrs.org.br/robots.txt = 404; sem termos de uso. WAF Imperva no site: um GET com UA genérico de navegador foi desafiado; uso UA descritivo, 1 req a cada 3 s, sem burlar. Prioridade: baixa-média (1 GET JSON + 13 PDFs; coletar 2º, após resolver o DEOAB; usar para completar relator/numero_processo)."
+  },
+  {
+    "slug": "portal-advocacia",
+    "url": "https://portal-advocacia.oabrs.org.br/usuario/login",
+    "conteudo": "Portal da advocacia (área logada).",
+    "periodo": null,
     "volume": null,
-    "acesso": "PDF anual em admsite.oabrs.org.br/arquivos/",
-    "exclusiva": true,
+    "acesso": "login",
+    "exclusiva": null,
     "verificacao": "S",
-    "situacao": "mapeada"
+    "situacao": "descartada",
+    "observacoes": "Exige login; não explorado. Também listado: biblioteca oabrs.phlnet.com.br (catálogo PHL, não de julgados). Não foram achadas consultas respondidas, revistas nem boletins de ementas do TED/RS no site (busca web e menu do site)."
   }
 ]

@@ -2,12 +2,25 @@
   {
     "slug": "ementario",
     "url": "https://oabsergipe.org.br/ementario/",
-    "conteudo": "Ementas da 1ª e 2ª Turmas do TED, por tema",
-    "periodo": "até 01/2017",
-    "volume": "dezenas a centenas",
-    "acesso": "HTML de página única",
+    "conteudo": "Ementário do TED/OAB-SE: ementas da Primeira e da Segunda Turma, por tema (anuidade e contribuições, conduta incompatível, contrato de honorários, impedimento e compatibilidade, juízo de admissibilidade, locupletamento/retenção/prestação de contas, patrocínio, prescrição, procuração, retenção de autos), com 'Julgamento' e 'Publicação'.",
+    "periodo": "julgamentos 2016-03-30 a 2016-12-13; publicações até 2017-01-25 (ementário parado desde então)",
+    "volume": "98 ementas (98 ocorrências de 'Julgamento: dd/mm/aaaa', todas 2016): 36 da Primeira Turma, 62 da Segunda; 184 números 'TED nº NNN/AAAA' distintos porque uma ementa cobre vários processos (inadimplência de anuidade em lote). Medido 2026-11-20 no HTML (306 KB, página única).",
+    "acesso": "HTML de página única (WordPress + Elementor/GenerateBlocks, acordeões), sem paginação, sem API, sem login/captcha. Parser: itens terminam em '(TED OAB/SE, Primeira|Segunda Turma; Proc. TED nº. NNN/AAAA[, ...]; Relator(a): FULANO; Julgamento: dd/mm/aaaa; Publicação: dd/mm/aaaa)'.",
     "exclusiva": true,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "verificacao": "V",
+    "situacao": "coletada",
+    "inteiro_teor": "NAO. Só ementa (uma a quatro frases) e rodapé.",
+    "observacoes": "Lidas as 98 ementas. Exemplos: Proc. 303/2016 (Tarcísio André Targino Matos, 13/12/2016, 1ª T., anuidade/suspensão, pub. 25/01/2017); 299/2016 e 307/2016 (Rafael Almeida Brito, 13/12/2016, repercussão geral RE 647885); 255,263,271,287/2016 (14/11/2016); 069/2016 (Alisson Fontes Aragão, 14/11/2016, multa de uma anuidade); 027/2016 (Rafael Almeida Brito, 30/03/2016, caráter cominatório da suspensão); 308/2016 e 298/2016 (2ª T., 06/12/2016). Metade ou mais é inadimplência de anuidade (infração do art. 34, XXIII). SOBREPOSIÇÃO: nenhuma. DEOAB_SE no banco: 1402 registros, 2019-01-04 a 2026-11-18 (nº CNJ 26.0000.AAAA.NNNNNN-D); os 6 números testados (303, 299, 255, 069, 027, 308 /2016) não existem em DEOAB_SE, e o ementário é anterior ao Diário. robots.txt: só bloqueia /wp-admin/, wc-logs, add-to-cart; sem termos de uso. Prioridade 2 (pequeno, uma requisição). Outras páginas: /ementarios-do-conselho-seccional/ tem só 2 links para o Diário (DEOAB 884858 e 889754, março/2025), sem conteúdo próprio (descartada); /sessoes-do-conselho/ sem dados; 'Recorte Digital' em http://recortedigital.oabsergipe.org.br/ (-> https), 'Portal de Publicações' feito em Blazor Server (DevExpress), só exibe 'Carregando' sem JavaScript, NÃO mapeado (provável espelho do Diário; abrir em navegador antes de descartar). COLETADA em 2026-11-20 (SITE_SE_EMENTARIO): 98 ementas (contagem independente de 'Julgamento: dd/mm/aaaa' no HTML = 98 = ementas separadas pelo rodapé), 98 no banco, 0 rejeitadas, livro COMPLETO; 36 da Primeira e 62 da Segunda Turma; 193 números de processo citados (189 distintos): o primeiro vai em numero_processo e todos ficam no texto. Julgamentos de 2016-03-29 a 2016-12-13. Há um parágrafo solto depois do rodapé de uma ementa (PROCURAÇÃO, proc. 011/2016: 'A falta de procuração pode ser suprida...') que foi mantido no texto dela. Uma publicação traz 'Publicação: 25/07/2017' (provável erro do site, proc. 306/2016), guardada como publicada. Sem inteiro teor (tem_inteiro_teor=0). Sobreposição com o DEOAB_SE: nenhuma.",
+    "coleta": {
+      "fonte": "SITE_SE_EMENTARIO",
+      "adaptador": "collectors/sites/se_ementario.py",
+      "na_fonte": 98,
+      "listados": 98,
+      "baixados": 98,
+      "no_banco": 98,
+      "rejeitados": 0,
+      "livro": "COMPLETO",
+      "periodo_real": "julgamentos 2016-03-29 a 2016-12-13"
+    }
   }
 ]

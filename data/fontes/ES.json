@@ -2,12 +2,15 @@
   {
     "slug": "ementarios-pdf",
     "url": "http://www.oabes.org.br/institucional/etica-e-disciplina/",
-    "conteudo": "Ementário TED 2014-2017, 2019 e Recursal 2019; consultas da Turma Deontológica",
-    "periodo": "2014-2021",
+    "conteudo": "Página 'Tribunal de Ética e Disciplina' do OAB-ES (ementários TED 2014-2017, 2019, Recursal 2019; consultas da Turma Deontológica). Vista por busca; páginas de TED (/institucional/etica-e-disciplina/, /tribunal-etico-disciplinar/, robots.txt) devolvem uma tela JS 'One moment, please... verifying your request' (recarrega a cada 5 s) a clientes sem navegador.",
+    "periodo": "2014-2021 (registro antigo); consultas PDF de 2018 a 2023 vistas em busca",
     "volume": null,
-    "acesso": "PDF",
+    "acesso": "PDF. Padrões vistos em busca (todos 404 em 2026-11-20): /arquivos/2019/ted/CONSULTA_N_<proc>.pdf, /arquivos/CONSULTA_-_279712019-0.PDF, /arquivos/03_-_Consulta_nA_138942022-0._1A_Turma_Maio_2023_1.pdf. Apenas /arquivos/regulamentointernodoted.pdf responde 200 (1,8 MB). Cópia de terceiros legível: https://www.migalhas.com.br/arquivos/2020/3/5CA7F091A42D43_OAB-ES.pdf",
     "exclusiva": null,
     "verificacao": "S",
-    "situacao": "mapeada"
+    "situacao": "mapeada",
+    "bloqueio": "Desafio JS/WAF nas páginas HTML; não contornado. robots.txt ilegível pelo mesmo motivo. Sem termos de uso lidos.",
+    "inteiro_teor": "Consultas da Turma Deontológica são pareceres com texto integral (relatório/voto do relator) em PDF; para julgados disciplinares só ementário (não confirmado).",
+    "observacoes": "Não verificada: nenhuma decisão obtida do site (só 1 consulta, Processo COn 13051/2020-0, relator Bruno Richa Menegatti, sobre redes sociais na pandemia, lida na cópia do Migalhas; fora do banco, que não tem esse nº). Banco: DEOAB_ES = 2013 registros 2019-01-25 a 2026-11-18 (~220-300/ano; Turmas Disciplinares 1ª-9ª, TED pleno e Conselho Pleno), sem inteiro_teor. Prioridade média: consultas deontológicas são conteúdo provavelmente exclusivo (o Diário traz acórdãos, não pareceres), mas exigem listagem via navegador; reavaliar com a página HTML acessível."
   }
 ]

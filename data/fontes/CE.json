@@ -2,23 +2,28 @@
   {
     "slug": "ementarios-ted",
     "url": "https://oabce.org.br/categoria/ementarios-ted/",
-    "conteudo": "Consultas e processos disciplinares",
-    "periodo": "2002-2015",
+    "conteudo": "Categoria WordPress 'Ementários TED' (posts com ementários/consultas; existe também /categoria/ementarios-tdp/ e post 'EMENTÁRIO TDP 2019', /2021/10/ementario-tdp-2019/).",
+    "periodo": "2002-2015 (registro antigo, não confirmado)",
     "volume": null,
-    "acesso": "posts WordPress",
+    "acesso": "posts WordPress, mas o site inteiro (HTML, robots.txt, PDFs em wp-content) responde 403 com desafio Cloudflare 'Just a moment' (managed challenge) a clientes sem navegador",
     "exclusiva": true,
     "verificacao": "S",
-    "situacao": "mapeada"
+    "situacao": "mapeada",
+    "bloqueio": "Cloudflare managed challenge em oabce.org.br (testado 2026-11-20: categoria, robots.txt e PDF = 403). Pelo combinado, NÃO contornado. robots.txt e termos de uso não lidos (o próprio robots.txt está atrás do desafio).",
+    "observacoes": "Não foi possível ler nenhuma decisão: não verificada. Existência confirmada apenas por resultado de busca (títulos/URLs). Sobreposição com o banco não medida na fonte; o banco tem DEOAB_CE = 279 registros (2019-07: 17; 2023: 1; 2024: 3; 2025: 29, quase todos em 2025-10; 2026: 229), confirmando o buraco 2019-2025. Próximo passo: pedir à OAB/CE autorização/allowlist ou os PDFs diretamente, ou coleta manual por navegador pelo usuário."
   },
   {
     "slug": "ementario-2021",
-    "url": "https://oabce.org.br/2021/12/tribunal-de-etica-e-disciplina-da-oab-ce-lanca-seu-ementario-de-jurisprudencia/",
-    "conteudo": "Ementário de Jurisprudência do TED (livro)",
-    "periodo": "2016-2021",
+    "url": "https://oabce.org.br/wp-content/uploads/2021/12/Ementario-de-Jurisprudencia-2021-versao-em-PDF-1.pdf",
+    "conteudo": "Ementário de Jurisprudência do TED/CE (livro, lançado 2021-12; notícia: https://oabce.org.br/2021/12/tribunal-de-etica-e-disciplina-da-oab-ce-lanca-seu-ementario-de-jurisprudencia/). Também: Regimento Interno do TED https://oabce.org.br/wp-content/uploads/2021/11/Regimento-Interno-do-TED-2021.pdf; página https://oabce.org.br/institucional/ted/; publicações https://oabce.org.br/comunicacao/publicacoes/.",
+    "periodo": "2016-2021 (declarado no registro antigo)",
     "volume": null,
-    "acesso": "PDF",
+    "acesso": "PDF (URL real obtida via busca; GET direto = 403 Cloudflare)",
     "exclusiva": null,
     "verificacao": "S",
-    "situacao": "mapeada"
+    "situacao": "mapeada",
+    "bloqueio": "Cloudflare managed challenge; não contornado.",
+    "inteiro_teor": "Desconhecido; ementário tende a ser só ementas.",
+    "observacoes": "Não lido. Este é o candidato mais valioso para cobrir 2019-2021 (parte do buraco do Diário), mas só se for acessível por meio permitido. Prioridade alta condicionada a liberação."
   }
 ]

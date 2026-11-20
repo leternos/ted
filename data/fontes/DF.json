@@ -1,13 +1,52 @@
 [
   {
     "slug": "ementario-ted",
-    "url": "https://oabdf.org.br/tribunal-de-etica-e-disciplina/",
-    "conteudo": "Ementário do TED/OAB-DF, edições 01 a 03",
-    "periodo": "2013-2015",
-    "volume": null,
-    "acesso": "PDF",
+    "url": "https://oabdf.org.br/wp-content/uploads/2021/06/TED_Ementario_Rev04.pdf",
+    "conteudo": "Ementário do TED/OAB-DF (aba 'Ementários' de https://oabdf.org.br/tribunal-de-etica-e-disciplina/; cpt ted-ementario). Ementas das Turmas (1ª a 9ª) organizadas por tema (abandono de causa, acordo com parte adversa, advogar contra literal disposição de lei, captação de clientela etc.), cada uma com a ementa e o dispositivo ('Acordam os membros da Turma, por unanimidade, nos termos do voto do Relator, em julgar...').",
+    "periodo": "julgamentos de 2013 (90 datas), 2014 (3) e 2009 (2, só citados em precedente); PDF gerado em 2014-07-07 (LibreOffice 3.5, rev. 04)",
+    "volume": "1 PDF, 24 páginas, 214 KB, texto selecionável; 93 ementas ('EMENTA:'), 82 números de processo distintos (medido 2026-11-20). Há 1 só ementário no site (a notícia de 'edições 01 a 03 de 2013-2015' corresponde às 3 SÚMULAS, não a ementários).",
+    "acesso": "GET direto do PDF, sem login/captcha/cookie. Texto por pdftotext -layout; cada bloco começa em 'EMENTA: “...”.' e termina em '(Processo nº N/AAAA, Relator(a) Fulano, DD.MM.AAAA, nª Turma do TED/OAB-DF)'. Regex de extração: Processo nº ([0-9]+/[0-9]{4}), Relator(a) ..., data DD.MM.AAAA, Turma. Cabeçalhos de tema em maiúsculas (às vezes com letra inicial separada por espaços: 'A     BANDONO DE CAUSA').",
     "exclusiva": true,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "verificacao": "V",
+    "situacao": "coletada",
+    "inteiro_teor": "NAO. Só ementa + dispositivo resumido (cerca de 400-900 caracteres), sem relatório e sem voto.",
+    "observacoes": "Lidas as 93 ementas. Exemplos: 26568/2008 (Rita de Cássia N. P. Gastaldi, 24.04.2013, 1ª Turma, abandono de causa, censura convertida em advertência); 31303/2009 (Hélia Fernanda Pinheiro, 19.08.2013, 1ª T., improcedente); 26677/2008 (Luiz Humberto V. Guido, 07.05.2013, 2ª T., censura convertida em suspensão 30 dias); 27261/2008 (Eduardo de Barros Pereira, 18.04.2013, 7ª T., censura); 32774/2011 (Octávio A. C. Pereira, 21.10.2013, 4ª T., advocacia contra literal disposição de lei). Mais: 30146/2009, 30016/2009, 29758/2009, 29791/2009, 29698/2009, 31774/2010. SOBREPOSIÇÃO: nenhuma. DEOAB_DF no banco tem 137 registros (2019-07-04 a 2026-11-18), só 14 disciplinares (Conselho Pleno) e quase todos com nº CNJ 07.0000.AAAA.NNNNNN-D; os 6 processos testados (26568/2008, 31303/2009, 26677/2008, 27261/2008, 30016/2009, 29698/2009) não existem em nenhuma fonte do banco. O TED/DF não publica o teor no Diário (só intimações), então esta é a única base própria de julgados encontrada; é pequena (93 ementas) mas inédita. robots.txt (oabdf.org.br): só Disallow /wp-admin/ e /wp-content/uploads/wpforms/; sem restrição a PDFs; nenhum termo de uso localizado. Coletar 1º (um download, parser de regex). Conteúdo traz nomes de relatores e, nos dispositivos, às vezes das partes; entra como publicado. COLETADA em 2026-11-20 (SITE_DF_EMENTARIO_TED): 92 ementas no PDF (contagem independente dos rótulos 'EMENTA:' = 92 = ementas separadas; o '93' acima vinha de uma contagem sem diferenciar maiúsculas que pegava 'SUPLEMENTAR'), 92 no banco, 0 rejeitadas, livro COMPLETO. 92 números de processo distintos. Julgamentos de 2013-03-20 a 2014-11-28 (89 em 2013, 3 em 2014); órgãos: Turmas 1ª a 9ª (70) e Pleno do TED (22; o rodapé diz 'Pleno do TED/OAB-DF'), 1 rodapé traz 'nª Turma, DD.MM.AAAA, do TED/OAB-DF' fora da ordem usual (lido como 9ª Turma). Texto e nomes como o PDF publica; sem inteiro teor (tem_inteiro_teor=0). Sobreposição com o DEOAB: nenhuma (o Diário não traz esses processos; fusão fica para a integração).",
+    "coleta": {
+      "fonte": "SITE_DF_EMENTARIO_TED",
+      "adaptador": "collectors/sites/df_ementario_ted.py",
+      "na_fonte": 92,
+      "listados": 92,
+      "baixados": 92,
+      "no_banco": 92,
+      "rejeitados": 0,
+      "livro": "COMPLETO",
+      "periodo_real": "2013-03-20 a 2014-11-28"
+    }
+  },
+  {
+    "slug": "sumulas-ted",
+    "url": "https://oabdf.org.br/ted-sumula/",
+    "conteudo": "Súmulas do TED/OAB-DF: 01/2013 (atualização de cadastro, 21/01/2013), 02/2014, 03/2015",
+    "periodo": "2013-2015",
+    "volume": "3 súmulas: Sumula-no-01-de-21-de-janeiro-de-2013-atualizacao-de-cadastro.pdf (120 KB), Sumula-no-02.doc (52 KB), Sumula-03-2015.pdf (120 KB; sem camada de texto na amostra, provável scan); todas em /wp-content/uploads/2024/10/",
+    "acesso": "links diretos na aba 'Súmulas' e em /ted-sumula/NN-AAAA/ (sitemap ted-sumula-sitemap.xml); HTTP 200 por HEAD",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "mapeada",
+    "inteiro_teor": "Enunciados, não julgados.",
+    "observacoes": "Existência confirmada; conteúdo não lido. Não é decisão: coletar só como referência (prioridade 3)."
+  },
+  {
+    "slug": "acordaos-legado-documento-oficial",
+    "url": "https://oabdf.org.br/documento-oficial/acordao-69697/",
+    "conteudo": "53 páginas 'Acórdão NNN/AA' no tipo de post documento_oficial (sitemap documento_oficial-sitemap1..5), números de 1997 a 2011 (ex.: 696/97, 1547/2009, 26.432/2007, 3.022/2000, 11710-E)",
+    "periodo": "1997-2011 (pelos números)",
+    "volume": "53 posts (grep 'acordao' em 970 URLs do sitemap)",
+    "acesso": "cada post só tem um link para anexo antigo http://www.oabdf.org.br/novosite/wp-content/uploads/2016/08/<arquivo>.pdf|.doc",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "descartada",
+    "inteiro_teor": "Seria inteiro teor (PDF/DOC), mas os anexos não existem mais.",
+    "observacoes": "Testados 7 posts (acordao-69697, 6676e, 1208902, 11710-e, no-15472009, 26-4322007, 3-0222000) e 6 anexos, em /novosite/wp-content/uploads/2016/08/ e /wp-content/uploads/2016/08/: todos HTTP 404; o post não traz texto. Reavaliar só se o OAB/DF restaurar os anexos. Wayback não consultado (bloqueado pelo proxy, 403). Outros achados: serviço 'Acompanhamento de manifestação' do TED e 'Requerimentos online' exigem login de advogado (não testados); listas 'Advogados Suspensos/Excluídos' são PDFs de relação nominal sem decisões."
   }
 ]
