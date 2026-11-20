@@ -594,3 +594,263 @@ def test_pr_texto_e_nomes_entram_como_publicados():
     assert "Fulano de Tal Souza" in rec["inteiro_teor_texto"] and "Maria Beltrana Lima" in rec["inteiro_teor_texto"]
     assert rec["texto_publicado"] == item["ementa"]
     assert _json.loads(rec["partes_json"])[0]["nome"] == "Fulano de Tal Souza"
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# DF / ementario-ted, SE / ementario e BA / consultivo - bases pequenas de sites (sem rede: trechos reais em fixtures/)
+# ----------------------------------------------------------------------------------------------------------------------
+
+class _RespBytes:
+    def __init__(self, corpo: bytes, status: int = 200):
+        self.content, self.status_code = corpo, status
+
+    def raise_for_status(self) -> None:
+        if self.status_code >= 400:
+            raise RuntimeError(self.status_code)
+
+
+class _ClienteBytes:
+    """Devolve a resposta da URL pedida (ou a única); guarda URLs e cabeçalhos."""
+
+    def __init__(self, respostas: dict | bytes, status: int = 200):
+        self.respostas, self.status, self.pedidos = respostas, status, []
+
+    async def get(self, url, headers=None, **_k):
+        self.pedidos.append((url, headers))
+        corpo = self.respostas if isinstance(self.respostas, bytes) else self.respostas[url]
+        return _RespBytes(corpo, self.status)
+
+
+def _sem_pausa(monkeypatch):
+    from ted_search.collectors.sites import coleta_educada as ce
+
+    monkeypatch.setattr(ce, "PAUSA", 0.0)
+    ce.reiniciar()
+    return ce
+
+
+def test_coleta_educada_user_agent_e_parada_limpa_em_403_e_captcha(monkeypatch):
+    import pytest
+
+    ce = _sem_pausa(monkeypatch)
+    sem = asyncio.Semaphore(1)
+    ok = _ClienteBytes(b"<html>ok</html>")
+    assert asyncio.run(ce.baixar_texto(ok, sem, "https://x/", marca="</html>")) == "<html>ok</html>"
+    assert "TEDSearch" in ok.pedidos[0][1]["User-Agent"] and "coleta educada" in ok.pedidos[0][1]["User-Agent"]
+    ruim = _ClienteBytes(b"", status=403)
+    with pytest.raises(ce.BloqueioSite):
+        asyncio.run(ce.baixar_texto(ruim, sem, "https://x/a"))
+    assert len(ruim.pedidos) == 1  # sem repetição em 403
+    outro = _ClienteBytes(b"<html>ok</html>")
+    with pytest.raises(ce.BloqueioSite):  # depois do bloqueio, nenhuma requisição nova
+        asyncio.run(ce.baixar_texto(outro, sem, "https://x/b"))
+    assert outro.pedidos == []
+    ce.reiniciar()
+    cap = _ClienteBytes(b"<html><div class='g-recaptcha'></div></html>")
+    with pytest.raises(ce.BloqueioSite):
+        asyncio.run(ce.baixar_texto(cap, sem, "https://x/c"))
+    ce.reiniciar()
+
+
+def test_df_blocos_do_pdf_processo_relator_data_orgao_e_tema():
+    from ted_search.collectors.sites import df_ementario_ted as m
+
+    texto = (FIXTURES / "df_ementario_trecho.txt").read_text(encoding="utf-8")
+    assert m.contar_rotulos(texto) == 4
+    b = m.blocos(texto)
+    assert [x["processo"] for x in b] == ["26568/2008", "29294/2008", "9/2007", "29453/2008"]
+    assert b[0]["tema"] == "ABANDONO DE CAUSA" and b[1]["tema"] == "ATO EXCEDENTE DE ESTAGIÁRIO"  # 'A    TO' -> 'ATO'
+    assert b[2]["tema"] == "AUSÊNCIA DE PROVAS" and b[3]["tema"] == "INADIMPLÊNCIA"
+    assert b[0]["relator"] == "Rita de Cássia Nascimento Palma Gastaldi" and b[0]["data"] == "2013-04-24"
+    assert b[0]["orgao"] == "1ª Turma do TED/OAB-DF" and b[2]["orgao"] == "Pleno do TED/OAB-DF"
+    # rodapé fora do padrão: 'Relator Ismail Gomes, 9ª Turma, 26.11.2013, do TED/OAB-DF'
+    assert b[3]["relator"] == "Ismail Gomes" and m.orgao_df(b[3]["orgao"])[0] == "OABDF-TED-T9"
+    assert b[0]["texto"].startswith("“CONTRATAÇÃO PACTUADA") and b[0]["texto"].endswith("1ª Turma do TED/OAB-DF)")
+
+
+def test_df_registro_ementa_dispositivo_sem_inteiro_teor(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import df_ementario_ted as m
+
+    texto = (FIXTURES / "df_ementario_trecho.txt").read_text(encoding="utf-8")
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    monkeypatch.setattr(m, "texto_do_pdf", lambda _p: texto)
+    m._cache.clear()
+    _sem_pausa(monkeypatch)
+    cli, sem = _ClienteBytes(b"%PDF-1.4 falso"), asyncio.Semaphore(1)
+    assert asyncio.run(m.esperado(cli, sem)) == 4
+    itens = asyncio.run(m.listar(cli, sem))
+    assert [i["id"] for i in itens] == [f"TED_Ementario_Rev04.pdf#{n}" for n in range(1, 5)]
+    assert len(cli.pedidos) == 1  # o PDF único é baixado uma vez e fica em cache
+    comp = asyncio.run(m.baixar(cli, sem, itens[0]))
+    r = m.normalizar(comp)
+    assert r["id"] == "SITE_DF_EMENTARIO_TED:TED_Ementario_Rev04.pdf#1" and r["fonte"] == "SITE_DF_EMENTARIO_TED"
+    assert r["uf_origem"] == "DF" and r["numero_processo"] == "26568/2008" and r["data_decisao"] == "2013-04-24"
+    assert r["sigla_orgao"] == "OABDF-TED-T1" and r["relator_principal"].startswith("Rita de Cássia")
+    assert r["pdf_url"] == m.PDF_URL and r["is_ted_disciplinar"] == 1 and r["tem_inteiro_teor"] == 0
+    assert r["contexto"] == "EMENTA" and r["ano_ementa"] == 2013
+    assert r["descricao_ementa"].endswith("ADVERTÊNCIA EM OFÍCIO RESERVADO.") and r["descricao_acordao"].startswith("Acordam os membros da Turma")
+    assert "Rita de Cássia Nascimento Palma Gastaldi" in r["inteiro_teor_texto"]  # o nome entra completo, como publicado
+    assert m.normalizar(asyncio.run(m.baixar(cli, sem, itens[2])))["sigla_orgao"] == "OABDF-TED-PLENO"
+
+
+def test_se_ementas_rodape_varios_processos_e_tese_solta():
+    from ted_search.collectors.sites import se_ementario as m
+
+    h = (FIXTURES / "se_ementario_abas.html").read_text(encoding="utf-8")
+    assert m.esperado_da_pagina(h) == 6
+    e = m.ementas(h)
+    assert len(e) == 6 and len({x["id"] for x in e}) == 6
+    assert [x["tema"] for x in e[:2]] == ["CONDUTA INCOMPÁTIVEL COM ADVOCACIA"] * 2
+    proc = next(x for x in e if x["tema"] == "PROCURAÇÃO")
+    assert proc["id"] == "T1-011-2016-20160330" and proc["relator"] == "RAFAEL ALMEIDA BRITO" and proc["data"] == "2016-03-30"
+    assert proc["texto"].endswith("seu representante legal.")  # parágrafo solto depois do rodapé fica na ementa
+    assert "Publicação: 06/05/2016)" in proc["texto"] and proc["publicacao"] == "06/05/2016"
+    assert all(x["processos"] and x["relator"] and x["data"].startswith("2016") for x in e)
+
+
+def test_se_varios_processos_primeiro_em_numero_e_todos_no_texto():
+    from ted_search.collectors.sites import se_ementario as m
+
+    h = (
+        '<div class="gb-tabs__buttons"><button class="gb-tabs__button">ANUIDADE</button></div><div class="gb-tabs__items">'
+        '<div class="gb-container gb-container-aa gb-tabs__item gb-tabs__item-open"><p><strong>PRIMEIRA TURMA</strong></p>'
+        "<p>Anuidade. Inadimplência. Suspensão. (TED OAB/SE, Primeira Turma; Proc. TED nº. 255/2016, 263/2016, 271/2016 e 287/2016; "
+        "Relator(a): TARCISIO ANDRE TARGINO MATOS; Julgamento: 14/11/2016; Publicação: 07/12/2016)</p></div></div>"
+    )
+    (e,) = m.ementas(h)
+    assert e["processos"] == ["255/2016", "263/2016", "271/2016", "287/2016"]
+    r = m.normalizar({**e, "id": e["id"]})
+    assert r["numero_processo"] == "255/2016" and "287/2016" in r["inteiro_teor_texto"] and "TARCISIO ANDRE TARGINO MATOS" in r["inteiro_teor_texto"]
+    assert r["id"] == "SITE_SE_EMENTARIO:T1-255-2016-20161114" and r["sigla_orgao"] == "OABSE-TED-T1"
+    assert r["orgao_julgador_norm"].endswith("/1ª Turma Disciplinar") and r["data_decisao"] == "2016-11-14"
+    assert r["tem_inteiro_teor"] == 0 and r["is_ted_disciplinar"] == 1 and r["pdf_url"] is None
+
+
+def test_se_listar_confere_contra_a_contagem_independente(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import se_ementario as m
+
+    h = (FIXTURES / "se_ementario_abas.html").read_bytes()
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    m._cache.clear()
+    _sem_pausa(monkeypatch)
+    cli, sem = _ClienteBytes(h), asyncio.Semaphore(1)
+    assert asyncio.run(m.esperado(cli, sem)) == len(asyncio.run(m.listar(cli, sem))) == 6
+    assert len(cli.pedidos) == 1 and (tmp_path / "site_se_ementario" / "pagina.html").exists()
+    m._cache.clear()
+
+
+def _ba_itens() -> dict:
+    from ted_search.collectors.sites import ba_consultivo as m
+
+    html = (FIXTURES / "ba_consultivo_texto_trecho.html").read_text(encoding="utf-8")
+    return html, {i["id"]: i for i in m.itens_da_pagina(html)}
+
+
+def test_ba_itens_da_pagina_juntam_inline_lista_e_2026_e_ignoram_o_resto():
+    from ted_search.collectors.sites import ba_consultivo as m
+
+    html, it = _ba_itens()
+    # o que não é consulta (orientação técnica, ementário disciplinar 2007-2009) e a citação '236/2019' no meio de ementa ficam de fora
+    assert sorted(it) == ["00297-2019", "00303-2026", "00408-2020", "00467-2020", "00578-2018", "00666-2020", "00784-2024", "00862-2022", "00932-2023", "00977-2022"]
+    assert m.consultas_citadas(html) == set(it) and "00236-2019" not in it
+    assert it["00932-2023"]["href"].endswith("Processo_Consulta_n_00932_2023.pdf") and it["00932-2023"]["ementa_pagina"].startswith("ASSUNTO: Violência processual")
+    assert it["00784-2024"]["texto_lista"].startswith("ASSUNTO: Publicidade")  # cabeçalho e ASSUNTO em parágrafos separados
+    assert it["00467-2020"]["ementa_inline"].startswith("PROCESSO DISCIPLINAR. PRESCRIÇÃO. COVID-19")  # 'Processo Disciplinar' sem 'nº' não encerra a lista
+    assert it["00297-2019"]["data_pagina"] == "2019-08-08" and it["00297-2019"]["relator_pagina"] == "LISIANE MARIA GUIMARÃES SOARES"
+    assert it["00303-2026"]["href"] is None and it["00303-2026"]["data_pagina"] == "2026-04-28"
+    assert "Processo Disciplinar" not in it["00977-2022"]["ementa_pagina"]  # a lista 2007-2009 não vaza para a consulta anterior
+    assert m.numero("00578-2018") == "00578/2018" and m.url_pdf("/fotos/x/PROCESSO CONSULTA Nº 578-2018.pdf").endswith("PROCESSO%20CONSULTA%20N%C2%BA%20578-2018.pdf")
+
+
+def test_ba_data_e_relator_do_texto():
+    from ted_search.collectors.sites import ba_consultivo as m
+
+    assert m.data_do_texto("... Consulta respondida. Sessão 21.11.2019 – RELATOR: JOÃO ROSA.") == "2019-11-21"
+    assert m.data_do_texto("em Sessão Ordinária realizada em 28/4/2026, por unanimidade") == "2026-04-28"
+    assert m.data_do_texto("texto\nSalvador, 29 de setembro de 2023.\nConselheiro Relator") == "2023-09-29"
+    assert m.data_do_texto("Salvador, 03/3/2026, Deraldo Barbosa Brandão Filho") == "2026-03-03"
+    assert m.data_do_texto("sem data") is None
+    assert m.relator_do_texto("Sessão 21.11.2019 – RELATOR: JOÃO ROSA.") == "JOÃO ROSA"
+
+
+def test_ba_cpf_so_com_digitos_reais_e_placeholder_a_parte():
+    from ted_search.collectors.sites import ba_consultivo as m
+
+    # números sintéticos (nada de pessoa real em fixture)
+    capa = "Processo: 1/2018 / Ético / CONSULTA\nRepresentado: (SEM REPRESENTADO) - 111.111.111-11\nRepresentante: FULANO DE TAL - 12345 - 123.456.789-09\nAssunto"
+    corpo = "RELATÓRIO\nProcesso 0000123-45.2018.8.05.0001, telefone (71) 3329-8921, 1.234.567/2018."
+    r = m.achar_cpf([capa, corpo, "Fulano, CPF 987.654.321-00, advogado", "CPF: 98765432100", "Inscrito no CPF sob o número ilegível", "só placeholder 111.111.111-11"])
+    assert r["cpf"] == [1, 3, 4] and r["placeholder"] == [6] and r["palavra"] == [5]
+    assert m.achar_cpf([corpo]) == {"cpf": [], "placeholder": [], "palavra": []}  # número de processo/telefone não é CPF
+
+
+def test_ba_ler_pdf_usa_camada_de_texto_e_ocr_so_onde_a_pagina_e_imagem(monkeypatch):
+    from pathlib import Path
+
+    from ted_search.collectors.sites import ba_consultivo as m
+
+    paginas = {1: "Folha 1/3\n" + "texto com camada própria " * 10, 2: "", 3: "  \n"}
+    monkeypatch.setattr(m, "_paginas_pdf", lambda _p: 3)
+    monkeypatch.setattr(m, "_camada_texto", lambda _p, n: paginas[n])
+    monkeypatch.setattr(m, "_ocr", lambda _p, n: f"OCR da página {n} CPF 123.456.789-09")
+    r = m.ler_pdf(Path("x.pdf"))
+    assert r["paginas"] == 3 and r["paginas_ocr"] == [2, 3] and r["cpf_paginas"] == [2, 3]
+    assert r["texto_pdf"].split("\n\n")[0].startswith("Folha 1/3") and "OCR da página 3" in r["texto_pdf"]
+
+
+def test_ba_registro_consulta_pdf_selo_pelo_criterio_e_adiamento_por_cpf():
+    from ted_search.collectors.sites import ba_consultivo as m
+
+    _html, it = _ba_itens()
+    ok = {**it["00932-2023"], "pdf_url": "https://www.oab-ba.org.br/fotos/oab_institucionais/19/mg/Processo_Consulta_n_00932_2023.pdf",
+          "texto_pdf": "Folha 1/2\nProcesso Consulta n°: 932/2023\nRelator: Eurípedes Brito Cunha Junior, OAB/BA 11.433\n\nRELATÓRIO\nOs fatos.\n\nVOTO\nO voto.\n"
+                       "Salvador, 29 de setembro de 2023.\n", "cpf_paginas": []}
+    r = m.normalizar(ok, liberar=set())
+    assert r["id"] == "SITE_BA_CONSULTIVO:00932-2023" and r["numero_processo"] == "00932/2023" and r["contexto"] == "EMENTA_CONSULTA"
+    assert r["tipo_ementa"] == "CONSULTA" and r["is_ted_disciplinar"] == 1 and r["sigla_orgao"] == "OABBA-TED-OCEP"
+    assert r["data_decisao"] == "2023-09-29" and r["ano_ementa"] == 2023 and r["pdf_url"].endswith("Processo_Consulta_n_00932_2023.pdf")
+    assert r["descricao_ementa"].startswith("ASSUNTO: Violência processual") and r["inteiro_teor_texto"] == ok["texto_pdf"].strip()
+    assert r["sancao_identificada"] is None and r["resultado_julgamento"] is None
+    assert r["tem_inteiro_teor"] == 0  # texto curto demais para o critério do projeto: o selo não é forçado
+    # texto de verdade com relatório e voto passa no critério do projeto
+    longo = ok["texto_pdf"] + "\n" + ("Fundamentação do voto do relator. " * 80)
+    from ted_search.inteiro_teor import texto_tem_relatorio_e_voto
+
+    assert texto_tem_relatorio_e_voto(longo)
+    assert m.normalizar({**ok, "texto_pdf": longo}, liberar=set())["tem_inteiro_teor"] == 1
+    # sem PDF: acórdão inline; selo 0 sem relatório e voto
+    sem_pdf = m.normalizar(it["00303-2026"], liberar=set())
+    assert sem_pdf["pdf_url"] is None and sem_pdf["data_decisao"] == "2026-04-28" and sem_pdf["inteiro_teor_texto"].startswith("EMENTA N. 1193/2026")
+    # CPF no PDF: a carga é adiada (o texto não é alterado) até o id ser liberado
+    m.MOTIVOS.clear()
+    com_cpf = {**ok, "id": "00578-2018", "cpf_paginas": [1]}
+    assert m.normalizar(com_cpf, liberar=set()) is None and "pág. 1" in m.MOTIVOS["00578-2018"]
+    assert m.normalizar(com_cpf, liberar={"00578-2018"}) is not None
+    assert m.normalizar({**com_cpf, "cpf_paginas": []}, liberar=set()) is not None
+    m.MOTIVOS.clear()
+
+
+def test_ba_texto_e_nomes_entram_como_publicados():
+    """Regra do projeto: nenhum nome é abreviado, mascarado ou cortado."""
+    from ted_search.collectors.sites import ba_consultivo as m
+
+    item = {"id": "00357-2026", "numero": "00357/2026", "ano": 2026, "href": None, "ementa_inline": None, "texto_lista": "ACÓRDÃO\nConsulente: Dra. Fulana de Tal Beltrana, OAB-BA 1.234 – RELATORA: CAMILA VASCONCELOS DE OLIVEIRA. Sessão 26/8/2026.",
+            "ementa_pagina": "ACÓRDÃO\nConsulente: Dra. Fulana de Tal Beltrana, OAB-BA 1.234 – RELATORA: CAMILA VASCONCELOS DE OLIVEIRA. Sessão 26/8/2026.",
+            "data_pagina": "2026-08-26", "relator_pagina": "CAMILA VASCONCELOS DE OLIVEIRA"}
+    r = m.normalizar(item, liberar=set())
+    assert "Fulana de Tal Beltrana" in r["inteiro_teor_texto"] and r["relator_principal"] == "CAMILA VASCONCELOS DE OLIVEIRA"
+
+
+def test_ba_data_do_pdf_so_no_fim_e_dentro_da_janela_de_anos():
+    from ted_search.collectors.sites import ba_consultivo as m
+
+    capa = "Protocolo 15201 05/04/2019 14:53\nSessão 08.8.2019 citada em outra consulta\n" + ("x " * 4000)
+    fim_sessao = "ACÓRDÃO ... Sessão Ordinária realizada no dia 02/05/2019 ...\nSalvador, 03 de junho de 2019\n"
+    assert m.data_do_pdf(capa + fim_sessao, 2018) == "2019-05-02"  # a sessão do acórdão vence a data da assinatura
+    assert m.data_do_pdf(capa + "Salvador, 29 de setembro de 2023.\nConselheiro Relator", 2023) == "2023-09-29"
+    assert m.data_do_pdf(capa + "Sessão 08.8.2019 citada\n", 2023) is None  # fora da janela (citação de consulta antiga) e sem outra data
+    assert m.data_do_pdf(capa + "Salvador, 31 de março de 20283\n", 2022) is None  # erro de OCR: nada é inventado
+    assert m.relator_do_texto("Processo Consulta n°: 932/2023\nRelator: Eurípedes Brito Cunha Junior, OAB/BA 11.433\n") == "Eurípedes Brito Cunha Junior"
+    assert m.relator_do_texto("RELATOR (A): EDUARDO LIMA SODRÉ - Nº Registro16391") == "EDUARDO LIMA SODRÉ"
+    assert m.relator_do_texto("Relator: João Rosa (OAB/BA 17.023)") == "João Rosa"
+    assert m.relator_do_texto("sem relator") is None

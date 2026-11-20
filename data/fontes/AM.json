@@ -1,13 +1,27 @@
 [
   {
-    "slug": "ementario-ted",
+    "slug": "ementarios-pleno-pdf",
+    "url": "https://www.oabam.org.br/diretorio/EMENTAS-PLENO-2019/005.2019.pdf",
+    "conteudo": "PDFs avulsos de acórdãos do Pleno do TED/AM (1 acórdão por PDF, com ementa e dispositivo curtos; impressão da matéria do DEOAB com rodapé deoab.oab.org.br/pages/materia/<id>). Fonte do 'Ementário Pleno TED' do registro antigo.",
+    "periodo": "2019-06 a 2020 (amostra: 2019 nº 002,003,004,005,006,008; 2020 nº 003-008,010; 2019/001,007,009+ e 2020/001,002,020 dão 404)",
+    "volume": "Não medível: sem listagem. /diretorio/ e subpastas devolvem 403 (sem index), sitemap.xml só tem a home, WP REST /media não indexa. Confirmados por HEAD/GET 14 PDFs; ~100-140 KB cada, texto de 1,8-3 mil caracteres. Ordem de grandeza: dezenas de acórdãos do Pleno em 2019-2020.",
+    "acesso": "GET direto dos PDFs, sem login/captcha: 2019 -> /diretorio/EMENTAS-PLENO-2019/NNN.2019.pdf ; 2020 -> /diretorio/EMENTAS-PLENO-2020/Diario-Eletronico-OAB-ACORDAO-NNN.2020.pdf (NNN 3 dígitos). Enumeração só por tentativa de números (HEAD com pausa); pdftotext extrai texto limpo (PDF com texto, assinado ICP-Brasil).",
+    "exclusiva": false,
+    "verificacao": "V",
+    "situacao": "verificada",
+    "inteiro_teor": "NAO no sentido de relatório e voto: só cabeçalho (processo, partes, relator), ementa e dispositivo. É o mesmo texto do Diário.",
+    "observacoes": "Leitura de 9 PDFs reais (cabeçalho+ementa) e 1 integral (005/2019: processo 73942018-0, relator Caupolican Padilha Junior, suspensão cautelar 90 dias, Pleno 26/09/2019, disponibilizado 21/10/2019). SOBREPOSIÇÃO: 100% repetição do DEOAB_AM. Conferidos no banco: 73942018-0 (AC-005/2019/OABAM-TED, DEOAB_AM:173413, 2019-10-21 e AC-008/2019 DEOAB_AM:197529), 83922016-0 (AC-004/2019, DEOAB_AM:176259), 3492019-0 (AC-006/2019, DEOAB_AM:196359), 81232019-0 (AC-004/2020, DEOAB_AM:249512), 28302020-0 (AC-007/2020, DEOAB_AM:254748), 95512018-0 (AC-002/2019, DEOAB_AM:72902). Nota: o PDF 19/003 traz 'ACÓRDÃO 002/2019' no corpo (erro da fonte). robots.txt: 'User-agent: * Allow: /' (sem restrição). Sem termos de uso localizados. Prioridade: NÃO coletar (zero ganho)."
+  },
+  {
+    "slug": "ted-pagina",
     "url": "https://www.oabam.org.br/ted/",
-    "conteudo": "Ementário TED e Ementário Pleno TED",
-    "periodo": "2016-2021",
+    "conteudo": "Página institucional do TED (Elementor): composição 2025-2027, turmas, procuradoria, lista de advogados suspensos/excluídos (atualizada 26/05/2023), links para SGD/consulta processual. Menu 'JURISPRUDÊNCIA' do site marcado #EMDEV (em desenvolvimento). Não há busca de julgados, ementário nem consultas respondidas.",
+    "periodo": null,
     "volume": null,
-    "acesso": "arquivos para baixar",
-    "exclusiva": true,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "acesso": "HTML",
+    "exclusiva": false,
+    "verificacao": "V",
+    "situacao": "descartada",
+    "observacoes": "Descartada como base de julgados. /ted-antigo/ (2020) só lista resoluções, portarias, recomendação COVID e lista de suspensos. Iframe https://hub.oabam.org.br/ted devolve HTTP 500 com dump Laravel ('Em breve', DecisionController.php) = módulo de decisões anunciado mas inativo em 2026-11-20; reavaliar depois. WP REST /wp-json/wp/v2/media?search=ementa|ementario|acordao: nenhum PDF de julgado. Não há consultas do TED nem súmulas publicadas."
   }
 ]

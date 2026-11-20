@@ -2,34 +2,52 @@
   {
     "slug": "consultivo",
     "url": "https://www.oab-ba.org.br/publicacoes/ementas-consultivo",
-    "conteudo": "Consultas do Órgão Consultivo de Ética Profissional do TED",
-    "periodo": "2007-2019+",
-    "volume": "dezenas",
-    "acesso": "HTML estático",
+    "conteudo": "Ementas do Órgão Consultivo de Ética Profissional (OCEP) do TED/OAB-BA: consultas em tese respondidas por acórdão do Órgão Consultivo, com PDF do processo para parte delas; mais as Súmulas 01 (prescrição/decadência) e 02 (suspensão/prazo) e proposições de OC.",
+    "periodo": "consultas de 2016 a 2026 (PDF de 2016-2024; ementas inline até sessão de 26/8/2026 e acórdão datado 02/9/2026)",
+    "volume": "57 consultas distintas citadas na página (2016:3, 2017:3, 2018:3, 2019:7, 2020:6, 2021:10, 2022:5, 2023:12, 2024:2, 2026:6); 41 PDFs 'consulta' em /fotos/oab_institucionais/19/mg/ (2016-2024: 3,3,2,3,3,8,5,12,2) + 3 PDFs de súmula em /fotos/oab_institucionais/175/mg/ (Súmula 01 tem 39 páginas, processo 3.015/2021, relator Deraldo Barbosa Brandão Filho). 2025-2026 só inline na página.",
+    "acesso": "Next.js (pages router, SSG), HTML de 275 KB, sem login/captcha. Todos os dados estão no JSON do <script id=\"__NEXT_DATA__\"> (props.pageProps.institucional.TEXTO_INSTITUCIONAL = HTML com composição do OC, consultas inline 'CONSULTA Nº NNN/AAAA' e links para PDFs). Também serve /_next/data/<buildId>/publicacoes/ementas-consultivo.json (buildId muda a cada deploy; não usar /api/). PDFs: GET direto em https://www.oab-ba.org.br/fotos/oab_institucionais/19/mg/<arquivo>.pdf, nomes irregulares (PROCESSO CONSULTA Nº 578-2018.pdf, Processo_Consulta_n_00932_2023.pdf, consulta_n_784_2024.pdf; com espaços, urlencode).",
     "exclusiva": true,
     "verificacao": "V",
-    "situacao": "mapeada"
+    "situacao": "coletada",
+    "inteiro_teor": "SIM, em PDF, para ~41 consultas (2016-2024). 2022-2024: PDF com texto (11 a 5 páginas; cabeçalho 'Processo Consulta n°', Assunto, Consulentes com OAB, Relator, ementa, CONSULTA, voto, ACÓRDÃO). 2016-2020 (e parte de 2021): PDF ESCANEADO sem camada de texto (19 a 29 páginas, imagem CCITT; capa do SISDOC com processo, data, representante, assunto e CPF, depois parecer/voto e acórdão): exige OCR (tesseract por, testado em 1 página: texto legível). 2025-2026: acórdão completo inline em HTML.",
+    "observacoes": "Lidos: 932/2023 (violência processual de gênero, relator Eurípedes Brito Cunha Junior, PDF 11 págs. com texto, pdftotext OK), 784/2024 (publicidade em redes sociais, relator João Rosa, 5 págs.), 578/2018 (impedimento de servidor público, capa lida + parecer por OCR; 21 págs. escaneadas), 465/2016 e 688/2020 e 282/2019 (baixados, escaneados), 1372/2018 e 282/2019 (ementas inline) e o acórdão inline de 26/8/2026 (sigilo/conflito de interesses ex-cliente, relator Camila Vasconcelos de Oliveira, presidente Emília Roters Ribeiro). SOBREPOSIÇÃO com DEOAB_BA (1837 registros, 2019-03-29 a 2026-11-16; nº 'NNNNN/AAAA' com zeros): dos 41 PDFs, 8 já estão no banco, todos de 2022-2024 (00596/2023, 00688/2023, 00735/2023, 00862/2022, 00878/2023, 00932/2023, 00949/2024, 01534/2023; ex. DEOAB_BA:655039 = 00932/2023, texto 'ÓRGÃO CONSULTIVO DE ÉTICA PROFISSIONAL - OCEP / ACÓRDÃO', publicado 2023-10-30); ausentes: 578/2018, 465/2016, 282/2019, 688/2020, 784/2024, 1372/2018, 1778/2017. Ou seja, 2016-2021 é inédito e 2022-2024 repete o Diário; o PDF pode ter mais texto que o Diário (a conferir). RESTRIÇÃO: robots.txt de www.oab-ba.org.br: 'Disallow: /adm', '/?*' e '/api/'; /publicacoes, /_next/ e /fotos/ não estão bloqueados. Sem termos de uso localizados. Dados pessoais: capa do SISDOC traz CPF do consulente (entra como publicado, sem mascarar, conforme regra do projeto). Prioridade 1 na BA (inteiro teor, ~33 PDFs inéditos + 6 inline 2026); ritmo de 1 req/2 s, ~100 MB de PDF. COLETADA em 2026-11-20 (SITE_BA_CONSULTIVO): a página apresenta 56 consultas distintas (não 57: '236/2019' só é citada dentro da ementa de outra consulta, sem item nem PDF); 41 PDFs (18 com camada de texto, 21 escaneados só por OCR, 2 mistos), 15 consultas sem PDF (acórdão/ementa inline: 2026 e as de 2018-2021 sem PDF). 56 baixadas, 39 no banco, 17 adiadas por CPF no PDF (a capa do SISDOC traz o CPF do consulente): texto intacto no cache, livro COMPLETO (no banco + rejeitados = baixados). Sobreposição com DEOAB_BA (mesmo número de processo): 00596/2023, 00688/2023, 00735/2023, 00862/2022, 00878/2023, 00932/2023, 00949/2024, 01534/2023 e também 00106/2026, 00305/2026, 00357/2026, 00785/2026 (inline aqui); todas carregadas, fusão fica para a integração. 00357/2026 e 00785/2026 aparecem na página com o mesmo acórdão (EMENTA N. 1594/2026), como publicado. Ficam de fora do conjunto, por não serem consultas: 2 orientações técnicas, a proposição de súmula, Súmulas 01/02 e o ementário disciplinar 2007-2009 que a mesma página reproduz.",
+    "coleta": {
+      "fonte": "SITE_BA_CONSULTIVO",
+      "adaptador": "collectors/sites/ba_consultivo.py",
+      "na_fonte": 56,
+      "listados": 56,
+      "baixados": 56,
+      "no_banco": 39,
+      "rejeitados": 17,
+      "motivo_rejeitados": "CPF no PDF: carga adiada (ids em data/raw/site_ba_consultivo/rejeitados.jsonl; liberar listando o id em liberados.txt)",
+      "livro": "COMPLETO",
+      "periodo_real": "2016 a 2026 (datas de decisão lidas: 2018-12-20 a 2026-08-26 nos carregados)"
+    }
   },
   {
     "slug": "orgao-especial",
     "url": "https://www.oab-ba.org.br/publicacoes/ementas",
-    "conteudo": "Ementas do Órgão Especial (consultas)",
-    "periodo": "2016-2018",
-    "volume": null,
-    "acesso": "HTML estático",
+    "conteudo": "Ementário do Órgão Especial (recursos e consultas de competência do art. 61 do Regimento Interno), 'seguindo a proposta de transparência' da gestão",
+    "periodo": "sessões 2016-2018 (5 de 2016, 3 de 2017, 1 de 2018)",
+    "volume": "9 ementas numeradas (processos 1778/2017, 492/2016, ..., 640/2016, 394/2016), página estática de 58 KB",
+    "acesso": "Next.js SSG: mesma estrutura __NEXT_DATA__ (institucional COD 43), HTML inline, sem PDFs",
     "exclusiva": true,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "verificacao": "V",
+    "situacao": "verificada",
+    "inteiro_teor": "NAO, só ementa com data, presidente e relator.",
+    "observacoes": "Lidas as 9. Ex.: Processo 1778/2017 (gerente da Caixa, incompatibilidade, 23/02/2018, relator Jeferson Braga); 492/2016 (Órgão Especial incompetente para consulta ético-disciplinar, 02/06/2016). Mistura consulta e recurso; pouca relevância disciplinar. Nenhum desses números aparece em DEOAB_BA (começa em 2019). Prioridade 3."
   },
   {
     "slug": "camaras",
     "url": "https://www.oab-ba.org.br/publicacoes/ementas-camaras",
-    "conteudo": "Ementas das Câmaras",
-    "periodo": "n/d",
-    "volume": null,
-    "acesso": "HTML estático",
-    "exclusiva": null,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "conteudo": "Ementas das Câmaras Julgadoras (recursos de inscrição e incompatibilidade)",
+    "periodo": "sessões 2019-2021 (14 de 2019, 5 de 2020, 1 de 2021)",
+    "volume": "19 ementas (Recursos 805/2019, 806/2019, 855/2019, 986/2019, 1497/2018, 272/2019, 295/2019, 507/2019, 509/2019, 149/2020, 59/2020, 464/2020 etc.)",
+    "acesso": "Next.js SSG, HTML inline (institucional COD 44); a própria página manda consultar o Diário (deoab.oab.org.br/pages/visualizacao)",
+    "exclusiva": false,
+    "verificacao": "V",
+    "situacao": "descartada",
+    "inteiro_teor": "NAO.",
+    "observacoes": "Lidas as 19: todas são de inscrição/incompatibilidade (art. 28 e 84 do EAOAB), nenhuma ético-disciplinar. Fora do escopo do TED. Outras páginas do TED da BA (/oab/tribunal-de-etica): só manuais e atalhos para o sistema Implanta (oab-ba.implanta.net.br: protocolo e 'Consulta Processo' público; não testado por poder ter captcha/login e ser consulta de partes, não de julgados). Não existe ementário de julgados disciplinares do TED/BA no site."
   }
 ]
