@@ -204,7 +204,7 @@ RE_DISCIPLINAR = re.compile(
     r"REPRESENTAD[OA]|REPRESENTANTE|PROCESSO\s+ETICO|ARQUIVAMENTO\s+LIMINAR|EXCECAO\s+DE\s+SUSPEICAO|DOSIMETRIA|ABSOLVICAO|CONSULENTE|"
     # segunda leitura de GO
     r"LOCUPLETAMENTO|(?:AUSENCIA|FALTA|RECUSA)\s+DE\s+PRESTACAO\s+DE\s+CONTAS|(?:IM)?PROCEDENCIA\s+DA\s+REPRESENTACAO|"
-    r"REPRESENTACAO\s+JULGADA|PROCESSO\s+DE\s+EXCLUSAO|EMENTA\s*:?\s*PEDIDO\s+(?:DE\s+)?REVISAO"
+    r"REPRESENTACAO\s+JULGADA|PROCEDENTE\s+A\s+REPRESENTACAO|PROCESSO\s+DE\s+EXCLUSAO|EMENTA\s*:?\s*PEDIDO\s+(?:DE\s+)?REVISAO"
 )
 
 
@@ -278,7 +278,15 @@ RE_ADMINISTRATIVO = re.compile(
     r"(?:ASSUNTO|NATUREZA)\s*:\s*(?:APROVACAO\s+D[OA]\s+|ALTERACAO\s+D[OE]\s+|ATUALIZACAO\s+D[OE]\s+)?(?:REGIMENTO\s+INTERNO|"
     r"PEDIDO\s+DE\s+(?:CRIACAO|ADESAO)|CRIACAO\s+D[AEO]|APROVACAO\s+DA\s+RESOLUCAO|REVOGACAO\s+DA\s+RESOLUCAO|COMISSAO\s+D[AE]|"
     r"RELATORIO\s+DE\s+ATIVIDADES|ANALISE\s+(?:SOBRE|JURIDICA))|TRIBUNAL\s+DE\s+(?:DEFESA\s+DAS\s+)?PRERROGATIVAS|"
-    r"VIOL\w+\s+(?:DAS|AS)\s+PRERROGATIVAS|PROCESSO\s+DE\s+INSCRICAO|ASSUNTO\s*:\s*(?:RECURSO\s+DE\s+)?INSCRICAO\s+DE"
+    r"VIOL\w+\s+(?:DAS|AS)\s+PRERROGATIVAS|PROCESSO\s+DE\s+INSCRICAO|ASSUNTO\s*:\s*(?:RECURSO\s+DE\s+)?INSCRICAO\s+DE|"
+    # segundas leituras de RN, PI e SE
+    r"MEDALHA|EMENTA\s*:?\s*HOMENAGEM|LUTO\s+OFICIAL|MINUTA\s+DE\s+RESOLUCAO|(?:INDEFERIMENTO|PEDIDO)\s+DE\s+REINSCRICAO|"
+    r"PEDIDO\s+DE\s+ALTERACAO\s+CONTRATUAL|EMENTA\s*\d+\s*/\s*20\d\d\s*:?\s*(?:A\s+)?(?:PROPOSICAO|PROPOSTA|REQUERIMENTO)"
+)
+# Acórdão de Turma do TED: disciplinar mesmo quando o caso nasce na "seara eleitoral" (RN) ou cita inscrição (SE)
+RE_TURMA_DO_TED = re.compile(
+    r"ACORDAM\s+OS\s+MEMBROS\s+DA\s+\S+\s+TURMA\s+DO\s+(?:TED|TRIBUNAL\s+DE\s+ETICA)|"
+    r"EMENTA\s+N\S*\s*\d[\d ]*/\s*\d[\d ]*\s*[-–]\s*(?:TED|\d\s*[ªA]?\s*T)\b"
 )
 
 # Abertura em que o próprio TED anuncia o julgamento (GO): disciplinar, ainda que cite sociedade ou inscrição suplementar
@@ -289,6 +297,10 @@ RE_PRESCRICAO_DISCIPLINAR = re.compile(r"PRESCRI[^.]{0,300}ART(?:IGO)?\.?\s*43\b
 
 def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool:
     """Decisões do Conselho sobre inscrição, sociedades, contas ou eleições ficam no banco, mas fora da busca do TED."""
+    if RE_TURMA_DO_TED.search(_sem_acento_upper(full_text[:1500])) and not re.search(
+        r"INCIDENTE\s+DE\s+(?:VERIFICACAO\s+DE\s+)?(?:IN)?IDONEIDADE", _sem_acento_upper(full_text[:1500])
+    ):
+        return True
     if eh_eleitoral(setor_nome, full_text):
         return False
     abertura = _sem_acento_upper(f"{titulo} {full_text[:600]}")

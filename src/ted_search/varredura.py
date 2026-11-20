@@ -189,12 +189,12 @@ RE_FORMULA_COLEGIADA = re.compile(
     r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|"
     r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)|RESULTADO\s+D[EO]\s+JULGAMENTO|DECIDIRAM|JULGARAM|"
     r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|"
-    r"TORNA\s+PUBLICO\s+AS\s+DECISOES|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
+    r"TORNA\s+PUBLICO\s+AS\s+DECISOES|E\s+COMO\s+VOTO|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )
 RE_COLEGIADO_FORTE = re.compile(r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|DECIDIRAM|RELATORA?\s+D[OA]\s+ACORDAO")
 # Comunicado que só anuncia a sanção aplicada, sem o teor do julgado (BA: "Suspensão do Exercício da Advocacia")
-RE_COMUNICADO_SANCAO = re.compile(r"INTIMAD[OA]\)?\s+A\s+DEVOLVER|PARA\s+CONHECIMENTO\s+DAS\s+AUTORIDADES\s+JUDICI")
+RE_COMUNICADO_SANCAO = re.compile(r"INTIMAD[OA]\)?\s+A\s+DEVOLVER|PARA\s+CONHECIMENTO\s+DAS\s+AUTORIDADES\s+JUDICI|COMUNICA\s+QUE\s+FOI\s+APLICADA")
 # Ato normativo ou administrativo que cita "por unanimidade" sem ser julgado
 # (só no título: no corpo, "Regulamento Geral" é citado por quase toda intimação de acórdão)
 RE_ATO_NORMATIVO = re.compile(r"REGULAMENTO|CAMPEONATO|CHAMAMENTO|CHAMADA\s+PUBLICA|FIXA\s+O\s+VALOR\s+DA\s+ANUIDADE|ANEXO\s+DA\s+RESOLUCAO")
@@ -221,7 +221,10 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
     # decisão do presidente do TED que recusa a consulta, ainda que transcreva ementas alheias (segunda leitura de PE)
     if re.search(r"DECISAO\s*:\s*\(\.\.\.\)\s*TRATA-SE\s+DE\s+CONSULTA", plano[:900]):
         return "ato_monocratico"
-    if _anuncia_decisao_colegiada(plano):
+    # certidão do Conselho Pleno: é a ata em extrato, sem voto (política: ata de Pleno fica fora; segunda leitura de PI)
+    if re.search(r"CERTIFICA,?\s+QUE\s+NA\s+SESSAO", abertura):
+        return "ata_em_extrato"
+    if _anuncia_decisao_colegiada(plano) or re.search(r"TORNA\s+PUBLICA\s+A\s+DECISAO\s+DO\s+PROCESSO", plano[:300]):
         return None  # vale mesmo com corpo em forma de voto ou de despacho (segundas leituras de PA e PB)
     if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(plano):
         return "sem_formula_de_julgamento"
@@ -715,7 +718,12 @@ def _alinhar_marca_por_processo(recs: list[dict]) -> None:
 
     Só sobe de 0 para 1, e só quando o registro não é de matéria administrativa ou eleitoral reconhecida.
     """
-    disciplinares = {_chave_processo(r) for r in recs if r.get("is_ted_disciplinar") and len(_chave_processo(r)) >= 9}
+    # nº truncado por espaços no texto ("18.0000.202") não identifica processo nenhum (segunda leitura de PI)
+    disciplinares = {
+        _chave_processo(r) for r in recs
+        if r.get("is_ted_disciplinar") and len(_chave_processo(r)) >= 9
+        and not re.fullmatch(r"\d{2}\.\d{4}\.\d{3,4}", (r.get("numero_processo") or "").strip())
+    }
     for rec in recs:
         if rec.get("is_ted_disciplinar") or _chave_processo(rec) not in disciplinares:
             continue
