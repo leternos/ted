@@ -2,12 +2,13 @@
   {
     "slug": "ted-ementas",
     "url": "https://www.oabpa.org.br/ted/ted-ementas",
-    "conteudo": "não confirmado",
+    "conteudo": "Página do ementário do TED/OAB-PA no site antigo; não existe mais.",
     "periodo": "n/d",
     "volume": null,
-    "acesso": "n/d",
+    "acesso": "GET https://www.oabpa.org.br/ted/ted-ementas redireciona para https://oabpa.org.br/ted/ted-ementas e dá 404 (WordPress/Elementor novo). /ted/ redireciona para uma imagem (wp-content/uploads/2025/06/TED.png, só o logo). Sitemaps (page/post/category), wp-json/wp/v2/pages (47 páginas) e Publicações/Leis e Normas não listam página de TED, ementas, consultas, súmulas ou PDF de julgados. Subdomínios legado/antigo/www2/ted/dataged não resolvem (dataged.oabpa.org.br também não). Wayback bloqueado pela política de egress. Link antigo ted-regimento-interno/download/file/183 também 404.",
     "exclusiva": null,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "verificacao": "V",
+    "situacao": "descartada",
+    "observacoes": "Verificado 2026-11-20: a base não existe mais no site atual (migração de 2025). Nenhuma decisão obtida. DEOAB_PA no banco tem 809 registros (2019-02-22 a 2026-11-16): é a única fonte. robots.txt do host: 'Disallow: /wp-admin/' apenas. Reabrir só se o mantenedor indicar nova URL; alternativa fora do escopo: Ementários do Conselho Federal (oab.org.br/util/print/<id>?print=Ementarios) trazem processos 'Representação nº 49.0000...' de várias Seccionais. Prioridade: nenhuma."
   }
 ]

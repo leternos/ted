@@ -2,23 +2,26 @@
   {
     "slug": "ted-ementarios",
     "url": "https://www.oab-sc.org.br/ted-ementarios",
-    "conteudo": "Acórdãos das Turmas do TED, ementa integral",
-    "periodo": "até 2026",
-    "volume": "centenas por ano",
-    "acesso": "busca por ano e texto (app Next.js)",
-    "exclusiva": false,
+    "conteudo": "Ementários do TED/SC (acórdãos das Turmas do TED, com ementa integral e dispositivo; pesquisa 'ementas e acórdãos do Tribunal de Ética e Disciplina'). Cada item: título 'Processo de Representação/Disciplinar nº N/AAAA - Subseção', partes (Repte/Repdo, só iniciais), Relator, Acórdão nº N/AAAA, Ementa integral entre aspas, dispositivo 'Vistos, relatados e discutidos... ACORDAM os Integrantes da Xª Turma... por unanimidade...', local, data por extenso, assinaturas Presidente/Relator.",
+    "periodo": "1995-10-27 (Acórdão 2/1995) a 2026-09-25 (Acórdão 400/2026)",
+    "volume": "826 páginas x 12 itens = cerca de 9900 acórdãos (medido em 2026-11-20: última página, 826, tem 2 itens). Por ano ~29 a 38 páginas (2005=29, 2010=31, 2020=34, 2024=38, 2026=30), ou seja ~350-450/ano.",
+    "acesso": "GET https://www.oab-sc.org.br/ted-ementarios?page=N&yearStart=AAAA&yearEnd=AAAA&text=... (Next.js App Router, HTML renderizado no servidor e payload RSC na própria página; parâmetros lidos no JS da página: page, yearStart, yearEnd, text/search). 12 itens por página, ordem decrescente (2026 -> 1995). Sem login, captcha ou token. Não há endpoint JSON separado nem /_next/data.",
+    "exclusiva": true,
     "verificacao": "V",
-    "situacao": "mapeada"
+    "situacao": "verificada",
+    "inteiro_teor": "NAO. Ementa integral + dispositivo do acórdão; sem relatório e voto, sem PDF/link por item.",
+    "observacoes": "Verificada com leitura de 60+ itens reais (páginas 1, 2, 826 e filtros 2005/2010/2015/2020/2024/2026). Ex.: Acórdão 400/2026, Proc. Representação 209/2026, São Francisco do Sul, rel. Ramon Luis Bianchi, 2ª Turma, exclusão por quatro suspensões (art. 38, I); Acórdão 2/1995, Proc. 192/93, rel. Hélio Roque Rubick, retenção de autos, improcedente. Partes aparecem como iniciais conforme publicado. ROBOTS: https://www.oab-sc.org.br/robots.txt devolve 404 (sem restrição); nenhum termo de uso localizado. Coletar 1 conexão, pausa de 2-3 s. SOBREPOSIÇÃO com DEOAB_SC (4022 reg., 2019-03-26 a 2026-11-19; só 812 com numero_processo): o Diário SC publica o texto no corpo (descricao_ementa) e numero_processo quase sempre vazio, por isso o cruzamento é por 'Processo de Representação nº X' no texto. Amostra de 12 itens de 2026: 12 de 12 estão no banco (ex.: 1071/2025 e 783/2025 em DEOAB_SC:1181650; 1425/2025 em DEOAB_SC:1179367; 635/2023 em DEOAB_SC:1081079). Ou seja 2019+ repete o Diário; o ganho exclusivo é 1995-2018 (~8 mil acórdãos, estimado) mais relator/acórdão estruturados. Prioridade: 1a. Os links laterais (Sobre, Composição, Legislações, Consulta Processos TED, Calendário) não são navegáveis por HTML estático; /ted-legislacoes e /ted-calendario existem (200); consultas respondidas / súmulas não localizadas."
   },
   {
     "slug": "conselho-ementarios",
     "url": "https://www.oab-sc.org.br/conselho-estadual-ementarios",
-    "conteudo": "Decisões recursais do Conselho Estadual",
-    "periodo": "n/d",
+    "conteudo": "Decisões recursais do Conselho Estadual (registro antigo)",
+    "periodo": null,
     "volume": null,
-    "acesso": "app Next.js",
+    "acesso": "HTTP 404 em 2026-11-20; testadas variantes /conselho-ementarios, /conselho-seccional, /conselho-estadual, /ementarios, /ted/ementarios (todas 404)",
     "exclusiva": null,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "verificacao": "V",
+    "situacao": "descartada",
+    "observacoes": "URL do registro inicial não existe e não há link para ementário do Conselho no menu do site. Reabrir só se aparecer link."
   }
 ]

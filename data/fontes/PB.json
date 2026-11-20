@@ -2,12 +2,14 @@
   {
     "slug": "banco-de-jurisprudencia",
     "url": "https://www.oabpb.org.br/banco-de-jurisprudencia",
-    "conteudo": "Acórdãos e consultas do TED",
-    "periodo": "2018",
-    "volume": "1 arquivo visível",
-    "acesso": "lista de PDFs",
-    "exclusiva": null,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "conteudo": "'Banco de Jurisprudências do TED' (site Wix): texto promete acórdãos, consultas e inteiro teor, mas a lista 'NOSSOS ARQUIVOS' tem um único item: '19/04/2018 - Processo - Consulta nº 150000.2017.011869-3', link para PDF.",
+    "periodo": "2018 (um único documento, julgado em 2018-04-13)",
+    "volume": "1 documento (medido 2026-11-20). PDF de 1 página, 59 KB, texto extraível (pdftotext) com ementa em caixa alta + fundamentação + dispositivo.",
+    "acesso": "GET https://www.oabpb.org.br/banco-de-jurisprudencia (HTML Wix renderizado no servidor, 668 KB); o PDF está em https://www.oabpb.org.br/_files/ugd/a8daef_998a10fefb4d4c6f8355c59f9c758c64.pdf (HTTP 200 application/pdf). Sem login, captcha nem paginação. Os demais PDFs que aparecem na página são legislação (regimentos, provimento, tabela de honorários, códigos). sitemap/pages-sitemap.xml não lista outra página de julgados (só tribunal-de-etica-e-disciplina, regimento-do-ted, camaras, codigo-de-etica, corregedoria).",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "mapeada",
+    "inteiro_teor": "SIM, mas só para esse 1 documento (decisão completa em PDF de 1 página, texto nativo).",
+    "observacoes": "NÃO marcada 'verificada': li 1 decisão (Consulta TED nº 004-2017, consulente de outra Seccional, relator designado Carlos Neves Dantas Freire, acórdão de 13/04/2018, não conhecida por ser a consulente inscrita em outro Estado; art. 25, XVI do Regimento Interno), abaixo do mínimo de 5. Sobreposição: 0 de 2 chaves buscadas ('150000.2017.011869-3' e '2017.011869') no banco; DEOAB_PB tem 1.178 registros (2019-01-16 a 2026-11-12), nenhum anterior a 2018 conferido ali. Conteúdo exclusivo mas irrelevante em volume. robots.txt (Wix): 'Allow: /', 'Disallow: *?lightbox=' e bloqueios só para AdsBot/PetalBot e crawl-delay para dotbot/AhrefsBot; sem restrição ao uso. Prioridade: baixíssima (baixar 1 PDF, uma vez)."
   }
 ]

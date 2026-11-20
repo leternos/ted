@@ -2,12 +2,13 @@
   {
     "slug": "coletanea",
     "url": "https://www.oabpi.org.br/acervo2019/documentos/colet_nea_ementas_site.pdf",
-    "conteudo": "Coletânea de ementas",
-    "periodo": "até 2019",
+    "conteudo": "Coletânea de ementas (PDF único) do registro antigo; não existe mais.",
+    "periodo": "n/d",
     "volume": null,
-    "acesso": "PDF único",
+    "acesso": "GET da URL retorna 404 text/html (368 KB de página de erro do WordPress); /acervo2019 também 404. Site atual (WordPress): menu Serviços > TED (https://www.oabpi.org.br/servicos/ted/) traz só definição, competência, composição das turmas e calendário de sessões 2025 (PDF). wp-json/wp/v2/media pesquisado por ementa, TED, consulta, acórdão, jurisprudência, súmula, disciplinar, ética: só regimento do TED, código de ética, editais, pautas/atas de sessão e duas 'EMENTA-PENAL/CONSTITUCIONAL.pdf' (2020, material de estudo, não julgados). Menus 'Artigos e Pareceres', 'Cartilhas', 'Publicações Online' (publicacoesonline.com.br, terceiro) não trazem julgados do TED.",
     "exclusiva": null,
-    "verificacao": "T",
-    "situacao": "mapeada"
+    "verificacao": "V",
+    "situacao": "descartada",
+    "observacoes": "Verificado 2026-11-20: nenhuma base de julgados/consultas/súmulas do TED no site. Nenhuma decisão lida. robots.txt: 'User-agent: *' 'Disallow:' (vazio, tudo liberado). DEOAB_PI no banco: 182 registros (2019-02-04 a 2026-11-16), única fonte. Pautas e atas de sessão em PDF (ex.: Pauta-e-ata-Sessao-extraordinaria-de-29-de-janeiro-de-2025-1.pdf) existem, mas são atas administrativas, não acórdãos; não testadas quanto ao conteúdo. Prioridade: nenhuma."
   }
 ]

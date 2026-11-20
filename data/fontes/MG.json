@@ -1,9 +1,14 @@
 [
   {
     "slug": null,
-    "url": null,
-    "conteudo": "Sem base própria; PDFs em /DocInformes são ementas do CFOAB",
-    "situacao": "sem_base",
-    "verificacao": "S"
+    "url": "https://www.oabmg.org.br/",
+    "conteudo": "Site institucional da OAB/MG (TED em /ted; PDFs em /doc/ e /DocInformes). Base própria de julgados não confirmada: todas as páginas HTML (/, /ted, /ted/jurisprudencia, /DocInformes) respondem 403 'Just a moment...' (desafio gerenciado do Cloudflare) para cliente automatizado, em 2026-11-20. Não contornado, conforme a regra.",
+    "periodo": null,
+    "volume": null,
+    "acesso": "bloqueado por desafio Cloudflare; só /robots.txt responde 200",
+    "exclusiva": null,
+    "verificacao": "S",
+    "situacao": "bloqueada_waf",
+    "observacoes": "robots.txt (200): Disallow de /doc/RESOLUÇÃO.06.2021.RIOABMG.21.05.21_certo.pdf, /doc/regimento_interno_ted_2019.pdf, /ted/formulario e /maker/. Subdomínios testados: ted. e legado. não resolvem; www2. e apex dão 403 (mesmo desafio). Busca web não revelou ementário próprio do TED/MG; o registro anterior ('sem base; PDFs em /DocInformes são ementas do CFOAB') segue NÃO confirmado nem refutado. DEOAB_MG no banco: 5470 reg. (2019-07-11 a 2026-11-19), todos com texto, 1 com inteiro teor. Prioridade: baixa; a conferência exige navegador humano ou autorização do mantenedor. Pendência para o cliente: abrir /ted e /DocInformes em navegador e confirmar se há ementário."
   }
 ]
