@@ -1,0 +1,374 @@
+{
+  "uf": "MS",
+  "id_organizacao": 12,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Notificação",
+    "Comunicado"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-20T03:57:06Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-28",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2019-02-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-03-11",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-11-13",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-03-05",
+        "publicacoes": 37,
+        "baixadas": 37
+      },
+      {
+        "dia": "2020-05-05",
+        "publicacoes": 2,
+        "baixadas": 2
+      },
+      {
+        "dia": "2020-07-02",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2020-10-06",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-11-24",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-01-11",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2021-09-21",
+        "publicacoes": 15,
+        "baixadas": 15
+      },
+      {
+        "dia": "2021-10-19",
+        "publicacoes": 21,
+        "baixadas": 21
+      },
+      {
+        "dia": "2022-03-17",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2022-07-27",
+        "publicacoes": 46,
+        "baixadas": 46
+      },
+      {
+        "dia": "2022-09-28",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2023-01-24",
+        "publicacoes": 31,
+        "baixadas": 31
+      },
+      {
+        "dia": "2023-02-08",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2023-04-20",
+        "publicacoes": 39,
+        "baixadas": 39
+      },
+      {
+        "dia": "2023-12-07",
+        "publicacoes": 21,
+        "baixadas": 21
+      },
+      {
+        "dia": "2024-02-27",
+        "publicacoes": 26,
+        "baixadas": 26
+      },
+      {
+        "dia": "2024-03-22",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2024-06-19",
+        "publicacoes": 45,
+        "baixadas": 45
+      },
+      {
+        "dia": "2024-07-02",
+        "publicacoes": 34,
+        "baixadas": 34
+      },
+      {
+        "dia": "2025-02-28",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2025-05-09",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2025-06-30",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2025-07-21",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2026-03-31",
+        "publicacoes": 35,
+        "baixadas": 35
+      },
+      {
+        "dia": "2026-08-27",
+        "publicacoes": 40,
+        "baixadas": 40
+      },
+      {
+        "dia": "2026-11-04",
+        "publicacoes": 24,
+        "baixadas": 24
+      }
+    ],
+    "decisoes_no_censo": 109,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 0.9908,
+      "DECISAO": 0.2202,
+      "JULGAMENTO": 0.1651,
+      "RECURSO": 0.9817
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 413,
+        "parecem_decisao": 2,
+        "setores": {
+          "Secretaria de Ética e Disciplina": 320,
+          "Gabinete da Diretora Vice-Presidente": 90,
+          "Secretaria Geral": 2,
+          "Diretor Vice-Presidente": 1
+        },
+        "amostras": [
+          {
+            "id": 8052,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional de Mato Grosso do Sul, NOTIFICA o senhor ERIC ANDERSON DA SILVA para manifestar em processo de seu interesse (PROC. Nº 0400/2012) no prazo de quinze dias, contados a partir do dia útil seguinte ao da publicação deste e"
+          },
+          {
+            "id": 185290,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, notifica o advogado Anderson Regis Pasqualeto OAB/MS n° 12.068 nomeado como Defensor Dativo no processo disciplinar no Proc. n° 19725/2015 - Representado: E.G.J.; para apresentar defesa prévia, no pr"
+          },
+          {
+            "id": 224562,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, intima o (a) advogado (a): A.T.P.N. (Adv.: Dr. Algacyr Torres Pissini Neto - OAB/MS nº 7.400) para se manifestarem em processo de seus interesses no prazo de quinze dias, contados a partir da publica"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 109,
+        "parecem_decisao": 103,
+        "setores": {
+          "Secretaria de Ética e Disciplina": 98,
+          "Secretaria Geral": 11
+        },
+        "amostras": [
+          {
+            "id": 413135,
+            "titulo": "PUBLICAÇÃO DE ACÓRDÃO - SESSÃO ORDINÁRIA DA 2ª CÂMARA SECCIONAL (17.02.2022, às 16:00)",
+            "trecho": "Ordem dos Advogados do Brasil, Seccional do Mato Grosso do Sul - Processo: 43787/2020 – Incrição originária – Recorrente: Renato Cavalcante Franco Objeto: Recurso contra a decisão da 1 ª Câmara Julgadora que determinou o cancelamento da inscrição Relator(a): J"
+          },
+          {
+            "id": 563227,
+            "titulo": "ACÓRDÃO DE JULGAMENTO",
+            "trecho": "SESSÃO ORDINÁRIA HÍBRIDA DA 3 ª CÂMARA SECCIONAL DA OAB / MS EM 27 / 10 / 202 2 , ÀS 16 h . Representação Disciplinar n. 6.863 /20 17 Objeto: Recurso em face da decisão da Vice-Presidência que determinou o arquivamento da Representação Disciplinar. Recorrente:"
+          },
+          {
+            "id": 563563,
+            "titulo": "NOTIFICAÇÃO DE ACÓRDÃO - Proc. SED Nº 21068/2018",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, com fulcro no art. 69 caput e seu § 2º do EAOAB, notifica para apresentação de RECURSO do acórdão prolatado pelas Turmas do Tribunal de Ética e Disciplina, no prazo de quinze dias úteis, contados a p"
+          }
+        ]
+      },
+      "Alegações Finais": {
+        "publicacoes": 11,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria de Ética e Disciplina": 11
+        },
+        "amostras": [
+          {
+            "id": 1070371,
+            "titulo": "ALEGAÇÕES FINAIS – PROCESSO SED N. 24272-2024",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, notifica as seguintes partes: Representado (a): K.B.R. (Adv.: Karla Brito Rivarola – OAB/MS n. 18.877) e o (a) Representante: Rosana Vieira, para apresentarem alegações finais em conformidade com o a"
+          },
+          {
+            "id": 1144563,
+            "titulo": "ALEGAÇÕES FINAIS – PROCESSO SED N. 24707-2024",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, notifica as seguintes partes: Representado (a): A.F (Adv.: Amanda Faria – OAB/MS n. 10.424) e a Defensora Dativa Anna Vitoria Ribeiro Canario – OAB/MS n. 19.960 e o Representante: Brasílio Mendes Fle"
+          },
+          {
+            "id": 1144564,
+            "titulo": "ALEGAÇÕES FINAIS – PROCESSO SED N. 24279-2024",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, notifica as seguintes partes: Representado (a): M.G.D., (Adv.: Mauro Gonçalves Dias – OAB/MS n. 17.614, Adv.: Northon Borges Rezende – OAB/MS n. 17.848) e o Representante: Irani Borges Amancio, para "
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 8,
+        "parecem_decisao": 2,
+        "setores": {
+          "Secretaria Geral": 8
+        },
+        "amostras": [
+          {
+            "id": 1380,
+            "titulo": "RESOLUÇÃO OAB/MS n. 001/2019",
+            "trecho": "“ Altera o Regimento Interno para aumentar o número de membros dos órgãos fracionários da OAB/MS. ” O Conselho Seccional da Ordem dos Advogados do Brasil - Mato Grosso do Sul, reunido ordinariamente no dia 25 de janeiro de 2019, no uso das suas atribuições con"
+          },
+          {
+            "id": 1381,
+            "titulo": "RESOLUÇÃO OAB/MS n. 002/2019",
+            "trecho": "“ Altera o Regimento Interno para criar o cargo de Coordenador do Co légio de Presidentes da OAB/MS. ” O Conselho Seccional da Ordem dos Advogados do Brasil - Mato Grosso do Sul, reunido ordinariamente no dia 25 de janeiro de 2019, no uso das suas atribuições "
+          },
+          {
+            "id": 1382,
+            "titulo": "RESOLUÇÃO OAB/MS n. 003/2019",
+            "trecho": "“ Dispõe sobre Programa de Recuperação de Créditos junto à Seccional, concernente aos débitos vencidos até 31 de dezembro de 2018 e dá outras providências”. O Conselho Seccional da Ordem dos Advogados do Brasil no Estado de Mato Grosso do Sul, reunido em Sessã"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 7,
+        "parecem_decisao": 1,
+        "setores": {
+          "Secretaria de Ética e Disciplina": 4,
+          "Secretaria Geral": 2,
+          "Pleno do Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 364765,
+            "titulo": "PAUTA DA SESSÃO ORDINÁRIA DO CONSELHO SECCIONAL DA OAB/MS",
+            "trecho": "24 DE SETEMBRO DE 2021, ÀS 08H 1 - SESSÕES ANTERIORES Leitura e aprovação da ata da sessão virtual ordinária anterior (20.08.2021). 2 - LEITURA DE OFÍCIOS, DELIBERAÇÕES, PROPOSIÇÕES E COMUNICAÇÕES 2.1 Outorga de Moção de Congratulação ao Advogado Marco Antônio"
+          },
+          {
+            "id": 563587,
+            "titulo": "NOTIFICAÇÃO/PAUTA DE JULGAMENTOS",
+            "trecho": "O PLENO DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE MATO GROSSO DO SUL, considerando a edição da Resolução n° 13/2020 que trata da realização das Sessões Plenárias Remotas no âmbito desta Seccional, notifica as partes e seus"
+          },
+          {
+            "id": 563795,
+            "titulo": "NOTIFICAÇÃO/PAUTA DE JULGAMENTOS",
+            "trecho": "A SEGUNDA TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL SECCIONAL DE MATO GROSSO DO SUL, considerando a edição da Resolução n° 13/2020 que trata da realização das Sessões Plenárias Remotas no âmbito desta Seccional, notifica as parte"
+          }
+        ]
+      },
+      "Comunicado": {
+        "publicacoes": 6,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria de Ética e Disciplina": 6
+        },
+        "amostras": [
+          {
+            "id": 242940,
+            "titulo": "COMUNICADO",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, comunica que conforme decisão proferida pelo Tribunal de Ética e Disciplina nos autos do processo nº 0020/2013, foi aplicada a sanção disciplinar de exclusão do exercício profissional ao advogado Mar"
+          },
+          {
+            "id": 266995,
+            "titulo": "COMUNICADO",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, comunica que conforme decisão proferida por esta Seccional, foi aplicada a sanção disciplinar de suspensão do exercício profissional aos seguintes advogados: ADVOGADO(A) OAB/MS Nº PROC.SED Nº PERÍODO"
+          },
+          {
+            "id": 292328,
+            "titulo": "COMUNICADO",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, comunica que em cumprimento à decisão judicial, estão suspensos os efeitos da sanção disciplinar de suspensão do exercício profissional aplicada por esta Seccional ao seguinte advogado: Alcides Jesus"
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria de Ética e Disciplina": 3,
+          "Secretaria Geral": 1
+        },
+        "amostras": [
+          {
+            "id": 283047,
+            "titulo": "PORTARIA OAB/MS N.º 025/2020",
+            "trecho": "“Estabelece recesso forense e suspensão de prazos processuais no âmbito da OAB/MS.” O Presidente da Ordem dos Advogados do Brasil, Seccional de Mato Grosso do Sul, no uso das suas atribuições legais e regimentais, RESOLVE: Art. 1º. Estabelecer recesso forense "
+          },
+          {
+            "id": 880038,
+            "titulo": "PORTARIA/TED/OAB-MS/N° 001/2025",
+            "trecho": "“Nomeia Conselheiros do Tribunal de Ética e Disciplina da OAB-MS para comporem a Comissão das Palestras no âmbito da Capital e Interior do Estado de Mato Grosso do Sul” O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil Seccional d"
+          },
+          {
+            "id": 880039,
+            "titulo": "PORTARIA/TED/OAB-MS/N° 002/2025",
+            "trecho": "“Nomeia Conselheiros para comporem a Comissão de Coordenação de Atividades (palestras destinadas aos Conselheiros) nas Sessões do Pleno do Tribunal de Ética e Disciplina da OAB-MS” O Presidente do Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil"
+          }
+        ]
+      },
+      "Intimação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 2885,
+            "titulo": "INTIMAÇÃO",
+            "trecho": "A ORDEM DOS ADVOGADOS DO BRASIL SEÇÃO DE MATO GROSSO DO SUL, intima os (as) advogados (as): Dr. (a) MARIO ESQUEDA JUNIOR, OAB/MS 8746 (Proc. 21194/2018), Dr. (a) MARISTELA GONÇALVES RODRIGUES, OAB/MS 19482 (Proc. 21195/2018), Dr. (a) MICHELLE MACIEL SOARES, OA"
+          }
+        ]
+      }
+    }
+  },
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "observacoes": "MS: censo de 30 dias-amostra (2019-2026, 559 publicações) com 109 decisões, todas do tipo Acórdão; recall 100% de ACORDAO, nenhuma decisão sem termo. Quem julga: Turmas do TED/OAB-MS e Pleno do TED (disciplinar, setor Secretaria de Ética e Disciplina, 98) e Câmaras Seccionais (1ª, 2ª, 3ª Câmara Seccional, setor Secretaria Geral, 11; sessões híbridas) para recursos de inscrição e decisões da Vice-Presidência, mérito muitas vezes não disciplinar, filtrar depois. Como publica: títulos 'PUBLICAÇÃO DE ACÓRDÃO - SESSÃO ORDINÁRIA DA Nª CÂMARA SECCIONAL', 'ACÓRDÃO DE JULGAMENTO' e 'NOTIFICAÇÃO DE ACÓRDÃO - Proc. SED' (esta é aviso de prazo recursal com referência ao acórdão, 103 de 109 parecem decisão por texto). Notificação (413, quase toda prazo/defesa prévia, 2 parecem decisão) e Comunicado (6, informa sanção aplicada por decisão do TED) mantidos como tipo amplo; Pauta de Julgamentos (7), Resolução, Portaria, Alegações Finais, Intimação são expediente e ficam fora. Publicações de 2019 a 2026. Sem indício de ementário em site próprio nem de decisões só em PDF.",
+  "modo": "censo"
+}

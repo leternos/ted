@@ -181,7 +181,9 @@ RE_DECISAO_DE_ORGAO = re.compile(
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )
 RE_FORMULA_COLEGIADA = re.compile(
-    r"ACORDA[MO]|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
+    # "ACORDAM", não "ACÓRDÃO": a intimação "para apresentação de recurso ao acórdão da Primeira Turma" só lista
+    # processos, sem desfecho (segunda leitura de CE: 92 de 373 registros)
+    r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
     r"(?:NEG|D)(?:AR|OU|ARAM|ADO)\s+PROVIMENTO|DECIDIRAM|DECIDIU|NAO\s+(?:RE)?CONHEC|TORNA\s+PUBLICO\s+AS\s+DECISOES|"
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )

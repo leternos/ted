@@ -1,0 +1,418 @@
+{
+  "uf": "AM",
+  "id_organizacao": 4,
+  "termos": [
+    "EMENTA",
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Errata",
+    "Edital de Notificação",
+    "Edital"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-20T03:59:36Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-29",
+        "publicacoes": 51,
+        "baixadas": 51
+      },
+      {
+        "dia": "2019-02-26",
+        "publicacoes": 26,
+        "baixadas": 26
+      },
+      {
+        "dia": "2019-03-12",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2019-11-27",
+        "publicacoes": 33,
+        "baixadas": 33
+      },
+      {
+        "dia": "2020-03-04",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2020-05-29",
+        "publicacoes": 12,
+        "baixadas": 12
+      },
+      {
+        "dia": "2020-07-07",
+        "publicacoes": 15,
+        "baixadas": 15
+      },
+      {
+        "dia": "2020-10-30",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2020-11-11",
+        "publicacoes": 58,
+        "baixadas": 58
+      },
+      {
+        "dia": "2021-01-28",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2021-09-22",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2021-10-27",
+        "publicacoes": 6,
+        "baixadas": 6
+      },
+      {
+        "dia": "2022-03-08",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2022-07-01",
+        "publicacoes": 37,
+        "baixadas": 37
+      },
+      {
+        "dia": "2022-09-02",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2023-01-18",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2023-02-17",
+        "publicacoes": 38,
+        "baixadas": 38
+      },
+      {
+        "dia": "2023-04-26",
+        "publicacoes": 27,
+        "baixadas": 27
+      },
+      {
+        "dia": "2023-12-04",
+        "publicacoes": 10,
+        "baixadas": 10
+      },
+      {
+        "dia": "2024-02-06",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2024-03-05",
+        "publicacoes": 40,
+        "baixadas": 40
+      },
+      {
+        "dia": "2024-06-03",
+        "publicacoes": 27,
+        "baixadas": 27
+      },
+      {
+        "dia": "2024-07-31",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2025-02-06",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2025-05-20",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2025-06-30",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2025-07-18",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2026-03-26",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2026-08-17",
+        "publicacoes": 27,
+        "baixadas": 27
+      },
+      {
+        "dia": "2026-11-16",
+        "publicacoes": 17,
+        "baixadas": 17
+      }
+    ],
+    "decisoes_no_censo": 70,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 0.8857,
+      "EMENTA": 1.0,
+      "DECISAO": 0.0429,
+      "JULGAMENTO": 0.0286,
+      "RECURSO": 0.0286
+    },
+    "tipos": {
+      "Inscrição": {
+        "publicacoes": 180,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Administrativa": 180
+        },
+        "amostras": [
+          {
+            "id": 5419,
+            "titulo": "INSCRIÇÃO DEFINITIVA",
+            "trecho": "Faço público para efeito do parágrafo 6º do art. 45 da Lei 8.906/94 c/c artigo 106, § 1º do Regimento da OAB/AM, que requer inscrição DEFINITIVA na Ordem dos Advogados do Brasil – Seção do Amazonas, a Bacharela: FRANCISMARA DA SILVA BASTOS . Secretaria da Orde"
+          },
+          {
+            "id": 23978,
+            "titulo": "INSCRIÇÃO DEFINITIVA",
+            "trecho": "Faço público para efeito do parágrafo 6° do art. 45 da Lei 8.906/94 c/c artigo 106, § 1° do Regimento da OAB/AM, que requer inscrição Definitiva na Ordem dos Advogados do Brasil – Seção do Amazonas, o Bacharel: SÉRGIO PHILIPPE PINHEIRO EGUCHI . Secretaria da O"
+          },
+          {
+            "id": 23979,
+            "titulo": "INSCRIÇÃO DEFINITIVA",
+            "trecho": "Faço público para efeito do parágrafo 6° do art. 45 da Lei 8.906/94 c/c artigo 106, § 1° do Regimento da OAB/AM, que requer inscrição Definitiva na Ordem dos Advogados do Brasil – Seção do Amazonas, o Bacharel: RAFAEL TAVEIRA MARQUES . Secretaria da Ordem dos "
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 157,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria Administrativa": 156,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 1517,
+            "titulo": "EDITAL",
+            "trecho": "Faço público para efeito do parágrafo 6° do art. 45 da Lei 8.906/94 c/c artigo 106, § 1° do Regimento da OAB/AM, que requer inscrição Suplementar na Ordem dos Advogados do Brasil - Seção do Amazonas, o Advogado: GUSTAVO ANTONIO FERES PAIXÃO . Secretaria da Ord"
+          },
+          {
+            "id": 1519,
+            "titulo": "INSCRIÇÃO DEFINITIVAPOR TRANSFERÊNCIA",
+            "trecho": "Faço público para efeito do parágrafo 6º do art. 45 da Lei 8.906/94 c/c artigo 106, § 1º do Regimento da OAB/AM, que requer inscrição DEFINITIVA POR TRANSFERÊNCIA na Ordem dos Advogados do Brasil – Seção do Amazonas, a Advogada: ALYNE COELHO OLIVEIRA . Secreta"
+          },
+          {
+            "id": 1520,
+            "titulo": "INSCRIÇÃO DEFINITIVA",
+            "trecho": "Faço público para efeito do parágrafo 6º do art. 45 da Lei 8.906/94 c/c artigo 106, § 1º do Regimento da OAB/AM, que requer inscrição DEFINITIVA na Ordem dos Advogados do Brasil – Seção do Amazonas, a Bacharela: ADRIANA MONTEIRO DE SOUZA . Secretaria da Ordem "
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 91,
+        "parecem_decisao": 1,
+        "setores": {
+          "Gabinete da Presidência": 55,
+          "Secretaria da Presidência": 35,
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1427,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 49462017-0 Representante: Cecilia Santos Souza Representados: M. J. de O. R. – OAB/AM 2322 / G. M. E. - OAB/AM 5268 APROVO a manifestação do ilustre Presidente do Tribunal de Ética e Disciplina – TED, Dr. Luís Augusto Pestana Vieira, opinando pelo ar"
+          },
+          {
+            "id": 1428,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 35592017 -0 Representante: Evaneide Marques Velozo Representado: D. C. de A. – OAB/AM 5268 APROVO a manifestação do ilustre Presidente do Tribunal de Ética e Disciplina – TED, Dr. Luís Augusto Pestana Vieira, opinando pelo arquivamento da Representaç"
+          },
+          {
+            "id": 1429,
+            "titulo": "DESPACHO DE ARQUIVAMENTO.",
+            "trecho": "Processo: 64962018-0 Representante: Centro de Pesquisa e Ensino da Amazônia Representado: V. B. dos S. - OAB/AM 7719 APROVO a manifestação do ilustre Presidente do Tribunal de Ética e Disciplina – TED, Dr. Luís Augusto Pestana Vieira, opinando pelo arquivament"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 80,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 78,
+          "Secretaria da Presidência": 1,
+          "Corregedoria": 1
+        },
+        "amostras": [
+          {
+            "id": 5209,
+            "titulo": "PROCESSO N° 82622016-0.",
+            "trecho": "Pelo presente Edital, fica notificado o advogado abaixo relacionado, que figura como requerente, para JULGAMENTO no dia 13 de MARÇO de 2019 (quarta-feira) às 18h00, na Av. Jornalista Umberto Calderaro Filho, 2000 - Adrianópolis – Miniauditório. Processo n° 826"
+          },
+          {
+            "id": 193913,
+            "titulo": "Processo nº 75662017-0",
+            "trecho": "Representante: R. B. A. G. OAB/DF 26885. Representados (a): Adv. O . T . B . N . - OAB/ AM 5566 , Adv. M. P. de C. – OAB/AM 4890 , Adv. V. N. de O. da C. – OAB/AM 8944 . Relator (a): Dra. Alice Siqueira. Pelo presente Edital, notificamos os (a) Advogados (a) a"
+          },
+          {
+            "id": 193992,
+            "titulo": "Processo nº 34262017-0",
+            "trecho": "Representante: 7ª VARA CRIMINAL DE MANAUS. Representados (a): Adv. M . A . M . A . - OAB/ AM 1325 . Relator (a): Dra. Alice Siqueira. Pelo presente Edital, notificamos o (a) Advogado (a) acima, na qualidade de Representado (a) no processo em epigrafe, a compar"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 70,
+        "parecem_decisao": 30,
+        "setores": {
+          "Sociedades": 43,
+          "Tribunal de Ética e Disciplina": 15,
+          "Secretaria Administrativa": 9,
+          "Secretaria do Conselho": 3
+        },
+        "amostras": [
+          {
+            "id": 18180,
+            "titulo": "ACORDÃO DE ALTERAÇÃO CONTRATUAL",
+            "trecho": "CÂMARA ESPECIAL Processo nº. 98 – K / 2010 FEITO: ALTERAÇÃO CONTRATUAL Interessados: Dr. Raphael Heinrich Barbosa de Oliveira, Dra. Priscila Lima Monteiro, Dra. Silvyane Parente de Araújo Castro, Dr. Igor de Mendonça Campos, Dra. Julyana Lya Silva dos Santos, "
+          },
+          {
+            "id": 18181,
+            "titulo": "ACORDÃO DE ALTERAÇÃO CONTRATUAL",
+            "trecho": "CÂMARA ESPECIAL Processo nº. 98 – K / 2010 FEITO: ALTERAÇÃO CONTRATUAL Interessados: Dr. Raphael Heinrich Barbosa de Oliveira, Dra. Priscila Lima Monteiro, Dra. Silvyane Parente de Araújo Castro, Dr. Igor de Mendonça Campos, Dra. Julyana Lya Silva dos Santos, "
+          },
+          {
+            "id": 194004,
+            "titulo": "REGISTRO DE SOCIEDADE INDIVIDUAL DE ADVOCACIA",
+            "trecho": "CÂMARA ESPECIAL Processo nº 75 – I /2019 Feito: REGISTRO DE SOCIEDADE INDIVIDUAL Interessada: Dra. Ana Cecilia Lopes Albuquerque - “ANA CECILIA LOPES ALBUQUERQUE SOCIEDADE INDIVIDUAL DE ADVOCACIA”. ACÓRDÃO EMENTA: SOCIEDADE INDIVIDUAL DE ADVOCACIA –EXIGÊNCIAS "
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 38,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria da Presidência": 18,
+          "Gabinete da Presidência": 18,
+          "Tribunal de Ética e Disciplina": 2
+        },
+        "amostras": [
+          {
+            "id": 5529,
+            "titulo": "PORTARIA OAB/AM-GP 031/2019.",
+            "trecho": "DISPÕE sobre a nomeação dos advogados abaixo mencionados para compor a Comissão de Atualização da Tabela de Honorários da OAB/AM, para o triênio 2019/2021. O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL - SEÇÃO DO AMAZONAS, no uso de suas atribuições legais e, "
+          },
+          {
+            "id": 5534,
+            "titulo": "PORTARIA OAB/AM-GP Nº 016/2019.",
+            "trecho": "DISPÕE sobre a composição do Tribunal de Ética e Disciplina da OAB/AM , para o triênio 2019/2021. O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO DO AMAZONAS , no uso de suas atribuições legais e, CONSIDERANDO o que determina o art. 55, inciso XII do Reg"
+          },
+          {
+            "id": 5535,
+            "titulo": "PORTARIA OAB/AM-GP Nº 032/2019.",
+            "trecho": "DISPÕE sobre a composição do Tribunal de Ética e Disciplina da OAB/AM , para o triênio 2019/2021. O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SEÇÃO DO AMAZONAS , no uso de suas atribuições legais e, CONSIDERANDO o que determina o art. 55, inciso XII do Reg"
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 16,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 16
+        },
+        "amostras": [
+          {
+            "id": 1138836,
+            "titulo": "Processo nº 04.0000.2025.001883-6",
+            "trecho": "Representante: CREUZA DE SOUZA E SOUZA . Patrono(s): ALEKSANDER WEINSTOCK CATTAN – OAB/AM A2330. Representado(a/s): Adv.(a): J. C. F. P . e K. E. D. Q. N. E. S. Patrono(s): JESSICA CRISTINA FONSECA PEREIRA - OAB/AM 9519 e KAREN ESTHER DE QUEIROZ NORONHA E SILV"
+          },
+          {
+            "id": 1138837,
+            "titulo": "Processo nº 04.0000.2024.005786-1",
+            "trecho": "Representante: SUELY MELO DE MENCONÇA . Representado(a/s): R. B. V . Patrono (s): EVELISE MORAES MACHADO TREVISAN - OAB/AM 16292 . Relator(a): MARIANA FARIA FILARD . Pelo presente Edital, notificamos o(a/s) Advogado(a/s) acima, na qualidade de REPRESENTA DO E "
+          },
+          {
+            "id": 1138838,
+            "titulo": "Processo nº 04.0000.2023.002050-8",
+            "trecho": "Representante: GLAUCIA MARIA CLAUDINO BELMONT . Patrono: G. W. D. L. F. - OAB/AM 4160 . Representado(a): Adv.(a). E. L. C . Patrono: R. C. D. J. - OAB/AM 16616 Relator(a): TALLITA LINDOSO SILVA MADDY . Pelo presente Edital, notificamos o(a/s) Advogado(a/s) aci"
+          }
+        ]
+      },
+      "Edital de Convocação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 2
+        },
+        "amostras": [
+          {
+            "id": 377096,
+            "titulo": "CONVOCAÇÃO/PAUTA DE JULGAMENTO DA 2ª TURMA.",
+            "trecho": "A 2ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/AM, reunir-se-á em Sessão Virtual de Julgamento por videoconferência a teor do que rege o art. 60, § 3º e 4º do CED, a ser realizada no dia 2 3 / 11 /2021 às 18:00h , através da plataforma ZOOM MEETINGS ou si"
+          },
+          {
+            "id": 479276,
+            "titulo": "CONVOCAÇÃO/PAUTA DE JULGAMENTO DA 4ª TURMA.",
+            "trecho": "A 4 ª TURMA DO TRIBUNAL DE ÉTICA E DISCIPLINA DA OAB/AM , a teor do que rege o art. 60 §3º e §4º do CED, reunir-se-á em Sessão de Julgamento híbrida (virtual/presencial), a ser realizada no dia 2 6 /0 9 /2022 às 1 8 h00 , através da plataforma Zoom/ em formato"
+          }
+        ]
+      },
+      "Errata": {
+        "publicacoes": 2,
+        "parecem_decisao": 1,
+        "setores": {
+          "Sociedades": 1,
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 409410,
+            "titulo": "ERRATA DISSOLUÇÃO DE SOCIEDADE",
+            "trecho": "CONSELHO SECCIONAL - AMAZONAS SECRETARIA Processo nº 124 – I / 2021 Feito: DISSOLUÇÃO DE SOCIEDADE Interessado: Paulo Ricardo Dahrouge Alecrim - “PAULO ALECRIM SOCIEDADE INDIVIDUAL DE ADVOCACIA”. ONDE SE LÊ: IDA MÁRCIA BENAYON DE CARVALHO Presidente em exercíc"
+          },
+          {
+            "id": 868774,
+            "titulo": "Onde se lê:",
+            "trecho": "ACÓRDÃO 0 0 9 /202 4 -TED-OAB/AM 5 ª TURMA – Processo Disciplinar nº 04.0000.202 4.005680-8 Consulente : JOÃO SARAIVA HERCULANO Relator (a): JOÃO GILSON FERREIRA DA SILVA JÚNIOR EMENTA: 0 9 /202 4 – 5ª TUR MA - T.E.D.: EMENTA: CONSULTA DEONTOLÓGICA – CONSULTA "
+          }
+        ]
+      },
+      "Razões Finais": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1195630,
+            "titulo": "Processo nº 04.0000.2023.015497-3",
+            "trecho": "Representante: ELDYO FRANÇA DE CASTRO . Patrono (s): F ERNANDA RAQUEL RAMOS VIANA - OAB/AM 15 . 103, MARIA DA CONCEIÇÃO TEIXEIRA NERY - OAB/AM 12 . 843, WALDERIZIA CARVALHO NASCIMENTO MELO - OAB/AM 16 . 726 . Representado (a): Adv.(a). F . D. A. A. Patrono (s)"
+          }
+        ]
+      }
+    }
+  },
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "observacoes": "AM: censo de 30 dias-amostra (2019-2026, 637 publicações) com 70 decisões, todas do tipo Acórdão; recall 100% de EMENTA (ACORDAO 88,6%, por isso os dois termos). Quem julga: Turmas do TED/OAB-AM (1ª a 5ª, sessões virtuais/híbridas; ex.: 'ACÓRDÃO 009/2024-TED-OAB/AM 5ª TURMA' com EMENTA, setor TED, 15) e a CÂMARA ESPECIAL do Conselho Seccional (setor Sociedades, 43, e Secretaria Administrativa/Conselho, 12), que julga registro/alteração/dissolução de sociedades de advogados: mérito não disciplinar, filtrar depois (muitos títulos são o tipo de feito, ex. 'REGISTRO DE SOCIEDADE INDIVIDUAL DE ADVOCACIA', e alguns se escrevem 'ACORDÃO' com C). Como publica: o TED publica o acórdão com ementa no tipo Acórdão; Errata (2) pode reproduzir acórdão do TED inteiro ('Onde se lê: ACÓRDÃO 009/2024', id 868774), por isso fica como tipo amplo, assim como Edital e Edital de Notificação (80, prazo/julgamento marcado, não decisão). Ruído: Inscrição (180) e Edital (157) de inscrição, Despacho (91; arquivamento aprovado pela Presidência, monocrático, fora), Portaria (38), Audiência de Instrução (16), Edital de Convocação/pauta de julgamento (2), Razões Finais. Publicações de 2019 a 2026. Sem indício de ementário em site próprio nem de decisões só em PDF.",
+  "modo": "censo"
+}
