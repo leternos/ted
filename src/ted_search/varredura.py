@@ -188,7 +188,8 @@ RE_DECISAO_DE_ORGAO = re.compile(
 RE_FORMULA_COLEGIADA = re.compile(
     r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|"
     r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)|RESULTADO\s+D[EO]\s+JULGAMENTO|DECIDIRAM|JULGARAM|"
-    r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|ACORDA\s+A\s+\S+\s+(?:CAMARA|TURMA)|"
+    r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|ACORDA\s+O\s+CONSELHO\s+PLENO|"
+    r"O\s+CONSELHO\s+PLENO\s+DA\s+OAB/\w\w,\s+EM\s+REUNIAO\s+REALIZADA|ACORDA\s+A\s+\S+\s+(?:CAMARA|TURMA)|"
     r"TORNA\s+PUBLICO\s+AS\s+DECISOES|E\s+COMO\s+VOTO|VOTO\s+(?:PELO\s+CONHECIMENTO|PARA\s+CONHECER|PELA\s+REJEICAO|PELO\s+SEU\s+ACOLHIMENTO)|"
     r"(?<![A-Z])SS\s*\.?\s*\d{1,2}\s*[./]\s*\d{1,2}\s*[./]\s*\d{2,4}|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
@@ -252,7 +253,7 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
 
 
 # Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
-RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
+RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|UNANIME|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
 # Publicação que abre anunciando o resultado de uma sessão de julgamento (TO, nov/2026)
 RE_RESULTADO_SESSAO = re.compile(r"RESULTADO\s+D[EO]\s+JULGAMENTO")
 
