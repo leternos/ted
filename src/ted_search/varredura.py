@@ -186,9 +186,10 @@ RE_DECISAO_DE_ORGAO = re.compile(
 # - "decidiu", "julgou", "negou provimento" e "vistos," sozinhos também aparecem em despacho de relator e em
 #   comunicado de sanção ("...negou provimento ao recurso"): leitura de BA, 136 de 1.959 registros.
 RE_FORMULA_COLEGIADA = re.compile(
-    r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|"
+    r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|POR\s+\d+\s+VOTOS\s+A\s+\d+|(?<![A-Z])EMENTA|"
     r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)|RESULTADO\s+D[EO]\s+JULGAMENTO|DECIDIRAM|JULGARAM|"
-    r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|ACORDA\s+A\s+\S+\s+(?:CAMARA|TURMA)|"
+    r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|ACORDA\s+O\s+CONSELHO\s+PLENO|"
+    r"O\s+CONSELHO\s+PLENO\s+DA\s+OAB/\w\w,\s+EM\s+REUNIAO\s+REALIZADA|ACORDA\s+A\s+\S+\s+(?:CAMARA|TURMA)|"
     r"TORNA\s+PUBLICO\s+AS\s+DECISOES|E\s+COMO\s+VOTO|VOTO\s+(?:PELO\s+CONHECIMENTO|PARA\s+CONHECER|PELA\s+REJEICAO|PELO\s+SEU\s+ACOLHIMENTO)|"
     r"(?<![A-Z])SS\s*\.?\s*\d{1,2}\s*[./]\s*\d{1,2}\s*[./]\s*\d{2,4}|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
@@ -208,8 +209,11 @@ def _anuncia_decisao_colegiada(plano: str) -> bool:
     """A própria publicação se apresenta como acórdão numerado ou como decisão de Câmara, Turma ou Conselho (PA, PB)."""
     if RE_ACORDAO_NUMERADO.search(plano[:80]) or RE_DECISAO_DE_ORGAO.search(plano[:500]):
         return True
+    # PR, formato de 2025 em diante: "Número Acórdão: 123/2025 ... I. CASO EM EXAME ... IV. DISPOSITIVO E TESE"
+    if re.search(r"NUMERO\s+(?:DO\s+)?ACORDAO\s*:?\s*\d+\s*/\s*\d{4}", plano[:500]) and "ONDE SE LE" not in plano:
+        return True
     # SC: "ACÓRDÃO N. 116/2025" no cabeçalho, com voto do relator; não vale para decisão monocrática numerada
-    return bool(re.search(r"ACORDAO\s+N\S*\s*\d+\s*/\s*\d{4}", plano[:400])) and not re.search(
+    return bool(re.search(r"ACORDAO\s+(?:N\S*\s*)?\d+\s*/\s*\d{4}", plano[:800])) and not re.search(
         r"MONOCRATIC|PACIFICAD|DETERMINO\s+O\s+ARQUIVAMENTO", plano[:1500])
 
 
@@ -227,6 +231,13 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
     # decisão do presidente do TED que recusa a consulta, ainda que transcreva ementas alheias (segunda leitura de PE)
     if re.search(r"DECISAO\s*:\s*\(\.\.\.\)\s*TRATA-SE\s+DE\s+CONSULTA", plano[:900]):
         return "ato_monocratico"
+    # convocação ou retirada de pauta e notificação de despacho ou de audiência, sem ementa (RS)
+    if not re.search(r"(?<![A-Z])EMENTA", plano):
+        # (o extrato de julgamento "dá-se ciência ... por unanimidade, decidiu" FICA: decisão do Guh, 20/11/2026 —
+        #  recurso disciplinar julgado pela 2ª Câmara Recursal do RS interessa mesmo sem a ementa)
+        if re.search(r"^\W*O\s+ORGAO\s+ESPECIAL\s.{0,120}?(?:REUNIR-SE-A\s+EM\s+SESSAO|RETIRADO\s+DE\s+PAUTA)", plano[:200], re.S) \
+                or re.search(r"^\W*FICAM?\s+NOTIFICADOS?\s+(?:PARA|ACERCA)|^\W*NOTIFICA-SE\s+(?:OS\s+)?(?:ADVOGADOS|INTERESSADOS)", plano[:60]):
+            return "sem_formula_de_julgamento"
     # certidão do Conselho Pleno: é a ata em extrato, sem voto (política: ata de Pleno fica fora; segunda leitura de PI)
     if re.search(r"CERTIFICA,?\s+QUE\s+NA\s+SESSAO", abertura):
         return "ata_em_extrato"
@@ -234,6 +245,10 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
         return "sem_formula_de_julgamento"  # aviso de adiamento que cita súmula (SC)
     if _anuncia_decisao_colegiada(plano) or re.search(r"TORNA\s+PUBLICA\s+A\s+DECISAO\s+DO\s+PROCESSO", plano[:300]):
         return None  # vale mesmo com corpo em forma de voto ou de despacho (segundas leituras de PA e PB)
+    # notificação "acerca do seguinte despacho" (SC), salvo quando o texto traz o acórdão
+    if re.search(r"(?:ACERCA\s+D[OA]|\bD[OA])\s+SEGUINTE\s+(?:R\.\s*)?(?:DESPACHO|DECISAO\s+MONOCRATICA)|CUMPRIMENTO\s+DO\s+DESPACHO", plano[:600]) \
+            and not re.search(r"ACORDAM|ACORDA\s+A\s", plano):
+        return "ato_monocratico"
     if re.search(r"\b[OA]\s+RELATORA?\s+DECIDIU\s+POR\b", plano[:1500]) or re.search(
             r"SEGUINTE\s+DESPACHO\s+MONOCRATICO|VISTOS\s+EM\s+DECISAO\s+MONOCRATICA|TORNA\s+PUBLICO\s+QUE\s+SERA\s+APLICADA", plano[:900]):
         return "ato_monocratico"  # intimação de decisão do relator (MG)
@@ -252,7 +267,7 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
 
 
 # Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
-RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
+RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|UNANIME|POR\s+\d+\s+VOTOS\s+A\s+\d+|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
 # Publicação que abre anunciando o resultado de uma sessão de julgamento (TO, nov/2026)
 RE_RESULTADO_SESSAO = re.compile(r"RESULTADO\s+D[EO]\s+JULGAMENTO")
 
@@ -695,6 +710,22 @@ def _chave_processo(rec: dict) -> str:
     return re.sub(r"\D", "", rec.get("numero_processo") or "")
 
 
+def _chave_ementa_do_processo(proc: str, texto: str) -> tuple[str, str] | None:
+    """(dígitos do processo, miolo da ementa) de um registro com uma só ementa; None se não der para comparar."""
+    plano = _sem_acento(texto)
+    if len(re.findall(r"(?<![A-Z])EMENTA", plano)) != 1:
+        return None  # edital com várias ementas nunca é fundido por aqui
+    if len(proc) < 9:
+        m = re.search(r"\d{7}\.\d{8}/\d{4}-\d{2}|\d{2}\.\d{4}\.\d{4}\.\d{6}-\d", plano)
+        proc = re.sub(r"\D", "", m.group(0)) if m else ""
+    if len(proc) < 9:
+        return None
+    trecho = plano[re.search(r"(?<![A-Z])EMENTA", plano).end():]
+    trecho = re.split(r"ACORDAO|ACORDAM", trecho, maxsplit=1)[0]
+    miolo = re.sub(r"TED\s+N\S*\s*[\d/ ]+|[^A-Z]+", "", trecho)[:250]
+    return (proc, miolo) if len(miolo) >= 120 else None
+
+
 def _tirar_republicacoes(recs: list[dict], rejeitados: list[dict]) -> tuple[list[dict], list[dict]]:
     """Mesmo processo e mesmo texto em duas publicações é republicação: fica a primeira, a outra é registrada.
 
@@ -702,6 +733,7 @@ def _tirar_republicacoes(recs: list[dict], rejeitados: list[dict]) -> tuple[list
     e registro sem nº de processo válido nunca é fundido.
     """
     vistos: dict[tuple[str, str], str] = {}
+    ementas_vistas: dict[tuple[str, str], str] = {}
     ficam = []
     for rec in sorted(recs, key=lambda r: (r.get("data_decisao") or "", r["id"])):
         proc = _chave_processo(rec)
@@ -720,6 +752,14 @@ def _tirar_republicacoes(recs: list[dict], rejeitados: list[dict]) -> tuple[list
             rejeitados.append({"id": int(rec["id"].rsplit(":", 1)[-1]), "motivo": "republicacao_identica", "duplicata_de": vistos[chave],
                                "titulo": (rec.get("numero_processo") or "")[:140], "chars": len(texto), "data": rec.get("data_decisao")})
             continue
+        # mesma ementa do mesmo processo, republicada em outra intimação com cabeçalho e data diferentes (RS: 820 grupos)
+        chave_ementa = _chave_ementa_do_processo(proc, texto)
+        if chave_ementa and chave_ementa in ementas_vistas:
+            rejeitados.append({"id": int(rec["id"].rsplit(":", 1)[-1]), "motivo": "republicacao_identica", "duplicata_de": ementas_vistas[chave_ementa],
+                               "titulo": (rec.get("numero_processo") or "")[:140], "chars": len(texto), "data": rec.get("data_decisao")})
+            continue
+        if chave_ementa:
+            ementas_vistas[chave_ementa] = rec["id"]
         vistos.setdefault(chave, rec["id"])
         ficam.append(rec)
     return ficam, rejeitados
