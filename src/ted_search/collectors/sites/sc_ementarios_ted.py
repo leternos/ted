@@ -206,13 +206,12 @@ def chave_ementa(s: str) -> str:
 
 
 _PREFIXO_EMENTA = re.compile(r"(?is)\bEmenta\s*:\s*")
-RE_PROCESSO = re.compile(r"(?i)^\s*(?:Processo\b[^\n]*?)\bn[ºo°.]*\s*:?\s*(\d[\d./-]*\d|\d)")
-RE_RELATOR = re.compile(r"(?i)\bRelat(?:or|ora)\s*(?:\([ao]\))?\s*:\s*(.+?)(?=\s*(?:\n|\.\s+[A-ZÀ-Ú][a-zà-ú]+:|\s+Presidente:|\s+Ac[óo]rd[ãa]o\b|\s+Ementa:|$))")
-RE_JULGADO = re.compile(r"(?i)Julgad[oa]s?\s+em\s+(\d{1,2})\s*[./-]\s*(\d{1,2})\s*[./-]\s*(\d{4}|\d{2})\b")
 MESES = {"janeiro": 1, "fevereiro": 2, "março": 3, "marco": 3, "abril": 4, "maio": 5, "junho": 6, "julho": 7, "agosto": 8,
          "setembro": 9, "outubro": 10, "novembro": 11, "dezembro": 12}
-RE_DATA_EXT = re.compile(r"(?i)(\d{1,2})\s*(?:º|°)?\s*de\s+(" + "|".join(MESES) + r")\s+de\s+(\d{4})")
-RE_ORGAO = re.compile(r"(?i)ACORDAM\s+(?:os\s+)?(?:Integrantes|Membros|Componentes|Julgadores)?[^.]{0,60}?\b(?:d[aoe]s?\s+)?(\d{1,2})\s*[ªº°]?\s*(?:\.)?\s*(Turma|C[âa]mara)")
+RE_JULGADO = re.compile(r"(?i)Julgad[oa]s?\s+em\s+(\d{1,2})\s*[./-]\s*(\d{1,2})\s*[./-]\s*(\d{4}|\d{2})\b")
+RE_DATA_EXT = re.compile(r"(?i)(\d{1,2})\s*(?:º|°)?\s*(?:de\s+)?(" + "|".join(MESES) + r")\s*(?:de\s+|,\s*)?(\d{4})")
+RE_ORGAO = re.compile(r"(?is)ACORDAM\b.{0,120}?\b(\d{1,2})\s*[ªº°]?\s*(Turma|C[âa]mara)\b")
+INICIO_DIARIO = "2018-10-01"  # a partir daqui o Diário (DEOAB_SC) pode ter publicado o mesmo acórdão
 
 
 def _iso(d: str, m: str, a: str) -> str | None:
@@ -222,23 +221,47 @@ def _iso(d: str, m: str, a: str) -> str | None:
 
 
 def extrair_data(texto: str) -> str | None:
-    """Data da sessão/julgamento: 'Julgado em dd.mm.aa' (anos antigos) ou a data por extenso que fecha o acórdão."""
-    m = RE_JULGADO.search(texto)
+    """Data da sessão: 'Julgado em dd.mm.aa' (anos antigos) ou a data por extenso da assinatura que fecha o acórdão (últimos 300
+    caracteres, para não pegar data citada na ementa). Sem uma das duas, None: o registro fica só com o ano."""
+    m = RE_JULGADO.search(texto[:160])  # só o cabeçalho: 'Julgado em' dentro da ementa cita outro julgamento
     if m:
         return _iso(*m.groups())
-    cauda = texto[texto.upper().rfind("ACORDAM"):] if "ACORDAM" in texto.upper() else ""
-    achadas = [_iso(d, str(MESES[mes.lower()]), a) for d, mes, a in RE_DATA_EXT.findall(cauda)]
+    achadas = [_iso(d, str(MESES[mes.lower()]), a) for d, mes, a in RE_DATA_EXT.findall(texto[-300:])]
     achadas = [a for a in achadas if a]
     return achadas[-1] if achadas else None
 
 
+_RE_LINHA_CABECALHO = re.compile(r"(?i)^\s*(?:Ac[óo]rd[ãa]o|Processo|Representantes?\b|Representad[oa]s?\b|Repte|Reptes|Repdos?|Repdas?|Reqtes?|Reqdos?|Relat|Presidente|Revisor)")
+_RE_ACORDAO_FIM_CABECALHO = re.compile(r"(?i)\bAc[óo]rd[ãa]o\s*n[ºo°.]{0,3}\s*\d+\s*/\s*\d{2,4}\s*\.\s*")
+
+
+def _corpo_sem_rotulo(texto: str) -> str:
+    """Anos antigos não rotulam a ementa ('Ementa:'): ela é o que vem depois do cabeçalho (linhas Acórdão/Processo/Representante/
+    Relator/Presidente) ou, no formato corrido, depois de 'Acórdão nº N/AAAA.'."""
+    linhas = texto.split("\n")
+    ult = -1
+    for k, ln in enumerate(linhas[:14]):
+        if len(ln) <= 200 and _RE_LINHA_CABECALHO.match(ln) and (not re.match(r"(?i)\s*Processo", ln) or re.search(r"\d", ln[:90])):
+            ult = k
+    if ult >= 0 and ult + 1 < len(linhas) and any(ln.strip() for ln in linhas[ult + 1:]):
+        return "\n".join(linhas[ult + 1:])
+    m = _RE_ACORDAO_FIM_CABECALHO.search(texto[:800])
+    if m:
+        return texto[m.end():]
+    m = re.search(r"(?i)Presidente\s*:\s*(?:Dra?\.\s*)?[^.]{3,80}\.\s+", texto[:900])  # cabeçalho corrido que termina na linha do Presidente
+    return texto[m.end():] if m else ""
+
+
 def separar(texto: str) -> tuple[str, str]:
-    """(ementa, dispositivo). Ementa: o que vem depois de 'Ementa:' (entre aspas ou não) até o dispositivo 'Vistos, relatados...
-    ACORDAM'; o dispositivo vai daí ao fim. Sem dispositivo, tudo depois de 'Ementa:' é ementa. Nada é cortado ou reescrito."""
+    """(ementa, dispositivo). Ementa: o que vem depois de 'Ementa:' (com as aspas que o site põe) ou, sem rótulo, depois do
+    cabeçalho, até o dispositivo 'Vistos, relatados ... ACORDAM'; o dispositivo vai daí ao fim. Nada é reescrito."""
     m = _PREFIXO_EMENTA.search(texto)
-    resto = texto[m.end():] if m else texto
-    corte = re.search(r"(?s)(?:\n\s*)?\s*(Vistos,\s+relatados|VISTOS,\s+RELATADOS|ACORDAM\b|Acordam\b)", resto)
+    resto = texto[m.end():] if m else _corpo_sem_rotulo(texto)
+    corte = re.search(r"(?:Vistos,\s+relatados|VISTOS,\s+RELATADOS|ACORDAM\b|Acordam\b)", resto)
     ementa, dispositivo = (resto[:corte.start()], resto[corte.start():]) if corte else (resto, "")
+    if len(_letras(ementa)) < 10 and dispositivo.strip():
+        # o site publica só o dispositivo sob 'Ementa:' (ou sem rótulo): o que ele publica como ementa não se descarta
+        ementa, dispositivo = resto, ""
     return ementa.strip(), dispositivo.strip()
 
 
@@ -247,61 +270,143 @@ def orgao_sc(texto: str) -> tuple[str, str, str]:
     m = RE_ORGAO.search(texto)
     if m:
         n, tipo = int(m.group(1)), m.group(2).capitalize().replace("Camara", "Câmara")
-        return f"{n}ª {tipo} do Tribunal de Ética e Disciplina", f"OABSC-TED-{'T' if tipo == 'Turma' else 'C'}{n}", f"Tribunal de Ética e Disciplina da OAB/SC/{n}ª {tipo}"
+        return (f"{n}ª {tipo} do Tribunal de Ética e Disciplina", f"OABSC-TED-{'T' if tipo == 'Turma' else 'C'}{n}",
+                f"Tribunal de Ética e Disciplina da OAB/SC/{n}ª {tipo}")
     return "Tribunal de Ética e Disciplina", "OABSC-TED", "Tribunal de Ética e Disciplina da OAB/SC"
 
 
 def processo_publicado(item: dict[str, Any]) -> str | None:
-    t = (item.get("titulo") or "").strip()
-    m = re.search(r"(?i)\bn[ºo°.]*\s*(\d[\d./-]*)", t)
+    """Número do processo como o título do cartão publica ('Processo de Representação nº 192/93' -> '192/93')."""
+    m = re.search(r"(?i)\bn[ºo°.]*\s*(\d[\d./-]*)", item.get("titulo") or "")
     return m.group(1).strip(".,;/-") if m else None
 
 
-def eh_consulta(titulo: str, ementa: str) -> bool:
+def eh_consulta(titulo: str) -> bool:
     return bool(re.search(r"(?i)\bconsulta\b", titulo)) and not re.search(r"(?i)representa", titulo)
 
 
+RE_RELATOR = re.compile(r"(?i)\bRelat(?:or|ora)(?:\s+d[oa]s?\s+[^:\n]{0,40}?)?\s*:\s*([^\n]+?)(?=\s*(?:\n|\bPresidente\b|\bAc[óo]rd[ãa]o\b|\bEmenta\s*:|$))")
+RE_PARTES = re.compile(r"(?is)\b(Repte|Reptes|Representantes?|Reqtes?|Requerentes?)\b.{0,400}?(?=\bRelat)")
+
+
 def extrair_relator(texto: str) -> str | None:
-    m = re.search(r"(?i)\bRelat(?:or|ora)\s*(?:\([ao]\))?\s*:\s*([^\n]+?)(?=\s*(?:\n|\bPresidente\b|\bAc[óo]rd[ãa]o\b|\bEmenta\s*:|$))", texto)
-    if not m:
-        return None
-    return re.sub(r"\s+", " ", m.group(1)).strip(" .;,") or None
+    """Relator como o cabeçalho publica ('Relator:', 'Relatora:', 'Relator do voto divergente:'), com título e tudo."""
+    m = RE_RELATOR.search(texto[:1200])
+    return (re.sub(r"\s+", " ", m.group(1)).strip(" .;,") or None) if m else None
+
+
+def extrair_partes(texto: str) -> list[str]:
+    m = RE_PARTES.search(texto[:1200])
+    return [re.sub(r"[ \t]+", " ", m.group(0)).strip()] if m else []
+
+
+def _letras(s: str) -> str:
+    return re.sub(r"[^a-z]", "", _sem_acento(s).lower())
+
+
+_RE_SE_DIZ_DISCIPLINAR = re.compile(r"(?i)disciplinar|representa[çc][ãa]o|suspens[ãa]o\s+preventiva|consulta")
+
+
+def eh_disciplinar(titulo: str, texto: str) -> bool:
+    """É o TED: tudo é disciplinar, salvo o que ``eh_materia_disciplinar`` marca como não e que o próprio cabeçalho não apresenta
+    como processo disciplinar, representação, suspensão preventiva ou consulta (a heurística é do Diário e erra em ementário)."""
+    if eh_materia_disciplinar("Tribunal de Ética e Disciplina", titulo, texto):
+        return True
+    return bool(_RE_SE_DIZ_DISCIPLINAR.search(f"{titulo} {texto[:400]}"))
 
 
 def normalizar(item: dict[str, Any]) -> dict[str, Any] | None:
-    """Registro de ``julgados``. Ementa vazia -> None (rejeitado, com motivo). O texto vai como o site publica."""
+    """Registro de ``julgados``; None = rejeitado (o motivo fica em ``MOTIVOS``). O texto vai como o site publica."""
     texto = item.get("texto") or ""
+    iid = str(item["id"])
     ementa, dispositivo = separar(texto)
-    if not ementa.strip(" \"“”'.;"):
-        MOTIVOS[str(item["id"])] = "ementa vazia"
+    if len(_letras(ementa)) < 10:
+        MOTIVOS[iid] = "ementa vazia"
         return None
-    ementa_txt = ementa
+    if iid in _DESCARTES:
+        MOTIVOS[iid] = _DESCARTES[iid]
+        return None
     num = _num_acordao(item.get("acordao_rotulo") or "")
     data = extrair_data(texto)
-    ano_acordao = int(num.split("/")[1]) if num else (int(item["ano_secao"]) if item.get("ano_secao") else None)
-    sigla_raw = orgao_sc(texto)
-    consulta = eh_consulta(item.get("titulo") or "", ementa)
+    orgao_raw, sigla, norm = orgao_sc(texto)
+    titulo = item.get("titulo") or ""
     rec = montar_registro(
         UF, SLUG, item["id"],
-        ementa=ementa_txt,
+        ementa=ementa,
         acordao=dispositivo,
-        inteiro_teor="\n\n".join(t for t in (ementa_txt, dispositivo) if t),
+        inteiro_teor="\n\n".join(t for t in (ementa, dispositivo) if t),
         url=url_pagina(int(item.get("pagina") or 1)),
-        orgao_raw=sigla_raw[0], sigla_orgao=sigla_raw[1], orgao_norm=sigla_raw[2],
+        orgao_raw=orgao_raw, sigla_orgao=sigla, orgao_norm=norm,
         data_decisao=data,
         numero_processo=processo_publicado(item),
         numero_ementa=num.split("/")[0] if num else None,
         relator=extrair_relator(texto),
-        consulta=consulta,
+        consulta=eh_consulta(titulo),
+        publicacao="Site da OAB/SC - ementário do TED",
     )
-    rec["ano_ementa"] = ano_acordao if not data else int(data[:4])
-    if not data and item.get("ano_secao"):
-        rec["ano_ementa"] = int(item["ano_secao"])
+    rec["ano_ementa"] = int(num.split("/")[1]) if num else (int(item["ano_secao"]) if item.get("ano_secao") else None)
+    rec["partes_json"] = json.dumps(extrair_partes(texto), ensure_ascii=False)
     rec["pdf_url"] = None
     rec["tem_inteiro_teor"] = 0  # só ementa + dispositivo, sem relatório e voto
-    rec["is_ted_disciplinar"] = 1
-    rec["publicacao_str"] = "Site da OAB/SC - ementário do TED"
+    rec["is_ted_disciplinar"] = 1 if eh_disciplinar(titulo, texto) else 0
     return rec
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# Descartes (feitos em ``preparar``, que o motor chama antes de normalizar): duplicata interna e sobreposição com o Diário
+# ---------------------------------------------------------------------------------------------------------------------
+
 MOTIVOS: dict[str, str] = {}
+_DESCARTES: dict[str, str] = {}
+
+
+def _raw_itens() -> Path:
+    return raw_dir_fonte(UF, SLUG, RAW_DIR) / "itens.jsonl"
+
+
+def texto_diario(db_path: Path = DB_PATH) -> str:
+    """Todo o inteiro_teor_texto do DEOAB_SC, normalizado (só letras, sem acento), separado por '|'."""
+    with sqlite3.connect(f"file:{db_path}?mode=ro", uri=True, timeout=120) as conn:
+        linhas = conn.execute("SELECT COALESCE(inteiro_teor_texto, descricao_ementa, '') FROM julgados WHERE fonte = 'DEOAB_SC'").fetchall()
+    return "|".join(_letras(t) for (t,) in linhas)
+
+
+def janela_diario(item: dict[str, Any]) -> bool:
+    """O acórdão foi julgado de 2018-10-01 em diante (sem data: só se o ano do acórdão for 2019 ou mais)."""
+    data = extrair_data(item.get("texto") or "")
+    if data:
+        return data >= INICIO_DIARIO
+    num = _num_acordao(item.get("acordao_rotulo") or "")
+    ano = int(num.split("/")[1]) if num else int(item.get("ano_secao") or 0)
+    return ano >= 2019
+
+
+def calcular_descartes(itens: list[dict[str, Any]], diario: str) -> dict[str, str]:
+    """{id: motivo}. Duplicata interna (mesmo processo + mesma ementa): fica o primeiro da listagem. Sobreposição: a ementa
+    normalizada (200 primeiras letras) aparece no texto de algum registro DEOAB_SC."""
+    saida: dict[str, str] = {}
+    vistos: set[tuple[str | None, str]] = set()
+    for it in sorted(itens, key=lambda x: (int(x.get("pagina") or 0), str(x["id"]))):
+        ementa, _ = separar(it.get("texto") or "")
+        chave = _letras(ementa)
+        if len(chave) < 10:
+            continue
+        par = (processo_publicado(it), chave)
+        if par in vistos:
+            saida[str(it["id"])] = "duplicata interna (mesmo processo e mesma ementa)"
+            continue
+        vistos.add(par)
+        if diario and janela_diario(it) and chave[:200] in diario:
+            saida[str(it["id"])] = "sobreposição com DEOAB_SC (ementa no texto do Diário)"
+    return saida
+
+
+def preparar(db_path: Path = DB_PATH) -> None:
+    MOTIVOS.clear()
+    _DESCARTES.clear()
+    arq = _raw_itens()
+    if not arq.exists():
+        return
+    with arq.open(encoding="utf-8") as fh:
+        itens = [json.loads(ln) for ln in fh if ln.strip()]
+    _DESCARTES.update(calcular_descartes(itens, texto_diario(db_path)))

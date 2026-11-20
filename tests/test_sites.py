@@ -1212,3 +1212,172 @@ def test_rn_consultas_links_da_pagina_e_registro_com_texto_integral(monkeypatch,
     m.MOTIVOS.clear()
     assert m.normalizar({**item, "texto_pdf": "   "}) is None and "sem texto" in m.MOTIVOS["122682018"]
     m.MOTIVOS.clear()
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# SC / ementarios-ted - acórdãos do TED/SC no site da OAB/SC (Next.js, HTML no servidor)
+# ----------------------------------------------------------------------------------------------------------------------
+
+def _pagina_sc() -> str:
+    return (FIXTURES / "sc_ementarios_ted_pagina.html").read_text(encoding="utf-8")
+
+
+def test_sc_cartoes_total_de_paginas_e_cartao_sem_texto():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    h = _pagina_sc()
+    assert m.total_paginas(h) == 826
+    cs = m.cartoes(h)
+    assert [c["ano_secao"] for c in cs] == ["2026", "2018", "1995"]
+    assert cs[0]["titulo"] == "Processo de Representação nº 209/2026"
+    assert cs[0]["acordao_rotulo"] == "Acórdão nº 400/2026"
+    assert cs[1]["texto"] == "" and m._num_acordao(cs[1]["acordao_rotulo"]) == "9/2018"  # o site publica cartão vazio: conta como item
+
+
+def test_sc_registro_recente_fica_como_o_site_publica():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    c = m.cartoes(_pagina_sc())[0]
+    rec = m.normalizar({"id": "400/2026", "pagina": 1, **c})
+    assert rec["fonte"] == "SITE_SC_EMENTARIOS_TED"
+    assert rec["numero_processo"] == "209/2026" and rec["numero_ementa"] == "400" and rec["ano_ementa"] == 2026
+    assert rec["data_decisao"] == "2026-09-25"
+    assert rec["relator_principal"] == "Ramon Luis Bianchi"
+    assert rec["orgao_julgador_raw"] == "2ª Turma do Tribunal de Ética e Disciplina"
+    assert rec["descricao_ementa"].startswith("“PROCESSO DE EXCLUSÃO. ARTIGO 38") and rec["descricao_ementa"].endswith("PROCEDÊNCIA”.")
+    assert rec["descricao_acordao"].startswith("Vistos, relatados e discutidos")
+    assert rec["inteiro_teor_texto"] == rec["descricao_ementa"] + "\n\n" + rec["descricao_acordao"]
+    assert rec["pdf_url"] is None and rec["tem_inteiro_teor"] == 0 and rec["is_ted_disciplinar"] == 1
+    assert "L. R. M. A." in json.loads(rec["partes_json"])[0]  # partes como publicadas (iniciais), sem mascarar nem abreviar
+
+
+def test_sc_registro_antigo_usa_julgado_em_e_cartao_vazio_e_rejeitado():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    cs = m.cartoes(_pagina_sc())
+    rec = m.normalizar({"id": "2/1995", "pagina": 826, **cs[2]})
+    assert rec["data_decisao"] == "1995-10-27" and rec["numero_processo"] == "192/93" and rec["numero_ementa"] == "2"
+    assert rec["relator_principal"] == "Dr. Hélio Roque Rubick"
+    assert rec["descricao_acordao"] == "" and rec["descricao_ementa"].startswith("Retenção abusiva de autos processuais")
+    m.MOTIVOS.clear()
+    assert m.normalizar({"id": "9/2018", "pagina": 302, **cs[1]}) is None
+    assert m.MOTIVOS["9/2018"] == "ementa vazia"
+
+
+def test_sc_data_relator_e_orgao_nas_variantes_do_texto():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    assert m.extrair_data("... ACORDAM os Membros da 5ª Turma. Itajaí, 13 novembro de 2020. Elídia, Presidente.") == "2020-11-13"
+    assert m.extrair_data("... Florianópolis, 1º de outubro de 2021. Francisco, Presidente.") == "2021-10-01"
+    assert m.extrair_data("Ementa: texto que cita 3 de maio de 2010 no meio e termina sem assinatura " + "x" * 400) is None
+    assert m.extrair_relator("Repdo: D. T.Relator do voto divergente: Wanderlei Deretti. Acórdão nº 057/2023. Ementa: x") == "Wanderlei Deretti"
+    assert m.orgao_sc("ACORDAM os Membros da 3ª Turma do Tribunal")[1] == "OABSC-TED-T3"
+    assert m.orgao_sc("texto truncado sem dispositivo")[1] == "OABSC-TED"
+    assert m.eh_consulta("Pedido de Consulta nº 437/2018") and not m.eh_consulta("Processo de Representação nº 1/2020")
+
+
+def test_sc_descartes_duplicata_interna_e_sobreposicao_com_o_diario():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    def it(i, pagina, proc, ementa, ano="2020", fim="Joinville, 25 de setembro de 2020. X, Relator."):
+        return {"id": i, "pagina": pagina, "titulo": f"Processo de Representação nº {proc}", "ano_secao": ano,
+                "acordao_rotulo": f"Acórdão nº {i}", "texto": f"Repte: A. Relator: B. Ementa: “{ementa}”. Vistos, relatados e discutidos, ACORDAM os Membros da 1ª Turma. {fim}"}
+
+    comum = "EMENTA UM ÁGIL " * 20
+    itens = [it("1/2020", 1, "10/2019", comum), it("2/2020", 2, "10/2019", comum),   # duplicata: mesmo processo e mesma ementa
+             it("3/2020", 3, "11/2019", comum),                                     # outro processo: não é duplicata
+             it("4/2017", 4, "5/2016", "OUTRA EMENTA DE 2017 " * 20, ano="2017", fim="Florianópolis, 10 de março de 2017. X, Relator."),
+             it("5/2020", 5, "12/2019", "EMENTA DISTINTA SO NO SITE " * 20)]
+    diario = "|".join([m._letras("... " + comum + " ..."), m._letras("OUTRA EMENTA DE 2017 " * 20)])
+    d = m.calcular_descartes(itens, diario)
+    assert d["2/2020"].startswith("duplicata interna")
+    assert d["1/2020"].startswith("sobreposição")           # julgado depois de 2018-10-01 e a ementa está no Diário
+    assert d["3/2020"].startswith("sobreposição")
+    assert "4/2017" not in d                                  # anterior ao Diário: nunca descartado, mesmo com texto igual
+    assert "5/2020" not in d
+
+
+def test_sc_esperado_e_listar_conferem_pagina_seguinte_vazia(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import coleta_educada as ce
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    monkeypatch.setattr(m, "PAUSA", 0)
+    m._info.clear()
+    ce.reiniciar()
+    h = _pagina_sc()
+    vazia = '<html>"totalPages\\":2,</html>'
+
+    class Resp:
+        status_code = 200
+        headers: dict = {}
+
+        def __init__(self, corpo):
+            self.content = corpo.encode("utf-8")
+
+        def raise_for_status(self):
+            return None
+
+    class Cli:
+        def __init__(self):
+            self.urls = []
+
+        async def get(self, url, headers=None, **_k):
+            self.urls.append(url)
+            n = int(url.split("page=")[1].split("&")[0])
+            return Resp(h.replace("826", "2") if n <= 2 else vazia)
+
+    async def rodar():
+        sem = asyncio.Semaphore(1)
+        c = Cli()
+        return await m.esperado(c, sem), await m.listar(c, sem), c.urls
+
+    esperado, itens, urls = asyncio.run(rodar())
+    assert esperado == 3 + 3 and len(itens) == 6                      # 2 páginas x 3 cartões
+    assert [i["id"] for i in itens][:3] == ["400/2026", "9/2018", "2/1995"]
+    assert itens[3]["id"] == "400/2026#2"                              # nº de acórdão repetido: não perde item
+    assert any("page=3" in u for u in urls)                            # conferiu a página depois da última
+    assert len(list((tmp_path / "site_sc_ementarios_ted" / "paginas").glob("*.html.gz"))) == 3  # cache bruto por página
+    m._info.clear()
+
+
+def test_sc_get_para_em_403_sem_insistir(monkeypatch, tmp_path):
+    import pytest
+
+    from ted_search.collectors.sites import coleta_educada as ce
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    monkeypatch.setattr(m, "PAUSA", 0)
+    ce.reiniciar()
+
+    class Resp:
+        status_code = 403
+        headers: dict = {}
+        content = b""
+
+    class Cli:
+        n = 0
+
+        async def get(self, url, headers=None, **_k):
+            Cli.n += 1
+            return Resp()
+
+    async def rodar():
+        sem = asyncio.Semaphore(1)
+        with pytest.raises(ce.BloqueioSite):
+            await m._get(Cli(), sem, m.url_pagina(1))
+        with pytest.raises(ce.BloqueioSite):
+            await m._get(Cli(), sem, m.url_pagina(2))
+
+    asyncio.run(rodar())
+    assert Cli.n == 1  # depois do primeiro bloqueio nenhuma outra requisição
+    ce.reiniciar()
+
+
+def test_sc_julgado_em_so_vale_no_cabecalho():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    corpo = "Ementa: " + "x" * 300 + " (Julgado em 26/07/2002) " + "y" * 50
+    assert m.extrair_data(corpo + " Florianópolis, 18 de outubro de 2024. A, Presidente.") == "2024-10-18"
+    assert m.extrair_data("Acórdão nº 002/95 - Julgado em 27.10.95\n\nProcesso de Representação nº 192/93") == "1995-10-27"
