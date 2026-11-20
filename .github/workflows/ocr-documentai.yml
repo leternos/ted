@@ -1,0 +1,94 @@
+name: OCR com Document AI (PDFs de inteiro teor)
+
+# Só lê o catálogo `inteiro_teor_pdfs` do banco empacotado e grava o texto por página.
+# NÃO altera o banco, não faz deploy. O texto sai exatamente como o OCR lê (sem máscara).
+# A chave da conta de serviço fica só no secret GCP_SA_KEY.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: 'ids de inteiro_teor_pdfs separados por vírgula (padrão: as 10 peças da amostra)'
+        required: true
+        default: 'ETICA_PDF:591,ETICA_PDF:4454,ETICA_PDF:546,ETICA_PDF:363,ETICA_PDF:121,ETICA_PDF:152,ETICA_PDF:3435,ETICA_PDF:4504,ETICA_PDF:835,ETICA_PDF:109'
+      project_id:
+        description: 'Projeto do Google Cloud'
+        required: true
+        default: 'dicionario-503613'
+      location:
+        description: 'Região do Document AI (us ou eu)'
+        required: true
+        default: 'us'
+      processador:
+        description: 'Id do processador OCR (vazio = obtém ou cria "ted-ocr")'
+        required: false
+        default: ''
+      publicar_branch:
+        description: 'Publicar o resultado na branch ocr-resultados (só para amostras pequenas)'
+        required: true
+        default: 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  ocr:
+    name: OCR da amostra
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Instalar o pacote
+        run: pip install -e .
+
+      - name: Desempacotar o banco (só leitura)
+        run: python -m ted_search.banco desempacotar
+
+      - name: Google Cloud Auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: OCR
+        run: |
+          python scripts/ocr/documentai_ocr.py \
+            --ids "${{ github.event.inputs.ids }}" \
+            --projeto "${{ github.event.inputs.project_id }}" \
+            --local "${{ github.event.inputs.location }}" \
+            --processador "${{ github.event.inputs.processador }}" \
+            --saida ocr_out
+
+      - name: Guardar como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: ocr-documentai
+          path: ocr_out
+          retention-days: 14
+
+      - name: Publicar na branch ocr-resultados
+        if: ${{ github.event.inputs.publicar_branch == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          pub="$(mktemp -d)"
+          cp -r ocr_out/. "$pub"/
+          cd "$pub"
+          git init -q -b ocr-resultados
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -q -m "OCR Document AI: ${{ github.event.inputs.ids }}"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+          git push --force origin ocr-resultados
