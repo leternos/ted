@@ -142,3 +142,55 @@ Os scripts ficam em `scripts/curadoria/`. Copie-os para `/tmp` ou ajuste os cami
 4. **8 denúncias de PE por exercício ilegal da profissão** (feitas contra não advogados) estão marcadas como disciplinares.
 5. **Extratos do DF:** cerca de 1.440, hoje fora.
 6. **Diário próprio de AL (2015–2021):** o robots bloqueia; o Guh pode pedir à OAB/AL ou baixar ele mesmo.
+
+## 10. Nova direção de produto (conversa de 20/11/2026, à noite)
+
+O Guh e o cliente querem mudar a forma de acesso. Nada disto foi implementado; é o plano para a sessão nova.
+
+### 10.1 O que o cliente pediu
+
+- **Conector no Claude em vez do site.** O relator quer buscar e conversar sobre a decisão dentro do Claude, no mesmo formato dos conectores jurídicos que ele já usa. O site (`ted-oab.web.app`) sai depois que ele testar.
+- **Tudo na nuvem.** O conector é um servidor MCP no Cloud Run, em cima do banco atual (só leitura). Nada roda no computador do Guh.
+- **Sem filtros como critério.** As marcas (disciplinar, órgão etc.) continuam no banco, mas a busca não depende delas; o Claude decide o que é relevante na conversa.
+- **RAG.** Busca por sentido ao lado da busca por palavra. A palavra exata continua necessária para número de processo e artigo de lei.
+
+### 10.2 Ordem de trabalho combinada
+
+1. **Extração por modelo, antes de vetorizar.** Um modelo rápido e barato lê cada julgado e devolve campos estruturados:
+   - partes do documento: tem ementa, relatório, voto, certidão de julgamento, certidão de disponibilização;
+   - classificação: é julgado ou não, é disciplinar ou não, tipo de documento;
+   - conteúdo: órgão julgador, relator, infração e artigo, sanção, resultado, unanimidade;
+   - resumo de duas ou três frases.
+2. **Piloto em um estado só**, de tamanho médio. Sugestão: **BA**, porque a leitura de confirmação já listou os erros das regras (seção 3) e dá para medir se o modelo acerta mais. A escolha final é do Guh.
+3. **Vetores** de cada julgado, já com o resumo, num índice.
+4. **Conector MCP** no Cloud Run com duas ferramentas: buscar e abrir a decisão inteira.
+5. **Desligar o site** depois do teste do cliente.
+
+Se o modelo acertar mais que as regras no piloto, ele substitui as regras de regex por estado, e a correção pendente da seção 3 perde a razão de ser. Decidir isso antes de gastar horas refazendo o cache bruto.
+
+### 10.3 Definição de inteiro teor (regra do Guh)
+
+O **modelo ouro** é o acórdão do Conselho Federal: cabeçalho "Ordem dos Advogados do Brasil – Conselho Federal – Brasília", processo vindo de uma Seccional. Vale como inteiro teor o documento que tem:
+
+1. a **certidão de disponibilização de acórdão**, que fica perto do fim, na página antes da página do Diário Eletrônico (não é título); ou
+2. o documento que abre como "acórdão" e traz a **certidão de julgamento** no final.
+
+O modelo ainda confere as peças de cada documento (ementa, relatório, voto, certidões) para pegar exceção.
+
+### 10.4 O que foi medido no banco (20/11/2026)
+
+- Um PDF conferido: Recurso 21.0000.2024.000192-6/SCA-TTU, 11 páginas (`Ementa_015_2025_TTU_e30339084e.pdf`, no armazenamento do Portal de Ética e Disciplina do Conselho Federal). Traz relatório, voto, proposta de ementa, certidão de julgamento, certidão de disponibilização/publicação de acórdão e a página do Diário.
+- A tabela `inteiro_teor_pdfs` cataloga **2.098 PDFs**: 1.989 do Portal de Ética (25.133 páginas) e 109 do portal de jurisprudência do Conselho. Por ano: 2017–2022 somam 151; 2023 tem 500; 2024, 781; 2025, 557; 2026, 109.
+- 2.797 julgados têm PDF ligado (`inteiro_teor_pdfs_json`): parte como documento próprio, parte como "mesmo processo".
+- Dos 2.473 registros com `tem_inteiro_teor=1`, **só 549 têm o texto completo em `inteiro_teor_texto`**. Os outros 1.924 têm a ementa e o link do PDF. Motivo: o texto do PDF é extraído sob demanda e o serviço abre o banco só para leitura, então nada é gravado.
+- Consequência: "certidão de disponibilização" aparece no texto de 206 registros e "certidão de julgamento" em 682 (308 do site do PR, 202 do Conselho Federal, o resto são menções no Diário). Relatório e voto da maioria dos documentos ouro **não entram na busca**.
+- O PDF conferido é escaneado: o texto embutido sai com falhas (cabeçalho ilegível, nome da parte em branco, acentos trocados).
+
+### 10.5 Primeira tarefa concreta sugerida
+
+Extrair o texto dos 2.098 PDFs com OCR de qualidade (Document AI no projeto `dicionario-503613`, via bucket) e gravar em `inteiro_teor_texto`. Isso põe o modelo ouro inteiro na busca e serve de base para o piloto de extração de campos.
+
+Ainda não verificado:
+- se o Portal de Ética do Conselho Federal tem mais PDFs além dos 2.098 catalogados (ver `src/ted_search/collectors/etica_strapi.py` e `src/ted_search/inteiro_teor.py`);
+- se `jurisprudencia.oab.org.br` (carrega por script) entrega acórdão completo e permite coleta;
+- a página `oab.org.br/jurisprudencia/consultasoep`, que oferece a íntegra dos acórdãos do Órgão Especial em resposta a consultas (exercícios de 2005 a 2026).
