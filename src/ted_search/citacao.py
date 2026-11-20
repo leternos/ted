@@ -21,7 +21,7 @@ LIMITE_NA_LISTA = 6000  # caracteres por resultado na listagem; a ficha traz o t
 
 # Expressão SQL do texto como publicado de um julgado `j`
 SQL_TEXTO_PUBLICADO = (
-    "COALESCE(j.texto_publicado, CASE WHEN j.fonte LIKE 'DEOAB_%' THEN j.inteiro_teor_texto END)"
+    "COALESCE(j.texto_publicado, CASE WHEN j.fonte LIKE 'DEOAB_%' OR j.fonte LIKE 'SITE_%' THEN j.inteiro_teor_texto END)"
 )
 
 

@@ -171,12 +171,14 @@ def carregar_fonte(uf: str, slug: str, rebuild: bool = True, db_path: Path = DB_
                 it = json.loads(line)
                 itens[str(it["id"])] = it
     recs, rejeitados = [], []
+    if hasattr(mod, "preparar"):  # gancho opcional (ex.: PR carrega as chaves do Diário para descartar sobreposição)
+        mod.preparar(db_path)
     for it in itens.values():
         rec = mod.normalizar(it)
         if rec:
             recs.append(rec)
         else:
-            rejeitados.append({"id": it["id"]})
+            rejeitados.append({"id": it["id"], "motivo": getattr(mod, "MOTIVOS", {}).get(str(it["id"]))})
     (out / "rejeitados.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rejeitados), encoding="utf-8")
 
     with get_connection(db_path) as conn:
