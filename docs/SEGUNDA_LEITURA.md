@@ -78,3 +78,19 @@ Pendências conhecidas:
 | RJ | reaberta | ≈1% no total; ~3% dentro da marca 0 | 1 | corrigido em seguida; falta nova medida |
 | MG | reaberta | ~1% marca 1; ~3% dentro da marca 0 | 7 (3 do Pleno, 4 eleitorais) | corrigido em seguida; ~339 recursos sem ementa não dá para provar |
 | GO | perto do limite | ≥1,2% em cada sentido | 0 | ~13 assuntos administrativos sem marcador; embargos sem processo-pai |
+
+### Onda 4 — RS e PR (20/11/2026)
+
+| UF | No banco | O que a primeira leitura achou | Estado |
+|---|---|---|---|
+| RS | 18.500 | ~15 mil com ementa e acórdão do TED; ~3.900 extratos de julgamento da 2ª Câmara Recursal, do Órgão Especial e do Pleno (resultado colegiado, sem ementa) — **ficam, com marca disciplinar, por decisão do Guh**; 894 republicações da mesma ementa fundidas; 71 avisos retirados; marca 0 errava 11% (Turma Julgadora, 2ª Câmara) | corrigido; falta confirmação |
+| PR | 12.142 | quase tudo julgado real (tipo Acórdão); 21 do formato novo "Número Acórdão / Caso em exame / Dispositivo e tese" recuperados; marca: ~51 administrativos com marca 1 e ~4% dos marca 0 indevidos | corrigido em parte; falta confirmação |
+
+Regra nova que vale para todas as Seccionais: mesma ementa do mesmo processo, republicada em outra publicação com cabeçalho ou data
+diferentes, é republicação (fica a primeira). Retirou de 3 a 40 registros por Seccional.
+
+Pendências da onda 4: RS — 60 acórdãos publicados sob o tipo "Despacho" e 2 rejeitados como ato monocrático (240891, 1006716);
+PR — 25 duplicatas com número curto, 4 erratas longas aceitas.
+
+Fonte fora do Diário (PR): API pública do buscador de jurisprudência (`celulaadv.oabpr.org.br/api-jurisprudencia`), 54.135 acórdãos,
+~38 mil exclusivos (2003–2018), só ementa e dispositivo, sem voto nem PDF. Traz o nome completo do advogado: na coleta, guardar só as iniciais.

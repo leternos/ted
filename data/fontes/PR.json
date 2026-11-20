@@ -1,35 +1,39 @@
 [
   {
     "slug": "busca-jurisprudencia",
-    "url": "https://ted.oabpr.org.br/",
-    "conteudo": "Acórdãos do TED e órgãos da Seccional",
-    "periodo": "acervo amplo",
-    "volume": "mais de 51 mil decisões (declarado; inclui outros órgãos)",
-    "acesso": "buscador de terceiro (Leany); endpoint não inspecionado",
-    "exclusiva": null,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "url": "https://celulaadv.oabpr.org.br/oab-jurisprudencia/",
+    "conteudo": "Portal de Jurisprudência da OAB/PR (SPA React/Vite, feito por Leany; linkado do menu 'Jurisprudência' de ted.oabpr.org.br). Acórdãos de todos os órgãos da Seccional (TED, Câmara Especial, Câmara de Disciplina, Câmara de Seleção, Direitos e Prerrogativas, Conselho Seccional). Campos por decisão: ind (ID), nrAcordao, anoAcordao, nrDocumento, assunto, titulo (texto do dispositivo do acórdão: 'Vistos... acordam...'), ementa, relator, relatorAcordao, revisor, presidente, dtJulgamento, tpDecisao, orgao{cdOrgao,descricao}, subOrgao (turma/câmara), subSecao, advogado{nic,nrInscricao,nome}, documentoProcesso{nrProcesso,dtProcesso}; processo/anoProcesso vêm null.",
+    "periodo": "1995-08-07 a 2026 (ano do acórdão; 1995-2002 quase vazio: 22,0,0,1,2,3,3,4; volume real só de 2003 em diante; 2026 em curso com 1245 até 2026-11)",
+    "volume": "54135 acórdãos no total (medido 2026-11-20, pagination.total). Por cdOrgao (filtro sobrepõe, não soma): TED(SPD) 68=41523; TED 54=27907; Câmara de Disciplina 45=6685; Câmara Especial 132=1195; Conselho Seccional 2=1261; antigos 98=11. Por ano (total/TED68): 2003 599/477, 2005 1706/1417, 2007 2948/2526, 2010 2285/1838, 2014 3739/3294, 2017 5370/4674, 2018 3689/2407, 2019 3653/2807, 2020 1688/1089, 2021 1834/1172, 2022 1321/860, 2023 1464/1005, 2024 1760/1179, 2025 1834/1259, 2026 1245/749.",
+    "acesso": "API JSON pública usada pelo próprio front, sem login, captcha, cookie nem token: GET https://celulaadv.oabpr.org.br/api-jurisprudencia/documento-acordao/search?searchTerm=&page=N&limit=L. Resposta {data:[...], pagination:{page,limit,total,totalPages,hasNext,hasPrev}}. limit=100 aceito (192 KB/página; 100 itens com 2025 TED). Filtros testados: cdOrgao=68, anoAcordaoRange={\"start\":AAAA,\"end\":AAAA} (JSON na query; o front também usa searchTermWithOperator, nrAcordao, nrDocumento, assunto, titulo, ementa, cdSubsecao, cdSuborgao, processo, anoProcesso, relator, dtJulgamentoInicio/Fim, tpDecisao, orConditions). Auxiliares: /tab-orgao, /tab-sub-orgao, /tab-sub-secao, /documento-acordao/relator (lista de relatores com nic), /documento-acordao (getAll). Paginar por ano+órgão (ordem: ind crescente, ex. 2025 começa em nrAcordao 1). Total 54135/100 = ~542 páginas sem filtro.",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "verificada",
+    "inteiro_teor": "NAO. Só ementa (até ~3500 caracteres, 0 vazias em 100 de 2025) + 'titulo' que traz o dispositivo do acórdão (~250-830 caracteres). Sem voto, sem PDF, sem link para documento (nrDocumento é ID interno, sem URL).",
+    "observacoes": "Verificada com leitura de 200 decisões reais (100 de 2025 e 100 de 2021, TED cdOrgao=68; também 3 de 1995). Exemplo: GET .../documento-acordao/search?searchTerm=&limit=100&cdOrgao=68&anoAcordaoRange={\"start\":2025,\"end\":2025} -> ind 53325, nrAcordao 1/2025, relator JOAO EURICO KOERNER, Câmara Especial, 2025-02-03, assunto EMBARGOS DE DECLARAÇÃO, documentoProcesso.nrProcesso 4724 (dtProcesso 2020-07-02). Nº do processo = documentoProcesso.nrProcesso + '/' + ano de dtProcesso, mesmo formato do banco (numero_processo 'nnnn/aaaa'). SOBREPOSIÇÃO COM DEOAB_PR (12121 registros, 2019-02-22 a 2026-11-19): 98 de 100 processos de 2025 e 89 de 100 de 2021 já estão no banco (chave nº/ano); ex. 4724/2020 = DEOAB_PR:826343, 4107/2020 = DEOAB_PR:870810, 7362/2020 = DEOAB_PR:875521. Ou seja, 2019+ é majoritariamente repetição do Diário, mas a data do Diário é posterior à do julgamento; o ganho exclusivo é 2003-2018 (~38 mil acórdãos), o campo advogado/relator estruturado, assunto e subórgão. Contém nome completo do advogado representado (dado pessoal; o DEOAB anonimiza por iniciais): tratar com cuidado. RESTRIÇÕES: ted.oabpr.org.br/robots.txt tem 'Allow: /' e 'Disallow: /api/' mas vale para o host ted.; a API está em celulaadv.oabpr.org.br, que não tem robots.txt (404); nenhum termo de uso localizado no front nem no JS. Risco: a restrição /api/ do host ted. indica sensibilidade; coletar com baixa taxa (1 req a cada 2 s, 1 conexão) e reavaliar se o mantenedor pedir. Ordem sugerida: coletar 1º, filtrando 2003-2018 (e 2019+ só para cruzar por nº/ano e preencher relator/assunto)."
   },
   {
     "slug": "livro-consultas",
     "url": "https://ted.oabpr.org.br/wp-content/uploads/2022/05/consultas-sobre-etica-disciplina-e-exercicio-da-advocacia.pdf",
     "conteudo": "Consultas da Câmara Especial",
     "periodo": "2019-2021",
-    "volume": null,
+    "volume": "360 páginas (declarado); PDF acessível HTTP 200 application/pdf",
     "acesso": "PDF (360 p.)",
     "exclusiva": true,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "verificacao": "V",
+    "situacao": "verificada",
+    "observacoes": "URL atual do menu: https://ted.oabpr.org.br/arquivos/2022/05/consultas-sobre-etica-disciplina-e-exercicio-da-advocacia.pdf (o caminho /wp-content/uploads/ do registro antigo não é o do site novo, Next.js). Existência confirmada por HEAD; texto não lido nem contado. Também há comentarios-estatuto-advocacia-e-oab.pdf em /arquivos/2022/05/. Coletar 3º (fonte exclusiva, uma única vez)."
   },
   {
     "slug": "boletins",
-    "url": "https://ted.oabpr.org.br/",
+    "url": "https://ted.oabpr.org.br/boletim-informativo",
     "conteudo": "Boletins bimestrais de ementas (repetem o DEOAB por declaração própria)",
-    "periodo": "2025-2026",
-    "volume": null,
-    "acesso": "PDF",
+    "periodo": "2024-12 a 2026-10",
+    "volume": "11 edições",
+    "acesso": "HTML + PDF: lista em /boletim-informativo; 11 edições bimestrais /boletim-informativo/boletim-informativo-n-NN-<mes-ano> (n-01 dez24-fev25 até n-11 set26-out26)",
     "exclusiva": false,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "verificacao": "V",
+    "situacao": "verificada",
+    "observacoes": "Edições listadas e confirmadas; conteúdo não lido (a repetição do DEOAB é declaração do próprio boletim, que o registro antigo trazia). Prioridade mínima: coletar 4º/não coletar. Tabs de apoio no site: /composicao (turmas), /atos-normativos, /documentos."
   }
 ]

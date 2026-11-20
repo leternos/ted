@@ -209,6 +209,9 @@ def _anuncia_decisao_colegiada(plano: str) -> bool:
     """A própria publicação se apresenta como acórdão numerado ou como decisão de Câmara, Turma ou Conselho (PA, PB)."""
     if RE_ACORDAO_NUMERADO.search(plano[:80]) or RE_DECISAO_DE_ORGAO.search(plano[:500]):
         return True
+    # PR, formato de 2025 em diante: "Número Acórdão: 123/2025 ... I. CASO EM EXAME ... IV. DISPOSITIVO E TESE"
+    if re.search(r"NUMERO\s+(?:DO\s+)?ACORDAO\s*:?\s*\d+\s*/\s*\d{4}", plano[:500]) and "ONDE SE LE" not in plano:
+        return True
     # SC: "ACÓRDÃO N. 116/2025" no cabeçalho, com voto do relator; não vale para decisão monocrática numerada
     return bool(re.search(r"ACORDAO\s+(?:N\S*\s*)?\d+\s*/\s*\d{4}", plano[:800])) and not re.search(
         r"MONOCRATIC|PACIFICAD|DETERMINO\s+O\s+ARQUIVAMENTO", plano[:1500])

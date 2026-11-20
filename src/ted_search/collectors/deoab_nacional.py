@@ -290,7 +290,7 @@ RE_ADMINISTRATIVO = re.compile(
     r"REFORMULACAO\s+DO\s+ORCAMENTO|PROGRAMA\s+DE\s+REGULARIZACAO|PROPOSTA\s+DE\s+RESOLUCAO|ALTERACAO\s+DA\s+RESOLUCAO|"
     r"PROPOSTA\s+PARA\s+INCLUSAO|EXIGENCIA\s+DE\s+EMISSAO|ALTERACAO\s+DE\s+NOMENCLATURA|PEDIDO\s+DE\s+JUBILAMENTO)|"
     # leituras de confirmação de RJ e MG
-    r"PROCESSO\s+INCIDENTAL\s+(?:INSTAURADO\s+)?PARA\s+APURA\w+\s+A\s+(?:IN)?IDONEIDADE|APURA\w+\s+(?:DA\s+|DE\s+)?(?:IN)?IDONEIDADE|ANISTIA\s+DE\s+ANUIDADE|CONCESSAO\s+DE\s+ISENCAO|PEDIDO\s+DE\s+CANCELAMENTO\s+D[AE]\s+INSCRICAO|"
+    r"PROCESSO\s+INCIDENTAL\s+(?:INSTAURADO\s+)?PARA\s+APURA\w+\s+A\s+(?:IN)?IDONEIDADE|APURA\w+\s+(?:DA\s+|DE\s+)?(?:IN)?IDONEIDADE|ANISTIA\s+DE\s+(?:ANUIDADE|DEBITO)S?|CONCESSAO\s+DE\s+ISENCAO|PEDIDO\s+DE\s+CANCELAMENTO\s+D[AE]\s+INSCRICAO|"
     # leituras de AM e SC
     r"RECURSO\.\s*INSCRICAO\s+NOS\s+QUADROS|ANOTACAO\s+DE\s+(?:IMPEDIMENTO|INCOMPATIBILIDADE)|BAIXA\s+DE\s+ANOTACAO|"
     r"PEDIDO\s+DE\s+(?:BAIXA|ANOTACAO|EXCLUSAO\s+DE\s+SOCIO)|ALTERACAO\s+ORCAMENTARIA|VAGA\s+DE\s+CONSELHEIR|ASSUNTO\s*:\s*SOCIEDADE|"
@@ -331,8 +331,8 @@ RE_PRESCRICAO_DISCIPLINAR = re.compile(r"PRESCRI[^.]{0,300}ART(?:IGO)?\.?\s*43\b
 def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool:
     """Decisões do Conselho sobre inscrição, sociedades, contas ou eleições ficam no banco, mas fora da busca do TED."""
     inicio = _sem_acento_upper(full_text[:1500])
-    if RE_TURMA_JULGADORA.search(_sem_acento_upper(full_text)):
-        return True
+    if RE_TURMA_JULGADORA.search(_sem_acento_upper(full_text)) or "CAMARA DE DISCIPLINA" in _sem_acento_upper(setor_nome):
+        return True  # a Câmara de Disciplina (PR) só julga recurso disciplinar
     # RS: extrato de julgamento da 2ª Câmara Recursal (recursos disciplinares), que não traz ementa nem palavra-chave
     if re.search(r"DA\W{0,2}SE\s+CIENCIA", inicio[:400]) and re.search(r"\b2\S?\s+CAMARA\s+(?:RECURSAL|JULGADORA)", inicio[:600]):
         return True

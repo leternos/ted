@@ -1,9 +1,9 @@
 {
   "banco": "ted_jurisprudencia.db",
-  "bytes": 941330432,
-  "sha256": "5d6ac44509b3c0a8cd7f0365463c1a6e5a6445771821b8970e13f4c8e2c456ba",
-  "julgados": 140552,
-  "empacotado_em": "2026-11-20T10:31:49+00:00",
+  "bytes": 1143889920,
+  "sha256": "56493caa9c84b9bd6d101a35acdd4f9d1ff4bab2a6984a8e47141d66e42e47b8",
+  "julgados": 170461,
+  "empacotado_em": "2026-11-20T14:31:55+00:00",
   "partes": [
     {
       "arquivo": "ted_jurisprudencia.db.xz.parte-00",
@@ -11,7 +11,7 @@
     },
     {
       "arquivo": "ted_jurisprudencia.db.xz.parte-01",
-      "bytes": 21254616
+      "bytes": 43733888
     }
   ]
 }
