@@ -398,3 +398,18 @@ def test_acordao_em_linha_unica_nao_e_apagado_como_ruido():
     linha = "EMENTA: Representação. Advogado inscrito na OAB/MT sob n. 1/O c/c art. 34 do EAOAB. " * 6
     assert not is_gibberish_ocr_line(linha)
     assert is_gibberish_ocr_line("/a b/c /d x/y")
+
+
+def test_marca_disciplinar_segundas_leituras_go_ma_pe():
+    from ted_search.collectors.deoab_nacional import eh_materia_disciplinar as d
+
+    # MA: pedido de inscrição com "representação criminal" na ementa é matéria de inscrição
+    assert not d("Conselho Seccional", "", "REQUERENTE: J.R.F. EMENTA: PEDIDO DE INSCRIÇÃO ORIGINÁRIA. EXISTÊNCIA DE REPRESENTAÇÃO CRIMINAL CONTRA O REQUERENTE. INSCRIÇÃO DEFERIDA.")
+    # ES: consulta ao TED sobre inscrição continua disciplinar
+    assert d("TED", "", "Consulta nº 1 Consulente: Fulana. EMENTA N.º 197/TURMA JULGADORA/2024 PEDIDO DE INSCRIÇÃO DE ADVOGADO SERVIDOR DA DEFENSORIA. CÓDIGO DE ÉTICA.")
+    # GO: o TED anuncia o julgamento; "sociedade de advogados" é só o nome da parte
+    assert d("", "", "O Tribunal de Ética e Disciplina da OAB-GO torna público que foi julgado o seguinte processo: 201508915. Repte: X Sociedade de Advogados. Repdo: B. EMENTA: Condenação por ausência de prestação de contas.")
+    # GO e RJ: alteração de regimento e solicitação de providências são administrativas
+    assert not d("Conselho Pleno", "", "Requerente: Presidente do TED. Ementa: PROPOSTA DE ALTERAÇÃO DO REGIMENTO INTERNO DO TRIBUNAL DE ÉTICA E DISCIPLINA.")
+    # PE: prescrição do art. 43 em recurso sem a palavra "disciplinar"
+    assert d("Segunda Câmara", "", "Recorrente: R.B.F. Recorrido: M.C. decidiu a Câmara, por unanimidade, reconhecer a prescrição da pretensão punitiva, nos termos do art. 43 do Estatuto.")

@@ -1,0 +1,518 @@
+{
+ "uf": "RS",
+ "id_organizacao": 21,
+ "termos": [
+  "ACORDAO",
+  "EMENTA",
+  "RECURSO",
+  "DECISAO"
+ ],
+ "tipos_decisao": [
+  "Recurso",
+  "Intimação",
+  "Acórdão",
+  "Decisão",
+  "Notificação",
+  "Ementa",
+  "Ementa e Acórdão",
+  "Resultado de Julgamento",
+  "Certidão de Julgamento",
+  "Embargos de Declaração",
+  "Republicação",
+  "Retificação",
+  "Edital"
+ ],
+ "validado": true,
+ "evidencia": {
+  "gerado_em": "2026-11-20T09:42:45Z",
+  "dias_censo": [
+   {
+    "dia": "2019-02-21",
+    "publicacoes": 26,
+    "baixadas": 26
+   },
+   {
+    "dia": "2020-10-29",
+    "publicacoes": 228,
+    "baixadas": 228
+   },
+   {
+    "dia": "2022-09-01",
+    "publicacoes": 215,
+    "baixadas": 215
+   },
+   {
+    "dia": "2023-04-28",
+    "publicacoes": 36,
+    "baixadas": 36
+   },
+   {
+    "dia": "2024-03-01",
+    "publicacoes": 102,
+    "baixadas": 102
+   },
+   {
+    "dia": "2024-07-31",
+    "publicacoes": 80,
+    "baixadas": 80
+   },
+   {
+    "dia": "2025-02-03",
+    "publicacoes": 95,
+    "baixadas": 95
+   },
+   {
+    "dia": "2025-06-18",
+    "publicacoes": 94,
+    "baixadas": 94
+   },
+   {
+    "dia": "2025-07-11",
+    "publicacoes": 39,
+    "baixadas": 39
+   },
+   {
+    "dia": "2026-03-26",
+    "publicacoes": 130,
+    "baixadas": 130
+   }
+  ],
+  "decisoes_no_censo": 91,
+  "decisoes_que_nenhum_termo_encontra": [],
+  "recall_por_termo": {
+   "ACORDAO": 0.956,
+   "EMENTA": 0.956,
+   "DECISAO": 0.0879,
+   "JULGAMENTO": 0.1538,
+   "RECURSO": 0.0879
+  },
+  "tipos": {
+   "Notificação": {
+    "publicacoes": 483,
+    "parecem_decisao": 12,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 266,
+     "Segunda Câmara": 59,
+     "Subseção": 53,
+     "Cartório de Instrução": 39,
+     "Primeira Câmara": 27,
+     "Comissão de Seleção e Inscrição": 15
+    },
+    "amostras": [
+     {
+      "id": 274643,
+      "titulo": "NOTIFICAÇÃO MIGRAÇÃO DE PROCESSOS SISTEMA SEI",
+      "trecho": "O Tribunal de Ética e Disciplina da OAB/RS notifica os interessados acerca da migração dos processos disciplinarespara sistema eletrônico (plataforma SEI), em cumprimento ao art. 3º, parágrafo único, da Resolução nº 09/2020 da OAB/RS, disponibilizada no DEOAB "
+     },
+     {
+      "id": 274644,
+      "titulo": "NOTIFICAÇÃO MIGRAÇÃO DE PROCESSOS SISTEMA SEI",
+      "trecho": "O Tribunal de Ética e Disciplina da OAB/RS notifica os interessados acerca da migração dos processos disciplinarespara sistema eletrônico (plataforma SEI), em cumprimento ao art. 3º, parágrafo único, da Resolução nº 09/2020 da OAB/RS, disponibilizada no DEOAB "
+     },
+     {
+      "id": 274645,
+      "titulo": "NOTIFICAÇÃO MIGRAÇÃO DE PROCESSOS SISTEMA SEI",
+      "trecho": "A Subseção de Bento Gonçalves da OAB/RS notifica os interessados acerca da migração dos processos disciplinares para sistema eletrônico (plataforma SEI), em cumprimento ao art. 3º, parágrafo único, da Resolução nº 09/2020 da OAB/RS, disponibilizada no DEOAB na"
+     }
+    ]
+   },
+   "Despacho": {
+    "publicacoes": 177,
+    "parecem_decisao": 1,
+    "setores": {
+     "Subseção": 64,
+     "Tribunal de Ética e Disciplina": 62,
+     "Assessoria da Presidencia": 26,
+     "subseção": 19,
+     "Orgão Especial": 5,
+     "Conselho Pleno": 1
+    },
+    "amostras": [
+     {
+      "id": 4399,
+      "titulo": "PROCESSO N. 117.758/2001",
+      "trecho": "Reqte: Cristiano da Silva Sielichow. DESPACHO: Examinados, em gabinete, acolho o parecer da Comissão de Seleção e Inscrição da OAB/RS, (evento 14) e DEFIRO o pedido de substituição do cartão de identidade profissional, com a anotação do impedimento previsto no"
+     },
+     {
+      "id": 4400,
+      "titulo": "PROCESSO N. 387.016/2016",
+      "trecho": "Reqte: Joana Marisa Kumm. DESPACHO: Examinados, em gabinete, acolho o parecer da Comissão de Seleção e Inscrição (Evento 04) e, tendo em vista o requerimento do interessado, nos moldes do art. 12, II do EAOAB, DEFIRO o pedido de licenciamento da inscrição nº 1"
+     },
+     {
+      "id": 4401,
+      "titulo": "PROCESSO N. 317.905/2013",
+      "trecho": "Reqte: Camila Eduarda Ferrari. DESPACHO: Examinados, em gabinete, acolho em parte o parecer proferido pela Comissão de Seleção e Inscrição, (evento 04), no sentido de deferir a averbação do impedimento previsto no art. 30, I da Lei 8.906/94, com expedição da s"
+     }
+    ]
+   },
+   "Sessão de Julgamento": {
+    "publicacoes": 67,
+    "parecem_decisao": 0,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 67
+    },
+    "amostras": [
+     {
+      "id": 567279,
+      "titulo": "NOTIFICAÇÃO PAUTA DE JULGAMENTO",
+      "trecho": "Notifica-se os interessados e advogados a seguir relacionados para tomarem conhecimento que em 16 de junho de 2023, a partir das 13h30min, a 5ª Turma Julgadora do TED reunir-se-á em sessão ordinária de julgamento, em formato híbrido, podendo ser acompanhada de"
+     },
+     {
+      "id": 567280,
+      "titulo": "NOTIFICAÇÃO PAUTA DE JULGAMENTO",
+      "trecho": "Notifica-se os interessados e advogados a seguir relacionados para tomarem conhecimento que em 5 de junho de 2023, a partir das 13h, a 9ª Turma Julgadora do TED reunir-se-á em sessão ordinária de julgamento, em formato híbrido, podendo ser acompanhada de forma"
+     },
+     {
+      "id": 709319,
+      "titulo": "NOTIFICAÇÃO PAUTA DE JULGAMENTO",
+      "trecho": "Notifica-se os interessados e advogados a seguir relacionados para tomarem conhecimento que em 26 de novembro de 2024, a partir das 13h, a 12ª Turma Julgadora do TED reunir-se-á em sessão ordinária de julgamento, em formato híbrido, podendo ser acompanhada de "
+     }
+    ]
+   },
+   "Razões Finais": {
+    "publicacoes": 67,
+    "parecem_decisao": 0,
+    "setores": {
+     "Subseção": 51,
+     "Tribunal de Ética e Disciplina": 13,
+     "subseção": 3
+    },
+    "amostras": [
+     {
+      "id": 709257,
+      "titulo": "NOTIFICAÇÃO DE RAZÕES FINAIS",
+      "trecho": "Ficam notificados para manifestação acerca do despacho exarado nos autos: Processo n. 21.0000.2018.008958-3 – MARGÔ FROENER NOVELLO (Adv. Margô Froener Novello – OAB/RS 91519) x A.F.O. (Def. Dat. Valter Borges de Camargo Júnior - OAB/RS 129.107). DESPACHO: Vie"
+     },
+     {
+      "id": 709258,
+      "titulo": "NOTIFICAÇÃO DE RAZÕES FINAIS",
+      "trecho": "Ficam notificados para manifestação acerca do despacho exarado nos autos: Processo n. 1102189.00110704/2021-20 – OAB EX OFFÍCIO x L.G. (Def. Dat. Cassio Todero Castilhos - OAB/RS 122.122). DESPACHO: Vieram os autos conclusos. Ante ausência de manifestação do d"
+     },
+     {
+      "id": 709259,
+      "titulo": "NOTIFICAÇÃO DE RAZÕES FINAIS",
+      "trecho": "Ficam notificados para manifestação acerca do despacho exarado nos autos: Processo n. 21.0000.2019.026751-6 - RIO GRANDE ENERGIA S/A (Procs. Ana Lia Martins Dos Santos Bortagaray – OAB/RS 54.837, Luciana Hogata – OAB/SP 134.319, Ana Cristina Fernandes Borelli "
+     }
+    ]
+   },
+   "Recurso": {
+    "publicacoes": 50,
+    "parecem_decisao": 46,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 50
+    },
+    "amostras": [
+     {
+      "id": 867059,
+      "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+      "trecho": "Processo n. 1101115.00107550/2021-20 - Tatiana Dos Santos Capeletti (Procs. Carolina Soares Dos Santos - OAB/RS 107.374 e Gabriela Barros Prux - OAB/RS 111.873) x A.D.F.D.D.S (Proc. Evelyn Silva De Sousa - OAB/RS 87.750) A.P.L.S. (Adv. Ana Paula Leal Sbardelot"
+     },
+     {
+      "id": 867060,
+      "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+      "trecho": "Processo n. 1100938.00019202/2020-20 - MARLON ÉDER EMMERICH DOS SANTOS (Sem representação nos autos) x D.E.M. (Adv. Davi Eloi Muller - OAB/RS 47.779). EMENTA TED Nº 1504/2024: EMBARGOS DECLARATÓRIOS. ARGUIÇÃO DE AUSÊNCIA DE FUNDAMENTAÇÃO DA DECISÃO. RECEBIDO. "
+     },
+     {
+      "id": 867061,
+      "titulo": "INTIMAÇÃO DE ACÓRDÃO",
+      "trecho": "Processo n. 1101020.00020540/2020-20 - Antônio Gabriel Gadenz (sem representação nos autos) x F.M.B. (Adv. FREDERICO MENNA BARRETO - OAB/RS 79.846), H.D.S.L (Adv. HENRIQUE DE SOUZA LOPES - OAB/RS 58.340) M.A.L (Adv. MARCOS AYRES LUKRAFKA - OAB/RS 94.828). EMEN"
+     }
+    ]
+   },
+   "Convocação": {
+    "publicacoes": 48,
+    "parecem_decisao": 0,
+    "setores": {
+     "Orgão Especial": 21,
+     "Tribunal de Ética e Disciplina": 12,
+     "Conselho Pleno": 10,
+     "Subseção": 5
+    },
+    "amostras": [
+     {
+      "id": 274678,
+      "titulo": "CONVOCAÇÃO",
+      "trecho": "Ficam convocados a comparecerem na Sede da OAB/RS Subseção de Erechim, localizada na Rua Paulo VI, nº 250, para tratarem de assunto de seus exclusivos interesses os advogados: FERNANDO JOSÉ APPI – OAB/RS 73.815 no prazo de 15 (quinze) dias úteis, contados da p"
+     },
+     {
+      "id": 274682,
+      "titulo": "CONVOCAÇÃO",
+      "trecho": "Ficam convocados a comparecerem na Ordem dos Advogados do Brasil – Subseção Lajeado, localizada na Rua Bento Gonçalves, 711/504, em Lajeado-RS, para tratarem de assunto de seus exclusivos interesses os advogados: ANGELO CARVALHO CONTI – OAB/RS 76.906 O prazo p"
+     },
+     {
+      "id": 274683,
+      "titulo": "CONVOCAÇÃO",
+      "trecho": "Ficam convocados a comparecerem na Ordem dos Advogados do Brasil – Subseção Lajeado, localizada na Rua Bento Gonçalves, 711/504, em Lajeado-RS, para tratarem de assunto de seus exclusivos interesses os advogados: MARILIA PINHEIRO MACHADO BUCHABQUI – OAB/RS 11."
+     }
+    ]
+   },
+   "Contrarrazões": {
+    "publicacoes": 48,
+    "parecem_decisao": 0,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 48
+    },
+    "amostras": [
+     {
+      "id": 709356,
+      "titulo": "NOTIFICAÇÃO PARA APRESENTAÇÃO DE CONTRARRAZÕES.",
+      "trecho": "processo n. 1100858.00005236/2020-20 - O Tribunal de Ética e Disciplina notifica a OAB EX OFFICIO para, querendo, no prazo de 15 (quinze) dias úteis, contados a partir da publicação deste, apresentar contrarrazões ao recurso interposto no presente processo. O "
+     },
+     {
+      "id": 709357,
+      "titulo": "NOTIFICAÇÃO PARA APRESENTAÇÃO DE CONTRARRAZÕES.",
+      "trecho": "processo n. 21.0000.2019.005138-3 - O Tribunal de Ética e Disciplina notifica a OAB EX OFFICIO para, querendo, no prazo de 15 (quinze) dias úteis, contados a partir da publicação deste, apresentar contrarrazões ao recurso interposto no presente processo. O pra"
+     },
+     {
+      "id": 709358,
+      "titulo": "NOTIFICAÇÃO PARA APRESENTAÇÃO DE CONTRARRAZÕES.",
+      "trecho": "processo n. 1101020.00006934/2021-20 - O Tribunal de Ética e Disciplina notifica a OAB EX OFFICIO para, querendo, no prazo de 15 (quinze) dias úteis, contados a partir da publicação deste, apresentar contrarrazões ao recurso interposto no presente processo. O "
+     }
+    ]
+   },
+   "Intimação": {
+    "publicacoes": 38,
+    "parecem_decisao": 33,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 36,
+     "Segunda Câmara": 2
+    },
+    "amostras": [
+     {
+      "id": 274895,
+      "titulo": "INTIMAÇÃO DE ACÓRDÃO Nº. 21.0000.2019.023621-7/TED",
+      "trecho": "Repte: MARLENE EITELVEN GEHLEN (Proc. Gabriel Bernardi Turani - OAB/RS 84.716)- Repdo: S.M.A.N. (Adv. Simone Maria Antoniolli Navari - OAB/RS 63.022) e F.N. (Adv. Flavio Navari - OAB/RS 25.464). EMENTA/TED 0125/2020: REPRESENTAÇÃO. PREJUDICAR POR CULPA GRAVE I"
+     },
+     {
+      "id": 274896,
+      "titulo": "INTIMAÇÃO DE ACÓRDÃO Nº. 21.0697.2019.000348-8/TED",
+      "trecho": "Repte: SGD (Adv. Simone Godoy Doubrawa - OAB/RS 40.092)- Repdo: C.F.S.D. (Proc. Celso Luiz Afonso Haical - OAB/RS 6.592). EMENTA/TED 0056/2020: INFRAÇÃO DISCIPLINAR DE ENTENDIMENTO COM A PARTE ADVERSA. Não demonstrado nos autos. Sugestão e/ou questionamento so"
+     },
+     {
+      "id": 274897,
+      "titulo": "INTIMAÇÃO DE ACÓRDÃO Nº. 21.0000.2019.021525-2/TED",
+      "trecho": "Repte: OAB EX OFFÍCIO - Repdo: C.R.F. (Def. dat. Marcelo Lima Bertuol - OAB/RS 75.643). EMENTA/TED 0124/2020: ABANDONO DE CAUSA. ADVOGADO QUE NÃO COMPARECEU À UMA ÚNICA AUDIÊNCIA NO PROCESSO CRIMINAL, SEM PREJUÍZO PARA SEU CLIENTE E SEM RESTAR COMPROVADO ATO O"
+     }
+    ]
+   },
+   "Audiência de Instrução": {
+    "publicacoes": 18,
+    "parecem_decisao": 0,
+    "setores": {
+     "Subseção": 17,
+     "subseção": 1
+    },
+    "amostras": [
+     {
+      "id": 709263,
+      "titulo": "NOTIFICAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+      "trecho": "Notifica(m)-se o(s) advogado(s) a seguir relacionado(s) para tomar(em) conhecimento da realização de audiência de instrução que se realizará de forma híbrida, as partes poderão comparecer na sede da Subseção, situada no seguinte endereço: Rua Raimundo Nora, nº"
+     },
+     {
+      "id": 781650,
+      "titulo": "NOTIFICAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+      "trecho": "Fica notificado a comparecer na audiência de instrução que se realizará, de forma híbrida, podendo comparecer na sede da Subseção, situada no seguinte endereço: Rua Professora Leocádea Jaeger Caimi, nº 60, Bairro Gentil, Lagoa Vermelha/RS, ou através da plataf"
+     },
+     {
+      "id": 781651,
+      "titulo": "NOTIFICAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+      "trecho": "Fica notificado a comparecer na audiência de instrução que se realizará, de forma híbrida, podendo comparecer na sede da Subseção, situada no seguinte endereço: Rua Professora Leocádea Jaeger Caimi, nº 60, Bairro Gentil, Lagoa Vermelha/RS, ou através da plataf"
+     }
+    ]
+   },
+   "Convocação - Pauta de Julgamentos": {
+    "publicacoes": 18,
+    "parecem_decisao": 0,
+    "setores": {
+     "Orgão Especial": 18
+    },
+    "amostras": [
+     {
+      "id": 1068106,
+      "titulo": "NOTIFICAÇÃO PARA SESSÃO DE JULGAMENTO.",
+      "trecho": "O Órgão Especial da Ordem dos Advogados do Brasil – Seção do Rio Grande do Sul, reunir-se-á em Sessão Ordinária, no dia 24 de abril de dois mil e vinte e seis, a partir das 09 horas., de modo presencial, no 14º andar, no prédio Sede da Ordem dos Advogados do B"
+     },
+     {
+      "id": 1068107,
+      "titulo": "NOTIFICAÇÃO PARA SESSÃO DE JULGAMENTO.",
+      "trecho": "O Órgão Especial da Ordem dos Advogados do Brasil – Seção do Rio Grande do Sul, reunir-se-á em Sessão Ordinária, no dia 24 de abril de dois mil e vinte e seis, a partir das 09 horas., de modo presencial, no 14º andar, no prédio Sede da Ordem dos Advogados do B"
+     },
+     {
+      "id": 1068108,
+      "titulo": "NOTIFICAÇÃO PARA SESSÃO DE JULGAMENTO.",
+      "trecho": "O Órgão Especial da Ordem dos Advogados do Brasil – Seção do Rio Grande do Sul, reunir-se-á em Sessão Ordinária, no dia 24 de abril de dois mil e vinte e seis, a partir das 09 horas., de modo presencial, no 14º andar, no prédio Sede da Ordem dos Advogados do B"
+     }
+    ]
+   },
+   "Arquivamento Liminar": {
+    "publicacoes": 10,
+    "parecem_decisao": 0,
+    "setores": {
+     "Subseção": 5,
+     "subseção": 3,
+     "Subseçao": 1,
+     "Tribunal de Ética e Disciplina": 1
+    },
+    "amostras": [
+     {
+      "id": 781621,
+      "titulo": "NOTIFICAÇÃO DESPACHO",
+      "trecho": "Ficam notificados para manifestação acerca do despacho de arquivamento liminar exarado nos autos: Processo n. 1100959.00097221/2021-20 – OAB EX OFFICIO x M.L.M.D.S. (Adv. Mara Lucia Machado da Silveira - OAB/RS 63.837). O prazo para qualquer manifestação é de "
+     },
+     {
+      "id": 781622,
+      "titulo": "NOTIFICAÇÃO DESPACHO",
+      "trecho": "Ficam notificados para manifestação acerca do despacho de arquivamento liminar exarado nos autos: Processo n. 1102491.00098623/2023-20 - OAB EX OFFICIO x M.A.D.C. (Adv. Marcos Alexandre Dorneles Camargo – OAB/RS 68.014). O prazo para qualquer manifestação é de"
+     },
+     {
+      "id": 781641,
+      "titulo": "NOTIFICAÇÃO DESPACHO",
+      "trecho": "Ficam notificados para manifestação acerca do despacho de arquivamento liminar exarado nos autos: Processo n. 1102195.00027483/2024-20 – OAB EX OFFÍCIO x B.R.C.B.R. (Adv. BRUNA ROBERTA CASTELO BRANCO RITTER – OAB/RS 93.601). O prazo para qualquer manifestação "
+     }
+    ]
+   },
+   "Audiência": {
+    "publicacoes": 9,
+    "parecem_decisao": 0,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 9
+    },
+    "amostras": [
+     {
+      "id": 567257,
+      "titulo": "NOTIFICAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+      "trecho": "Notifica-se os advogados a seguir relacionados para tomarem conhecimento da realização de audiência de instrução que se realizará através de sistema de videoconferência, nas datas e horários indicados: Processo n. 1101115.00084383/2022-20 – IVONETE GALINDRO PA"
+     },
+     {
+      "id": 933045,
+      "titulo": "NOTIFICAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+      "trecho": "Notifica-se os advogados a seguir relacionados para tomarem conhecimento da realização de audiência de instrução que se realizará no 10º andar na sede da Seccional, localizada na Rua Washington Luiz, 1110, nas datas e horários indicados: Processo n. 1100858.00"
+     },
+     {
+      "id": 933046,
+      "titulo": "NOTIFICAÇÃO PARA AUDIÊNCIA DE INSTRUÇÃO",
+      "trecho": "Notifica-se os advogados a seguir relacionados para tomarem conhecimento da realização de audiência de instrução que se realizará no 10º andar na sede da Seccional, localizada na Rua Washington Luiz, 1110, nas datas e horários indicados: Processo n. 1101115.00"
+     }
+    ]
+   },
+   "Notificações": {
+    "publicacoes": 4,
+    "parecem_decisao": 0,
+    "setores": {
+     "Subseção": 4
+    },
+    "amostras": [
+     {
+      "id": 478115,
+      "titulo": "NOTIFICAÇÃO RAZÕES FINAIS",
+      "trecho": "Ficam notificados para apresentação de razões finais: Processo n. 21.0000.2018.001790-5 – LUCIANO JOSE CORREA AMORIN (proc. AFRANIO SOARES DINIZ LARA JUNIOR – OAB/RS 117.853A) x A.D.S.F.R.D.S. (Adv. ANA DE SANTA FE ROSA DA SILVEIRA – OAB/RS 19.027). O prazo pa"
+     },
+     {
+      "id": 478116,
+      "titulo": "NOTIFICAÇÃO RAZÕES FINAIS",
+      "trecho": "Ficam notificados para apresentação de razões finais: Processo n. 1100880.00109620/2021-20 – OAB DE OFÍCIO (sem representação nos autos) x G.M (Adv. GUSTAVO MEZZOMO – OAB/RS 84.713). O prazo para apresentação é de 15 (quinze) dias úteis, contados da publicação"
+     },
+     {
+      "id": 478117,
+      "titulo": "NOTIFICAÇÃO RAZÕES FINAIS",
+      "trecho": "Ficam notificados para apresentação de razões finais: Processo n. 1100880.00021002/2020-20 – LUCINÉIA BITTENCOURT DA ROSA (sem representação nos autos) x C.J.S.N. (Adv. CLAUDIO JOSÉ DA SILVA NETO - OAB/RS 91.120), C.R.S. (Adv. CLAUDIO ROBERTO DA SILVA - OAB/RS"
+     }
+    ]
+   },
+   "Acórdão": {
+    "publicacoes": 3,
+    "parecem_decisao": 0,
+    "setores": {
+     "Segunda Câmara": 1,
+     "Primeira Câmara": 1,
+     "Conselho Pleno": 1
+    },
+    "amostras": [
+     {
+      "id": 866427,
+      "titulo": "NOTIFICAÇÃO DE DECISÃO.",
+      "trecho": "A Ordem dos Advogados do Brasil – Seccional do Rio Grande do Sul - RS. No processo abaixo relacionado, dá-se ciência aos interessados, abaixo mencionados, da decisão abaixo constantes, proferidas pela 1ª Turma da 2ª Câmara Recursal da OAB/RS, na Sessão de Julg"
+     },
+     {
+      "id": 866483,
+      "titulo": "NOTIFICAÇÃO DE CONTRARRAZÕES.",
+      "trecho": "A Ordem dos Advogados do Brasil – Seção do Rio Grande do Sul - RS. No uso de suas atribuições, intime-se. Recorrido: Presidente da OAB/RS. para querendo, no prazo previsto no art. 139 do Regulamento Geral da OAB, oferecer suas contrarrazões ao recurso interpos"
+     },
+     {
+      "id": 946687,
+      "titulo": "NOTIFICAÇÃO DE ACÓRDÃO.",
+      "trecho": "Ordem dos Advogados do Brasil – Seção do Rio Grande do Sul-RS. No processo abaixo relacionado, dá-se ciência aos interessados infra da decisão proferida pelo Conselho Pleno Seccional, na sessão de julgamento realizada no dia 27 de junho de 2025, para os devido"
+     }
+    ]
+   },
+   "Penalidade": {
+    "publicacoes": 2,
+    "parecem_decisao": 0,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 2
+    },
+    "amostras": [
+     {
+      "id": 1068128,
+      "titulo": "EXECUÇÃO DA PENA",
+      "trecho": "O Tribunal de Ética e Disciplina torna públicas as anotações efetuadas, na data de 25 de março do corrente ano, para fins de dar publicidade às execuções da pena de suspensão: APLICAÇÃO/ANOTAÇÃO DE SUSPENSÃO: GISLAINE LOREIRO – OAB/RS 76.510 – INÍCIO DE VIGÊNC"
+     },
+     {
+      "id": 1068129,
+      "titulo": "EXECUÇÃO DA PENA",
+      "trecho": "O Tribunal de Ética e Disciplina torna públicas as anotações efetuadas, na data de 25 de março do corrente ano, para fins de dar publicidade às execuções da pena de suspensão: APLICAÇÃO/ANOTAÇÃO DE SUSPENSÃO: INAJARA MACHADO DOS SANTOS FALCI – OAB/RS 38.711 – "
+     }
+    ]
+   },
+   "Decisão": {
+    "publicacoes": 1,
+    "parecem_decisao": 0,
+    "setores": {
+     "Orgão Especial": 1
+    },
+    "amostras": [
+     {
+      "id": 708934,
+      "titulo": "NOTIFICAÇÃO DE DECISÃO.",
+      "trecho": "Ordem dos Advogados do Brasil – Seção do Rio Grande do Sul-RS. No processo abaixo relacionado, dá-se ciência aos interessados infra da decisão proferida pelo Órgão Especial do Conselho Seccional, na sessão de julgamento realizada no dia 18 de dezembro de 2023,"
+     }
+    ]
+   },
+   "Prescrição": {
+    "publicacoes": 1,
+    "parecem_decisao": 0,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 1
+    },
+    "amostras": [
+     {
+      "id": 946851,
+      "titulo": "NOTIFICAÇÃO DESPACHO",
+      "trecho": "Ficam notificados para manifestação acerca do despacho exarado nos autos: Processo n. 21.0000.2019.009896-4 – DIEGO KLEIN (Sem representação nos autos) x T.C.B. (Def. Dat. LUCIANE CARISSIMI – OAB/RS 107.370). O prazo para qualquer manifestação é de 15 (quinze)"
+     }
+    ]
+   },
+   "Devolução de Documentos": {
+    "publicacoes": 1,
+    "parecem_decisao": 0,
+    "setores": {
+     "Tribunal de Ética e Disciplina": 1
+    },
+    "amostras": [
+     {
+      "id": 1068127,
+      "titulo": "DEVOLUÇÃO DE IDENTIDADE PROFISSIONAL",
+      "trecho": "O Tribunal de Ética e Disciplina notifica os advogados a seguir relacionados, nos termos do art. 74 do EAOAB c/c art. 71, VII, do RIOAB/RS, para providenciar a entrega dos documentos de identidade profissional (cartão e carteira) no prazo de 3 (três) dias, na "
+     }
+    ]
+   }
+  }
+ },
+ "titulos_decisao": [
+  "ACORDAO",
+  "EMENTA",
+  "DECISAO"
+ ],
+ "modo": "censo",
+ "observacoes": "RS (id 21): censo de 10 dias-amostra 2019-2026, 1045 publicações, 91 decisões (>=30). Recall: ACORDAO 95,6%, EMENTA 95,6%, RECURSO 8,8%, DECISAO 8,8%, JULGAMENTO 15,4%; nenhum julgado escapa ao conjunto (ACORDAO+RECURSO já dá 100%; EMENTA e DECISAO por precaução; ACORDAOS plural não testado na API). Forma de publicar: o RS não publica 'Acórdão' puro; a decisão sai como 'Intimação' (33 de 38, 'INTIMAÇÃO DE ACÓRDÃO Nº ...') e 'Recurso' (46 de 50, também 'INTIMAÇÃO DE ACÓRDÃO'), com 'EMENTA TED Nº .../ano' no corpo (lido 867059-867061, 274895-274897, incl. embargos declaratórios). Tipos 'Acórdão' (3) e 'Decisão' (1) são 'NOTIFICAÇÃO DE ACÓRDÃO/DECISÃO' das Câmaras Recursais (1ª Turma da 2ª Câmara), Conselho Pleno e Órgão Especial (lidos 866427, 946687, 708934; a de 866483 é contrarrazões, ruído). 'Notificação' (483) traz 12 que parecem decisão (setores TED, Câmaras), o resto é ruído. Quem julga: Turmas Julgadoras do TED (5ª, 9ª etc.) em 1ª instância; recursos na 1ª e 2ª Câmara Recursal (turmas), Órgão Especial e Conselho Pleno. Volume: ~8,7% das publicações do dia são decisão (91/1045); dias de 26 a 228 publicações. Ruído principal: 'Notificação' (migração SEI, razões finais, audiência, arquivamento liminar, execução de pena), 'Despacho' (177, expediente de Subseção/inscrição), 'Sessão de Julgamento'/'Convocação - Pauta' (pautas), 'Contrarrazões' (notificação para contrarrazões, contém 'recurso'), 'Razões Finais'. Tipos não incluídos: Despacho, Sessão de Julgamento, Razões Finais, Convocação, Contrarrazões, Audiência, Arquivamento Liminar, Penalidade, Prescrição, Devolução de Documentos. Tipos Ementa/Resultado/Certidão/Embargos/Republicação/Retificação/Edital não apareceram no censo, listados por precaução. Sem indício de fonte fora do DEOAB nem de PDF-only; 2019 só tem 26 publicações no dia amostrado (início do DEOAB-RS)."
+}

@@ -1,0 +1,903 @@
+{
+  "uf": "DF",
+  "id_organizacao": 7,
+  "termos": [
+    "ACORDAO"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Retificação",
+    "Intimação",
+    "Notificação",
+    "Edital",
+    "Comunicado"
+  ],
+  "validado": true,
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "modo": "censo",
+  "observacoes": "DF: dois censos (30 dias: 2.018 publicações; 50 dias: 3.432, 2019-2026) acharam as MESMAS 6 decisões (tipo Acórdão, todas da Comissão de Seleção, 2023-2024: 'Relator para o Acórdão' + EMENTA sobre licenciamento de inscrição e consulta; recall ACORDAO 100%, EMENTA 100%, sem sobras). Nenhuma decisão de mérito disciplinar do TED aparece no Diário amostrado: o TED-OAB/DF publica apenas atos de movimentação (Pauta/'Sessão de Julgamento da Nª Turma', 'Recurso às decisões da 13ª Turma' = intimação para recurso, Intimação/Notificação da Secretaria de Instrução e do Conselho Pleno para defesa prévia/sessão, 'Manifestação acerca de despacho do relator', Comunicado de suspensão/término de suspensão pela Secretaria de Execução), que não são decisão. Quem julga: 13+ Turmas da Secretaria de Julgamento do TED (1ª a 13ª, inclusive 10ª em Taguatinga), Conselho Pleno, Pleno do TED, Comissão de Seleção (inscrição/licenciamento). Os tipos amplos (Retificação, Intimação, Notificação, Edital, Comunicado) foram mantidos só por precaução e devem render poucos ou nenhum registro, pois o texto não confirma decisão nas amostras. Ruído de massa: Cancelamento/Licenciamento de Inscrição (editais da Comissão de Seleção), Notificação da Comissão de Admissibilidade e do Diretor Tesoureiro, Portaria, Resolução, Prerrogativas. Volume do Diário por ano (todas as publicações, API): 2018 0; 2019 3.527; 2020 6.170; 2021 6.132; 2022 8.211; 2023 14.402; 2024 22.695; 2025 15.939; 2026 (até 12/11) 12.411; total cerca de 89 mil; coleta média/pequena. Indício de fonte fora do DEOAB: data/fontes/DF.json registra o Ementário do TED/OAB-DF (edições 01 a 03, 2013-2015) em PDF no site oabdf.org.br, base exclusiva; o Diário em si só traz 6 decisões no censo, então o acervo de decisões do TED-DF provavelmente está fora do Diário (verificar o site).",
+  "evidencia": {
+    "gerado_em": "2026-11-20T04:04:45Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-07",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-03-21",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2019-04-04",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2019-11-22",
+        "publicacoes": 276,
+        "baixadas": 276
+      },
+      {
+        "dia": "2020-02-11",
+        "publicacoes": 36,
+        "baixadas": 36
+      },
+      {
+        "dia": "2020-03-30",
+        "publicacoes": 59,
+        "baixadas": 59
+      },
+      {
+        "dia": "2020-05-14",
+        "publicacoes": 32,
+        "baixadas": 32
+      },
+      {
+        "dia": "2020-07-01",
+        "publicacoes": 93,
+        "baixadas": 93
+      },
+      {
+        "dia": "2020-09-30",
+        "publicacoes": 59,
+        "baixadas": 59
+      },
+      {
+        "dia": "2020-10-01",
+        "publicacoes": 52,
+        "baixadas": 52
+      },
+      {
+        "dia": "2020-11-13",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2020-12-08",
+        "publicacoes": 59,
+        "baixadas": 59
+      },
+      {
+        "dia": "2021-01-21",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2021-02-15",
+        "publicacoes": 60,
+        "baixadas": 60
+      },
+      {
+        "dia": "2021-06-23",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2021-08-16",
+        "publicacoes": 93,
+        "baixadas": 93
+      },
+      {
+        "dia": "2021-09-22",
+        "publicacoes": 9,
+        "baixadas": 9
+      },
+      {
+        "dia": "2021-10-07",
+        "publicacoes": 73,
+        "baixadas": 73
+      },
+      {
+        "dia": "2022-03-15",
+        "publicacoes": 78,
+        "baixadas": 78
+      },
+      {
+        "dia": "2022-04-26",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2022-05-13",
+        "publicacoes": 75,
+        "baixadas": 75
+      },
+      {
+        "dia": "2022-07-07",
+        "publicacoes": 28,
+        "baixadas": 28
+      },
+      {
+        "dia": "2022-09-21",
+        "publicacoes": 70,
+        "baixadas": 70
+      },
+      {
+        "dia": "2022-10-18",
+        "publicacoes": 63,
+        "baixadas": 63
+      },
+      {
+        "dia": "2022-12-19",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2023-01-13",
+        "publicacoes": 30,
+        "baixadas": 30
+      },
+      {
+        "dia": "2023-02-16",
+        "publicacoes": 114,
+        "baixadas": 114
+      },
+      {
+        "dia": "2023-04-13",
+        "publicacoes": 70,
+        "baixadas": 70
+      },
+      {
+        "dia": "2023-09-29",
+        "publicacoes": 68,
+        "baixadas": 68
+      },
+      {
+        "dia": "2023-10-03",
+        "publicacoes": 46,
+        "baixadas": 46
+      },
+      {
+        "dia": "2023-11-28",
+        "publicacoes": 117,
+        "baixadas": 117
+      },
+      {
+        "dia": "2023-12-01",
+        "publicacoes": 119,
+        "baixadas": 119
+      },
+      {
+        "dia": "2024-01-08",
+        "publicacoes": 107,
+        "baixadas": 107
+      },
+      {
+        "dia": "2024-02-05",
+        "publicacoes": 192,
+        "baixadas": 192
+      },
+      {
+        "dia": "2024-03-05",
+        "publicacoes": 18,
+        "baixadas": 18
+      },
+      {
+        "dia": "2024-06-04",
+        "publicacoes": 68,
+        "baixadas": 68
+      },
+      {
+        "dia": "2024-07-29",
+        "publicacoes": 154,
+        "baixadas": 154
+      },
+      {
+        "dia": "2024-12-19",
+        "publicacoes": 271,
+        "baixadas": 271
+      },
+      {
+        "dia": "2025-02-03",
+        "publicacoes": 81,
+        "baixadas": 81
+      },
+      {
+        "dia": "2025-05-19",
+        "publicacoes": 54,
+        "baixadas": 54
+      },
+      {
+        "dia": "2025-06-23",
+        "publicacoes": 7,
+        "baixadas": 7
+      },
+      {
+        "dia": "2025-07-10",
+        "publicacoes": 13,
+        "baixadas": 13
+      },
+      {
+        "dia": "2025-08-29",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2025-10-16",
+        "publicacoes": 139,
+        "baixadas": 139
+      },
+      {
+        "dia": "2025-11-04",
+        "publicacoes": 45,
+        "baixadas": 45
+      },
+      {
+        "dia": "2026-03-16",
+        "publicacoes": 32,
+        "baixadas": 32
+      },
+      {
+        "dia": "2026-04-24",
+        "publicacoes": 137,
+        "baixadas": 137
+      },
+      {
+        "dia": "2026-05-19",
+        "publicacoes": 35,
+        "baixadas": 35
+      },
+      {
+        "dia": "2026-08-27",
+        "publicacoes": 72,
+        "baixadas": 72
+      },
+      {
+        "dia": "2026-11-12",
+        "publicacoes": 104,
+        "baixadas": 104
+      }
+    ],
+    "decisoes_no_censo": 6,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 1.0,
+      "DECISAO": 0.0,
+      "JULGAMENTO": 0.0,
+      "RECURSO": 0.0
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 1535,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Admissibilidade de Representação e Conciliação Técnica": 564,
+          "DIRETOR TESOUREIRO": 359,
+          "SECRETARIA DE INSTRUÇÃO DO TRIBUNAL DE ÉTICA E DISCIPLINA": 315,
+          "Tribunal de Defesa das Prerrogativas": 147,
+          "CONSELHO PLENO": 131,
+          "PLENO DO TRIBUNAL DE ÉTICA E DISCIPLINA": 19
+        },
+        "amostras": [
+          {
+            "id": 192600,
+            "titulo": "NOTIFICAÇÃO N. 07.0000.2019.017737-4",
+            "trecho": "Fica notificado o advogado T.G.F.B - OAB/DF 50.621 para informar à Secretaria da Comissão de Prerrogativas da OAB/DF para requerer que entender de direito,tendo em vista o envio do ofício de fls.10/13 dos autos. Sob pena de arquivamento. Brasília, 22 de novemb"
+          },
+          {
+            "id": 212425,
+            "titulo": "PROCESSO N. 07.0000.2015.024291-1",
+            "trecho": "A Secretaria do Conselho Pleno, de ordem do Excelentíssimo Senhor Relator Bruce Bruno Pereira de Lemos e Silva, nos autos do processo n. 07.0000.2015.024291-1, NOTIFICA o senhor advogado J.R.P.P. - OAB/DF n. 11.990, para apresentar defesa prévia, no prazo lega"
+          },
+          {
+            "id": 212431,
+            "titulo": "MANIFESTAÇÃO ACERCA DE DESPACHO DO RELATOR",
+            "trecho": "A Secretaria de Julgamento de Processos Ético-Disciplinares, com fulcro no art. 59, §5º do Código de Ética e Disciplina e art. 137-D, § 4º do Regulamento Geral do EAOAB, de ordem do Presidente do TED, vem dar ciência acerca do despacho de Fls. 2. O processo es"
+          }
+        ]
+      },
+      "Intimação": {
+        "publicacoes": 815,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE INSTRUÇÃO DO TRIBUNAL DE ÉTICA E DISCIPLINA": 307,
+          "ASSESSORIA JURÍDICA": 268,
+          "PRIMEIRA TURMA DA SECRETARIA DE JULGAMENTO": 43,
+          "TERCEIRA TURMA DA SECRETARIA DE JULGAMENTO": 27,
+          "OITAVA TURMA DA SECRETARIA DE JULGAMENTO": 26,
+          "QUINTA TURMA DA SECRETARIA DE JULGAMENTO": 19
+        },
+        "amostras": [
+          {
+            "id": 25932,
+            "titulo": "PROCESSO N. 07.0000.2016.017426-9",
+            "trecho": "A Secretaria do Conselho Pleno, de ordem do Excelentíssimo Senhor Relator Luiz Carlos Bivar Correa Júnior, nos autos do processo n. 07.0000.2016.017426-9, NOTIFICA o senhor advogado Willer Tomaz de Souza, OAB/DF n. 32.023, procurador da senhora Creuza Batista "
+          },
+          {
+            "id": 192260,
+            "titulo": "PROCESSO N. 0027963-36.2019.4.01.3400.",
+            "trecho": "Recte: ORDEM DOS ADVOGADOS DO BRASIL - SECAO DO DISTRITO FEDERAL - OAB/DF . Recdo: ADIVALDO BALBINO DOS ANJOS , OAB/DF N º 10805 . INTIMAÇÃO: A OAB/DF e a Justiça Federal convidam Vossa Senhoria a participar de audiência de conciliação que se realizará no dia "
+          },
+          {
+            "id": 192261,
+            "titulo": "PROCESSO N. 0027959-96.2019.4.01.3400.",
+            "trecho": "Recte: ORDEM DOS ADVOGADOS DO BRASIL - SECAO DO DISTRITO FEDERAL - OAB/DF . Recdo: ADRIANA ALMEIDA SANTANA , OAB/DF N º 37668 . INTIMAÇÃO: A OAB/DF e a Justiça Federal convidam Vossa Senhoria a participar de audiência de conciliação que se realizará no dia 11/"
+          }
+        ]
+      },
+      "Cancelamento de Inscrição": {
+        "publicacoes": 417,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 417
+        },
+        "amostras": [
+          {
+            "id": 287194,
+            "titulo": "Edital de Cancelamento de Inscrição de 07 de dezembro de 2020",
+            "trecho": "Torno público que o(a) advogado(a) ANGELO MOREIRA BARBOSA NETO, OAB/DF nº 58718, obteve em 03/12/2020, o cancelamento de sua inscrição neste Conselho, a pedido, nos termos do disposto no inciso I do Art. 11 da Lei 8.906/94 . Brasília, 07 de dezembro de 2020. S"
+          },
+          {
+            "id": 287195,
+            "titulo": "Edital de Cancelamento de Inscrição de 07 de dezembro de 2020",
+            "trecho": "Torno público que o(a) advogado(a) RODRIGO GONÇALVES DA SILVA , OAB/DF nº 39691, obteve em 18/11/2020, o cancelamento de sua inscrição neste Conselho, a pedido, nos termos do disposto no inciso I do Art. 11 da Lei 8.906/94 . Brasília, 07 de dezembro de 2020. S"
+          },
+          {
+            "id": 287196,
+            "titulo": "Edital de Cancelamento de Inscrição de 07 de dezembro de 2020",
+            "trecho": "Torno público que o(a) advogado(a) ALAUANA MARIA RORIZ DA ROCHA TEIXEIRA, OAB/DF nº 58994, obteve em 01/12/2020, o cancelamento de sua inscrição neste Conselho, a pedido, nos termos do disposto no inciso I do Art. 11 da Lei 8.906/94 . Brasília, 07 de dezembro "
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 223,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Fiscalização do Tribunal de Ética e Disciplina": 214,
+          "Comissão de Seleção": 7,
+          "COMISSÃO ELEITORAL": 1,
+          "VICE PRESIDÊNCIA": 1
+        },
+        "amostras": [
+          {
+            "id": 370908,
+            "titulo": "EDITAL",
+            "trecho": "A COMISSÃO ELEITORAL DA ORDEM DOS ADVOGADOS DO BRASIL – CONSELHO SECCIONAL DO DISTRITO FEDERAL, constituída como órgão temporário para exercer funções de gestão das eleições da OAB/DF 2021, resolve: 1. Convidar um representante de cada movimento de pré-candida"
+          },
+          {
+            "id": 485770,
+            "titulo": "Edital de Desistência de Inscrição Originária de 20 de setembro de 2022.",
+            "trecho": "Torno público que o(a) bacharel(a) LEVINE RAJA GABAGLIA ARTIAGA obteve em 20/9/2022, a desistência do pedido de inscrição originária neste Conselho, a pedido. Brasília, 20 de setembro de 2022. Paulo Mauricio Braz Siqueira Secretário-Geral da OAB/DF"
+          },
+          {
+            "id": 537674,
+            "titulo": "Edital de Desistência de Pedido de Inscrição de 15 de fevereiro de 2023",
+            "trecho": "Torno público que o(a) requerente VICTOR SOUZA DE MORAES, obteve em 23/01/2023 a desistência de sua inscrição neste Conselho, a pedido. Brasília, 15 de fevereiro de 2023. Paulo Mauricio Braz Siqueira Secretário-Geral da OAB/DF"
+          }
+        ]
+      },
+      "Licenciamento de Inscrição": {
+        "publicacoes": 109,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 109
+        },
+        "amostras": [
+          {
+            "id": 287187,
+            "titulo": "Edital de Licenciamento de Inscrição de 07 de dezembro de 2020",
+            "trecho": "Torno público que a advogada LUDMILA MENDONCA GARDES, OAB/DF nº 21766, obteve em 07/12/2020, o licenciamento de sua inscrição neste Conselho, nos termos do disposto no inciso II do Art. 12 da Lei 8.906/94 . Brasília, 07 de dezembro de 2020. Marcio de Souza Oli"
+          },
+          {
+            "id": 287188,
+            "titulo": "Edital de Licenciamento de Inscrição de 07 de dezembro de 2020",
+            "trecho": "Torno público que o advogado LAUDEMIRO CORREIA DE FREITAS, OAB/DF nº 10453, obteve em 07/12/2020, o licenciamento de sua inscrição neste Conselho, nos termos do disposto no inciso I do Art. 12 da Lei 8.906/94 . Brasília, 07 de dezembro de 2020. Marcio de Souza"
+          },
+          {
+            "id": 338070,
+            "titulo": "Edital de Licenciamento de Inscrição de 22 de junho de 2021",
+            "trecho": "Torno público que o(a) advogado(a) BRUNA DANIELA CÔRTE REAL , OAB/DF nº 48729, obteve em 22/6/2021, o licenciamento de sua inscrição neste Conselho, nos termos do Artigo 12, inciso II da Lei 8.906/94. Brasília, 22 de junho de 2021. Marcio de Souza Oliveira Sec"
+          }
+        ]
+      },
+      "Comunicado": {
+        "publicacoes": 71,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE EXECUÇÃO": 70,
+          "Comissão de Seleção": 1
+        },
+        "amostras": [
+          {
+            "id": 365142,
+            "titulo": "COMUNICADO DE TÉRMINO DE SUSPENSÃO",
+            "trecho": "De ordem do Presidente do TED-OAB/DF, a Secretaria do Tribunal de Ética e Disciplina, em face de liminar concedida em representação disciplinar autuada por este tribunal, comunica a liberação do advogado representado abaixo relacionado e a retirada de seu nome"
+          },
+          {
+            "id": 433225,
+            "titulo": "Edital de Desistência de Inscrição Suplementar de 12 de maio de 2022.",
+            "trecho": "Torno público que o(a) advogado(a) THALES FERNANDES DE CARVALHO CAMARINHO, obteve 12/05/2022, a desistência de sua inscrição suplementar neste Conselho, a pedido Brasília, 12 de maio de 2022. Paulo Mauricio Braz Siqueira Secretário-Geral da OAB/DF"
+          },
+          {
+            "id": 496888,
+            "titulo": "COMUNICADO DE TÉRMINO DE SUSPENSÃO",
+            "trecho": "De ordem do Presidente do TED-OAB/DF, a Secretaria do Tribunal de Ética e Disciplina, em face do cumprimento da pena de suspensão nas representações disciplinares autuadas por este Tribunal, comunica o término da suspensão aplicada aos advogados representados "
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 52,
+        "parecem_decisao": 0,
+        "setores": {
+          "QUARTA TURMA DA SECRETARIA DE JULGAMENTO": 17,
+          "SEGUNDA TURMA DA SECRETARIA DE JULGAMENTO": 8,
+          "SETIMA TURMA DA SECRETARIA DE JULGAMENTO": 8,
+          "DÉCIMA TURMA DA SECRETARIA DE JULGAMENTO DE TAGUATINGA": 8,
+          "NONA TURMA DA SECRETARIA DE JULGAMENTO": 5,
+          "QUINTA TURMA DA SECRETARIA DE JULGAMENTO": 5
+        },
+        "amostras": [
+          {
+            "id": 30901,
+            "titulo": "SESSÃO DE JULGAMENTO DA 9ª TURMA",
+            "trecho": "A Secretaria de Julgamento de Processos Ético-Disciplinares, com fulcro no art. 60, § 3º e § 4º do Código de Ética e Disciplina e art. 137-D do Regulamento Geral do EAOAB c/c art. 69, §2º da lei nº 8.906/94, intima às partes dos processos abaixo elencados para"
+          },
+          {
+            "id": 30924,
+            "titulo": "SESSÃO DE JULGAMENTO DA 2ª TURMA",
+            "trecho": "A Secretaria de Julgamento de Processos Ético-Disciplinares, com fulcro no art. 60, § 3º e § 4º do Código de Ética e Disciplina e art. 137-D do Regulamento Geral do EAOAB c/c art. 69, §2º da lei nº 8.906/94, intima às partes dos processos abaixo elencados para"
+          },
+          {
+            "id": 30941,
+            "titulo": "SESSÃO DE JULGAMENTO DA 3ª TURMA",
+            "trecho": "A Secretaria de Julgamento de Processos Ético-Disciplinares, com fulcro no art. 60, § 3º e § 4º do Código de Ética e Disciplina e art. 137-D do Regulamento Geral do EAOAB c/c art. 69, §2º da lei nº 8.906/94, intima às partes dos processos abaixo elencados para"
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 50,
+        "parecem_decisao": 1,
+        "setores": {
+          "PRESIDÊNCIA": 47,
+          "COMISSÃO ELEITORAL": 2,
+          "CORREGEDORIA-GERAL": 1
+        },
+        "amostras": [
+          {
+            "id": 242885,
+            "titulo": "PORTARIA Nº 46, DE 30 DE JUNHO DE 2020",
+            "trecho": "Institui funcionamento diferenciado no âmbito do Sistema da OAB/DF e extingue as Portarias da OAB/DF n. 018/2020, n. 22/2020, n. 25/2020, n. 32/2020 e n. 34/2020, n. 35/2020 e n. 37/2020. O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – CONSELHO SECCIONAL DO DI"
+          },
+          {
+            "id": 265919,
+            "titulo": "PORTARIA Nº 60, DE 29 DE SETEMBRO DE 2020.",
+            "trecho": "Nomeia Presidente da Comissão de Seleção ad referendum do Conselho Pleno Seccional da OAB/DF. O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – CONSELHO SECCIONAL DO DISTRITO FEDERAL, no uso das atribuições que lhe conferem o art. 40, incisos IV e XXXII, do Regi"
+          },
+          {
+            "id": 266426,
+            "titulo": "PORTARIA N. 61, DE 1º DE OUTUBRO DE 2020",
+            "trecho": "Dispõe sobre a continuação da retomada gradual de atendimento presencial, no âmbito da OAB/DF, FAJ-OABDF e das Subseções. O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – CONSELHO SECCIONAL DO DISTRITO FEDERAL, no uso das atribuições que lhe conferem o art. 40,"
+          }
+        ]
+      },
+      "Recurso": {
+        "publicacoes": 33,
+        "parecem_decisao": 0,
+        "setores": {
+          "DÉCIMA tERCEIRA TURMA DA SECRETARIA DE JULGAMENTO": 33
+        },
+        "amostras": [
+          {
+            "id": 1193179,
+            "titulo": "RECURSO ÀS DECISÕES DA 13ª TURMA",
+            "trecho": "A Secretaria de Julgamento de Processos Ético-Disciplinares, de ordem do Secretário-Geral e autorizada pela Presidente do TED-OAB/DF, Milena Silveira Saraiva, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu §2º e art. 73, §1º da "
+          },
+          {
+            "id": 1193180,
+            "titulo": "RECURSO ÀS DECISÕES DA 13ª TURMA",
+            "trecho": "A Secretaria de Julgamento de Processos Ético-Disciplinares, de ordem do Secretário-Geral e autorizada pela Presidente do TED-OAB/DF, Milena Silveira Saraiva, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu §2º e art. 73, §1º da "
+          },
+          {
+            "id": 1193181,
+            "titulo": "RECURSO ÀS DECISÕES DA 13ª TURMA",
+            "trecho": "A Secretaria de Julgamento de Processos Ético-Disciplinares, de ordem do Secretário-Geral e autorizada pela Presidente do TED-OAB/DF, Milena Silveira Saraiva, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu §2º e art. 73, §1º da "
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 25,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 25
+        },
+        "amostras": [
+          {
+            "id": 216409,
+            "titulo": "Edital de Inscrição de 7 de fevereiro de 2020",
+            "trecho": "Em obediência à Lei 8.906/94 - Estatuto da Ordem dos Advogados do Brasil, torno público que qualquer interessado capaz no prazo previsto de cinco dias úteis da publicação deste, poderá impugnar por inobservância das condições legais, os pedidos de inscrições a"
+          },
+          {
+            "id": 242802,
+            "titulo": "Edital de Inscrição de 26 de junho de 2020",
+            "trecho": "Em obediência à Lei 8.906/94 - Estatuto da Ordem dos Advogados do Brasil, torno público que qualquer interessado capaz no prazo previsto de cinco dias úteis da publicação deste, poderá impugnar por inobservância das condições legais, os pedidos de inscrições a"
+          },
+          {
+            "id": 266051,
+            "titulo": "Edital de Inscrição de 25 de setembro de 2020",
+            "trecho": "Em obediência à Lei 8.906/94 - Estatuto da Ordem dos Advogados do Brasil, torno público que qualquer interessado capaz no prazo previsto de cinco dias úteis da publicação deste, poderá impugnar por inobservância das condições legais, os pedidos de inscrições a"
+          }
+        ]
+      },
+      "Cancelamento de Licenciamento": {
+        "publicacoes": 21,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 21
+        },
+        "amostras": [
+          {
+            "id": 279562,
+            "titulo": "Edital de Cancelamento de Licenciamento de Inscrição de 12 de novembro de 2020",
+            "trecho": "Torno público que a advogada CLAUDIA QUEIROZ DE OLIVEIRA GIANI, OAB/DF nº 49364, obteve em 12/11/2020, o cancelamento do licenciamento averbado em seus assentamentos neste Conselho. Brasília, 12 de novembro de 2020. Marcio de Souza Oliveira Secretário-Geral da"
+          },
+          {
+            "id": 287367,
+            "titulo": "Edital de Cancelamento de Licenciamento de Inscrição de 07 de dezembro de 2020",
+            "trecho": "Torno público que o advogado ALEX COSTA ALMEIDA, OAB/DF nº 18935, obteve em 07/12/2020, o cancelamento do licenciamento averbado em seus assentamentos neste Conselho. Brasília, 07 de dezembro de 2020. Marcio de Souza Oliveira Secretário-Geral da OAB/DF"
+          },
+          {
+            "id": 287368,
+            "titulo": "Edital de Cancelamento de Licenciamento de Inscrição de 07 de dezembro de 2020",
+            "trecho": "Torno público que a advogada AGUEDA CRISTINA GALVÃO PAES DE ANDRADE, OAB/DF nº 35043, obteve em 07/12/2020, o cancelamento do licenciamento averbado em seus assentamentos neste Conselho. Brasília, 07 de dezembro de 2020. Marcio de Souza Oliveira Secretário-Ger"
+          }
+        ]
+      },
+      "Cancelamento de Impedimento": {
+        "publicacoes": 19,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 19
+        },
+        "amostras": [
+          {
+            "id": 338159,
+            "titulo": "Edital de Cancelamento de Impedimento de 22 de junho de 2021",
+            "trecho": "Torno público que o advogado ROBSON GONÇALVES DOURADO, OAB/DF nº 33484, obteve em 22/06/2021, o cancelamento do impedimento do inciso I do Art. 30 da Lei 8.906/94, constante em seus assentamentos neste Conselho. Brasília, 22 de junho de 2021. Marcio de Souza O"
+          },
+          {
+            "id": 353331,
+            "titulo": "Edital de Cancelamento do impedimento de 13 de agosto de 2021.",
+            "trecho": "Torno público que o(a) advogado(a) ALEXANDRE COSTA DE ALMEIDA OAB/DF nº 68100, obteve em 13/8/2021, o cancelamento do impedimento, em seus assentamentos neste Conselho. Brasília, 13 de agosto de 2021. Marcio de Souza Oliveira Secretário-Geral da OAB/DF"
+          },
+          {
+            "id": 559735,
+            "titulo": "Edital de Cancelamento de Impedimento de 12 de abril de 2023",
+            "trecho": "Torno público que o(a) advogado(a) FRANCISCO DE ASSIS LIMA FILHO, OAB/DF nº 25521, obteve em 31/1/2023, o cancelamento do impedimento do Artigo 29 da Lei 8.906/94, mantendo-se o impedimento do inciso I do Artigo 30 do EOAB em seus assentamentos neste Conselho."
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 15,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Fiscalização do Tribunal de Ética e Disciplina": 10,
+          "SECRETARIA DE INSTRUÇÃO DO TRIBUNAL DE ÉTICA E DISCIPLINA": 2,
+          "DÉCIMA tERCEIRA TURMA DA SECRETARIA DE JULGAMENTO": 2,
+          "SECRETARIA DE EXECUÇÃO": 1
+        },
+        "amostras": [
+          {
+            "id": 266338,
+            "titulo": "MANIFESTAÇÃO ACERCA DE DESPACHO DO RELATOR",
+            "trecho": "De ordem do Secretário-Geral do TED-OAB/DF, a Secretaria de Instrução de Processos Ético-Disciplinares, com fulcro no art. 59, § 5º do Código de Ética e Disciplina e art. 137-D do Regulamento Geral do EAOAB c/c art. 69, §2º e art. 73, §1º da lei nº 8.906/94, i"
+          },
+          {
+            "id": 266339,
+            "titulo": "MANIFESTAÇÃO ACERCA DE DESPACHO DO RELATOR",
+            "trecho": "De ordem do Secretário-Geral do TED-OAB/DF, a Secretaria de Instrução de Processos Ético-Disciplinares, com fulcro no art. 59, § 5º do Código de Ética e Disciplina e art. 137-D do Regulamento Geral do EAOAB c/c art. 69, §2º e art. 73, §1º da lei nº 8.906/94, i"
+          },
+          {
+            "id": 642450,
+            "titulo": "DESPACHO PRESIDENTE TED/OAB-DF",
+            "trecho": "Representação: 07.0000.2022.001849-0; Representante: OAB/DF DE OFICIO; Representado(a): A.F.A (Proc. Representado(a): ANILDO FABIO DE ARAUJO OAB/DF 21077). A Secretaria do Tribunal de Ética e Disciplina intima o Advogado Representado para conhecimento do despa"
+          }
+        ]
+      },
+      "Indeferimento": {
+        "publicacoes": 10,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 10
+        },
+        "amostras": [
+          {
+            "id": 485957,
+            "titulo": "Edital de Indeferimento de Licenciamento de Inscrição de 20 de setembro de 2022.",
+            "trecho": "Torno público que o(a) advogado(a) ANDRÉ GUSTAVO PEREIRA DA SILVA, OAB/DF nº 54246, obteve em 20/9/2021, o indeferimento do seu pedido de licenciamento de inscrição neste Conselho, uma vez que não se enquadra nas hipóteses previstas no Artigo 12 da Lei 8.906/9"
+          },
+          {
+            "id": 485958,
+            "titulo": "Edital de Indeferimento de Licenciamento de Inscrição de 20 de setembro de 2022.",
+            "trecho": "Torno público que o(a) advogado(a) DAVI DORNELLAS DE CASTRO SOUZA,OAB/DF nº 46219, obteve em 20/9/2021, o indeferimento do seu pedido de licenciamento de inscrição neste Conselho, uma vez que não se enquadra nas hipóteses previstas no Artigo 12 da Lei 8.906/94"
+          },
+          {
+            "id": 485959,
+            "titulo": "Edital de Indeferimento de Licenciamento de Inscrição de 20 de setembro de 2022.",
+            "trecho": "Torno público que o(a) advogado(a) CLADIMIR GONTIJO GUIMARÃES,OAB/DF nº 41224, obteve em 20/9/2021, o indeferimento do seu pedido de licenciamento de inscrição neste conselho, uma vez que não se enquadra nas hipóteses previstas no Artigo 12 da Lei 8.906/94. Br"
+          }
+        ]
+      },
+      "Arquivamento de autos": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Defesa das Prerrogativas": 6,
+          "Comissão de Seleção": 1
+        },
+        "amostras": [
+          {
+            "id": 433215,
+            "titulo": "PROC. n. 07.0000.2017.008246-0",
+            "trecho": "A Secretaria da Comissão de Prerrogativas NOTIFICA o(a) advogado(a) CARLOS AUGUSTO GOÇALVES PINTO , OAB/DF n. 43556 , acerca do arquivamento do processo supracitado, tendo em vista que as solicitações foram exauridas. Informa que o pedido de cópia integral do "
+          },
+          {
+            "id": 433273,
+            "titulo": "PROC. n. 07.0000.2020.001262-3",
+            "trecho": "A Secretaria da Comissão de Prerrogativas NOTIFICA o(a) advogado(a) Hernane Ferreira da Costa , OAB/DF n. 17.172/ E , acerca do arquivamento do processo supracitado, tendo em vista que as solicitações foram exauridas. Informa que o pedido de cópia integral do "
+          },
+          {
+            "id": 433289,
+            "titulo": "PROC. n. 07.0000.2019.009598-4",
+            "trecho": "A Secretaria da Comissão de Prerrogativas NOTIFICA o(a) advogado(a) Renato Ramos da Silva , OAB/ SP n. 424822 , acerca do arquivamento do processo supracitado, tendo em vista que as solicitações foram exauridas. Informa que o pedido de cópia integral do proces"
+          }
+        ]
+      },
+      "Averbação de Impedimento": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 7
+        },
+        "amostras": [
+          {
+            "id": 710747,
+            "titulo": "Edital de Averbação de Impedimento de 04 de março de 2024",
+            "trecho": "Torno público que o(a) advogado(a) BRUNO RANGEL AVELINO DA SILVA, OAB/DF nº 23067, obteve em 04/03/2024, a averbação da restrição do Art. 30 do inciso I da Lei 8.906/94, em seus assentamentos. Brasília, 04 de março de 2024. Paulo Mauricio Braz Siqueira Secretá"
+          },
+          {
+            "id": 710773,
+            "titulo": "Edital de Averbação de Impedimento de 04 de março de 2024",
+            "trecho": "Torno público que o(a) advogado(a) ALEXANDRE MELO SOARES, OAB/DF nº 24518, obteve em 04/03/2024, a averbação da restrição do Art. 30 do inciso I da Lei 8.906/94, em seus assentamentos. Brasília, 04 de março de 2024. Paulo Mauricio Braz Siqueira Secretário-Gera"
+          },
+          {
+            "id": 710787,
+            "titulo": "Edital de Averbação de Impedimento de 04 de março de 2024",
+            "trecho": "Torno público que o(a) advogado(a) JULIO LUIZ DE MEDEIROS ALVES LIMA KUHLMANN, OAB/DF nº 38926, obteve em 04/03/2024, a averbação da restrição do Art. 30 do inciso I da Lei 8.906/94, em seus assentamentos. Brasília, 04 de março de 2024. Paulo Mauricio Braz Siq"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 6,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 6
+        },
+        "amostras": [
+          {
+            "id": 915968,
+            "titulo": "PROCESSO N.º 72583/2022",
+            "trecho": "Interessado: Donizete Sousa Tavares. Assunto: Licenciamento. Relator para o Acórdão: Gabriel de Sousa Pires. EMENTA: Inscrição. Licenciamento. Justificativa Apresentada. Motivação Temporal. Indeferimento de licença dos quadros da OAB, necessidade de fundamenta"
+          },
+          {
+            "id": 915988,
+            "titulo": "PROCESSO N.º 003686/2023",
+            "trecho": "Interessado: Gabriel Costa Deolindo. Assunto: Licenciamento. Relator para o Acórdão: Gabriel de Sousa Pires. EMENTA: Inscrição. Licenciamento. Justificativa apresentada. Motivação Temporal. Indeferimento de licença dos quadros da OAB, necessidade de fundamenta"
+          },
+          {
+            "id": 916019,
+            "titulo": "PROCESSO N.º 000387/2024",
+            "trecho": "Interessado: Marcos Junio Dantas Silva. Assunto: Consulta. Relatora: Liliana Barbosa do Nascimento Marquez. EMENTA: Consulta. Hipótese Concreta. Inobservância dos arts. 11 e 12 do Regimento Interno da Comissão de Seleção. Consulta não conhecida, por se tratar "
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 4,
+        "parecem_decisao": 1,
+        "setores": {
+          "PRESIDÊNCIA": 2,
+          "DIRETORIA": 1,
+          "CONSELHO PLENO": 1
+        },
+        "amostras": [
+          {
+            "id": 242891,
+            "titulo": "RESOLUÇÃO N. 4, DE 1º DE JULHO DE 2020",
+            "trecho": "Estabelece modelo diferenciado de gestão de atividades voltado para a entrega de resultados nos trabalhos realizados no formato à distância, Teletrabalho, no âmbito da Ordem do Advogados do Brasil – Conselho Seccional do Distrito Federal, da Fundação de Assist"
+          },
+          {
+            "id": 433528,
+            "titulo": "RESOLUÇÃO N. 5, DE 12 DE MAIO DE 2022.",
+            "trecho": "Estabelece o afastamento de membros da OAB-DF que sejam pré-candidatos políticos declarados, como proteção da dignidade, independência, prerrogativas e valorização da advocacia. Considerando o presente ano eleitoral, com a expectativa do exercício democrático "
+          },
+          {
+            "id": 537688,
+            "titulo": "RESOLUÇÃO N. 1, DE 16 DE FEVEREIRO DE 2023.",
+            "trecho": "Fixa os valores do piso salarial do advogado empregado privado para o exercício de 2023. O Conselho Seccional da Ordem dos Advogados do Brasil, Seção do Distrito Federal, no exercício de suas atribuições, nos termos do art. 3º da Lei do Distrito Federal N. 5.3"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 2,
+          "CONSELHO PLENO": 1
+        },
+        "amostras": [
+          {
+            "id": 370906,
+            "titulo": "RETIFICAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil, Conselho Seccional do Distrito Federal, nos termos dos arts. 63 a 67 da Lei n. 8.906/94 (Estatuto da Advocacia e da OAB), dos arts. 128 a 137-C do Regulamento Geral do Estatuto da Advocacia e da OAB, bem como dos arts. 156-B e "
+          },
+          {
+            "id": 412145,
+            "titulo": "Edital de Retificação de Licenciamento de Inscrição de 14 de março de 2022.",
+            "trecho": "Retifico o Edital de Licenciamento de Inscrição publicado em 09/03/2022, referente à advogada NATÁLIA RAPOSO NOGUEIRA, OAB/DF nº 48708, onde se lê: “obteve em 20/09/2021, o licenciamento de sua inscrição neste Conselho, nos termos do disposto no inciso II do A"
+          },
+          {
+            "id": 412258,
+            "titulo": "Edital de Retificação de Cancelamento de Inscrição de 14 de março de 2022",
+            "trecho": "Retifico o Edital de Cancelamento de Inscrição publicado em 08/03/2022, referente à advogada EMILLY ZERPA, OAB/DF nº 68303, onde se lê: “EMILLY ZERPA”, OAB/DF nº 68303, leia se: “EMILY CAROLINE ZERPA DUARTE, OAB/DF nº 68303, obteve em 07/03/2022, o cancelament"
+          }
+        ]
+      },
+      "Desistência": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 2
+        },
+        "amostras": [
+          {
+            "id": 1010705,
+            "titulo": "Edital de Desistência de Pedido de Inscrição de 03 de novembro de 2025",
+            "trecho": "Torno público que o(a) requerente RUANDA APARECIDA DE SOUSA FERNANDES obteve em 03/11/2025, a desistência de sua inscrição neste Conselho, a pedido. Brasília, 03 de novembro de 2025. Rafael Teixeira Martins Secretário-Geral da OAB/DF"
+          },
+          {
+            "id": 1192703,
+            "titulo": "Edital de Desistência de Pedido de Inscrição de 11 de novembro de 2026",
+            "trecho": "Torno público que o(a) bacharel(a) PEDRO PHILLIP SILVA AGUIAR, obteve em 11/11/2026, a desistência de sua inscrição neste Conselho, a pedido. Brasília, 11 de novembro de 2026. Rafael Teixeira Martins Secretário-Geral da OAB/DF"
+          }
+        ]
+      },
+      "Ata de Posse": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "CONSELHO PLENO": 1
+        },
+        "amostras": [
+          {
+            "id": 168,
+            "titulo": "",
+            "trecho": "ATA DA SESSÃO DE POSSE DO CONSELHO SECCIONAL DA ORDEM DOS ADVOGADOS DO BRASIL DO DISTRITO FEDERAL, DA DIRETORIA DA CAIXA DE ASSISTÊNCIA DOS ADVOGADOS DO DISTRITO FEDERAL, DAS DIRETORIAS DAS SUBSEÇÕES DE BRAZLÂNDIA, CEILÂNDIA, GAMA, GUARÁ, NÚCLEO BANDEIRANTE E "
+          }
+        ]
+      },
+      "Portaria Conjunta": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "PRESIDÊNCIA": 1
+        },
+        "amostras": [
+          {
+            "id": 672328,
+            "titulo": "PORTARIA CONJUNTA N. 41, DE 1º DE DEZEMBRO DE 2023.",
+            "trecho": "Estabelece o regime de escala para funcionários, estipula as datas para pagamentos e suspende os prazos processuais, em razão do recesso de fim de ano. A DIRETORIA DA ORDEM DOS ADVOGADOS DO BRASIL – CONSELHO SECCIONAL DO DISTRITO FEDERAL, A DIRETORIA DA FUNDAÇ"
+          }
+        ]
+      },
+      "Intimação Produção de Provas": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE INSTRUÇÃO DO TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 974202,
+            "titulo": "DESPACHO DE CIÊNCIA",
+            "trecho": "A Secretaria de Instrução de Processos Ético-Disciplinares, de ordem do Secretário-Geral e autorizado pelo Presidente do TED-OAB/DF, Flavio Augusto Fonseca, com fulcro no art. 59, § 5º do Código de Ética e Disciplina e art. 137-D do Regulamento Geral do EAOAB "
+          }
+        ]
+      },
+      "Edital de Retificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 1
+        },
+        "amostras": [
+          {
+            "id": 974517,
+            "titulo": "Edital de Retificação de 28 de agosto de 2025",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Conselho Seccional do Distrito Federal, torna pública a RETIFICAÇÃO da publicação constante do Edital de Inscrição de 20 de agosto de 2025, publicado no Diário Eletrônico da Ordem dos Advogados do Brasil, Ano VII "
+          }
+        ]
+      },
+      "Arquivamento": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 1
+        },
+        "amostras": [
+          {
+            "id": 1000977,
+            "titulo": "Edital de Arquivamento pedido de Inscrição de 15 de outubro de 2025",
+            "trecho": "Torno público que o(a) advogado(a) CLAUDIA CARLA ANTONACCI STEIN teve seu pedido de inscrição neste Conselho arquivado em 15 de outubro de 2025, em razão da inércia da interessada em efetuar o pagamento da anuidade necessária à efetivação da referida inscrição"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Comissão de Seleção": 1
+        },
+        "amostras": [
+          {
+            "id": 1061888,
+            "titulo": "Processo n.º 24897/2007",
+            "trecho": "Interessado: C.M.L. – OAB/DF 71385 A Presidente da Comissão de Seleção do Conselho Seccional do Distrito Federal da Ordem dos Advogados do Brasil – OAB/DF NOTIFICA o advogado C.M.L., inscrito na OAB/DF sob o n.º 71.385 , para que apresente, no prazo de 48 (qua"
+          }
+        ]
+      },
+      "Edital de Intimação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "DÉCIMA tERCEIRA TURMA DA SECRETARIA DE JULGAMENTO": 1
+        },
+        "amostras": [
+          {
+            "id": 1094399,
+            "titulo": "RECURSO ÀS DECISÕES DA 13ª TURMA",
+            "trecho": "A Secretaria de Julgamento de Processos Ético-Disciplinares, de ordem do Secretário-Geral e autorizada pela Presidente do TED-OAB/DF, Milena Silveira Saraiva, com fulcro no art. 137-D do Regulamento Geral do EAOAB c/c art. 69 caput e seu §2º e art. 73, §1º da "
+          }
+        ]
+      },
+      "Errata": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "SECRETARIA DE INSTRUÇÃO DO TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1146084,
+            "titulo": "AUDIÊNCIA DE CONCILIAÇÃO",
+            "trecho": "A Secretaria de Instrução de Processos Ético-Disciplinares, de ordem do Secretário-Geral e autorizado pela Presidente do TED-OAB/DF, Milena Silveira Saraiva, com fulcro no art. 1º, inciso II do Provimento 83/1996 do Conselho Federal da OAB e art. 137-D do Regu"
+          }
+        ]
+      }
+    }
+  }
+}

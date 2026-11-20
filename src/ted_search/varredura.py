@@ -180,11 +180,77 @@ RE_FORMULA_JULGAMENTO = re.compile(r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS
 RE_DECISAO_DE_ORGAO = re.compile(
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )
+# Fórmula de julgamento colegiado. Só marcas que um despacho ou um comunicado não usam:
+# - "ACORDAM", não "ACÓRDÃO": a intimação "para apresentação de recurso ao acórdão da Primeira Turma" só lista
+#   processos (segunda leitura de CE: 92 de 373 registros);
+# - "decidiu", "julgou", "negou provimento" e "vistos," sozinhos também aparecem em despacho de relator e em
+#   comunicado de sanção ("...negou provimento ao recurso"): leitura de BA, 136 de 1.959 registros.
 RE_FORMULA_COLEGIADA = re.compile(
-    r"ACORDA[MO]|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|VISTOS,|JULGO[UA]|JULGARAM|RESULTADO\s+D[EO]\s+JULGAMENTO|"
-    r"(?:NEG|D)(?:AR|OU|ARAM|ADO)\s+PROVIMENTO|DECIDIRAM|DECIDIU|NAO\s+(?:RE)?CONHEC|TORNA\s+PUBLICO\s+AS\s+DECISOES|"
+    r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|"
+    r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)|RESULTADO\s+D[EO]\s+JULGAMENTO|DECIDIRAM|JULGARAM|"
+    r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|ACORDA\s+A\s+\S+\s+(?:CAMARA|TURMA)|"
+    r"TORNA\s+PUBLICO\s+AS\s+DECISOES|E\s+COMO\s+VOTO|VOTO\s+(?:PELO\s+CONHECIMENTO|PARA\s+CONHECER|PELA\s+REJEICAO|PELO\s+SEU\s+ACOLHIMENTO)|"
+    r"(?<![A-Z])SS\s*\.?\s*\d{1,2}\s*[./]\s*\d{1,2}\s*[./]\s*\d{2,4}|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )
+RE_COLEGIADO_FORTE = re.compile(r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|DECIDIRAM|RELATORA?\s+D[OA]\s+ACORDAO")
+# Comunicado que só anuncia a sanção aplicada, sem o teor do julgado (BA: "Suspensão do Exercício da Advocacia")
+RE_COMUNICADO_SANCAO = re.compile(r"INTIMAD[OA]\)?\s+A\s+DEVOLVER|PARA\s+CONHECIMENTO\s+DAS\s+AUTORIDADES\s+JUDICI|COMUNICA\s+QUE\s+FOI\s+APLICADA|PELO\s+PRESENTE\s+EDITAL,?\s+NOTIFICAMOS")
+# Ato normativo ou administrativo que cita "por unanimidade" sem ser julgado
+# (só no título: no corpo, "Regulamento Geral" é citado por quase toda intimação de acórdão)
+RE_ATO_NORMATIVO = re.compile(r"REGULAMENTO|CAMPEONATO|CHAMAMENTO|CHAMADA\s+PUBLICA|FIXA\s+O\s+VALOR\s+DA\s+ANUIDADE|ANEXO\s+DA\s+RESOLUCAO|ATO\s+DE\s+DESIGNACAO|"
+                              r"EDITAL\s+DE\s+CONCURSO|CONCURSO\s+DE\s+IDEIAS|EDITAL\s+PARA\s+CURSAR")
+# Publicação que abre como acórdão numerado de um processo (PA: "ACÓRDÃO nº 081/2020. Processo Administrativo...")
+RE_ACORDAO_NUMERADO = re.compile(r"^\W*ACORDAO\s+N\S*\s*[\d/ .]+\.\s*PROCESSO")
+
+
+def _anuncia_decisao_colegiada(plano: str) -> bool:
+    """A própria publicação se apresenta como acórdão numerado ou como decisão de Câmara, Turma ou Conselho (PA, PB)."""
+    if RE_ACORDAO_NUMERADO.search(plano[:80]) or RE_DECISAO_DE_ORGAO.search(plano[:500]):
+        return True
+    # SC: "ACÓRDÃO N. 116/2025" no cabeçalho, com voto do relator; não vale para decisão monocrática numerada
+    return bool(re.search(r"ACORDAO\s+N\S*\s*\d+\s*/\s*\d{4}", plano[:400])) and not re.search(
+        r"MONOCRATIC|PACIFICAD|DETERMINO\s+O\s+ARQUIVAMENTO", plano[:1500])
+
+
+def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
+    """Por que uma publicação classificada como decisão não vira registro; None se vira."""
+    plano = _sem_acento(texto)
+    abertura = plano[:600]
+    # despacho monocrático transcrito em edital, ainda que cite ementa alheia (auditoria de CE)
+    if "TRANSCREVER O DESPACHO" in abertura or re.search(r"TRANSCREVER\s+O\s+R\.\s*DESPACHO|COMUNICA\s+DO\s+DESPACHO\s+EXARADO", abertura):
+        return "despacho_transcrito"
+    if RE_COMUNICADO_SANCAO.search(plano) and "ACORDAM" not in plano and not re.search(r"(?<![A-Z])EMENTA", plano):
+        return "comunicado_de_sancao"
+    if RE_ATO_NORMATIVO.search(_sem_acento(pub.get("titulo") or "") + " " + plano[:60]) or "TORNA SEM EFEITO O ACORDAO" in plano[:400]:
+        return "ato_normativo_ou_comunicado"
+    # decisão do presidente do TED que recusa a consulta, ainda que transcreva ementas alheias (segunda leitura de PE)
+    if re.search(r"DECISAO\s*:\s*\(\.\.\.\)\s*TRATA-SE\s+DE\s+CONSULTA", plano[:900]):
+        return "ato_monocratico"
+    # certidão do Conselho Pleno: é a ata em extrato, sem voto (política: ata de Pleno fica fora; segunda leitura de PI)
+    if re.search(r"CERTIFICA,?\s+QUE\s+NA\s+SESSAO", abertura):
+        return "ata_em_extrato"
+    if re.search(r"FOI\s+ADIADO\s+O\s+JULGAMENTO", plano[:700]):
+        return "sem_formula_de_julgamento"  # aviso de adiamento que cita súmula (SC)
+    if _anuncia_decisao_colegiada(plano) or re.search(r"TORNA\s+PUBLICA\s+A\s+DECISAO\s+DO\s+PROCESSO", plano[:300]):
+        return None  # vale mesmo com corpo em forma de voto ou de despacho (segundas leituras de PA e PB)
+    if re.search(r"\b[OA]\s+RELATORA?\s+DECIDIU\s+POR\b", plano[:1500]) or re.search(
+            r"SEGUINTE\s+DESPACHO\s+MONOCRATICO|VISTOS\s+EM\s+DECISAO\s+MONOCRATICA|TORNA\s+PUBLICO\s+QUE\s+SERA\s+APLICADA", plano[:900]):
+        return "ato_monocratico"  # intimação de decisão do relator (MG)
+    if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(plano):
+        return "sem_formula_de_julgamento"
+    # despacho ou decisão monocrática: abre como tal e não traz nenhuma marca de colegiado
+    if re.search(r"\bDESPACHO\b|DECISAO\s+MONOCRATICA|VISTOS,?\s+ETC|DECISAO\s*:\s*\(\.\.\.\)", plano[:300]) \
+            and not re.search(r"EMENTA\s*(?:N\S*\s*)?:?\s*\d{1,3}\s*/", plano[:600]) and not RE_COLEGIADO_FORTE.search(plano) \
+            and len(re.findall(r"(?<![A-Z])EMENTA", plano)) < 2:
+        return "ato_monocratico"
+    # decisão de um só membro da Comissão Eleitoral: fora, como qualquer decisão monocrática (BA, ES, RR)
+    setor = ((pub.get("setorPublicacao") or {}).get("nomeAlternativo") or "")
+    if eh_eleitoral(setor, texto) and not RE_COLEGIADO_FORTE.search(plano):
+        return "eleitoral_monocratica"
+    return None
+
+
 # Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
 RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
 # Publicação que abre anunciando o resultado de uma sessão de julgamento (TO, nov/2026)
@@ -212,7 +278,7 @@ def via_decisao(pub: dict[str, Any], perfil: dict[str, Any]) -> str | None:
     # Despacho é ato monocrático: a fórmula "Vistos e analisados" dentro dele não o torna decisão colegiada (AP, nov/2026)
     # Despacho individual não é decisão colegiada; edital de "processos julgados" sob o tipo Despacho é (MT 55580)
     if ("DESPACHO" not in tipo or corpo.count("EMENTA") >= 2) and (
-        (re.search(r"(?<![A-Z])EMENTA", corpo) and "ACORDAM" in corpo) or RE_FORMULA_JULGAMENTO.search(corpo) or RE_RESULTADO_SESSAO.search(corpo[:200])
+        (re.search(r"(?<![A-Z])EMENTA", corpo) and re.search(r"ACORDAM|ACORDAO\s*:|DECIDIRAM,?\s+POR", corpo)) or RE_FORMULA_JULGAMENTO.search(corpo) or RE_RESULTADO_SESSAO.search(corpo[:200])
     ):
         return "corpo"
     # "A OAB/PB torna pública a decisão da Primeira Câmara..." vale pelo que diz, seja qual for o tipo (auditoria de PB)
@@ -587,24 +653,18 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
                 aceita = tem_resultado and bool(re.search(r"SESSAO\s+DE\s+JULGAMENTO|TRIBUNAL\s+DE\s+ETICA", plano[:400]))
             else:
                 # acórdão de Câmara publicado sob tipo genérico entra mesmo sem ser disciplinar (MA 845489), com marca 0
-                colegiada = bool(re.search(r"ACORDAM|DECISAO\s+UNANIME", plano))
+                # nota de desagravo votada pelo Conselho também (BA 29551): "por unanimidade... resolveu desagravar"
+                colegiada = bool(re.search(r"ACORDAM|DECISAO\s+UNANIME|RESOLVEU\s+DESAGRAVAR", plano)) or bool(RE_ACORDAO_NUMERADO.search(plano[:80]))
                 aceita = eh_materia_disciplinar(setor, pub.get("titulo") or "", texto) or (eh_eleitoral(setor, texto) and tem_resultado) or colegiada
             if not aceita:
                 rejeitados.append({"id": pub["id"], "motivo": "tipo_amplo_sem_decisao", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
                                    "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
                 continue
         if uf != "SP":
-            # Título ou tipo de decisão sem nenhuma fórmula de julgamento no texto: pauta, intimação de prazo,
-            # despacho monocrático, lista de processos sem desfecho (auditoria de MT: 75 de 77 casos)
             texto = html_to_paragraphs(pub.get("conteudoCodificado") or pub.get("conteudo") or "")
-            plano_t = _sem_acento(texto)
-            # despacho monocrático transcrito em edital, ainda que cite ementa alheia (auditoria de CE)
-            if "TRANSCREVER O DESPACHO" in plano_t[:600]:
-                rejeitados.append({"id": pub["id"], "motivo": "despacho_transcrito", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
-                                   "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
-                continue
-            if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(plano_t):
-                rejeitados.append({"id": pub["id"], "motivo": "sem_formula_de_julgamento", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
+            motivo = motivo_fora_de_escopo(pub, texto)
+            if motivo:
+                rejeitados.append({"id": pub["id"], "motivo": motivo, "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],
                                    "chars": len(texto), "data": (pub.get("dataPublicacao") or "")[:10]})
                 continue
         rec = (
@@ -647,7 +707,16 @@ def _tirar_republicacoes(recs: list[dict], rejeitados: list[dict]) -> tuple[list
         proc = _chave_processo(rec)
         texto = " ".join((rec.get("inteiro_teor_texto") or rec.get("descricao_ementa") or "").split())
         chave = (proc, texto)
-        if len(proc) >= 8 and texto and chave in vistos:
+        republicada = bool(re.search(r"ORIGINARIAMENTE\s+PUBLICAD|REPUBLIQUE-SE", _sem_acento(texto[:400])))
+        if republicada and len(texto) > 500:
+            # republicação para retificar o nº do processo: o corpo do original está contido nela (BA)
+            miolo = re.sub(r"[^A-Za-zÀ-ú]+", "", texto)
+            original = next((oid for (_, t), oid in vistos.items() if len(t) > 500 and re.sub(r"[^A-Za-zÀ-ú]+", "", t)[-1500:] in miolo), None)
+            if original:
+                rejeitados.append({"id": int(rec["id"].rsplit(":", 1)[-1]), "motivo": "republicacao_identica", "duplicata_de": original,
+                                   "titulo": (rec.get("numero_processo") or "")[:140], "chars": len(texto), "data": rec.get("data_decisao")})
+                continue
+        if (len(proc) >= 8 or (not proc and len(texto) >= 400)) and texto and chave in vistos:
             rejeitados.append({"id": int(rec["id"].rsplit(":", 1)[-1]), "motivo": "republicacao_identica", "duplicata_de": vistos[chave],
                                "titulo": (rec.get("numero_processo") or "")[:140], "chars": len(texto), "data": rec.get("data_decisao")})
             continue
@@ -661,7 +730,12 @@ def _alinhar_marca_por_processo(recs: list[dict]) -> None:
 
     Só sobe de 0 para 1, e só quando o registro não é de matéria administrativa ou eleitoral reconhecida.
     """
-    disciplinares = {_chave_processo(r) for r in recs if r.get("is_ted_disciplinar") and len(_chave_processo(r)) >= 12}
+    # nº truncado por espaços no texto ("18.0000.202") não identifica processo nenhum (segunda leitura de PI)
+    disciplinares = {
+        _chave_processo(r) for r in recs
+        if r.get("is_ted_disciplinar") and len(_chave_processo(r)) >= 9
+        and not re.fullmatch(r"\d{2}\.\d{4}\.\d{3,4}", (r.get("numero_processo") or "").strip())
+    }
     for rec in recs:
         if rec.get("is_ted_disciplinar") or _chave_processo(rec) not in disciplinares:
             continue

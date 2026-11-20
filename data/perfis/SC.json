@@ -1,0 +1,1154 @@
+{
+  "uf": "SC",
+  "id_organizacao": 24,
+  "termos": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Decisão",
+    "Recurso",
+    "Abertura de Prazo Recursal",
+    "Penalidade",
+    "Edital",
+    "Notificação",
+    "Republicação"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-20T04:09:25Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-31",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2019-02-07",
+        "publicacoes": 28,
+        "baixadas": 28
+      },
+      {
+        "dia": "2019-03-28",
+        "publicacoes": 75,
+        "baixadas": 75
+      },
+      {
+        "dia": "2019-04-04",
+        "publicacoes": 75,
+        "baixadas": 75
+      },
+      {
+        "dia": "2019-11-21",
+        "publicacoes": 25,
+        "baixadas": 25
+      },
+      {
+        "dia": "2020-02-04",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2020-03-13",
+        "publicacoes": 51,
+        "baixadas": 51
+      },
+      {
+        "dia": "2020-05-08",
+        "publicacoes": 24,
+        "baixadas": 24
+      },
+      {
+        "dia": "2020-07-09",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2020-09-18",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2020-10-26",
+        "publicacoes": 28,
+        "baixadas": 28
+      },
+      {
+        "dia": "2020-11-17",
+        "publicacoes": 74,
+        "baixadas": 74
+      },
+      {
+        "dia": "2020-12-14",
+        "publicacoes": 14,
+        "baixadas": 14
+      },
+      {
+        "dia": "2021-01-25",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2021-02-10",
+        "publicacoes": 54,
+        "baixadas": 54
+      },
+      {
+        "dia": "2021-06-22",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2021-08-03",
+        "publicacoes": 34,
+        "baixadas": 34
+      },
+      {
+        "dia": "2021-09-21",
+        "publicacoes": 39,
+        "baixadas": 39
+      },
+      {
+        "dia": "2021-10-20",
+        "publicacoes": 28,
+        "baixadas": 28
+      },
+      {
+        "dia": "2022-03-15",
+        "publicacoes": 67,
+        "baixadas": 67
+      },
+      {
+        "dia": "2022-04-22",
+        "publicacoes": 28,
+        "baixadas": 28
+      },
+      {
+        "dia": "2022-05-25",
+        "publicacoes": 175,
+        "baixadas": 175
+      },
+      {
+        "dia": "2022-07-06",
+        "publicacoes": 38,
+        "baixadas": 38
+      },
+      {
+        "dia": "2022-09-02",
+        "publicacoes": 42,
+        "baixadas": 42
+      },
+      {
+        "dia": "2022-10-26",
+        "publicacoes": 30,
+        "baixadas": 30
+      },
+      {
+        "dia": "2022-12-21",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2023-01-17",
+        "publicacoes": 33,
+        "baixadas": 33
+      },
+      {
+        "dia": "2023-02-28",
+        "publicacoes": 17,
+        "baixadas": 17
+      },
+      {
+        "dia": "2023-04-26",
+        "publicacoes": 46,
+        "baixadas": 46
+      },
+      {
+        "dia": "2023-09-22",
+        "publicacoes": 26,
+        "baixadas": 26
+      },
+      {
+        "dia": "2023-10-17",
+        "publicacoes": 53,
+        "baixadas": 53
+      },
+      {
+        "dia": "2023-12-01",
+        "publicacoes": 26,
+        "baixadas": 26
+      },
+      {
+        "dia": "2024-01-24",
+        "publicacoes": 63,
+        "baixadas": 63
+      },
+      {
+        "dia": "2024-02-02",
+        "publicacoes": 34,
+        "baixadas": 34
+      },
+      {
+        "dia": "2024-03-08",
+        "publicacoes": 57,
+        "baixadas": 57
+      },
+      {
+        "dia": "2024-06-03",
+        "publicacoes": 27,
+        "baixadas": 27
+      },
+      {
+        "dia": "2024-07-22",
+        "publicacoes": 36,
+        "baixadas": 36
+      },
+      {
+        "dia": "2024-12-19",
+        "publicacoes": 3,
+        "baixadas": 3
+      },
+      {
+        "dia": "2025-02-10",
+        "publicacoes": 54,
+        "baixadas": 54
+      },
+      {
+        "dia": "2025-05-15",
+        "publicacoes": 159,
+        "baixadas": 159
+      },
+      {
+        "dia": "2025-06-26",
+        "publicacoes": 178,
+        "baixadas": 178
+      },
+      {
+        "dia": "2025-07-11",
+        "publicacoes": 47,
+        "baixadas": 47
+      },
+      {
+        "dia": "2025-08-06",
+        "publicacoes": 19,
+        "baixadas": 19
+      },
+      {
+        "dia": "2025-10-01",
+        "publicacoes": 74,
+        "baixadas": 74
+      },
+      {
+        "dia": "2025-11-19",
+        "publicacoes": 29,
+        "baixadas": 29
+      },
+      {
+        "dia": "2026-03-18",
+        "publicacoes": 43,
+        "baixadas": 43
+      },
+      {
+        "dia": "2026-04-06",
+        "publicacoes": 16,
+        "baixadas": 16
+      },
+      {
+        "dia": "2026-05-25",
+        "publicacoes": 38,
+        "baixadas": 38
+      },
+      {
+        "dia": "2026-08-17",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2026-11-17",
+        "publicacoes": 23,
+        "baixadas": 23
+      }
+    ],
+    "decisoes_no_censo": 38,
+    "decisoes_que_nenhum_termo_encontra": [
+      191477
+    ],
+    "recall_por_termo": {
+      "ACORDAO": 0.9737,
+      "EMENTA": 0.8947,
+      "DECISAO": 0.0789,
+      "JULGAMENTO": 0.1316,
+      "RECURSO": 0.2895
+    },
+    "tipos": {
+      "Portaria": {
+        "publicacoes": 1391,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 928,
+          "Comissões": 332,
+          "Gabinete da Presidência": 93,
+          "Secretaria": 27,
+          "Tecnologia da Informação": 9,
+          "CAASC": 2
+        },
+        "amostras": [
+          {
+            "id": 1688,
+            "titulo": "PORTARIA N° 01/2019 - GABINETE",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seção de Santa Catarina, no uso das atribuições que lhe são conferidas pelo artigo 72, inciso XIX, do Regimento Interno desta Seccional, RESOLVE: Nomear o Advogado PEDRO MIRANDA DE OLIVEIRA – OAB/SC 15.762 - Coord"
+          },
+          {
+            "id": 1689,
+            "titulo": "PORTARIA N° 02/2019 - GABINETE",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seção de Santa Catarina, no uso das atribuições que lhe são conferidas pelo artigo 72, inciso XIX, do Regimento Interno desta Seccional, RESOLVE: Criar a Comissão de Integridade e Governança da OAB/SC, que tem com"
+          },
+          {
+            "id": 1691,
+            "titulo": "PORTARIA N° 03/2019 - GABINETE",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seção de Santa Catarina, no uso das atribuições que lhe são conferidas pelo artigo 72, inciso XIX, do Regimento Interno desta Seccional, RESOLVE: Criar a Comissão de Prerrogativas e Defesa dos Honorários, que tem "
+          }
+        ]
+      },
+      "Razões Finais": {
+        "publicacoes": 182,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 172,
+          "Tribunal de Ética e Disciplina": 6,
+          "Conselho Pleno": 4
+        },
+        "amostras": [
+          {
+            "id": 191462,
+            "titulo": "RAZÕES FINAIS",
+            "trecho": "A OAB/SC notifica o Advogado J.L. (por seu advogado Janor Lunardi – OAB/SC 3627), para cumprir o disposto no § 8º do artigo 59 CED, autos nº 759/2016. Tubarão, 19 de novembro de 2019. Erivelton Alexandre de Mendonça Fileti – Presidente da Subseção de Tubarão."
+          },
+          {
+            "id": 191463,
+            "titulo": "RAZÕES FINAIS",
+            "trecho": "A OAB/SC notifica o Advogado J.L. (por seu Defensor Dativo Fabiano da Silva Figueiredo – OAB/SC 43127), para cumprir o disposto no § 8º do artigo 59 CED, autos nº 759/2016. Tubarão, 19 de novembro de 2019. Erivelton Alexandre de Mendonça Fileti – Presidente da"
+          },
+          {
+            "id": 191475,
+            "titulo": "RAZÕES FINAIS",
+            "trecho": "A OAB/SC notifica o Advogado F.M.E – OAB/SC 5533 (por seu defensor dativo Rodrigo Alexandre Carmes – OAB/SC 27.139), para cumprir o disposto no § 8º do artigo 59 CED, autos nº 863/2014. Palhoça, 20 de novembro de 2019 – Leandro Bernardino Rachadel – Presidente"
+          }
+        ]
+      },
+      "Audiência": {
+        "publicacoes": 109,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 108,
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 29018,
+            "titulo": "AUDIÊNCIA",
+            "trecho": "A OAB/SC notifica a advogada A. da S. S. (por sua advogada Andréa da Silva Sessim - OAB/SC 40.037), para comparecer na Sede da Subseção de Balneario Camboriu, a fim de participar da instrução dos autos nº 407041/2018 (Subseção de Tramandaí-RS - Carta Precatóri"
+          },
+          {
+            "id": 29019,
+            "titulo": "AUDIÊNCIA",
+            "trecho": "A OAB/SC notifica a advogada K. C. M.(por sua advogada Kelly Cristiane Maciel - OAB/RS 45.381), para comparecer na Sede da Subseção de Balneario Camboriu, a fim de participar da instrução doa autos nº 407041/2018 (Subseção de Tramandaí-RS - Carta Precatória, o"
+          },
+          {
+            "id": 29025,
+            "titulo": "Audiência",
+            "trecho": "A OAB/SC notifica o Advogado C.A.S.N. (por seu advogado Carlos Alberto Soares Nolli – OAB/SC 6078), para comparecer na Sede da Subseção de Mafra a fim de participar da audiência de instrução dos autos nº 1104/2017, no dia 26/04/2019, às 13h30min. Mafra, 27 de "
+          }
+        ]
+      },
+      "Recurso": {
+        "publicacoes": 58,
+        "parecem_decisao": 26,
+        "setores": {
+          "Secretaria": 32,
+          "Conselho Pleno": 22,
+          "Tribunal de Ética e Disciplina": 4
+        },
+        "amostras": [
+          {
+            "id": 28813,
+            "titulo": "RECURSO",
+            "trecho": "A Primeira Turma Julgadora do Conselho da Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica os(a) interessados/recorrentes(a) A.J.S. (Antonio Josefa Schiessl) e H.J.C.S (Humberto José de Castro Sartori), Procurador: Anatólio Pinheiro Guimarães F"
+          },
+          {
+            "id": 210298,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica P.D.C.S. (Paulo de Carvalho Souza OAB/PR 51405), defensor dativo: Jonas Renato Ferreira (OAB/SC 47987), para, querendo, no prazo de 15(quinze) dias úteis, contados a partir da publicação deste "
+          },
+          {
+            "id": 227955,
+            "titulo": "PRAZO PARA RECURSO",
+            "trecho": "A Quarta Câmara Julgadora da Ordem dos Advogados do Brasil – Seção de Santa Catarina, notifica o Advogado JOÃO CARLOS MATIAS OAB/SC 4428 para, querendo, no prazo de 15(quinze) dias úteis, contados a partir da publicação deste edital, cumprir o disposto no arti"
+          }
+        ]
+      },
+      "Abertura de Prazo Recursal": {
+        "publicacoes": 54,
+        "parecem_decisao": 8,
+        "setores": {
+          "Secretaria": 54
+        },
+        "amostras": [
+          {
+            "id": 412354,
+            "titulo": "PRAZO PARA RECURSO",
+            "trecho": "A Segunda Câmara Julgadora da Ordem dos Advogados do Brasil – Seção de Santa Catarina, notifica o advogado DIRCEU RODRIGUES DA SILVA OAB/SC 48261 para, querendo, no prazo de 15(quinze) dias úteis, contados a partir da publicação deste edital, cumprir o dispost"
+          },
+          {
+            "id": 412355,
+            "titulo": "PRAZO PARA RECURSO",
+            "trecho": "A Segunda Câmara Julgadora da Ordem dos Advogados do Brasil – Seção de Santa Catarina, notifica GLAUCY ZABOT para, querendo, no prazo de 15(quinze) dias úteis, contados a partir da publicação deste edital, cumprir o disposto na Resolução nº 31/2019, (Recurso à"
+          },
+          {
+            "id": 412356,
+            "titulo": "PRAZO PARA RECURSO",
+            "trecho": "A Segunda Câmara Julgadora da Ordem dos Advogados do Brasil – Seção de Santa Catarina, notifica o Advogado MICHEL LUIS DA COSTA OAB/SC 26126 para, querendo, no prazo de 15(quinze) dias úteis, contados a partir da publicação deste edital, cumprir o disposto na "
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 47,
+        "parecem_decisao": 2,
+        "setores": {
+          "Secretaria": 33,
+          "Diretoria": 11,
+          "Tribunal de Ética e Disciplina": 2,
+          "CAASC": 1
+        },
+        "amostras": [
+          {
+            "id": 191455,
+            "titulo": "DEFERIMENTO DE INSCRIÇÕES DE ADVOGADOS",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção de Santa Catarina, na forma da Lei 8.906/94 (inciso VI do art. 8º), torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que foram registrados e autuados os seguintes pedidos de inscrição de"
+          },
+          {
+            "id": 191456,
+            "titulo": "PEDIDOS DE INSCRIÇÕES DE ESTAGIÁRIOS",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção de Santa Catarina, na forma da Lei 8.906/94 (inciso VI do art. 8º), torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que foram registrados e autuados os seguintes pedidos de inscrição de"
+          },
+          {
+            "id": 236834,
+            "titulo": "DEFERIMENTO DE INSCRIÇÕES DE ADVOGADOS",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção de Santa Catarina, na forma da Lei 8.906/94 (inciso VI do art. 8º), torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que foram registrados e autuados os seguintes pedidos de inscrição de"
+          }
+        ]
+      },
+      "Notificação": {
+        "publicacoes": 40,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 40
+        },
+        "amostras": [
+          {
+            "id": 272725,
+            "titulo": "RAZÕES",
+            "trecho": "A OAB/SC notifica o advogado F. C. C. J. OAB/SC 37.201(por sua advogada Shirley Deretti Corrêa OAB/SC 53.331), para cumprir o disposto no § 8º do artigo 59 CED, autos nº 1284/2018 Jaraguá do Sul, 23 de outubro de 2020 – Gustavo Pacher – Presidente da Subseção "
+          },
+          {
+            "id": 272726,
+            "titulo": "RAZÕES",
+            "trecho": "A OAB/SC notifica o advogado F. C. C. J. OAB/SC 37.201(por seu advogado Gildo Machado Tavares dos Santos OAB/SC 54.195), para cumprir o disposto no § 8º do artigo 59 CED, autos nº 623/2018 Jaraguá do Sul, 23 de outubro de 2020 – Gustavo Pacher – Presidente da "
+          },
+          {
+            "id": 272727,
+            "titulo": "RAZÕES",
+            "trecho": "A OAB/SC notifica o advogado F. C. C. J. OAB/SC 37.201(por sua advogada Ana Gabriela Ramos OAB/SC 52.039), para cumprir o disposto no § 8º do artigo 59 CED, autos nº 1285/2018 Jaraguá do Sul, 23 de outubro de 2020 – Gustavo Pacher – Presidente da Subseção da O"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 38,
+        "parecem_decisao": 16,
+        "setores": {
+          "Conselho Pleno": 29,
+          "Tribunal de Ética e Disciplina": 9
+        },
+        "amostras": [
+          {
+            "id": 191477,
+            "titulo": "APLICAÇÃO DE PENALIDADE",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção de Santa Catarina torna público que serão aplicadas aos advogados abaixo relacionados as seguintes penalidades: AILTO GOMES DE ALMEIDA OAB/SC 956 , autos nº 174/2017, pena de suspensão por 9 meses, c/c multa de 7 anuidade"
+          },
+          {
+            "id": 272714,
+            "titulo": "ACÓRDÃO",
+            "trecho": "Conselho Pleno da Ordem dos Advogados do Brasil - Seção de Santa Catarina. Processo n. 015/2020. Recorrente: Sânzio Rodrigues de Oliveira (OAB/SC 34660). Recorrido: Minister Serviços de Vigilância. ACORDÃO N. 199/2020. EMENTA: PEDIDO DE DESAGRAVO PÚBLICO. VIOL"
+          },
+          {
+            "id": 272720,
+            "titulo": "ACÓRDÃO",
+            "trecho": "Conselho Pleno da Ordem dos Advogados do Brasil - Seção de Santa Catarina. Processo n. 03/2020. Recorrente: Kleber Nelito Kammers (OAB/SC 26474). Requerido: Juiz de Direito das 1º Vara Cívelk da Comarca de Biguaçu – José Clesio Machado. ACORDÃO N. 201/2020. EM"
+          }
+        ]
+      },
+      "Contrarrazões": {
+        "publicacoes": 35,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 35
+        },
+        "amostras": [
+          {
+            "id": 191480,
+            "titulo": "CONTRARRAZÕES",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica o Advogado A.A.M.F. (Abrahão Alfredo Maçaneiro Filho OAB/SC 13624), para, querendo, no prazo de 15(quinze) dias úteis, contados a partir da publicação deste Edital, apresentar CONTRARRAZÕES , a"
+          },
+          {
+            "id": 191561,
+            "titulo": "CONTRARRAZÕES",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica a Advogada Joyce Rosa Eigen Facchini (OAB/SC 23699), procuradora de Olimpio Dognini (OAB/SC 11301), para, querendo, no prazo de 15(quinze) dias úteis, contados a partir da publicação deste Edit"
+          },
+          {
+            "id": 236744,
+            "titulo": "CONTRARRAZÕES",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica o Advogado Helio Cezar Chicato (OAB/SC 18208), procurador de Mirian Prade, para, querendo, no prazo de 15(quinze) dias úteis, contados a partir da publicação deste Edital, apresentar CONTRARRAZ"
+          }
+        ]
+      },
+      "Defesa Prévia": {
+        "publicacoes": 32,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 28,
+          "Tribunal de Ética e Disciplina": 4
+        },
+        "amostras": [
+          {
+            "id": 272668,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A OAB/SC notifica o Advogado Rudimar Paulinho de Barba - OAB/SC 6893, para comparecer na Sede da 28ª Subseção da OAB/SC para tratar de assunto de seu interesse, autos nº 122/2020. São José (SC), 23 de outubro de 2020. Herta de Souza – Presidente da Subseção de"
+          },
+          {
+            "id": 424479,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A OAB/SC notifica a Advogada Christiny Pereira de Souza Deschamps - OAB/SC 27.940, para comparecer na Sede da 28ª Subseção da OAB/SC para tratar de assunto de seu interesse, autos nº 537/2021 . São José (SC), 20 de abril de 2022. Pedro A. Ferrari Junior – Pres"
+          },
+          {
+            "id": 479222,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A OAB/SC por Subseção de Lages notifica a Advogada Caroliny Anastacio dos Santos OAB/SC 43.443, para, no prazo de 15 dias úteis, oferecer defesa prévia, advertindo-lhe que a peça deverá ser acompanhada dos documentos que entenda pertinentes ao esclarecimento d"
+          }
+        ]
+      },
+      "Manifestação": {
+        "publicacoes": 28,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 23,
+          "Tribunal de Ética e Disciplina": 3,
+          "Secretaria": 1,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 30936,
+            "titulo": "MANIFESTAÇÃO PARA DEFESA",
+            "trecho": "A OAB/SC notifica o advogado J. A. da R. V. M. (por seu advogado José Augusto da Rosa Valle Machado OAB/RS 49.5025 (OAB/DF 33421-A), para comparecer na Sede da Subseção de Balneário Camboriú, para tratar de assunto de seu interesse, autos nº 1176/2016. Balneár"
+          },
+          {
+            "id": 191464,
+            "titulo": "MANIFESTAÇÃO",
+            "trecho": "A OAB/SC notifica o Advogado J.L. (por seu advogado Janor Lunardi – OAB/SC 3627), para se manifestar nos autos nº 515/2019. Tubarão, 19 de novembro de 2019. Erivelton Alexandre de Mendonça Fileti – Presidente da Subseção de Tubarão."
+          },
+          {
+            "id": 191465,
+            "titulo": "MANIFESTAÇÃO",
+            "trecho": "A OAB/SC notifica o Advogado J.L. (por seu Defensor Dativo Fabiano da Silva Figueiredo – OAB/SC 43127), para se manifestar nos autos nº 515/2019. Tubarão, 19 de novembro de 2019. Erivelton Alexandre de Mendonça Fileti – Presidente da Subseção de Tubarão."
+          }
+        ]
+      },
+      "Sessão de Julgamento": {
+        "publicacoes": 25,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 14,
+          "Tribunal de Ética e Disciplina": 11
+        },
+        "amostras": [
+          {
+            "id": 243911,
+            "titulo": "1ª TURMA",
+            "trecho": "A Ordem dos Advogados do Brasil - Seção de Santa Catarina, de acordo com o disposto no artigo 188 e seguintes do Regimento Interno da OAB/SC, atualizado pelo Provimento 182/2018 do Conselho Federal, e Resolução nº 03 9 /2020 – Covid-19, publicada no Diário Ele"
+          },
+          {
+            "id": 280064,
+            "titulo": "7ª TURMA",
+            "trecho": "A Ordem dos Advogados do Brasil - Seção de Santa Catarina, de acordo com o disposto no artigo 188 e seguintes do Regimento Interno da OAB/SC, atualizado pelo Provimento 182/2018 do Conselho Federal, e Resolução nº 03 9 /2020 – Covid-19, publicada no Diário Ele"
+          },
+          {
+            "id": 294131,
+            "titulo": "1ª TURMA",
+            "trecho": "A Ordem dos Advogados do Brasil - Seção de Santa Catarina, de acordo com o disposto no artigo 188 e seguintes do Regimento Interno da OAB/SC, atualizado pelo Provimento 182/2018 do Conselho Federal, e Resolução nº 03 9 /2020 – Covid-19 , publicada no Diário El"
+          }
+        ]
+      },
+      "Manifestação para defesa": {
+        "publicacoes": 24,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 24
+        },
+        "amostras": [
+          {
+            "id": 191466,
+            "titulo": "DEFESA",
+            "trecho": "A OAB/SC notifica o Advogado Hamilton José da Silva Junior – OAB/SC 30872, para comparecer na Sede da Subseção de Tubarão para tratar de assunto de seu interesse, autos nº 1151/2018. – Tubarão, 19 de novembro de 2019. Erivelton Alexandre de Mendonça Fileti – P"
+          },
+          {
+            "id": 236823,
+            "titulo": "DEFESA",
+            "trecho": "A OAB/SC notifica o Advogado Thiago Rodrigues – OAB/SC 33.655, para comparecer na Sede da Subseção de Joinville para tratar de assunto de seu interesse, autos nº 252/2019. Joinville, 07 de ma i o de 20 20 – Maria de Lourdes Bello Zimath – Presidente da Subseçã"
+          },
+          {
+            "id": 236831,
+            "titulo": "DEFESA",
+            "trecho": "A OAB/SC notifica o Advogado S. M. S. OAB/SC 7835 (por sua advogada Ana Gabriela Ramos – OAB/SC 52.039), para comparecer na Sede da Subseção de Jaraguá do Sul para tratar de assunto de seu interesse, autos nº 665/2019 Jaraguá do Sul, 07 de maio de 2020 – Gusta"
+          }
+        ]
+      },
+      "Despacho": {
+        "publicacoes": 20,
+        "parecem_decisao": 1,
+        "setores": {
+          "Conselho Pleno": 9,
+          "Tribunal de Ética e Disciplina": 9,
+          "Diretoria": 2
+        },
+        "amostras": [
+          {
+            "id": 294206,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "OAB/SC (Brusque) notifica o Advogado D.C.H (por seu advogado Dr. Diogo de Campos Heiderscheidt - OAB/SC 29.621, para informar o interesse na produção de prova testemunhal trazendo na mesma oportunidade o rol de testemunhas, até o limite de 5 (cinco), nos termo"
+          },
+          {
+            "id": 364780,
+            "titulo": "DESPACHO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica o Advogado, F.R. (Felix Raichardt (OAB/SC 44067), por seus procuradores Dr. Tiago Montroni (OAB/SC 41946) e Dra. Michelle France Pechorz Montroni (OAB/SC 42550), do seguinte despacho: Processo "
+          },
+          {
+            "id": 374630,
+            "titulo": "MANIFESTAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional de Santa Catarina por sua Subseção de Joinville notifica os advogados a seguir relacionados para que, no prazo de quinze dias úteis, prestem suas manifestações nos processos em referência: O pedido deve ser consultado "
+          }
+        ]
+      },
+      "Penalidade": {
+        "publicacoes": 9,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 6,
+          "Tribunal de Ética e Disciplina": 3
+        },
+        "amostras": [
+          {
+            "id": 288994,
+            "titulo": "SUSPENSÃO PREVENTIVA",
+            "trecho": "A OAB/SC torna público que foi aplicada à advogada INARA DE FÁTIMA MOREIRA DIAS - OAB/SC 53961 , a pena de SUSPENSÃO PREVENTIVA , pelo prazo de 90 (noventa) dias , a partir do dia 09/12/2020, inclusive, com fulcro no artigo 70, § 3º, do EAOAB, de acordo com a "
+          },
+          {
+            "id": 364610,
+            "titulo": "PENALIDADES",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Santa Catarina torna público que, em razão do trânsito em julgado da decisão proferida no processo abaixo relacionado, foi aplicada a penalidade de Suspensão ao seguinte advogado: ROBERTO EVERTON CALBUSCH (OAB/SC 2305"
+          },
+          {
+            "id": 437538,
+            "titulo": "APLICAÇÃO DE PENALIDADE",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção de Santa Catarina torna público que serão aplicadas aos advogados abaixo relacionados as seguintes penalidades: ELIZIONE MICHELS – OAB/SC 17645 , autos nº 891/2020, pena de SUSPENSÃO POR 60 DIAS, ATÉ PRESTAÇÃO DE CONTAS, "
+          }
+        ]
+      },
+      "ELEIÇÕES OAB/SC": {
+        "publicacoes": 8,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 8
+        },
+        "amostras": [
+          {
+            "id": 374458,
+            "titulo": "RESOLUÇÃO",
+            "trecho": "RESOLUÇÃO CE Nº 02/2021 Regulamenta a remessa de mensagens eletrônicas pelas Chapas devidamente registradas. A Comissão Eleitoral da OAB/SC , no uso das atribuições que lhe são conferidas pelo art. 128-A do Regulamento Geral da OAB; art. 3º, §2º, do Provimento"
+          },
+          {
+            "id": 374460,
+            "titulo": "RESOLUÇÃO",
+            "trecho": "RESOLUÇÃO CE Nº 03/2021 Regulamenta a divulgação de pesquisa eleitoral pelas Chapas devidamente registradas. A Comissão Eleitoral da OAB/SC , no uso das atribuições que lhe são conferidas pelo art. 128-A do Regulamento Geral da OAB; art. 3º, §2º, do Provimento"
+          },
+          {
+            "id": 374568,
+            "titulo": "ERRATA - EDITAL DE REGISTRO DE CHAPA – SUBSEÇÃO INDAIAL",
+            "trecho": "O Presidente da Comissão Eleitoral da Seccional Catarinense da Ordem dos Advogados do Brasil, no uso das atribuições que lhe são conferidas pela Resolução CP nº 057/2021, do Conselho Seccional da OAB/SC, retifica o EDITAL que foi disponibilizado no dia 19/10/2"
+          }
+        ]
+      },
+      "Intimação": {
+        "publicacoes": 8,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 8
+        },
+        "amostras": [
+          {
+            "id": 437647,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A OAB/SC – Subseção Chapecó notifica o Advogado T.S (por seu advogado Tiago Somensi – OAB/SC 34.166) para cumprir o disposto no § 8º do artigo 59 CED, no processo nº 945/2021. Os autos podem ser consultados pelo site da OAB/SC: Serviços/ Área do Advogado/ Proc"
+          },
+          {
+            "id": 454956,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A OAB/SC – Subseção Chapecó notifica o Advogado C.M.F.D.S (por seu advogado Caio Mateus França dos Santos – OAB/SC 41.855) para cumprir o disposto conforme o art. 59, § 3º e § 4º do CED, no processo nº 251/2022. Os autos podem ser consultados pelo site da OAB/"
+          },
+          {
+            "id": 454959,
+            "titulo": "DEFESA PRÉVIA",
+            "trecho": "A OAB/SC – Subseção Chapecó notifica o Advogado C.M.F.D.S (por seu advogado Caio Mateus França dos Santos – OAB/SC 41.855) para cumprir o disposto conforme o art. 59, § 3º e § 4º do CED, no processo nº 184/2022. Os autos podem ser consultados pelo site da OAB/"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 7,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria": 7
+        },
+        "amostras": [
+          {
+            "id": 299722,
+            "titulo": "PAUTA DA SESSÃO ORDINÁRIA DA 2ª Câmara Julgadora",
+            "trecho": "DIA 26/02/2021 às 09:00hrs, Reunião online. (Art. 91, parágrafo único do Regimento Interno da OAB/SÇaprovado em 20/02/95) Relator(a) Requerente Processo Tipo pedido Subseção ANA CLAUDIA COLATTO MARINA RAMOS ALVES Inscrição Originária TUBARÃO ANA CLAUDIA COLATT"
+          },
+          {
+            "id": 299724,
+            "titulo": "PAUTA DA SESSÃO ORDINÁRIA DA 3ª Câmara Julgadora",
+            "trecho": "DIA 25/02/2021 às 09:00hrs, Reunião híbrida (online e presencial). (Art. 91, parágrafo único do Regimento Interno da OAB/SC, aprovado em 20/02/95) Relator(a) Requerente Processo Tipo pedido Subseção ARAMIS CABEDA FARIA MAICON SILVA DOS SANTOS Cancelamento ARAM"
+          },
+          {
+            "id": 337767,
+            "titulo": "PAUTA DA SESSÃO ORDINÁRIA DA 1ª Câmara Julgadora",
+            "trecho": "DIA 05/07/2021 às 09:00hrs , Reunião online . Relator( a) Requerente Processo Tipo pedido Subseção CARLOS JOSE DE LIMA LEONARDO FREITAS Licenciamento PALHOÇA CARLOS JOSE DE LIMA REGINA MARIA DE OLIVEIRA RIBEIRO Licenciamento FLORIANÓPOLIS CARLOS JOSE DE LIMA C"
+          }
+        ]
+      },
+      "Edital Quinto Constitucional": {
+        "publicacoes": 7,
+        "parecem_decisao": 2,
+        "setores": {
+          "Conselho Pleno": 7
+        },
+        "amostras": [
+          {
+            "id": 337885,
+            "titulo": "ATA",
+            "trecho": "COMISSÃO ELEITORAL ATA DA APURAÇÃO DE RESULTADOS - ELEIÇÃO CONSULTA DIRETA À ADVOCACIA CATARINENSE - QUINTO CONSTITUCIONAL TJSC 2021 . Aos vinte e um dias do mês de junho do ano de dois mil e um no Plenário da Sede da Ordem dos Advogados do Brasil - Seção de S"
+          },
+          {
+            "id": 337887,
+            "titulo": "EDITAL",
+            "trecho": "EDITAL Nº 0 9 /2021 – CP O PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL DO ESTADO DE SANTA CATARINA, no uso de suas atribuições e, em cumprimento aos arts. 17, 23 e seguintes, da Resolução n. 40/2020 da OAB/SC, CONVOCA os Conselheiros Titulares da Se"
+          },
+          {
+            "id": 364553,
+            "titulo": "DECISÃO",
+            "trecho": "A Comissão Eleitoral do Quinto Constitucional da Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica a Advogada SAÍLE BÁRBARA BARRETO DA SILVA (OAB/SC 18136) da seguinte decisão: “Protocolo/Ano: 84285/2021. RELATÓRIO: Trata-se de consulta formulad"
+          }
+        ]
+      },
+      "Decisão": {
+        "publicacoes": 6,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 5,
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 227788,
+            "titulo": "DECISÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica o Advogado Adival Rossato (OAB/RS 24418), procurador de C.R.M. Carine Ribeiro Mairesse (OAB/SC 51209), nos autos do processo de incidente de inidoneidade nº 54568 , conforme DECISÃO MONOCRÁTICA"
+          },
+          {
+            "id": 260455,
+            "titulo": "DECISÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção Santa Catarina, de acordo com o disposto do artigo 76 do EAOAB, Lei nº 8906/94, notifica os advogados a seguir relacionados sobre a decisão de INDEFERIMENTO LIMINAR das representações em referência (a cópia digitalizada "
+          },
+          {
+            "id": 412353,
+            "titulo": "DECISÃO",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção Santa Catarina, de acordo com o disposto do artigo 76 do EAOAB, Lei nº 8906/94, notifica os advogados a seguir relacionados sobre a decisão de INDEFERIMENTO LIMINAR dos pedidos em referência; o procedimento pode ser cons"
+          }
+        ]
+      },
+      "Termo de Ajuste de Conduta": {
+        "publicacoes": 5,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 5
+        },
+        "amostras": [
+          {
+            "id": 437500,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil, Seccional de Santa Catarina, notifica os advogados a seguir relacionados para que, no prazo de 15 (quinze) dias úteis, manifestem interesse em celebrar, nos processos em referência, TERMO DE AJUSTAMENTO DE CONDUTA (aplicada às "
+          },
+          {
+            "id": 437501,
+            "titulo": "NOTIFICAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil, Seccional de Santa Catarina, notifica os advogados a seguir relacionados para que, no prazo de 15 (quinze) dias úteis, manifestem interesse em celebrar, nos processos em referência, TERMO DE AJUSTAMENTO DE CONDUTA (aplicada às "
+          },
+          {
+            "id": 479173,
+            "titulo": "RECURSO",
+            "trecho": "A Ordem dos Advogados do Brasil, Seccional de Santa Catarina, notifica os advogados a seguir, sobre a celebração do TERMO DE AJUSTAMENTO DE CONDUTA (aplicado às hipóteses relativas às infrações disciplinares puníveis com censura – art. 36 do EAOAB) nos process"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 3,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 299597,
+            "titulo": "Portaria nº 009/2021",
+            "trecho": "Nomeia membro do Conselho de Apoio e Pesquisa da Revista Eletrônica A Presidente e a Coordenadora da Revista Eletrônica da Subseção de Joinville da Ordem dos Advogados do Brasil, Seção de Santa Catarina, no uso de suas atribuições legais, RESOLVEM: Art. 1º - N"
+          },
+          {
+            "id": 648657,
+            "titulo": "CONVOCAÇÃO.",
+            "trecho": "RETIFICA A MODALIDADE DA SESSÃO PRESENCIAL PARA VIRTUAL A Ordem dos Advogados do Brasil - Seção de Santa Catarina, de acordo com o disposto no artigo 30 do Regimento Interno da OAB/SC, retifica o edital disponibilizado no Diário Eletrônico da OAB nº 1198, Ano "
+          },
+          {
+            "id": 648658,
+            "titulo": "CONVOCAÇÃO.",
+            "trecho": "RETIFICA A MODALIDADE DA SESSÃO PRESENCIAL PARA VIRTUAL A Ordem dos Advogados do Brasil - Seção de Santa Catarina, de acordo com o disposto no artigo 30 do Regimento Interno da OAB/SC, retifica o edital disponibilizado no Diário Eletrônico da OAB nº 1196, Ano "
+          }
+        ]
+      },
+      "Edital de Inscrição": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria": 3,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 962163,
+            "titulo": "EDITAL",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção de Santa Catarina, na forma da Lei 8.906/94 (inciso VI do art. 8º), torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que foram registrados e autuados os seguintes pedidos de inscrição de"
+          },
+          {
+            "id": 991653,
+            "titulo": "EDITAL",
+            "trecho": "A Ordem dos Advogados do Brasil, Seção de Santa Catarina, na forma da Lei 8.906/94 (inciso VI do art. 8º), torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que foram registrados e autuados os seguintes pedidos de inscrição de"
+          },
+          {
+            "id": 1063459,
+            "titulo": "EDITAL 02/2026",
+            "trecho": "EDITAL DA OAB/SC SUBSEÇÃO DE BLUMENAU PARA ABERTURA DE INSCRIÇÕES DE INTERESSADOS EM ATUAR NAS AUDIÊNCIAS DE ACORDO DE NÃO PERSECUÇÃO PENAL - ANPP O presidente da Ordem dos Advogados do Brasil – Subseção de Blumenau, no uso de suas atribuições legais, consider"
+          }
+        ]
+      },
+      "Esclarecimentos Preliminares": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 4
+        },
+        "amostras": [
+          {
+            "id": 1020354,
+            "titulo": "MANIFESTAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional de Santa Catarina notifica os advogados a seguir relacionados para que, no prazo de quinze dias úteis, prestem suas manifestações nos autos em referência; o pedido deve ser consultado pelo site da OAB/SC: Serviços/ Áre"
+          },
+          {
+            "id": 1020588,
+            "titulo": "MANIFESTAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional de Santa Catarina notifica os advogados a seguir relacionados para que, no prazo de quinze dias úteis, prestem suas manifestações nos autos em referência; o pedido deve ser consultado pelo site da OAB/SC: Serviços/ Áre"
+          },
+          {
+            "id": 1097910,
+            "titulo": "MANIFESTAÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional de Santa Catarina notifica os advogados a seguir relacionados para que, no prazo de quinze dias úteis, prestem suas manifestações nos autos em referência; o pedido deve ser consultado pelo site da OAB/SC: Serviços/ Áre"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Gabinete da Presidência": 2,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 272660,
+            "titulo": "RESOLUÇÃO DE 43/2020",
+            "trecho": "Estabelece as diretrizes para votação eletrônica, bem como, cria Comitê para Implantação da Estrutura para Eleições Digitais para o Quinto Constitucional e LGPD. A Diretoria da Ordem dos Advogados do Brasil, Seccional de Santa Catarina, no uso das atribuições "
+          },
+          {
+            "id": 299719,
+            "titulo": "RESOLUÇÃO DE Nº 46/2021",
+            "trecho": "Manter o expediente na Seccional da OAB/SC durante os dias 15, 16 e 17 de fevereiro de 2021. A DIRETORIA DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DE SANTA CATARINA, no uso das atribuições que lhe conferem o art. 71, VIII, do Regimento Interno da OAB/SC e confor"
+          },
+          {
+            "id": 523713,
+            "titulo": "RESOLUÇÃO Nº 001/2023 – REGULAMENTO GERAL DAS COMISSÕES TEMÁTICAS DA SEDE DA SUBSEÇÃO",
+            "trecho": "ORDEM DOS ADVOGADOS DO BRASIL – OAB SUBSEÇÃO DE ITAJAÍ RESOLUÇÃO 001/2023 Institui o Regulamento Geral das Comissões Temáticas da sede da Subseção. O CONSELHO DA SUBSEÇÃO DE ITAJAÍ DA ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL DE SANTA CATARINA, no uso das atrib"
+          }
+        ]
+      },
+      "Alegações Finais": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 2,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 1063461,
+            "titulo": "ALEGAÇÕES FINAIS",
+            "trecho": "A OAB/SC notifica o Advogado R. N. L. F. (Por seu advogado Rafael Nascimento Lima de Freitas OAB/RJ 224376) para cumprir disposto no §8º do Artigo 59 CED, autos número 980/2023. Os autos devem ser consultados pelo site da OAB/SC: Serviços/ Área do Advogado/ Pr"
+          },
+          {
+            "id": 1097683,
+            "titulo": "ALEGAÇÕES FINAIS",
+            "trecho": "O Conselho Pleno da Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica o Sr. R.F. (Raphael Furtado), Procurador: Dr. Dudevant Miranda Alves Da Silva (OAB/SC 39995), para, querendo, no prazo de 15 (quinze) dias, contados a partir da publicação des"
+          },
+          {
+            "id": 1097794,
+            "titulo": "ALEGAÇÕES FINAIS",
+            "trecho": "O Conselho Pleno da Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica o Sr. A.C.B. (Alan Cesar Batista), para, querendo, no prazo de 15 (quinze) dias, contados a partir da publicação deste Edital, apresentar ALEGAÇÕES FINAIS ao Incidente de Inid"
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 2,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 1097635,
+            "titulo": "AUDIÊNCIA",
+            "trecho": "A OAB/SC notifica os advogados abaixo, para comparecer na Sede da Seccional de Florianópolis (sala 2, andar superior), a fim de participar da audiência de instrução; em atendimento os § 3º e 4º art. 59 Codigo Ética e Disciplina. O processo é digital e deverá s"
+          },
+          {
+            "id": 1139515,
+            "titulo": "AUDIÊNCIA DE INSTRUÇÃO",
+            "trecho": "A Ordem dos Advogados do Brasil Seccional de Santa Catarina (Subseção: Caçador) notifica os advogados a seguir relacionados para que, no prazo de quinze dias úteis, prestem suas manifestações nos autos em referência; o pedido deve ser consultado pelo site da O"
+          },
+          {
+            "id": 1197055,
+            "titulo": "AUDIÊNCIA",
+            "trecho": "A OAB/SC notifica os advogados dos processos a seguir relacionados sobre a realização da audiência de instrução na modalidade virtual que será realizada por meio de videoconferência com a utilização da plataforma ZOOM, conforme as seguintes orientações: a) O l"
+          }
+        ]
+      },
+      "Edital de Impugnação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria": 2
+        },
+        "amostras": [
+          {
+            "id": 3092,
+            "titulo": "EDITAL DE IMPUGNAÇÃO",
+            "trecho": "INSCRIÇÕES ORIGINÁRIAS A Ordem dos Advogados do Brasil, Seção de Santa Catarina, na forma da Lei 8.906/94 (inciso VI do art. 8º), torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que foram registrados e autuados os seguintes "
+          },
+          {
+            "id": 29085,
+            "titulo": "EDITAL DE IMPUGNAÇÃO",
+            "trecho": "EDITAL A Ordem dos Advogados do Brasil, Seção de Santa Catarina, na forma da Lei 8.906/94 (inciso VI do art. 8º), torna público e faz saber a quantos este Edital virem ou dele conhecimento tiverem, que foram registrados e autuados os seguintes pedidos de inscr"
+          }
+        ]
+      },
+      "Documento": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 1,
+          "Gabinete da Presidência": 1
+        },
+        "amostras": [
+          {
+            "id": 210107,
+            "titulo": "Termo de Transmissão de Cargo.",
+            "trecho": "Aos três dias do mês de fevereiro de dois mil e vinte, às 10 horas, na Sede da OAB da Subseção de São Bento do Sul, neste município, o Presidente da OAB/SC Subseção de São Bento do Sul, Dr. Maurício Martins Willemann, transmite o cargo ao Vice-Presidente da Su"
+          },
+          {
+            "id": 262593,
+            "titulo": "REGIMENTO INTERNO DO COLÉGIO DE PRESIDENTES DAS SUBSEÇÕES",
+            "trecho": "Aprovado, à unanimidade, no Colégio de Presidentes das Subseções realizada no dia 11/09/2020, no formato virtual, a proposição da Comissão formada por Presidentes de Subseções da OAB/SC. REGIMENTO INTERNO DO COLÉGIO DE PRESIDENTES DAS SUBSEÇÕES CAPÍTULO I DA D"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 1,
+          "CAASC": 1
+        },
+        "amostras": [
+          {
+            "id": 1063444,
+            "titulo": "EDITAL Nº 06/2025 - Institui o Comitê de Enfrentamento ao Golpe em que pessoas se passam por advogados, no âmbito da OAB Subseção de Itajaí.",
+            "trecho": "A PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SUBSEÇÃO DE ITAJAÍ/SC, no uso de suas atribuições legais e regimentais, CONSIDERANDO o aumento significativo de golpes praticados por criminosos que se passam por advogados; CONSIDERANDO a necessidade de proteção"
+          },
+          {
+            "id": 1097642,
+            "titulo": "EDITAL - 0030/2026/OAB-SC – Plano de Saúde CAASC.",
+            "trecho": "A CAIXA DE ASSISTÊNCIA DOS ADVOGADOS DE SANTA CATARINA – CAASC, inscrita no CNPJ sob nº 83.285.775/0001-88, estabelecida Rua Paschoal Apostolo Pitsica, n°4860, Agronômica, Florianópolis/SC, CEP 88025-255. RESOLVE: Na pessoa de seu representante, informa que os"
+          }
+        ]
+      },
+      "Cumprimento de Penalidade": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 1627,
+            "titulo": "CUMPRIMENTO DE PENALIDADE",
+            "trecho": "A Ordem dos Advogados do Brasil – Seção de Santa Catarina torna público que o Advogado MARCIO JEAN GUELERE (OAB/SC 17064) , cumpriu a penalidade de suspensão na data de 11/12/2018 a 30/01/2019, aplicada nos autos do processo de Representação nº 091/2016, nos t"
+          }
+        ]
+      },
+      "Atas de Posse": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tecnologia da Informação": 1
+        },
+        "amostras": [
+          {
+            "id": 1687,
+            "titulo": "Ata de Posse da Diretoria e Conselheiros da OAB/SC e da Diretoria e Conselho Fiscal da CAASC – Gestão 2019/2021",
+            "trecho": "Ao primeiro dia de mês de janeiro do ano de dois mil e dezenove, às quinze horas na Sede da Ordem dos Advogados do Brasil, Seção de Santa Catarina, localizada na rua Paschoal Apóstolo Pitsica, 4860, Agronômica, em Florianópolis/SC pelo presente termo que vai a"
+          }
+        ]
+      },
+      "Devolução de autos": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 29075,
+            "titulo": "DEVOLUÇÃO DE AUTOS",
+            "trecho": "A OAB/SC notifica o Advogado Fábio Joel Covolan Daum – OAB/SC 34979, a restituir os autos n. 287/2017, em que figura como representante o Sr. D. S. T. e representada a Dra. T. A. W. T., que se encontram em carga desde o dia 24/07/2018, no prazo de 3 (três) dia"
+          }
+        ]
+      },
+      "Regimento Interno": {
+        "publicacoes": 1,
+        "parecem_decisao": 1,
+        "setores": {
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 870048,
+            "titulo": "– Regimento Interno da Caixa de Assistência dos Advogados de Santa Catarina.",
+            "trecho": "Versão Consolidada, incluindo a alteração realizada pela Resolução n. 02/2025. CAPÍTULO I Constituição, Finalidade, Sede, Jurisdição Art. 1º - A Caixa de Assistência dos Advogados de Santa Catarina - CAASC criada pela Assembleia Geral da Seção da Ordem dos Adv"
+          }
+        ]
+      },
+      "Diligência": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Conselho Pleno": 1
+        },
+        "amostras": [
+          {
+            "id": 961467,
+            "titulo": "DESPACHO",
+            "trecho": "A Comissão Eleitoral do Quinto Constitucional da Ordem dos Advogados do Brasil – Seção de Santa Catarina notifica o Advogado ANTONIO CESAR POLETTO (OAB/SC 7477), para, querendo, no prazo de 05 (cinco) dias, cumprir com o seguinte despacho juntado nos autos do "
+          }
+        ]
+      },
+      "Edital de Convocação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 991672,
+            "titulo": "EDITAL Nº 4 DE CONVOCAÇÃO PARA A",
+            "trecho": "II ASSEMBLEIA DA ADVOCACIA DE BLUMENAU E POMERODE GESTÃO 2025-2027 A DIRETORIA DA ORDEM DOS ADVOGADOS DO BRASIL, SUBSEÇÃO DE BLUMENAU , no uso de suas atribuições legais e regulamentares, convoca os advogados regularmente inscritos perante este Conselho Subsec"
+          }
+        ]
+      },
+      "Audiência de Conciliação": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Tribunal de Ética e Disciplina": 1
+        },
+        "amostras": [
+          {
+            "id": 1097639,
+            "titulo": "AUDIÊNCIA DE CONCILIAÇÃO.",
+            "trecho": "A OAB/SC notifica os Advogados abaixo relacionados para participarem da AUDIÊNCIA de Conciliação/ Mediação nos processos os quais são partes (art. 71 Código de Ética e Disciplina, Prov. Nº 83/1996 - CF); o ato se dará em ambiente virtual e será realizada por m"
+          }
+        ]
+      },
+      "Edital de Chamamento": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "COORDENADORIA GERAL DAS COMISSÕES": 1
+        },
+        "amostras": [
+          {
+            "id": 1196741,
+            "titulo": "EDITAL Nº 011-2026 –CGC–Chamada Pública para captação de patrocínio da advocacia catarinense para o I Fórum Estadual de Direito Médico de Sa",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil, Seccional de Santa Catarina , em cumprimento à Resolução nº 27/2019 – CP, torna público que, a partir da publicação do presente edital, até 25 de novembro de 2026, estarão abertas as inscrições para advocacia cata"
+          }
+        ]
+      },
+      "Pauta de Sessão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "Secretaria": 1
+        },
+        "amostras": [
+          {
+            "id": 1196965,
+            "titulo": "PAUTA DA SESSÃO ORDINÁRIA DA 1ª Câmara Julgadora - SOCIEDADES",
+            "trecho": "Dia 26/11/2026 às 09:00 hrs Relator(a) Requerente Processo Tipo pedido Subseção 01. ALFREDO DRIESSEN NUNES CLÁUDIO GOLGO ADVOGADOS ASSOCIADOS S/C Anotação de Ofício (FLORIANÓPOLIS) 02. ALFREDO DRIESSEN NUNES KRAUSE & REDA ADVOGADOS ASSOCIADOS Anotação de Ofíci"
+          }
+        ]
+      }
+    }
+  },
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "observacoes": "SC: censo de 30 dias deu só 24 decisões; refeito com 50 dias-amostra (2019-2026, 2.169 publicações): 38 decisões segundo os termos, 38 do tipo Acórdão (29 setor Conselho Pleno, 9 TED); recall 97,4% de ACORDAO, 89,5% de EMENTA. Uma sem termo: id 191477 (tipo Acórdão, título 'APLICAÇÃO DE PENALIDADE', lista de sanções aplicadas após trânsito, é comunicação de execução, não acórdão; por isso fica sem termo novo). Quem julga: Conselho Pleno da OAB/SC (acórdãos 'ACORDÃO N. 199/2020' com EMENTA, mérito misto: desagravo, recursos), Turmas do TED (1ª a 7ª; 'Sessão de Julgamento' é só convocação) e Câmaras Julgadoras 1ª a 4ª (inscrição/sociedades, pauta de sessão). Como publica: o TED/Conselho quase não publica o acórdão inteiro no Diário; a maior parte do fluxo são editais de notificação de prazo em que o texto cita acórdão/decisão: 'Recurso'/'Abertura de Prazo Recursal' (112 no censo, 34 parecem decisão por texto, 'Câmara Julgadora notifica para recurso'), 'Decisão' (notificação de indeferimento liminar, decisão monocrática no ex. 227788; filtrar), 'Penalidade' (sanção aplicada). Estes são tipos amplos incluídos por precaução, e só viram registro se o texto confirmar. Ruído: Portaria (881), Razões Finais, Audiência, Contrarrazões, Manifestação, Defesa Prévia, Intimação, Sessão de Julgamento e Pauta (convocação), eleições/Quinto Constitucional, Despacho (20; excluído por ser expediente). Ano a ano sem lacuna em 2019-2026. Sem indício de ementário em site próprio nem de decisões só em PDF; mas o baixo número de acórdãos integrais sugere que a maior parte do julgamento do TED/SC pode não aparecer no DEOAB (a verificar na coleta completa).",
+  "modo": "censo"
+}

@@ -8,7 +8,8 @@
   "tipos_decisao": [
     "Acórdão",
     "Ementa",
-    "Retificação"
+    "Retificação",
+    "Decisão"
   ],
   "validado": true,
   "titulos_decisao": [

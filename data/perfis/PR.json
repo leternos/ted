@@ -1,0 +1,555 @@
+{
+  "uf": "PR",
+  "id_organizacao": 16,
+  "termos": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "tipos_decisao": [
+    "Acórdão",
+    "Ementa",
+    "Ementa e Acórdão",
+    "Resultado de Julgamento",
+    "Certidão de Julgamento",
+    "Embargos de Declaração",
+    "Decisão",
+    "Republicação",
+    "Retificação",
+    "Notificação",
+    "Edital",
+    "Intimação"
+  ],
+  "validado": true,
+  "evidencia": {
+    "gerado_em": "2026-11-20T09:43:28Z",
+    "dias_censo": [
+      {
+        "dia": "2019-01-10",
+        "publicacoes": 8,
+        "baixadas": 8
+      },
+      {
+        "dia": "2019-02-28",
+        "publicacoes": 1,
+        "baixadas": 1
+      },
+      {
+        "dia": "2020-03-20",
+        "publicacoes": 44,
+        "baixadas": 44
+      },
+      {
+        "dia": "2020-10-06",
+        "publicacoes": 11,
+        "baixadas": 11
+      },
+      {
+        "dia": "2021-09-03",
+        "publicacoes": 38,
+        "baixadas": 38
+      },
+      {
+        "dia": "2021-10-08",
+        "publicacoes": 23,
+        "baixadas": 23
+      },
+      {
+        "dia": "2022-03-11",
+        "publicacoes": 109,
+        "baixadas": 109
+      },
+      {
+        "dia": "2022-07-26",
+        "publicacoes": 104,
+        "baixadas": 104
+      },
+      {
+        "dia": "2022-09-20",
+        "publicacoes": 108,
+        "baixadas": 108
+      },
+      {
+        "dia": "2023-01-13",
+        "publicacoes": 85,
+        "baixadas": 85
+      },
+      {
+        "dia": "2023-02-01",
+        "publicacoes": 52,
+        "baixadas": 52
+      },
+      {
+        "dia": "2023-04-14",
+        "publicacoes": 122,
+        "baixadas": 122
+      },
+      {
+        "dia": "2024-03-07",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2024-07-30",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2025-02-05",
+        "publicacoes": 54,
+        "baixadas": 54
+      },
+      {
+        "dia": "2025-05-22",
+        "publicacoes": 41,
+        "baixadas": 41
+      },
+      {
+        "dia": "2025-06-27",
+        "publicacoes": 45,
+        "baixadas": 45
+      },
+      {
+        "dia": "2025-07-11",
+        "publicacoes": 37,
+        "baixadas": 37
+      },
+      {
+        "dia": "2026-03-12",
+        "publicacoes": 105,
+        "baixadas": 105
+      },
+      {
+        "dia": "2026-08-19",
+        "publicacoes": 80,
+        "baixadas": 80
+      }
+    ],
+    "decisoes_no_censo": 133,
+    "decisoes_que_nenhum_termo_encontra": [],
+    "recall_por_termo": {
+      "ACORDAO": 1.0,
+      "EMENTA": 0.594,
+      "DECISAO": 0.1429,
+      "JULGAMENTO": 0.8797,
+      "RECURSO": 0.3308
+    },
+    "tipos": {
+      "Notificação": {
+        "publicacoes": 553,
+        "parecem_decisao": 1,
+        "setores": {
+          "ADVOCACIA DATIVA": 159,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 143,
+          "SUBSEÇÃO": 105,
+          "Diretoria": 38,
+          "SECRETARIA GERAL": 36,
+          "PENALIDADES": 22
+        },
+        "amostras": [
+          {
+            "id": 234056,
+            "titulo": "ACERCA DO DESPACHO (MANIFESTAÇÃO)",
+            "trecho": "Notifica-se os advogados no processo a seguir relacionado, em trâmite no Tribunal de Ética e Disciplina da Seccional do Paraná, para tomarem conhecimento e se manifestarem Acerca do Despacho exarado, no prazo de 15 (quinze) dias úteis , contados a partir da pu"
+          },
+          {
+            "id": 234060,
+            "titulo": "MARINGÁ - ARQUIVAMENTO LIMINAR",
+            "trecho": "Notifica-se os advogados nos processos a seguir relacionados, em trâmite no Tribunal de Ética e Disciplina da Seccional do Paraná – Subseção de Maringá, da decisão proferida referente ao Arquivamento Liminar : 01) PROTOCOLO Nº 125987/2018 – ex-officio x I.A.M."
+          },
+          {
+            "id": 267544,
+            "titulo": "CASCAVEL - AUDIÊNCIA DE INSTRUÇÃO - VIRTUAL",
+            "trecho": "Notifica-se os advogados no processo a seguir relacionado que, excepcionalmente, foi designada Audiência de Instrução para o dia 27 de novembro de 2020 às 14h00min , em AMBIENTE VIRTUAL, conforme disposto na portaria n° 05/2020 do TED-OAB/PR (DEOAB Nº 352 - ht"
+          }
+        ]
+      },
+      "Portaria": {
+        "publicacoes": 351,
+        "parecem_decisao": 0,
+        "setores": {
+          "SUBSEÇÃO": 185,
+          "Diretoria": 61,
+          "PRESIDÊNCIA": 58,
+          "COMISSÕES": 47
+        },
+        "amostras": [
+          {
+            "id": 371,
+            "titulo": "PORTARIA Nº 001/2019",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Seção do Paraná, no uso de suas atribuições estatutárias, regulamentares e regimentais, RESOLVE: Art. 1º. Designar os advogados infra mencionados para integrarem a “ COMISSÃO DE DEFESA DAS PRERROGATIVAS PROFISSIO"
+          },
+          {
+            "id": 372,
+            "titulo": "PORTARIA Nº 002/2019",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Seção do Paraná, no uso de suas atribuições estatutárias, regulamentares e regimentais, RESOLVE Art. 1º - Nomear os Conselheiros abaixo nominados para integrarem a CÂMARA ESPECIAL DA OAB PARANÁ : Presidente: Mari"
+          },
+          {
+            "id": 373,
+            "titulo": "PORTARIA Nº 003/2019",
+            "trecho": "O Presidente da Ordem dos Advogados do Brasil – Seção do Paraná, no uso de suas atribuições estatutárias, regulamentares e regimentais, RESOLVE Art. 1º - Nomear os Conselheiros abaixo nominados para integrarem a CÂMARA DE DIREITOS E PRERROGATIVAS : Presidente:"
+          }
+        ]
+      },
+      "Acórdão": {
+        "publicacoes": 133,
+        "parecem_decisao": 119,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 80,
+          "CÂMARA DE DISCIPLINA": 13,
+          "CÂMARA DE DIREITOS E PRERROGATIVAS": 11,
+          "CONSELHO PLENO": 10,
+          "CÂMARA DE SELEÇÃO": 9,
+          "CÂMARA ESPECIAL": 7
+        },
+        "amostras": [
+          {
+            "id": 234040,
+            "titulo": "CÂMARA ESPECIAL - PROCESSO N° 5829/2019",
+            "trecho": "Consulente: Francisco Edson Vidal Sampaio OAB/PR 44.641; Ementa : Consulta — Honorários em ação previdenciária — Consulta conhecida e respondida reportando-se a Consulta 5824/2019. Acórdão : Vistos, relatados e examinados estes autos de Consulta n.° 5829/2019,"
+          },
+          {
+            "id": 234041,
+            "titulo": "CÂMARA ESPECIAL - PROCESSO N° 7867/2019",
+            "trecho": "Consulente: Fábio André Carminatti OAB/PR 29.239; Ementa : CÂMARA ESPECIAL. CONSULTA. NEGOCIAÇÃO ENTRE ADVOGADOS. RESSALVADAS SITUAÇÕES EXCEPCIONAIS ADVINDAS DE CASOS CONCRETOS, REGRA GERAL A OBSERVÂNCIA AOS DEVERES PROFISSIONAIS DA LEALDADE E DA BOA-FÉ, PREVI"
+          },
+          {
+            "id": 234042,
+            "titulo": "CÂMARA ESPECIAL - PROCESSO N° 8876/2016",
+            "trecho": "Representante: ex-offício ; Representado: M.A.B. (Adv. Marcos Antonio Bohrer OAB/PR n° 27.322). Ementa : EMBARGOS DE DECLARAÇÃO. INEXISTÊNCIA DE DÚVIDA, OMISSÃO, OBSCURIDADE OU CONTRADIÇÃO. REJEIÇÃO. Devem ser rejeitados os Embargos de Declaração à míngua de d"
+          }
+        ]
+      },
+      "Edital": {
+        "publicacoes": 20,
+        "parecem_decisao": 1,
+        "setores": {
+          "SECRETARIA GERAL": 10,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 4,
+          "Diretoria": 4,
+          "CONSELHO PLENO": 1,
+          "PENALIDADES": 1
+        },
+        "amostras": [
+          {
+            "id": 5841,
+            "titulo": "EDITAL DE ELIMINAÇÃO DE DOCUMENTOS Nº 02/2019",
+            "trecho": "ELIMINAÇÃO DE PROCESS O S DISCIPLINARES FÍSICOS NA OAB Considerando a digitalização dos autos originais de PROCESSOS DISCIPLINARES, nos termos do Provimento nº 176/2017 do Conselho Federal da Ordem dos Advogados do Brasil e das Resoluções de Diretoria da OAB/P"
+          },
+          {
+            "id": 234057,
+            "titulo": "RENUNCIA DE RELATOR",
+            "trecho": "O Tribunal de Ética e Disciplina da Seccional do Paraná da Ordem dos Advogados do Brasil, comunica o desligamento, a pedido, do seguinte relator da Turma de Instrução: Frederico Gonçalves Junkert, OAB/PR 53.266. Curitiba, 19 de março de 2020. RENATO CARDOSO DE"
+          },
+          {
+            "id": 485547,
+            "titulo": "EDITAL DE INSCRIÇÕES - 16/09/2022",
+            "trecho": "Em cumprimento ao disposto no artigo 45, § 6º, do Estatuto da Advocacia e da OAB, c/c artigo 120, parágrafo único, do Regimento Interno da OAB-PR, torno público que requereram inscrição perante este Conselho Seccional as seguintes pessoas: INSCRIÇÃO PRINCIPAL "
+          }
+        ]
+      },
+      "Comunicado": {
+        "publicacoes": 18,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 16,
+          "SUBSEÇÃO": 1,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 234027,
+            "titulo": "CANCELAMENTO DA 135ª SESSÃO DE JULGAMENTO DA CÂMARA ESPECIAL",
+            "trecho": "Notifica-se os advogados e interessados nos processos a seguir relacionados do CANCELAMENTO da sessão de julgamento do dia 06 de abril de 2020 às 16h00 : 01) PROCESSO Nº 2804/2020 – ex-offic io x O.A.C. (Adv. Olavo de Araújo Costa OAB/PR nº 70.633); 02) PROCES"
+          },
+          {
+            "id": 234028,
+            "titulo": "CANCELAMENTO DA 204ª SESSÃO DE JULGAMENTO DA 3ª TURMA",
+            "trecho": "Notifica-se os advogados e interessados nos processos a seguir relacionados do CANCELAMENTO da sessão de julgamento do dia 31 de março de 2020 às 17h00: 01) PROCESSO Nº 14385/2018 – Jose do Carmo Badaro OAB/PR n° 14.471 x M.M.M. (Advs. Mariz Mendes May OAB/PR "
+          },
+          {
+            "id": 234029,
+            "titulo": "CANCELAMENTO DA 213ª SESSÃO DE JULGAMENTO DA 4ª TURMA",
+            "trecho": "Notifica-se os advogados e interessados nos processos a seguir relacionados do CANCELAMENTO da sessão de julgamento do dia 30 de março de 2020 às 16h00: 01) PROCESSO Nº 699/2014 – ex-officio x W.K. (Advs. Werner Kovaltchuk OAB/PR 35.710 – Rodrigo Silveira Piol"
+          }
+        ]
+      },
+      "Convocação": {
+        "publicacoes": 16,
+        "parecem_decisao": 0,
+        "setores": {
+          "CÂMARA DE DISCIPLINA": 10,
+          "CONSELHO PLENO": 2,
+          "CÂMARA DE DIREITOS E PRERROGATIVAS": 2,
+          "CÂMARA ESPECIAL": 2
+        },
+        "amostras": [
+          {
+            "id": 1060662,
+            "titulo": "EDITAL DE CONVOCAÇÃO",
+            "trecho": "O Conselho Pleno, da Ordem dos Advogados do Brasil, Seção do Paraná , por seu Presidente, notifica que o colegiado reunir-se-á em Sessão Ordinária, na sexta -feira , dia 1 0 de abril de 202 6 , a partir das 1 5 h , na modalidade HÍBRIDA sendo a modalidade PRES"
+          },
+          {
+            "id": 1060666,
+            "titulo": "EDITAL DE CONVOCAÇÃO",
+            "trecho": "A 1ª Turma da Câmara de Disciplina, da Ordem dos Advogados do Brasil, Seção do Paraná , por seu Presidente, notifica que o colegiado reunir-se-á em Sessão Ordinária, na quinta -feira, dia 09 de abril de 202 6 , a partir das 14h30min , na modalidade HÍBRIDA sen"
+          },
+          {
+            "id": 1060667,
+            "titulo": "EDITAL DE CONVOCAÇÃO",
+            "trecho": "A 1ª Turma da Câmara de Disciplina, da Ordem dos Advogados do Brasil, Seção do Paraná , por seu Presidente, notifica que o colegiado reunir-se-á em Sessão Ordinária no período de 1 3 a 17 de abril de 2026, a partir das 00h00min (segunda-feira) até às 23h59min "
+          }
+        ]
+      },
+      "Audiência de Instrução": {
+        "publicacoes": 15,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 11,
+          "Diretoria": 4
+        },
+        "amostras": [
+          {
+            "id": 1141544,
+            "titulo": "PROCESSO N° 5969/2024",
+            "trecho": "O Tribunal de Ética e Disciplina, da Ordem dos Advogados do Brasil, por seu Secretário-Geral, notifica as partes que no processo supramencionado foi designada audiência de instrução conforme dados a seguir indicados: Representante : SERASA S/A ( Pr ocurador es"
+          },
+          {
+            "id": 1141545,
+            "titulo": "PROCESSO N° 4493/2023",
+            "trecho": "O Tribunal de Ética e Disciplina, da Ordem dos Advogados do Brasil, por seu Secretário-Geral, notifica as partes que no processo supramencionado foi designada audiência de instrução conforme dados a seguir indicados: Representante : Siumara Antunes Tremea e Si"
+          },
+          {
+            "id": 1141546,
+            "titulo": "PROCESSO N° 4897/2025",
+            "trecho": "O Tribunal de Ética e Disciplina, da Ordem dos Advogados do Brasil, por seu Secretário-Geral, notifica as partes que no processo supramencionado foi designada audiência de instrução conforme dados a seguir indicados: Representante : Ex officio . Representado s"
+          }
+        ]
+      },
+      "Pauta de Julgamentos": {
+        "publicacoes": 12,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 8,
+          "CÂMARA DE DISCIPLINA": 3,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 383,
+            "titulo": "123ªSESSÃO DE JULGAMENTO DA CÂMARA ESPECIAL",
+            "trecho": "Notifica-se os advogados e interessados a seguir relacionados para tomarem conhecimento de que em 04 de fevereiro de 2019 às 16h00 a Câmara Especial do Tribunal de Ética e Disciplina reunir-se-á em Sessão Ordinária de Julgamento , na sede da Seccional , a Rua "
+          },
+          {
+            "id": 384,
+            "titulo": "166ª SESSÃO DE JULGAMENTO DA 5ª TURMA",
+            "trecho": "Notifica-se os advogados e interessados a seguir relacionados para tomarem conhecimento de que em 06 de fevereiro de 2019 às 09h00 a 5ª Turma do Tribunal de Ética e Disciplina reunir-se-á em Sessão Ordinária de Julgamento , na sede da Seccional , a Rua Brasili"
+          },
+          {
+            "id": 371340,
+            "titulo": "153ª SESSÃO DE JULGAMENTO DA CÂMARA ESPECIAL - HÍBRIDA",
+            "trecho": "Notifica-se os advogados e interessados a seguir relacionados que, em 0 8 de novembro de 20 21 , às 1 6h00 m , a Câmara Especial do Tribunal de Ética e Disciplina reunir-se-á em Sessão Ordinária de Julgamento, de forma HÍBRIDA , a qual ocorrerá tanto na sede d"
+          }
+        ]
+      },
+      "Republicação": {
+        "publicacoes": 10,
+        "parecem_decisao": 1,
+        "setores": {
+          "SUBSEÇÃO": 4,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 2,
+          "COMISSÕES": 2,
+          "DIRETORIA": 1,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 371341,
+            "titulo": "PROCESSO N° 4161/2020*",
+            "trecho": "Notifica-se os advogados e interessados no processo supramencionado que, foi designada audiência de instrução HÍBRIDA para o dia 05 de novembro de 2021, às 14h00min , a qual ocorrerá tanto na sede da Seccional do Paraná, localizada na Rua Cel. Brasilino Moura,"
+          },
+          {
+            "id": 371342,
+            "titulo": "PROCESSO N° 3021/2021*",
+            "trecho": "Notifica-se os advogados e interessados no processo supramencionado que, foi designada audiência de instrução HÍBRIDA para o dia 07 de dezembro de 2021, às 11h00min , a qual ocorrerá tanto na sede da Seccional do Paraná, localizada na Rua Cel. Brasilino Moura,"
+          },
+          {
+            "id": 523089,
+            "titulo": "MARECHAL CÂNDIDO RONDON - PORTARIA Nº 01/2023",
+            "trecho": "A PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL – SUBSEÇÃO DE MARECHAL CÂNDIDO RONDON - PARANÁ, no uso de suas atribuições estatutárias, regulamentares e regimentais, RESOLVE : Art. 1º. Nomear para compor a “COMISSÃO DA ADVOCACIA DATIVA” , na função de secretári"
+          }
+        ]
+      },
+      "Edital de Notificação": {
+        "publicacoes": 5,
+        "parecem_decisao": 0,
+        "setores": {
+          "SOCIEDADES": 5
+        },
+        "amostras": [
+          {
+            "id": 1060744,
+            "titulo": "NOTIFICAÇÃO 55/2026-CSA",
+            "trecho": "A Câmara Seleção da Ordem dos Advogados do Brasil, Seção do Paraná, com sede na Rua Cel. Brasilino Moura nº 253, Ahú, Curitiba/PR, por sua Presidente, nos termos do artigo 1º do Provimento nº 182/2018 do CFOAB, notifica os advogados/interessados abaixo relacio"
+          },
+          {
+            "id": 1060745,
+            "titulo": "NOTIFICAÇÃO 57/2026-CSA",
+            "trecho": "A Câmara Seleção da Ordem dos Advogados do Brasil, Seção do Paraná, com sede na Rua Cel. Brasilino Moura nº 253, Ahú, Curitiba/PR, por sua Presidente, nos termos do artigo 1º do Provimento nº 182/2018 do CFOAB, notifica os advogados/interessados abaixo relacio"
+          },
+          {
+            "id": 1060746,
+            "titulo": "NOTIFICAÇÃO 58/2026-CSA",
+            "trecho": "A Assessoria da Câmara de Seleção da Ordem dos Advogados do Brasil, Seção do Paraná , com sede na Rua Coronel Brasilino Moura, n. 253, Ahú, Curitiba/PR, por seu Advogado Instrutor, na forma do disposto no artigo 45, § 6º, da Lei nº 8.906/1994, notifica os advo"
+          }
+        ]
+      },
+      "Contrarrazões": {
+        "publicacoes": 4,
+        "parecem_decisao": 0,
+        "setores": {
+          "CÂMARA DE DISCIPLINA": 4
+        },
+        "amostras": [
+          {
+            "id": 1141595,
+            "titulo": "PROCESSO Nº 2.300/2025",
+            "trecho": "A Câmara de Disciplina, da Ordem dos Advogados do Brasil , Seção do Paraná , com sede da Rua Cel. Brasilino Moura nº 253, Ahú, Curitiba/PR, por seu Presidente, notifica o advogado no processo supramencionado, para que apresente contrarrazões ao r ecurso interp"
+          },
+          {
+            "id": 1141596,
+            "titulo": "PROCESSO Nº 6.525/2025",
+            "trecho": "A Câmara de Disciplina, da Ordem dos Advogados do Brasil , Seção do Paraná , com sede da Rua Cel. Brasilino Moura nº 253, Ahú, Curitiba/PR, por seu Presidente, notifica a advogada no processo supramencionado, para que apresente contrarrazões ao r ecurso interp"
+          },
+          {
+            "id": 1141597,
+            "titulo": "PROCESSO Nº 16.664/2018",
+            "trecho": "A Câmara de Disciplina, da Ordem dos Advogados do Brasil , Seção do Paraná , com sede da Rua Cel. Brasilino Moura nº 253, Ahú, Curitiba/PR, por seu Presidente, notifica o advogado no processo supramencionado, para que apresente contrarrazões ao r ecurso interp"
+          }
+        ]
+      },
+      "Retificação": {
+        "publicacoes": 3,
+        "parecem_decisao": 0,
+        "setores": {
+          "COMISSÃO ELEITORAL": 1,
+          "SUBSEÇÃO": 1,
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 371349,
+            "titulo": "ERRATA DE PUBLICAÇÃO",
+            "trecho": "Errata de publicação disponibilizada no Diário Eletrônico da Ordem dos Advogados do Brasil (DEOAB) em 04/10/2021, Ano III, Edição n° 699, Página 106, referente às Subcomissões Eleitorais: O nde se lê : “(...) PONTA GROSSA Membro: Luis Alberto Kubaski (OAB/PR 0"
+          },
+          {
+            "id": 528645,
+            "titulo": "LONDRINA - PORTARIA Nº 06/2023",
+            "trecho": "A PRESIDENTE DA ORDEM DOS ADVOGADOS DO BRASIL, SECCIONAL DO PARANÁ, SUBSEÇÃO DE LONDRINA, no uso de suas atribuições estatutárias, regulamentares e regimentais, RESOLVE: Art. 1º. Retificar a Portaria nº 40/2022, disponibilizada no Diário Eletrônico da Ordem do"
+          },
+          {
+            "id": 937155,
+            "titulo": "EDITAL DE RETIFICAÇÃO",
+            "trecho": "O TRIBUNAL DE ÉTICA E DISCIPLINA DA ORDEM DOS ADVOGADOS DO BRASIL, SEÇÃO DO PARANÁ, por seu Secretário Administrativo, RETIFICA, no item que menciona, mantidos os demais termos, o EDITAL DE SESSÃO DE JULGAMENTO DA CÂMARA ESPECIAL DO TRIBUNAL DE ÉTICA E DISCIPL"
+          }
+        ]
+      },
+      "Sessão de Julgamento": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 2
+        },
+        "amostras": [
+          {
+            "id": 523093,
+            "titulo": "156ª SESSÃO DE JULGA MENTO DA 6ª TURMA - VIRTUAL",
+            "trecho": "Notifica-se os advogados e interessados a seguir relacionados que, em 07 de fevereiro de 2023 , às 17h00min , a 6 ª Turma do Tribunal de Ética e Disciplina reunir-se-á em Sessão Ordinária de Julgamento, em AMBIENTE VIRTUAL , na qual serão submetidos a julgamen"
+          },
+          {
+            "id": 560947,
+            "titulo": "EDITAL DE CONVOCAÇÃO",
+            "trecho": "O Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, Seção do Paraná , por seu Secretário Administrativo, notifica que a 5ª Turma reunir-se-á para a 207ª Sessão de Julgamento , na quarta-feira, dia 11 de maio de 2023, a partir das 09h00min , na m"
+          }
+        ]
+      },
+      "Resolução": {
+        "publicacoes": 2,
+        "parecem_decisao": 1,
+        "setores": {
+          "CONSELHO PLENO": 1,
+          "Diretoria": 1
+        },
+        "amostras": [
+          {
+            "id": 780820,
+            "titulo": "RESOLUÇÃO DO CONSELHO SECCIONAL Nº 07/2024",
+            "trecho": "Dispõe sobre a heteroidentificação para o procedimento eleitoral na Ordem dos Advogados do Brasil, Seção Paraná O Conselho Pleno da Ordem dos Advogados do Brasil, Seção do Estado do Paraná, no uso das atribuições conferidas pelo art. 55, § 1º do Regulamento Ge"
+          },
+          {
+            "id": 918978,
+            "titulo": "ARAPONGAS - RESOLUÇÃO N.º 01/2025",
+            "trecho": "INSTITUI O CARGO DE DIRETOR DELEGADO REGIONAL NO ÂMBITO DA OAB SUBSEÇÃO ARAPONGAS/PR, E DÁ OUTRAS PROVIDÊNCIAS. O CONSELHO DA SUBSEÇÃO DA ORDEM DOS ADVOGADOS DO BRASIL – SUBSEÇÃO DE ARAPONGAS, SEÇÃO DO PARANÁ , no uso de suas atribuições legais e regimentais, "
+          }
+        ]
+      },
+      "Razões Finais": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "CÂMARA DE SELEÇÃO": 2
+        },
+        "amostras": [
+          {
+            "id": 1060661,
+            "titulo": "PROCESSO Nº. 26805/2025",
+            "trecho": "A Câmara de Seleção da Ordem dos Advogados do Brasil, Seção do Paraná , com sede da Rua Cel. Brasilino Moura nº 253, Ahú, Curitiba/PR, por sua Presidente, notifica a parte averiguada a tomar conhecimento acerca do despacho proferido (mov. 17), bem assim, da ab"
+          },
+          {
+            "id": 1060755,
+            "titulo": "PROCESSO Nº. 26805/2025",
+            "trecho": "A Câmara de Seleção da Ordem dos Advogados do Brasil, Seção do Paraná , com sede da Rua Cel. Brasilino Moura nº 253, Ahú, Curitiba/PR, por sua Presidente, notifica a parte averiguada a tomar conhecimento acerca do despacho proferido (mov. 17), bem assim, da ab"
+          }
+        ]
+      },
+      "Audiência de Conciliação": {
+        "publicacoes": 2,
+        "parecem_decisao": 0,
+        "setores": {
+          "Diretoria": 2
+        },
+        "amostras": [
+          {
+            "id": 1141615,
+            "titulo": "UMUARAMA - PROCESSO N° 20211/2026",
+            "trecho": "Notifica-se os advogados no processo supramencionado que, foi designada audiência de conciliação para o dia 22 de setembro de 2026, às 11h30min , nos termos do Provimento nº 83/1996 do Conselho Federal da OAB, em AMBIENTE VIRTUAL , conforme disposto na Portari"
+          },
+          {
+            "id": 1141616,
+            "titulo": "UMUARAMA - PROCESSO N° 26883/2026",
+            "trecho": "Notifica-se os advogados no processo supramencionado que, foi designada audiência de conciliação para o dia 30 de setembro de 2026, às 10h00min , nos termos do Provimento nº 83/1996 do Conselho Federal da OAB, em AMBIENTE VIRTUAL , conforme disposto na Portari"
+          }
+        ]
+      },
+      "Pauta de Sessão": {
+        "publicacoes": 1,
+        "parecem_decisao": 0,
+        "setores": {
+          "TRIBUNAL DE ÉTICA E DISCIPLINA": 1
+        },
+        "amostras": [
+          {
+            "id": 1060703,
+            "titulo": "EDITAL DE CONVOCAÇÃO — 13ª TURMA",
+            "trecho": "O Tribunal de Ética e Disciplina da Ordem dos Advogados do Brasil, Seção do Paraná , por seu Secretário Administrativo, notifica que a 13ª Turma reunir-se-á para a 92ª Sessão de Julgamento , na sexta-feira, dia 17 de abril de 2026, a partir das 14h00min , na m"
+          }
+        ]
+      }
+    }
+  },
+  "titulos_decisao": [
+    "ACORDAO",
+    "EMENTA"
+  ],
+  "modo": "censo",
+  "observacoes": "PR (id_organizacao 16): censo de 20 dias-amostra (2019-2026; 1.149 publicações) com 133 decisões (>=30). Recall: ACORDAO 100%, JULGAMENTO 88%, EMENTA 59%, RECURSO 33%, DECISAO 14%; nenhuma sobra, então termos = ACORDAO + EMENTA (EMENTA só por segurança). Todas as 133 decisões do censo vêm sob o tipo 'Acórdão' (119 parecem decisão pela heurística; as demais são consultas/ementas da Câmara Especial e da Câmara de Seleção, mantidas por conterem ementa e 'Acórdão: Vistos, relatados e examinados'). Amostras lidas: 'CÂMARA ESPECIAL - PROCESSO N° 5829/2019' (Consulta, Ementa + Acórdão), idem 7867/2019 e 8876/2016 (embargos de declaração rejeitados, ementa). Publicação segue o modelo 'Ementa: ... Acórdão: Vistos, relatados...' com título 'ÓRGÃO - PROCESSO N° x/aaaa'. Quem julga (setor do registro 'Acórdão'): Tribunal de Ética e Disciplina 80 (60%; Turmas do TED), Câmara de Disciplina 13, Câmara de Direitos e Prerrogativas 11, Conselho Pleno 10, Câmara de Seleção 9, Câmara Especial 7 (consultas). Tipos amplos incluídos por precaução e só valem se o texto confirmar: Notificação, Edital, Republicação, Retificação, Intimação, Resolução fora (ato normativo); no censo apenas 1 Notificação, 1 Edital, 1 Republicação e 1 Resolução pareceram decisão (heurística; nenhuma classificada como decisão por eh_decisao). Ruído principal: 'Notificação' (553 de 1.149; Advocacia Dativa 159, TED 143, Subseções 105: intimações de despacho, audiências, arquivamento liminar monocrático) e 'Portaria' (351, Subseções/Diretoria/Presidência). Também não são decisão: Comunicado, Convocação, Audiência de Instrução, Pauta de Julgamentos, Sessão de Julgamento, Edital de Notificação (Sociedades), Contrarrazões, Razões Finais, Audiência de Conciliação, Pauta de Sessão. Para a coleta, termo ACORDAO apanha também intimações que apenas citam acórdão (ruído esperado). Volume do Diário por ano (API, todas as publicações; hits do termo ACORDAO entre parênteses): 2019 3.752 (1.080); 2020 4.754 (1.501); 2021 5.995 (1.821); 2022 8.101 (1.352); 2023 14.698 (1.406); 2024 8.915 (1.837); 2025 10.701 (1.768); 2026 até 20/11 9.501 (1.681); total ~66,2 mil publicações, ~12,4 mil com ACORDAO. Estimativa de decisões: ~11,6% das publicações no censo (133/1149), ou seja ~7,7 mil no total, ~1 mil por ano nos anos regulares (o termo ACORDAO é um teto, parte é intimação que só cita acórdão). Sem anos vazios (2019 já tem publicação). Fonte fora do DEOAB (data/fontes/PR.json): buscador de terceiro em ted.oabpr.org.br (Leany) declara 'mais de 51 mil decisões' incluindo outros órgãos, endpoint não inspecionado, verificação S; Livro de Consultas da Câmara Especial 2019-2021 (PDF, 360 p., exclusivo); boletins bimestrais de ementas 2025-2026 (PDF, repetem o DEOAB). Risco: o buscador do TED pode ter acervo anterior a 2019 ou maior que o DEOAB."
+}
