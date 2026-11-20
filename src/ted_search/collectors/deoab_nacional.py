@@ -336,6 +336,12 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
     # RS: extrato de julgamento da 2ª Câmara Recursal (recursos disciplinares), que não traz ementa nem palavra-chave
     if re.search(r"DA\W{0,2}SE\s+CIENCIA", inicio[:400]) and re.search(r"\b2\S?\s+CAMARA\s+(?:RECURSAL|JULGADORA)", inicio[:600]):
         return True
+    # ... e do Órgão Especial quando a parte vem só com as iniciais: é o sigilo do processo disciplinar
+    # (nos recursos de inscrição o requerente aparece com o nome completo)
+    if re.search(r"DA\W{0,2}SE\s+CIENCIA", inicio[:400]) and "ORGAO ESPECIAL" in inicio[:600] and re.search(
+        r"(?:REQUERENTE|EMBARGANTE|EXCIPIENTE|RECORRENTE)[^:]{0,15}:\s*(?:ADVS?\.?\s*|SOC\.?\s*)?(?:[A-Z]\.\s*){2,}", inicio[:900]
+    ):
+        return True
     if RE_TURMA_DO_TED.search(inicio) and not re.search(
         r"INCIDENTE\s+DE\s+(?:VERIFICACAO\s+DE\s+)?(?:IN)?IDONEIDADE|PEDIDO\s+DE\s+ASSISTENCIA|DESAGRAVO", inicio
     ):
