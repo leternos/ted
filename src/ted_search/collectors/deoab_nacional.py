@@ -331,7 +331,8 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
         r"INCIDENTE\s+DE\s+(?:VERIFICACAO\s+DE\s+)?(?:IN)?IDONEIDADE|PEDIDO\s+DE\s+ASSISTENCIA|DESAGRAVO", inicio
     ):
         return True
-    if RE_ATO_SOCIETARIO.search(inicio):
+    # Tribunal de Defesa das Prerrogativas: nunca é matéria disciplinar, ainda que o texto cite o TED (DF)
+    if RE_ATO_SOCIETARIO.search(inicio) or "PRERROGATIVAS" in _sem_acento_upper(setor_nome):
         return False
     if eh_eleitoral(setor_nome, full_text):
         return False
