@@ -7,14 +7,16 @@
   "tipos_decisao": [
     "Acórdão",
     "Certidão de Julgamento",
-    "Embargos de Declaração"
+    "Embargos de Declaração",
+    "Penalidade",
+    "Suspensão Preventiva"
   ],
   "validado": true,
   "titulos_decisao": [
     "ACORDAO",
     "EMENTA"
   ],
-  "observacoes": "PE: tipo Acórdão (50 no censo de 20 dias-amostra, 390 publicações; 47 parecem decisão) publicado pelo TED (45) e pela Segunda Câmara (5), título ACÓRDÃO - Processo n. 17.0000.xxxx. A amostra lida mostra que o texto é uma INTIMAÇÃO DO ACÓRDÃO (Conforme art. 137-D, §4º do Regulamento Geral, ficam intimadas as partes...), com partes e número de processo; o trecho amostrado não exibiu o dispositivo nem ementa, então o conteúdo decisório (resultado/ementa) deve ser conferido no corpo completo na fase de classificação (ids 359871, 359872, 359873). Fica incluído por precaução. Ruído (não decisão): Notificação (187, Tesouraria 130 e extinção/prescrição), Audiência de Instrução (62), Pauta/Sessão de Julgamento (47, também no formato intimação por processo), Razões Finais (20), Arquivamento (7, aviso de arquivamento), Edital, Edital de Notificação. Julgam o TED (turmas, ex. Nona Turma) e as Câmaras (Segunda Câmara). Publicações em todos os anos de 2019 a 2026. Indício de fonte fora do DEOAB: data/fontes/PE.json indica apenas página institucional e ementas soltas em notícias (sem_base).",
+  "observacoes": "PE: tipo Acórdão (50 no censo de 20 dias-amostra, 390 publicações; 47 parecem decisão) publicado pelo TED (45) e pela Segunda Câmara (5), título ACÓRDÃO - Processo n. 17.0000.xxxx. A amostra lida mostra que o texto é uma INTIMAÇÃO DO ACÓRDÃO (Conforme art. 137-D, §4º do Regulamento Geral, ficam intimadas as partes...), com partes e número de processo; o trecho amostrado não exibiu o dispositivo nem ementa, então o conteúdo decisório (resultado/ementa) deve ser conferido no corpo completo na fase de classificação (ids 359871, 359872, 359873). Fica incluído por precaução. Ruído (não decisão): Notificação (187, Tesouraria 130 e extinção/prescrição), Audiência de Instrução (62), Pauta/Sessão de Julgamento (47, também no formato intimação por processo), Razões Finais (20), Arquivamento (7, aviso de arquivamento), Edital, Edital de Notificação. Julgam o TED (turmas, ex. Nona Turma) e as Câmaras (Segunda Câmara). Publicações em todos os anos de 2019 a 2026. Indício de fonte fora do DEOAB: data/fontes/PE.json indica apenas página institucional e ementas soltas em notícias (sem_base). Nov/2026 (decisão do Guh): entram também as publicações de tipo Penalidade e Suspensão Preventiva que trazem o voto e o resultado do julgamento; as que só comunicam a sanção continuam fora por não terem fórmula de julgamento.",
   "modo": "censo",
   "evidencia": {
     "gerado_em": "2026-11-19T18:36:41Z",

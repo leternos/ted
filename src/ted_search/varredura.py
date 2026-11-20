@@ -189,7 +189,7 @@ RE_FORMULA_COLEGIADA = re.compile(
     r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|"
     r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)|RESULTADO\s+D[EO]\s+JULGAMENTO|DECIDIRAM|JULGARAM|"
     r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|"
-    r"TORNA\s+PUBLICO\s+AS\s+DECISOES|"
+    r"TORNA\s+PUBLICO\s+AS\s+DECISOES|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )
 RE_COLEGIADO_FORTE = re.compile(r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|DECIDIRAM|RELATORA?\s+D[OA]\s+ACORDAO")
@@ -197,7 +197,14 @@ RE_COLEGIADO_FORTE = re.compile(r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAI
 RE_COMUNICADO_SANCAO = re.compile(r"INTIMAD[OA]\)?\s+A\s+DEVOLVER|PARA\s+CONHECIMENTO\s+DAS\s+AUTORIDADES\s+JUDICI")
 # Ato normativo ou administrativo que cita "por unanimidade" sem ser julgado
 # (só no título: no corpo, "Regulamento Geral" é citado por quase toda intimação de acórdão)
-RE_ATO_NORMATIVO = re.compile(r"REGULAMENTO|CAMPEONATO|CHAMAMENTO|CHAMADA\s+PUBLICA")
+RE_ATO_NORMATIVO = re.compile(r"REGULAMENTO|CAMPEONATO|CHAMAMENTO|CHAMADA\s+PUBLICA|FIXA\s+O\s+VALOR\s+DA\s+ANUIDADE|ANEXO\s+DA\s+RESOLUCAO")
+# Publicação que abre como acórdão numerado de um processo (PA: "ACÓRDÃO nº 081/2020. Processo Administrativo...")
+RE_ACORDAO_NUMERADO = re.compile(r"^\W*ACORDAO\s+N\S*\s*[\d/ .]+\.\s*PROCESSO")
+
+
+def _anuncia_decisao_colegiada(plano: str) -> bool:
+    """A própria publicação se apresenta como acórdão numerado ou como decisão de Câmara, Turma ou Conselho (PA, PB)."""
+    return bool(RE_ACORDAO_NUMERADO.search(plano[:80]) or RE_DECISAO_DE_ORGAO.search(plano[:500]))
 
 
 def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
@@ -214,6 +221,8 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
     # decisão do presidente do TED que recusa a consulta, ainda que transcreva ementas alheias (segunda leitura de PE)
     if re.search(r"DECISAO\s*:\s*\(\.\.\.\)\s*TRATA-SE\s+DE\s+CONSULTA", plano[:900]):
         return "ato_monocratico"
+    if _anuncia_decisao_colegiada(plano):
+        return None  # vale mesmo com corpo em forma de voto ou de despacho (segundas leituras de PA e PB)
     if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(plano):
         return "sem_formula_de_julgamento"
     # despacho ou decisão monocrática: abre como tal e não traz nenhuma marca de colegiado
@@ -630,7 +639,7 @@ def normalizar_decisoes(uf: str, pubs: list[dict[str, Any]]) -> tuple[list[dict[
             else:
                 # acórdão de Câmara publicado sob tipo genérico entra mesmo sem ser disciplinar (MA 845489), com marca 0
                 # nota de desagravo votada pelo Conselho também (BA 29551): "por unanimidade... resolveu desagravar"
-                colegiada = bool(re.search(r"ACORDAM|DECISAO\s+UNANIME|RESOLVEU\s+DESAGRAVAR", plano))
+                colegiada = bool(re.search(r"ACORDAM|DECISAO\s+UNANIME|RESOLVEU\s+DESAGRAVAR", plano)) or bool(RE_ACORDAO_NUMERADO.search(plano[:80]))
                 aceita = eh_materia_disciplinar(setor, pub.get("titulo") or "", texto) or (eh_eleitoral(setor, texto) and tem_resultado) or colegiada
             if not aceita:
                 rejeitados.append({"id": pub["id"], "motivo": "tipo_amplo_sem_decisao", "tipo": _tipo(pub), "titulo": (pub.get("titulo") or "")[:140],

@@ -249,8 +249,10 @@ def motivo_recusa(
 
 def eh_eleitoral(setor_nome: str, full_text: str) -> bool:
     """Decisões da Comissão Eleitoral e registros de candidatura: ficam no banco, sempre fora da busca do TED."""
+    # Justiça Eleitoral como parte ou como origem do ofício não torna a decisão eleitoral (PB 294505, 654409)
+    abertura = re.sub(r"(?:TRIBUNAL\s+REGIONAL|JUSTI[ÇC]A|ZONA|JU[IÍ]ZO)\s+(?:DA\s+\S+\s+)?ELEITORAL|CRIMES?\s+ELEITORA\w+", " ", full_text[:600].upper())
     return "COMISSÃO ELEITORAL" in setor_nome.upper() or bool(
-        re.search(r"REGISTRO\s+DE\s+(?:CANDIDATURA|CHAPA)|\bCHAPA\b|ELEI[ÇC][ÕO]ES\s+OAB|ELEITORAL", full_text[:600].upper())
+        re.search(r"REGISTRO\s+DE\s+(?:CANDIDATURA|CHAPA)|\bCHAPA\b|ELEI[ÇC][ÕO]ES\s+OAB|ELEITORAL", abertura)
     )
 
 
@@ -271,7 +273,12 @@ RE_ADMINISTRATIVO = re.compile(
     # segundas leituras de GO, MA e PE
     r"CRIACAO\s+D[AE]\s+SUBSECAO|(?:ALTERACAO|ADEQUACAO)\s+DO\s+REGIMENTO|SOLICITACAO\s+DE\s+PROVIDENCIAS|"
     r"SUSCITACAO\s+DE\s+INIDONEIDADE|RESTAURACAO\s+D[AE]\s+INSCRICAO|INDEFERIMENTO\s+D[AEO]\s+(?:PEDIDO\s+DE\s+)?INSCRICAO|"
-    r"EMENTA\s*:?\s*(?:DIREITO\s+E\s+)?PRERROGATIVAS"
+    r"EMENTA\s*:?\s*(?:DIREITO\s+E\s+)?PRERROGATIVAS|"
+    # segunda leitura de PA
+    r"(?:ASSUNTO|NATUREZA)\s*:\s*(?:APROVACAO\s+D[OA]\s+|ALTERACAO\s+D[OE]\s+|ATUALIZACAO\s+D[OE]\s+)?(?:REGIMENTO\s+INTERNO|"
+    r"PEDIDO\s+DE\s+(?:CRIACAO|ADESAO)|CRIACAO\s+D[AEO]|APROVACAO\s+DA\s+RESOLUCAO|REVOGACAO\s+DA\s+RESOLUCAO|COMISSAO\s+D[AE]|"
+    r"RELATORIO\s+DE\s+ATIVIDADES|ANALISE\s+(?:SOBRE|JURIDICA))|TRIBUNAL\s+DE\s+(?:DEFESA\s+DAS\s+)?PRERROGATIVAS|"
+    r"VIOL\w+\s+(?:DAS|AS)\s+PRERROGATIVAS|PROCESSO\s+DE\s+INSCRICAO|ASSUNTO\s*:\s*(?:RECURSO\s+DE\s+)?INSCRICAO\s+DE"
 )
 
 # Abertura em que o próprio TED anuncia o julgamento (GO): disciplinar, ainda que cite sociedade ou inscrição suplementar
@@ -301,12 +308,17 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
             or (achado.endswith("IDONEIDADE MORAL") and "INCIDENTE" not in abertura)
             or achado.startswith("SOCIEDADE")  # consulta do TED sobre sociedade; publicidade de sociedade sem registro (ES)
             or achado.startswith("INCOMPATIBILIDADE")  # consulta do TED sobre incompatibilidade (BA)
+            or achado.startswith("TABELA")  # acórdão do TED que cita a tabela de honorários (PB)
+            # processo ético com pedido de providências na ementa (PA), nunca desagravo nem prerrogativas (MT)
+            or (achado.startswith("PEDIDO DE PROVIDENCIAS") and not re.search(r"DESAGRAVO|PRERROGATIV", abertura))
         )
         forte = r"PROCESSO\s+(?:ETICO[-\s]*)?DISCIPLINAR|PROCESSO\s+ETICO|\bPAD\b|REPRESENTACAO(?!\s+CRIMINAL)|REPRESENTAD[OA]|INFRACAO|CONSULTA|CONSULENTE|TURMA\s+JULGADORA"
         # pedido de inscrição (originária, definitiva, indeferida, restaurada): "representação criminal" na ementa e
         # o rótulo "processo disciplinar" no título não bastam; só parte representada, consulta ou turma do TED (MA, MT, PE)
         if "INSCRICAO" in achado and not re.search(r"SUPLEMENTAR|PRINCIPAL|CANCELAMENTO", achado):
             forte = r"REPRESENTAD[OA]|CONSULTA|CONSULENTE|TURMA\s+JULGADORA|PROCESSO\s+ETICO"
+        if achado.startswith("PEDIDO DE PROVIDENCIAS"):
+            forte = r"PROCESSO\s+(?:ETICO[-\s]*)?DISCIPLINAR|PROCESSO\s+ETICO"
         if not (fraco and re.search(forte, abertura)):
             return False
     plano = _sem_acento_upper(f"{setor_nome} {titulo} {full_text}")
