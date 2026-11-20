@@ -205,7 +205,7 @@ RE_DISCIPLINAR = re.compile(
     # segunda leitura de GO
     r"LOCUPLETAMENTO|(?:AUSENCIA|FALTA|RECUSA)\s+DE\s+PRESTACAO\s+DE\s+CONTAS|(?:IM)?PROCEDENCIA\s+DA\s+REPRESENTACAO|"
     r"REPRESENTACAO\s+JULGADA|PRESCRICAO\s+(?:QUINQUENAL|TRIENAL|INTERCORRENTE|DA\s+PRETENSAO)|"
-    r"RETENCAO\s+(?:ABUSIVA|INDEVIDA)|PENA\s+DE\s+(?:SUSPENSAO|CENSURA|EXCLUSAO)|ARQUIVAMENTO\s+DA\s+REPRESENTACAO|"
+    r"RETENCAO\s+(?:ABUSIVA|INDEVIDA)|PENA\s+DE\s+(?:SUSPENSAO|CENSURA|EXCLUSAO)|ARQUIVAMENTO\s+D[AE]\s+REPRESENTACAO|"
     r"REPRESENTACAO\s+(?:DE\s+ADVOGADO|CONTRA|EM\s+FACE|INSTAURADA|PROMOVIDA|APRESENTADA|OFERECIDA|DEFLAGRADA)|PROCEDENTE\s+A\s+REPRESENTACAO|PROCESSO\s+DE\s+EXCLUSAO|EMENTA\s*:?\s*PEDIDO\s+(?:DE\s+)?REVISAO"
 )
 
@@ -289,6 +289,10 @@ RE_ADMINISTRATIVO = re.compile(
     r"ASSUNTO\s*:\s*(?:INDICAC(?:AO|OES)\s+(?:DE\s+|DOS?\s+)?MEMBROS?|COMPOSICAO\s+DO\s+TRIBUNAL|(?:REFORMULACAO|PROPOSTA)\s+ORCAMENTARIA|"
     r"REFORMULACAO\s+DO\s+ORCAMENTO|PROGRAMA\s+DE\s+REGULARIZACAO|PROPOSTA\s+DE\s+RESOLUCAO|ALTERACAO\s+DA\s+RESOLUCAO|"
     r"PROPOSTA\s+PARA\s+INCLUSAO|EXIGENCIA\s+DE\s+EMISSAO|ALTERACAO\s+DE\s+NOMENCLATURA|PEDIDO\s+DE\s+JUBILAMENTO)|"
+    # leituras de AM e SC
+    r"RECURSO\.\s*INSCRICAO\s+NOS\s+QUADROS|ANOTACAO\s+DE\s+(?:IMPEDIMENTO|INCOMPATIBILIDADE)|BAIXA\s+DE\s+ANOTACAO|"
+    r"PEDIDO\s+DE\s+(?:BAIXA|ANOTACAO|EXCLUSAO\s+DE\s+SOCIO)|ALTERACAO\s+ORCAMENTARIA|VAGA\s+DE\s+CONSELHEIR|ASSUNTO\s*:\s*SOCIEDADE|"
+    r"CONTRATO\s+DE\s+ASSOCIACAO|RESTABELECIMENTO\s+D[EA]\s+INSCRICAO|"
     r"PEDIDO\s+DE\s+REINSCRICAO|PROCESSO\s+DE\s+REINSCRICAO|INSCRICAO\s+(?:COMO|DE)\s+(?:ADVOGAD|ESTAGIARI)|PROCESSO\s+ELEITORAL|"
     r"IMPUGNACAO\s+DA\s+CHAPA|REPRESENTACAO\s+(?:EM\s+MATERIA\s+)?ELEITORAL|PRESTACAO\s+DE\s+CONTAS\s+(?:DA\s+|DO\s+)?CAA|EMENTA\s*\d+\s*/\s*20\d\d\s*:?\s*(?:A\s+)?(?:PROPOSICAO|PROPOSTA|REQUERIMENTO)"
 )
@@ -297,7 +301,14 @@ RE_TURMA_DO_TED = re.compile(
     r"ACORDAM\s+OS\s+MEMBROS\s+DA\s+\S+\s+TURMA\s+DO\s+(?:TED|TRIBUNAL\s+DE\s+ETICA)|"
     r"EMENTA\s+N\S*\s*\d[\d ]*/\s*\d[\d ]*\s*[-–]\s*(?:TED|\d\s*[ªA]?\s*T)\b|"
     # RJ: "Ementa: 64/11ªTurma/2022"
-    r"EMENTA\s*:?\s*\d{1,3}\s*(?:\(\d+\))?\s*/\s*(?:\d{1,2}\s*[ªA°]?\s*[./]?\s*)?(?:TURMA|TED)\b"
+    r"EMENTA\s*:?\s*\d{1,3}\s*(?:\(\d+\))?\s*/\s*(?:\d{1,2}\s*[ªA°]?\s*[./]?\s*)?(?:TURMA|TED)\b|"
+    # AM: "EMENTA 001/2026 - T.E.D"
+    r"EMENTA\s*:?\s*0?\s*\d[\d ]*/\s*20\d\s*\d\s*[-–]?\s*T\.E\.D"
+)
+# AM: ato societário julgado pela Câmara Especial; o contrato transcrito cita "disciplinar" e "representada"
+RE_ATO_SOCIETARIO = re.compile(
+    r"(?:FEITO|ASSUNTO)\s*:\s*(?:ALTERACAO\s+CONTRATUAL|REGISTRO\s+DE\s+SOCIEDADE|DISSOLUCAO\s+DE\s+SOCIEDADE|ENCERRAMENTO\s+DE\s+FILIAL)|"
+    r"EMENTA\s*:\s*(?:ALTERACAO\s+DE\s+CONTRATO\s+SOCIAL|DISSOLUCAO\s+DE\s+SOCIEDADE|ENCERRAMENTO\s+DE\s+FILIAL|SOCIEDADE\s+(?:INDIVIDUAL\s+)?DE\s+ADVO)"
 )
 # MG: recurso julgado pelo Órgão Especial contra acórdão de Turma do TED; a ementa nem sempre usa palavra disciplinar
 RE_ORGAO_ESPECIAL = re.compile(r"ACORDAM\s+OS\s+MEMBROS\s+D[AO]\s+(?:\S+\s+){0,4}ORGAO\s+ESPECIAL")
@@ -320,6 +331,8 @@ def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool
         r"INCIDENTE\s+DE\s+(?:VERIFICACAO\s+DE\s+)?(?:IN)?IDONEIDADE|PEDIDO\s+DE\s+ASSISTENCIA|DESAGRAVO", inicio
     ):
         return True
+    if RE_ATO_SOCIETARIO.search(inicio):
+        return False
     if eh_eleitoral(setor_nome, full_text):
         return False
     abertura = _sem_acento_upper(f"{titulo} {full_text[:600]}")

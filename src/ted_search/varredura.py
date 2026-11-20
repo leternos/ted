@@ -188,24 +188,29 @@ RE_DECISAO_DE_ORGAO = re.compile(
 RE_FORMULA_COLEGIADA = re.compile(
     r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|"
     r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)|RESULTADO\s+D[EO]\s+JULGAMENTO|DECIDIRAM|JULGARAM|"
-    r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|"
+    r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|ACORDA\s+A\s+\S+\s+(?:CAMARA|TURMA)|"
     r"TORNA\s+PUBLICO\s+AS\s+DECISOES|E\s+COMO\s+VOTO|VOTO\s+(?:PELO\s+CONHECIMENTO|PARA\s+CONHECER|PELA\s+REJEICAO|PELO\s+SEU\s+ACOLHIMENTO)|"
     r"(?<![A-Z])SS\s*\.?\s*\d{1,2}\s*[./]\s*\d{1,2}\s*[./]\s*\d{2,4}|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )
 RE_COLEGIADO_FORTE = re.compile(r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|DECIDIRAM|RELATORA?\s+D[OA]\s+ACORDAO")
 # Comunicado que só anuncia a sanção aplicada, sem o teor do julgado (BA: "Suspensão do Exercício da Advocacia")
-RE_COMUNICADO_SANCAO = re.compile(r"INTIMAD[OA]\)?\s+A\s+DEVOLVER|PARA\s+CONHECIMENTO\s+DAS\s+AUTORIDADES\s+JUDICI|COMUNICA\s+QUE\s+FOI\s+APLICADA")
+RE_COMUNICADO_SANCAO = re.compile(r"INTIMAD[OA]\)?\s+A\s+DEVOLVER|PARA\s+CONHECIMENTO\s+DAS\s+AUTORIDADES\s+JUDICI|COMUNICA\s+QUE\s+FOI\s+APLICADA|PELO\s+PRESENTE\s+EDITAL,?\s+NOTIFICAMOS")
 # Ato normativo ou administrativo que cita "por unanimidade" sem ser julgado
 # (só no título: no corpo, "Regulamento Geral" é citado por quase toda intimação de acórdão)
-RE_ATO_NORMATIVO = re.compile(r"REGULAMENTO|CAMPEONATO|CHAMAMENTO|CHAMADA\s+PUBLICA|FIXA\s+O\s+VALOR\s+DA\s+ANUIDADE|ANEXO\s+DA\s+RESOLUCAO|ATO\s+DE\s+DESIGNACAO")
+RE_ATO_NORMATIVO = re.compile(r"REGULAMENTO|CAMPEONATO|CHAMAMENTO|CHAMADA\s+PUBLICA|FIXA\s+O\s+VALOR\s+DA\s+ANUIDADE|ANEXO\s+DA\s+RESOLUCAO|ATO\s+DE\s+DESIGNACAO|"
+                              r"EDITAL\s+DE\s+CONCURSO|CONCURSO\s+DE\s+IDEIAS|EDITAL\s+PARA\s+CURSAR")
 # Publicação que abre como acórdão numerado de um processo (PA: "ACÓRDÃO nº 081/2020. Processo Administrativo...")
 RE_ACORDAO_NUMERADO = re.compile(r"^\W*ACORDAO\s+N\S*\s*[\d/ .]+\.\s*PROCESSO")
 
 
 def _anuncia_decisao_colegiada(plano: str) -> bool:
     """A própria publicação se apresenta como acórdão numerado ou como decisão de Câmara, Turma ou Conselho (PA, PB)."""
-    return bool(RE_ACORDAO_NUMERADO.search(plano[:80]) or RE_DECISAO_DE_ORGAO.search(plano[:500]))
+    if RE_ACORDAO_NUMERADO.search(plano[:80]) or RE_DECISAO_DE_ORGAO.search(plano[:500]):
+        return True
+    # SC: "ACÓRDÃO N. 116/2025" no cabeçalho, com voto do relator; não vale para decisão monocrática numerada
+    return bool(re.search(r"ACORDAO\s+N\S*\s*\d+\s*/\s*\d{4}", plano[:400])) and not re.search(
+        r"MONOCRATIC|PACIFICAD|DETERMINO\s+O\s+ARQUIVAMENTO", plano[:1500])
 
 
 def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
@@ -225,9 +230,12 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
     # certidão do Conselho Pleno: é a ata em extrato, sem voto (política: ata de Pleno fica fora; segunda leitura de PI)
     if re.search(r"CERTIFICA,?\s+QUE\s+NA\s+SESSAO", abertura):
         return "ata_em_extrato"
+    if re.search(r"FOI\s+ADIADO\s+O\s+JULGAMENTO", plano[:700]):
+        return "sem_formula_de_julgamento"  # aviso de adiamento que cita súmula (SC)
     if _anuncia_decisao_colegiada(plano) or re.search(r"TORNA\s+PUBLICA\s+A\s+DECISAO\s+DO\s+PROCESSO", plano[:300]):
         return None  # vale mesmo com corpo em forma de voto ou de despacho (segundas leituras de PA e PB)
-    if re.search(r"\b[OA]\s+RELATORA?\s+DECIDIU\s+POR\b", plano[:1500]):
+    if re.search(r"\b[OA]\s+RELATORA?\s+DECIDIU\s+POR\b", plano[:1500]) or re.search(
+            r"SEGUINTE\s+DESPACHO\s+MONOCRATICO|VISTOS\s+EM\s+DECISAO\s+MONOCRATICA|TORNA\s+PUBLICO\s+QUE\s+SERA\s+APLICADA", plano[:900]):
         return "ato_monocratico"  # intimação de decisão do relator (MG)
     if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(plano):
         return "sem_formula_de_julgamento"
