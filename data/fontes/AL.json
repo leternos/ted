@@ -1,9 +1,27 @@
 [
   {
-    "slug": null,
-    "url": null,
-    "conteudo": "Sem ementário no site; acórdãos soltos em PDFs do diário antigo da Seccional (pré-2019)",
-    "situacao": "sem_base",
-    "verificacao": "S"
+    "slug": "diario-seccional-pdfs",
+    "url": "https://oab-al.org.br/protocolo/diario-eletronico",
+    "conteudo": "Diário Eletrônico da OAB/AL (publicação oficial da Seccional, Lei 7.397/2012), PDFs por edição; em 2017-2018 traz seção 'ACORDÃOS' com julgados do TED/AL (3 Turmas) com ementa e dispositivo, e editais do TED.",
+    "periodo": "edições 2015-06 a 2021 (+1 de 2024); acórdãos do TED vistos em 2017-06 e 2018-06; edições de 2019 e 2020 amostradas não tinham acórdão",
+    "volume": "235 PDFs listados (2015: 41, 2016: 25, 2017: 41, 2018: 63, 2019: 13, 2020: 33, 2021: 18, 2024: 1), medido 2026-11-20. Densidade de acórdãos: 2017-06-01 = 2 blocos 'ACORDÃOS' (5 págs); 2018-06-12 = 5 (2 págs); 2015-07-21, 2016-06-15, 2019-05-23, 2020-03-06 = 0. Total de acórdãos NÃO medido (exigiria baixar os 235 PDFs); estimativa de dezenas a poucas centenas, concentrados em 2017-2018.",
+    "acesso": "Página HTML com filtro ano/mês e links 'BAIXAR PDF': https://oab-al.org.br/wp-content/uploads/2026/09/Diario-OAB-AAAA-MM-DD.pdf (alguns 'Diario-Eletronico-DD-MM-AAAA.pdf'). Os 235 links vêm todos no HTML de /protocolo/diario-eletronico. CPT WordPress /wp-json/wp/v2/diario-eletronico (237 posts, content vazio, sem PDF). Sem login, sem captcha.",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "verificada",
+    "inteiro_teor": "PARCIAL. Texto nativo (pdftotext). Cada acórdão: nº do processo (e número antigo), representante (nome completo, ou o juízo), representado (iniciais + OAB/AL), relator, EMENTA, parágrafo de ACÓRDÃO com resultado e turma. Sem relatório e voto.",
+    "observacoes": "Lidos 6+ acórdãos de 2018-06-12 (Edição 135/137), p. ex. Proc. 91/2016 (antigo 4994/13), 3ª Turma, improcedente, Rel. Ronaldo Farias de Oliveira Júnior; Proc. 1521/16 (antigo 5200/12), improcedente; Proc. 8.182/2015 (antigo 3.125/2013), 2ª Turma, abandono de causa, censura, Rel. Filipe Lins Borges; Proc. 1705/2016, Rel. Valéria da Silva Fidélis. SOBREPOSIÇÃO com DEOAB_AL (151 registros, 2019-05-17 a 2026-11-17, 44 até 2020; muitos sem numero_processo): 0 de 5 números achados (91/2016, 1521/16, 8.182/2015, 1705/2016, 1851/14) e o banco só começa em 2019-05, então 2017-2018 é inédito. A página diz 'conforme publicados no Diário Oficial do Conselho Federal', mas o cabeçalho dos PDFs é do diário próprio da Seccional (Ano 4, Edição 137, 2018). RESTRIÇÃO: robots.txt (Cloudflare Managed) traz 'Content-Signal: search=yes, ai-train=no, use=reference' e Disallow / para crawlers nomeados (ClaudeBot, GPTBot, CCBot, Google-Extended, Amazonbot, Bytespider, Applebot-Extended, Diffbot, omgili), com reserva de direitos (art. 4 da Diretiva UE 2019/790). Para User-agent '*' é 'Allow: /'. Foi feita só amostragem de 8 PDFs; antes de coletar, decidir se o uso (base de jurisprudência, possivelmente com IA) é compatível com 'ai-train=no' e, na dúvida, pedir autorização à OAB/AL. Prioridade: média (única base de AL; ganho só pré-2019)."
+  },
+  {
+    "slug": "ted-site",
+    "url": "https://oab-al.org.br/ted/sobre-o-ted",
+    "conteudo": "Seção TED do site (CPT 'ted', 8 páginas): sobre, iniciar/cadastrar representação, acompanhar processo, calendário de sessões, dados de produtividade, relatórios e estatísticas, resoluções e provimentos.",
+    "periodo": null,
+    "volume": 0,
+    "acesso": "HTML/WP REST /wp-json/wp/v2/ted (8 itens)",
+    "exclusiva": null,
+    "verificacao": "V",
+    "situacao": "descartada",
+    "observacoes": "Sem ementário, acórdãos, consultas ou súmulas. Mídia da WP sem PDFs de ementa/acórdão (busca 'ementa','ementario','acordao','consulta' só devolve imagens). Domínio correto é oab-al.org.br (oabal.org.br e oabalagoas.* não resolvem). Mesmas restrições de robots do item anterior."
   }
 ]
