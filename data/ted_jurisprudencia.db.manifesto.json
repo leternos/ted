@@ -1,0 +1,17 @@
+{
+  "banco": "ted_jurisprudencia.db",
+  "bytes": 775999488,
+  "sha256": "b019cc324da0ff3792620710c6f469f46879eb1278fe63733b470ac66b53c368",
+  "julgados": 115584,
+  "empacotado_em": "2026-11-20T03:19:43+00:00",
+  "partes": [
+    {
+      "arquivo": "ted_jurisprudencia.db.xz.parte-00",
+      "bytes": 90000000
+    },
+    {
+      "arquivo": "ted_jurisprudencia.db.xz.parte-01",
+      "bytes": 3352856
+    }
+  ]
+}

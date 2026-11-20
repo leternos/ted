@@ -291,3 +291,147 @@ def test_sp_legado_disciplinar_variantes_de_turma_relator_data_e_processo():
     assert c["turma_n"] == 22 and c["numero_processo"] == "PD22R000011/2011" and c["relator"] is None  # só Revisor: sem relator
     c = campos("do Processo X 1/2, os membros decidiram.", "Sala das sessões, 1 de abril de 2012.")
     assert c["turma"] is None and c["turma_n"] is None  # sem turma nomeada: nada é inferido de palavra solta
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# GO / ementarios-ted e ementarios-conselho - ementários do TED e do Conselho Seccional da OAB/GO (HTML WordPress)
+# ----------------------------------------------------------------------------------------------------------------------
+
+class _ClienteGO:
+    """GET devolve o HTML da fixture que corresponde ao fim da URL (ou o texto dado)."""
+
+    def __init__(self, respostas: dict[str, str]):
+        self._r, self.pedidos = respostas, []
+
+    async def get(self, url, params=None, headers=None, **_k):
+        self.pedidos.append(url)
+        corpo = next(v for k, v in self._r.items() if url.endswith(k))
+        return type("R", (), {"content": corpo.encode("utf-8"), "raise_for_status": lambda self: None})()
+
+
+def _go_ted(slug: str, nome: str) -> dict:
+    from ted_search.collectors.sites import go_ementarios_ted as m
+
+    cliente = _ClienteGO({f"/ementarios-ted/{slug}/": _html(f"go_ementarios_ted_detalhe_{nome}.html")})
+    return asyncio.run(m.baixar(cliente, asyncio.Semaphore(1), {"id": slug, "pagina": 1, "no_sitemap": True}))
+
+
+def test_go_ted_esperado_vem_do_contador_de_paginas_e_da_ultima_pagina():
+    from ted_search.collectors.sites import go_ementarios_ted as m
+
+    m._info.clear()
+    cliente = _ClienteGO({"/ementarios-ted/": _html("go_ementarios_ted_lista_p1.html"), "/page/679/": _html("go_ementarios_ted_lista_ultima.html")})
+    assert asyncio.run(m.esperado(cliente, asyncio.Semaphore(1))) == 678 * 12 + 8
+    assert m.itens_da_pagina(_html("go_ementarios_ted_lista_p1.html"))[:2] == ["9142", "9141"]
+    assert cliente.pedidos == [m.BASE + "/", m.BASE + "/page/679/"]  # a página 1 é a raiz: /page/1/ redireciona
+    m._info.clear()
+
+
+def test_go_conselho_esperado_e_slugs_da_lista():
+    from ted_search.collectors.sites import go_ementarios_conselho as m
+    from ted_search.collectors.sites import go_ementarios_ted as ted
+
+    ted._info.clear()
+    cliente = _ClienteGO({"/ementarios-conselho-seccional/": _html("go_ementarios_conselho_lista_p1.html"),
+                          "/page/16/": _html("go_ementarios_conselho_lista_ultima.html")})
+    assert asyncio.run(m.esperado(cliente, asyncio.Semaphore(1))) == 15 * 12 + 5
+    assert ted.itens_da_pagina(_html("go_ementarios_conselho_lista_p1.html"), m.SLUG_SITE)[0] == "processo-no-201506370"
+    ted._info.clear()
+
+
+def test_go_ted_formato_2025_processo_data_relator_e_camara():
+    from ted_search.collectors.sites import go_ementarios_ted as m
+
+    item = _go_ted("9142", "9142")
+    assert item["url"].endswith("/ementarios-ted/9142/") and item["no_sitemap"] is True
+    rec = m.normalizar(item)
+    assert rec["id"] == "SITE_GO_EMENTARIOS_TED:9142" and rec["fonte"] == "SITE_GO_EMENTARIOS_TED"
+    assert rec["numero_processo"] == "202442442" and rec["data_decisao"] == "2025-10-23" and rec["ano_ementa"] == 2025
+    assert rec["publicacao_str"] == "Site da OAB/GO - data da publicação"  # só a publicação consta: a data não é da sessão
+    assert rec["relator_principal"] == "ANDRÉ SOUSA CARNEIRO"
+    assert rec["sigla_orgao"] == "OABGO-TED-C7" and rec["orgao_julgador_norm"] == "Tribunal de Ética e Disciplina da OAB/GO/7ª Câmara Julgadora"
+    assert rec["descricao_ementa"].startswith("REPRESENTAÇÃO DISCIPLINAR") and rec["descricao_acordao"].startswith("Vistos, relatados")
+    assert rec["is_ted_disciplinar"] == 1 and rec["tem_inteiro_teor"] == 0 and rec["pdf_url"] is None
+    assert rec["contexto"] == "EMENTA" and rec["uf_origem"] == "GO"
+
+
+def test_go_ted_formato_2003_ementa_e_assinatura_no_mesmo_paragrafo():
+    from ted_search.collectors.sites import go_ementarios_ted as m
+
+    rec = m.normalizar(_go_ted("2", "2"))
+    assert rec["numero_processo"] == "2.825/2000" and rec["data_decisao"] == "2003-02-05"
+    assert rec["relator_principal"] == "CARLOS RABELO"  # 'Relator – Juiz Carlos Rabelo.'
+    assert rec["sigla_orgao"] == "OABGO-TED-T2" and rec["orgao_julgador_raw"] == "2ª Turma"
+    assert rec["descricao_ementa"].startswith("Representação. Fatos não comprovados") and rec["descricao_acordao"] == ""
+
+
+def test_go_ted_formatos_intermediarios_sem_turma_numerada_nao_inventam_orgao():
+    from ted_search.collectors.sites import go_ementarios_ted as m
+
+    rec = m.normalizar(_go_ted("2500", "2500"))  # 'Presidente: X' sem número de turma, nem fórmula 'acordam'
+    assert (rec["numero_processo"], rec["data_decisao"], rec["relator_principal"]) == ("2010/04522", "2013-05-22", "THIAGO FERREIRA DE SOUZA")
+    assert rec["sigla_orgao"] == "OABGO-TED" and rec["orgao_julgador_norm"] == "Tribunal de Ética e Disciplina da OAB/GO"
+    rec = m.normalizar(_go_ted("3000", "3000"))  # tudo num parágrafo só: 'Proc. nº ... Presidente da 4ª Turma: Dr. ... Relator: Dr. ...'
+    assert (rec["numero_processo"], rec["data_decisao"], rec["relator_principal"]) == ("2013/00564", "2014-04-22", "NELSON RODRIGUES MARTINS JÚNIOR")
+    assert rec["sigla_orgao"] == "OABGO-TED-T4"
+    rec = m.normalizar(_go_ted("7947", "7947"))  # 'EMENTE:' (erro do site) e 'ACÓRDÃO.' com ponto
+    assert rec["sigla_orgao"] == "OABGO-TED-C7" and rec["data_decisao"] == "2020-12-09"
+    assert rec["descricao_ementa"].startswith("PROCESSO ÉTICO-DISCIPLINAR") and rec["descricao_acordao"].startswith("Vistos, relatados")
+
+
+def test_go_ted_ordinal_por_extenso_e_slug_nao_numerico():
+    from ted_search.collectors.sites import go_ementarios_ted as m
+
+    item = _go_ted("9019-2", "9019-2")
+    rec = m.normalizar(item)
+    assert rec["id"] == "SITE_GO_EMENTARIOS_TED:9019-2" and rec["sigla_orgao"] == "OABGO-TED-C1"  # 'primeira câmara'
+    assert rec["relator_principal"] == "SÉRGIO DOURADO FRANÇA"  # 'Relçator(a)' (erro de digitação do site)
+    for txt, esperado in (("os integrantes da Décima Primeira Turma", 11), ("integrantes da __5___ª Câmara", 5),
+                          ("integrantes da 9.ª Câmara", 9), ("integrantes da Vigésima Câmara", 20)):
+        assert m.ordinal_antes(txt, txt.index("Turma") if "Turma" in txt else txt.index("Câmara")) == esperado
+
+
+def test_go_ted_sem_data_no_texto_fica_nula_e_item_sem_texto_e_rejeitado():
+    from ted_search.collectors.sites import go_ementarios_ted as m
+
+    base = {"id": "1", "url": "u", "paragrafos": ["EMENTA: Representação improcedente por falta de provas dos fatos alegados na inicial pelo representante. ACÓRDÃO: Improcedente."]}
+    rec = m.normalizar(base)
+    assert rec["data_decisao"] is None and rec["ano_ementa"] is None and rec["numero_processo"] is None and rec["relator_principal"] is None
+    assert m.normalizar({**base, "paragrafos": []}) is None
+    assert m.normalizar({**base, "paragrafos": ["Parece que não encontramos o que você está procurando. Utilize o menu superior para navegar pelo site."]}) is None
+    assert m.extrair_data("Data da sessão: 13 09 2022")[0] == "2022-09-13"
+    assert m.extrair_data("Data da sessão: 13.09.2052")[0] is None  # ano impossível: erro de digitação
+    assert m.extrair_data("Data da Sessão: 10/11/216 Ementa")[0] is None  # ano com 3 dígitos (site): não se adivinha 2016
+    assert m.extrair_data("o fato ocorreu em 12.03.2001, conforme o laudo. Ementa longa que segue sem mais datas por um bom trecho do texto " * 3)[0] is None
+
+
+def test_go_conselho_detalhe_disciplinar_camara_relator_e_data_da_sessao():
+    from ted_search.collectors.sites import go_ementarios_conselho as m
+
+    cliente = _ClienteGO({"/processo-no-201508801/": _html("go_ementarios_conselho_detalhe_201508801.html")})
+    item = asyncio.run(m.baixar(cliente, asyncio.Semaphore(1), {"id": "processo-no-201508801"}))
+    rec = m.normalizar(item)
+    assert rec["id"] == "SITE_GO_EMENTARIOS_CONSELHO:processo-no-201508801" and rec["numero_processo"] == "201508801"
+    assert rec["data_decisao"] == "2018-11-07" and rec["relator_principal"] == "JOSÉ HUMBERTO ABRÃO MEIRELES"
+    assert rec["sigla_orgao"] == "OABGO-1CR" and rec["is_ted_disciplinar"] == 1 and rec["tem_inteiro_teor"] == 0
+    assert rec["descricao_ementa"].startswith("RECURSO AO CONSELHO SECCIONAL") and rec["descricao_acordao"].startswith("Vistos, relatados")
+    assert "–" in item["texto"] and "\x96" not in item["texto"]  # travessão do Word (C1) lido como cp1252
+
+
+def test_go_conselho_inscricao_e_materia_administrativa_e_redator_nao_e_relator():
+    from ted_search.collectors.sites import go_ementarios_conselho as m
+
+    def rec(nome: str, slug: str) -> dict:
+        cliente = _ClienteGO({f"/{slug}/": _html(f"go_ementarios_conselho_detalhe_{nome}.html")})
+        return m.normalizar(asyncio.run(m.baixar(cliente, asyncio.Semaphore(1), {"id": slug})))
+
+    r = rec("201804179", "processo-no-201804179")  # inscrição originária
+    assert r["is_ted_disciplinar"] == 0 and r["sigla_orgao"] == "OABGO-PLENO" and r["data_decisao"] == "2018-12-14"
+    assert r["relator_principal"] == "ARCÊNIO PIRES DA SILVEIRA"
+    r = rec("201406462", "processo-no-201406462")  # só 'Redator' assina: relator não identificado
+    assert r["relator_principal"] is None and r["is_ted_disciplinar"] == 1 and r["sigla_orgao"] == "OABGO-1CR"
+    r = rec("2005-5808", "processo-no-2005-5808")  # 'Relator: Conselheira Alyne Cristine Lopes' no cabeçalho
+    assert r["relator_principal"] == "ALYNE CRISTINE LOPES" and r["numero_processo"] == "2005/5808" and r["data_decisao"] == "2015-05-20"
+    r = rec("proesso-201507382", "proesso-no-201507382")  # título do site com erro de digitação ('Proesso')
+    assert r["numero_processo"] == "201507382" and r["data_decisao"] == "2018-06-13"
+    assert m.normalizar({"id": "x", "url": "u", "paragrafos": ["Processo nº 1"]}) is None

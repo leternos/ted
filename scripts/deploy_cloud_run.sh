@@ -40,6 +40,12 @@ gcloud services enable \
     containerregistry.googleapis.com \
     --quiet
 
+# 3b. Banco: vem no repositório, em partes. Se não vier (banco já fora do Git), busca a versão atual no bucket.
+if ! ls data/ted_jurisprudencia.db.xz.parte-* >/dev/null 2>&1 && [ ! -f data/ted_jurisprudencia.db.xz ]; then
+    echo "📥 Banco ausente do repositório: baixando do bucket..."
+    GCP_PROJECT="${PROJECT_ID}" "$(dirname "$0")/banco_bucket.sh" baixar
+fi
+
 # 4. Enviar build remoto para o Google Cloud Build (não requer Docker instalado localmente)
 echo "📦 Enviando código para compilação remota via Cloud Build..."
 gcloud builds submit --tag "${IMAGE_NAME}" .
