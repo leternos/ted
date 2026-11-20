@@ -5,9 +5,10 @@
     "conteudo": "não confirmado",
     "periodo": "n/d",
     "volume": null,
-    "acesso": "n/d",
+    "acesso": "BLOQUEADA GEOGRAFICAMENTE a partir do ambiente desta pesquisa: https://oabac.org.br/, /ted e https://www.oabac.org.br/ respondem HTTP 403 com o corpo 'Your country is not allowed to access this resource' (filtro por país no servidor/WAF). Não contornado (sem VPN, proxy alternativo ou troca de cabeçalhos). Nenhuma página do TED foi lida.",
     "exclusiva": null,
     "verificacao": "S",
-    "situacao": "mapeada"
+    "situacao": "mapeada",
+    "observacoes": "Tentado 2026-11-20 (4 requisições, intervalo de 1 s). robots.txt também 403 (mesmo bloqueio), então restrição de coleta não pôde ser lida. Busca web não trouxe página do TED/OAB-AC com ementas; só aparecem Ementários do Conselho Federal (oab.org.br/util/print/<id>?print=Ementarios) com processos 'Representação nº 01.0000...' (código 01 = Acre), fora do escopo desta tarefa. DEOAB_AC no banco: 248 registros (2019-06-05 a 2026-11-17), única fonte conhecida. Ação necessária: repetir a verificação a partir de rede brasileira (máquina do cliente) ou pedir ao mantenedor a URL real. Registro permanece S."
   }
 ]

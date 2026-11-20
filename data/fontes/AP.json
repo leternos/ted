@@ -1,9 +1,14 @@
 [
   {
     "slug": null,
-    "url": null,
-    "conteudo": "Nenhuma base encontrada",
-    "situacao": "sem_base",
-    "verificacao": "S"
+    "url": "https://www.oabap.org.br/",
+    "conteudo": "Nenhuma base própria de julgados, consultas ou ementário",
+    "periodo": null,
+    "volume": 0,
+    "acesso": null,
+    "exclusiva": null,
+    "verificacao": "V",
+    "situacao": "descartada",
+    "observacoes": "Verificado em 2026-11-20. Site oabap.org.br (menu: Corregedoria, Procuradoria, Comissões, ESA, CAA-AP, Inscrições...) não tem página do TED, ementário, jurisprudência ou súmulas; os 85 links da home não incluem nada disso. Slugs /ted, /tribunal-de-etica, /ementario(s), /jurisprudencia devolvem o 'soft 404' do site (HTTP 200, 16559 bytes, igual ao sitemap.xml inexistente). oab-ap.org.br não resolve; intranet.oabap.org.br/digital é só 'OAB Virtual'. Busca na web sem resultados. robots.txt: 'Disallow:' vazio. Os 8 julgados disciplinares do DEOAB_AP continuam sendo a única fonte (a menos que se ache outra: sugerida consulta ao CFOAB/TED-AP por e-mail)."
   }
 ]

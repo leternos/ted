@@ -2,12 +2,53 @@
   {
     "slug": "ementarios",
     "url": "https://www.oab-ro.org.br/a-oab-ro/leis-e-normas/jurisprudencia/ementarios/",
-    "conteudo": "Ementas do TED por tema; Ementário 2024 em PDF",
-    "periodo": "2019-2024",
-    "volume": null,
-    "acesso": "HTML paginado + PDF",
-    "exclusiva": null,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "conteudo": "Ementário do TED/RO em HTML: um post por ementa (CPT 'ementarios'), com ementa + trecho do acórdão + processo e relator.",
+    "periodo": "posts de 13/07/2020 (lote) e 09/09/2024; processos 2017-2019; cartões rotulados '2019 - <tema>'",
+    "volume": "86 itens (50 na pág. 1 + 36 na pág. 2; 2 páginas), medido 2026-11-20. 85 rotulados 2019 e 1 rotulado 2024 (o post do PDF do ementário).",
+    "acesso": "WordPress/HTML. Listagem GET .../jurisprudencia/ementarios/ e .../ementarios/page/2/ (50 por página). Cada item em https://www.oab-ro.org.br/ementarios/<slug>/ (slug = título). REST /wp-json/wp/v2/ementarios não existe (rest_no_route). Sem login, sem captcha; Cloudflare à frente, sem desafio nas 12 requisições feitas (pausa de 2 s).",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "coletada",
+    "inteiro_teor": "NAO. Só ementa e frase de acórdão ('Vistos... acordam... julgar procedente/improcedente', turma, pena) + '(OAB, Tribunal de Ética, Processo 22.0000.AAAA.NNNNNN-D, Rel. ...)'. Sem voto, sem PDF por decisão.",
+    "observacoes": "Lidos 3 itens completos (abandono de causa, proc. 22.0000.2018.007680-0, Rel. Fátima Santos Fulber, censura convertida em advertência; apropriação de valores, 2019.008238-4, improcedente; captação indevida, 2019.010547-5, Pleno, suspensão preventiva 180 dias, Rel. Márcio Pereira Bassani). Sobreposição com DEOAB_RO (803 registros, 2019-01-15 a 2026-11-18): 1 de 3 no banco (2019.010547-5 = DEOAB_RO:107041); 2 ausentes. Itens são recortes por tema, não série completa. robots.txt: 'Disallow: /gerenciador/data/uploads/json/' (não afeta HTML nem PDFs de /uploads/AAAA/MM/). Sem termos de uso localizados. Existe serviço 'Pedido de Certidão de Inteiro Teor' (solicitação, não público). Prioridade: média-baixa, 2 listagens + 86 páginas. COLETADA: o total real é 87 (50 na pág. 1 + 37 na pág. 2), não 86 como medido antes. 76 no banco; 10 descartados por já estarem no DEOAB_RO e o post do PDF. Nenhum processo repete entre este HTML e o PDF (SITE_RO_EMENTARIO_PDF). Um post é consulta em tese (Consulta Nº 22.0000.2019.010491-8, Pleno). Sem data de julgamento: data_decisao nula, ano_ementa = rótulo do cartão. Sem inteiro teor.",
+    "coleta": {
+      "fonte": "SITE_RO_EMENTARIOS",
+      "adaptador": "collectors/sites/ro_ementarios.py",
+      "na_fonte": 87,
+      "listados": 87,
+      "baixados": 87,
+      "no_banco": 76,
+      "rejeitados": 11,
+      "motivo_rejeitados": "10 sobreposição com DEOAB_RO (mesmo processo e ementa no texto do Diário); 1 é o post do PDF do ementário (não é decisão)",
+      "livro": "COMPLETO",
+      "periodo_real": "sem data de julgamento no site; posts de 2020-07-09 a 2020-07-13, cartões rotulados 2019 (processos 2016-2019)",
+      "tem_inteiro_teor": 0
+    }
+  },
+  {
+    "slug": "ementario-pdf",
+    "url": "https://www.oab-ro.org.br/gerenciador/data/uploads/2024/09/Ementario-OAB.pdf",
+    "conteudo": "Ementário do TED/OAB-RO 2019-2023 (obra única, 180 páginas, publicada 09/09/2024): índice temático, apresentação, Manual de Procedimentos do CFOAB, ementas por tema, seção de Consultas (p. 151).",
+    "periodo": "título 2019-2023; datas de julgamento detectadas: 2020 (1), 2021 (5), 2022 (142), 2023 (65)",
+    "volume": "1 PDF, 180 páginas, 43,6 MB, texto nativo (pdftotext: ~9 mil linhas). Cerca de 263 entradas '(Proc./Consulta ...)', 242 números de processo distintos 22.0000.AAAA.NNNNNN-D, 172 citações '(DEOAB, a. V, n. ...)'.",
+    "acesso": "Download direto do PDF (HTTP 200, application/pdf) a partir do post https://www.oab-ro.org.br/ementarios/ementario-do-tribunal-de-etica-e-disciplina/. Sem login/captcha. Baixar uma vez só (43 MB).",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "coletada",
+    "inteiro_teor": "NAO. Ementa + parte dispositiva do acórdão, cada uma com rodapé 'Proc. ... Julgado em ..., parecer e ementa do Rel. ... (DEOAB, a. V, n. ..., data, p. ...)'. Sem relatório e voto.",
+    "observacoes": "Lidas várias entradas (ex.: 22.0000.2018.006394-8, julgado 28/10/2022, Rel. Ademir Dias dos Santos, DEOAB n. 1.140 de 10/07/2023; 22.0000.2018.009066-0, 6ª Turma, improcedente, Rel. Carolina Zemuner dos Santos; Consulta 22.0000.2020.003873-0, lives e redes sociais, Pleno, 06/07/2020). SOBREPOSIÇÃO: dos 242 números do PDF, 119 (49%) estão em DEOAB_RO e 123 não; amostra de 6 ao acaso: 3 presentes (2018.002495-2 = DEOAB_RO:520868, 2017.004348-4 = :488459 e :842352, 2018.000157-5 = :570018 e :775889) e 3 ausentes (2018.000548-8, 2018.003984-2, 2018.002370-2). Ou seja, o PDF cita o próprio DEOAB, mas metade dos processos não foi achada no banco (pode estar fora da janela ou não coletada). Mesma restrição de robots do item anterior (não se aplica). Prioridade: 1ª para RO (1 arquivo, ~240 decisões, parte inédita). COLETADA: 263 entradas (esperado por contagem independente das citações Proc./Processo nº:/Consulta n° = 263), 157 no banco, 106 descartadas por já estarem no DEOAB_RO. 10 entradas da seção Consultas (p. 151) vão como consulta em tese. Texto como o PDF publica (só quebras de linha viram espaço; ligaturas de uso privado U+F001/U+F002 voltam a fi/fl). Limite da fonte: em algumas fontes do PDF a camada de texto perde o \"fi\" (ex.: \"prossional\"), irrecuperável sem OCR. Quase-duplicatas com o Diário (mesmo processo, ementa digitada diferente nos primeiros 150 caracteres) carregam. Sem inteiro teor (tem_inteiro_teor=0).",
+    "coleta": {
+      "fonte": "SITE_RO_EMENTARIO_PDF",
+      "adaptador": "collectors/sites/ro_ementario_pdf.py",
+      "na_fonte": 263,
+      "listados": 263,
+      "baixados": 263,
+      "no_banco": 157,
+      "rejeitados": 106,
+      "motivo_rejeitados": "sobreposição com DEOAB_RO: mesmo processo (só dígitos) e ementa normalizada (150 primeiras letras) no texto do registro do Diário (motivos em data/raw/site_ro_ementario_pdf/rejeitados.jsonl)",
+      "livro": "COMPLETO",
+      "periodo_real": "julgamentos 2020-09-28 a 2023-09-15 nos 157 carregados (37 sem data de julgamento no rodapé, só a publicação no DEOAB); título 2019-2023",
+      "tem_inteiro_teor": 0
+    }
   }
 ]

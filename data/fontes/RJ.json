@@ -1,13 +1,15 @@
 [
   {
-    "slug": "busca-de-ementas",
-    "url": "https://oabrj.org.br/busca-de-ementas",
-    "conteudo": "Ementas das Turmas do TED, Câmaras, Órgão Especial e Conselho Pleno",
-    "periodo": "2019-2025",
-    "volume": null,
-    "acesso": "formulário com filtro de ano e órgão",
-    "exclusiva": false,
+    "slug": "jurisprudencias",
+    "url": "https://oabrj.org.br/jurisprudencias",
+    "conteudo": "Busca de ementas da OABRJ (menu 'Ementas | Jurisprudências'; página de entrada https://oabrj.org.br/busca-de-ementas). Turmas do TED (1a a 11a, Turma Única), Pleno do TED, Câmaras Especializadas (inscrições/licenciamento etc., não disciplinares), Órgão Especial e Conselho Pleno. Campos por linha: data, processo (nnn.nnn/aa), relator, órgão julgador, ementa; no modal (HTML inline, mesma página): ementa completa + campo 'Decisão' (dispositivo curto, ex. 'EMBARGOS DE DECLARAÇÃO CONHECIDOS E NEGADO PROVIMENTO'; preenchido em 639 de 729 itens de 2019).",
+    "periodo": "2019-02-07 a 2025-09-05 (medido nos itens listados; 2026 ainda não publicado na busca)",
+    "volume": "4684 linhas medidas em 2026-11-20 (4420 processos distintos): 2019=729, 2020=130, 2021=323, 2022=839, 2023=1200, 2024=1268, 2025=195. Cada ano vem inteiro em UMA página (sem paginação).",
+    "acesso": "GET https://oabrj.org.br/jurisprudencias?year=AAAA&orgao=&relator=&keyword= (Drupal 7 + Bootstrap, HTML server-side, sem login/captcha/token). year aceita 2019-2025 ou 'all'; orgao = texto exato do select; relator e keyword livres. Resposta: tabela com todas as linhas do filtro + um modal (#modal-ementa-N) por linha com ementa completa e Decisão. Páginas de 0,4 a 3,5 MB (2023/2024). 7 requisições (uma por ano) coletam tudo. Atrás do Cloudflare (script jsd passivo), mas respondeu 200 sem desafio.",
+    "exclusiva": true,
     "verificacao": "V",
-    "situacao": "mapeada"
+    "situacao": "coletada",
+    "inteiro_teor": "NAO. Só ementa + dispositivo curto ('Decisão'). Sem relatório/voto, sem PDF, sem link (o botão 'imprimir' aponta para /jurisprudencias/print/ sem id, via JS).",
+    "observacoes": "Verificada com leitura de 4684 linhas reais (7 anos), ex.: 11/04/2025, proc. 005.201/22, rel. Dikson Leite de Siqueira, 1a Turma do TED, embargos de declaração rejeitados; 07/05/2019, proc. 022.042/15, 1a Câmara Especializada, licenciamento (não disciplinar). Texto da ementa vem com hifenização de OCR/digitação ('PE-RÍODO', 'DEINGLÊS'): entra como publicado, sem correção. Parte das linhas não é ético-disciplinar (Câmaras Especializadas = inscrição/licença). ROBOTS: oabrj.org.br/robots.txt tem 'Crawl-delay: 10' (respeitado nos testes: 10 s entre requisições) e só proíbe /profiles/, /user/*; /jurisprudencias NÃO é proibida; nenhum termo de uso localizado. Coletar com 1 conexão e 10 s entre requisições. SOBREPOSIÇÃO com DEOAB_RJ (9217 reg., 2019-01-07 a 2026-11-19; 3134 sem numero_processo): normalizando nº (sem pontos/zeros, ano 4 dígitos) 2049 de 4420 processos distintos do site (46%) existem no banco; amostra de 5: 15117/2014 = DEOAB_RJ:343748; 1438/2016 = DEOAB_RJ:67721; 20987/2023 = DEOAB_RJ:861497 (Diário em 2025-01-15, julgado em 12/11/2024); 12397/2015 e 7947/2018 NÃO estão. O site traz relator estruturado, órgão e dispositivo; o Diário RJ publica texto com 'Recte/Recdo' e partes. Ganho: ~54% dos processos sem equivalente (inclui 2025 até set.). Súmulas/Enunciados/OJs (/sumulas-enunciados-ojs): página vazia. 'Consulta à Turma Deontológica' no menu aponta para um PDF de manual (manual-de-elaboracao-de-emendas.pdf), não para consultas respondidas. Há também Revista Eletrônica OABRJ (revistaeletronicaoabrj.emnuvens.com.br), artigos, não julgados. Prioridade: 2a (barata: 7 requisições). | COLETADA em 2026-11-20 (SITE_RJ_JURISPRUDENCIAS): 7 requisições com 10 s de pausa; 4684 linhas na fonte (2019=729, 2020=130, 2021=323, 2022=839, 2023=1200, 2024=1268, 2025=195), 4684 baixadas, 2949 no banco, 1735 descartadas por sobreposição com DEOAB_RJ (mesmo processo, chave sem pontos/zeros e ano com 4 dígitos, e ementa normalizada - 150 primeiras letras - contida no texto do registro do Diário). Livro COMPLETO. Período real: 2019-02-07 a 2025-09-05 (no banco 2019-02-19 a 2025-09-05). Marca: Turmas do TED e Turma Única = 1; Câmaras Especializadas = 0; Pleno do TED, Órgão Especial e Conselho Pleno pela regra eh_materia_disciplinar. Linhas só com 'Decisão' (2) entram."
   }
 ]

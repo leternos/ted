@@ -854,3 +854,530 @@ def test_ba_data_do_pdf_so_no_fim_e_dentro_da_janela_de_anos():
     assert m.relator_do_texto("RELATOR (A): EDUARDO LIMA SODRÉ - Nº Registro16391") == "EDUARDO LIMA SODRÉ"
     assert m.relator_do_texto("Relator: João Rosa (OAB/BA 17.023)") == "João Rosa"
     assert m.relator_do_texto("sem relator") is None
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# RJ / jurisprudencias, MA / ementario-ted, MT / ementario-1996-2005, PB / jurisprudencia
+# ----------------------------------------------------------------------------------------------------------------------
+
+def test_rj_modais_texto_como_publicado_e_decisao_vazia():
+    from ted_search.collectors.sites import rj_jurisprudencias as m
+
+    h = (FIXTURES / "rj_jurisprudencias_2020_trecho.html").read_text(encoding="utf-8")
+    assert m.linhas_da_tabela(h) == 3
+    ms = m.modais(h, 2020)
+    assert [x["id"] for x in ms] == ["2020-0000", "2020-0001", "2020-0002"]
+    a = ms[0]
+    assert a["processo"] == "009.501/18" and a["data"] == "03/02/2020" and a["relator"] == "STÉFANO EGMONT BALTZ"
+    # hifenização quebrada, palavras coladas e espaços duplos: entram como estão
+    assert "judi-cial  e não faz o repasse" in a["ementa"] and "darepresentação" in a["ementa"] and "suspen-são  por  30" in a["ementa"]
+    assert a["decisao"] == "SUSPENSAO POR  30 DIAS E ATE QUE PRESTE CONTAS" and ms[1]["decisao"] == ""
+
+
+def test_rj_registro_orgao_marca_e_sem_inteiro_teor():
+    from ted_search.collectors.sites import rj_jurisprudencias as m
+
+    h = (FIXTURES / "rj_jurisprudencias_2020_trecho.html").read_text(encoding="utf-8")
+    ms = m.modais(h, 2020)
+    m.MOTIVOS.clear()
+    m._DIARIO = None
+    r = m.normalizar(ms[0])
+    assert r["id"] == "SITE_RJ_JURISPRUDENCIAS:2020-0000" and r["fonte"] == "SITE_RJ_JURISPRUDENCIAS" and r["uf_origem"] == "RJ"
+    assert r["sigla_orgao"] == "OABRJ-TED-T1" and r["orgao_julgador_norm"].endswith("/1ª Turma Disciplinar") and r["orgao_julgador_raw"] == "1a. TURMA DO TED"
+    assert r["data_decisao"] == "2020-02-03" and r["numero_processo"] == "009.501/18" and r["relator_principal"] == "STÉFANO EGMONT BALTZ"
+    assert r["descricao_ementa"] == ms[0]["ementa"] and r["descricao_acordao"] == ms[0]["decisao"]
+    assert r["pdf_url"] is None and r["tem_inteiro_teor"] == 0 and r["is_ted_disciplinar"] == 1 and r["contexto"] == "EMENTA"
+    assert m.normalizar(ms[1])["descricao_acordao"] == ""  # decisão vazia não impede a carga
+    # marca: Turmas do TED 1; Câmaras Especializadas 0; Turma Única 1; Pleno do T.E.D. e demais pela regra do Diário
+    assert m.orgao_rj("10a.TURMA DO TED")[0] == "OABRJ-TED-T10" and m.orgao_rj("11a TURMA DO TED")[0] == "OABRJ-TED-T11"
+    assert m.orgao_rj("1a. CÂMARA ESPECIALIZADA")[0] == "OABRJ-CE1" and m.orgao_rj("TURMA ÚNICA DO TED")[0] == "OABRJ-TED-TU"
+    assert m.orgao_rj("PLENO DO T.E.D.")[0] == "OABRJ-TED-PLENO" and m.orgao_rj("ÓRGÃO ESPECIAL")[0] == "OABRJ-OE"
+    assert m.marca_disciplinar("1a. CAMARA ESPECIALIZADA", "REPRESENTAÇÃO DISCIPLINAR", "") == 0
+    assert m.marca_disciplinar("7a. TURMA DO TED", "pedido de inscrição", "") == 1
+    assert m.marca_disciplinar("TURMA ÚNICA DO TED", "", "") == 1
+
+
+def test_rj_sobreposicao_exige_mesmo_processo_e_ementa_no_texto_do_diario():
+    from ted_search.collectors.sites import rj_jurisprudencias as m
+
+    assert m.chave_processo("009.501/18") == m.chave_processo("9.501/2018") == "9501/2018"
+    assert m.chave_processo("088.709/87") == "88709/1987"
+    ementa = "Representar  disciplinar.  Levantamento de alvará judi-cial  e não faz o repasse a seu cliente. Procedência darepresentação."
+    item = {"processo": "009.501/18", "ementa": ementa}
+    texto_diario = m.so_letras("Publicado. EMENTA: Representar disciplinar. Levantamento de alvará judicial e não faz o repasse a seu cliente. Procedência da representação. Fim.")
+    assert m.sobrepoe(item, {"9501/2018": [texto_diario]})
+    assert not m.sobrepoe(item, {"9501/2018": [m.so_letras("outra decisão do mesmo processo, ementa diferente")]})  # mesmo processo, outro texto
+    assert not m.sobrepoe(item, {"1/2018": [texto_diario]})  # outro processo
+    m.MOTIVOS.clear()
+    m._DIARIO = {"9501/2018": [texto_diario]}
+    try:
+        assert m.normalizar({"id": "2020-0000", "ano_pagina": 2020, "orgao": "1a. TURMA DO TED", "data": "03/02/2020", "decisao": "", **item}) is None
+        assert m.MOTIVOS["2020-0000"].startswith("sobreposicao DEOAB_RJ")
+    finally:
+        m._DIARIO = None
+        m.MOTIVOS.clear()
+
+
+def test_rj_listar_uma_pagina_por_ano_com_pausa_e_confere_tabela(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import rj_jurisprudencias as m
+
+    h = (FIXTURES / "rj_jurisprudencias_2020_trecho.html").read_bytes()
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    monkeypatch.setattr(m, "ANOS", range(2020, 2021))
+    m._cache.clear()
+    _sem_pausa(monkeypatch)
+    pausas = []
+    monkeypatch.setattr(m, "PAUSA_RJ", 10.0)
+    real_sleep = asyncio.sleep
+
+    async def _sono(s, *a, **k):
+        pausas.append(s)
+        await real_sleep(0)
+
+    monkeypatch.setattr(asyncio, "sleep", _sono)
+    cli, sem = _ClienteBytes(h), asyncio.Semaphore(1)
+    assert asyncio.run(m.esperado(cli, sem)) == len(asyncio.run(m.listar(cli, sem))) == 3
+    assert len(cli.pedidos) == 1 and cli.pedidos[0][0].endswith("?year=2020&orgao=&relator=&keyword=")
+    assert 10.0 in pausas  # Crawl-delay do robots.txt
+    assert (tmp_path / "site_rj_jurisprudencias" / "pagina_2020.html").exists()
+    m._cache.clear()
+
+
+def test_ma_blocos_processo_acordao_relator_data_e_texto():
+    from ted_search.collectors.sites import ma_ementario_ted as m
+
+    h = (FIXTURES / "ma_ementario_ted_trecho.html").read_text(encoding="utf-8")
+    assert h.count('class="ementa"') == 3
+    b = m.blocos(h)
+    assert [x["id"] for x in b] == ["10.0000.2014.004575-0-ac233", "0966-2013-ac178", "10.0000.2015.003851-0-ac188"]
+    assert b[0]["relator"] == "CRISTIANE ROSE SOARES RIBEIRO" and b[0]["relatora"] and b[0]["data"] == "2016-09-14"  # data que fecha o texto
+    assert b[1]["data"] == "2016-06-15" and b[2]["data"] == "2016-05-18"  # 'Sessao Plenaria do dia ...' e 'sessao do dia ...'
+    assert "Repdo: A.J.P." in b[0]["texto"]  # iniciais como o site publica
+    r = m.normalizar(b[0])
+    assert r["id"] == "SITE_MA_EMENTARIO_TED:10.0000.2014.004575-0-ac233" and r["numero_ementa"] == "233/2016" and r["ano_ementa"] == 2016
+    assert r["sigla_orgao"] == "OABMA-TED" and r["is_ted_disciplinar"] == 1 and r["tem_inteiro_teor"] == 0 and r["pdf_url"] is None
+    assert r["descricao_ementa"] == b[0]["texto"] and "Sao Luis, 14 de setembro de 2016." in r["descricao_ementa"]
+
+
+def test_ma_listar_confere_contra_contagem_de_blocos(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import ma_ementario_ted as m
+
+    h = (FIXTURES / "ma_ementario_ted_trecho.html").read_bytes()
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    m._cache.clear()
+    _sem_pausa(monkeypatch)
+    cli, sem = _ClienteBytes(h), asyncio.Semaphore(1)
+    assert asyncio.run(m.esperado(cli, sem)) == len(asyncio.run(m.listar(cli, sem))) == 3
+    assert len(cli.pedidos) == 1 and (tmp_path / "site_ma_ementario_ted" / "pagina.html").exists()
+    m._cache.clear()
+
+
+def test_mt_itens_do_pdf_assunto_quebrado_pagina_e_rodape():
+    from ted_search.collectors.sites import mt_ementario_1996_2005 as m
+
+    texto = (FIXTURES / "mt_ementario_1996_2005_trecho.txt").read_text(encoding="utf-8")
+    linhas = m.linhas_sem_paginacao(texto)
+    assert len(m.cabecalhos(linhas, 2)) == 4 and m.cabecalhos(linhas, 1) == []  # a sequência tem de começar no número pedido
+    it = m.itens_do_texto(texto, primeiro=2)
+    assert [x["id"] for x in it] == [f"PDF1644.pdf#{n}" for n in (2, 3, 4, 5)]
+    assert it[0]["assunto"] == "LOCUPLETAMENTO À CUSTA DO CLIENTE" and it[0]["processo"] == "551/99" and it[0]["data"] == "2000-04-27"
+    assert it[0]["relator"] == "ÁDILA ARRUDA SAFI" and it[0]["votacao"] is None and it[0]["turma"] is None
+    assert "\n15\n" not in it[0]["corpo"] and not it[0]["corpo"].rstrip().endswith("15")  # número de página fora do texto
+    assert it[0]["corpo"].endswith("(Proc. N. 551/99, Rel. ÁDILA ARRUDA SAFI. J. 27/04/2000)")
+    assert it[2]["assunto"] == "FALTA DE PAGAMENTO DAS CONTRIBUIÇÕES, MULTAS E PREÇOS DE SERVIÇOS"  # título em duas linhas, link na seguinte
+    assert it[2]["votacao"] == "V.U" and it[2]["relator"] == "IVO MATIAS" and it[3]["processo"] == "2.030/01"
+    assert "VOLTAR" not in " ".join(x["corpo"] for x in it).upper()
+
+
+def test_mt_registro_ementa_consulta_e_turma():
+    from ted_search.collectors.sites import mt_ementario_1996_2005 as m
+
+    texto = (FIXTURES / "mt_ementario_1996_2005_trecho.txt").read_text(encoding="utf-8")
+    it = m.itens_do_texto(texto, primeiro=2)
+    r = m.normalizar({**it[1], "pdf_url": m.PDF_URL})
+    assert r["id"] == "SITE_MT_EMENTARIO_1996_2005:PDF1644.pdf#3" and r["numero_processo"] == "025/97" and r["data_decisao"] == "2003-08-28"
+    assert r["pdf_url"] == m.PDF_URL and r["diario_url"] == m.PDF_URL and r["sigla_orgao"] == "OABMT-TED" and r["is_ted_disciplinar"] == 1
+    assert r["contexto"] == "EMENTA" and r["tem_inteiro_teor"] == 0 and r["numero_ementa"] == "3"
+    assert r["descricao_ementa"].startswith("EMENTA: PROCESSO DISCIPLINAR.") and r["inteiro_teor_texto"].startswith("RETENÇÃO ABUSIVA DE AUTOS\n\nEMENTA:")
+    assert m.orgao_mt("Quarta") == ("Quarta Turma", "OABMT-TED-T4", "Tribunal de Ética e Disciplina da OAB/MT/4ª Turma Disciplinar")
+    c = m.normalizar({"id": "PDF1644.pdf#9", "n": 9, "assunto": "CONSULTA. CASO CONCRETO", "corpo": "EMENTA: " + "x" * 60, "processo": "1/99", "relator": "FULANO", "turma": "Terceira", "data": "1999-01-02"})
+    assert c["contexto"] == "EMENTA_CONSULTA" and c["sigla_orgao"] == "OABMT-TED-T3"
+
+
+def test_mt_relatorio_e_parecer_em_linha_propria_valem_inteiro_teor():
+    from ted_search.collectors.sites import mt_ementario_1996_2005 as m
+    from ted_search.inteiro_teor import texto_tem_relatorio_e_voto
+
+    linhas = (FIXTURES / "mt_ementario_1996_2005_consulta_trecho.txt").read_text(encoding="utf-8").split("\n")[3:]
+    corpo = m.paragrafos(linhas)
+    paras = corpo.split("\n\n")
+    assert paras[0] == "RELATÓRIO" and paras[1].startswith("ANA LÚCIA RICARTE protocolizou")  # 'RELATÓRIO' colado no parágrafo seguinte no PDF
+    longo = "RELATÓRIO\n\n" + "a " * 800 + "\n\nPARECER\n\n" + "b " * 800
+    assert texto_tem_relatorio_e_voto(longo) and not texto_tem_relatorio_e_voto(corpo)  # o trecho curto não passa do mínimo: não se força
+
+
+def test_mt_listar_confere_indice_e_corpo(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import mt_ementario_1996_2005 as m
+
+    texto = (FIXTURES / "mt_ementario_1996_2005_trecho.txt").read_text(encoding="utf-8")
+    linhas = m.linhas_sem_paginacao(texto)
+    assert {5, 22, 29, 244, 161} <= m.numeros_do_indice(linhas, m.cabecalhos(linhas, 2)[0])  # números do índice remissivo (inclui linha de continuação)
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    monkeypatch.setattr(m, "texto_do_pdf", lambda _p: texto)
+    m._cache.clear()
+    _sem_pausa(monkeypatch)
+    cli, sem = _ClienteBytes(b"%PDF-1.4 " + b"x" * 20000), asyncio.Semaphore(1)
+    assert asyncio.run(m.listar(cli, sem)) == []  # o trecho não começa no 1: nada é inventado
+    assert len(cli.pedidos) == 1 and (tmp_path / "site_mt_ementario_1996_2005" / "PDF1644.pdf").exists()
+    m._cache.clear()
+
+
+def test_pb_secao_arquivos_lista_so_os_pdfs_de_julgado_e_o_registro():
+    from ted_search.collectors.sites import pb_jurisprudencia as m
+
+    h = (FIXTURES / "pb_jurisprudencia_trecho.html").read_text(encoding="utf-8")
+    assert m.esperado_da_pagina(h) == 1  # o PDF de regimento antes da seção não conta
+    (item,) = m.itens_da_secao(h)
+    assert item["id"] == "a8daef_998a10fefb4d4c6f8355c59f9c758c64.pdf" and item["publicacao"] == "2018-04-19"
+    assert item["pdf_url"].endswith("a8daef_998a10fefb4d4c6f8355c59f9c758c64.pdf") and item["rotulo"].startswith("19/04/2018 - Processo")
+    texto = m.paragrafos((FIXTURES / "pb_jurisprudencia_consulta.txt").read_text(encoding="utf-8"))
+    r = m.normalizar({**item, "texto": texto})
+    assert r["id"] == f"SITE_PB_JURISPRUDENCIA:{item['id']}" and r["contexto"] == "EMENTA_CONSULTA" and r["uf_origem"] == "PB"
+    assert r["numero_processo"] == "150000.2017.011869-3" and r["numero_ementa"] == "004/2017" and r["data_decisao"] == "2018-04-13"
+    assert r["relator_principal"] == "Carlos Neves Dantas Freire" and r["sigla_orgao"] == "OABPB-TED" and r["is_ted_disciplinar"] == 1
+    assert r["pdf_url"] == item["pdf_url"] and r["inteiro_teor_texto"] == texto and "Lorine Sanches Vieira" in texto  # nome completo, como publicado
+    assert r["tem_inteiro_teor"] == 0  # texto curto, sem cabeçalhos de relatório e voto: o critério do projeto decide
+    assert r["descricao_ementa"].startswith("PROCESSO CONSULTA – CONSULENTE") and r["descricao_acordao"].startswith("Acordam os membros")
+    assert texto.startswith("Processo - Consulta nº 150000.2017.011869-3") and texto.endswith("Relator Designado")  # tudo o que o PDF publica
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# RO / ementario-pdf e ementarios (HTML) e RN / consultas - texto e nomes entram como o site publica
+# ----------------------------------------------------------------------------------------------------------------------
+
+def _ro_pdf_texto() -> str:
+    return (FIXTURES / "ro_ementario_trecho.txt").read_text(encoding="utf-8")
+
+
+def test_ro_pdf_entradas_rodape_quebrado_tema_processo_relator_data_e_orgao():
+    from ted_search.collectors.sites import ro_ementario_pdf as m
+
+    texto = _ro_pdf_texto()
+    es = m.entradas(texto)
+    assert m.contar_citacoes(texto) == len(es) == 6  # contagem independente (citações no texto corrido) x entradas pelos rodapés
+    assert [e["processo"] for e in es] == ["22.0000.2018.002737-6", "22.0000.2018.006208-2", "22.0000.2019.008237-6",
+                                           "22.0000.2017.004772-0", "22.0000.2018.000481-5", "22.0000.2020.003873-0"]
+    assert es[0]["tema"] == "LOCUPLETAMENTO" and es[0]["ementa"].startswith("R E P R E S E N TA Ç Ã O .")  # tema fora do texto; cabeçalho como no PDF
+    assert es[0]["relator"] == "FILIPE CAIO BATISTA CARVALHO" and es[0]["orgao"] == "4ª Turma do TED/OAB/RO" and es[0]["data"] is None
+    assert es[1]["rodape"].endswith("Página: 105).") and "DA SILVA" in es[1]["rodape"]  # rodapé partido pela quebra de página volta inteiro
+    assert es[2]["data"] == "2020-12-15" and es[2]["relator"] == "Vinícius Pompeu da Silva Gordon"  # data do julgamento, não a do DEOAB
+    assert es[3]["data"] == "2022-07-08" and es[3]["rodape"].endswith("p. 101)")
+    assert es[4]["rodape"].startswith("Proc. 22.0000.2018.000481-5") and es[4]["data"] == "2022-12-09"  # rodapé sem parêntese de abertura
+    assert es[5]["consulta"] is True and es[5]["orgao"] == "Conselho Pleno do TED/OAB/RO" and es[5]["data"] == "2020-07-06"
+    assert not any("Ementário Tribunal de ética" in e["ementa"] or "(Proc" in e["ementa"] for e in es)  # cabeçalho corrido e rodapé fora da ementa
+    assert m._ligaduras("Pai e lha, conito") == "Pai e filha, conflito"
+    assert m.data_do_rodape("Julgado aos vinte e nove dias do mês de maio do ano de dois mil e vinte).") == "2020-05-29"
+    assert m.data_do_rodape("(Proc. 22.0000.2018.002737-6/TED/OAB/RO. Rel. Dr. X da 4ª Turma. DEOAB, 13 de setembro de 2022)") is None
+
+
+def test_ro_pdf_listar_confere_contra_a_contagem_independente(monkeypatch):
+    from ted_search.collectors.sites import ro_ementario_pdf as m
+
+    m._cache.clear()
+    m._cache["texto"] = _ro_pdf_texto()
+    sem = asyncio.Semaphore(1)
+    itens = asyncio.run(m.listar(None, sem))
+    assert asyncio.run(m.esperado(None, sem)) == len(itens) == 6
+    assert itens[0]["id"] == "Ementario-OAB.pdf#1" and asyncio.run(m.baixar(None, sem, itens[0]))["pdf_url"] == m.PDF_URL
+    m._cache.clear()
+
+
+def test_ro_pdf_registro_texto_integral_marca_selo_e_sobreposicao_com_o_diario():
+    from ted_search.collectors.sites import ro_ementario_pdf as m
+
+    es = m.entradas(_ro_pdf_texto())
+    item = {"id": "Ementario-OAB.pdf#3", **es[2]}
+    m._DIARIO = None
+    r = m.normalizar(item)
+    assert r["fonte"] == "SITE_RO_EMENTARIO_PDF" and r["contexto"] == "EMENTA" and r["pdf_url"] == m.PDF_URL
+    assert r["numero_processo"] == "22.0000.2019.008237-6" and r["data_decisao"] == "2020-12-15" and r["relator_principal"] == "Vinícius Pompeu da Silva Gordon"
+    assert r["sigla_orgao"] == "OABRO-TED-T2" and r["is_ted_disciplinar"] == 1 and r["tem_inteiro_teor"] == 0  # só ementa + dispositivo
+    assert r["descricao_ementa"] == item["ementa"] and r["descricao_acordao"] == item["rodape"] and item["rodape"] in r["inteiro_teor_texto"]
+    assert normalizar_consulta(m, es[5])["contexto"] == "EMENTA_CONSULTA"
+    # sobreposição: mesmo processo (o Diário traz espaços espúrios) E ementa normalizada no texto do registro do Diário
+    assert m.digitos("22.0000.2019. 008237-6") == m.digitos("22.0000.2019.008237-6")
+    no_diario = m.sem_acento_letras("ORDEM DOS ADVOGADOS " + item["ementa"] + " Processo 22.0000.2019.008237-6")
+    m._DIARIO = {m.digitos("22.0000.2019. 008237-6"): [no_diario]}
+    m.MOTIVOS.clear()
+    assert m.normalizar(item) is None and "DEOAB_RO" in m.MOTIVOS[item["id"]]
+    m._DIARIO = {m.digitos(item["processo"]): [m.sem_acento_letras("outra decisão do mesmo processo, com outra ementa")]}
+    assert m.normalizar(item) is not None  # mesmo processo, ementa diferente: carrega
+    m._DIARIO = {m.digitos("22.0000.2018.002737-6"): [no_diario]}
+    assert m.normalizar(item) is not None  # mesma ementa, outro processo: carrega
+    m._DIARIO = None
+    m.MOTIVOS.clear()
+
+
+def normalizar_consulta(m, entrada):
+    return m.normalizar({"id": "Ementario-OAB.pdf#6", **entrada})
+
+
+def test_ro_ementarios_cartoes_paginacao_e_detalhe():
+    from ted_search.collectors.sites import ro_ementarios as m
+
+    p1 = (FIXTURES / "ro_ementarios_lista_p1.html").read_text(encoding="utf-8")
+    p2 = (FIXTURES / "ro_ementarios_lista_p2.html").read_text(encoding="utf-8")
+    c1, c2 = m.cartoes(p1), m.cartoes(p2)
+    assert [c["id"] for c in c1][0] == "ementario-do-tribunal-de-etica-e-disciplina" and len(c1) == 3 and len(c2) == 2
+    assert c1[1]["ano_rotulo"] == 2019 and c1[1]["tema"] == "Abandono de Causa e Ausência em Audiência" and c1[0]["ano_rotulo"] == 2024
+    assert m.proxima(p1).endswith("/ementarios/page/2/") and m.proxima(p2) is None
+    d = m.detalhe((FIXTURES / "ro_ementarios_detalhe_abandono.html").read_text(encoding="utf-8"))
+    assert d["titulo_post"].startswith("ABANDONAR A CAUSA SEM JUSTO MOTIVO") and d["data_post"] == "2020-07-13"
+    assert d["texto"].startswith("– ARTIGO 34, INCISO XI DA LEI 8.906/94 – AUSÊNCIA DE PROVAS – INOCORRÊNCIA DA PRATICA DE INFRAÇÃO. NÃO CONFIGURADA")
+    assert d["texto"].endswith("Rel. Dra. Cristhianne Paula Cremonese).") and "Terceira Turma Disciplinar" in d["texto"]
+
+
+def test_ro_ementarios_listar_percorre_ate_a_ultima_pagina_e_confere_a_seguinte(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import ro_ementarios as m
+
+    p1 = (FIXTURES / "ro_ementarios_lista_p1.html").read_bytes()
+    p2 = (FIXTURES / "ro_ementarios_lista_p2.html").read_bytes()
+    cli = _ClienteBytes({m.URL: p1, m.URL + "page/2/": p2})  # a página 3 não existe: o cliente falso levanta KeyError
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    m._cache.clear()
+    _sem_pausa(monkeypatch)
+    sem = asyncio.Semaphore(1)
+    assert asyncio.run(m.esperado(cli, sem)) == len(asyncio.run(m.listar(cli, sem))) == 5  # 3 por página x 1 + 2 da última
+    assert [u for u, _ in cli.pedidos] == [m.URL, m.URL + "page/2/", m.URL + "page/3/"]
+    assert (tmp_path / "site_ro_ementarios" / "pagina_2.html").exists()
+    m._cache.clear()
+
+
+def test_ro_ementarios_registro_orgao_consulta_e_descartes():
+    from ted_search.collectors.sites import ro_ementarios as m
+    from ted_search.collectors.sites import ro_ementario_pdf as pdf
+
+    consulta, sem_numeral, abandono = json.loads((FIXTURES / "ro_ementarios_itens.json").read_text(encoding="utf-8"))
+    m._DIARIO = m._PDF = None
+    m.MOTIVOS.clear()
+    r = m.normalizar(abandono)
+    assert r["fonte"] == "SITE_RO_EMENTARIOS" and r["numero_processo"] == "22.0000.2018.003763-0" and r["relator_principal"] == "Fátima Santos Fulber"
+    assert r["orgao_julgador_raw"] == "1ª Turma Disciplinar do TED/OAB/RO" and r["sigla_orgao"] == "OABRO-TED-T1" and r["is_ted_disciplinar"] == 1
+    assert r["data_decisao"] is None and r["ano_ementa"] == 2019 and r["publicacao_str"].endswith("(post de 13/07/2020)")  # a data do post não é a do julgamento
+    assert r["descricao_acordao"].startswith("Vistos, relatados") and r["inteiro_teor_texto"] == abandono["texto"].strip() and r["tem_inteiro_teor"] == 0
+    c = m.normalizar(consulta)
+    assert c["contexto"] == "EMENTA_CONSULTA" and c["numero_processo"] == "22.0000.2019.010491-8" and c["orgao_julgador_raw"] == "Pleno do TED/OAB/RO"
+    assert c["relator_principal"] == "Vinícius Pompeu da Silva Gordon"
+    assert m.normalizar(sem_numeral)["relator_principal"] == "Antonio Pereira da Silva"  # citação '(OAB/RO, Tribunal de Ética, Processo ..., Rel. ...)'
+    assert m.normalizar({**abandono, "id": "ementario-do-tribunal-de-etica-e-disciplina"}) is None and "PDF" in m.MOTIVOS["ementario-do-tribunal-de-etica-e-disciplina"]
+    # descartes: Diário (processo + ementa) e a fonte do PDF (mesmo processo + começo da ementa)
+    ementa = m._ementa_e_acordao(abandono["texto"])[0]
+    m._DIARIO = {pdf.digitos("22.0000.2018.003763-0"): [pdf.sem_acento_letras(ementa)]}
+    m._PDF = {}
+    assert m.normalizar(abandono) is None and "DEOAB_RO" in m.MOTIVOS[abandono["id"]]
+    m._DIARIO = {}
+    m._PDF = {pdf.digitos("22.0000.2018.003763-0"): [pdf.sem_acento_letras("R E P R E S E N T A Ç Ã O " + ementa)]}
+    assert m.normalizar(abandono) is None and "SITE_RO_EMENTARIO_PDF" in m.MOTIVOS[abandono["id"]]
+    m._PDF = {pdf.digitos("22.0000.2018.003763-0"): [pdf.sem_acento_letras("outra decisão sem relação com este texto de ementa qualquer")]}
+    assert m.normalizar(abandono) is not None
+    m._DIARIO = m._PDF = None
+    m.MOTIVOS.clear()
+
+
+def test_rn_consultas_links_da_pagina_e_registro_com_texto_integral(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import rn_consultas as m
+
+    pagina = (FIXTURES / "rn_consultas_pagina_trecho.html").read_bytes()
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    m._cache.clear()
+    _sem_pausa(monkeypatch)
+    cli, sem = _ClienteBytes(pagina), asyncio.Semaphore(1)
+    itens = asyncio.run(m.listar(cli, sem))
+    assert asyncio.run(m.esperado(cli, sem)) == len(itens) == 4
+    assert [i["id"] for i in itens] == ["133562018", "135792019", "40332019", "25342020"]  # por ano e número
+    assert itens[0]["pdf_url"] == "https://www.oabrn.org.br/2017/arquivos/Consultas/CONSULTA-133562018-ESCRIToRIO-DE-ADVOCACIA-EM-SHOPPING-CENTER.pdf"
+    assert itens[0]["numero"] == "13356/2018" and itens[0]["titulo_link"].startswith("Consulta 133562018-0: Escrit")
+    assert (tmp_path / "site_rn_consultas" / "pagina.html").exists()
+    m._cache.clear()
+    texto = (FIXTURES / "rn_consultas_122682018.txt").read_text(encoding="utf-8")
+    item = {"id": "122682018", "numero": "12268/2018", "ano": 2018, "pdf_url": "https://www.oabrn.org.br/2017/arquivos/Consultas/x.pdf", "texto_pdf": texto}
+    r = m.normalizar(item)
+    assert r["fonte"] == "SITE_RN_CONSULTAS" and r["contexto"] == "EMENTA_CONSULTA" and r["pdf_url"] == item["pdf_url"]
+    assert r["inteiro_teor_texto"] == texto.strip() and "Hidalgo Xavier de Souza Rebouças OAB/RN 15.347" in r["inteiro_teor_texto"]  # texto e nomes como publicados
+    assert r["numero_processo"] == "12268/2018" and r["numero_ementa"] == "122682018-0" and r["data_decisao"] == "2020-07-24"
+    assert r["relator_principal"] == "José Heldison Carvalho de Aquino" and r["is_ted_disciplinar"] == 1 and r["sigla_orgao"] == "OABRN-TED"
+    assert r["descricao_ementa"].startswith("Exercício da advocacia – Impedimentos.") and r["tem_inteiro_teor"] == 1  # RELATÓRIO e VOTO em linha própria
+    assert m.relator_nome("Juiz Revisor José Héldison Carvalho de Aquino") == "José Héldison Carvalho de Aquino" and m.relator_nome("Juiz Pedro Avelino Neto") == "Pedro Avelino Neto"
+    assert m.orgao_do_texto("Este Pleno não tem competência")[1] == "OABRN-TED-PLENO"
+    m.MOTIVOS.clear()
+    assert m.normalizar({**item, "texto_pdf": "   "}) is None and "sem texto" in m.MOTIVOS["122682018"]
+    m.MOTIVOS.clear()
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# SC / ementarios-ted - acórdãos do TED/SC no site da OAB/SC (Next.js, HTML no servidor)
+# ----------------------------------------------------------------------------------------------------------------------
+
+def _pagina_sc() -> str:
+    return (FIXTURES / "sc_ementarios_ted_pagina.html").read_text(encoding="utf-8")
+
+
+def test_sc_cartoes_total_de_paginas_e_cartao_sem_texto():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    h = _pagina_sc()
+    assert m.total_paginas(h) == 826
+    cs = m.cartoes(h)
+    assert [c["ano_secao"] for c in cs] == ["2026", "2018", "1995"]
+    assert cs[0]["titulo"] == "Processo de Representação nº 209/2026"
+    assert cs[0]["acordao_rotulo"] == "Acórdão nº 400/2026"
+    assert cs[1]["texto"] == "" and m._num_acordao(cs[1]["acordao_rotulo"]) == "9/2018"  # o site publica cartão vazio: conta como item
+
+
+def test_sc_registro_recente_fica_como_o_site_publica():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    c = m.cartoes(_pagina_sc())[0]
+    rec = m.normalizar({"id": "400/2026", "pagina": 1, **c})
+    assert rec["fonte"] == "SITE_SC_EMENTARIOS_TED"
+    assert rec["numero_processo"] == "209/2026" and rec["numero_ementa"] == "400" and rec["ano_ementa"] == 2026
+    assert rec["data_decisao"] == "2026-09-25"
+    assert rec["relator_principal"] == "Ramon Luis Bianchi"
+    assert rec["orgao_julgador_raw"] == "2ª Turma do Tribunal de Ética e Disciplina"
+    assert rec["descricao_ementa"].startswith("“PROCESSO DE EXCLUSÃO. ARTIGO 38") and rec["descricao_ementa"].endswith("PROCEDÊNCIA”.")
+    assert rec["descricao_acordao"].startswith("Vistos, relatados e discutidos")
+    assert rec["inteiro_teor_texto"] == rec["descricao_ementa"] + "\n\n" + rec["descricao_acordao"]
+    assert rec["pdf_url"] is None and rec["tem_inteiro_teor"] == 0 and rec["is_ted_disciplinar"] == 1
+    assert "L. R. M. A." in json.loads(rec["partes_json"])[0]  # partes como publicadas (iniciais), sem mascarar nem abreviar
+
+
+def test_sc_registro_antigo_usa_julgado_em_e_cartao_vazio_e_rejeitado():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    cs = m.cartoes(_pagina_sc())
+    rec = m.normalizar({"id": "2/1995", "pagina": 826, **cs[2]})
+    assert rec["data_decisao"] == "1995-10-27" and rec["numero_processo"] == "192/93" and rec["numero_ementa"] == "2"
+    assert rec["relator_principal"] == "Dr. Hélio Roque Rubick"
+    assert rec["descricao_acordao"] == "" and rec["descricao_ementa"].startswith("Retenção abusiva de autos processuais")
+    m.MOTIVOS.clear()
+    assert m.normalizar({"id": "9/2018", "pagina": 302, **cs[1]}) is None
+    assert m.MOTIVOS["9/2018"] == "ementa vazia"
+
+
+def test_sc_data_relator_e_orgao_nas_variantes_do_texto():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    assert m.extrair_data("... ACORDAM os Membros da 5ª Turma. Itajaí, 13 novembro de 2020. Elídia, Presidente.") == "2020-11-13"
+    assert m.extrair_data("... Florianópolis, 1º de outubro de 2021. Francisco, Presidente.") == "2021-10-01"
+    assert m.extrair_data("Ementa: texto que cita 3 de maio de 2010 no meio e termina sem assinatura " + "x" * 400) is None
+    assert m.extrair_relator("Repdo: D. T.Relator do voto divergente: Wanderlei Deretti. Acórdão nº 057/2023. Ementa: x") == "Wanderlei Deretti"
+    assert m.orgao_sc("ACORDAM os Membros da 3ª Turma do Tribunal")[1] == "OABSC-TED-T3"
+    assert m.orgao_sc("texto truncado sem dispositivo")[1] == "OABSC-TED"
+    assert m.eh_consulta("Pedido de Consulta nº 437/2018") and not m.eh_consulta("Processo de Representação nº 1/2020")
+
+
+def test_sc_descartes_duplicata_interna_e_sobreposicao_com_o_diario():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    def it(i, pagina, proc, ementa, ano="2020", fim="Joinville, 25 de setembro de 2020. X, Relator."):
+        return {"id": i, "pagina": pagina, "titulo": f"Processo de Representação nº {proc}", "ano_secao": ano,
+                "acordao_rotulo": f"Acórdão nº {i}", "texto": f"Repte: A. Relator: B. Ementa: “{ementa}”. Vistos, relatados e discutidos, ACORDAM os Membros da 1ª Turma. {fim}"}
+
+    comum = "EMENTA UM ÁGIL " * 20
+    itens = [it("1/2020", 1, "10/2019", comum), it("2/2020", 2, "10/2019", comum),   # duplicata: mesmo processo e mesma ementa
+             it("3/2020", 3, "11/2019", comum),                                     # outro processo: não é duplicata
+             it("4/2017", 4, "5/2016", "OUTRA EMENTA DE 2017 " * 20, ano="2017", fim="Florianópolis, 10 de março de 2017. X, Relator."),
+             it("5/2020", 5, "12/2019", "EMENTA DISTINTA SO NO SITE " * 20)]
+    diario = "|".join([m._letras("... " + comum + " ..."), m._letras("OUTRA EMENTA DE 2017 " * 20)])
+    d = m.calcular_descartes(itens, diario)
+    assert d["2/2020"].startswith("duplicata interna")
+    assert d["1/2020"].startswith("sobreposição")           # julgado depois de 2018-10-01 e a ementa está no Diário
+    assert d["3/2020"].startswith("sobreposição")
+    assert "4/2017" not in d                                  # anterior ao Diário: nunca descartado, mesmo com texto igual
+    assert "5/2020" not in d
+
+
+def test_sc_esperado_e_listar_conferem_pagina_seguinte_vazia(monkeypatch, tmp_path):
+    from ted_search.collectors.sites import coleta_educada as ce
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    monkeypatch.setattr(m, "PAUSA", 0)
+    m._info.clear()
+    ce.reiniciar()
+    h = _pagina_sc()
+    vazia = '<html>"totalPages\\":2,</html>'
+
+    class Resp:
+        status_code = 200
+        headers: dict = {}
+
+        def __init__(self, corpo):
+            self.content = corpo.encode("utf-8")
+
+        def raise_for_status(self):
+            return None
+
+    class Cli:
+        def __init__(self):
+            self.urls = []
+
+        async def get(self, url, headers=None, **_k):
+            self.urls.append(url)
+            n = int(url.split("page=")[1].split("&")[0])
+            return Resp(h.replace("826", "2") if n <= 2 else vazia)
+
+    async def rodar():
+        sem = asyncio.Semaphore(1)
+        c = Cli()
+        return await m.esperado(c, sem), await m.listar(c, sem), c.urls
+
+    esperado, itens, urls = asyncio.run(rodar())
+    assert esperado == 3 + 3 and len(itens) == 6                      # 2 páginas x 3 cartões
+    assert [i["id"] for i in itens][:3] == ["400/2026", "9/2018", "2/1995"]
+    assert itens[3]["id"] == "400/2026#2"                              # nº de acórdão repetido: não perde item
+    assert any("page=3" in u for u in urls)                            # conferiu a página depois da última
+    assert len(list((tmp_path / "site_sc_ementarios_ted" / "paginas").glob("*.html.gz"))) == 3  # cache bruto por página
+    m._info.clear()
+
+
+def test_sc_get_para_em_403_sem_insistir(monkeypatch, tmp_path):
+    import pytest
+
+    from ted_search.collectors.sites import coleta_educada as ce
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    monkeypatch.setattr(m, "PAUSA", 0)
+    ce.reiniciar()
+
+    class Resp:
+        status_code = 403
+        headers: dict = {}
+        content = b""
+
+    class Cli:
+        n = 0
+
+        async def get(self, url, headers=None, **_k):
+            Cli.n += 1
+            return Resp()
+
+    async def rodar():
+        sem = asyncio.Semaphore(1)
+        with pytest.raises(ce.BloqueioSite):
+            await m._get(Cli(), sem, m.url_pagina(1))
+        with pytest.raises(ce.BloqueioSite):
+            await m._get(Cli(), sem, m.url_pagina(2))
+
+    asyncio.run(rodar())
+    assert Cli.n == 1  # depois do primeiro bloqueio nenhuma outra requisição
+    ce.reiniciar()
+
+
+def test_sc_julgado_em_so_vale_no_cabecalho():
+    from ted_search.collectors.sites import sc_ementarios_ted as m
+
+    corpo = "Ementa: " + "x" * 300 + " (Julgado em 26/07/2002) " + "y" * 50
+    assert m.extrair_data(corpo + " Florianópolis, 18 de outubro de 2024. A, Presidente.") == "2024-10-18"
+    assert m.extrair_data("Acórdão nº 002/95 - Julgado em 27.10.95\n\nProcesso de Representação nº 192/93") == "1995-10-27"

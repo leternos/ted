@@ -1,9 +1,14 @@
 [
   {
     "slug": null,
-    "url": null,
-    "conteudo": "Nenhuma base encontrada",
-    "situacao": "sem_base",
-    "verificacao": "S"
+    "url": "https://oabrr.org.br/ted/",
+    "conteudo": "Página institucional do TED/RR (apresentação, composição, defensores dativos); sem base de julgados, consultas ou ementário",
+    "periodo": null,
+    "volume": 0,
+    "acesso": null,
+    "exclusiva": null,
+    "verificacao": "V",
+    "situacao": "descartada",
+    "observacoes": "Verificado em 2026-11-20. WordPress (domínio oabrr.org.br; www redireciona). /ted/ só traz texto e membros. wp-json search por ementa/acórdão/jurisprudência/consulta devolve só notícias; mídia sem PDFs de ementa/acórdão/consulta; sitemap sem CPT de jurisprudência (post, page, oportunidades, comissões, suporte, formulários, diretoria, links úteis). robots.txt sem restrição (Yoast, Disallow vazio). Atenção: o primeiro GET à home devolveu uma tela 'One moment, please...' (interstitial que recarrega após 5 s); uma segunda requisição normal, 7 s depois, veio com a página real. Não houve captcha nem login e nada foi contornado. Os 2 julgados do DEOAB_RR (23 registros no total, 3 com inteiro teor) seguem como única fonte."
   }
 ]

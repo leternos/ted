@@ -1,24 +1,39 @@
 [
   {
-    "slug": "ementarios",
-    "url": "https://www.oabrn.org.br/2017/ementarios/",
-    "conteudo": "Acórdãos disciplinares",
-    "periodo": "2018-2021",
-    "volume": null,
-    "acesso": "HTML por ID",
-    "exclusiva": null,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "slug": "consultas-pdf",
+    "url": "https://www.oabrn.org.br/pagina/tribunal-de-etica-disciplina",
+    "conteudo": "Consultas respondidas pelo Pleno do TED/RN (acórdão com ementa + relatório + voto), 1 PDF por consulta, listados na página do TED (seção 'Consulta Ético-Disciplinar'). Não são julgados disciplinares.",
+    "periodo": "consultas protocoladas 2018-2020; julgadas em 24/07/2020 e 07/08/2020 (nos 6 lidos)",
+    "volume": "9 PDFs listados na página (medido 2026-11-20): 25342020-0, 133562018-0, 135792019-0, 40332019-0, 42892019-0, 91862019-0, 36732019-0, 122682018-0, 136172018-0. 2 a 5 páginas cada (~130-180 KB), texto nativo (pdftotext funciona, sem OCR).",
+    "acesso": "Sem busca. Links diretos na página do TED, padrão https://www.oabrn.org.br/2017/arquivos/Consultas/CONSULTA-<nºconsulta>-<TITULO-EM-MAIUSCULAS>.pdf (nome com caixa irregular, ex. 'COMUNICAcaO'); copiar o href da página. A listagem do diretório devolve 403, então só dá para chegar pelos links da página. Sem login, sem captcha.",
+    "exclusiva": true,
+    "verificacao": "V",
+    "situacao": "coletada",
+    "inteiro_teor": "SIM. Cada PDF traz cabeçalho (nº consulta, consulente com OAB, relator), ACÓRDÃO/ementa, RELATÓRIO e VOTO completos. Consulente nomeado como publicado.",
+    "observacoes": "Lidos 6 de 9: 12268/2018 (servidor ITEP, não conhecida, rel. José Heldison Carvalho de Aquino), 2534/2020 (troca de comunicação entre advogados, não conhecida, rel. Pedro Avelino Neto), 13356/2018 (escritório em shopping center, conhecida), 13579/2019 (sociedade unipessoal, não conhecida), 3673/2019 (clientes sindicalizados, não conhecida), 4033/2019 (impulsionamento em mídias sociais, conhecida; vedado). SOBREPOSIÇÃO com DEOAB_RN (1120 registros, 2019-05-20 a 2026-11-11, nenhum tipo CONSULTA): 0 de 9 números de consulta no banco (a única coincidência textual, 40332019-0, é substring de 140332019-0, processo disciplinar diferente). Conteúdo exclusivo, mas só 9 documentos. robots.txt: 'User-agent: * Disallow:' (sem restrição). Sem termos de uso localizados. Prioridade: baixa (barata: 9 downloads, 1 min), coletar por último. COLETADA: 9 de 9 PDFs, todos com camada de texto (sem OCR), 9 com relatório e voto (selo de inteiro teor). Texto integral do PDF em inteiro_teor_texto, consulente e relator nomeados como publicados. Sem CPF nos PDFs. Sobreposição com DEOAB_RN: nenhuma.",
+    "coleta": {
+      "fonte": "SITE_RN_CONSULTAS",
+      "adaptador": "collectors/sites/rn_consultas.py",
+      "na_fonte": 9,
+      "listados": 9,
+      "baixados": 9,
+      "no_banco": 9,
+      "rejeitados": 0,
+      "livro": "COMPLETO",
+      "periodo_real": "julgadas de 2020-07-24 a 2020-08-07",
+      "tem_inteiro_teor": 9
+    }
   },
   {
-    "slug": "consultas-pdf",
-    "url": "https://www.oabrn.org.br/2017/arquivos/Consultas/",
-    "conteudo": "Consultas",
-    "periodo": "2018-2020",
-    "volume": null,
-    "acesso": "PDF",
-    "exclusiva": true,
-    "verificacao": "S",
-    "situacao": "mapeada"
+    "slug": "ementarios",
+    "url": "https://www.oabrn.org.br/2017/ementarios/",
+    "conteudo": "Ementário de acórdãos disciplinares (registro antigo, 'HTML por ID', 2018-2021)",
+    "periodo": null,
+    "volume": 0,
+    "acesso": "HTTP 404 em /2017/ementarios/, /ementarios, /pagina/ementarios, /pagina/sumulas; /2017/ e /arquivos/ dão 403; www2 e legado.oabrn.org.br não resolvem (DNS). Menu do TED em /pagina/tribunal-de-etica-disciplina não tem link de ementário, acórdãos ou jurisprudência (só consultas, composição, portarias, regimento, legislação).",
+    "exclusiva": null,
+    "verificacao": "V",
+    "situacao": "descartada",
+    "observacoes": "Verificado em 2026-11-20: o registro 'S' (trecho de busca) era do site antigo; a URL não existe mais e o site novo (/pagina/...) não publica ementário. Busca na web (oabrn.org.br + ementário/acórdãos) só devolveu regimento, resoluções e as próprias consultas. RN só tem julgados no DEOAB (1120) e as 9 consultas."
   }
 ]

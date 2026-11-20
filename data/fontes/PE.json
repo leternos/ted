@@ -1,9 +1,14 @@
 [
   {
     "slug": null,
-    "url": null,
-    "conteudo": "Só página institucional e ementas soltas em notícias",
+    "url": "https://www.oabpe.org.br/tribunal",
+    "conteudo": "Só página institucional do TED/PE (Peticionamento, Atuação, Composição das 10 Turmas + Comissão de Admissibilidade + Turma Deontológica, Organograma, Regimento Interno, Andamento processual no sistema do CFOAB). Sem busca de julgados, sem ementário, sem consultas respondidas publicadas, sem súmulas.",
+    "periodo": null,
+    "volume": null,
+    "acesso": "n/a",
+    "exclusiva": null,
+    "verificacao": "V",
     "situacao": "sem_base",
-    "verificacao": "S"
+    "observacoes": "Verificado em 2026-11-20: menu completo, sitemap.xml (27 URLs, nenhuma de jurisprudência), /tribunal, /legislacao (só códigos, regimento, resoluções), /livros e /revista (Revista Advogar, cartilhas; sem ementas), /transparencia. robots.txt: 'Allow: /' (sem restrição). A Turma Deontológica existe na composição, mas sem publicação de consultas. Andamento de processo via www6.oab.org.br/sgd (CFOAB, consulta por número, fora do escopo). Decisões só no DEOAB_PE (1567 reg., 2019-12-04 a 2026-11-10, nº CNJ-OAB tipo 17.0000.2019.011553-9) e em ementas do CFOAB. Prioridade: nenhuma."
   }
 ]
