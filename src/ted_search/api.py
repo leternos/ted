@@ -34,6 +34,7 @@ from ted_search.db import (
     get_global_stats,
     get_seccionais_status,
     init_db,
+    somente_leitura,
     rebuild_fts,
     search_julgados,
 )
@@ -309,7 +310,9 @@ async def api_get_julgado(
                 if r_pub.status_code == 200:
                     pub_data = r_pub.json()
                     full_txt = html_to_paragraphs(pub_data.get("conteudoCodificado") or pub_data.get("conteudo") or "")
-                    if full_txt:
+                    if full_txt and somente_leitura():
+                        rec["inteiro_teor_texto"] = full_txt  # serviço sem escrita: devolve o texto sem gravar
+                    elif full_txt:
                         with get_connection(DB_PATH) as conn:
                             with conn:
                                 enrich_record_from_inteiro_teor(conn, julgado_id, full_txt)
@@ -334,7 +337,9 @@ async def api_get_julgado(
                     cache_pdf.write_bytes(pdf_bytes)
 
             pdf_text = await asyncio.to_thread(extract_text_from_pdf_bytes, pdf_bytes)
-            if pdf_text:
+            if pdf_text and somente_leitura():
+                rec["inteiro_teor_texto"] = pdf_text  # serviço sem escrita: devolve o texto sem gravar
+            elif pdf_text:
                 with get_connection(DB_PATH) as conn:
                     with conn:
                         enrich_record_from_inteiro_teor(conn, julgado_id, pdf_text)

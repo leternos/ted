@@ -95,7 +95,19 @@ CREATE VIRTUAL TABLE IF NOT EXISTS julgados_fts USING fts5(
 SCHEMA_SQL += FTS_SQL
 
 
+def somente_leitura() -> bool:
+    """No Cloud Run o banco vai dentro da imagem: abrir para escrita copia o arquivo inteiro (mais de 1 GB) para a
+    memória do contêiner e derruba a revisão. Com TED_DB_READONLY=1 o serviço abre o banco imutável e nunca grava."""
+    import os
+
+    return os.environ.get("TED_DB_READONLY", "").strip().lower() in {"1", "true", "sim"}
+
+
 def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
+    if somente_leitura() and db_path.exists() and db_path.stat().st_size > 0:
+        conn = sqlite3.connect(f"file:{db_path}?mode=ro&immutable=1", uri=True, timeout=120)
+        conn.row_factory = sqlite3.Row
+        return conn
     db_path.parent.mkdir(parents=True, exist_ok=True)
     if not db_path.exists() or db_path.stat().st_size == 0:
         from ted_search import banco
@@ -115,6 +127,8 @@ def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
 
 
 def init_db(db_path: Path = DB_PATH) -> None:
+    if somente_leitura() and db_path.exists() and db_path.stat().st_size > 0:
+        return  # o banco empacotado já vem com o esquema atual
     with get_connection(db_path) as conn:
         conn.executescript(SCHEMA_SQL)
         from ted_search.inteiro_teor import garantir_esquema
