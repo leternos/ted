@@ -204,7 +204,9 @@ RE_DISCIPLINAR = re.compile(
     r"REPRESENTAD[OA]|REPRESENTANTE|PROCESSO\s+ETICO|ARQUIVAMENTO\s+LIMINAR|EXCECAO\s+DE\s+SUSPEICAO|DOSIMETRIA|ABSOLVICAO|CONSULENTE|"
     # segunda leitura de GO
     r"LOCUPLETAMENTO|(?:AUSENCIA|FALTA|RECUSA)\s+DE\s+PRESTACAO\s+DE\s+CONTAS|(?:IM)?PROCEDENCIA\s+DA\s+REPRESENTACAO|"
-    r"REPRESENTACAO\s+JULGADA|PROCEDENTE\s+A\s+REPRESENTACAO|PROCESSO\s+DE\s+EXCLUSAO|EMENTA\s*:?\s*PEDIDO\s+(?:DE\s+)?REVISAO"
+    r"REPRESENTACAO\s+JULGADA|PRESCRICAO\s+(?:QUINQUENAL|TRIENAL|INTERCORRENTE|DA\s+PRETENSAO)|"
+    r"RETENCAO\s+(?:ABUSIVA|INDEVIDA)|PENA\s+DE\s+(?:SUSPENSAO|CENSURA|EXCLUSAO)|ARQUIVAMENTO\s+DA\s+REPRESENTACAO|"
+    r"REPRESENTACAO\s+(?:DE\s+ADVOGADO|CONTRA|EM\s+FACE|INSTAURADA|PROMOVIDA|APRESENTADA|OFERECIDA|DEFLAGRADA)|PROCEDENTE\s+A\s+REPRESENTACAO|PROCESSO\s+DE\s+EXCLUSAO|EMENTA\s*:?\s*PEDIDO\s+(?:DE\s+)?REVISAO"
 )
 
 
@@ -235,7 +237,8 @@ def motivo_recusa(
     if not full_text or len(full_text) < 150:
         return "texto_vazio_ou_curto"  # inclui erratas de uma linha ("acórdão faltante, não anexado")
     eh_errata = "ERRAT" in _sem_acento_upper(f"{tipo_pub} {titulo}").replace(" ", "")
-    if len(full_text) < (1500 if eh_errata else 700) and re.search(r"RETIFIQUE-SE|ONDE\s+SE\s+LE", _sem_acento_upper(full_text)):
+    if len(full_text) < (1500 if eh_errata else 700) and re.search(r"RETIFIQUE-SE|ONDE\s+SE\s+LE", _sem_acento_upper(full_text)) \
+            and not re.search(r"ACORDAM|UNANIMIDADE", _sem_acento_upper(full_text)):  # errata que republica o julgado inteiro entra (RO)
         return "errata_sem_decisao"  # só aponta a correção de outra publicação (RR 737522)
     if confiar_no_tipo:
         return None  # a varredura já classificou a publicação como decisão pelo perfil da Seccional
@@ -281,12 +284,27 @@ RE_ADMINISTRATIVO = re.compile(
     r"VIOL\w+\s+(?:DAS|AS)\s+PRERROGATIVAS|PROCESSO\s+DE\s+INSCRICAO|ASSUNTO\s*:\s*(?:RECURSO\s+DE\s+)?INSCRICAO\s+DE|"
     # segundas leituras de RN, PI e SE
     r"MEDALHA|EMENTA\s*:?\s*HOMENAGEM|LUTO\s+OFICIAL|MINUTA\s+DE\s+RESOLUCAO|(?:INDEFERIMENTO|PEDIDO)\s+DE\s+REINSCRICAO|"
-    r"PEDIDO\s+DE\s+ALTERACAO\s+CONTRATUAL|EMENTA\s*\d+\s*/\s*20\d\d\s*:?\s*(?:A\s+)?(?:PROPOSICAO|PROPOSTA|REQUERIMENTO)"
+    r"PEDIDO\s+DE\s+ALTERACAO\s+CONTRATUAL|PEDIDO\s+DE\s+ASSISTENCIA|INIDONEIDADE\s+DE\s+REQUERENTE|"
+    # leituras de RO e MG
+    r"ASSUNTO\s*:\s*(?:INDICAC(?:AO|OES)\s+(?:DE\s+|DOS?\s+)?MEMBROS?|COMPOSICAO\s+DO\s+TRIBUNAL|(?:REFORMULACAO|PROPOSTA)\s+ORCAMENTARIA|"
+    r"REFORMULACAO\s+DO\s+ORCAMENTO|PROGRAMA\s+DE\s+REGULARIZACAO|PROPOSTA\s+DE\s+RESOLUCAO|ALTERACAO\s+DA\s+RESOLUCAO|"
+    r"PROPOSTA\s+PARA\s+INCLUSAO|EXIGENCIA\s+DE\s+EMISSAO|ALTERACAO\s+DE\s+NOMENCLATURA|PEDIDO\s+DE\s+JUBILAMENTO)|"
+    r"PEDIDO\s+DE\s+REINSCRICAO|PROCESSO\s+DE\s+REINSCRICAO|INSCRICAO\s+(?:COMO|DE)\s+(?:ADVOGAD|ESTAGIARI)|PROCESSO\s+ELEITORAL|"
+    r"IMPUGNACAO\s+DA\s+CHAPA|REPRESENTACAO\s+(?:EM\s+MATERIA\s+)?ELEITORAL|PRESTACAO\s+DE\s+CONTAS\s+(?:DA\s+|DO\s+)?CAA|EMENTA\s*\d+\s*/\s*20\d\d\s*:?\s*(?:A\s+)?(?:PROPOSICAO|PROPOSTA|REQUERIMENTO)"
 )
 # Acórdão de Turma do TED: disciplinar mesmo quando o caso nasce na "seara eleitoral" (RN) ou cita inscrição (SE)
 RE_TURMA_DO_TED = re.compile(
     r"ACORDAM\s+OS\s+MEMBROS\s+DA\s+\S+\s+TURMA\s+DO\s+(?:TED|TRIBUNAL\s+DE\s+ETICA)|"
-    r"EMENTA\s+N\S*\s*\d[\d ]*/\s*\d[\d ]*\s*[-–]\s*(?:TED|\d\s*[ªA]?\s*T)\b"
+    r"EMENTA\s+N\S*\s*\d[\d ]*/\s*\d[\d ]*\s*[-–]\s*(?:TED|\d\s*[ªA]?\s*T)\b|"
+    # RJ: "Ementa: 64/11ªTurma/2022"
+    r"EMENTA\s*:?\s*\d{1,3}\s*(?:\(\d+\))?\s*/\s*(?:\d{1,2}\s*[ªA°]?\s*[./]?\s*)?(?:TURMA|TED)\b"
+)
+# MG: recurso julgado pelo Órgão Especial contra acórdão de Turma do TED; a ementa nem sempre usa palavra disciplinar
+RE_ORGAO_ESPECIAL = re.compile(r"ACORDAM\s+OS\s+MEMBROS\s+D[AO]\s+(?:\S+\s+){0,4}ORGAO\s+ESPECIAL")
+RE_ORGAO_ESPECIAL_ADM = re.compile(
+    r"DESAGRAVO|PRERROGATIVAS\s+DA|CAIXA\s+DE\s+ASSISTENCIA|\bCAA\b|PROCESSO\s+DE\s+INSCRICAO|PEDIDO\s+DE\s+INSCRICAO|"
+    r"INSCRICAO\s+(?:PRINCIPAL|ORIGINARIA|DEFINITIVA)|ELEITO|AUXILIO\s+(?:MENSAL|EXTRA|ALIMENTO)|LICENCIA|"
+    r"AUSENCIA\s+DE\s+PAGAMENTO\s+DE\s+ANUIDADE|INCOMPATIBILIDADE|IMPEDIMENTO\s+(?:DO\s+ART|PARCIAL|TOTAL)|CHAPA|ISENCAO|INIDONEIDADE"
 )
 
 # Abertura em que o próprio TED anuncia o julgamento (GO): disciplinar, ainda que cite sociedade ou inscrição suplementar
@@ -297,13 +315,21 @@ RE_PRESCRICAO_DISCIPLINAR = re.compile(r"PRESCRI[^.]{0,300}ART(?:IGO)?\.?\s*43\b
 
 def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool:
     """Decisões do Conselho sobre inscrição, sociedades, contas ou eleições ficam no banco, mas fora da busca do TED."""
-    if RE_TURMA_DO_TED.search(_sem_acento_upper(full_text[:1500])) and not re.search(
-        r"INCIDENTE\s+DE\s+(?:VERIFICACAO\s+DE\s+)?(?:IN)?IDONEIDADE", _sem_acento_upper(full_text[:1500])
+    inicio = _sem_acento_upper(full_text[:1500])
+    if RE_TURMA_DO_TED.search(inicio) and not re.search(
+        r"INCIDENTE\s+DE\s+(?:VERIFICACAO\s+DE\s+)?(?:IN)?IDONEIDADE|PEDIDO\s+DE\s+ASSISTENCIA|DESAGRAVO", inicio
     ):
         return True
     if eh_eleitoral(setor_nome, full_text):
         return False
     abertura = _sem_acento_upper(f"{titulo} {full_text[:600]}")
+    # intimação com cabeçalho longo (MG): o assunto está na ementa, que começa depois dos 600 primeiros caracteres
+    pos = inicio.find("EMENTA", 600)
+    if pos > 0 and "INTIMA AS PARTES" in inicio[:250]:
+        abertura += " " + inicio[pos:pos + 400]
+    inteiro = _sem_acento_upper(full_text)
+    if RE_ORGAO_ESPECIAL.search(inteiro):
+        return not RE_ORGAO_ESPECIAL_ADM.search(inteiro)
     # reabilitação conta como disciplinar (decisão do cliente); a "reabilitação criminal" citada em incidente
     # de inidoneidade é assunto de inscrição
     if "REABILITA" in abertura and "IDONEIDADE" not in abertura:

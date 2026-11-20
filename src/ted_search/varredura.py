@@ -189,7 +189,8 @@ RE_FORMULA_COLEGIADA = re.compile(
     r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|"
     r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)|RESULTADO\s+D[EO]\s+JULGAMENTO|DECIDIRAM|JULGARAM|"
     r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|"
-    r"TORNA\s+PUBLICO\s+AS\s+DECISOES|E\s+COMO\s+VOTO|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
+    r"TORNA\s+PUBLICO\s+AS\s+DECISOES|E\s+COMO\s+VOTO|VOTO\s+(?:PELO\s+CONHECIMENTO|PARA\s+CONHECER|PELA\s+REJEICAO|PELO\s+SEU\s+ACOLHIMENTO)|"
+    r"(?<![A-Z])SS\s*\.?\s*\d{1,2}\s*[./]\s*\d{1,2}\s*[./]\s*\d{2,4}|OS\s+MEMBROS\s+D[OA]\s+[^.]{0,80}DELIBERARAM|"
     r"TORNA\s+PUBLIC[AO]S?(?:,[^.;]{0,40},)?\s+A\s+DECISAO\s+(?:PROFERIDA\s+)?(?:D[AO]|PEL[AO])\s+(?:[\wªº.]+\s+){0,3}?(?:CAMARA|TURMA|CONSELHO|PLENO)"
 )
 RE_COLEGIADO_FORTE = re.compile(r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|DECIDIRAM|RELATORA?\s+D[OA]\s+ACORDAO")
@@ -197,7 +198,7 @@ RE_COLEGIADO_FORTE = re.compile(r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAI
 RE_COMUNICADO_SANCAO = re.compile(r"INTIMAD[OA]\)?\s+A\s+DEVOLVER|PARA\s+CONHECIMENTO\s+DAS\s+AUTORIDADES\s+JUDICI|COMUNICA\s+QUE\s+FOI\s+APLICADA")
 # Ato normativo ou administrativo que cita "por unanimidade" sem ser julgado
 # (só no título: no corpo, "Regulamento Geral" é citado por quase toda intimação de acórdão)
-RE_ATO_NORMATIVO = re.compile(r"REGULAMENTO|CAMPEONATO|CHAMAMENTO|CHAMADA\s+PUBLICA|FIXA\s+O\s+VALOR\s+DA\s+ANUIDADE|ANEXO\s+DA\s+RESOLUCAO")
+RE_ATO_NORMATIVO = re.compile(r"REGULAMENTO|CAMPEONATO|CHAMAMENTO|CHAMADA\s+PUBLICA|FIXA\s+O\s+VALOR\s+DA\s+ANUIDADE|ANEXO\s+DA\s+RESOLUCAO|ATO\s+DE\s+DESIGNACAO")
 # Publicação que abre como acórdão numerado de um processo (PA: "ACÓRDÃO nº 081/2020. Processo Administrativo...")
 RE_ACORDAO_NUMERADO = re.compile(r"^\W*ACORDAO\s+N\S*\s*[\d/ .]+\.\s*PROCESSO")
 
@@ -212,7 +213,7 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
     plano = _sem_acento(texto)
     abertura = plano[:600]
     # despacho monocrático transcrito em edital, ainda que cite ementa alheia (auditoria de CE)
-    if "TRANSCREVER O DESPACHO" in abertura:
+    if "TRANSCREVER O DESPACHO" in abertura or re.search(r"TRANSCREVER\s+O\s+R\.\s*DESPACHO|COMUNICA\s+DO\s+DESPACHO\s+EXARADO", abertura):
         return "despacho_transcrito"
     if RE_COMUNICADO_SANCAO.search(plano) and "ACORDAM" not in plano and not re.search(r"(?<![A-Z])EMENTA", plano):
         return "comunicado_de_sancao"
@@ -226,10 +227,13 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
         return "ata_em_extrato"
     if _anuncia_decisao_colegiada(plano) or re.search(r"TORNA\s+PUBLICA\s+A\s+DECISAO\s+DO\s+PROCESSO", plano[:300]):
         return None  # vale mesmo com corpo em forma de voto ou de despacho (segundas leituras de PA e PB)
+    if re.search(r"\b[OA]\s+RELATORA?\s+DECIDIU\s+POR\b", plano[:1500]):
+        return "ato_monocratico"  # intimação de decisão do relator (MG)
     if len(texto) >= 150 and not RE_FORMULA_COLEGIADA.search(plano):
         return "sem_formula_de_julgamento"
     # despacho ou decisão monocrática: abre como tal e não traz nenhuma marca de colegiado
-    if re.search(r"\bDESPACHO\b|DECISAO\s+MONOCRATICA|VISTOS,?\s+ETC|DECISAO\s*:\s*\(\.\.\.\)", plano[:300]) and not RE_COLEGIADO_FORTE.search(plano) \
+    if re.search(r"\bDESPACHO\b|DECISAO\s+MONOCRATICA|VISTOS,?\s+ETC|DECISAO\s*:\s*\(\.\.\.\)", plano[:300]) \
+            and not re.search(r"EMENTA\s*(?:N\S*\s*)?:?\s*\d{1,3}\s*/", plano[:600]) and not RE_COLEGIADO_FORTE.search(plano) \
             and len(re.findall(r"(?<![A-Z])EMENTA", plano)) < 2:
         return "ato_monocratico"
     # decisão de um só membro da Comissão Eleitoral: fora, como qualquer decisão monocrática (BA, ES, RR)

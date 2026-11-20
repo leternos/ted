@@ -10,7 +10,10 @@
     "Republicação",
     "Retificação",
     "Notificação",
-    "Edital"
+    "Edital",
+    "Ementa",
+    "Ementa e Acordão",
+    "Resultado de Julgamento"
   ],
   "validado": true,
   "titulos_decisao": [
