@@ -253,7 +253,7 @@ def motivo_recusa(
 def eh_eleitoral(setor_nome: str, full_text: str) -> bool:
     """Decisões da Comissão Eleitoral e registros de candidatura: ficam no banco, sempre fora da busca do TED."""
     # Justiça Eleitoral como parte ou como origem do ofício não torna a decisão eleitoral (PB 294505, 654409)
-    abertura = re.sub(r"(?:TRIBUNAL\s+REGIONAL|JUSTI[ÇC]A|ZONA|JU[IÍ]ZO)\s+(?:DA\s+\S+\s+)?ELEITORAL|CRIMES?\s+ELEITORA\w+", " ", full_text[:600].upper())
+    abertura = re.sub(r"(?:TRIBUNAL\s+REGIONAL|PROCURADORIA\s+REGIONAL|PROCURADORIA|JUSTI[ÇC]A|ZONA|JU[IÍ]ZO)\s+(?:DA\s+\S+\s+)?ELEITORAL|CRIMES?\s+ELEITORA\w+", " ", full_text[:600].upper())
     return "COMISSÃO ELEITORAL" in setor_nome.upper() or bool(
         re.search(r"REGISTRO\s+DE\s+(?:CANDIDATURA|CHAPA)|\bCHAPA\b|ELEI[ÇC][ÕO]ES\s+OAB|ELEITORAL", abertura)
     )
@@ -290,7 +290,7 @@ RE_ADMINISTRATIVO = re.compile(
     r"REFORMULACAO\s+DO\s+ORCAMENTO|PROGRAMA\s+DE\s+REGULARIZACAO|PROPOSTA\s+DE\s+RESOLUCAO|ALTERACAO\s+DA\s+RESOLUCAO|"
     r"PROPOSTA\s+PARA\s+INCLUSAO|EXIGENCIA\s+DE\s+EMISSAO|ALTERACAO\s+DE\s+NOMENCLATURA|PEDIDO\s+DE\s+JUBILAMENTO)|"
     # leituras de confirmação de RJ e MG
-    r"PROCESSO\s+INCIDENTAL\s+(?:INSTAURADO\s+)?PARA\s+APURA\w+\s+A\s+(?:IN)?IDONEIDADE|APURA\w+\s+(?:DA\s+|DE\s+)?(?:IN)?IDONEIDADE|ANISTIA\s+DE\s+ANUIDADE|PEDIDO\s+DE\s+CANCELAMENTO\s+D[AE]\s+INSCRICAO|"
+    r"PROCESSO\s+INCIDENTAL\s+(?:INSTAURADO\s+)?PARA\s+APURA\w+\s+A\s+(?:IN)?IDONEIDADE|APURA\w+\s+(?:DA\s+|DE\s+)?(?:IN)?IDONEIDADE|ANISTIA\s+DE\s+ANUIDADE|CONCESSAO\s+DE\s+ISENCAO|PEDIDO\s+DE\s+CANCELAMENTO\s+D[AE]\s+INSCRICAO|"
     # leituras de AM e SC
     r"RECURSO\.\s*INSCRICAO\s+NOS\s+QUADROS|ANOTACAO\s+DE\s+(?:IMPEDIMENTO|INCOMPATIBILIDADE)|BAIXA\s+DE\s+ANOTACAO|"
     r"PEDIDO\s+DE\s+(?:BAIXA|ANOTACAO|EXCLUSAO\s+DE\s+SOCIO)|ALTERACAO\s+ORCAMENTARIA|VAGA\s+DE\s+CONSELHEIR|ASSUNTO\s*:\s*SOCIEDADE|"

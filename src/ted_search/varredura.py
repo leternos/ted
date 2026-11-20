@@ -186,7 +186,7 @@ RE_DECISAO_DE_ORGAO = re.compile(
 # - "decidiu", "julgou", "negou provimento" e "vistos," sozinhos também aparecem em despacho de relator e em
 #   comunicado de sanção ("...negou provimento ao recurso"): leitura de BA, 136 de 1.959 registros.
 RE_FORMULA_COLEGIADA = re.compile(
-    r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|(?<![A-Z])EMENTA|"
+    r"ACORDAM|UNANIMIDADE|UNANIME|(?:POR|PELA)\s+MAIORIA|POR\s+\d+\s+VOTOS\s+A\s+\d+|(?<![A-Z])EMENTA|"
     r"VISTOS,?\s+(?:E\s+)?(?:RELATADOS|ANALISADOS|EXAMINADOS)|RESULTADO\s+D[EO]\s+JULGAMENTO|DECIDIRAM|JULGARAM|"
     r"RELATORA?\s+D[OA]\s+ACORDAO|RECURSO\s+CONHECIDO\s+E\s+(?:NAO\s+|IM|DES)?PROVIDO|SUMULA\s+N|ACORDA\s+O\s+CONSELHO\s+PLENO|"
     r"O\s+CONSELHO\s+PLENO\s+DA\s+OAB/\w\w,\s+EM\s+REUNIAO\s+REALIZADA|ACORDA\s+A\s+\S+\s+(?:CAMARA|TURMA)|"
@@ -210,7 +210,7 @@ def _anuncia_decisao_colegiada(plano: str) -> bool:
     if RE_ACORDAO_NUMERADO.search(plano[:80]) or RE_DECISAO_DE_ORGAO.search(plano[:500]):
         return True
     # SC: "ACÓRDÃO N. 116/2025" no cabeçalho, com voto do relator; não vale para decisão monocrática numerada
-    return bool(re.search(r"ACORDAO\s+N\S*\s*\d+\s*/\s*\d{4}", plano[:400])) and not re.search(
+    return bool(re.search(r"ACORDAO\s+(?:N\S*\s*)?\d+\s*/\s*\d{4}", plano[:800])) and not re.search(
         r"MONOCRATIC|PACIFICAD|DETERMINO\s+O\s+ARQUIVAMENTO", plano[:1500])
 
 
@@ -235,6 +235,10 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
         return "sem_formula_de_julgamento"  # aviso de adiamento que cita súmula (SC)
     if _anuncia_decisao_colegiada(plano) or re.search(r"TORNA\s+PUBLICA\s+A\s+DECISAO\s+DO\s+PROCESSO", plano[:300]):
         return None  # vale mesmo com corpo em forma de voto ou de despacho (segundas leituras de PA e PB)
+    # notificação "acerca do seguinte despacho" (SC), salvo quando o texto traz o acórdão
+    if re.search(r"(?:ACERCA\s+D[OA]|\bD[OA])\s+SEGUINTE\s+(?:R\.\s*)?(?:DESPACHO|DECISAO\s+MONOCRATICA)|CUMPRIMENTO\s+DO\s+DESPACHO", plano[:600]) \
+            and not re.search(r"ACORDAM|ACORDA\s+A\s", plano):
+        return "ato_monocratico"
     if re.search(r"\b[OA]\s+RELATORA?\s+DECIDIU\s+POR\b", plano[:1500]) or re.search(
             r"SEGUINTE\s+DESPACHO\s+MONOCRATICO|VISTOS\s+EM\s+DECISAO\s+MONOCRATICA|TORNA\s+PUBLICO\s+QUE\s+SERA\s+APLICADA", plano[:900]):
         return "ato_monocratico"  # intimação de decisão do relator (MG)
@@ -253,7 +257,7 @@ def motivo_fora_de_escopo(pub: dict[str, Any], texto: str) -> str | None:
 
 
 # Marcas de que o texto traz o resultado de um julgamento, usadas só para confirmar tipos amplos
-RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|UNANIME|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
+RE_RESULTADO_NO_CORPO = re.compile(r"UNANIMIDADE|UNANIME|POR\s+\d+\s+VOTOS\s+A\s+\d+|POR\s+MAIORIA|JULGO\s+(?:IM)?PROCEDENTE|ACOMPANHO\s+O\s+VOTO|NEGO\s+PROVIMENTO|DOU\s+PROVIMENTO")
 # Publicação que abre anunciando o resultado de uma sessão de julgamento (TO, nov/2026)
 RE_RESULTADO_SESSAO = re.compile(r"RESULTADO\s+D[EO]\s+JULGAMENTO")
 

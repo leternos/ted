@@ -67,3 +67,14 @@ Pendências conhecidas:
 - MT: ~13 pedidos de inscrição com marca 1 ("Representado:" no cabeçalho).
 - Atas da Comissão Eleitoral com julgamento (RN 844146, RO 961380, MS 6 registros): fora.
 - Reconferir AL, TO, AP e RR depois das mudanças de regra.
+
+### Leituras de confirmação (20/11/2026, tarde)
+
+| UF | Veredito | Erro de marca medido | Julgados perdidos | O que ficou |
+|---|---|---|---|---|
+| AM | **APROVADA** | ≈0,1% | 0 | 3 registros isolados (322778, 857349, 125735) |
+| PE | perto do limite | 0,6% | 2 (certidão eleitoral 801505; embargos do Pleno 1111246) | denúncias de exercício ilegal por não advogado (CEFAPA) com marca 1: 8 registros, política a decidir |
+| SC | perto do limite | 1,0–1,7% | 8 → 3 depois da correção | ~11 notificações de despacho no banco; ~21 anotações/inscrições com marca 1 (assunto depois do cabeçalho) |
+| RJ | reaberta | ≈1% no total; ~3% dentro da marca 0 | 1 | corrigido em seguida; falta nova medida |
+| MG | reaberta | ~1% marca 1; ~3% dentro da marca 0 | 7 (3 do Pleno, 4 eleitorais) | corrigido em seguida; ~339 recursos sem ementa não dá para provar |
+| GO | perto do limite | ≥1,2% em cada sentido | 0 | ~13 assuntos administrativos sem marcador; embargos sem processo-pai |
