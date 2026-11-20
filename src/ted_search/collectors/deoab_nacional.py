@@ -312,6 +312,8 @@ RE_ATO_SOCIETARIO = re.compile(
     r"(?:FEITO|ASSUNTO)\s*:\s*(?:ALTERACAO\s+CONTRATUAL|REGISTRO\s+DE\s+SOCIEDADE|DISSOLUCAO\s+DE\s+SOCIEDADE|ENCERRAMENTO\s+DE\s+FILIAL)|"
     r"EMENTA\s*:\s*(?:ALTERACAO\s+DE\s+CONTRATO\s+SOCIAL|DISSOLUCAO\s+DE\s+SOCIEDADE|ENCERRAMENTO\s+DE\s+FILIAL|SOCIEDADE\s+(?:INDIVIDUAL\s+)?DE\s+ADVO)"
 )
+# RS: "Acordam os integrantes da 5ª Turma Julgadora" (a fórmula fica no fim do texto, depois da ementa)
+RE_TURMA_JULGADORA = re.compile(r"ACORDAM\s+OS\s+INTEGRANTES\s+D[AO]\s+(?:\S+\s+){1,3}TURMA\s+JULGADORA")
 # MG: recurso julgado pelo Órgão Especial contra acórdão de Turma do TED; a ementa nem sempre usa palavra disciplinar
 RE_ORGAO_ESPECIAL = re.compile(r"ACORDAM\s+OS\s+MEMBROS\s+D[AO]\s+(?:\S+\s+){0,4}ORGAO\s+ESPECIAL")
 RE_ORGAO_ESPECIAL_ADM = re.compile(
@@ -329,6 +331,11 @@ RE_PRESCRICAO_DISCIPLINAR = re.compile(r"PRESCRI[^.]{0,300}ART(?:IGO)?\.?\s*43\b
 def eh_materia_disciplinar(setor_nome: str, titulo: str, full_text: str) -> bool:
     """Decisões do Conselho sobre inscrição, sociedades, contas ou eleições ficam no banco, mas fora da busca do TED."""
     inicio = _sem_acento_upper(full_text[:1500])
+    if RE_TURMA_JULGADORA.search(_sem_acento_upper(full_text)):
+        return True
+    # RS: extrato de julgamento da 2ª Câmara Recursal (recursos disciplinares), que não traz ementa nem palavra-chave
+    if re.search(r"DA\W{0,2}SE\s+CIENCIA", inicio[:400]) and re.search(r"\b2\S?\s+CAMARA\s+(?:RECURSAL|JULGADORA)", inicio[:600]):
+        return True
     if RE_TURMA_DO_TED.search(inicio) and not re.search(
         r"INCIDENTE\s+DE\s+(?:VERIFICACAO\s+DE\s+)?(?:IN)?IDONEIDADE|PEDIDO\s+DE\s+ASSISTENCIA|DESAGRAVO", inicio
     ):
