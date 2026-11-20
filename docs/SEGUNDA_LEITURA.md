@@ -1,4 +1,4 @@
-# Segunda leitura independente — plano (ainda não executado)
+# Segunda leitura independente — plano e andamento
 
 A primeira auditoria de cada Seccional devolveu "REABRIR" e as correções foram aplicadas no código.
 O `sec-auditar` passa em todas, mas ele só mede cobertura com a mesma regra da coleta: não enxerga erro de
@@ -44,3 +44,26 @@ rodar durante a leitura). Depois de cada relatório: aplicar as correções, rec
 - Atas de Conselho Pleno que registram desfecho disciplinar (PI): entram como decisão?
 - Editais que só comunicam a sanção aplicada, sem o texto do julgado (MA, CE, PB): entram?
 - Consultas respondidas pelo TED (CE, PI): contam como matéria disciplinar na busca?
+
+## Andamento (20/11/2026)
+
+Leituras feitas e correções aplicadas (todas devolveram REABRIR; a leitura de confirmação ainda falta em cada uma):
+
+| Rodada | Seccionais | O que a leitura achou |
+|---|---|---|
+| segunda leitura | CE, BA, ES | fórmulas fracas admitiam intimações e comunicados de sanção |
+| segunda leitura | GO, MA, PE | nenhum julgado perdido; erro na marca disciplinar (2–5%); PE passou a aceitar penalidade e suspensão preventiva com voto e resultado |
+| segunda leitura | PA, MT, PB | 10 julgados recuperados (acórdão numerado, decisão de Câmara); marca de prerrogativas e de inscrição |
+| segunda leitura | SE, RN, PI, AC | consultas do TED de SE recuperadas; 15 certidões do Pleno do PI retiradas |
+| primeira leitura | RJ, MG, RO | marca: ~440 de MG (Órgão Especial) e ~220 do RJ (Turmas do TED) estavam como administrativos; 3 tipos faltavam no perfil do RJ |
+| primeira leitura | MS, AM, SC, DF | AM: 95 editais só com o resultado retirados; SC: 50 avisos de adiamento retirados; DF: o TED não publica o teor no Diário |
+
+Pendências conhecidas:
+
+- DF: ~1.440 notificações do Conselho Pleno e do Tribunal de Defesa das Prerrogativas com extrato do julgamento (só o resultado), e 13 decisões do
+  Tribunal de Prerrogativas que saíram na última recarga por não trazerem "ACORDAM". Fora, aguardando decisão.
+- Decisões monocráticas de presidente ainda no banco: PI 246897, AC 546575, RO 601935.
+- RN: republicações corrigidas (fica a primeira; deveria ficar a última). AM: 7 pares de duplicata com nº de processo curto.
+- MT: ~13 pedidos de inscrição com marca 1 ("Representado:" no cabeçalho).
+- Atas da Comissão Eleitoral com julgamento (RN 844146, RO 961380, MS 6 registros): fora.
+- Reconferir AL, TO, AP e RR depois das mudanças de regra.
