@@ -98,8 +98,12 @@ SCHEMA_SQL += FTS_SQL
 def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
     db_path.parent.mkdir(parents=True, exist_ok=True)
     if not db_path.exists() or db_path.stat().st_size == 0:
-        # Banco pré-indexado versionado no repositório: .xz (atual) ou .gz (legado)
-        for suffix, opener in ((".xz", lzma.open), (".gz", gzip.open)):
+        from ted_search import banco
+
+        if list(db_path.parent.glob(f"{db_path.name}.xz.parte-*")):
+            banco.desempacotar(db_path)  # formato atual: .xz em partes, com manifesto
+        # Formatos anteriores: .xz único ou .gz
+        for suffix, opener in ((".xz", lzma.open), (".gz", gzip.open)) if not db_path.exists() else ():
             packed = db_path.with_name(f"{db_path.name}{suffix}")
             if packed.exists():
                 with opener(packed, "rb") as f_in, open(db_path, "wb") as f_out:

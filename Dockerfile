@@ -19,11 +19,11 @@ COPY pyproject.toml README.md ./
 COPY src/ ./src/
 RUN pip install --no-cache-dir -e .
 
-# Copiar e descompactar o banco SQLite + FTS5 pré-indexado (107.256 julgados - CFOAB + 27 Seccionais) durante o build.
-# O banco vai em .xz para caber no limite de 100 MB por arquivo do GitHub; o lzma do próprio Python descompacta.
-COPY data/ted_jurisprudencia.db.xz /app/data/ted_jurisprudencia.db.xz
-RUN python -c "import lzma, shutil; shutil.copyfileobj(lzma.open('/app/data/ted_jurisprudencia.db.xz'), open('/app/data/ted_jurisprudencia.db', 'wb'), 1048576)" && \
-    rm /app/data/ted_jurisprudencia.db.xz && \
+# Banco SQLite + FTS5 pré-indexado. Vai no repositório como .xz cortado em partes de 90 MB (o GitHub recusa
+# arquivo acima de 100 MB), com um manifesto; o build recompõe o banco e confere tamanho e SHA-256.
+COPY data/ted_jurisprudencia.db.* /app/data/
+RUN python -m ted_search.banco desempacotar && \
+    rm -f /app/data/ted_jurisprudencia.db.xz* && \
     chmod 666 /app/data/ted_jurisprudencia.db && \
     chmod 777 /app/data
 
