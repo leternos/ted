@@ -44,6 +44,13 @@ def texto_por_pagina(documento: dict[str, Any]) -> list[str]:
     return saida
 
 
+def checar(r: httpx.Response) -> httpx.Response:
+    """Como raise_for_status, mas com o corpo do erro do Google (diz qual permissão ou API falta)."""
+    if r.is_error:
+        raise RuntimeError(f"Document AI {r.request.method} {r.request.url.path} -> {r.status_code}: {r.text[:1500]}")
+    return r
+
+
 def token_gcloud() -> str:
     """Token de acesso da conta autenticada no gcloud (o passo google-github-actions/auth)."""
     r = subprocess.run(["gcloud", "auth", "print-access-token"], capture_output=True, text=True, check=True)
@@ -58,8 +65,7 @@ class DocumentAI:
         self.base = f"{HOST}/v1/projects/{projeto}/locations/{local}"
 
     def listar_processadores(self) -> list[dict[str, Any]]:
-        r = self.cliente.get(f"{self.base}/processors")
-        r.raise_for_status()
+        r = checar(self.cliente.get(f"{self.base}/processors"))
         return r.json().get("processors", [])
 
     def obter_ou_criar_ocr(self, nome: str = "ted-ocr") -> str:
@@ -67,8 +73,7 @@ class DocumentAI:
         for p in self.listar_processadores():
             if p.get("displayName") == nome and p.get("type") == "OCR_PROCESSOR":
                 return p["name"].rsplit("/", 1)[-1]
-        r = self.cliente.post(f"{self.base}/processors", json={"type": "OCR_PROCESSOR", "displayName": nome})
-        r.raise_for_status()
+        r = checar(self.cliente.post(f"{self.base}/processors", json={"type": "OCR_PROCESSOR", "displayName": nome}))
         return r.json()["name"].rsplit("/", 1)[-1]
 
     def _processar(self, processador: str, pdf: bytes) -> dict[str, Any]:
@@ -81,7 +86,7 @@ class DocumentAI:
             if r.status_code in (429, 500, 503) and tentativa < 3:
                 time.sleep(2**tentativa * 3)
                 continue
-            r.raise_for_status()
+            checar(r)
             return r.json()["document"]
         raise RuntimeError("Document AI: tentativas esgotadas")
 
